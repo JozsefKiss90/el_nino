@@ -1,0 +1,307 @@
+{
+  "main": {
+    "id": "0f67fc2cbc4e41ad",
+    "type": "split",
+    "children": [
+      {
+        "id": "ab73d064483e7f7b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "846dff12e327d8cc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/systems/Claude-Assisted Trading Stack.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Claude-Assisted Trading Stack"
+            }
+          },
+          {
+            "id": "09516e6fb265258b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/SRC - Claude Stock Trader.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SRC - Claude Stock Trader"
+            }
+          },
+          {
+            "id": "53729adf2509533c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/integrations/MCP Architecture.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MCP Architecture"
+            }
+          },
+          {
+            "id": "cbf4857358ad8182",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/SRC - Claude for Financial Services.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SRC - Claude for Financial Services"
+            }
+          },
+          {
+            "id": "0c8a3fbe07fc922b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/systems/Three-Layer Trading System.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Three-Layer Trading System"
+            }
+          },
+          {
+            "id": "597df9515d5bd586",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/integrations/Alpaca API.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Alpaca API"
+            }
+          },
+          {
+            "id": "e56ddc5d1dfba594",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/systems/Trading Engine Pipeline.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Trading Engine Pipeline"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "55a0abdf13fa35aa",
+    "type": "split",
+    "children": [
+      {
+        "id": "cdbf2b638c633416",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "99c9ee3b3ddc1d32",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1a203f309fbb4986",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d6a010828a078cb5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "568849070f5f8469",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad244cd39938a5bf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d3d48fd71db1602",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "74ffe813056e235f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "c2ffa3ef5f9a0787",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "01b36f2990863334",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "9681b606bdf3ccfc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "597df9515d5bd586",
+  "lastOpenFiles": [
+    "raw/calude_alpaca_trader.md",
+    "wiki/systems/Three-Layer Trading System.md",
+    "wiki/sources/SRC - Claude Stock Trader.md",
+    "wiki/systems/Claude-Assisted Trading Stack.md",
+    "wiki/sources/SRC - Claude for Financial Services.md",
+    "wiki/integrations/MCP Architecture.md",
+    "wiki/systems/Trading Engine Pipeline.md",
+    "wiki/integrations/Alpaca API.md",
+    "wiki/sources/SRC - Claude Opus Trader.md",
+    "wiki/index.md",
+    "wiki/glossary/Glossary.md",
+    "wiki/log.md",
+    "wiki/sources/SRC - Build Spec.md",
+    "wiki/sources/SRC - OWS Dev Squad.md",
+    "wiki/sources/SRC - Claude Cowork Trader.md",
+    "wiki/sources/SRC - Claude TradingView Integration.md",
+    "wiki/sources/SRC - LLM Wiki Methodology.md",
+    "wiki/workflows/Office Action Loop.md",
+    "wiki/governance/Treasury Policy System.md",
+    "wiki/systems/Syndicate Squad Architecture.md",
+    "wiki/governance/Trade Logging.md",
+    "wiki/security/API Credential Isolation.md",
+    "wiki/risk/Guardrail Architecture.md",
+    "wiki/agents/Agent Self-Verification.md",
+    "wiki/agents/Stateless Agent Recovery.md",
+    "wiki/agents/Multi-Agent Orchestration.md",
+    "wiki/workflows",
+    "wiki/systems",
+    "wiki/strategies",
+    "wiki/sources",
+    "wiki/security",
+    "wiki/risk",
+    "wiki/research",
+    "wiki/patterns",
+    "wiki/observability",
+    "wiki/memory"
+  ]
+}

@@ -141,3 +141,20 @@ FROM "wiki/sources"
 WHERE type = "source"
 SORT date_ingested ASC
 ```
+
+## Stale Confidence
+
+```dataview
+TABLE confidence, updated, domain
+FROM "wiki"
+WHERE confidence != null AND confidence != "confirmed"
+AND date(updated) < date(today) - dur(60 days)
+AND status = "active"
+SORT confidence ASC, updated ASC
+```
+
+## Known Distinct Pairs
+
+Pages flagged as potential semantic duplicates but confirmed as legitimately distinct. This list prevents recurring false positives during duplicate detection scans.
+
+<!-- Add entries as: - [[Page A]] / [[Page B]] — reason for distinction -->

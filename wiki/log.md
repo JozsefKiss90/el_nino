@@ -226,3 +226,32 @@ Created wiki maintenance schema covering: ingestion workflow, canonicalization r
 - **Confidence distribution**: confirmed(28), single-source(26), inferred(3)
 - **Observability queries**: 14
 - **All 3 phases executed**: hub foundation → canonical expansion → source + observability
+
+## [2026-05-15] governance | CLAUDE.md operational governance extension
+
+### Context:
+Post-migration governance extension. Vault completed metadata migration (57/57 pages, 100% compliance). CLAUDE.md extended from metadata governance spec into full semantic ontology operations manual.
+
+### New governance sections appended to CLAUDE.md (8 sections):
+
+1. **Continuous Ontology Operations** — per-session/weekly/monthly maintenance cadences, Green/Yellow/Red operational thresholds for 7 metrics, graph repair procedures (orphan, weak link, hub, density)
+2. **MCP Operational Governance** — operation classification table for all mcpvault operations (safe-automated / constrained-automated / human-review-required / prohibited), 7 hard prohibitions, canonical ownership protection, MCP session logging requirements
+3. **Semantic Retrieval Governance** — canonical precedence over embedding similarity, ambiguity handling (5% threshold), duplicate detection (85% creation / 80% periodic scan), false-positive mitigation, retrieval scope rules per query context
+4. **Ontology Evolution Procedures** — change classification (minor/structural/breaking), enum append procedure, domain split/merge/deprecation procedures, migration logging requirements
+5. **Observability Operations** — dashboard review cadence, per-metric remediation workflows for 10 metrics, 4-level escalation logic (Normal/Elevated/Critical/Structural), dashboard maintenance rules
+6. **Semantic Confidence Lifecycle** — full state transition table (7 transitions), promotion/demotion rules, multi-source validation standards, stale confidence detection (60-day threshold), contradiction-triggered confidence review
+7. **Schema Evolution Procedures** — 5 evolution principles, field addition (9-step), enum extension (4 constraints), field deprecation (6 rules), schema_version introduction conditions, backward compatibility rules
+8. **Automated Maintenance Governance** — operation safety classification table, 3 MCP-assisted workflows (lint pass, cross-link enhancement, stale detection), 7 automation boundaries, 5 escalation triggers
+
+### Graph Health Dashboard updated:
+- Added Stale Confidence Dataview query (15th query)
+- Added Known Distinct Pairs section for false-positive annotation
+
+### Governance scope evolution:
+- Before: metadata schema governance + migration operations
+- After: full semantic ontology operations governance (continuous maintenance, MCP safety, retrieval governance, ontology evolution, observability operations, confidence lifecycle, schema evolution, automation boundaries)
+
+### Files modified: 3
+- `wiki/CLAUDE.md` — 8 new governance sections appended (~480 lines)
+- `wiki/observability/Graph Health Dashboard.md` — stale confidence query + known distinct pairs
+- `wiki/log.md` — this entry

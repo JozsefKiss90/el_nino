@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -c [[ /c/Code/layer_3_wiki/wiki/**/*.md)"
+      "Bash(grep -c [[ /c/Code/layer_3_wiki/wiki/**/*.md)",
+      "Bash(done)"
     ]
   }
 }

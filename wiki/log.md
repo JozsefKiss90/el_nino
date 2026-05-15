@@ -55,3 +55,37 @@ Created wiki maintenance schema covering: ingestion workflow, canonicalization r
 - Portfolio optimization not yet covered
 - Compliance/regulatory frameworks not yet covered
 - Multi-exchange portfolio management not yet covered
+
+## [2026-05-15] ingest | Claude Alpaca Trader (3-level trading tutorial)
+
+### Source processed:
+- `raw/calude_alpaca_trader.md` — Three levels of Claude + Alpaca trading (basic setup, copy trading, Wheel Strategy)
+
+### Pages created: 5
+- `wiki/sources/SRC - Claude Alpaca Trader.md` — Source summary
+- `wiki/concepts/Options Trading.md` — Calls, puts, premiums, strike, expiration
+- `wiki/strategies/Wheel Strategy.md` — CSP → assignment → CC → repeat
+- `wiki/strategies/Copy Trading Strategy.md` — Politician trade replication
+- `wiki/integrations/Capital Trades Integration.md` — Congressional trade data service
+
+### Pages updated: 8
+- `wiki/risk/Guardrail Architecture.md` — "No options ever" clarified as per-strategy config, contradiction documented
+- `wiki/execution/Stop-Loss Systems.md` — Floor ratcheting logic, 5-minute monitoring
+- `wiki/execution/Position Sizing.md` — Ladder buying (scale-in) subsection
+- `wiki/strategies/Paper Trading.md` — Custom balance accounts, strategy isolation
+- `wiki/integrations/Alpaca API.md` — Custom paper balance, credential file persistence
+- `wiki/systems/Claude-Assisted Trading Stack.md` — Capital Trades added to Data & Research
+- `wiki/infrastructure/Claude Routines.md` — `/schedule` command, 5/15-minute intervals
+- `wiki/systems/Architecture Overview.md` — Claude Desktop + Alpaca Beginner variant
+
+### Index, log, glossary updated
+
+### Contradictions identified: 1
+- "No options ever" (SRC - Claude Opus Trader) vs. Wheel Strategy (SRC - Claude Alpaca Trader)
+- Resolution: Per-strategy configurable guardrail, not universal constraint
+
+### Architecture gaps identified:
+- Options Greeks monitoring not yet covered
+- Implied volatility analysis not yet covered
+- Multi-politician portfolio diversification for copy trading
+- Brokerage options approval level requirements

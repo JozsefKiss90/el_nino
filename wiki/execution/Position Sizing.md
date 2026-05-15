@@ -47,6 +47,27 @@ These can be updated conversationally: "tell Claude to change it and it will jus
 
 Source: [[SRC - Claude TradingView Integration]]
 
+## Ladder Buying (Scale-In)
+
+Predetermined buy orders at progressively lower price levels, averaging down into a position during dips. Instead of allocating full position size at entry, capital is distributed across dip levels:
+
+| Price Drop from Entry | Action | Shares |
+|----------------------|--------|--------|
+| -15% | Buy | 10 |
+| -20% | Buy | 10 |
+| -30% | Buy | 20 |
+| -50% | Buy | 50 |
+
+This approach:
+- Reduces average cost basis during downtrends
+- Provides better entry prices on the way down — "instead of just losing money"
+- Requires reserving capital for each ladder level
+- Ladder levels and share counts are configurable; Claude can suggest optimal levels based on the stock's volatility profile
+
+Ladder buying is complementary to [[Stop-Loss Systems]]: stops protect against unlimited downside, while ladders capitalize on temporary dips within an overall bullish thesis.
+
+Source: [[SRC - Claude Alpaca Trader]]
+
 ## Inputs
 
 - Account equity (from [[Alpaca API]] or exchange)
@@ -84,3 +105,4 @@ Source: [[SRC - Claude TradingView Integration]]
 - Source: [[SRC - Claude Stock Trader]] — "calculates position size based on account equity and risk parameters"
 - Source: [[SRC - Claude Opus Trader]] — max 5% per position
 - Source: [[SRC - Claude TradingView Integration]] — configurable via env vars
+- Source: [[SRC - Claude Alpaca Trader]] — ladder buying (scale-in) at predetermined dip levels

@@ -1,6 +1,6 @@
 # Wiki Index
 
-Last updated: 2026-05-09
+Last updated: 2026-05-15
 
 ## Systems
 
@@ -20,6 +20,7 @@ Last updated: 2026-05-09
 | [[VWAP]] | Volume Weighted Average Price — institutional intraday trend benchmark |
 | [[EMA Crossover]] | Exponential Moving Average crossover for momentum confirmation (9/21) |
 | [[Relative Volume Filter]] | Conviction filter requiring volume >= 1.5x average |
+| [[Options Trading]] | Calls, puts, premiums, strike prices, expiration — foundational derivatives concept |
 
 ## Strategies
 
@@ -28,6 +29,8 @@ Last updated: 2026-05-09
 | [[VWAP Crossover Strategy]] | Multi-indicator strategy: VWAP + EMA + RVOL. Claude-designed. |
 | [[Signal Confirmation]] | Pattern requiring multiple independent indicators to agree before trading |
 | [[Paper Trading]] | Simulated execution for strategy validation before live deployment |
+| [[Wheel Strategy]] | Cyclical options income strategy: sell puts -> assignment -> sell calls -> repeat |
+| [[Copy Trading Strategy]] | Replicate trades from politicians/whales using congressional filing data |
 
 ## Execution
 
@@ -86,6 +89,7 @@ Last updated: 2026-05-09
 | [[Perplexity API]] | AI-powered web research for pre-market analysis |
 | [[MCP Architecture]] | Model Context Protocol — standardized tool connectors |
 | [[Webhook Architecture]] | HTTP callback pattern for TradingView → Claude → Exchange signals |
+| [[Capital Trades Integration]] | Politician/whale stock trade tracking service via MCP |
 
 ## Security
 
@@ -125,13 +129,15 @@ Last updated: 2026-05-09
 | [[SRC - Claude for Financial Services]] | `raw/Claude for Financial Services.md` | Anthropic announcement |
 | [[SRC - OWS Dev Squad]] | `raw/ows-dev-squad.md` | Architecture document |
 | [[SRC - Build Spec]] | `raw/build-spec.md` | Product requirements |
+| [[SRC - Claude Alpaca Trader]] | `raw/calude_alpaca_trader.md` | YouTube transcript |
 
 ## Statistics
 
-- **Total pages**: 43 (canonical) + 8 (source) + 2 (index/log) = 53 files
-- **Total wikilinks**: 767
-- **Link density**: 14.5 links/page
-- **Source documents**: 8
+- **Total pages**: 48 (canonical) + 9 (source) + 2 (index/log) = 59 files
+- **Total wikilinks**: ~852
+- **Link density**: ~14.4 links/page
+- **Source documents**: 9
 - **Domains covered**: 14 (systems, concepts, strategies, execution, memory, risk, backtesting, agents, infrastructure, integrations, security, governance, workflows, research)
 - **Empty domains**: market_structure, evaluation, observability, patterns (awaiting future ingestion)
 - **Initial build date**: 2026-05-09
+- **Last ingestion**: 2026-05-15 (Claude Alpaca Trader)

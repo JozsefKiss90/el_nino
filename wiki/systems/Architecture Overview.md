@@ -128,6 +128,9 @@ Pattern from [[SRC - Claude Cowork Trader]]. Uses Claude Co-work for computer us
 ### Syndicate Squad Supervisor Architecture
 Pattern from [[SRC - OWS Dev Squad]]. Wallet-native supervisor assembles agent teams, treasury-constrained upgrades, paper trading evidence loop. See [[Supervisor Decision Engine]].
 
+### Claude Desktop + Alpaca Beginner Architecture
+Pattern from [[SRC - Claude Alpaca Trader]]. Claude Desktop with conversational trading, Alpaca paper trading with custom balances, credential file persistence, `/schedule` command for cron-based monitoring. Three strategy tiers: trailing stop bot with floor ratcheting, [[Copy Trading Strategy]] with [[Capital Trades Integration]] for politician trade replication, and [[Wheel Strategy]] using [[Options Trading]] for premium income generation. Beginner-friendly with purely conversational setup — no manual code writing required.
+
 ## Related Concepts
 
 - [[Trading Engine Pipeline]]
@@ -143,3 +146,4 @@ Pattern from [[SRC - OWS Dev Squad]]. Wallet-native supervisor assembles agent t
 - Source: [[SRC - Claude Stock Trader]] — three-layer system architecture
 - Source: [[SRC - OWS Dev Squad]] — supervisor + paper trading architecture
 - Source: [[SRC - Claude for Financial Services]] — institutional AI capabilities
+- Source: [[SRC - Claude Alpaca Trader]] — beginner architecture, copy trading, Wheel Strategy

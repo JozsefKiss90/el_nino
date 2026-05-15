@@ -26,6 +26,25 @@ Stop level follows price upward, locking in profits as the trade progresses.
 
 Source: [[SRC - Claude Opus Trader]]
 
+#### Floor Ratcheting Logic
+
+Advanced trailing stop variant where the floor only moves upward, never down:
+
+1. **Initial floor**: Set at a fixed percentage below entry (e.g., 10% below)
+2. **Ratchet trigger**: When stock rises, floor moves up to a tighter percentage below current price (e.g., 5% below)
+3. **One-way ratchet**: Floor NEVER moves down — "the floor only goes up, never down"
+4. **Automatic monitoring**: Agent checks every 5 minutes during market hours and adjusts floors
+
+**Example**:
+- Buy at $100, initial floor at $90 (10% stop)
+- Stock rises to $110 → floor ratchets to $105 (5% below current)
+- Stock dips to $105 → sell, still up $5 profit
+- If stock drops immediately from $100 → hits $90 floor, sell, loss limited to $10
+
+The floor ratcheting ensures that profits are progressively locked in as the trade moves favorably, while the initial stop limits maximum downside from entry.
+
+Source: [[SRC - Claude Alpaca Trader]]
+
 ### Time-Based Stop
 Exit position after a maximum holding period regardless of P&L.
 - Used in paper trading: positions hit "target/stop/timeout"
@@ -40,6 +59,7 @@ Source: [[SRC - OWS Dev Squad]]
 | Routines (Opus) | Trailing | 10% | [[SRC - Claude Opus Trader]] |
 | Scalping (TradingView) | Fixed | 0.3% | [[SRC - Claude TradingView Integration]] |
 | Crypto (Co-work) | Fixed | 1% | [[SRC - Claude Cowork Trader]] |
+| Trailing Stop Bot (Alpaca) | Trailing + Ratchet | 10% stop, 5% trail ratchet | [[SRC - Claude Alpaca Trader]] |
 
 ## Midday Routine Stop Management
 
@@ -88,3 +108,4 @@ Source: [[SRC - Claude Opus Trader]]
 - Source: [[SRC - Claude Opus Trader]] — 10% trailing stops, midday stop management
 - Source: [[SRC - Claude TradingView Integration]] — 0.3% fixed stop for scalping
 - Source: [[SRC - Claude Cowork Trader]] — 1% stop-loss, 3% take-profit configuration
+- Source: [[SRC - Claude Alpaca Trader]] — trailing stop with floor ratcheting, 5-minute monitoring schedule

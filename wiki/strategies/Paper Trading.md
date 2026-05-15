@@ -21,6 +21,15 @@ Stage gate in the [[Autonomous Trading Risk Model]] phased risk mitigation pipel
 
 Source: [[SRC - Claude Stock Trader]], [[SRC - Claude Opus Trader]]
 
+#### Custom Balance Paper Accounts
+
+Alpaca supports creating multiple paper trading accounts with custom balances (e.g., $50K instead of the default $100K). This enables:
+- **Strategy isolation**: Separate paper accounts for each strategy (e.g., "Trading Claude" for trailing stops, "Son" for copy trading)
+- **Realistic capital simulation**: Set balance to match intended live capital
+- **Independent performance tracking**: Each strategy's returns measured against its own starting capital
+
+Source: [[SRC - Claude Alpaca Trader]]
+
 ### TradingView Paper Mode
 - Controlled via `PAPER_TRADING=true` environment variable
 - Toggle to live: tell Claude "I want to make it with real money trading now"
@@ -100,3 +109,4 @@ Source: [[SRC - OWS Dev Squad]]
 - Source: [[SRC - Claude Opus Trader]] — "start with paper trading first"
 - Source: [[SRC - Claude TradingView Integration]] — paper trading mode toggle, env var control
 - Source: [[SRC - OWS Dev Squad]] — paper trading engine with evaluation scoring
+- Source: [[SRC - Claude Alpaca Trader]] — custom balance paper accounts ($50K), multiple accounts for strategy isolation

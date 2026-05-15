@@ -38,7 +38,7 @@ Cross-cutting constraint layer enforced at [[Trading Engine Pipeline]] validatio
 
 | Rule | Description |
 |------|-------------|
-| No options trading | "No options ever" |
+| No options trading (configurable) | Per-strategy rule. Default: "No options ever." Can be overridden for options-based strategies like [[Wheel Strategy]]. See Contradictions below. |
 | Max new positions/week | "Only buy three new positions per week" |
 | Explicit "do nothing" | Standing aside is a valid action |
 | Human review period | Monitor every run during initial deployment |
@@ -104,6 +104,20 @@ Agent identity file contains behavioral rules that are always loaded first:
 - Configuration drift — guardrails accidentally relaxed over time
 - Missing guardrail for new risk type
 
+## Contradictions
+
+### Options Trading Constraint
+
+**Claim A**: "No options ever" — hard behavioral rule.
+Source: [[SRC - Claude Opus Trader]]
+
+**Claim B**: Full options-based [[Wheel Strategy]] demonstrated with Claude monitoring positions, picking expirations, and rolling contracts.
+Source: [[SRC - Claude Alpaca Trader]]
+
+**Resolution**: "No options ever" is a per-user/per-strategy guardrail configuration, not a universal system constraint. The Guardrail Architecture is designed to be configurable — different strategy profiles can enable or disable asset classes including options. Options-based strategies require explicit enablement and carry additional risk considerations documented in [[Options Trading]] and [[Autonomous Trading Risk Model]].
+
+#contradiction
+
 ## Related Concepts
 
 - [[Autonomous Trading Risk Model]]
@@ -112,9 +126,12 @@ Agent identity file contains behavioral rules that are always loaded first:
 - [[Paper Trading]]
 - [[LLM Failure Modes in Trading]]
 - [[Agent Self-Verification]]
+- [[Options Trading]]
+- [[Wheel Strategy]]
 
 ## Source References
 
 - Source: [[SRC - Claude Opus Trader]] — guardrail philosophy, "eager agent," configuration approach
 - Source: [[SRC - Claude TradingView Integration]] — safety filter, paper trading toggle, env var configuration
 - Source: [[SRC - Claude Cowork Trader]] — withdrawal disabled, testing before live
+- Source: [[SRC - Claude Alpaca Trader]] — options trading demonstrated as valid strategy, "no options" clarified as per-strategy config

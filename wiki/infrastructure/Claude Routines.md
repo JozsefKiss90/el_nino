@@ -71,6 +71,24 @@ Source: [[SRC - Claude Opus Trader]] — "make sure that it's able to push those
 ### Permissions
 Must enable "Allow unrestricted branch pushes" so Claude can push to any branch, not just `claude/` branches.
 
+### Ad-Hoc Schedule Creation via `/schedule`
+
+The `/schedule` command allows creating cron schedules directly from conversation, without navigating the Claude Desktop UI:
+
+> "Use the /schedule to make sure we have that going and set your own schedules"
+
+Claude autonomously determines appropriate monitoring intervals based on strategy requirements:
+
+| Strategy | Interval | Rationale |
+|----------|----------|-----------|
+| Trailing Stop Bot | Every 5 minutes | Floor ratcheting requires frequent price checks |
+| [[Copy Trading Strategy]] | Daily | Congressional filings update infrequently |
+| [[Wheel Strategy]] | Every 15 minutes | Options positions need regular monitoring for assignment and roll decisions |
+
+These intervals run as local tasks (visible under the clock icon in Claude Desktop sidebar) and supplement the standard 5 daily routines.
+
+Source: [[SRC - Claude Alpaca Trader]]
+
 ## Routine Prompt Structure
 
 Each routine prompt must:
@@ -138,3 +156,4 @@ Source: [[SRC - Claude Opus Trader]] — env var naming must be exact: "they wer
 ## Source References
 
 - Source: [[SRC - Claude Opus Trader]] — complete routine setup, cron scheduling, local vs remote, env vars, testing
+- Source: [[SRC - Claude Alpaca Trader]] — `/schedule` command, 5-minute and 15-minute monitoring intervals, ad-hoc schedule creation

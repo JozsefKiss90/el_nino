@@ -38,6 +38,16 @@ ALPACA_API_KEY=<key_id>
 ALPACA_SECRET_KEY=<secret_key>
 ```
 
+### Credential File Persistence
+
+For interactive Claude Desktop sessions, credentials can be saved to a local file in the project folder to avoid re-entry each session:
+
+> "Can you make sure in this folder you save these credentials so I don't have to keep giving it to you"
+
+This stores endpoint, key, and secret in a project-local file. Suitable for paper trading development. For live trading, prefer [[Environment Variable Management]] for security.
+
+Source: [[SRC - Claude Alpaca Trader]]
+
 ## API Endpoints Used
 
 | Operation | Purpose |
@@ -66,7 +76,7 @@ flowchart LR
 
 | Feature | Paper | Live |
 |---------|-------|------|
-| Balance | $100K virtual | Real funds |
+| Balance | $100K virtual (default); custom balances supported (e.g., $50K) | Real funds |
 | API URL | paper-api.alpaca.markets | api.alpaca.markets |
 | Credentials | Separate key pair | Separate key pair |
 | Fills | Simulated (instant) | Real market fills |
@@ -111,3 +121,4 @@ flowchart LR
 
 - Source: [[SRC - Claude Stock Trader]] — "Alpaca, commission-free brokerage that gives you a free API and a paper trading account"
 - Source: [[SRC - Claude Opus Trader]] — Alpaca account setup, paper vs live, API key management
+- Source: [[SRC - Claude Alpaca Trader]] — custom paper balance, credential file persistence, multiple paper accounts

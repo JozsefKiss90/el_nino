@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/integrations/Alpaca API.md",
+                "file": "wiki/memory/Agent Memory Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Alpaca API"
+              "title": "Agent Memory Architecture"
             }
           },
           {
@@ -267,14 +267,21 @@
   },
   "active": "597df9515d5bd586",
   "lastOpenFiles": [
+    "wiki/security/Environment Variable Management.md",
+    "wiki/security/API Credential Isolation.md",
+    "wiki/integrations/MCP Architecture.md",
+    "wiki/strategies/Wheel Strategy.md",
+    "wiki/strategies/Copy Trading Strategy.md",
+    "wiki/integrations/Capital Trades Integration.md",
+    "wiki/concepts/Options Trading.md",
+    "wiki/sources/SRC - Claude Alpaca Trader.md",
+    "wiki/integrations/Alpaca API.md",
     "raw/calude_alpaca_trader.md",
     "wiki/systems/Three-Layer Trading System.md",
     "wiki/sources/SRC - Claude Stock Trader.md",
     "wiki/systems/Claude-Assisted Trading Stack.md",
     "wiki/sources/SRC - Claude for Financial Services.md",
-    "wiki/integrations/MCP Architecture.md",
     "wiki/systems/Trading Engine Pipeline.md",
-    "wiki/integrations/Alpaca API.md",
     "wiki/sources/SRC - Claude Opus Trader.md",
     "wiki/index.md",
     "wiki/glossary/Glossary.md",
@@ -286,13 +293,6 @@
     "wiki/sources/SRC - LLM Wiki Methodology.md",
     "wiki/workflows/Office Action Loop.md",
     "wiki/governance/Treasury Policy System.md",
-    "wiki/systems/Syndicate Squad Architecture.md",
-    "wiki/governance/Trade Logging.md",
-    "wiki/security/API Credential Isolation.md",
-    "wiki/risk/Guardrail Architecture.md",
-    "wiki/agents/Agent Self-Verification.md",
-    "wiki/agents/Stateless Agent Recovery.md",
-    "wiki/agents/Multi-Agent Orchestration.md",
     "wiki/workflows",
     "wiki/systems",
     "wiki/strategies",

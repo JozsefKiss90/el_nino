@@ -33,6 +33,7 @@ flowchart TD
         TV[TradingView]
         PX[Perplexity API]
         WS[Web Search / Fetch]
+        CT[Capital Trades]
     end
 
     subgraph Deploy["Deployment"]
@@ -64,6 +65,7 @@ flowchart TD
     CC --> TG
     CR --> GH
     CR --> RW
+    CC --> CT
     MCP --> CC
 ```
 
@@ -93,6 +95,7 @@ flowchart TD
 | [[TradingView Integration]] | Charting, signals, Pine Script | MCP connection, chart reading, indicator visualization |
 | [[Perplexity API]] | Web research | Market news, catalyst research |
 | Web Search/Fetch | General research | Native Claude Code capability |
+| [[Capital Trades Integration]] | Politician/whale trade tracking | Congressional filing data via MCP, [[Copy Trading Strategy]] signals |
 
 ### Deployment
 
@@ -203,3 +206,4 @@ See [[API Credential Isolation]], [[Environment Variable Management]].
 - Source: [[SRC - Claude Cowork Trader]] — Co-work stack (Blofin, webhooks)
 - Source: [[SRC - Claude Stock Trader]] — Alpaca + Claude Code stack
 - Source: [[SRC - Claude for Financial Services]] — institutional data providers, MCP connectors
+- Source: [[SRC - Claude Alpaca Trader]] — Capital Trades integration, copy trading data source

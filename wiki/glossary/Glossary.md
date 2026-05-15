@@ -1,3 +1,14 @@
+---
+type: reference
+domain: glossary
+created: 2026-05-09
+updated: 2026-05-15
+status: active
+aliases: [Term Definitions, Wiki Glossary]
+confidence: inferred
+tags: []
+---
+
 # Glossary
 
 Canonical term definitions for the wiki. Each term links to its full canonical page where applicable.

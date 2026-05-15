@@ -140,6 +140,8 @@ Last updated: 2026-05-15
 - **Source documents**: 9
 - **Domains covered**: 14 (systems, concepts, strategies, execution, memory, risk, backtesting, agents, infrastructure, integrations, security, governance, workflows, research)
 - **Empty domains**: market_structure, evaluation, patterns (awaiting future ingestion)
-- **Frontmatter coverage**: 0% (migration plan approved, Phase 1 pending)
+- **Frontmatter coverage**: 57/57 pages (100%) — 48 canonical + 9 source
+- **Confidence distribution**: confirmed(28), single-source(26), inferred(3)
+- **Observability**: [[Graph Health Dashboard]] — 14 Dataview queries
 - **Initial build date**: 2026-05-09
 - **Last ingestion**: 2026-05-15 (Claude Alpaca Trader)

@@ -1,3 +1,14 @@
+---
+type: research
+domain: research
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Ingestion Workflow, Source Ingestion]
+confidence: confirmed
+tags: []
+---
+
 # Research Ingestion Workflow
 
 ## Definition

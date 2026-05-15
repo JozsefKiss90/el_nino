@@ -1,3 +1,14 @@
+---
+type: infrastructure
+domain: infrastructure
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Claude Code CLI, AI Coding Agent]
+confidence: confirmed
+tags: [infrastructure]
+---
+
 # Claude Code
 
 ## Definition

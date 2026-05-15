@@ -1,3 +1,14 @@
+---
+type: security
+domain: security
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Credential Isolation, API Key Security]
+confidence: confirmed
+tags: []
+---
+
 # API Credential Isolation
 
 ## Definition

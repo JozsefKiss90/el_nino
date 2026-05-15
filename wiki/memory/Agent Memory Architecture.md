@@ -1,3 +1,14 @@
+---
+type: memory
+domain: memory
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Memory Architecture, Agent Memory]
+confidence: confirmed
+tags: []
+---
+
 # Agent Memory Architecture
 
 ## Definition

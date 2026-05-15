@@ -1,3 +1,14 @@
+---
+type: agent
+domain: agents
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Stateless Recovery, Agent Wake Pattern]
+confidence: single-source
+tags: [agent]
+---
+
 # Stateless Agent Recovery
 
 ## Definition

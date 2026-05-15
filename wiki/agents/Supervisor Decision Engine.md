@@ -1,3 +1,14 @@
+---
+type: agent
+domain: agents
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Supervisor, Decision Engine]
+confidence: single-source
+tags: [agent]
+---
+
 # Supervisor Decision Engine
 
 ## Definition

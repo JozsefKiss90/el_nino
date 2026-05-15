@@ -1,3 +1,14 @@
+---
+type: system
+domain: systems
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Syndicate Squad, Supervisor Architecture]
+confidence: confirmed
+tags: [system, agent]
+---
+
 # Syndicate Squad Architecture
 
 ## Definition

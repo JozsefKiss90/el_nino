@@ -1,3 +1,14 @@
+---
+type: concept
+domain: concepts
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Volume Weighted Average Price]
+confidence: confirmed
+tags: [concept]
+---
+
 # VWAP
 
 ## Definition

@@ -1,3 +1,14 @@
+---
+type: strategy
+domain: strategies
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Multi-Indicator Confirmation, Confluence]
+confidence: confirmed
+tags: [strategy]
+---
+
 # Signal Confirmation
 
 ## Definition

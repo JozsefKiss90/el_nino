@@ -1,3 +1,14 @@
+---
+type: integration
+domain: integrations
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Perplexity, AI Research API]
+confidence: single-source
+tags: [integration]
+---
+
 # Perplexity API
 
 ## Definition

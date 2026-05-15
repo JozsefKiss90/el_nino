@@ -1,3 +1,14 @@
+---
+type: backtesting
+domain: backtesting
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Backtesting, Historical Simulation]
+confidence: single-source
+tags: []
+---
+
 # Backtesting Methodology
 
 ## Definition

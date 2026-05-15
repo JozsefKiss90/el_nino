@@ -1,3 +1,14 @@
+---
+type: concept
+domain: concepts
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [EMA, Exponential Moving Average Crossover]
+confidence: confirmed
+tags: [concept]
+---
+
 # EMA Crossover
 
 ## Definition

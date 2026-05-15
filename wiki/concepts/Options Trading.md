@@ -1,3 +1,14 @@
+---
+type: concept
+domain: concepts
+created: 2026-05-15
+updated: 2026-05-15
+status: active
+aliases: [Options, Derivatives Trading]
+confidence: single-source
+tags: [concept]
+---
+
 # Options Trading
 
 ## Definition

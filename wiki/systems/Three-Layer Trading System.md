@@ -1,3 +1,14 @@
+---
+type: system
+domain: systems
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Three-Layer System, Screener-Strategy-Execution]
+confidence: single-source
+tags: [system]
+---
+
 # Three-Layer Trading System
 
 ## Definition

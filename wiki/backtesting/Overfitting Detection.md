@@ -1,3 +1,14 @@
+---
+type: backtesting
+domain: backtesting
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Overfitting, Curve Fitting Detection]
+confidence: single-source
+tags: []
+---
+
 # Overfitting Detection
 
 ## Definition

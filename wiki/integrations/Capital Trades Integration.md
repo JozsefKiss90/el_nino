@@ -1,3 +1,14 @@
+---
+type: integration
+domain: integrations
+created: 2026-05-15
+updated: 2026-05-15
+status: active
+aliases: [Capital Trades, Congressional Trade Tracker]
+confidence: single-source
+tags: [integration]
+---
+
 # Capital Trades Integration
 
 ## Definition

@@ -1,3 +1,16 @@
+---
+type: source
+domain: sources
+source_file: llm-wiki.md
+source_type: methodology
+date_ingested: 2026-05-09
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+confidence: single-source
+tags: []
+---
+
 # SRC - LLM Wiki Methodology
 
 ## Metadata

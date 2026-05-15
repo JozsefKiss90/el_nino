@@ -1,3 +1,14 @@
+---
+type: strategy
+domain: strategies
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [VWAP Strategy, VWAP + EMA + RVOL Strategy]
+confidence: single-source
+tags: [strategy]
+---
+
 # VWAP Crossover Strategy
 
 ## Definition

@@ -1,3 +1,16 @@
+---
+type: source
+domain: sources
+source_file: raw/build-spec.md
+source_type: product_spec
+date_ingested: 2026-05-09
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+confidence: single-source
+tags: []
+---
+
 # SRC - Build Spec
 
 ## Metadata

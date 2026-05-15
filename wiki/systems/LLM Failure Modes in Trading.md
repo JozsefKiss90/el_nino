@@ -1,3 +1,14 @@
+---
+type: system
+domain: systems
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [LLM Failure Modes, AI Trading Risks]
+confidence: confirmed
+tags: [system, risk]
+---
+
 # LLM Failure Modes in Trading
 
 ## Definition

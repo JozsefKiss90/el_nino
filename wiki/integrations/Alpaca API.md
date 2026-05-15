@@ -1,3 +1,14 @@
+---
+type: integration
+domain: integrations
+created: 2026-05-09
+updated: 2026-05-15
+status: active
+aliases: [Alpaca, Alpaca Brokerage API]
+confidence: confirmed
+tags: [integration]
+---
+
 # Alpaca API
 
 ## Definition

@@ -1,3 +1,14 @@
+---
+type: infrastructure
+domain: infrastructure
+created: 2026-05-09
+updated: 2026-05-15
+status: active
+aliases: [Routines, Cron Routines, Scheduled Routines]
+confidence: confirmed
+tags: [infrastructure]
+---
+
 # Claude Routines
 
 ## Definition

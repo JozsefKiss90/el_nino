@@ -1,3 +1,14 @@
+---
+type: system
+domain: systems
+created: 2026-05-09
+updated: 2026-05-15
+status: active
+aliases: [Trading Stack, Tool Ecosystem]
+confidence: confirmed
+tags: [system]
+---
+
 # Claude-Assisted Trading Stack
 
 ## Definition

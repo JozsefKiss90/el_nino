@@ -1,3 +1,14 @@
+---
+type: agent
+domain: agents
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Agent Orchestration, Multi-Agent Coordination]
+confidence: confirmed
+tags: [agent]
+---
+
 # Multi-Agent Orchestration
 
 ## Definition

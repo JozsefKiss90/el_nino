@@ -1,3 +1,16 @@
+---
+type: source
+domain: sources
+source_file: raw/calude_alpaca_trader.md
+source_type: youtube_transcript
+date_ingested: 2026-05-15
+created: 2026-05-15
+updated: 2026-05-15
+status: active
+confidence: single-source
+tags: []
+---
+
 # SRC - Claude Alpaca Trader
 
 ## Metadata

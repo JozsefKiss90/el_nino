@@ -1,3 +1,14 @@
+---
+type: governance
+domain: governance
+created: 2026-05-15
+updated: 2026-05-15
+status: active
+aliases: [Migration Plan, Frontmatter Rollout Plan]
+confidence: inferred
+tags: []
+---
+
 # Metadata Migration Plan
 
 ## Definition

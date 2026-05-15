@@ -1,3 +1,16 @@
+---
+type: source
+domain: sources
+source_file: raw/claude_opus_trader.md
+source_type: youtube_transcript
+date_ingested: 2026-05-09
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+confidence: single-source
+tags: []
+---
+
 # SRC - Claude Opus Trader
 
 ## Metadata

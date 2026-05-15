@@ -1,3 +1,14 @@
+---
+type: infrastructure
+domain: infrastructure
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Railway, Cloud Deployment]
+confidence: single-source
+tags: [infrastructure]
+---
+
 # Railway Deployment
 
 ## Definition

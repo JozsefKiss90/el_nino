@@ -1,3 +1,14 @@
+---
+type: governance
+domain: governance
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Treasury Policy, Budget Constraints]
+confidence: confirmed
+tags: []
+---
+
 # Treasury Policy System
 
 ## Definition

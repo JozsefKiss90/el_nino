@@ -1,3 +1,16 @@
+---
+type: source
+domain: sources
+source_file: raw/claude_cowork_trader.md
+source_type: youtube_transcript
+date_ingested: 2026-05-09
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+confidence: single-source
+tags: []
+---
+
 # SRC - Claude Cowork Trader
 
 ## Metadata

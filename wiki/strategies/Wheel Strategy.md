@@ -1,3 +1,14 @@
+---
+type: strategy
+domain: strategies
+created: 2026-05-15
+updated: 2026-05-15
+status: active
+aliases: [Options Wheel, CSP-CC Cycle]
+confidence: single-source
+tags: [strategy]
+---
+
 # Wheel Strategy
 
 ## Definition

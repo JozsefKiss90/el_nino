@@ -1,3 +1,14 @@
+---
+type: risk
+domain: risk
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Risk Model, Risk Taxonomy]
+confidence: confirmed
+tags: [risk]
+---
+
 # Autonomous Trading Risk Model
 
 ## Definition

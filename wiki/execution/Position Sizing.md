@@ -1,3 +1,14 @@
+---
+type: execution
+domain: execution
+created: 2026-05-09
+updated: 2026-05-15
+status: active
+aliases: [Position Size, Capital Allocation]
+confidence: confirmed
+tags: []
+---
+
 # Position Sizing
 
 ## Definition

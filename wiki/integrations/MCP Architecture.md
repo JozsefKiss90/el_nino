@@ -1,3 +1,14 @@
+---
+type: integration
+domain: integrations
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [MCP, Model Context Protocol]
+confidence: confirmed
+tags: [integration]
+---
+
 # MCP Architecture
 
 ## Definition

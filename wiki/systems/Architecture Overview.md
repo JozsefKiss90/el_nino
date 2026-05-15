@@ -1,3 +1,14 @@
+---
+type: system
+domain: systems
+created: 2026-05-09
+updated: 2026-05-15
+status: active
+aliases: [Architecture Map, System Overview]
+confidence: confirmed
+tags: [system]
+---
+
 # Architecture Overview
 
 ## Definition

@@ -1,3 +1,14 @@
+---
+type: agent
+domain: agents
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Self-Verification, Output Validation]
+confidence: single-source
+tags: [agent]
+---
+
 # Agent Self-Verification
 
 ## Definition

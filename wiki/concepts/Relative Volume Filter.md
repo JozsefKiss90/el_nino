@@ -1,3 +1,14 @@
+---
+type: concept
+domain: concepts
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [RVOL Filter, Relative Volume]
+confidence: single-source
+tags: [concept]
+---
+
 # Relative Volume Filter
 
 ## Definition

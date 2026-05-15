@@ -1,3 +1,14 @@
+---
+type: security
+domain: security
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Env Vars, Environment Variables]
+confidence: confirmed
+tags: []
+---
+
 # Environment Variable Management
 
 ## Definition

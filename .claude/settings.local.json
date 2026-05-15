@@ -5,7 +5,8 @@
       "Bash(done)",
       "mcp__mcpvault__get_vault_stats",
       "mcp__mcpvault__list_all_tags",
-      "mcp__mcpvault__list_directory"
+      "mcp__mcpvault__list_directory",
+      "mcp__mcpvault__get_frontmatter"
     ]
   }
 }

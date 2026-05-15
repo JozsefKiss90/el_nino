@@ -1,3 +1,14 @@
+---
+type: system
+domain: systems
+created: 2026-05-09
+updated: 2026-05-09
+status: active
+aliases: [Trade Pipeline, Execution Pipeline]
+confidence: confirmed
+tags: [system]
+---
+
 # Trading Engine Pipeline
 
 ## Definition

@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/memory/Agent Memory Architecture.md",
+                "file": "wiki/observability/Graph Health Dashboard.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Agent Memory Architecture"
+              "title": "Graph Health Dashboard"
             }
           },
           {
@@ -179,6 +179,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "wiki/observability/Graph Health Dashboard.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -188,7 +189,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Graph Health Dashboard"
             }
           },
           {
@@ -251,8 +252,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -267,6 +267,14 @@
   },
   "active": "597df9515d5bd586",
   "lastOpenFiles": [
+    "wiki/governance/Metadata Migration Plan.md",
+    "wiki/index.md",
+    "wiki/observability/Graph Health Dashboard.md",
+    "wiki/Untitled",
+    "project_structure.md",
+    "wiki/systems/Trading Engine Pipeline.md",
+    "wiki/systems/Three-Layer Trading System.md",
+    "wiki/memory/Agent Memory Architecture.md",
     "wiki/security/Environment Variable Management.md",
     "wiki/security/API Credential Isolation.md",
     "wiki/integrations/MCP Architecture.md",
@@ -277,22 +285,15 @@
     "wiki/sources/SRC - Claude Alpaca Trader.md",
     "wiki/integrations/Alpaca API.md",
     "raw/calude_alpaca_trader.md",
-    "wiki/systems/Three-Layer Trading System.md",
     "wiki/sources/SRC - Claude Stock Trader.md",
     "wiki/systems/Claude-Assisted Trading Stack.md",
     "wiki/sources/SRC - Claude for Financial Services.md",
-    "wiki/systems/Trading Engine Pipeline.md",
     "wiki/sources/SRC - Claude Opus Trader.md",
-    "wiki/index.md",
     "wiki/glossary/Glossary.md",
     "wiki/log.md",
     "wiki/sources/SRC - Build Spec.md",
     "wiki/sources/SRC - OWS Dev Squad.md",
     "wiki/sources/SRC - Claude Cowork Trader.md",
-    "wiki/sources/SRC - Claude TradingView Integration.md",
-    "wiki/sources/SRC - LLM Wiki Methodology.md",
-    "wiki/workflows/Office Action Loop.md",
-    "wiki/governance/Treasury Policy System.md",
     "wiki/workflows",
     "wiki/systems",
     "wiki/strategies",
@@ -301,7 +302,6 @@
     "wiki/risk",
     "wiki/research",
     "wiki/patterns",
-    "wiki/observability",
-    "wiki/memory"
+    "wiki/observability"
   ]
 }

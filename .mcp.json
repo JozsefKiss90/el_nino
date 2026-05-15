@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "mcpvault": {
+      "command": "npx",
+      "args": [
+        "@bitbonsai/mcpvault@latest",
+        "C:\\Code\\layer_3_wiki"
+      ],
+      "env": {}
+    },
+   "smart-connections": {
+  "command": "npx",
+  "args": [
+    "-y",
+    "@yejianye/smart-connections-mcp"
+  ],
+  "env": {
+    "OBSIDIAN_VAULT": "/mnt/c/Code/layer_3_wiki"
+  }
+}
+  }
+}

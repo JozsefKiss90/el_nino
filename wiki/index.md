@@ -104,6 +104,7 @@ Last updated: 2026-05-15
 |------|---------|
 | [[Trade Logging]] | Mandatory trade journaling for compliance, evaluation, and learning |
 | [[Treasury Policy System]] | Budget constraints for Syndicate Squad upgrade spending |
+| [[Metadata Migration Plan]] | 3-phase frontmatter rollout: schema, observability, MCP readiness |
 
 ## Workflows
 
@@ -138,6 +139,7 @@ Last updated: 2026-05-15
 - **Link density**: ~14.4 links/page
 - **Source documents**: 9
 - **Domains covered**: 14 (systems, concepts, strategies, execution, memory, risk, backtesting, agents, infrastructure, integrations, security, governance, workflows, research)
-- **Empty domains**: market_structure, evaluation, observability, patterns (awaiting future ingestion)
+- **Empty domains**: market_structure, evaluation, patterns (awaiting future ingestion)
+- **Frontmatter coverage**: 0% (migration plan approved, Phase 1 pending)
 - **Initial build date**: 2026-05-09
 - **Last ingestion**: 2026-05-15 (Claude Alpaca Trader)

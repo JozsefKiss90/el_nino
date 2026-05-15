@@ -89,3 +89,28 @@ Created wiki maintenance schema covering: ingestion workflow, canonicalization r
 - Implied volatility analysis not yet covered
 - Multi-politician portfolio diversification for copy trading
 - Brokerage options approval level requirements
+
+## [2026-05-15] governance | Metadata Migration Plan created
+
+### Deliverables:
+- `wiki/governance/Metadata Migration Plan.md` — 3-phase frontmatter rollout architecture
+- `wiki/CLAUDE.md` — extended with 7 new governance sections (Frontmatter Governance, Metadata Lifecycle, Dataview Governance, MCP Compatibility, Metadata Anti-Entropy Rules, Metadata Lint Workflow)
+- `wiki/index.md` — updated with new governance page and frontmatter coverage metric
+
+### Architecture decisions:
+- Universal schema: `type`, `domain`, `created`, `updated`, `status` (required on all pages)
+- Closed enums for all classification fields (17 type values, 20 domain values)
+- Domain-directory binding constraint enforced
+- No frontmatter on structural files (index.md, log.md, CLAUDE.md)
+- Source pages get extended schema: `source_file`, `source_type`, `date_ingested`
+- Anti-entropy architecture: no freeform fields, append-only enums, flat YAML only
+
+### Phase plan:
+- Phase 1: 5 hub pages (Architecture Overview, Trading Engine Pipeline, Claude-Assisted Trading Stack, Agent Memory Architecture, Autonomous Trading Risk Model)
+- Phase 2: 43 remaining canonical pages across all domains
+- Phase 3: 9 source pages + observability dashboards + provenance queries
+
+### Pages modified: 3
+- `wiki/governance/Metadata Migration Plan.md` (created)
+- `wiki/CLAUDE.md` (extended)
+- `wiki/index.md` (updated)

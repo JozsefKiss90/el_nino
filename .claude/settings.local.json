@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(grep -c [[ /c/Code/layer_3_wiki/wiki/**/*.md)",
-      "Bash(done)"
+      "Bash(done)",
+      "mcp__mcpvault__get_vault_stats",
+      "mcp__mcpvault__list_all_tags",
+      "mcp__mcpvault__list_directory"
     ]
   }
 }

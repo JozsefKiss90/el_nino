@@ -255,3 +255,4 @@ Post-migration governance extension. Vault completed metadata migration (57/57 p
 - `wiki/CLAUDE.md` — 8 new governance sections appended (~480 lines)
 - `wiki/observability/Graph Health Dashboard.md` — stale confidence query + known distinct pairs
 - `wiki/log.md` — this entry
+

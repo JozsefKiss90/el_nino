@@ -132,9 +132,10 @@ Last updated: 2026-05-15
 | [[SRC - Build Spec]] | `raw/build-spec.md` | Product requirements |
 | [[SRC - Claude Alpaca Trader]] | `raw/calude_alpaca_trader.md` | YouTube transcript |
 
+
 ## Statistics
 
-- **Total pages**: 48 (canonical) + 9 (source) + 2 (index/log) = 59 files
+- **Total pages**: 48 (canonical) + 9 (source) + 2 (index/log) +  = 59 files
 - **Total wikilinks**: ~852
 - **Link density**: ~14.4 links/page
 - **Source documents**: 9

@@ -6,7 +6,14 @@
       "mcp__mcpvault__get_vault_stats",
       "mcp__mcpvault__list_all_tags",
       "mcp__mcpvault__list_directory",
-      "mcp__mcpvault__get_frontmatter"
+      "mcp__mcpvault__get_frontmatter",
+      "Bash(ls -la /c/Code/layer_3_wiki/.mcp*)",
+      "Bash(ls -la /c/Code/layer_3_wiki/.claude*)",
+      "Bash(for dir:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Code/layer_3_wiki/**)",
+      "Bash(find /c/Code/layer_3_wiki -type f -name \"*.md\" -exec wc -l {} +)",
+      "Bash(for f:*)"
     ]
   }
 }

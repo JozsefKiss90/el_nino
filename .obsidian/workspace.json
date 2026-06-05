@@ -30,9 +30,47 @@
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
+          },
+          {
+            "id": "d552b8a7cdf87e9f",
+            "type": "leaf",
+            "state": {
+              "type": "smart-release-notes-view",
+              "state": {},
+              "icon": "file-text",
+              "title": "Release Notes"
+            }
+          },
+          {
+            "id": "cef01b24173ff4ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/CLAUDE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CLAUDE"
+            }
+          },
+          {
+            "id": "443433490976927f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/observability/Graph Health Dashboard.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Graph Health Dashboard"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -64,7 +102,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "overview",
+                "query": "health",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -106,6 +144,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +154,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for ADR - Dev Graph Bootstrap"
             }
           },
           {
@@ -173,8 +212,29 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "742a9feb18756314",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
+          },
+          {
+            "id": "33a313b375f1c516",
+            "type": "leaf",
+            "state": {
+              "type": "smart-lookup-view-connections",
+              "state": {},
+              "icon": "smart-lookup",
+              "title": "Lookup"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -182,6 +242,10 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Toggle Footer Connections": false,
+      "smart-connections:Smart Connections: Open random connection": false,
+      "smart-connections:Smart Lookup: Open lookup view": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -191,15 +255,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "e56ddc5d1dfba594",
+  "active": "443433490976927f",
   "lastOpenFiles": [
+    "wiki/CLAUDE.md",
+    "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+    "dev_graph/sync_to_neo4j.py",
     "wiki/systems/Architecture Overview.md",
     "wiki/systems/Three-Layer Trading System.md",
     "wiki/memory/Agent Memory Architecture.md",
     "wiki/strategies/Paper Trading.md",
     "wiki/log.md",
     "wiki/index.md",
-    "wiki/CLAUDE.md",
     "project_structure.md",
     "Untitled.canvas",
     "wiki/systems/Trading Engine Pipeline.md",
@@ -219,7 +285,6 @@
     "wiki/kierkegaard/dashboards/references.md",
     "wiki/kierkegaard/arguments/ARG - The Dialectic of Offense.md",
     "wiki/kierkegaard/dashboards/despair-taxonomy.md",
-    "wiki/kierkegaard/structure/C - The Forms of This Sickness.md",
     "wiki/kierkegaard/works",
     "wiki/kierkegaard/theorems",
     "wiki/kierkegaard/taxonomies",
@@ -228,7 +293,6 @@
     "wiki/kierkegaard/sources",
     "wiki/kierkegaard/references",
     "wiki/kierkegaard/people",
-    "wiki/kierkegaard/distinctions",
-    "wiki/kierkegaard/definitions"
+    "wiki/kierkegaard/distinctions"
   ]
 }

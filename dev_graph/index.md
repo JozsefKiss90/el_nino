@@ -13,7 +13,7 @@ Last updated: 2026-05-25
 | [[Neo4j Export Mapping]] | governance | Note-to-node, frontmatter-to-property mapping |
 | [[Database MCP Mapping]] | governance | Postgres table definitions for future integration |
 | [[API Documentation Policy]] | governance | Permitted doc sources, freshness, retrieval rules |
-| [[REF - Wiki CLAUDE.md]] | reference | Reference to wiki governance operations manual |
+| [[REF - Wiki CLAUDE]] | reference | Reference to wiki governance operations manual |
 | [[REF - Wiki Metadata Migration Plan]] | reference | Reference to wiki schema design patterns |
 | [[REF - Wiki Graph Health Dashboard]] | reference | Reference to wiki Dataview query patterns |
 

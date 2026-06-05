@@ -54,7 +54,7 @@
         "PG_HOST": "localhost",
         "PG_PORT": "5432",
         "PG_USER": "postgres",
-        "PG_PASSWORD": "YOUR_POSTGRES_PASSWORD",
+        "PG_PASSWORD": "password",
         "PG_DATABASE": "layer_3_wiki"
       }
     }

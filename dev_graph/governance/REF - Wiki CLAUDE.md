@@ -15,7 +15,7 @@ related_decisions:
   - "[[ADR - Dev Graph Bootstrap]]"
 ---
 
-# REF - Wiki CLAUDE.md
+# REF - Wiki CLAUDE
 
 ## Definition
 

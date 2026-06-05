@@ -39,7 +39,7 @@ The dev_graph is an ontology-governed implementation graph — a typed RAG / Gra
 - **File nodes**: Named to include file context (e.g., `order_executor.py.md`)
 - **Test nodes**: Named to include test context (e.g., `test_order_executor.md`)
 - **Constraint nodes**: Named as imperative rules (e.g., `No Wiki Mutation.md`)
-- **Reference nodes**: Prefixed with `REF -` (e.g., `REF - Wiki CLAUDE.md`)
+- **Reference nodes**: Prefixed with `REF -` (e.g., `REF - Wiki CLAUDE`)
 - **Decision records**: Prefixed with `ADR -` (e.g., `ADR - Dev Graph Bootstrap.md`)
 - **Wikilinks**: Use `[[Page Name]]` format for all internal references
 
@@ -412,7 +412,7 @@ Demotion MUST be logged in `log.md`.
 
 ## Relationship to Wiki
 
-- dev_graph INHERITS governance principles from `wiki/CLAUDE.md` via [[REF - Wiki CLAUDE.md]]
+- dev_graph INHERITS governance principles from `wiki/CLAUDE.md` via [[REF - Wiki CLAUDE]]
 - dev_graph has its OWN type ontology (17 types) separate from wiki's 17 types
 - dev_graph has its OWN frontmatter schema (extended with implementation_status and relationship arrays)
 - dev_graph may READ wiki nodes for domain knowledge (safe-automated)

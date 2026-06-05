@@ -45,7 +45,7 @@ Top-level governance node. All other governance documents, constraints, and oper
 
 ## Inherited from Wiki Governance
 
-The following principles are inherited from [[REF - Wiki CLAUDE.md]] and adapted:
+The following principles are inherited from [[REF - Wiki CLAUDE]] and adapted:
 
 | Wiki Principle | Dev Graph Adaptation |
 |---|---|
@@ -94,7 +94,7 @@ Transitions:
 ## Relationships
 
 ### Depends On
-- [[REF - Wiki CLAUDE.md]]
+- [[REF - Wiki CLAUDE]]
 - [[REF - Wiki Metadata Migration Plan]]
 
 ### Provides

@@ -77,7 +77,12 @@ Last updated: 2026-06-06
 
 ## Interfaces
 
-(Empty — populated in Phase 4)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Risk Check API]] | INT-003 | interface | Risk Control → Trading Engine trade-validation contract |
+| [[Decision API]] | INT-006 | interface | Supervisor Office → Trading Engine upgrade-decision contract |
+
+(INT-001/002, 004/005, 007/008 reserved for future Phase 4 contracts)
 
 ## Events
 
@@ -103,13 +108,14 @@ Last updated: 2026-06-06
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
-| [[Dev Graph Dashboard]] | OBS-001 | observability | 20 Dataview queries for dev_graph health |
+| [[Dev Graph Dashboard]] | OBS-001 | observability | 21 Dataview queries for dev_graph health |
 
 ## Context Packs
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
 | [[Context Pack Template]] | CTX-001 | context_pack | Canonical template for context pack creation |
+| [[Phase 5 Bootstrap Context]] | CTX-002 | context_pack | First coding-session pack — substrate ADR + Guardrail Engine |
 
 ## Decisions
 
@@ -135,7 +141,10 @@ Last updated: 2026-06-06
 
 ## Modules
 
-(Empty — populated in Phase 5 when code modules are defined)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Guardrail Engine]] | MOD-001 | module | Predicate-based trade validation at the Risk Control boundary (plan only) |
+| [[Decision Engine]] | MOD-002 | module | Deterministic upgrade scoring under treasury constraints (plan only) |
 
 ## Files
 
@@ -155,7 +164,13 @@ Last updated: 2026-06-06
 
 ## Schemas
 
-(Empty — populated in Phase 4 when artifact schemas are defined)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Supervisor decision output — selected upgrade, ranked options, rationale |
+| [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
+| [[Trade Validation Decision Schema]] | SCHEMA-008 | artifact_schema | Risk Check API output — approve/block + triggered predicate |
+
+(SCHEMA-001/002/003, 005/006 reserved for future Phase 4 schemas)
 
 ## Workflows
 
@@ -179,18 +194,18 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 69 (architecture: 4, system: 6, capability: 18, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 77 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 3, module: 2, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 2, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 73
+- **Total files**: 81
 - **Active directories**: 23
-- **Populated directories**: 14 (architecture, systems, capabilities, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
-- **Empty directories**: 11 (interfaces, events, modules, files, tests, gates, predicates, schemas, agents, skills, benchmarks)
-- **Frontmatter coverage**: 69/69 content nodes (100%)
-- **Canonical ID coverage**: 69/69 content nodes (100%)
+- **Populated directories**: 17 (architecture, systems, capabilities, interfaces, schemas, modules, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
+- **Empty directories**: 8 (events, files, tests, gates, predicates, agents, skills, benchmarks)
+- **Frontmatter coverage**: 77/77 content nodes (100%)
+- **Canonical ID coverage**: 77/77 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
-- **Realizes edges**: 23 (capabilities → patterns)
+- **Realizes edges**: 25 (23 capabilities + 2 modules → patterns)
 - **Composes edges**: 2 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval)
 - **Originates From edges**: 12 (capabilities/systems → knowledge assets)
 - **Status enum**: 7 values
@@ -198,9 +213,11 @@ Last updated: 2026-06-06
 - **Confidence enum**: 5 values
 - **Evidence enum**: 7 values
 - **Lint checks**: 11
-- **Dashboard queries**: 20
+- **Dashboard queries**: 21
 - **Bootstrap date**: 2026-05-25
 - **Ontology redesign date**: 2026-06-06
 - **Phase 1 completion date**: 2026-06-06
 - **Phase 2 completion date**: 2026-06-06
 - **Phase 3 completion date**: 2026-06-06
+- **Phase 4.5 (contract layer) date**: 2026-06-06
+- **Phase 5 (implementation readiness) date**: 2026-06-06

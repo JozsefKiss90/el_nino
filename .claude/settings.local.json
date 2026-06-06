@@ -45,7 +45,17 @@
       "Bash(xargs wc:*)",
       "Bash(grep -h \"^import\\\\|^from\" layer2/**/*.py)",
       "Bash(git remote:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:www.anthropic.com)",
+      "Bash(claude mcp *)",
+      "Bash(python -m neo4j_mcp_server)",
+      "Bash(NEO4J_URI=\"bolt://localhost:7687\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"password\" NEO4J_DATABASE=\"neo4j\" NEO4J_READ_ONLY=\"true\" NEO4J_TRANSPORT_MODE=\"stdio\" timeout 15 python -m neo4j_mcp_server)",
+      "Bash(netstat -ano)",
+      "Bash(powershell -Command \"Get-Service -Name '*neo4j*' -ErrorAction SilentlyContinue | Select-Object Name,Status,StartType | Format-Table -AutoSize\")",
+      "Bash(where.exe neo4j *)",
+      "Bash(where.exe neo4j-admin *)",
+      "Bash(docker start *)",
+      "Bash(echo \"--- exit: $? ---\")"
     ]
   }
 }

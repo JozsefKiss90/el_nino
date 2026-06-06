@@ -308,3 +308,59 @@ Supervisor Office (4):
 - Empty directories: 11
 - Population roadmap target: 68-72 nodes. Actual: 69 (on target)
 - Structural skeleton complete: Architecture → Systems → Capabilities fully populated
+
+---
+
+## [2026-06-06] populate | Phase 4.5 Contracts + Phase 5 Implementation-Readiness
+
+Architectural review of the original Phase 5 plan determined that creating module nodes whose
+contracts existed only in prose would invert the ontology's contract-before-implementation priority
+(§3.20) and leave the pre-existing dangling capability interface refs unresolved. A minimal
+**Phase 4.5 Contract Layer** was inserted: only the 2 interfaces + 3 schemas the first
+implementation slice requires. Canonical IDs preserve the Population Strategy §4.6 reservations
+(non-contiguous by design); §4.6 numbering NOT deprecated.
+
+### Nodes Created (8)
+
+**Interface nodes (2)**:
+- Risk Check API (INT-003) — Risk Control → Trading Engine; implemented by Guardrail Engine
+- Decision API (INT-006) — Supervisor Office → Trading Engine; implemented by Decision Engine
+
+**Artifact schema nodes (3)**:
+- Decision Packet Schema (SCHEMA-004) — Decision API output; produced by Decision Engine
+- Trade Validation Request Schema (SCHEMA-007) — Risk Check API input; consumed by Guardrail Engine
+- Trade Validation Decision Schema (SCHEMA-008) — Risk Check API output; produced by Guardrail Engine
+
+**Module nodes (2, plan-only — no application code)**:
+- Guardrail Engine (MOD-001) — implements Risk Check API; realizes Guardrail Pattern; status planned / not-started
+- Decision Engine (MOD-002) — implements Decision API; realizes Supervisor Pattern; status planned / not-started
+
+**Context pack nodes (1)**:
+- Phase 5 Bootstrap Context (CTX-002) — first coding-session pack: substrate ADR-003 + Guardrail Engine
+
+### Changes
+
+- CAP-008 Guardrail Enforcement: `implemented_by` += [[Guardrail Engine]]; existing `[[Risk Check API]]` ref now RESOLVES
+- CAP-015 Decision Making: `implemented_by` += [[Decision Engine]]; existing `[[Decision API]]` ref now RESOLVES
+- CLAUDE.md: appended "## Phase 5: Implementation Node Authoring" (module/file/test templates + 10-step writeback checklist). No schema/enum change; schema_version unchanged (2.2.0).
+- Dev Graph Dashboard (OBS-001): added query #21 "Population Debt: Modules Without Tests" (queries #13–20 already present — not duplicated)
+- index.md: Interfaces / Schemas / Modules sections populated; CTX-002 added; statistics updated
+
+### Reserved (NOT created — out of first slice / acceptable debt)
+
+- Interfaces INT-001/002/004/005/007/008; Schemas SCHEMA-001/002/003/005/006 → future Phase 4
+- All FILE-* / TEST-* nodes → created at writeback when real files/tests exist
+- Snapshot Consumer module → when Layer 2 Snapshot Schema (SCHEMA-001) exists
+- Substrate ADR-003 (tech stack / repo layout) → produced in the first coding session via CTX-002
+
+### Phase 4.5 + 5 Metrics
+
+- Total content nodes: 77 (69 from Phase 3 + 8 new). Active: 76 (REF-004 deprecated).
+- New type counts: interface 2, artifact_schema 3, module 2; context_pack 1 → 2.
+- Governance nodes: 7 (UNCHANGED) — §10.3 "governance > implementation" bloat rule satisfied.
+- Canonical ID coverage: 77/77 (100%). Evidence coverage: 77/77 (100%).
+- Realizes edges: 25 (23 capabilities + 2 modules). Dashboard queries: 21.
+- Orphans introduced: 0 (interfaces ← capability `interfaces` + module `Implements`; schemas ← interface input/output + module Consumes/Produces; modules ← capability `implemented_by`).
+- Dangling wikilinks resolved: 2 (CAP-008 → Risk Check API, CAP-015 → Decision API).
+- vs Phase 5 soft ceiling 200: 77 (well under).
+- ID scheme: Population Strategy §4.6 reservations preserved; non-contiguous IDs accepted.

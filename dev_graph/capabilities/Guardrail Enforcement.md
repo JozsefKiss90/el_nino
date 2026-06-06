@@ -20,7 +20,8 @@ related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "guardrail-enforcement"
 parent_system: "[[systems/Risk Control]]"
-implemented_by: []
+implemented_by:
+  - "[[Guardrail Engine]]"
 interfaces:
   - "[[Risk Check API]]"
 ---

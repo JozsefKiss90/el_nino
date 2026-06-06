@@ -218,6 +218,17 @@ AND (related_files = null OR length(related_files) = 0)
 AND implementation_status = "implemented"
 ```
 
+## 21. Population Debt: Modules Without Tests
+
+```dataview
+TABLE implementation_status, related_tests
+FROM "dev_graph"
+WHERE type = "module"
+AND (related_tests = null OR length(related_tests) = 0)
+AND implementation_status != "not-started"
+SORT file.name ASC
+```
+
 ---
 
 ## Known Distinct Pairs

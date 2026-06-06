@@ -744,3 +744,131 @@ These files have NO frontmatter (exempt by governance):
 - `index.md` — master index of all nodes
 - `log.md` — chronological operations log
 - `README.md` — human-readable orientation
+
+---
+
+## Phase 5: Implementation Node Authoring
+
+Authoring aids for the leaf implementation node types (module / file / test) plus the executable
+end-of-coding-session writeback checklist. These are templates and process — no schema change.
+Operationalizes population_strategy §3.7–3.9, §3.20, §7.3, §7.5 and [[Context Pack Assembly Rules]]
+Step 8. Module nodes may be created from a concrete implementation plan BEFORE code (§3.7); file and
+test nodes are created ONLY at writeback, when the real file exists.
+
+### Module Node Template
+
+Path: `dev_graph/modules/<Module Name>.md`. canonical_id: next free `MOD-NNN`.
+
+```yaml
+---
+type: module
+canonical_id: MOD-NNN
+status: planned          # planned (plan only) → active (code exists)
+implementation_status: not-started   # → in-progress → tested → validated
+canonical: true
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+confidence: inferred     # → single-source/confirmed as code/tests land
+evidence: [design, wiki] # add `code` at writeback
+source_paths: []
+related_files: []        # populated at writeback
+related_tests: []        # populated at writeback
+related_constraints: []
+related_decisions: ["[[ADR - ...]]"]
+module_name: "<snake_case>"
+module_path: "<planned src path>"
+responsibility: "<one line>"
+depends_on: []
+provides: ["[[<Interface>]]"]
+---
+```
+Body (required; omit only if genuinely N/A): Definition, Purpose, Architecture Role, Inputs,
+Outputs, Constraints, **Implementation Notes** (REQUIRED — a concrete plan, never "TBD"; lint
+check 8), Open Questions (record deferred contract deps here), Relationships (`### Implements →
+interface`, `### Consumes`/`### Produces → schemas`, `### Depends On`, `### Realizes → pattern`,
+`### Justified By → ADR`, `### Originates From → knowledge asset`). Use resolvable wikilinks only.
+
+### File Node Template
+
+Path: `dev_graph/files/<filename.ext>.md`. Create ONLY at writeback when the real file exists AND
+passes the §7.5 threshold (primary implementation / public API / schema / config / test file —
+NOT boilerplate, generated, vendored, or interface-less utilities).
+
+```yaml
+---
+type: file
+canonical_id: FILE-NNN
+status: implemented
+implementation_status: implemented
+canonical: true
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+confidence: confirmed
+evidence: [code]
+source_paths: []
+related_files: []
+related_tests: ["[[test_<name>]]"]
+related_constraints: []
+related_decisions: []
+file_path: "<actual repo path>"
+language: "<python|...>"
+module: "[[<Parent Module>]]"   # REQUIRED inbound link
+owns: []
+used_by: []
+---
+```
+Body: Definition, Purpose, Architecture Role, Constraints, Implementation Notes, Relationships
+(`### Depends On → parent module` [REQUIRED], `### Validated By → test nodes`). Add the file to the
+parent module's `related_files`.
+
+### Test Node Template
+
+Path: `dev_graph/tests/test_<name>.md`. Create at writeback when the test file exists.
+
+```yaml
+---
+type: test
+canonical_id: TEST-NNN
+status: implemented
+implementation_status: tested
+canonical: true
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+confidence: confirmed
+evidence: [code]
+source_paths: []
+related_files: ["[[<file under test>]]"]
+related_tests: []
+related_constraints: []
+related_decisions: []
+test_path: "<actual repo path>"
+test_type: unit            # unit|integration|e2e|regression|benchmark
+covers: ["[[<Module or File>]]"]   # REQUIRED
+required_for: []
+---
+```
+Body: Definition, Purpose, Constraints, Implementation Notes, Relationships (`### Validated By`,
+`### Used By → covered module/file` [REQUIRED by cross-link protocol]). Add the test to the covered
+node's `related_tests`.
+
+### End-of-Coding-Session Writeback Checklist (executable)
+
+Run at the end of EVERY session that creates or modifies code:
+
+1. List changed files: `git status --porcelain` and `git diff --name-only`.
+2. For each NEW source file, apply the §7.5 threshold — CREATE a file node if it is a primary
+   implementation file, public API, schema, config, or test file; otherwise note it in the parent
+   module's Implementation Notes (no node for boilerplate/generated/vendored/interface-less).
+3. Each new file node: fill the File template; set `file_path`, `language`, `module` (REQUIRED
+   inbound link); add the file to the parent module's `related_files`.
+4. Each new test: create a test node; set `covers`; add it to the covered node's `related_tests`.
+5. Update the parent MODULE node: bump `implementation_status` (not-started → in-progress on code;
+   → tested on green tests); set `status: active`; add `code` to `evidence`; bump `updated`.
+6. Update the parent CAPABILITY node: bump `implementation_status` to `in-progress` once any
+   implementing module has code; refresh `updated`.
+7. Run all 11 lint checks on TOUCHED NODES ONLY (frontmatter, enums, orphan/≥1 inbound, stale,
+   broken wikilinks, module `related_constraints`, module `related_tests`, type-content alignment,
+   deprecated refs, canonical_id uniqueness, evidence-confidence coherence).
+8. Append `## [DATE] writeback | <title>` to `dev_graph/log.md` (Nodes Created / Changes / Metrics).
+9. Update `dev_graph/index.md` (move nodes out of "(Empty …)" placeholders; refresh Statistics).
+10. (Optional) `python dev_graph/sync_to_neo4j.py` if Neo4j is up.

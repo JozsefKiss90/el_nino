@@ -22,7 +22,8 @@ related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "decision-making"
 parent_system: "[[systems/Supervisor Office]]"
-implemented_by: []
+implemented_by:
+  - "[[Decision Engine]]"
 interfaces:
   - "[[Decision API]]"
 ---

@@ -261,6 +261,13 @@
   },
   "active": "6e355511c4142154",
   "lastOpenFiles": [
+    "dev_graph/workflows/System Lifecycle.md",
+    "dev_graph/systems/Supervisor Office.md",
+    "dev_graph/systems/Evaluation Loop.md",
+    "dev_graph/systems/Agent Runtime.md",
+    "dev_graph/systems/Risk Control.md",
+    "dev_graph/systems/Trading Engine.md",
+    "dev_graph/systems/Data Pipeline.md",
     "dev_graph/architecture/Infrastructure Diagram.md",
     "dev_graph/knowledge_assets/Paper Trading Validation.md",
     "dev_graph/knowledge_assets/Stateless Agent Architecture.md",
@@ -290,13 +297,6 @@
     "wiki/sources/SRC - OWS Dev Squad.md",
     "wiki/integrations/Alpaca API.md",
     "final_strategic_review.md",
-    "wiki/agents/Agent Self-Verification.md",
-    "wiki/strategies/Paper Trading.md",
-    "wiki/governance/Treasury Policy System.md",
-    "wiki/workflows/Office Action Loop.md",
-    "wiki/agents/Multi-Agent Orchestration.md",
-    "wiki/agents/Supervisor Decision Engine.md",
-    "wiki/systems/Syndicate Squad Architecture.md",
     "Untitled.canvas"
   ]
 }

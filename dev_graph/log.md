@@ -195,3 +195,46 @@ Architecture Overview, Trading Engine Pipeline, Three-Layer Trading System, Clau
 - Populated directories: 10 / 23
 - Empty directories: 15 (awaiting Phase 2+)
 - Population roadmap target: 30-32 nodes. Actual: 34 (on track)
+
+---
+
+## [2026-06-06] populate | Phase 2: System Boundaries
+
+### Nodes Created (7)
+
+**System nodes (6)**:
+- Data Pipeline (SYS-001) — market data ingestion, feature engineering, snapshot assembly (L1+L2)
+- Trading Engine (SYS-002) — signal generation, order management, stop-loss, position tracking (L3)
+- Risk Control (SYS-003) — guardrail enforcement, exposure tracking, circuit breaking
+- Agent Runtime (SYS-004) — state persistence, context assembly, trade logging
+- Evaluation Loop (SYS-005) — performance scoring, promotion validation, lifecycle management
+- Supervisor Office (SYS-006) — decision making, treasury management, upgrade evaluation, orchestration
+
+**Workflow nodes (1)**:
+- System Lifecycle (WF-001) — 9-state lifecycle: Cold → Initialized → PaperTrading → Validated → Candidate → Production → Paused → Emergency → Archived
+
+### Relationship Summary
+
+All 6 system nodes include:
+- `contains_capabilities` forward references to Phase 3 capability nodes
+- `upstream_systems` / `downstream_systems` defining inter-system data flow
+- `Originates From` edges to knowledge assets established in Phase 1
+- `source_paths` referencing wiki pages for domain knowledge context
+
+System dependency graph:
+```
+Data Pipeline → Trading Engine ↔ Risk Control
+                Trading Engine → Agent Runtime
+                Agent Runtime → Evaluation Loop → Supervisor Office → Trading Engine
+```
+
+### Phase 2 Metrics
+
+- Total content nodes: 41 (34 from Phase 1 + 7 new)
+- Active nodes: 40 (1 deprecated: REF-004)
+- System nodes: 6
+- Workflow nodes: 1
+- Populated directories: 12 / 23
+- Empty directories: 13
+- Population roadmap target: 38-40 nodes. Actual: 41 (on track)
+- Knowledge-to-system traceability: all 6 systems link to knowledge assets via Originates From

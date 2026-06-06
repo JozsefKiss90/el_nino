@@ -13,7 +13,14 @@ Last updated: 2026-06-06
 
 ## Systems
 
-(Empty — populated in Phase 2)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[systems/Data Pipeline]] | SYS-001 | system | Market data ingestion, feature engineering, snapshot assembly (L1+L2) |
+| [[systems/Trading Engine]] | SYS-002 | system | Signal generation, order management, stop-loss, position tracking (L3) |
+| [[systems/Risk Control]] | SYS-003 | system | Guardrail enforcement, exposure tracking, circuit breaking |
+| [[systems/Agent Runtime]] | SYS-004 | system | State persistence, context assembly, trade logging |
+| [[systems/Evaluation Loop]] | SYS-005 | system | Performance scoring, promotion validation, lifecycle management |
+| [[systems/Supervisor Office]] | SYS-006 | system | Decision making, treasury management, upgrade evaluation, orchestration |
 
 ## Capabilities
 
@@ -122,7 +129,9 @@ Last updated: 2026-06-06
 
 ## Workflows
 
-(Empty — populated in Phase 6 when workflows are defined)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[workflows/System Lifecycle]] | WF-001 | workflow | Cold → Initialized → PaperTrading → Validated → Candidate → Production → Paused → Emergency → Archived |
 
 ## Agents
 
@@ -140,14 +149,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 34 (architecture: 4, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 41 (architecture: 4, system: 6, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 38
+- **Total files**: 45
 - **Active directories**: 23
-- **Populated directories**: 10 (architecture, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
-- **Empty directories**: 15 (systems, capabilities, patterns, interfaces, events, modules, files, tests, gates, predicates, schemas, workflows, agents, skills, benchmarks)
-- **Frontmatter coverage**: 34/34 content nodes (100%)
-- **Canonical ID coverage**: 34/34 content nodes (100%)
+- **Populated directories**: 12 (architecture, systems, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
+- **Empty directories**: 13 (capabilities, patterns, interfaces, events, modules, files, tests, gates, predicates, schemas, agents, skills, benchmarks)
+- **Frontmatter coverage**: 41/41 content nodes (100%)
+- **Canonical ID coverage**: 41/41 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
@@ -160,3 +169,4 @@ Last updated: 2026-06-06
 - **Bootstrap date**: 2026-05-25
 - **Ontology redesign date**: 2026-06-06
 - **Phase 1 completion date**: 2026-06-06
+- **Phase 2 completion date**: 2026-06-06

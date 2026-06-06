@@ -61,14 +61,14 @@ Source: [[SRC - Claude Alpaca Trader]]
 
 ## API Endpoints Used
 
-| Operation | Purpose |
-|-----------|---------|
-| Get account | Check balance, equity, buying power |
-| Get positions | List open positions |
-| Create order | Place market/limit/stop orders |
-| Cancel order | Cancel pending orders |
-| Get bars | Historical OHLCV data |
-| Get quotes | Real-time quotes |
+| Get account   | Check balance, equity, buying power |
+| ------------- | ----------------------------------- |
+| Get positions | List open positions                 |
+| Create order  | Place market/limit/stop orders      |
+| Cancel order  | Cancel pending orders               |
+| Get bars      | Historical OHLCV data               |
+| Operation     | Purpose                             |
+| Get quotes    | Real-time quotes                    |
 
 ## Integration with Trading System
 

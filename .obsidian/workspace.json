@@ -261,6 +261,8 @@
   },
   "active": "33a313b375f1c516",
   "lastOpenFiles": [
+    "audit_plan_addendum.md",
+    "audit_plan_addendum.md.tmp.157328.1780764667319",
     "audit_plan.md",
     "wiki/memory/Agent Memory Architecture.md",
     "raw/build-spec.md",
@@ -288,7 +290,6 @@
     "wiki/kierkegaard/structure/Appendix - The Definition of Sin Contains the Possibility of Offense.md",
     "wiki/kierkegaard/log.md",
     "wiki/kierkegaard/structure/Ch3 - Sin Is Not a Negation but a Position.md",
-    "wiki/kierkegaard/index.md",
     "wiki/kierkegaard/works",
     "wiki/kierkegaard/theorems",
     "wiki/kierkegaard/taxonomies",
@@ -296,7 +297,6 @@
     "wiki/kierkegaard/syntheses",
     "wiki/kierkegaard/sources",
     "wiki/kierkegaard/references",
-    "wiki/kierkegaard/people",
-    "wiki/kierkegaard/distinctions"
+    "wiki/kierkegaard/people"
   ]
 }

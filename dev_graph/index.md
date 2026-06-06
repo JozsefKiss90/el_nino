@@ -24,7 +24,26 @@ Last updated: 2026-06-06
 
 ## Capabilities
 
-(Empty — populated in Phase 3)
+| Node | ID | Parent System | Summary |
+|------|----|---------------|---------|
+| [[capabilities/Market Scanning]] | CAP-001 | Data Pipeline | Scan universe, rank by momentum/volatility/ATR, produce watchlist |
+| [[capabilities/Feature Engineering]] | CAP-002 | Data Pipeline | Calculate indicators, build feature vectors |
+| [[capabilities/Snapshot Assembly]] | CAP-003 | Data Pipeline | Assemble L2 snapshot — foundational data contract |
+| [[capabilities/Signal Generation]] | CAP-004 | Trading Engine | Apply strategy rules to snapshots, produce trade signals |
+| [[capabilities/Order Management]] | CAP-005 | Trading Engine | Route orders, size positions, manage execution |
+| [[capabilities/Stop-Loss Management]] | CAP-006 | Trading Engine | Place and adjust stops (fixed, trailing, floor-ratcheting) |
+| [[capabilities/Position Tracking]] | CAP-007 | Trading Engine | Track open positions, monitor P&L, detect exits |
+| [[capabilities/Guardrail Enforcement]] | CAP-008 | Risk Control | Evaluate predicates, enforce gates, approve/block trades |
+| [[capabilities/Exposure Tracking]] | CAP-009 | Risk Control | Calculate exposure, detect threshold breaches |
+| [[capabilities/State Persistence]] | CAP-010 | Agent Runtime | Read/write memory files, git persistence |
+| [[capabilities/Context Assembly]] | CAP-011 | Agent Runtime | Assemble context window within token budget |
+| [[capabilities/Trade Logging]] | CAP-012 | Agent Runtime | Structured trade journaling for compliance and evaluation |
+| [[capabilities/Performance Scoring]] | CAP-013 | Evaluation Loop | Calculate metrics, generate evaluation scorecards |
+| [[capabilities/Promotion Validation]] | CAP-014 | Evaluation Loop | Evaluate promotion criteria, manage promotion gate |
+| [[capabilities/Decision Making]] | CAP-015 | Supervisor Office | Score upgrades, select best option under treasury constraints |
+| [[capabilities/Treasury Management]] | CAP-016 | Supervisor Office | Track budget, enforce spend policy, approve/deny |
+| [[capabilities/Upgrade Evaluation]] | CAP-017 | Supervisor Office | Simulate upgrades, run paper trading, evaluate outcomes |
+| [[capabilities/Team Orchestration]] | CAP-018 | Supervisor Office | Manage agent desk assignments, coordinate upgrades |
 
 ## Knowledge Assets
 
@@ -43,7 +62,18 @@ Last updated: 2026-06-06
 
 ## Patterns
 
-(Empty — populated in Phase 3)
+| Node | ID | Type | Realized By |
+|------|----|------|-------------|
+| [[patterns/Supervisor Pattern]] | PAT-001 | coordination | Decision Making, Team Orchestration, Upgrade Evaluation |
+| [[patterns/Guardrail Pattern]] | PAT-002 | governance | Guardrail Enforcement, Promotion Validation, Stop-Loss Mgmt, Order Mgmt |
+| [[patterns/Evaluation Loop Pattern]] | PAT-003 | behavioral | Performance Scoring, Upgrade Evaluation |
+| [[patterns/Pipeline Pattern]] | PAT-004 | structural | Market Scanning, Feature Engineering, Signal Generation, Order Mgmt |
+| [[patterns/Event Sourcing Pattern]] | PAT-005 | behavioral | Trade Logging, Position Tracking |
+| [[patterns/Context Assembly Pattern]] | PAT-006 | structural | State Persistence, Context Assembly |
+| [[patterns/Treasury Approval Pattern]] | PAT-007 | governance | Treasury Management |
+| [[patterns/Promotion Pattern]] | PAT-008 | governance | Promotion Validation |
+| [[patterns/CQRS Pattern]] | PAT-009 | structural | Snapshot Assembly |
+| [[patterns/Multi-Agent Coordination Pattern]] | PAT-010 | coordination | Team Orchestration |
 
 ## Interfaces
 
@@ -149,17 +179,20 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 41 (architecture: 4, system: 6, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 69 (architecture: 4, system: 6, capability: 18, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 45
+- **Total files**: 73
 - **Active directories**: 23
-- **Populated directories**: 12 (architecture, systems, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
-- **Empty directories**: 13 (capabilities, patterns, interfaces, events, modules, files, tests, gates, predicates, schemas, agents, skills, benchmarks)
-- **Frontmatter coverage**: 41/41 content nodes (100%)
-- **Canonical ID coverage**: 41/41 content nodes (100%)
+- **Populated directories**: 14 (architecture, systems, capabilities, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
+- **Empty directories**: 11 (interfaces, events, modules, files, tests, gates, predicates, schemas, agents, skills, benchmarks)
+- **Frontmatter coverage**: 69/69 content nodes (100%)
+- **Canonical ID coverage**: 69/69 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
+- **Realizes edges**: 23 (capabilities → patterns)
+- **Composes edges**: 2 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval)
+- **Originates From edges**: 12 (capabilities/systems → knowledge assets)
 - **Status enum**: 7 values
 - **Implementation status enum**: 7 values
 - **Confidence enum**: 5 values
@@ -170,3 +203,4 @@ Last updated: 2026-06-06
 - **Ontology redesign date**: 2026-06-06
 - **Phase 1 completion date**: 2026-06-06
 - **Phase 2 completion date**: 2026-06-06
+- **Phase 3 completion date**: 2026-06-06

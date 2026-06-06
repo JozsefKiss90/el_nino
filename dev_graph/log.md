@@ -238,3 +238,73 @@ Data Pipeline → Trading Engine ↔ Risk Control
 - Empty directories: 13
 - Population roadmap target: 38-40 nodes. Actual: 41 (on track)
 - Knowledge-to-system traceability: all 6 systems link to knowledge assets via Originates From
+
+---
+
+## [2026-06-06] populate | Phase 3: Capabilities + Patterns
+
+### Nodes Created (28)
+
+**Capability nodes (18)**:
+
+Data Pipeline (3):
+- Market Scanning (CAP-001) — realizes Pipeline Pattern
+- Feature Engineering (CAP-002) — realizes Pipeline Pattern
+- Snapshot Assembly (CAP-003) — realizes CQRS Pattern; originates from Layer 2 Design Principles
+
+Trading Engine (4):
+- Signal Generation (CAP-004) — realizes Pipeline Pattern, Event Sourcing Pattern
+- Order Management (CAP-005) — realizes Pipeline Pattern, Guardrail Pattern
+- Stop-Loss Management (CAP-006) — realizes Guardrail Pattern
+- Position Tracking (CAP-007) — realizes Event Sourcing Pattern
+
+Risk Control (2):
+- Guardrail Enforcement (CAP-008) — realizes Guardrail Pattern; originates from Guardrail Philosophy
+- Exposure Tracking (CAP-009) — realizes Guardrail Pattern
+
+Agent Runtime (3):
+- State Persistence (CAP-010) — realizes Context Assembly Pattern; originates from Stateless Agent Architecture
+- Context Assembly (CAP-011) — realizes Context Assembly Pattern; originates from Context Engineering
+- Trade Logging (CAP-012) — realizes Event Sourcing Pattern
+
+Evaluation Loop (2):
+- Performance Scoring (CAP-013) — realizes Evaluation Loop Pattern
+- Promotion Validation (CAP-014) — realizes Promotion Pattern, Guardrail Pattern; originates from Paper Trading Validation
+
+Supervisor Office (4):
+- Decision Making (CAP-015) — realizes Supervisor Pattern; originates from Supervisor Pattern Methodology
+- Treasury Management (CAP-016) — realizes Treasury Approval Pattern; originates from Supervisor Pattern Methodology
+- Upgrade Evaluation (CAP-017) — realizes Evaluation Loop Pattern
+- Team Orchestration (CAP-018) — realizes Multi-Agent Coordination Pattern; originates from Supervisor Pattern Methodology
+
+**Pattern nodes (10)**:
+- Supervisor Pattern (PAT-001) — coordination; composes Multi-Agent Coordination + Treasury Approval
+- Guardrail Pattern (PAT-002) — governance; 4 realizing capabilities
+- Evaluation Loop Pattern (PAT-003) — behavioral; 2 realizing capabilities
+- Pipeline Pattern (PAT-004) — structural; 4 realizing capabilities
+- Event Sourcing Pattern (PAT-005) — behavioral; 2 realizing capabilities
+- Context Assembly Pattern (PAT-006) — structural; 2 realizing capabilities
+- Treasury Approval Pattern (PAT-007) — governance; 1 realizing capability
+- Promotion Pattern (PAT-008) — governance; 1 realizing capability
+- CQRS Pattern (PAT-009) — structural; 1 realizing capability
+- Multi-Agent Coordination Pattern (PAT-010) — coordination; 1 realizing capability
+
+### Edge Summary
+
+- Realizes edges: 23 (capabilities → patterns)
+- Composes edges: 2 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval)
+- Originates From edges: 12 (capabilities/systems → knowledge assets)
+- All capabilities reference parent_system
+- All patterns reference related_knowledge
+
+### Phase 3 Metrics
+
+- Total content nodes: 69 (41 from Phase 2 + 28 new)
+- Active nodes: 68 (1 deprecated: REF-004)
+- Capability nodes: 18 (3+4+2+3+2+4 across 6 systems)
+- Pattern nodes: 10 (3 structural + 3 governance + 2 behavioral + 2 coordination)
+- Pattern realization coverage: 18/18 capabilities have at least one realizes edge (100%)
+- Populated directories: 14 / 23
+- Empty directories: 11
+- Population roadmap target: 68-72 nodes. Actual: 69 (on target)
+- Structural skeleton complete: Architecture → Systems → Capabilities fully populated

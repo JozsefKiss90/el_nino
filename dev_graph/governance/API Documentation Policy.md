@@ -1,11 +1,15 @@
 ---
 type: governance
+canonical_id: GOV-007
 status: active
 implementation_status: implemented
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: confirmed
+evidence:
+  - wiki
+  - external
 source_paths:
   - "wiki/integrations/MCP Architecture.md"
   - "wiki/integrations/Alpaca API.md"

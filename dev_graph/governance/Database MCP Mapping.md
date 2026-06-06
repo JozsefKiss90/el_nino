@@ -1,11 +1,14 @@
 ---
 type: governance
+canonical_id: GOV-006
 status: planned
 implementation_status: not-started
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: inferred
+evidence:
+  - design
 source_paths: []
 related_files: []
 related_tests: []

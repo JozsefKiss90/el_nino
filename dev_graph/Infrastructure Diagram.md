@@ -1,11 +1,14 @@
 ---
 type: reference
+canonical_id: REF-004
 status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-06
 confidence: confirmed
+evidence:
+  - design
 source_paths:
   - "[[dev_graph/CLAUDE.md]]"
   - "[[wiki/CLAUDE.md]]"

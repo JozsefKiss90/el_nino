@@ -1,11 +1,15 @@
 ---
 type: decision_record
+canonical_id: ADR-001
 status: active
 implementation_status: implemented
 canonical: true
 created: 2026-05-25
 updated: 2026-05-25
 confidence: confirmed
+evidence:
+  - design
+  - ADR
 source_paths:
   - "wiki/CLAUDE.md"
   - "llm-wiki.md"

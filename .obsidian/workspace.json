@@ -261,6 +261,15 @@
   },
   "active": "6e355511c4142154",
   "lastOpenFiles": [
+    "dev_graph/governance/Neo4j Export Mapping.md.tmp.157328.1780768335604",
+    "dev_graph/decisions/ADR - Ontology Redesign.md",
+    "dev_graph/patterns",
+    "dev_graph/knowledge_assets",
+    "dev_graph/events",
+    "dev_graph/interfaces",
+    "dev_graph/capabilities",
+    "dev_graph/systems",
+    "dev_graph/architecture",
     "population_strategy.md.tmp.157328.1780767627622",
     "population_strategy.md.tmp.157328.1780767599589",
     "population_strategy.md",
@@ -276,7 +285,6 @@
     "wiki/agents/Supervisor Decision Engine.md",
     "wiki/systems/Syndicate Squad Architecture.md",
     "audit_plan_addendum.md",
-    "audit_plan_addendum.md.tmp.157328.1780764667319",
     "audit_plan.md",
     "wiki/memory/Agent Memory Architecture.md",
     "raw/build-spec.md",
@@ -288,15 +296,7 @@
     "wiki/observability/Graph Health Dashboard.md",
     "wiki/CLAUDE.md",
     "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
-    "dev_graph/sync_to_neo4j.py",
     "wiki/systems/Three-Layer Trading System.md",
-    "wiki/log.md",
-    "Untitled.canvas",
-    "wiki/kierkegaard/works",
-    "wiki/kierkegaard/theorems",
-    "wiki/kierkegaard/taxonomies",
-    "wiki/kierkegaard/structure",
-    "wiki/kierkegaard/syntheses",
-    "wiki/kierkegaard/sources"
+    "Untitled.canvas"
   ]
 }

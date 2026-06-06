@@ -1,11 +1,14 @@
 ---
 type: api_doc_source
+canonical_id: API-002
 status: active
 implementation_status: not-started
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: confirmed
+evidence:
+  - external
 source_paths:
   - "wiki/infrastructure/Claude Code.md"
 related_files: []

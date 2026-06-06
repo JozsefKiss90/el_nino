@@ -71,3 +71,82 @@ modules, files, tests, gates, predicates, schemas, workflows, agents, skills, de
 - Implementation status enum values: 7
 - Confidence enum values: 4
 - Dataview dashboard queries: 12
+
+---
+
+## [2026-06-06] schema | Phase 0: Ontology Redesign — Governance Foundation
+
+### Schema Changes (v1.0.0 → v2.2.0)
+
+**Type enum**: 17 → 24 values. Added: `architecture`, `system`, `capability`, `interface`, `event`, `knowledge_asset`, `pattern`.
+
+**Confidence enum**: 4 → 5 values. Added: `experimental`.
+
+**Evidence field**: NEW universal field. Allowed values: `wiki`, `layer2`, `code`, `benchmark`, `ADR`, `external`, `design`.
+
+**canonical_id field**: NEW universal field. Stable identifier per node (TYPE_PREFIX-NUMBER). Primary key for Neo4j export. Never changes on rename.
+
+**Relationship types**: 8 → 17. Added: `Contains`, `Implements`, `Emits`, `Triggered By`, `Guards`, `Originates From`, `Justified By`, `Realizes`, `Composes`.
+
+**Lint checks**: 7 → 11. Added: Check 8 (type-content alignment), Check 9 (deprecated reference detection), Check 10 (canonical ID uniqueness), Check 11 (evidence-confidence coherence).
+
+**Stale thresholds**: Uniform 30-day → type-aware (30-180 days).
+
+**Dashboard queries**: 12 → 20. Added: #13-20 (canonical ID coverage, evidence coverage, pattern realization, traceability gaps, population progress, population debt x3).
+
+### New Directories (7)
+
+architecture/, systems/, capabilities/, interfaces/, events/, knowledge_assets/, patterns/
+
+### Nodes Created (1)
+
+- ADR - Ontology Redesign (ADR-002) — documents the redesign decision
+
+### Nodes Updated (19)
+
+All existing content nodes migrated to add `canonical_id` and `evidence` fields:
+- CON-001: No Wiki Mutation
+- CON-002: Frontmatter Required
+- CON-003: Canonical Ownership
+- ADR-001: ADR - Dev Graph Bootstrap
+- GOV-001: Dev Graph Governance
+- GOV-002: Context Pack Assembly Rules
+- GOV-003: Admissibility Checks
+- GOV-004: MCP Tooling Policy
+- GOV-005: Neo4j Export Mapping
+- GOV-006: Database MCP Mapping
+- GOV-007: API Documentation Policy
+- REF-001: REF - Wiki CLAUDE
+- REF-002: REF - Wiki Metadata Migration Plan
+- REF-003: REF - Wiki Graph Health Dashboard
+- REF-004: Infrastructure Diagram
+- API-001: Alpaca API Docs
+- API-002: Anthropic API Docs
+- OBS-001: Dev Graph Dashboard
+- CTX-001: Context Pack Template
+
+### Governance Updates
+
+- CLAUDE.md: Complete rewrite (431 → ~580 lines) with v2.2.0 schema
+- Neo4j Export Mapping: 7 new labels, 9 new edge types, canonical_id as primary key
+- Dev Graph Dashboard: 8 new Dataview queries (#13-20)
+- index.md: Updated with canonical_ids, new sections, updated statistics
+
+### Phase 0 Metrics
+
+- Total content nodes: 20 (19 migrated + 1 new ADR)
+- Canonical ID coverage: 20/20 (100%)
+- Evidence field coverage: 20/20 (100%)
+- Schema version: 2.2.0
+- Type enum values: 24
+- Relationship types: 17
+- Directories: 23 (16 existing + 7 new)
+- Lint checks: 11
+- Dashboard queries: 20
+
+### Design Documents (frozen, not part of dev_graph)
+
+- audit_plan.md — Ontology Redesign
+- audit_plan_addendum.md — Architecture Review Addendum
+- final_strategic_review.md — Final Strategic Ontology Review
+- population_strategy.md — Population Strategy and Execution Roadmap

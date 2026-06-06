@@ -1,11 +1,14 @@
 ---
 type: constraint
+canonical_id: CON-002
 status: active
 implementation_status: validated
 canonical: true
 created: 2026-05-25
 updated: 2026-05-25
 confidence: confirmed
+evidence:
+  - design
 source_paths:
   - "wiki/CLAUDE.md"
   - "wiki/governance/Metadata Migration Plan.md"

@@ -1,8 +1,10 @@
 # Dev Graph Operations Manual
 
+schema_version: "2.2.0"
+
 This file governs all Claude Code sessions that operate on the dev_graph. Every session that modifies dev_graph MUST read this file first.
 
-The dev_graph is an ontology-governed implementation graph — a typed RAG / Graph-RAG substrate for coding tasks. It complements the wiki knowledge graph (`wiki/`) with implementation artifacts.
+The dev_graph is an ontology-governed Engineering Digital Twin — a typed Graph-RAG substrate for autonomous Claude-assisted software engineering. It complements the wiki knowledge graph (`wiki/`) with implementation artifacts, engineering knowledge, and architectural traceability.
 
 **Critical constraint**: dev_graph sessions MUST NOT modify `wiki/**` or `raw/**`. See [[No Wiki Mutation]].
 
@@ -12,23 +14,66 @@ The dev_graph is an ontology-governed implementation graph — a typed RAG / Gra
 
 ```
 /dev_graph
-  /modules         — logical code module boundaries
-  /files           — individual source file nodes
-  /tests           — test file and test suite nodes
-  /gates           — CI/CD gates and quality checks
-  /predicates      — boolean conditions that must hold
-  /schemas         — artifact schemas (JSON, YAML, protobuf)
-  /workflows       — multi-step development workflows
-  /agents          — agent implementation specifications
-  /skills          — agent skill and tool capabilities
-  /decisions       — Architecture Decision Records (ADRs)
-  /constraints     — hard invariants that must not be violated
-  /api_docs        — permitted API documentation references
-  /benchmarks      — performance and correctness benchmarks
-  /context_packs   — pre-assembled context for Claude sessions
-  /observability   — dashboards and monitoring
-  /governance      — governance policies and reference nodes
+  /architecture      — context maps, runtime topology, layer models
+  /systems           — bounded contexts (major system boundaries)
+  /capabilities      — abstract behaviors systems provide
+  /interfaces        — API contracts between systems/modules
+  /events            — domain events (boundary-crossing signals)
+  /knowledge_assets  — foundational engineering knowledge and principles
+  /patterns          — reusable architectural solutions
+  /modules           — logical code module boundaries
+  /files             — individual source file nodes
+  /tests             — test file and test suite nodes
+  /gates             — CI/CD gates and quality checks
+  /predicates        — boolean conditions that must hold
+  /schemas           — artifact schemas (JSON, YAML, protobuf)
+  /workflows         — multi-step development workflows
+  /agents            — agent implementation specifications
+  /skills            — agent skill and tool capabilities
+  /decisions         — Architecture Decision Records (ADRs)
+  /constraints       — hard invariants that must not be violated
+  /api_docs          — permitted API documentation references
+  /benchmarks        — performance and correctness benchmarks
+  /context_packs     — pre-assembled context for Claude sessions
+  /observability     — dashboards and monitoring
+  /governance        — governance policies and reference nodes
 ```
+
+23 directories total. Type-to-directory binding: a node's `type` should match its directory.
+
+---
+
+## Object Hierarchy
+
+The dev_graph models an explicit engineering hierarchy:
+
+```
+Knowledge Asset (WHY)
+    ↓ originates_from
+Architecture (WHAT shape) → System → Capability → Module → File
+                                   → Interface → Schema
+                                   → Workflow → Event
+                                              → Gate → Predicate
+Pattern (cross-cutting) ←── realizes ──→ Module/Capability
+```
+
+Conceptual backbone — the Closed-Loop Engineering Continuum:
+
+```
+KNOWLEDGE → DECISION → ARCHITECTURE → DESIGN → IMPLEMENTATION →
+VERIFICATION → RUNTIME → EVALUATION → EVOLUTION → KNOWLEDGE
+```
+
+Each stage maps to ontology types:
+- KNOWLEDGE: knowledge_asset
+- DECISION: decision_record
+- ARCHITECTURE: architecture, system, capability
+- DESIGN: pattern, interface, artifact_schema
+- IMPLEMENTATION: module, file
+- VERIFICATION: test, gate, predicate
+- RUNTIME: event, workflow
+- EVALUATION: benchmark_result
+- EVOLUTION: decision_record (new ADR — loop closes)
 
 ---
 
@@ -41,6 +86,8 @@ The dev_graph is an ontology-governed implementation graph — a typed RAG / Gra
 - **Constraint nodes**: Named as imperative rules (e.g., `No Wiki Mutation.md`)
 - **Reference nodes**: Prefixed with `REF -` (e.g., `REF - Wiki CLAUDE`)
 - **Decision records**: Prefixed with `ADR -` (e.g., `ADR - Dev Graph Bootstrap.md`)
+- **Knowledge assets**: Named after the engineering principle (e.g., `Event Sourcing.md`)
+- **Patterns**: Named after the pattern (e.g., `Guardrail Pattern.md`)
 - **Wikilinks**: Use `[[Page Name]]` format for all internal references
 
 ---
@@ -53,6 +100,10 @@ The dev_graph is an ontology-governed implementation graph — a typed RAG / Gra
 4. Other nodes reference the canonical node via `[[wikilink]]`
 5. Never duplicate a definition — link instead
 6. See [[Canonical Ownership]] constraint
+7. Each system boundary has ONE canonical system node
+8. Each capability is owned by exactly ONE system
+9. Each module implements ONE primary capability
+10. Wiki concepts are NEVER duplicated — dev_graph references wiki via source_paths
 
 ---
 
@@ -76,15 +127,24 @@ Every dev_graph content node MUST contain these sections (omit only if genuinely
 
 ### Depends On
 ### Provides
+### Contains
+### Implements
 ### Validated By
 ### Constrained By
 ### Supersedes
 ### Used By
 ### Produces
 ### Consumes
+### Emits
+### Triggered By
+### Guards
+### Originates From
+### Justified By
+### Realizes
+### Composes
 ```
 
-The `## Relationships` section with its subsections is REQUIRED for Neo4j export readiness. Use `[[wikilinks]]` in relationship subsections.
+The `## Relationships` section with its subsections is REQUIRED for Neo4j export readiness. Use `[[wikilinks]]` in relationship subsections. Include only applicable subsections — omit empty ones.
 
 ---
 
@@ -97,12 +157,14 @@ Every dev_graph node (except structural files: CLAUDE.md, index.md, log.md, READ
 ```yaml
 ---
 type: <type_enum>
+canonical_id: <TYPE_PREFIX-NUMBER>
 status: <status_enum>
 implementation_status: <impl_status_enum>
 canonical: true
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 confidence: <confidence_enum>
+evidence: []
 source_paths: []
 related_files: []
 related_tests: []
@@ -111,10 +173,41 @@ related_decisions: []
 ---
 ```
 
+The `canonical_id` is assigned at creation and NEVER changes, even if the node is renamed or moved. It is globally unique within the dev_graph and serves as the primary key for Neo4j export.
+
+### Canonical ID Prefixes
+
+| Type | Prefix | Example |
+|------|--------|---------|
+| knowledge_asset | KA | KA-001 |
+| pattern | PAT | PAT-001 |
+| architecture | ARCH | ARCH-001 |
+| system | SYS | SYS-001 |
+| capability | CAP | CAP-001 |
+| interface | INT | INT-001 |
+| event | EVT | EVT-001 |
+| module | MOD | MOD-001 |
+| file | FILE | FILE-001 |
+| test | TEST | TEST-001 |
+| workflow | WF | WF-001 |
+| artifact_schema | SCHEMA | SCHEMA-001 |
+| gate | GATE | GATE-001 |
+| predicate | PRED | PRED-001 |
+| agent | AGT | AGT-001 |
+| skill | SKILL | SKILL-001 |
+| decision_record | ADR | ADR-001 |
+| constraint | CON | CON-001 |
+| governance | GOV | GOV-001 |
+| observability | OBS | OBS-001 |
+| reference | REF | REF-001 |
+| api_doc_source | API | API-001 |
+| benchmark_result | BENCH | BENCH-001 |
+| context_pack | CTX | CTX-001 |
+
 ### Allowed Enums
 
-**`type` (17 values)**:
-`module`, `file`, `test`, `gate`, `predicate`, `artifact_schema`, `workflow`, `agent`, `skill`, `decision_record`, `constraint`, `api_doc_source`, `benchmark_result`, `context_pack`, `governance`, `observability`, `reference`
+**`type` (24 values)**:
+`architecture`, `system`, `capability`, `interface`, `event`, `knowledge_asset`, `pattern`, `module`, `file`, `test`, `gate`, `predicate`, `artifact_schema`, `workflow`, `agent`, `skill`, `decision_record`, `constraint`, `api_doc_source`, `benchmark_result`, `context_pack`, `governance`, `observability`, `reference`
 
 **`status` (7 values)**:
 `active`, `planned`, `implemented`, `validated`, `deprecated`, `blocked`, `draft`
@@ -122,10 +215,80 @@ related_decisions: []
 **`implementation_status` (7 values)**:
 `not-started`, `in-progress`, `implemented`, `tested`, `validated`, `deprecated`, `blocked`
 
-**`confidence` (4 values)**:
-`confirmed`, `single-source`, `inferred`, `speculative`
+**`confidence` (5 values)**:
+`confirmed`, `single-source`, `inferred`, `speculative`, `experimental`
+
+**`evidence` (7 allowed values — array field)**:
+`wiki`, `layer2`, `code`, `benchmark`, `ADR`, `external`, `design`
 
 ### Domain-Specific Extensions
+
+**Architecture nodes** add:
+```yaml
+architecture_type: context_map|runtime_topology|layer_model
+scope: <string>
+```
+
+**System nodes** add:
+```yaml
+system_id: <string>
+bounded_context: <string>
+contains_capabilities: []
+upstream_systems: []
+downstream_systems: []
+```
+
+**Capability nodes** add:
+```yaml
+capability_id: <string>
+parent_system: <wikilink>
+implemented_by: []
+interfaces: []
+```
+
+**Interface nodes** add:
+```yaml
+interface_id: <string>
+interface_version: <semver>
+parent_capability: <wikilink>
+input_schema: <wikilink or null>
+output_schema: <wikilink or null>
+implemented_by: []
+stability: stable|evolving|experimental
+```
+
+**Event nodes** add:
+```yaml
+event_id: <string>
+emitted_by: <wikilink>
+consumed_by: []
+triggers: []
+payload_schema: <wikilink or null>
+```
+
+**Knowledge asset nodes** add:
+```yaml
+knowledge_id: <string>
+knowledge_type: principle|methodology|guidance|pattern_theory
+source_wiki_pages: []
+informs_decisions: []
+informs_architecture: []
+external_references: []
+```
+
+Note: Knowledge assets do NOT have `implementation_status` — they are conceptual foundations, never "implemented."
+
+**Pattern nodes** add:
+```yaml
+pattern_id: <string>
+pattern_type: structural|behavioral|governance|coordination
+instances: []
+realized_by_capabilities: []
+realized_by_modules: []
+related_knowledge: []
+```
+
+Note: Patterns do NOT have `implementation_status` — they are referenced, not implemented.
 
 **Module nodes** add:
 ```yaml
@@ -172,6 +335,7 @@ validated_by: []
 **Artifact schema nodes** add:
 ```yaml
 schema_id: <string>
+schema_version: <semver>
 schema_path: <path>
 validated_by: []
 consumed_by: []
@@ -196,6 +360,11 @@ superseded_by: []
 decision_status: active|superseded|deprecated
 ```
 
+**Benchmark result nodes** add:
+```yaml
+measures: []
+```
+
 **Context pack nodes** add:
 ```yaml
 task_id: <string>
@@ -213,11 +382,13 @@ admissibility_checked: true|false
 2. `status` must be from the closed status enum
 3. `implementation_status` must be from the closed implementation_status enum
 4. `confidence` must be from the closed confidence enum
-5. `created` is set once at node creation and NEVER modified
-6. `updated` is refreshed ONLY on substantive content edits
-7. No frontmatter keys beyond those defined in this file
-8. Flat YAML only — no nested objects
-9. Type-to-directory binding: a node's `type` should match its directory
+5. `evidence` values must be from the closed evidence enum
+6. `canonical_id` must be unique across all nodes and follow the prefix convention
+7. `created` is set once at node creation and NEVER modified
+8. `updated` is refreshed ONLY on substantive content edits
+9. No frontmatter keys beyond those defined in this file
+10. Flat YAML only — no nested objects
+11. Type-to-directory binding: a node's `type` should match its directory
 
 ### Anti-Entropy Rules
 
@@ -225,6 +396,54 @@ admissibility_checked: true|false
 2. No nested YAML objects — flat key-value pairs and scalar arrays only
 3. No duplicate semantics — do not create fields that overlap existing fields
 4. No metadata without content — frontmatter must reflect actual node content
+
+---
+
+## Relationship Model
+
+17 relationship types organized by category.
+
+### Structural Relationships
+
+| Relationship | Semantics | Example |
+|-------------|-----------|---------|
+| Contains | Hierarchical ownership (parent → child) | System → Capability, Capability → Module |
+| Implements | Realization of abstract contract | Module → Interface, Agent → Capability |
+
+### Existing Relationships (from v1.0.0)
+
+| Relationship | Semantics | Example |
+|-------------|-----------|---------|
+| Depends On | Runtime or build dependency | Module A → Module B |
+| Provides | What this node makes available | Module → Interface |
+| Validated By | What tests/gates verify this | Module → Test, Capability → Gate |
+| Constrained By | What invariants bind this | System → Constraint |
+| Supersedes | Temporal replacement | ADR v2 → ADR v1 |
+| Used By | Reverse dependency | Schema → Module |
+| Produces | Output generation | Module → Schema, Module → Event |
+| Consumes | Input consumption | Module → Schema, Module → Event |
+
+### Behavioral Relationships
+
+| Relationship | Semantics | Example |
+|-------------|-----------|---------|
+| Emits | Event production at runtime | Module → Event |
+| Triggered By | Event consumption | Workflow → Event |
+| Guards | Quality check on transition | Gate → Workflow, Predicate → Gate |
+
+### Traceability Relationships
+
+| Relationship | Semantics | Example |
+|-------------|-----------|---------|
+| Originates From | Conceptual foundation | ADR → Knowledge Asset |
+| Justified By | Decision authorization | Module/Capability → ADR |
+| Realizes | Pattern implementation | Module/Capability → Pattern |
+
+### Composition Relationship
+
+| Relationship | Semantics | Example |
+|-------------|-----------|---------|
+| Composes | Pattern structural composition | Supervisor Pattern → Multi-Agent Coordination |
 
 ---
 
@@ -236,17 +455,22 @@ admissibility_checked: true|false
 - Every **gate** MUST link to its predicate nodes
 - Every **decision** MUST link to what it constrains or enables
 - Every **context pack** MUST list all required nodes
+- Every **capability** MUST reference its parent system
+- Every **interface** MUST reference its parent capability
+- Every **pattern** MUST reference at least 2 realizing modules/capabilities
+- Every **knowledge asset** MUST reference at least 1 ADR it informs
 - Every node MUST have >=1 outbound wikilink (no orphans)
-- Hub nodes (governance, constraints) should have 5+ inbound links
+- Hub nodes (architecture, system, governance) should have 5+ inbound links
 
 ---
 
 ## Context Pack Assembly Protocol
 
-See [[Context Pack Assembly Rules]] for the full 8-step assembly sequence.
+See [[Context Pack Assembly Rules]] for the full assembly sequence.
 
 Summary:
 1. Parse task request
+1.5. **Intent Classification** — classify task intent to select entry point (see Routing Table below)
 2. Semantic retrieval via Smart Connections
 3. Dataview filtering (canonical, status, type, implementation_status)
 4. Graph expansion (dependencies, files, tests, constraints, decisions)
@@ -254,6 +478,24 @@ Summary:
 6. Docs retrieval via context7 per [[API Documentation Policy]]
 7. Admissibility check (9 checks from [[Admissibility Checks]])
 8. Assemble typed context pack using [[Context Pack Template]]
+
+### Intent-Aware Routing Table
+
+| Task Intent | Primary Entry Point | Expansion Direction | Secondary Context |
+|-------------|--------------------|--------------------|-------------------|
+| Implementation | Capability | Down: modules, files, tests | Interfaces, schemas, constraints |
+| Architecture review | Architecture | Down: systems, capabilities | Knowledge assets, ADRs, patterns |
+| Bug investigation | Module (or File) | Lateral: dependencies, interfaces | Tests, events, constraints |
+| Integration | Interface | Lateral: both sides of contract | Schemas, modules, api_docs |
+| Runtime incident | Event | Lateral: emitters, consumers | Workflows, modules, gates |
+| Research | Knowledge Asset | Down: ADRs, architecture | Wiki source pages (read-only) |
+| Governance | Constraint (or Governance) | Lateral: bound systems/capabilities | ADRs, gates, predicates |
+| Evolution planning | Decision Record | Up: knowledge assets; Down: systems | Patterns, architecture |
+| Performance | Benchmark | Lateral: measured modules | Schemas, interfaces, constraints |
+| Design review | Pattern | Down: realizing modules/capabilities | Knowledge assets, ADRs |
+| Knowledge exploration | Knowledge Asset | Lateral: related knowledge assets | Wiki concept pages (read-only) |
+
+Fallback: Capability entry point for unclassifiable tasks.
 
 ---
 
@@ -280,16 +522,17 @@ If any check fails, the node is listed under "Deprecated / Excluded Notes" but N
 Future coding tasks should use this sequence:
 
 1. Parse task request
-2. Smart Connections retrieves semantically related dev_graph nodes
-3. Dataview/frontmatter filters by: canonical, type, status, implementation_status, confidence
-4. Obsidian Vault MCP reads the selected canonical nodes
-5. Neo4j or graph traversal expands: dependencies, files, tests, constraints, decisions, schemas, gates
-6. Filesystem/Git MCP inspects current code truth
-7. Context7/docs MCP retrieves only permitted API documentation
-8. Assemble typed context pack
-9. Claude Code implements
-10. Tests/validation run
-11. Write implementation results back to dev_graph
+2. Classify intent → select entry point from routing table
+3. Smart Connections retrieves semantically related dev_graph nodes
+4. Dataview/frontmatter filters by: canonical, type, status, implementation_status, confidence
+5. Obsidian Vault MCP reads the selected canonical nodes
+6. Neo4j or graph traversal expands: dependencies, files, tests, constraints, decisions, schemas, gates
+7. Filesystem/Git MCP inspects current code truth
+8. Context7/docs MCP retrieves only permitted API documentation
+9. Assemble typed context pack
+10. Claude Code implements
+11. Tests/validation run
+12. Write implementation results back to dev_graph
 
 ---
 
@@ -336,11 +579,20 @@ Action: Correct to nearest valid enum.
 Find nodes with 0 inbound links (excluding structural files).
 Action: Add wikilinks from related nodes.
 
-### Check 4: Stale Node Detection
+### Check 4: Stale Node Detection (Type-Aware Thresholds)
+
+| Type Category | Types | Threshold |
+|--------------|-------|-----------|
+| Stable foundations | knowledge_asset, pattern, architecture | 180 days |
+| Governance | governance, constraint, decision_record | 120 days |
+| Structural | system, capability, interface | 90 days |
+| Behavioral | event, workflow, artifact_schema | 60 days |
+| Implementation + all others | module, file, test, + default | 30 days |
+
 ```
 Dataview: LIST FROM "dev_graph" WHERE date(updated) < date(today) - dur(30 days) AND status != "deprecated"
 ```
-Action: Review and update or set `status: deprecated`.
+Action: Review and update or set `status: deprecated`. Apply type-aware thresholds from table above.
 
 ### Check 5: Broken Wikilinks
 Find `[[wikilinks]]` pointing to nonexistent nodes.
@@ -354,15 +606,31 @@ Action: Add relevant constraint references.
 Check that module/file nodes have `related_tests` populated or explicit justification.
 Action: Add test references or document why tests are not needed.
 
+### Check 8: Type-Content Alignment
+Verify that a node's body sections match its type. A module node should have Implementation Notes. An ADR should have Status, Context, Decision, Consequences. A knowledge asset should have source_wiki_pages referencing live wiki pages.
+Action: Manual per-session check on touched nodes. Full audit monthly.
+
+### Check 9: Deprecated Reference Detection
+Find nodes whose relationship sections contain wikilinks to deprecated nodes.
+Action: Update references to point to successor nodes.
+
+### Check 10: Canonical ID Uniqueness
+Verify no two nodes share the same canonical_id value.
+Action: Reassign duplicate IDs immediately.
+
+### Check 11: Evidence-Confidence Coherence
+Verify nodes with `confidence: confirmed` have `evidence: []` with at least one value.
+Action: Add evidence source or reassess confidence level.
+
 ---
 
 ## Maintenance Cadences
 
 | Cadence | Scope | Trigger |
 |---------|-------|---------|
-| Per-session | Lint checks 1-7 on touched nodes, update log.md | Every session modifying dev_graph |
+| Per-session | Lint checks 1-11 on touched nodes, update log.md | Every session modifying dev_graph |
 | Weekly | Full lint across all nodes, dashboard review | Every 7 days |
-| Monthly | Ontology audit, API doc freshness check, constraint review | First session of month |
+| Monthly | Ontology audit, API doc freshness check, constraint review, type-content alignment (check 8) | First session of month |
 
 ---
 
@@ -389,11 +657,55 @@ Adapted from wiki governance principles:
 4. Roll out to affected nodes
 5. Log: `## [DATE] schema | Field addition: <field_name>` in log.md
 
+### Migration Runbook Template
+
+```
+# Migration: [old_version] → [new_version]
+## Changes: [list of schema changes]
+## Affected Nodes: [Dataview query or list]
+## Steps:
+1. Update CLAUDE.md
+2. Create ADR documenting the change
+3. Run migration
+4. Verify with lint checks
+5. Update schema_version
+6. Log in log.md
+## Rollback: [procedure]
+## Verification: [Dataview queries]
+```
+
+---
+
+## Ontology Evolution Procedures
+
+### Merge Procedure
+When two nodes describe the same engineering concept:
+1. Identify which node is at the correct abstraction level
+2. Migrate content from the subordinate node into the canonical node
+3. Update all wikilinks pointing to the subordinate node
+4. Set subordinate to `status: deprecated` with `### Supersedes` reference
+5. The surviving node retains its canonical_id
+6. Log merge in log.md
+
+### Split Procedure
+When one node covers two distinct engineering concepts:
+1. Create two new nodes, each with correct type and placement
+2. Distribute content appropriately
+3. New nodes reference original via `### Supersedes`
+4. Set original to `status: deprecated`
+5. Update all wikilinks to point to appropriate new node
+6. Log split in log.md
+
+### Deprecation Procedure
+1. Set `status: deprecated`
+2. Record deprecation reason in the node body
+3. Reference replacement node via `### Supersedes` on the replacement
+4. Node is retained indefinitely (never deleted)
+5. Excluded from context packs by admissibility check #2
+
 ---
 
 ## Confidence Lifecycle
-
-Same as wiki governance:
 
 | From | To | Trigger |
 |---|---|---|
@@ -404,6 +716,8 @@ Same as wiki governance:
 | `single-source` | `inferred` | Supporting source deprecated |
 | `inferred` | `speculative` | Reasoning chain found weak |
 | Any | `speculative` | Contradiction detected |
+| `speculative` | `experimental` | Engineering hypothesis under active testing |
+| `experimental` | `inferred` | Test results support the hypothesis |
 
 Promotion updates both `confidence` and `updated` fields.
 Demotion MUST be logged in `log.md`.
@@ -413,11 +727,13 @@ Demotion MUST be logged in `log.md`.
 ## Relationship to Wiki
 
 - dev_graph INHERITS governance principles from `wiki/CLAUDE.md` via [[REF - Wiki CLAUDE]]
-- dev_graph has its OWN type ontology (17 types) separate from wiki's 17 types
-- dev_graph has its OWN frontmatter schema (extended with implementation_status and relationship arrays)
+- dev_graph has its OWN type ontology (24 types) separate from wiki's 17 types
+- dev_graph has its OWN frontmatter schema (extended with canonical_id, evidence, implementation_status, and relationship arrays)
 - dev_graph may READ wiki nodes for domain knowledge (safe-automated)
 - dev_graph MUST NOT WRITE to wiki nodes (prohibited — see [[No Wiki Mutation]])
 - Cross-references use standard wikilinks: `[[wiki/Page Name]]` format
+- Knowledge assets reference wiki pages via `source_wiki_pages` for domain knowledge context
+- The wiki describes; the dev_graph defines
 
 ---
 

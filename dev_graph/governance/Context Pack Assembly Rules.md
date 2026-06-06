@@ -1,11 +1,15 @@
 ---
 type: governance
+canonical_id: GOV-002
 status: active
 implementation_status: implemented
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: inferred
+evidence:
+  - design
+  - wiki
 source_paths:
   - "wiki/memory/Context Budget Engineering.md"
   - "wiki/CLAUDE.md"

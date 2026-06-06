@@ -1,11 +1,14 @@
 ---
 type: observability
+canonical_id: OBS-001
 status: active
 implementation_status: implemented
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: confirmed
+evidence:
+  - design
 source_paths:
   - "wiki/observability/Graph Health Dashboard.md"
 related_files: []
@@ -139,6 +142,80 @@ FROM "dev_graph/decisions"
 WHERE type = "decision_record"
 AND (decision_status = "superseded" OR decision_status = "deprecated")
 SORT decision_date DESC
+```
+
+## 13. Canonical ID Coverage
+
+```dataview
+TABLE type, canonical_id
+FROM "dev_graph"
+WHERE type != null AND (canonical_id = null OR canonical_id = "")
+```
+
+## 14. Evidence Coverage
+
+```dataview
+TABLE type, evidence
+FROM "dev_graph"
+WHERE type != null AND (evidence = null OR length(evidence) = 0)
+SORT type ASC
+```
+
+## 15. Pattern Realization Coverage
+
+```dataview
+TABLE type, file.name
+FROM "dev_graph"
+WHERE (type = "module" OR type = "capability")
+AND NOT contains(file.content, "### Realizes")
+```
+
+## 16. Traceability Gaps (Capabilities without Justified By)
+
+```dataview
+TABLE file.name, type
+FROM "dev_graph"
+WHERE type = "capability"
+AND NOT contains(file.content, "### Justified By")
+```
+
+## 17. Population Progress
+
+```dataview
+TABLE length(rows) AS Count
+FROM "dev_graph"
+WHERE type != null
+GROUP BY type
+SORT length(rows) DESC
+```
+
+## 18. Population Debt: Systems Without Capabilities
+
+```dataview
+TABLE file.name
+FROM "dev_graph"
+WHERE type = "system"
+AND (contains_capabilities = null OR length(contains_capabilities) = 0)
+```
+
+## 19. Population Debt: Capabilities Without Modules
+
+```dataview
+TABLE file.name, parent_system
+FROM "dev_graph"
+WHERE type = "capability"
+AND (implemented_by = null OR length(implemented_by) = 0)
+AND implementation_status != "not-started"
+```
+
+## 20. Population Debt: Modules Without Files
+
+```dataview
+TABLE file.name
+FROM "dev_graph"
+WHERE type = "module"
+AND (related_files = null OR length(related_files) = 0)
+AND implementation_status = "implemented"
 ```
 
 ---

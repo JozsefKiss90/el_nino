@@ -1,11 +1,14 @@
 ---
 type: governance
+canonical_id: GOV-004
 status: active
 implementation_status: implemented
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: confirmed
+evidence:
+  - design
 source_paths:
   - "wiki/CLAUDE.md"
   - ".mcp.json"

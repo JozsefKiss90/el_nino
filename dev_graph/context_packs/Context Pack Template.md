@@ -1,11 +1,14 @@
 ---
 type: context_pack
+canonical_id: CTX-001
 status: draft
 implementation_status: not-started
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: inferred
+evidence:
+  - design
 source_paths:
   - "wiki/memory/Context Budget Engineering.md"
 related_files: []

@@ -1,11 +1,14 @@
 ---
 type: reference
+canonical_id: REF-003
 status: active
 implementation_status: validated
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: confirmed
+evidence:
+  - wiki
 source_paths:
   - "wiki/observability/Graph Health Dashboard.md"
 related_files: []

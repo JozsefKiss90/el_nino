@@ -1,17 +1,21 @@
 ---
 type: governance
+canonical_id: GOV-005
 status: planned
 implementation_status: not-started
 canonical: true
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-06-06
 confidence: inferred
+evidence:
+  - design
 source_paths: []
 related_files: []
 related_tests: []
 related_constraints: []
 related_decisions:
   - "[[ADR - Dev Graph Bootstrap]]"
+  - "[[ADR - Ontology Redesign]]"
 ---
 
 # Neo4j Export Mapping
@@ -34,11 +38,13 @@ Each dev_graph markdown file maps to one Neo4j node.
 
 | Markdown Element | Neo4j Element |
 |---|---|
+| `canonical_id` frontmatter | Node primary key (stable across renames) |
 | File name (without .md) | Node `name` property |
 | `type` frontmatter | Node label (e.g., `:Module`, `:File`, `:Test`) |
 | All frontmatter fields | Node properties |
 | `canonical` field | Node `canonical` property |
 | `created` / `updated` | Node `created` / `updated` properties |
+| `evidence` field | Node `evidence` property (array) |
 
 ### Label Mapping
 
@@ -61,6 +67,13 @@ Each dev_graph markdown file maps to one Neo4j node.
 | `governance` | `:Governance` |
 | `observability` | `:Observability` |
 | `reference` | `:Reference` |
+| `architecture` | `:Architecture` |
+| `system` | `:System` |
+| `capability` | `:Capability` |
+| `interface` | `:Interface` |
+| `event` | `:Event` |
+| `knowledge_asset` | `:KnowledgeAsset` |
+| `pattern` | `:Pattern` |
 
 ## Edge Mapping
 
@@ -92,22 +105,32 @@ Relationships are extracted from two sources:
 | `### Used By` | `USED_BY` | outbound |
 | `### Produces` | `PRODUCES` | outbound |
 | `### Consumes` | `CONSUMES` | outbound |
+| `### Contains` | `CONTAINS` | outbound |
+| `### Implements` | `IMPLEMENTS` | outbound |
+| `### Emits` | `EMITS` | outbound |
+| `### Triggered By` | `TRIGGERED_BY` | outbound |
+| `### Guards` | `GUARDS` | outbound |
+| `### Originates From` | `ORIGINATES_FROM` | outbound |
+| `### Justified By` | `JUSTIFIED_BY` | outbound |
+| `### Realizes` | `REALIZES` | outbound |
+| `### Composes` | `COMPOSES` | outbound |
 
 ## Example Cypher
 
 ```cypher
 // Create a module node
-MERGE (m:Module {name: "Trading Engine"})
-SET m.status = "active",
+MERGE (m:Module {canonical_id: "MOD-001"})
+SET m.name = "Trading Engine",
+    m.status = "active",
     m.implementation_status = "not-started",
     m.canonical = true,
     m.created = date("2026-05-25"),
     m.updated = date("2026-05-25"),
     m.confidence = "confirmed"
 
-// Create a constraint relationship
-MATCH (m:Module {name: "Trading Engine"})
-MATCH (c:Constraint {name: "No Wiki Mutation"})
+// Create a constraint relationship using canonical_id
+MATCH (m:Module {canonical_id: "MOD-001"})
+MATCH (c:Constraint {canonical_id: "CON-001"})
 MERGE (m)-[:CONSTRAINED_BY]->(c)
 ```
 

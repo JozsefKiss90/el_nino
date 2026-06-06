@@ -4,7 +4,12 @@ Last updated: 2026-06-06
 
 ## Architecture
 
-(Empty — populated in Phase 1)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[architecture/Context Map]] | ARCH-001 | architecture | Formal bounded context diagram — 6 systems and interactions |
+| [[architecture/Runtime Topology]] | ARCH-002 | architecture | Runtime component interaction model — events, data flows |
+| [[architecture/Layer Model]] | ARCH-003 | architecture | L1 (data) → L2 (analysis) → L3 (execution) layer definitions |
+| [[architecture/Infrastructure Diagram]] | ARCH-004 | architecture | Full infrastructure Mermaid diagram (migrated from root) |
 
 ## Systems
 
@@ -16,7 +21,18 @@ Last updated: 2026-06-06
 
 ## Knowledge Assets
 
-(Empty — populated in Phase 1)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Event Sourcing]] | KA-001 | knowledge_asset | State as immutable event sequence — motivates event-driven architecture |
+| [[CQRS]] | KA-002 | knowledge_asset | Read/write model separation — motivates snapshot layer design |
+| [[Supervisor Pattern Methodology]] | KA-003 | knowledge_asset | Meta-agent governance — motivates Supervisor Office |
+| [[Office Action Methodology]] | KA-004 | knowledge_asset | Deterministic intervention state machine |
+| [[Guardrail Philosophy]] | KA-005 | knowledge_asset | Hard constraints before autonomy — motivates Risk Control |
+| [[Layer 2 Design Principles]] | KA-006 | knowledge_asset | Snapshot-as-truth-layer — foundational data contract |
+| [[Context Engineering]] | KA-007 | knowledge_asset | Tokens as finite resource — motivates context assembly |
+| [[Agent Safety Principles]] | KA-008 | knowledge_asset | Multi-layer safety — credential isolation, phased autonomy |
+| [[Stateless Agent Architecture]] | KA-009 | knowledge_asset | Wake-Execute-Sleep — file-mediated agent continuity |
+| [[Paper Trading Validation]] | KA-010 | knowledge_asset | Mandatory simulated validation before live deployment |
 
 ## Patterns
 
@@ -44,7 +60,7 @@ Last updated: 2026-06-06
 | [[REF - Wiki CLAUDE]] | REF-001 | reference | Reference to wiki governance operations manual |
 | [[REF - Wiki Metadata Migration Plan]] | REF-002 | reference | Reference to wiki schema design patterns |
 | [[REF - Wiki Graph Health Dashboard]] | REF-003 | reference | Reference to wiki Dataview query patterns |
-| [[Infrastructure Diagram]] | REF-004 | reference | Full infrastructure Mermaid diagram (migrates to architecture/ in Phase 1) |
+| ~~[[Infrastructure Diagram]]~~ | REF-004 | reference | DEPRECATED — migrated to architecture/Infrastructure Diagram (ARCH-004) |
 
 ## Observability
 
@@ -124,13 +140,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 20 (governance: 7, reference: 4, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 34 (architecture: 4, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 1, decision_record: 2, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 24
+- **Total files**: 38
 - **Active directories**: 23
-- **Empty directories**: 17 (architecture, systems, capabilities, knowledge_assets, patterns, interfaces, events, modules, files, tests, gates, predicates, schemas, workflows, agents, skills, benchmarks)
-- **Frontmatter coverage**: 20/20 content nodes (100%)
-- **Canonical ID coverage**: 20/20 content nodes (100%)
+- **Populated directories**: 10 (architecture, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
+- **Empty directories**: 15 (systems, capabilities, patterns, interfaces, events, modules, files, tests, gates, predicates, schemas, workflows, agents, skills, benchmarks)
+- **Frontmatter coverage**: 34/34 content nodes (100%)
+- **Canonical ID coverage**: 34/34 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
@@ -142,3 +159,4 @@ Last updated: 2026-06-06
 - **Dashboard queries**: 20
 - **Bootstrap date**: 2026-05-25
 - **Ontology redesign date**: 2026-06-06
+- **Phase 1 completion date**: 2026-06-06

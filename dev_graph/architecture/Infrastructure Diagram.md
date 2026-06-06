@@ -1,7 +1,7 @@
 ---
-type: reference
-canonical_id: REF-004
-status: deprecated
+type: architecture
+canonical_id: ARCH-004
+status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-01
@@ -23,11 +23,14 @@ related_constraints:
   - "[[Frontmatter Required]]"
 related_decisions:
   - "[[ADR - Dev Graph Bootstrap]]"
+  - "[[ADR - Ontology Redesign]]"
+architecture_type: context_map
+scope: "Full infrastructure topology — all substrates, MCP servers, databases, and data flows"
 ---
 
-# Infrastructure Diagram (DEPRECATED)
+# Infrastructure Diagram
 
-DEPRECATED: This node has been migrated to `architecture/Infrastructure Diagram.md` (ARCH-004) as part of the Phase 1 ontology redesign. See [[architecture/Infrastructure Diagram]] for the current version.
+Mermaid diagram illustrating the project's full infrastructure, data flow, and dependencies. Migrated from dev_graph root to architecture/ during Phase 1 ontology redesign.
 
 ## Diagram
 
@@ -45,7 +48,7 @@ graph TB
         S9["llm-wiki.md<br/>(methodology)"]
     end
 
-    subgraph Wiki["Wiki Knowledge Graph (wiki/ - 60 pages, 852 wikilinks)"]
+    subgraph Wiki["Wiki Knowledge Graph (wiki/ - 57 pages, 852 wikilinks)"]
         W_CLAUDE["CLAUDE.md<br/>(877-line ops manual)"]
         W_INDEX["index.md"]
         W_LOG["log.md"]
@@ -60,19 +63,22 @@ graph TB
         end
     end
 
-    subgraph DevGraph["Dev Graph (dev_graph/ - 17 nodes, 17-type ontology)"]
-        DG_CLAUDE["CLAUDE.md<br/>(430-line ops manual)"]
+    subgraph DevGraph["Dev Graph (dev_graph/ - 24-type ontology, schema v2.2.0)"]
+        DG_CLAUDE["CLAUDE.md<br/>(~580-line ops manual)"]
         DG_INDEX["index.md"]
         subgraph DGContent["Content Nodes"]
-            DG_GOV["governance/ (10)"]
+            DG_ARCH["architecture/ (4)"]
+            DG_KA["knowledge_assets/ (10)"]
+            DG_GOV["governance/ (7)"]
+            DG_REF["references (3)"]
             DG_CON["constraints/ (3)"]
             DG_API["api_docs/ (2)"]
-            DG_ADR["decisions/ (1)"]
+            DG_ADR["decisions/ (2)"]
             DG_CTX["context_packs/ (1)"]
             DG_OBS["observability/ (1)"]
         end
-        subgraph DGEmpty["Empty (awaiting code)"]
-            DG_E["modules, files, tests,<br/>gates, predicates, schemas,<br/>workflows, agents, skills,<br/>benchmarks"]
+        subgraph DGEmpty["Empty (awaiting Phase 2+)"]
+            DG_E["systems, capabilities, patterns,<br/>interfaces, events, modules,<br/>files, tests, gates, predicates,<br/>schemas, workflows, agents,<br/>skills, benchmarks"]
         end
         SYNC["sync_to_neo4j.py<br/>(Python: yaml, neo4j driver)"]
     end
@@ -122,7 +128,7 @@ graph TB
     OB_SC -->|"indexes into"| SmartEnv
 
     %% Sync pipeline
-    SYNC -->|"MERGE Cypher<br/>(8 rel types)"| NEO4J
+    SYNC -->|"MERGE Cypher<br/>(17 rel types)"| NEO4J
 
     %% MCP connections
     MCP_V -->|"reads/writes"| Wiki
@@ -151,7 +157,7 @@ graph TB
 
     class S1,S2,S3,S4,S5,S6,S7,S8,S9 source
     class W_CLAUDE,W_INDEX,W_LOG,WD1,WD2,WD3,WD4,WD5,WD6,WD7 wiki
-    class DG_CLAUDE,DG_INDEX,DG_GOV,DG_CON,DG_API,DG_ADR,DG_CTX,DG_OBS,DG_E,SYNC devgraph
+    class DG_CLAUDE,DG_INDEX,DG_ARCH,DG_KA,DG_GOV,DG_REF,DG_CON,DG_API,DG_ADR,DG_CTX,DG_OBS,DG_E,SYNC devgraph
     class MCP_V,MCP_SC,MCP_C7,MCP_N4,MCP_PG mcp
     class NEO4J,POSTGRES db
     class OB_CORE,OB_DV,OB_SC,SE_EMB,SE_VEC,SE_CTX obsidian
@@ -162,11 +168,11 @@ graph TB
 
 | Layer | Component | Role |
 |-------|-----------|------|
-| **Knowledge** | `raw/` (9 docs) → `wiki/` (60 pages) | Immutable sources ingested into LLM-maintained wiki |
-| **Implementation** | `dev_graph/` (17 nodes) | Ontology-governed coding substrate with 17-type system |
+| **Knowledge** | `raw/` (9 docs) → `wiki/` (57 pages) | Immutable sources ingested into LLM-maintained wiki |
+| **Implementation** | `dev_graph/` (24-type ontology, v2.2.0) | Engineering Digital Twin with canonical_id, evidence, 17 relationship types |
 | **Semantic Index** | `.smart-env/` (101 vectors) | Block-level embeddings via TaylorAI/bge-micro-v2 |
-| **Graph DB** | Neo4j (via `sync_to_neo4j.py`) | 8 relationship types, APOC plugin, Graph-RAG queries |
-| **Relational DB** | PostgreSQL (`layer_3_wiki`) | Structured data storage |
+| **Graph DB** | Neo4j (via `sync_to_neo4j.py`) | 17 relationship types, APOC plugin, Graph-RAG queries |
+| **Relational DB** | PostgreSQL (`layer_3_wiki`) | Runtime instance data (trades, evaluations, telemetry) |
 | **MCP Integration** | 5 servers | mcpvault, smart-connections, context7, neo4j, postgres |
 | **Orchestration** | Claude Code + Serena | 42-permission allowlist, auto-memory, code navigation |
 
@@ -177,18 +183,20 @@ Dev graph sessions are forbidden from modifying `wiki/` or `raw/` — enforced b
 ## Relationships
 
 ### Depends On
-- [[dev_graph/CLAUDE.md]] — governance rules that define the ontology shown here
-- [[wiki/CLAUDE.md]] — wiki governance referenced in the diagram
+- [[Context Map]] — bounded context diagram this infrastructure supports
+- [[dev_graph/CLAUDE.md]] — governance rules that define the ontology
 
 ### Provides
 - Visual overview of all infrastructure components and data flow
 - Quick reference for onboarding new sessions
 
 ### Constrained By
-- [[No Wiki Mutation]] — the boundary shown between dev_graph and wiki
-- [[Canonical Ownership]] — one node per concept
-- [[Frontmatter Required]] — all content nodes need frontmatter
+- [[No Wiki Mutation]]
+- [[Canonical Ownership]]
+- [[Frontmatter Required]]
+
+### Supersedes
 
 ### Used By
-- [[Dev Graph Dashboard]] — links to this for architectural context
-- [[Context Pack Template]] — references infrastructure layout
+- [[Dev Graph Dashboard]]
+- [[Context Pack Template]]

@@ -150,3 +150,48 @@ All existing content nodes migrated to add `canonical_id` and `evidence` fields:
 - audit_plan_addendum.md — Architecture Review Addendum
 - final_strategic_review.md — Final Strategic Ontology Review
 - population_strategy.md — Population Strategy and Execution Roadmap
+
+---
+
+## [2026-06-06] populate | Phase 1: Architecture Skeleton + Knowledge Foundations
+
+### Nodes Created (14)
+
+**Architecture nodes (4)**:
+- Context Map (ARCH-001) — formal bounded context diagram, 6 systems, 8 interfaces
+- Runtime Topology (ARCH-002) — runtime event/data flow model, 12 domain events, scheduling
+- Layer Model (ARCH-003) — L1 (data) → L2 (analysis) → L3 (execution) with snapshot-as-truth contract
+- Infrastructure Diagram (ARCH-004) — migrated from root-level REF-004, retyped reference → architecture
+
+**Knowledge asset nodes (10)**:
+- Event Sourcing (KA-001) — immutable event sequences, replay, audit trails
+- CQRS (KA-002) — read/write model separation, snapshot layer design
+- Supervisor Pattern Methodology (KA-003) — meta-agent governance, treasury constraints, institutional memory
+- Office Action Methodology (KA-004) — deterministic state machine interventions, integration checkpoints
+- Guardrail Philosophy (KA-005) — hard constraints before autonomy, non-negotiable limits
+- Layer 2 Design Principles (KA-006) — snapshot-as-truth-layer, deterministic assembly, schema stability
+- Context Engineering (KA-007) — tokens as money, structured retrieval, budget management
+- Agent Safety Principles (KA-008) — credential isolation, self-verification, phased autonomy
+- Stateless Agent Architecture (KA-009) — Wake-Execute-Sleep, file-based personality, git persistence
+- Paper Trading Validation (KA-010) — mandatory simulated validation, quantitative promotion criteria
+
+### Nodes Deprecated (1)
+
+- Infrastructure Diagram (REF-004) at dev_graph root → deprecated, replaced by ARCH-004 in architecture/
+
+### Source Wiki Pages Referenced
+
+Architecture Overview, Trading Engine Pipeline, Three-Layer Trading System, Claude-Assisted Trading Stack, Syndicate Squad Architecture, Guardrail Architecture, Autonomous Trading Risk Model, Agent Memory Architecture, Context Budget Engineering, Office Action Loop, Paper Trading, Stateless Agent Recovery, Agent Self-Verification, Trade Logging, Treasury Policy System, Multi-Agent Orchestration, API Credential Isolation, Walk-Forward Optimization, MCP Architecture
+
+### Phase 1 Metrics
+
+- Total content nodes: 34 (20 from Phase 0 + 14 new)
+- Active nodes: 33 (1 deprecated: REF-004)
+- Architecture nodes: 4
+- Knowledge asset nodes: 10
+- Canonical ID coverage: 34/34 (100%)
+- Evidence field coverage: 34/34 (100%)
+- Wiki pages referenced via source_paths: 19
+- Populated directories: 10 / 23
+- Empty directories: 15 (awaiting Phase 2+)
+- Population roadmap target: 30-32 nodes. Actual: 34 (on track)

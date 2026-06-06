@@ -32,37 +32,45 @@
             }
           },
           {
-            "id": "d552b8a7cdf87e9f",
-            "type": "leaf",
-            "state": {
-              "type": "smart-release-notes-view",
-              "state": {},
-              "icon": "file-text",
-              "title": "Release Notes"
-            }
-          },
-          {
-            "id": "cef01b24173ff4ef",
+            "id": "443433490976927f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/CLAUDE.md",
+                "file": "wiki/systems/Architecture Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "Architecture Overview"
             }
           },
           {
-            "id": "443433490976927f",
+            "id": "afba7099dfee2536",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "wiki/memory/Agent Memory Architecture.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Agent Memory Architecture"
+            }
+          },
+          {
+            "id": "6e355511c4142154",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/SRC - OWS Dev Squad.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SRC - OWS Dev Squad"
             }
           }
         ],
@@ -98,7 +106,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "health",
+                "query": "squad",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -230,7 +238,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -251,19 +259,23 @@
       "bases:Create new base": false
     }
   },
-  "active": "443433490976927f",
+  "active": "6e355511c4142154",
   "lastOpenFiles": [
-    "dev_graph/governance/API Documentation Policy.md",
+    "wiki/memory/Agent Memory Architecture.md",
+    "raw/build-spec.md",
+    "wiki/risk/Autonomous Trading Risk Model.md",
+    "wiki/systems/Architecture Overview.md",
+    "wiki/sources/SRC - OWS Dev Squad.md",
+    "wiki/strategies/Paper Trading.md",
+    "wiki/agents/Supervisor Decision Engine.md",
     "wiki/systems/Trading Engine Pipeline.md",
+    "dev_graph/governance/API Documentation Policy.md",
     "wiki/index.md",
     "wiki/observability/Graph Health Dashboard.md",
     "wiki/CLAUDE.md",
     "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
     "dev_graph/sync_to_neo4j.py",
-    "wiki/systems/Architecture Overview.md",
     "wiki/systems/Three-Layer Trading System.md",
-    "wiki/memory/Agent Memory Architecture.md",
-    "wiki/strategies/Paper Trading.md",
     "wiki/log.md",
     "project_structure.md",
     "Untitled.canvas",
@@ -277,10 +289,6 @@
     "wiki/kierkegaard/structure/Ch3 - Sin Is Not a Negation but a Position.md",
     "wiki/kierkegaard/index.md",
     "wiki/kierkegaard/structure/Ch2 - The Socratic Definition of Sin.md",
-    "wiki/kierkegaard/structure/Ch1 - Gradations in Consciousness of the Self.md",
-    "wiki/kierkegaard/dashboards/review-queue.md",
-    "wiki/kierkegaard/structure/I - Despair Is Sin.md",
-    "wiki/kierkegaard/dashboards/references.md",
     "wiki/kierkegaard/works",
     "wiki/kierkegaard/theorems",
     "wiki/kierkegaard/taxonomies",

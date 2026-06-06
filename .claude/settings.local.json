@@ -43,7 +43,8 @@
       "Bash(find . -type f -name \"*.py\" -exec wc -l {} +)",
       "Bash(wc -l governance/dag_runner/*.py)",
       "Bash(xargs wc:*)",
-      "Bash(grep -h \"^import\\\\|^from\" layer2/**/*.py)"
+      "Bash(grep -h \"^import\\\\|^from\" layer2/**/*.py)",
+      "Bash(git remote:*)"
     ]
   }
 }

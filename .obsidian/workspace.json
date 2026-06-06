@@ -261,6 +261,8 @@
   },
   "active": "6e355511c4142154",
   "lastOpenFiles": [
+    "population_strategy.md.tmp.157328.1780767627622",
+    "population_strategy.md.tmp.157328.1780767599589",
     "population_strategy.md",
     "wiki/sources/SRC - OWS Dev Squad.md",
     "wiki/integrations/Alpaca API.md",
@@ -289,14 +291,12 @@
     "dev_graph/sync_to_neo4j.py",
     "wiki/systems/Three-Layer Trading System.md",
     "wiki/log.md",
-    "project_structure.md",
     "Untitled.canvas",
     "wiki/kierkegaard/works",
     "wiki/kierkegaard/theorems",
     "wiki/kierkegaard/taxonomies",
     "wiki/kierkegaard/structure",
     "wiki/kierkegaard/syntheses",
-    "wiki/kierkegaard/sources",
-    "wiki/kierkegaard/references"
+    "wiki/kierkegaard/sources"
   ]
 }

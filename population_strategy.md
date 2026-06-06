@@ -277,6 +277,34 @@ These types are created as needed by their respective processes:
 - Benchmark: When a repeatable performance measurement is conducted
 - Context pack: On-demand at the start of each coding session
 
+3.20 Within-Session Creation Priority
+
+When a single session satisfies multiple creation triggers simultaneously, nodes are created in the following priority order. This prevents orphan nodes (child created before parent), governance gaps (implementation before decision), and contract violations (code before interface).
+
+Reduction rules:
+1. Governance before content — capture decisions and constraints before creating artifacts they govern.
+2. Parent before child — follow the containment hierarchy downward.
+3. Contract before implementation — define interfaces and schemas before the modules that implement them.
+
+Priority table (applies to within-session ordering during Phase 5+ coding sessions; during dedicated ontology sessions in Phases 0-4, follow the phase-specific deliverables list):
+
+| Priority | Types | Rationale |
+|----------|-------|-----------|
+| 0 | decision_record, constraint | Governance-first. ADRs capture decisions while context is fresh. Constraints define rules before artifacts they bind. |
+| 1 | architecture, system | Structural skeleton. Rarely created in coding sessions. When they are, everything else depends on them. |
+| 2 | capability | Scope container. Must exist before its children (modules, interfaces). |
+| 3 | interface, artifact_schema | Contract before implementation. Defines what modules must satisfy. |
+| 4 | pattern | Structural guidance. Created when a second implementation reveals reuse. Informs subsequent module work in this session. |
+| 5 | module | Code boundary. Created at session start before writing code. |
+| 6 | gate, predicate, workflow, event, agent, skill | Behavioral and quality nodes. Created alongside or immediately after the modules they govern or describe. |
+| 7 | file, test | Leaf nodes. Created during writeback at session end. |
+| 8 | knowledge_asset | Stable foundation. If discovered during a coding session, can be deferred to next session without losing information. The underlying principle does not change between sessions. |
+| 9 | benchmark_result, context_pack | On-demand. Benchmarks are created when measurements are taken. Context packs are ephemeral. |
+
+Conflict resolution: If two nodes at the same priority level have a dependency between them (one references the other), create the referenced node first.
+
+Exception: If creating a higher-priority node would require significant context-switching that disrupts a coding flow, note the pending creation in the session log and create it as the first action of the next session. This applies primarily to knowledge_asset and pattern nodes discovered mid-implementation.
+
 ---
 
 4. Population Order — Phased Roadmap
@@ -796,6 +824,52 @@ DO NOT create a file node when:
 - The file is a utility with no public interface
 - The file is a third-party vendored dependency
 
+7.6 Ontology Evolution During Coding Sessions
+
+Engineering sessions may discover that the ontology's current structure no longer matches implementation reality. A module may need splitting, two capabilities may need merging, or a pattern may emerge. These changes should be handled IN the session that discovers them, not deferred to a periodic cleanup.
+
+Canonical rules for all evolution operations:
+
+1. canonical_id NEVER changes on a surviving node. If a node is renamed, moved, or refactored, its canonical_id remains the same. This is the invariant that makes cross-system references stable.
+2. Every structural evolution is captured in an ADR. Module splits, capability merges, interface supersessions, and architecture refactoring are architectural decisions. Create the ADR FIRST (Priority 0), then perform the evolution.
+3. Deprecated nodes are NEVER deleted. Set status: deprecated and add a deprecation reason in the node body. The deprecated node remains for audit trail and Neo4j history.
+4. All affected wikilinks are updated in the SAME session. Do not leave broken or stale references. Run orphan detection (lint check 7) after any evolution operation.
+5. The session log records every evolution action with before/after state.
+
+Evolution scenarios:
+
+Module split: A module's responsibility has grown to cover two distinct concerns.
+- Create the ADR documenting why the split is necessary.
+- The original module retains its canonical_id and keeps the primary responsibility.
+- Create a new module with a new canonical_id for the extracted responsibility.
+- Move relevant file and test references to the new module.
+- Update the parent capability's implemented_by list.
+- Both modules add wikilinks to each other in their relationship sections.
+
+Capability merge: Two capabilities are discovered to describe the same abstract behavior.
+- Create the ADR documenting the merge.
+- The surviving capability retains its canonical_id and absorbs the other's content.
+- The absorbed capability is set to status: deprecated with a note pointing to the survivor.
+- All modules referencing the absorbed capability update their parent_capability.
+- Update the parent system's contains_capabilities list.
+
+Pattern extraction: A reusable structural approach is recognized across 2+ implementations.
+- Create the pattern node (trigger rule: 2+ instances).
+- Add realizes edges to existing modules/capabilities that follow the pattern.
+- No existing nodes are deprecated or removed — only enriched with the new relationship.
+
+Interface supersession: A contract changes in a breaking way.
+- Create the ADR documenting the change.
+- Bump interface_version on the interface node. For non-breaking changes, update in place. For breaking changes, create a new interface node and deprecate the old one.
+- Modules implementing the old interface must be updated or flagged as blocked.
+
+Architecture refactoring: A system boundary moves.
+- Create the ADR documenting the boundary change.
+- Update affected system nodes (upstream/downstream, contains_capabilities).
+- Move capability nodes between systems as needed.
+- Update the Context Map architecture node to reflect the new boundary.
+- This is a rare, high-impact operation — verify with a full lint pass after completion.
+
 ---
 
 8. Continuous Maintenance Strategy
@@ -873,6 +947,37 @@ Trigger: Annually
 | Maintenance cost assessment | How much time is spent on ontology maintenance vs. value delivered? |
 | Technology review | Is Obsidian/markdown still the right substrate? Should more weight shift to Neo4j? |
 | Schema evolution review | Any structural changes needed for the next year? |
+
+8.6 Population Debt Detection
+
+Population debt represents engineering concepts that SHOULD exist according to the ontology hierarchy but are intentionally deferred because their creation trigger has not yet fired.
+
+Acceptable debt (by design — the phased roadmap creates these gaps intentionally):
+
+| Debt Pattern | Why It's Acceptable | Repayment Trigger |
+|-------------|--------------------|--------------------|
+| Capability exists, module missing | Phase 3 before Phase 5 — capability is planned, code isn't written yet | Module trigger fires: code implementation begins |
+| Interface exists, schema incomplete | Phase 4 early — interface contract defined before data shapes are formalized | Schema trigger fires: formal data shape is defined |
+| Module exists, tests missing | Implementation before testing — normal development sequence | Test trigger fires: test file is created |
+| ADR exists, knowledge asset not yet extracted | Decision made before foundational principle is generalized | Knowledge asset trigger fires: principle is referenced by 2+ ADRs |
+| System exists, not all capabilities decomposed | Phase 2 before complete Phase 3 — some capabilities emerge during implementation | Capability trigger fires: implementation planning begins for that functionality |
+
+Unacceptable debt (violates containment hierarchy or governance principles):
+
+| Debt Pattern | Why It's Unacceptable | Required Action |
+|-------------|----------------------|-----------------|
+| Module exists, capability does not | Child without parent — breaks containment hierarchy | Create the capability node in this session |
+| File exists, module does not | Leaf without parent — file has no architectural context | Create the module node in this session |
+| Capability exists, system does not | Floating abstraction — capability has no bounded context | Create the system node (requires ADR if a new system) |
+| Constraint referenced but node missing | Governance gap — a rule is cited but not formally defined | Create the constraint node immediately |
+
+Repayment strategy: Acceptable debt is NOT backlogged in a separate file. It is detected automatically by dashboard queries and reviewed at existing maintenance cadences:
+
+- Weekly: Dashboard gap detection queries flag structural incompleteness.
+- Monthly: Capability completeness review identifies deferred modules.
+- Quarterly: Traceability check identifies broken chains.
+
+If acceptable debt persists past TWO quarterly reviews without progress toward repayment, it should be evaluated: is the deferred concept still needed, or has the architecture evolved past it? If no longer needed, update the parent node to remove the forward reference. If still needed, create the node — the persistent gap indicates the creation trigger may be too conservative.
 
 ---
 
@@ -953,6 +1058,23 @@ Dataview: TABLE length(rows) AS Count FROM "dev_graph"
 WHERE type != null
 GROUP BY type
 SORT length(rows) DESC
+
+## 18. Population Debt: Systems Without Capabilities
+Dataview: TABLE file.name FROM "dev_graph"
+WHERE type = "system"
+AND (contains_capabilities = null OR length(contains_capabilities) = 0)
+
+## 19. Population Debt: Capabilities Without Modules
+Dataview: TABLE file.name, parent_system FROM "dev_graph"
+WHERE type = "capability"
+AND (implemented_by = null OR length(implemented_by) = 0)
+AND implementation_status != "not-started"
+
+## 20. Population Debt: Modules Without Files
+Dataview: TABLE file.name FROM "dev_graph"
+WHERE type = "module"
+AND (related_files = null OR length(related_files) = 0)
+AND implementation_status = "implemented"
 ```
 
 ---

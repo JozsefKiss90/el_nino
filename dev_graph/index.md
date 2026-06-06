@@ -164,11 +164,19 @@ Last updated: 2026-06-06
 
 ## Gates
 
-(Empty — populated in Phase 6 when quality gates are defined)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Trade Validation Gate]] | GATE-001 | gate | Blocking trade-validation checkpoint (Risk Control) — enforced by GuardrailEngine.validate() |
 
 ## Predicates
 
-(Empty — populated in Phase 6 when boolean predicates are defined)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Position Size OK]] | PRED-001 | predicate | size ≤ min(equity·pct, absolute cap) |
+| [[Daily Loss Cap OK]] | PRED-002 | predicate | daily_pnl > -daily_loss_cap |
+| [[Max Trades OK]] | PRED-003 | predicate | trades_today < max_trades_per_day |
+| [[Max Positions OK]] | PRED-004 | predicate | open_positions < max_positions |
+| [[Withdrawal Disabled]] | PRED-005 | predicate | withdrawals must be disabled |
 
 ## Schemas
 
@@ -202,14 +210,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 83 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 3, module: 2, file: 3, test: 2, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 89 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 3, module: 2, file: 3, test: 2, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 87
+- **Total files**: 93
 - **Active directories**: 23
-- **Populated directories**: 19 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
-- **Empty directories**: 6 (events, gates, predicates, agents, skills, benchmarks)
-- **Frontmatter coverage**: 83/83 content nodes (100%)
-- **Canonical ID coverage**: 83/83 content nodes (100%)
+- **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
+- **Empty directories**: 4 (events, agents, skills, benchmarks)
+- **Frontmatter coverage**: 89/89 content nodes (100%)
+- **Canonical ID coverage**: 89/89 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
@@ -230,3 +238,4 @@ Last updated: 2026-06-06
 - **Phase 4.5 (contract layer) date**: 2026-06-06
 - **Phase 5 (implementation readiness) date**: 2026-06-06
 - **Phase 5 (first coding session — Guardrail Engine) date**: 2026-06-06
+- **Phase 6 #1 (Trade Validation Gate + predicates) date**: 2026-06-06

@@ -418,3 +418,41 @@ Python 3.10.6). This is the first source code in the repository.
 - Phase 6 #1 Trade Validation Gate + predicate nodes (now unblocked — predicates exist in
   `predicates.py`; gate/predicate nodes can link to FILE-002 / TEST-001).
 - ruff + mypy not yet installed → lint/type gates declared in ADR-003 but not run this session.
+
+---
+
+## [2026-06-06] populate | Phase 6 #1 — Trade Validation Gate + predicates
+
+First quality-infrastructure nodes, created after the Guardrail Engine code exists (predicates
+live in `predicates.py` / FILE-002, tested by `test_predicates` / TEST-001). Resolves CAP-008's
+Phase-6 forward-reference. Gate/predicate nodes were deliberately deferred until code existed.
+
+### Nodes Created (6)
+
+**Gate (1)**:
+- Trade Validation Gate (GATE-001) — blocking checkpoint; gate logic = `GuardrailEngine.validate()`; `in-progress` (validation logic tested, not yet wired into a live trade pipeline — no order router yet)
+
+**Predicates (5)** — each `implemented_in: src/risk/guardrail_engine/predicates.py`, `validated_by: [[test_predicates]]`, status tested:
+- Position Size OK (PRED-001) — `position_size_ok`
+- Daily Loss Cap OK (PRED-002) — `daily_loss_cap_ok`
+- Max Trades OK (PRED-003) — `max_trades_ok`
+- Max Positions OK (PRED-004) — `max_positions_ok`
+- Withdrawal Disabled (PRED-005) — `withdrawal_disabled`
+
+### Changes
+
+- CAP-008 Guardrail Enforcement: `### Contains` prose forward-ref replaced with real links to GATE-001 + the 5 predicates.
+- index.md: Gates + Predicates sections populated; statistics updated.
+
+### Edges
+
+- Each predicate `Guards` → [[Trade Validation Gate]]; gate `Depends On` → the 5 predicates; gate `Guards` → [[Guardrail Enforcement]].
+- Gate `Consumes` → [[Trade Validation Request Schema]]; `Validated By` → [[test_guardrail_engine]].
+
+### Metrics
+
+- Total content nodes: 89 (83 + 6). Active: 88 (REF-004 deprecated).
+- New type counts: gate 1, predicate 5. Governance: 7 (unchanged).
+- Canonical ID + evidence coverage: 89/89 (100%).
+- Populated directories: 21 / 23 (gates, predicates now populated). Empty: 4 (events, agents, skills, benchmarks).
+- vs Phase 5 soft ceiling 200: 89.

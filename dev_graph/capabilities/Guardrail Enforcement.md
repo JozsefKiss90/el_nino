@@ -60,7 +60,12 @@ Primary capability of Risk Control. Positioned at the system boundary between Tr
 ## Relationships
 
 ### Contains
-- (Forward: Trade Validation Gate, Position Size OK predicate, Daily Loss Cap OK predicate, Withdrawal Disabled predicate — Phase 6)
+- [[Trade Validation Gate]]
+- [[Position Size OK]]
+- [[Daily Loss Cap OK]]
+- [[Max Trades OK]]
+- [[Max Positions OK]]
+- [[Withdrawal Disabled]]
 
 ### Depends On
 

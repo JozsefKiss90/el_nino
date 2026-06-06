@@ -44,7 +44,8 @@
       "Bash(wc -l governance/dag_runner/*.py)",
       "Bash(xargs wc:*)",
       "Bash(grep -h \"^import\\\\|^from\" layer2/**/*.py)",
-      "Bash(git remote:*)"
+      "Bash(git remote:*)",
+      "Bash(ls:*)"
     ]
   }
 }

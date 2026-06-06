@@ -259,8 +259,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "6e355511c4142154",
+  "active": "33a313b375f1c516",
   "lastOpenFiles": [
+    "audit_plan.md",
     "wiki/memory/Agent Memory Architecture.md",
     "raw/build-spec.md",
     "wiki/risk/Autonomous Trading Risk Model.md",
@@ -288,7 +289,6 @@
     "wiki/kierkegaard/log.md",
     "wiki/kierkegaard/structure/Ch3 - Sin Is Not a Negation but a Position.md",
     "wiki/kierkegaard/index.md",
-    "wiki/kierkegaard/structure/Ch2 - The Socratic Definition of Sin.md",
     "wiki/kierkegaard/works",
     "wiki/kierkegaard/theorems",
     "wiki/kierkegaard/taxonomies",

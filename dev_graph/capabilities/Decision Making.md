@@ -2,7 +2,7 @@
 type: capability
 canonical_id: CAP-015
 status: active
-implementation_status: not-started
+implementation_status: in-progress
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
@@ -11,6 +11,7 @@ evidence:
   - design
   - wiki
   - external
+  - code
 source_paths:
   - "wiki/agents/Supervisor Decision Engine.md"
   - "wiki/systems/Syndicate Squad Architecture.md"

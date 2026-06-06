@@ -1,15 +1,16 @@
 ---
 type: artifact_schema
 canonical_id: SCHEMA-004
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: implemented
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/agents/Supervisor Decision Engine.md"
   - "wiki/systems/Syndicate Squad Architecture.md"
@@ -20,7 +21,7 @@ related_decisions:
   - "[[ADR - Ontology Redesign]]"
 schema_id: "decision-packet"
 schema_version: "0.1.0"
-schema_path: "src/supervisor/schemas/decision_packet.py"
+schema_path: "src/supervisor/decision_engine/models.py"
 validated_by: []
 consumed_by: []
 produced_by:
@@ -65,6 +66,7 @@ Output schema of the Decision API (INT-006). Produced by the Decision Engine (MO
 ### Used By
 - [[Decision Engine]]
 - [[Decision API]]
+- [[models.py (supervisor)]]
 
 ### Justified By
 - [[ADR - Ontology Redesign]]

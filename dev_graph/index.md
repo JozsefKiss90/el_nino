@@ -154,6 +154,9 @@ Last updated: 2026-06-06
 | [[guardrail_engine.py]] | FILE-001 | file | GuardrailEngine.validate() + fail-closed config loader (MOD-001) |
 | [[predicates.py]] | FILE-002 | file | Hard-limit guardrail predicates (pure functions) |
 | [[models.py]] | FILE-003 | file | Dataclasses realizing SCHEMA-007 / SCHEMA-008 |
+| [[decision_engine.py]] | FILE-004 | file | DecisionEngine.decide() — deterministic upgrade selection (MOD-002) |
+| [[scoring.py]] | FILE-005 | file | Weakness scoring (pure functions) |
+| [[models.py (supervisor)]] | FILE-006 | file | Dataclasses realizing SCHEMA-004 / SCHEMA-005 |
 
 ## Tests
 
@@ -161,6 +164,8 @@ Last updated: 2026-06-06
 |------|----|------|---------|
 | [[test_predicates]] | TEST-001 | test | Unit tests for the guardrail predicates (7 tests) |
 | [[test_guardrail_engine]] | TEST-002 | test | Behavioral tests for the Guardrail Engine (8 tests) |
+| [[test_scoring]] | TEST-003 | test | Unit tests for Decision Engine scoring (5 tests) |
+| [[test_decision_engine]] | TEST-004 | test | Behavioral tests for the Decision Engine (7 tests) |
 
 ## Gates
 
@@ -182,11 +187,12 @@ Last updated: 2026-06-06
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
-| [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Supervisor decision output — selected upgrade, ranked options, rationale |
+| [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
+| [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
 | [[Trade Validation Decision Schema]] | SCHEMA-008 | artifact_schema | Risk Check API output — approve/block + triggered predicate |
 
-(SCHEMA-001/002/003, 005/006 reserved for future Phase 4 schemas)
+(SCHEMA-001/002/003, 006 reserved for future Phase 4 schemas)
 
 ## Workflows
 
@@ -210,18 +216,18 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 89 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 3, module: 2, file: 3, test: 2, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 95 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 4, module: 2, file: 6, test: 4, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 93
+- **Total files**: 99
 - **Active directories**: 23
 - **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
 - **Empty directories**: 4 (events, agents, skills, benchmarks)
-- **Frontmatter coverage**: 89/89 content nodes (100%)
-- **Canonical ID coverage**: 89/89 content nodes (100%)
+- **Frontmatter coverage**: 95/95 content nodes (100%)
+- **Canonical ID coverage**: 95/95 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
-- **Realizes edges**: 26 (23 capabilities + 2 modules + 1 file → patterns)
+- **Realizes edges**: 27 (23 capabilities + 2 modules + 2 files → patterns)
 - **Composes edges**: 2 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval)
 - **Originates From edges**: 12 (capabilities/systems → knowledge assets)
 - **Status enum**: 7 values
@@ -239,3 +245,4 @@ Last updated: 2026-06-06
 - **Phase 5 (implementation readiness) date**: 2026-06-06
 - **Phase 5 (first coding session — Guardrail Engine) date**: 2026-06-06
 - **Phase 6 #1 (Trade Validation Gate + predicates) date**: 2026-06-06
+- **Phase 5 (second coding session — Decision Engine) date**: 2026-06-06

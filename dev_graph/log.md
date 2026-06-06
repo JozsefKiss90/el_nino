@@ -456,3 +456,50 @@ Phase-6 forward-reference. Gate/predicate nodes were deliberately deferred until
 - Canonical ID + evidence coverage: 89/89 (100%).
 - Populated directories: 21 / 23 (gates, predicates now populated). Empty: 4 (events, agents, skills, benchmarks).
 - vs Phase 5 soft ceiling 200: 89.
+
+---
+
+## [2026-06-06] session | Phase 5 second coding session — Decision Engine vertical slice
+
+Second vertical slice (MOD-002). Contract-sufficiency check found the Decision API output
+contract (SCHEMA-004) complete but the **input contract missing** (`input_schema: null`). Created
+the one minimal contract required — SCHEMA-005 Evaluation Scorecard Schema (reserved §4.6 id) —
+then implemented and tested the engine. **27 tests pass** (15 prior + 12 new).
+
+### Contract created (1)
+
+- Evaluation Scorecard Schema (SCHEMA-005) — Decision API input; fills INT-006 `input_schema: null`.
+  Treasury state / upgrade catalog / institutional memory kept as internal value objects (intra-system,
+  not schema nodes). Evaluation API (INT-007) transport deferred.
+
+### Application code created
+
+- `src/supervisor/decision_engine/`: `models.py`, `scoring.py`, `decision_engine.py` (+ `__init__.py`)
+- `tests/supervisor/`: `test_scoring.py` (5), `test_decision_engine.py` (7)
+
+### Writeback — dev_graph nodes created (5)
+
+**File nodes (3)** — `module: [[Decision Engine]]`, evidence [code]:
+- decision_engine.py (FILE-004), scoring.py (FILE-005), models.py (supervisor) (FILE-006)
+  - Note: FILE-006 named `models.py (supervisor)` to avoid an Obsidian basename collision with FILE-003.
+
+**Test nodes (2)** — evidence [code], implementation_status tested:
+- test_scoring (TEST-003) covers scoring.py; test_decision_engine (TEST-004) covers decision_engine.py
+
+### Writeback — nodes updated (5)
+
+- MOD-002 Decision Engine: planned/not-started → active/**tested**; evidence += code; confidence
+  inferred→confirmed; related_files (3) + related_tests (2); Consumes / Contains / Validated By edges added.
+- INT-006 Decision API: planned/not-started → active/**implemented**; `input_schema: null` →
+  [[Evaluation Scorecard Schema]]; evidence += code; confidence→confirmed; stability experimental→evolving.
+- SCHEMA-004 Decision Packet: → active/**implemented**; `schema_path` → `src/supervisor/decision_engine/models.py`; evidence += code.
+- SCHEMA-005 Evaluation Scorecard: → active/**implemented**; evidence += code.
+- CAP-015 Decision Making: implementation_status not-started → **in-progress**; evidence += code.
+
+### Metrics
+
+- Total content nodes: 95 (89 + 6: SCHEMA-005, FILE-004/005/006, TEST-003/004). Active: 94 (REF-004 deprecated).
+- New type counts: artifact_schema 3→4, file 3→6, test 2→4. Governance: 7 (unchanged).
+- Canonical ID + evidence coverage: 95/95 (100%). Realizes edges: 27.
+- Test result: 27 passed. Two modules (MOD-001, MOD-002) now implemented + tested.
+- vs Phase 5 soft ceiling 200: 95.

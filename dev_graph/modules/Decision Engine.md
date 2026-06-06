@@ -1,20 +1,26 @@
 ---
 type: module
 canonical_id: MOD-002
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: tested
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/agents/Supervisor Decision Engine.md"
   - "wiki/systems/Syndicate Squad Architecture.md"
-related_files: []
-related_tests: []
+related_files:
+  - "[[decision_engine.py]]"
+  - "[[scoring.py]]"
+  - "[[models.py (supervisor)]]"
+related_tests:
+  - "[[test_decision_engine]]"
+  - "[[test_scoring]]"
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
@@ -77,17 +83,29 @@ Concrete plan (grounded in `wiki/agents/Supervisor Decision Engine.md` Decision 
 
 ## Open Questions
 
-- `related_tests` is empty by design — tests are produced by the first coding session (writeback).
+- Implemented and tested 2026-06-06 (12 tests green): `[[decision_engine.py]]`, `[[scoring.py]]`, `[[models.py (supervisor)]]`; `[[test_decision_engine]]`, `[[test_scoring]]`. Status advanced planned/not-started → active/tested.
+- Decision API `input_schema` resolved → [[Evaluation Scorecard Schema]] (SCHEMA-005), created this slice.
 - Whether the multi-round evolution loop lives here or in Upgrade Evaluation (CAP-017).
-- Decision API `input_schema` (Evaluation Scorecard Schema, SCHEMA-005) is deferred — add a `### Consumes` edge when it exists.
 
 ## Relationships
 
 ### Implements
 - [[Decision API]]
 
+### Consumes
+- [[Evaluation Scorecard Schema]]
+
 ### Produces
 - [[Decision Packet Schema]]
+
+### Contains
+- [[decision_engine.py]]
+- [[scoring.py]]
+- [[models.py (supervisor)]]
+
+### Validated By
+- [[test_decision_engine]]
+- [[test_scoring]]
 
 ### Depends On
 - [[Performance Scoring]]

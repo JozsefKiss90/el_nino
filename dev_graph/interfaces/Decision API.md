@@ -1,15 +1,16 @@
 ---
 type: interface
 canonical_id: INT-006
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: implemented
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/agents/Supervisor Decision Engine.md"
   - "wiki/systems/Syndicate Squad Architecture.md"
@@ -21,11 +22,11 @@ related_decisions:
 interface_id: "decision-api"
 interface_version: "0.1.0"
 parent_capability: "[[Decision Making]]"
-input_schema: null
+input_schema: "[[Evaluation Scorecard Schema]]"
 output_schema: "[[Decision Packet Schema]]"
 implemented_by:
   - "[[Decision Engine]]"
-stability: experimental
+stability: evolving
 ---
 
 # Decision API
@@ -45,7 +46,7 @@ Boundary interface of the Decision Making capability (CAP-015). Implemented by t
 ## Contract
 
 - **Operation**: `decide(state) -> decision_packet` — evaluates current performance, catalog, treasury, and institutional memory.
-- **Input**: not yet a formal schema — the Evaluation Scorecard Schema (SCHEMA-005) is out of the first implementation slice; `input_schema: null` for now.
+- **Input**: [[Evaluation Scorecard Schema]] (SCHEMA-005) — performance evidence from the Evaluation Loop. Plus intra-system inputs (upgrade catalog, treasury state, institutional memory) passed as internal value objects.
 - **Output**: Decision Packet Schema (selected upgrade, ranked options, rationale, treasury state).
 - **Semantics**: Deterministic — no randomness in decision-making.
 
@@ -60,12 +61,18 @@ Boundary interface of the Decision Making capability (CAP-015). Implemented by t
 
 ## Open Questions
 
-- `input_schema: null` until Evaluation Scorecard Schema (SCHEMA-005) exists.
+- `input_schema` set to [[Evaluation Scorecard Schema]] (SCHEMA-005), created 2026-06-06 for the Decision Engine slice. The transport interface (Evaluation API, INT-007) remains deferred.
 
 ## Relationships
 
+### Consumes
+- [[Evaluation Scorecard Schema]]
+
 ### Produces
 - [[Decision Packet Schema]]
+
+### Validated By
+- [[test_decision_engine]]
 
 ### Justified By
 - [[ADR - Ontology Redesign]]

@@ -2,7 +2,7 @@
 type: capability
 canonical_id: CAP-008
 status: active
-implementation_status: not-started
+implementation_status: in-progress
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
@@ -10,6 +10,7 @@ confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/risk/Guardrail Architecture.md"
   - "wiki/risk/Autonomous Trading Risk Model.md"

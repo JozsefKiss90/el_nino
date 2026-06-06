@@ -1,15 +1,16 @@
 ---
 type: artifact_schema
 canonical_id: SCHEMA-007
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: implemented
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/risk/Guardrail Architecture.md"
   - "wiki/risk/Autonomous Trading Risk Model.md"
@@ -20,7 +21,7 @@ related_decisions:
   - "[[ADR - Ontology Redesign]]"
 schema_id: "trade-validation-request"
 schema_version: "0.1.0"
-schema_path: "src/risk/schemas/trade_validation_request.py"
+schema_path: "src/risk/guardrail_engine/models.py"
 validated_by: []
 consumed_by:
   - "[[Guardrail Engine]]"
@@ -69,6 +70,7 @@ Input schema of the Risk Check API (INT-003). Produced by the trade-proposing mo
 ### Used By
 - [[Guardrail Engine]]
 - [[Risk Check API]]
+- [[models.py]]
 
 ### Justified By
 - [[ADR - Ontology Redesign]]

@@ -123,6 +123,7 @@ Last updated: 2026-06-06
 |------|----|------|---------|
 | [[ADR - Dev Graph Bootstrap]] | ADR-001 | decision_record | Bootstrap decision — why dev_graph exists |
 | [[ADR - Ontology Redesign]] | ADR-002 | decision_record | Ontology redesign — 24-type hierarchy with canonical_id |
+| [[ADR - Implementation Substrate]] | ADR-003 | decision_record | Tech stack / repo layout / config policy for the first coding session |
 
 ## Constraints
 
@@ -148,11 +149,18 @@ Last updated: 2026-06-06
 
 ## Files
 
-(Empty — populated in Phase 5 when source files are tracked)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[guardrail_engine.py]] | FILE-001 | file | GuardrailEngine.validate() + fail-closed config loader (MOD-001) |
+| [[predicates.py]] | FILE-002 | file | Hard-limit guardrail predicates (pure functions) |
+| [[models.py]] | FILE-003 | file | Dataclasses realizing SCHEMA-007 / SCHEMA-008 |
 
 ## Tests
 
-(Empty — populated in Phase 5 when test files are tracked)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[test_predicates]] | TEST-001 | test | Unit tests for the guardrail predicates (7 tests) |
+| [[test_guardrail_engine]] | TEST-002 | test | Behavioral tests for the Guardrail Engine (8 tests) |
 
 ## Gates
 
@@ -194,18 +202,18 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 77 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 3, module: 2, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 2, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 83 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 3, module: 2, file: 3, test: 2, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 81
+- **Total files**: 87
 - **Active directories**: 23
-- **Populated directories**: 17 (architecture, systems, capabilities, interfaces, schemas, modules, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
-- **Empty directories**: 8 (events, files, tests, gates, predicates, agents, skills, benchmarks)
-- **Frontmatter coverage**: 77/77 content nodes (100%)
-- **Canonical ID coverage**: 77/77 content nodes (100%)
+- **Populated directories**: 19 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
+- **Empty directories**: 6 (events, gates, predicates, agents, skills, benchmarks)
+- **Frontmatter coverage**: 83/83 content nodes (100%)
+- **Canonical ID coverage**: 83/83 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
-- **Realizes edges**: 25 (23 capabilities + 2 modules → patterns)
+- **Realizes edges**: 26 (23 capabilities + 2 modules + 1 file → patterns)
 - **Composes edges**: 2 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval)
 - **Originates From edges**: 12 (capabilities/systems → knowledge assets)
 - **Status enum**: 7 values
@@ -221,3 +229,4 @@ Last updated: 2026-06-06
 - **Phase 3 completion date**: 2026-06-06
 - **Phase 4.5 (contract layer) date**: 2026-06-06
 - **Phase 5 (implementation readiness) date**: 2026-06-06
+- **Phase 5 (first coding session — Guardrail Engine) date**: 2026-06-06

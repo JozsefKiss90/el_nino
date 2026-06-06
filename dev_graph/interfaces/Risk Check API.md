@@ -1,15 +1,16 @@
 ---
 type: interface
 canonical_id: INT-003
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: implemented
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/risk/Guardrail Architecture.md"
   - "wiki/systems/Three-Layer Trading System.md"
@@ -25,7 +26,7 @@ input_schema: "[[Trade Validation Request Schema]]"
 output_schema: "[[Trade Validation Decision Schema]]"
 implemented_by:
   - "[[Guardrail Engine]]"
-stability: experimental
+stability: evolving
 ---
 
 # Risk Check API
@@ -69,6 +70,9 @@ Boundary interface of the Guardrail Enforcement capability (CAP-008). Implemente
 
 ### Produces
 - [[Trade Validation Decision Schema]]
+
+### Validated By
+- [[test_guardrail_engine]]
 
 ### Justified By
 - [[ADR - Ontology Redesign]]

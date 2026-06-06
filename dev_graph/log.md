@@ -364,3 +364,57 @@ implementation slice requires. Canonical IDs preserve the Population Strategy §
 - Dangling wikilinks resolved: 2 (CAP-008 → Risk Check API, CAP-015 → Decision API).
 - vs Phase 5 soft ceiling 200: 77 (well under).
 - ID scheme: Population Strategy §4.6 reservations preserved; non-contiguous IDs accepted.
+
+---
+
+## [2026-06-06] session | Phase 5 first coding session — Guardrail Engine vertical slice
+
+Drove the first real application code from [[Phase 5 Bootstrap Context]] (CTX-002): substrate
+ADR → Guardrail Engine implementation → tests → writeback. **15 tests pass** (pytest 9.0.2 /
+Python 3.10.6). This is the first source code in the repository.
+
+### Decision records (1)
+
+- ADR - Implementation Substrate (ADR-003) — Python 3.10+, `src/` layout mirroring module_path,
+  uv + PEP 621 pyproject, pytest, mypy --strict, stdlib dataclasses (pydantic deferred),
+  fail-closed env-var config.
+
+### Application code created (not dev_graph nodes)
+
+- `pyproject.toml` (zero runtime deps; `[tool.pytest.ini_options] pythonpath=["src"]`)
+- `src/risk/guardrail_engine/`: `models.py`, `predicates.py`, `guardrail_engine.py` (+ `__init__.py`)
+- `tests/risk/`: `test_predicates.py` (7), `test_guardrail_engine.py` (8)
+
+### Writeback — dev_graph nodes created (5)
+
+**File nodes (3)** — all `module: [[Guardrail Engine]]`, evidence [code]:
+- guardrail_engine.py (FILE-001), predicates.py (FILE-002), models.py (FILE-003)
+
+**Test nodes (2)** — evidence [code], implementation_status tested:
+- test_predicates (TEST-001) covers predicates.py; test_guardrail_engine (TEST-002) covers guardrail_engine.py
+
+### Writeback — nodes updated (5)
+
+- MOD-001 Guardrail Engine: status planned→active, implementation_status not-started→**tested**;
+  evidence += code; confidence inferred→confirmed; related_files (3) + related_tests (2) populated;
+  Contains / Validated By edges added.
+- INT-003 Risk Check API: planned→active, not-started→**implemented**; evidence += code;
+  confidence→confirmed; stability experimental→evolving; Validated By → test_guardrail_engine.
+- SCHEMA-007 / SCHEMA-008: planned→active, not-started→**implemented**; evidence += code;
+  confidence→confirmed; `schema_path` → `src/risk/guardrail_engine/models.py`; Used By += models.py.
+- CAP-008 Guardrail Enforcement: implementation_status not-started→**in-progress**; evidence += code.
+
+### Metrics
+
+- Total content nodes: 83 (77 + 6: ADR-003, FILE-001/002/003, TEST-001/002). Active: 82 (REF-004 deprecated).
+- New type counts: decision_record 2→3, file 3, test 2. Governance: 7 (unchanged).
+- Canonical ID + evidence coverage: 83/83 (100%). Realizes edges: 26.
+- Test result: 15 passed in 0.13s. Implementation→test traceability complete for MOD-001.
+- Populated directories: 19 / 23 (files, tests now populated). Empty: 6.
+- vs Phase 5 soft ceiling 200: 83.
+
+### Deferred (next)
+
+- Phase 6 #1 Trade Validation Gate + predicate nodes (now unblocked — predicates exist in
+  `predicates.py`; gate/predicate nodes can link to FILE-002 / TEST-001).
+- ruff + mypy not yet installed → lint/type gates declared in ADR-003 but not run this session.

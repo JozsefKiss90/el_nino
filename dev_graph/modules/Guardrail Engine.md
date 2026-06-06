@@ -1,20 +1,26 @@
 ---
 type: module
 canonical_id: MOD-001
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: tested
 canonical: true
 created: 2026-06-06
 updated: 2026-06-06
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - wiki
+  - code
 source_paths:
   - "wiki/risk/Guardrail Architecture.md"
   - "wiki/risk/Autonomous Trading Risk Model.md"
-related_files: []
-related_tests: []
+related_files:
+  - "[[guardrail_engine.py]]"
+  - "[[predicates.py]]"
+  - "[[models.py]]"
+related_tests:
+  - "[[test_guardrail_engine]]"
+  - "[[test_predicates]]"
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
@@ -76,7 +82,7 @@ The predicate → gate mapping (Position Size OK / Daily Loss Cap OK / Withdrawa
 
 ## Open Questions
 
-- `related_tests` is empty by design — tests are produced by the first coding session (writeback), per the Phase 5 authoring rules.
+- Implemented and tested 2026-06-06 (15 tests green): `[[guardrail_engine.py]]`, `[[predicates.py]]`, `[[models.py]]`; `[[test_guardrail_engine]]`, `[[test_predicates]]`. Status advanced planned/not-started → active/tested.
 - Whether circuit-breaking (Exposure Tracking, CAP-009) is composed here or kept a separate module.
 
 ## Relationships
@@ -89,6 +95,15 @@ The predicate → gate mapping (Position Size OK / Daily Loss Cap OK / Withdrawa
 
 ### Produces
 - [[Trade Validation Decision Schema]]
+
+### Contains
+- [[guardrail_engine.py]]
+- [[predicates.py]]
+- [[models.py]]
+
+### Validated By
+- [[test_guardrail_engine]]
+- [[test_predicates]]
 
 ### Realizes
 - [[Guardrail Pattern]]

@@ -657,3 +657,57 @@ nodes; INT-006 / SCHEMA-004 / SCHEMA-005 / MOD-002 untouched; no regime/guard-ma
 - Ratio features admissible by ADR-005 but none in v0.1.0 (no unit-safe denominator in the initial set).
 - **Gold DecisionPacket v0 is now grounded**: real deterministic SCHEMA-001-derived features exist, so a
   planning ADR for v0 is unblocked (regime_class/confidence inputs can cite concrete features). Next.
+
+## 2026-06-07 governance | ADR-006 Gold DecisionPacket v0 Planning
+
+**Driver.** ADR-004's gate is satisfied (MOD-004 + ADR-005 + SCHEMA-009 give real deterministic
+SCHEMA-001-derived features), so the Gold DecisionPacket v0 planning ADR is unblocked. Authored as a
+**governance / architectural-boundary** record that answers *"under what constraints may a Gold
+DecisionPacket contract be created?"* — NOT the contract itself. No schema frozen; no code; no
+schema/module/interface/file/test nodes; no execution/order/broker/position/trade/live-trading nodes.
+Treasury branch (MOD-002 / INT-006 / SCHEMA-004 / SCHEMA-005) untouched and kept permanently separate.
+
+### Nodes Created (1)
+
+- **ADR-006 Gold DecisionPacket v0 Planning** (decision_record, `status: draft` = "Proposed",
+  `implementation_status: not-started`, `evidence: [design, ADR]`). Records, for the future gold
+  decision layer: (1) net-new, permanently separate bounded context vs the Supervisor treasury branch;
+  (2) input boundary — consumes only SCHEMA-009 FeatureVectors / versioned artifacts / future L3 guard
+  outputs, never raw SCHEMA-001, raw JSON, external APIs, implicit state, or unversioned/history-dependent
+  signals; (3) replay invariant — `snapshot_id + feature_schema_version + model_version +
+  decision_policy_version + configuration ⇒ identical packet`; (4) provenance must trace to
+  source_snapshot_id + MOD-004 feature provenance; (5) feature grounding cites only the 14 real MOD-004
+  features (no inventions; gaps deferred); (6) `duplicate_ok`/`operational_ok` are future L3 guards, not
+  MOD-004 features; (7) no schema freeze — normative contract is a future SCHEMA node (new id, never
+  SCHEMA-004; SCHEMA-010 named non-binding; 002/003/006 stay reserved); (8) Creation Gates — normative
+  schema only after MOD-004 ✅ + feature-coverage validated + replay finalized + regime taxonomy +
+  confidence semantics agreed. Includes an explicitly **illustrative/provisional/non-normative** field
+  sketch.
+
+### Changes to existing nodes
+
+- `index.md`: ADR-006 added to Decisions; statistics refreshed (decision_record 5→6; total nodes 108→109;
+  total files 112→113; coverage 109/109); "Last updated" → 2026-06-07.
+- `ADR - Decision Layer Re-grounding` (ADR-004): added `[[ADR - Gold DecisionPacket v0 Planning]]` to
+  `related_decisions` + one Future Work line (v0 governance now recorded in ADR-006).
+- `ADR - Feature Layer Contract` (ADR-005): added `[[ADR - Gold DecisionPacket v0 Planning]]` to
+  `related_decisions`.
+
+### Metrics
+
+- Total content nodes: 109 (108 + 1). Active: 108 (REF-004 deprecated).
+- Type counts: decision_record 5→6. All others unchanged.
+- Canonical ID + frontmatter coverage: 109/109 (100%). canonical_id ADR-006 unique.
+- No code changed: 0 files under `src/**` or `tests/**`. No tests run (governance-only slice).
+- vs Phase 5 soft ceiling 200: 109.
+
+### Deferred / open
+
+- Creation Gates (b)–(e) remain open: deterministic feature-coverage validation, replay-requirement
+  finalization, regime taxonomy, and confidence semantics — all prerequisites before the normative Gold
+  DecisionPacket SCHEMA node may be authored.
+- Future objects named as non-binding candidates only (not reserved/created): Gold DecisionPacket
+  artifact_schema (e.g. SCHEMA-010), gold decision builder module, L3 guards (`duplicate_ok`,
+  `operational_ok`, …), regime taxonomy.
+- ADR-006 `status: draft` is the governed stand-in for "Proposed" (no `proposed` enum value); promote to
+  `active` on acceptance.

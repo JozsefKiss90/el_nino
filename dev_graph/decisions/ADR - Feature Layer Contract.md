@@ -21,6 +21,7 @@ related_constraints:
 related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Implementation Substrate]]"
+  - "[[ADR - Gold DecisionPacket v0 Planning]]"
 decision_id: "ADR-005"
 decision_date: 2026-06-07
 supersedes: []

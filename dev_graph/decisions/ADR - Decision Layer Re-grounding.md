@@ -22,6 +22,7 @@ related_constraints:
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
   - "[[ADR - Implementation Substrate]]"
+  - "[[ADR - Gold DecisionPacket v0 Planning]]"
 decision_id: "ADR-004"
 decision_date: 2026-06-07
 supersedes: []
@@ -87,6 +88,8 @@ It MUST NEVER depend directly on: raw snapshot payloads, implicit runtime state,
 ## Future Work
 
 Gold Trading Decision artifacts are introduced **only after** deterministic Layer-2-derived features exist (the MOD-004 Feature Builder slice). They must never depend directly on raw Layer-2 payloads — only on versioned feature definitions and SCHEMA-001 identity. The three-component confidence variant (performance / calibration / sample_quality) is NOT adopted into the frozen v0 scalar `confidence`+`uncertainty` model without a formal amendment.
+
+With the MOD-004 slice complete, the v0 governance constraints and Creation Gates are now recorded in [[ADR - Gold DecisionPacket v0 Planning]] (ADR-006), which planned (but did not freeze) the future contract.
 
 ## Relationships
 

@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-06
+Last updated: 2026-06-07
 
 ## Architecture
 
@@ -127,6 +127,7 @@ Last updated: 2026-06-06
 | [[ADR - Implementation Substrate]] | ADR-003 | decision_record | Tech stack / repo layout / config policy for the first coding session |
 | [[ADR - Decision Layer Re-grounding]] | ADR-004 | decision_record | Separates Supervisor treasury-upgrade branch from future Gold Trading Decision branch |
 | [[ADR - Feature Layer Contract]] | ADR-005 | decision_record | Deterministic snapshot-local feature rules; replay determinism; MOD-003-only input |
+| [[ADR - Gold DecisionPacket v0 Planning]] | ADR-006 | decision_record | Governance boundary for a future Gold DecisionPacket layer; creation gates + replay invariants; consumes SCHEMA-009 only; non-normative |
 
 ## Constraints
 
@@ -230,14 +231,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 108 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 6, module: 4, file: 10, test: 7, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 5, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 109 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 6, module: 4, file: 10, test: 7, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 6, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 112
+- **Total files**: 113
 - **Active directories**: 23
 - **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
 - **Empty directories**: 4 (events, agents, skills, benchmarks)
-- **Frontmatter coverage**: 108/108 content nodes (100%)
-- **Canonical ID coverage**: 108/108 content nodes (100%)
+- **Frontmatter coverage**: 109/109 content nodes (100%)
+- **Canonical ID coverage**: 109/109 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-07
 confidence: confirmed
 evidence:
   - design
@@ -19,6 +19,7 @@ related_tests: []
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
+  - "[[ADR - Decision Layer Re-grounding]]"
 schema_id: "decision-packet"
 schema_version: "0.1.0"
 schema_path: "src/supervisor/decision_engine/models.py"
@@ -33,6 +34,10 @@ produced_by:
 ## Definition
 
 The data contract for the deterministic decision output of the Supervisor Office: the selected upgrade (or none), the ranked option set with scores and block reasons, the rationale, and the post-decision treasury state.
+
+## Scope
+
+This artifact belongs to the **Supervisor Office treasury-upgrade decision path**. It is **not** the future Gold Trading Decision contract (DecisionPacket v0) — it carries `selected_upgrade_id` / `ranked_options`, not `regime_class` / `allowed_actions` / trade guards. The Gold Trading Decision branch will be introduced as separate ontology objects with new canonical identifiers, justified by deterministic Layer-2-derived features. Governed by [[ADR - Decision Layer Re-grounding]].
 
 ## Purpose
 

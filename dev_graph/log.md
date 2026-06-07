@@ -558,3 +558,46 @@ INT-002, SCHEMA-002/003/006 remain reserved and uncreated.
 - CAP-003 Snapshot Assembly describes the Layer-2 *producer*; MOD-003 is the Layer-3 *consumer* — a
   producer/consumer seam flagged for the generic→Ripley re-grounding ADR (not split this slice).
 - Next in the data path: Layer 2 snapshot → features/decision → Decision Packet v0 → consumer.
+
+## 2026-06-07 governance | Decision Layer Re-grounding (ADR-004) + clarify-in-place of treasury decision branch
+
+**Driver.** A read-only multi-agent audit (7 audits → synthesis → 3 adversarial verifiers) confirmed MOD-002 /
+INT-006 / SCHEMA-004 / SCHEMA-005 carry **treasury-upgrade** semantics, not gold trading — and the adversarial
+pass **rejected** a proposed "Guard Mapper" next slice (redundant with `Snapshot Consumer.is_consumable()`;
+emits guard verdicts into a vacuum since v0 is deferred). No ontology redesign; no canonical_id changes; no
+execution/order/trade nodes.
+
+### Nodes Created (1)
+
+- **ADR-004 Decision Layer Re-grounding** (decision_record, active/implemented). Records: (1) the four nodes are
+  the Supervisor Office treasury-upgrade branch; (2) the Gold Trading Decision branch will be NEW ontology
+  objects with NEW canonical_ids (gold v0 = a future SCHEMA-00x, never SCHEMA-004); (3) canonical_id
+  immutability + no in-place reclassification (split-only for type changes); (4) the Gold v0 **determinism
+  invariant** (depends only on deterministic SCHEMA-001-derived features + versioned artifacts; never raw
+  payloads/implicit state); (5) next slice = MOD-004 Feature Builder.
+
+### Clarify-in-place (4 nodes — canonical_ids unchanged, no renames, no splits)
+
+- MOD-002 Decision Engine, INT-006 Decision API, SCHEMA-004 Decision Packet Schema, SCHEMA-005 Evaluation
+  Scorecard Schema each gained a `## Scope` section ("Supervisor Office treasury-upgrade path — not the gold
+  DecisionPacket v0"), `updated`→2026-06-07, and `related_decisions += [[ADR - Decision Layer Re-grounding]]`.
+
+### Changes to existing nodes
+
+- `index.md`: ADR-004 added to Decisions; statistics refreshed (decision_record 3→4).
+
+### Metrics
+
+- Total content nodes: 102 (101 + ADR-004). Active: 101 (REF-004 deprecated).
+- decision_record 3→4. Canonical ID + frontmatter coverage: 102/102 (100%). No code changed (suite still 43).
+- vs Phase 5 soft ceiling 200: 102.
+
+### Deferred / open (blueprint for next session)
+
+- **MOD-004 Feature Builder** is the sanctioned next slice: deterministic, stateless, pure, replay-safe,
+  snapshot-local only. Allowed feature classes: spreads / ratios / levels / arithmetic transforms (e.g.
+  curve_2s10s, real_yield_10y, breakeven_10y, usd_level, vol_level). Forbidden: moving averages, momentum,
+  rolling windows, z-scores, percentiles, look-ahead, inferred regimes, learned embeddings — anything needing
+  history (a snapshot is temporally independent). Output contract (Feature Vector Schema, a new SCHEMA-00x) to
+  be authored contract-first at the start of that slice.
+- Gold DecisionPacket v0 authoring remains gated on real SCHEMA-001-derived features existing.

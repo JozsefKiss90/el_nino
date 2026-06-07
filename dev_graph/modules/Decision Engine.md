@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-07
 confidence: confirmed
 evidence:
   - design
@@ -24,6 +24,7 @@ related_tests:
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
+  - "[[ADR - Decision Layer Re-grounding]]"
 module_name: "decision_engine"
 module_path: "src/supervisor/decision_engine"
 responsibility: "Score upgrade options under treasury constraints and emit a deterministic decision packet"
@@ -39,6 +40,10 @@ provides:
 ## Definition
 
 The code boundary that implements the Decision Making capability: it scores candidate upgrades against current office weaknesses under treasury constraints and returns a deterministic decision packet selecting the best upgrade (or "no upgrade needed").
+
+## Scope
+
+This artifact belongs to the **Supervisor Office treasury-upgrade decision path**. It is **not** the future Gold Trading Decision contract (DecisionPacket v0). The Gold Trading Decision branch will be introduced as separate ontology objects with new canonical identifiers, justified by deterministic Layer-2-derived features. Governed by [[ADR - Decision Layer Re-grounding]].
 
 ## Purpose
 

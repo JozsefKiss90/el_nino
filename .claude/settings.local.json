@@ -65,7 +65,9 @@
       "Read(//c/Code/layer_3_wiki/snapshot_sources/**)",
       "Bash(python -c \"import json;d=json.load\\(open\\('snapshot.json'\\)\\);print\\('keys:',list\\(d.keys\\(\\)\\)\\);print\\('verdict:',d.get\\('verdict'\\)\\);print\\('guards:',json.dumps\\(d.get\\('guards'\\),indent=1\\)\\);print\\('series_count:',d.get\\('series_count'\\)\\);print\\('snapshot_id:',d.get\\('snapshot_id'\\)\\)\")",
       "Bash(python -c ' *)",
-      "Bash(python -m pytest tests/snapshot -q)"
+      "Bash(python -m pytest tests/snapshot -q)",
+      "Bash(xargs grep -l \"El Niño\\\\|gold\\\\|re-grounding\")",
+      "Bash(xargs grep -l \"gold\\\\|treasury\")"
     ]
   }
 }

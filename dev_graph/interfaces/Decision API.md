@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-07
 confidence: confirmed
 evidence:
   - design
@@ -19,6 +19,7 @@ related_tests: []
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
+  - "[[ADR - Decision Layer Re-grounding]]"
 interface_id: "decision-api"
 interface_version: "0.1.0"
 parent_capability: "[[Decision Making]]"
@@ -34,6 +35,10 @@ stability: evolving
 ## Definition
 
 The contract by which the Supervisor Office emits an upgrade decision to the rest of the system. This is the INT-006 interface reserved by Population Strategy §4.6 (Supervisor Office → Trading Engine).
+
+## Scope
+
+This artifact belongs to the **Supervisor Office treasury-upgrade decision path**. It is **not** the future Gold Trading Decision contract (DecisionPacket v0). The Gold Trading Decision branch will be introduced as separate ontology objects with new canonical identifiers, justified by deterministic Layer-2-derived features. Governed by [[ADR - Decision Layer Re-grounding]].
 
 ## Purpose
 

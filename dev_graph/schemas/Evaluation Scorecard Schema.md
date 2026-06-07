@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-07
 confidence: confirmed
 evidence:
   - design
@@ -19,6 +19,7 @@ related_tests: []
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
+  - "[[ADR - Decision Layer Re-grounding]]"
 schema_id: "evaluation-scorecard"
 schema_version: "0.1.0"
 schema_path: "src/supervisor/decision_engine/models.py"
@@ -33,6 +34,10 @@ produced_by: []
 ## Definition
 
 The performance-evidence contract the Supervisor Office consumes to decide whether — and how — to upgrade. This is the SCHEMA-005 reserved by Population Strategy §4.6, and the input contract of the Decision API (INT-006).
+
+## Scope
+
+This artifact belongs to the **Supervisor Office treasury-upgrade decision path** — it is the performance-evidence input to the *upgrade* Decision Engine, **not** a gold trading evaluation contract. Its four fields are reusable as components, but a future Gold evaluation scorecard will be a separate node with a new canonical identifier. Governed by [[ADR - Decision Layer Re-grounding]].
 
 ## Purpose
 

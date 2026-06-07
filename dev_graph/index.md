@@ -125,6 +125,7 @@ Last updated: 2026-06-06
 | [[ADR - Dev Graph Bootstrap]] | ADR-001 | decision_record | Bootstrap decision — why dev_graph exists |
 | [[ADR - Ontology Redesign]] | ADR-002 | decision_record | Ontology redesign — 24-type hierarchy with canonical_id |
 | [[ADR - Implementation Substrate]] | ADR-003 | decision_record | Tech stack / repo layout / config policy for the first coding session |
+| [[ADR - Decision Layer Re-grounding]] | ADR-004 | decision_record | Separates Supervisor treasury-upgrade branch from future Gold Trading Decision branch |
 
 ## Constraints
 
@@ -223,14 +224,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 101 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 5, module: 3, file: 8, test: 6, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 102 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 5, module: 3, file: 8, test: 6, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 4, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 105
+- **Total files**: 106
 - **Active directories**: 23
 - **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
 - **Empty directories**: 4 (events, agents, skills, benchmarks)
-- **Frontmatter coverage**: 101/101 content nodes (100%)
-- **Canonical ID coverage**: 101/101 content nodes (100%)
+- **Frontmatter coverage**: 102/102 content nodes (100%)
+- **Canonical ID coverage**: 102/102 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

@@ -601,3 +601,59 @@ execution/order/trade nodes.
   history (a snapshot is temporally independent). Output contract (Feature Vector Schema, a new SCHEMA-00x) to
   be authored contract-first at the start of that slice.
 - Gold DecisionPacket v0 authoring remains gated on real SCHEMA-001-derived features existing.
+
+## 2026-06-07 writeback | MOD-004 Feature Builder vertical slice (ADR-005 + SCHEMA-009)
+
+**Slice.** Implemented the deterministic, snapshot-local Feature Layer — the prerequisite that produces the
+real SCHEMA-001-derived features ADR-004 requires before a Gold DecisionPacket v0 may be authored. Contract
+authored first (ADR-005 + SCHEMA-009), then code, then writeback. No gold-decision / execution / order / trade
+nodes; INT-006 / SCHEMA-004 / SCHEMA-005 / MOD-002 untouched; no regime/guard-mapper logic.
+
+### Nodes Created (6)
+
+- **ADR-005 Feature Layer Contract** (decision_record, active). Governs: deterministic eligibility
+  (levels/spreads/ratios/arithmetic), forbidden classes (MA/momentum/rolling/z-score/percentile/smoothing/
+  regimes/embeddings — anything needing history), provenance requirements, the replay determinism rule
+  (same snapshot_id + schema_version ⇒ identical output), MOD-003-only input boundary (never raw JSON),
+  and the relationship to ADR-004.
+- **SCHEMA-009 Feature Vector Schema** (artifact_schema, active/implemented). FeatureVector{snapshot_id,
+  schema_version, features map, unavailable_features} + Feature{name, value, inputs, max_staleness_days,
+  revision_risk}. NEW canonical id (not reusing SCHEMA-004); 002/003/006 stay reserved.
+- **MOD-004 Feature Builder** (module, active/tested).
+- **FILE-009 models.py (features)** + **FILE-010 feature_builder.py** — `src/features/feature_builder/`.
+  FILE-009 basename-disambiguated (4th `models.py`: risk/supervisor/snapshot/features).
+- **TEST-007 test_feature_builder** — 10 tests.
+
+### Code shipped
+
+- `src/features/feature_builder/{models,feature_builder}.py` (+ `__init__`), stdlib frozen dataclasses
+  (ADR-003), zero deps. `build_features(snapshot) -> FeatureVector`: pure, total, no IO/clock/randomness.
+- 14-feature v0.1.0 registry (levels + spreads only): real_yield_10y/5y, breakeven_10y/5y/5y5y_fwd,
+  curve_2s10s, curve_5s10s, policy_spread, usd_level, vol_level, rates_vol, equity_level, gold_price, gold_flow.
+- Provenance per feature: `max_staleness_days` (max over inputs), `revision_risk` (OR over inputs), read from
+  SCHEMA-001 fields. Missing input ⇒ feature listed in `unavailable_features` (no partial values).
+- Tests grounded in the real artifact (consumed via MOD-003 `consume()`): exact level values, spread arithmetic
+  (curve_2s10s≈0.50, curve_5s10s≈0.37, policy_spread==0.0), provenance (EFFR/DFF max staleness=2),
+  determinism (build==build), revision_risk propagation, unavailable-feature on dropped DGS5, input-boundary.
+- `pyproject.toml` wheel packages += `src/features`.
+
+### Changes to existing nodes
+
+- `index.md`: added MOD-004, SCHEMA-009, ADR-005, FILE-009/010, TEST-007; statistics refreshed.
+
+### Metrics
+
+- Total content nodes: 108 (102 + 6). Active: 107 (REF-004 deprecated).
+- Type counts: module 3→4, file 8→10, test 6→7, artifact_schema 5→6, decision_record 4→5.
+- Canonical ID + frontmatter coverage: 108/108 (100%).
+- Test result: **53 passed** (43 prior + 10 new). Four modules now implemented + tested
+  (MOD-001 Guardrail, MOD-002 Decision Engine, MOD-003 Snapshot Consumer, MOD-004 Feature Builder).
+- vs Phase 5 soft ceiling 200: 108.
+
+### Deferred / open
+
+- Capability seam: CAP-002 Feature Engineering is L2-producer-framed; MOD-004 derives features L3-side — resolve
+  in a future re-grounding step (same pattern as CAP-003/MOD-003), not forced here.
+- Ratio features admissible by ADR-005 but none in v0.1.0 (no unit-safe denominator in the initial set).
+- **Gold DecisionPacket v0 is now grounded**: real deterministic SCHEMA-001-derived features exist, so a
+  planning ADR for v0 is unblocked (regime_class/confidence inputs can cite concrete features). Next.

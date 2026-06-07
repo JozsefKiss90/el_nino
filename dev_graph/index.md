@@ -126,6 +126,7 @@ Last updated: 2026-06-06
 | [[ADR - Ontology Redesign]] | ADR-002 | decision_record | Ontology redesign — 24-type hierarchy with canonical_id |
 | [[ADR - Implementation Substrate]] | ADR-003 | decision_record | Tech stack / repo layout / config policy for the first coding session |
 | [[ADR - Decision Layer Re-grounding]] | ADR-004 | decision_record | Separates Supervisor treasury-upgrade branch from future Gold Trading Decision branch |
+| [[ADR - Feature Layer Contract]] | ADR-005 | decision_record | Deterministic snapshot-local feature rules; replay determinism; MOD-003-only input |
 
 ## Constraints
 
@@ -149,6 +150,7 @@ Last updated: 2026-06-06
 | [[Guardrail Engine]] | MOD-001 | module | Predicate-based trade validation at the Risk Control boundary (plan only) |
 | [[Decision Engine]] | MOD-002 | module | Deterministic upgrade scoring under treasury constraints (plan only) |
 | [[Snapshot Consumer]] | MOD-003 | module | Fail-closed Layer-3 ingestion of the Layer-2 truth snapshot |
+| [[Feature Builder]] | MOD-004 | module | Deterministic snapshot-local Layer-2 → feature vector transform |
 
 ## Files
 
@@ -162,6 +164,8 @@ Last updated: 2026-06-06
 | [[models.py (supervisor)]] | FILE-006 | file | Dataclasses realizing SCHEMA-004 / SCHEMA-005 |
 | [[models.py (snapshot)]] | FILE-007 | file | Dataclasses realizing SCHEMA-001 (Layer 2 Snapshot) + deterministic id |
 | [[consumer.py]] | FILE-008 | file | Fail-closed snapshot reader/gate (INT-001 consumer side) |
+| [[models.py (features)]] | FILE-009 | file | Dataclasses realizing SCHEMA-009 (Feature + FeatureVector + version) |
+| [[feature_builder.py]] | FILE-010 | file | FEATURE_REGISTRY + build_features() deterministic transform (MOD-004) |
 
 ## Tests
 
@@ -173,6 +177,7 @@ Last updated: 2026-06-06
 | [[test_decision_engine]] | TEST-004 | test | Behavioral tests for the Decision Engine (7 tests) |
 | [[test_models (snapshot)]] | TEST-005 | test | Unit tests for SCHEMA-001 models incl. id recomputation (8 tests) |
 | [[test_consumer]] | TEST-006 | test | Fail-closed Snapshot Consumer gate tests (8 tests) |
+| [[test_feature_builder]] | TEST-007 | test | Feature Builder tests — arithmetic, determinism, provenance (10 tests) |
 
 ## Gates
 
@@ -195,6 +200,7 @@ Last updated: 2026-06-06
 | Node | ID | Type | Summary |
 |------|----|------|---------|
 | [[Layer 2 Snapshot Schema]] | SCHEMA-001 | artifact_schema | Snapshot API output — Layer-2 truth payload (deterministic id, guards, series) |
+| [[Feature Vector Schema]] | SCHEMA-009 | artifact_schema | Feature Builder output — deterministic SCHEMA-001-derived features + provenance |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
@@ -224,14 +230,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 102 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 5, module: 3, file: 8, test: 6, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 4, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 108 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 6, module: 4, file: 10, test: 7, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 5, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 106
+- **Total files**: 112
 - **Active directories**: 23
 - **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
 - **Empty directories**: 4 (events, agents, skills, benchmarks)
-- **Frontmatter coverage**: 102/102 content nodes (100%)
-- **Canonical ID coverage**: 102/102 content nodes (100%)
+- **Frontmatter coverage**: 108/108 content nodes (100%)
+- **Canonical ID coverage**: 108/108 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

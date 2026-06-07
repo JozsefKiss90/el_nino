@@ -79,10 +79,11 @@ Last updated: 2026-06-06
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
+| [[Snapshot API]] | INT-001 | interface | Data Pipeline → Trading Engine Layer-2 snapshot read contract |
 | [[Risk Check API]] | INT-003 | interface | Risk Control → Trading Engine trade-validation contract |
 | [[Decision API]] | INT-006 | interface | Supervisor Office → Trading Engine upgrade-decision contract |
 
-(INT-001/002, 004/005, 007/008 reserved for future Phase 4 contracts)
+(INT-002, 004/005, 007/008 reserved for future Phase 4 contracts)
 
 ## Events
 
@@ -146,6 +147,7 @@ Last updated: 2026-06-06
 |------|----|------|---------|
 | [[Guardrail Engine]] | MOD-001 | module | Predicate-based trade validation at the Risk Control boundary (plan only) |
 | [[Decision Engine]] | MOD-002 | module | Deterministic upgrade scoring under treasury constraints (plan only) |
+| [[Snapshot Consumer]] | MOD-003 | module | Fail-closed Layer-3 ingestion of the Layer-2 truth snapshot |
 
 ## Files
 
@@ -157,6 +159,8 @@ Last updated: 2026-06-06
 | [[decision_engine.py]] | FILE-004 | file | DecisionEngine.decide() — deterministic upgrade selection (MOD-002) |
 | [[scoring.py]] | FILE-005 | file | Weakness scoring (pure functions) |
 | [[models.py (supervisor)]] | FILE-006 | file | Dataclasses realizing SCHEMA-004 / SCHEMA-005 |
+| [[models.py (snapshot)]] | FILE-007 | file | Dataclasses realizing SCHEMA-001 (Layer 2 Snapshot) + deterministic id |
+| [[consumer.py]] | FILE-008 | file | Fail-closed snapshot reader/gate (INT-001 consumer side) |
 
 ## Tests
 
@@ -166,6 +170,8 @@ Last updated: 2026-06-06
 | [[test_guardrail_engine]] | TEST-002 | test | Behavioral tests for the Guardrail Engine (8 tests) |
 | [[test_scoring]] | TEST-003 | test | Unit tests for Decision Engine scoring (5 tests) |
 | [[test_decision_engine]] | TEST-004 | test | Behavioral tests for the Decision Engine (7 tests) |
+| [[test_models (snapshot)]] | TEST-005 | test | Unit tests for SCHEMA-001 models incl. id recomputation (8 tests) |
+| [[test_consumer]] | TEST-006 | test | Fail-closed Snapshot Consumer gate tests (8 tests) |
 
 ## Gates
 
@@ -187,12 +193,13 @@ Last updated: 2026-06-06
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
+| [[Layer 2 Snapshot Schema]] | SCHEMA-001 | artifact_schema | Snapshot API output — Layer-2 truth payload (deterministic id, guards, series) |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
 | [[Trade Validation Decision Schema]] | SCHEMA-008 | artifact_schema | Risk Check API output — approve/block + triggered predicate |
 
-(SCHEMA-001/002/003, 006 reserved for future Phase 4 schemas)
+(SCHEMA-002/003, 006 reserved for future Phase 4 schemas)
 
 ## Workflows
 
@@ -216,14 +223,14 @@ Last updated: 2026-06-06
 
 ## Statistics
 
-- **Total content nodes**: 95 (architecture: 4, system: 6, capability: 18, interface: 2, artifact_schema: 4, module: 2, file: 6, test: 4, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 101 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 5, module: 3, file: 8, test: 6, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 3, constraint: 3, api_doc_source: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 99
+- **Total files**: 105
 - **Active directories**: 23
 - **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
 - **Empty directories**: 4 (events, agents, skills, benchmarks)
-- **Frontmatter coverage**: 95/95 content nodes (100%)
-- **Canonical ID coverage**: 95/95 content nodes (100%)
+- **Frontmatter coverage**: 101/101 content nodes (100%)
+- **Canonical ID coverage**: 101/101 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

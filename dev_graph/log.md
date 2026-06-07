@@ -503,3 +503,58 @@ then implemented and tested the engine. **27 tests pass** (15 prior + 12 new).
 - Canonical ID + evidence coverage: 95/95 (100%). Realizes edges: 27.
 - Test result: 27 passed. Two modules (MOD-001, MOD-002) now implemented + tested.
 - vs Phase 5 soft ceiling 200: 95.
+
+## 2026-06-07 writeback | Layer 2 Snapshot contract (SCHEMA-001 / INT-001) + Snapshot Consumer vertical slice
+
+**Decision context.** Reordered the next slice to build the *upstream* Layer-2 truth contract before the
+Decision Packet consumer — building the downstream consumer first would pin it to an unstable input and
+force rework. Two forks resolved by the user: (1) "wire INT-006 downstream" dropped — INT-006 is today's
+treasury-upgrade Decision API, not the gold DecisionPacket v0; INT-006 untouched. (2) SCHEMA-001 grounded
+in **real** Ripley artifacts (`snapshot_sources/`), not inferred from prose. Reserved §4.6 ids honoured:
+SCHEMA-001 = Layer 2 Snapshot, INT-001 = Snapshot API. No execution/order/trade nodes created;
+INT-002, SCHEMA-002/003/006 remain reserved and uncreated.
+
+### Nodes Created (6)
+
+- **SCHEMA-001 Layer 2 Snapshot Schema** (artifact_schema, active/implemented) — the foundational data
+  contract, grounded against `snapshot_sources/latest_snapshot.json` + `snapshot_publisher.py`. Captures
+  the 21-key payload, the SeriesValue/Guards/QualitySummary shapes, and the deterministic `snapshot_id`.
+- **INT-001 Snapshot API** (interface, active/implemented) — Layer 2 → Layer 3 read contract. Output
+  schema SCHEMA-001, `input_schema: null` (pull contract). Mode 1 (latest_snapshot.json) implemented;
+  mode 2 (query by snapshot_id) specified but deferred. parent_capability CAP-003.
+- **MOD-003 Snapshot Consumer** (module, active/tested) — fail-closed Layer-3 ingestion gate.
+- **FILE-007 models.py (snapshot)** + **FILE-008 consumer.py** — `src/snapshot/snapshot_consumer/`.
+  Basename-disambiguated from FILE-003 `models.py` and FILE-006 `models.py (supervisor)`.
+- **TEST-005 test_models (snapshot)** + **TEST-006 test_consumer** — 16 tests.
+
+### Code shipped
+
+- `src/snapshot/snapshot_consumer/{models,consumer}.py` (+ `__init__`), stdlib-only frozen dataclasses
+  per ADR-003. `Snapshot.recompute_id()` mirrors the publisher's `compute_snapshot_id` and **reproduces
+  the real artifact's id `952cc83a…afaef`** — the SCHEMA-001 grounding anchor.
+- Fail-closed contract: `consume()` returns a snapshot only if `verdict == PASS ∧ guards.snapshot_ok ∧
+  ¬forced ∧ ¬dry_run`; absent file / failed gate → None ("output nothing"); malformed payload →
+  `SnapshotContractError` (loud, never masked as absence).
+- `tests/snapshot/` with PASS (verbatim real artifact) + derived FAIL/FORCED fixtures.
+- `pyproject.toml` wheel packages updated (`src/risk`, `src/supervisor`, `src/snapshot`).
+
+### Changes to existing nodes
+
+- `index.md`: INT-001, SCHEMA-001, MOD-003, FILE-007/008, TEST-005/006 added; reserved placeholders
+  trimmed (INT-001, SCHEMA-001 removed from the reserved lists); statistics refreshed.
+
+### Metrics
+
+- Total content nodes: 101 (95 + 6). Active: 100 (REF-004 deprecated).
+- Type counts: interface 2→3, artifact_schema 4→5, module 2→3, file 6→8, test 4→6.
+- Canonical ID + frontmatter coverage: 101/101 (100%).
+- Test result: **43 passed** (27 prior + 16 new). Three modules now implemented + tested
+  (MOD-001 Guardrail, MOD-002 Decision Engine, MOD-003 Snapshot Consumer).
+- vs Phase 5 soft ceiling 200: 101.
+
+### Deferred / open
+
+- INT-001 mode 2 (query by `snapshot_id` from `layer2_truth.db`) — needed for replay/counterfactual.
+- CAP-003 Snapshot Assembly describes the Layer-2 *producer*; MOD-003 is the Layer-3 *consumer* — a
+  producer/consumer seam flagged for the generic→Ripley re-grounding ADR (not split this slice).
+- Next in the data path: Layer 2 snapshot → features/decision → Decision Packet v0 → consumer.

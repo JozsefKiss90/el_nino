@@ -1,0 +1,712 @@
+{
+  "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+  "engine_version": "gold-v3.3.0",
+  "config_version": "1.1.0",
+  "clock_ts": "2026-05-01T22:00:00+00:00",
+  "clock_date": "2026-05-01",
+  "verdict": "PASS",
+  "forced": false,
+  "dry_run": false,
+  "guards": {
+    "data_ok": true,
+    "freshness_ok": true,
+    "idempotent_ok": true,
+    "revision_risk_present": true,
+    "forced": false,
+    "missing_tier1": false,
+    "snapshot_ok": true,
+    "reason_code": "DATA_OK",
+    "cooldown_ok": true,
+    "risk_ok": true,
+    "supervisor_veto": false
+  },
+  "revision_policy": {
+    "method": "latest_available_with_revision_risk_flag",
+    "revision_writer": "not_implemented",
+    "revision_risk_blocks_snapshot": false
+  },
+  "revision_risk_summary": {
+    "series_count": 3,
+    "series": [
+      "CPILFESL",
+      "FEDFUNDS",
+      "PCEPI"
+    ]
+  },
+  "tier1_series": {
+    "T10YIE": {
+      "obs_ts": "2026-04-30",
+      "value": 2.46,
+      "staleness_days": 1,
+      "source": "fred",
+      "group": "breakeven",
+      "revision_risk": false
+    },
+    "T5YIE": {
+      "obs_ts": "2026-04-30",
+      "value": 2.67,
+      "staleness_days": 1,
+      "source": "fred",
+      "group": "breakeven",
+      "revision_risk": false
+    },
+    "T5YIFR": {
+      "obs_ts": "2026-04-30",
+      "value": 2.25,
+      "staleness_days": 1,
+      "source": "fred",
+      "group": "breakeven",
+      "revision_risk": false
+    },
+    "gold_price_proxy": {
+      "obs_ts": "2026-04-30",
+      "value": 4624.5,
+      "staleness_days": 1,
+      "source": "goldapi_com",
+      "group": "gold",
+      "revision_risk": false
+    },
+    "DGS10": {
+      "obs_ts": "2026-04-29",
+      "value": 4.42,
+      "staleness_days": 2,
+      "source": "fred",
+      "group": "nominal_yields",
+      "revision_risk": false
+    },
+    "DGS2": {
+      "obs_ts": "2026-04-29",
+      "value": 3.92,
+      "staleness_days": 2,
+      "source": "fred",
+      "group": "nominal_yields",
+      "revision_risk": false
+    },
+    "DGS5": {
+      "obs_ts": "2026-04-29",
+      "value": 4.05,
+      "staleness_days": 2,
+      "source": "fred",
+      "group": "nominal_yields",
+      "revision_risk": false
+    },
+    "DFF": {
+      "obs_ts": "2026-04-29",
+      "value": 3.64,
+      "staleness_days": 2,
+      "source": "fred",
+      "group": "policy_rate",
+      "revision_risk": false
+    },
+    "EFFR": {
+      "obs_ts": "2026-04-30",
+      "value": 3.64,
+      "staleness_days": 1,
+      "source": "fred",
+      "group": "policy_rate",
+      "revision_risk": false
+    },
+    "DFII10": {
+      "obs_ts": "2026-04-29",
+      "value": 1.96,
+      "staleness_days": 2,
+      "source": "fred",
+      "group": "real_yields",
+      "revision_risk": false
+    },
+    "DFII5": {
+      "obs_ts": "2026-04-29",
+      "value": 1.38,
+      "staleness_days": 2,
+      "source": "fred",
+      "group": "real_yields",
+      "revision_risk": false
+    },
+    "SP500": {
+      "obs_ts": "2026-04-30",
+      "value": 7209.01,
+      "staleness_days": 1,
+      "source": "fred",
+      "group": "risk",
+      "revision_risk": false
+    },
+    "SP500_PROXY": {
+      "obs_ts": "2026-04-30",
+      "value": 718.6599731445312,
+      "staleness_days": 1,
+      "source": "yahoo_spy",
+      "group": "risk",
+      "revision_risk": false
+    },
+    "VIXCLS": {
+      "obs_ts": "2026-04-30",
+      "value": 16.89,
+      "staleness_days": 1,
+      "source": "fred",
+      "group": "stress",
+      "revision_risk": false
+    },
+    "rates_vol_stress_move": {
+      "obs_ts": "2026-04-30",
+      "value": 72.06999969482422,
+      "staleness_days": 1,
+      "source": "yahoo",
+      "group": "stress",
+      "revision_risk": false
+    },
+    "DTWEXBGS": {
+      "obs_ts": "2026-04-24",
+      "value": 118.7294,
+      "staleness_days": 7,
+      "source": "fred",
+      "group": "usd",
+      "revision_risk": false
+    }
+  },
+  "tier2_series": {
+    "gld_holdings_flow_confirm": {
+      "obs_ts": "2026-04-30",
+      "value": 24949755.0,
+      "staleness_days": 1,
+      "source": "yahoo_gld_proxy",
+      "group": "flow",
+      "revision_risk": false
+    },
+    "CPILFESL": {
+      "obs_ts": "2026-03-01",
+      "value": 334.165,
+      "staleness_days": 61,
+      "source": "fred",
+      "group": "inflation_monthly",
+      "revision_risk": true
+    },
+    "FEDFUNDS": {
+      "obs_ts": "2026-03-01",
+      "value": 3.64,
+      "staleness_days": 61,
+      "source": "fred",
+      "group": "inflation_monthly",
+      "revision_risk": true
+    },
+    "PCEPI": {
+      "obs_ts": "2026-03-01",
+      "value": 130.344,
+      "staleness_days": 61,
+      "source": "fred",
+      "group": "inflation_monthly",
+      "revision_risk": true
+    },
+    "PCU2122212122210": {
+      "obs_ts": "2017-12-01",
+      "value": 314.7,
+      "staleness_days": 3073,
+      "source": "fred",
+      "group": "inflation_monthly",
+      "revision_risk": false
+    }
+  },
+  "missing_series": [],
+  "layer1_events": [],
+  "run_ts": "2026-05-01T17:01:15.960572+00:00",
+  "published_at": "2026-05-01T17:01:15.960572+00:00",
+  "series_count": 21,
+  "quality_summary": {
+    "tier1_total": 16,
+    "tier1_pass": 16,
+    "tier1_fail": 0,
+    "tier2_total": 5,
+    "tier2_warn": 3,
+    "revision_risk_series_count": 3,
+    "revision_risk_series": [
+      "CPILFESL",
+      "FEDFUNDS",
+      "PCEPI"
+    ]
+  },
+  "values_by_group": {
+    "breakeven": [
+      {
+        "series_id": "T10YIE",
+        "tier": 1,
+        "group": "breakeven",
+        "obs_ts": "2026-04-30",
+        "value": 2.46,
+        "staleness_days": 1,
+        "source": "fred",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "T5YIE",
+        "tier": 1,
+        "group": "breakeven",
+        "obs_ts": "2026-04-30",
+        "value": 2.67,
+        "staleness_days": 1,
+        "source": "fred",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "T5YIFR",
+        "tier": 1,
+        "group": "breakeven",
+        "obs_ts": "2026-04-30",
+        "value": 2.25,
+        "staleness_days": 1,
+        "source": "fred",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "flow": [
+      {
+        "series_id": "gld_holdings_flow_confirm",
+        "tier": 2,
+        "group": "flow",
+        "obs_ts": "2026-04-30",
+        "value": 24949755.0,
+        "staleness_days": 1,
+        "source": "yahoo_gld_proxy",
+        "as_of_ts": "2026-04-30T21:15:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "gold": [
+      {
+        "series_id": "gold_price_proxy",
+        "tier": 1,
+        "group": "gold",
+        "obs_ts": "2026-04-30",
+        "value": 4624.5,
+        "staleness_days": 1,
+        "source": "goldapi_com",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "inflation_monthly": [
+      {
+        "series_id": "CPILFESL",
+        "tier": 2,
+        "group": "inflation_monthly",
+        "obs_ts": "2026-03-01",
+        "value": 334.165,
+        "staleness_days": 61,
+        "source": "fred",
+        "as_of_ts": "2026-03-01T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": true
+      },
+      {
+        "series_id": "FEDFUNDS",
+        "tier": 2,
+        "group": "inflation_monthly",
+        "obs_ts": "2026-03-01",
+        "value": 3.64,
+        "staleness_days": 61,
+        "source": "fred",
+        "as_of_ts": "2026-03-01T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": true
+      },
+      {
+        "series_id": "PCEPI",
+        "tier": 2,
+        "group": "inflation_monthly",
+        "obs_ts": "2026-03-01",
+        "value": 130.344,
+        "staleness_days": 61,
+        "source": "fred",
+        "as_of_ts": "2026-03-01T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": true
+      },
+      {
+        "series_id": "PCU2122212122210",
+        "tier": 2,
+        "group": "inflation_monthly",
+        "obs_ts": "2017-12-01",
+        "value": 314.7,
+        "staleness_days": 3073,
+        "source": "fred",
+        "as_of_ts": "2017-12-01T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "nominal_yields": [
+      {
+        "series_id": "DGS10",
+        "tier": 1,
+        "group": "nominal_yields",
+        "obs_ts": "2026-04-29",
+        "value": 4.42,
+        "staleness_days": 2,
+        "source": "fred",
+        "as_of_ts": "2026-04-29T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "DGS2",
+        "tier": 1,
+        "group": "nominal_yields",
+        "obs_ts": "2026-04-29",
+        "value": 3.92,
+        "staleness_days": 2,
+        "source": "fred",
+        "as_of_ts": "2026-04-29T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "DGS5",
+        "tier": 1,
+        "group": "nominal_yields",
+        "obs_ts": "2026-04-29",
+        "value": 4.05,
+        "staleness_days": 2,
+        "source": "fred",
+        "as_of_ts": "2026-04-29T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "policy_rate": [
+      {
+        "series_id": "DFF",
+        "tier": 1,
+        "group": "policy_rate",
+        "obs_ts": "2026-04-29",
+        "value": 3.64,
+        "staleness_days": 2,
+        "source": "fred",
+        "as_of_ts": "2026-04-29T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "EFFR",
+        "tier": 1,
+        "group": "policy_rate",
+        "obs_ts": "2026-04-30",
+        "value": 3.64,
+        "staleness_days": 1,
+        "source": "fred",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "real_yields": [
+      {
+        "series_id": "DFII10",
+        "tier": 1,
+        "group": "real_yields",
+        "obs_ts": "2026-04-29",
+        "value": 1.96,
+        "staleness_days": 2,
+        "source": "fred",
+        "as_of_ts": "2026-04-29T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "DFII5",
+        "tier": 1,
+        "group": "real_yields",
+        "obs_ts": "2026-04-29",
+        "value": 1.38,
+        "staleness_days": 2,
+        "source": "fred",
+        "as_of_ts": "2026-04-29T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "risk": [
+      {
+        "series_id": "SP500",
+        "tier": 1,
+        "group": "risk",
+        "obs_ts": "2026-04-30",
+        "value": 7209.01,
+        "staleness_days": 1,
+        "source": "fred",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "SP500_PROXY",
+        "tier": 1,
+        "group": "risk",
+        "obs_ts": "2026-04-30",
+        "value": 718.6599731445312,
+        "staleness_days": 1,
+        "source": "yahoo_spy",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "stress": [
+      {
+        "series_id": "VIXCLS",
+        "tier": 1,
+        "group": "stress",
+        "obs_ts": "2026-04-30",
+        "value": 16.89,
+        "staleness_days": 1,
+        "source": "fred",
+        "as_of_ts": "2026-04-30T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      },
+      {
+        "series_id": "rates_vol_stress_move",
+        "tier": 1,
+        "group": "stress",
+        "obs_ts": "2026-04-30",
+        "value": 72.06999969482422,
+        "staleness_days": 1,
+        "source": "yahoo",
+        "as_of_ts": "2026-05-01T15:08:09.302305+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ],
+    "usd": [
+      {
+        "series_id": "DTWEXBGS",
+        "tier": 1,
+        "group": "usd",
+        "obs_ts": "2026-04-24",
+        "value": 118.7294,
+        "staleness_days": 7,
+        "source": "fred",
+        "as_of_ts": "2026-04-24T21:00:00+00:00",
+        "revision_seq": 0,
+        "revision_risk": false
+      }
+    ]
+  },
+  "values": {
+    "T10YIE": {
+      "obs_ts": "2026-04-30",
+      "value": 2.46,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "T5YIE": {
+      "obs_ts": "2026-04-30",
+      "value": 2.67,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "T5YIFR": {
+      "obs_ts": "2026-04-30",
+      "value": 2.25,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "gld_holdings_flow_confirm": {
+      "obs_ts": "2026-04-30",
+      "value": 24949755.0,
+      "staleness_days": 1,
+      "tier": 2,
+      "source": "yahoo_gld_proxy",
+      "as_of_ts": "2026-04-30T21:15:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "gold_price_proxy": {
+      "obs_ts": "2026-04-30",
+      "value": 4624.5,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "goldapi_com",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "CPILFESL": {
+      "obs_ts": "2026-03-01",
+      "value": 334.165,
+      "staleness_days": 61,
+      "tier": 2,
+      "source": "fred",
+      "as_of_ts": "2026-03-01T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": true
+    },
+    "FEDFUNDS": {
+      "obs_ts": "2026-03-01",
+      "value": 3.64,
+      "staleness_days": 61,
+      "tier": 2,
+      "source": "fred",
+      "as_of_ts": "2026-03-01T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": true
+    },
+    "PCEPI": {
+      "obs_ts": "2026-03-01",
+      "value": 130.344,
+      "staleness_days": 61,
+      "tier": 2,
+      "source": "fred",
+      "as_of_ts": "2026-03-01T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": true
+    },
+    "PCU2122212122210": {
+      "obs_ts": "2017-12-01",
+      "value": 314.7,
+      "staleness_days": 3073,
+      "tier": 2,
+      "source": "fred",
+      "as_of_ts": "2017-12-01T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DGS10": {
+      "obs_ts": "2026-04-29",
+      "value": 4.42,
+      "staleness_days": 2,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-29T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DGS2": {
+      "obs_ts": "2026-04-29",
+      "value": 3.92,
+      "staleness_days": 2,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-29T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DGS5": {
+      "obs_ts": "2026-04-29",
+      "value": 4.05,
+      "staleness_days": 2,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-29T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DFF": {
+      "obs_ts": "2026-04-29",
+      "value": 3.64,
+      "staleness_days": 2,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-29T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "EFFR": {
+      "obs_ts": "2026-04-30",
+      "value": 3.64,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DFII10": {
+      "obs_ts": "2026-04-29",
+      "value": 1.96,
+      "staleness_days": 2,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-29T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DFII5": {
+      "obs_ts": "2026-04-29",
+      "value": 1.38,
+      "staleness_days": 2,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-29T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "SP500": {
+      "obs_ts": "2026-04-30",
+      "value": 7209.01,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "SP500_PROXY": {
+      "obs_ts": "2026-04-30",
+      "value": 718.6599731445312,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "yahoo_spy",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "VIXCLS": {
+      "obs_ts": "2026-04-30",
+      "value": 16.89,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-30T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "rates_vol_stress_move": {
+      "obs_ts": "2026-04-30",
+      "value": 72.06999969482422,
+      "staleness_days": 1,
+      "tier": 1,
+      "source": "yahoo",
+      "as_of_ts": "2026-05-01T15:08:09.302305+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    },
+    "DTWEXBGS": {
+      "obs_ts": "2026-04-24",
+      "value": 118.7294,
+      "staleness_days": 7,
+      "tier": 1,
+      "source": "fred",
+      "as_of_ts": "2026-04-24T21:00:00+00:00",
+      "revision_seq": 0,
+      "revision_risk": false
+    }
+  }
+}

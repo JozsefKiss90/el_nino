@@ -106,7 +106,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "neo4",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -259,7 +259,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "6e355511c4142154",
+  "active": "1a203f309fbb4986",
   "lastOpenFiles": [
     "ultimateplan.md",
     "ultimateplan",

@@ -4,7 +4,7 @@ canonical_id: PAT-004
 status: active
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -21,12 +21,12 @@ pattern_type: structural
 instances:
   - "[[Market Scanning]]"
   - "[[Feature Engineering]]"
-  - "[[Signal Generation]]"
+  - "[[Gold Decision Generation]]"
   - "[[Order Management]]"
 realized_by_capabilities:
   - "[[Market Scanning]]"
   - "[[Feature Engineering]]"
-  - "[[Signal Generation]]"
+  - "[[Gold Decision Generation]]"
   - "[[Order Management]]"
 realized_by_modules: []
 related_knowledge:
@@ -59,7 +59,7 @@ Apply for any multi-step data transformation or processing flow: market data →
 ### Realized By
 - [[Market Scanning]]
 - [[Feature Engineering]]
-- [[Signal Generation]]
+- [[Gold Decision Generation]]
 - [[Order Management]]
 
 ### Originates From

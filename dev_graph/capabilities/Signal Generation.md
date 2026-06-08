@@ -1,11 +1,11 @@
 ---
 type: capability
 canonical_id: CAP-004
-status: active
-implementation_status: not-started
+status: deprecated
+implementation_status: deprecated
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -25,6 +25,8 @@ interfaces: []
 ---
 
 # Signal Generation
+
+> **DEPRECATED (2026-06-08).** Superseded by [[Gold Decision Generation]] (CAP-020). This capability described a wiki-derived intraday **indicator-stack** signal generator (VWAP/EMA/RVOL over raw L2 snapshots → buy/sell/hold trade signals routed to Order Management). It was never implemented, and its concept is obsolete against the realized deterministic pipeline (SCHEMA-001 → MOD-003 → MOD-004 → MOD-005 → Gold), which consumes versioned FeatureVectors + RegimeClassification and emits a paper-trading DecisionPacket, not a live trade signal. Decision recorded in [[ADR - Gold Decision Confidence Semantics]] §10; retained (not deleted) per the Deprecation Procedure; excluded from context packs by admissibility check #2. Permanently separate from the treasury [[Decision Making]] (CAP-015) per [[ADR - Decision Layer Re-grounding]].
 
 ## Definition
 

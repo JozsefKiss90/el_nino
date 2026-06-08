@@ -29,7 +29,7 @@ Last updated: 2026-06-08
 | [[capabilities/Market Scanning]] | CAP-001 | Data Pipeline | Scan universe, rank by momentum/volatility/ATR, produce watchlist |
 | [[capabilities/Feature Engineering]] | CAP-002 | Data Pipeline | Calculate indicators, build feature vectors |
 | [[capabilities/Snapshot Assembly]] | CAP-003 | Data Pipeline | Assemble L2 snapshot — foundational data contract |
-| [[capabilities/Signal Generation]] | CAP-004 | Trading Engine | Apply strategy rules to snapshots, produce trade signals |
+| ~~[[capabilities/Signal Generation]]~~ | CAP-004 | Trading Engine | DEPRECATED 2026-06-08 — superseded by Gold Decision Generation (CAP-020) |
 | [[capabilities/Order Management]] | CAP-005 | Trading Engine | Route orders, size positions, manage execution |
 | [[capabilities/Stop-Loss Management]] | CAP-006 | Trading Engine | Place and adjust stops (fixed, trailing, floor-ratcheting) |
 | [[capabilities/Position Tracking]] | CAP-007 | Trading Engine | Track open positions, monitor P&L, detect exits |
@@ -45,6 +45,7 @@ Last updated: 2026-06-08
 | [[capabilities/Upgrade Evaluation]] | CAP-017 | Supervisor Office | Simulate upgrades, run paper trading, evaluate outcomes |
 | [[capabilities/Team Orchestration]] | CAP-018 | Supervisor Office | Manage agent desk assignments, coordinate upgrades |
 | [[capabilities/Market Regime Classification]] | CAP-019 | Trading Engine | Classify a feature vector into one deterministic macro regime (SCHEMA-010) |
+| [[capabilities/Gold Decision Generation]] | CAP-020 | Trading Engine | FeatureVector + RegimeClassification → paper Gold DecisionPacket (SCHEMA-011); supersedes CAP-004 |
 
 ## Knowledge Assets
 
@@ -86,8 +87,9 @@ Last updated: 2026-06-08
 | [[Risk Check API]] | INT-003 | interface | Risk Control → Trading Engine trade-validation contract |
 | [[Decision API]] | INT-006 | interface | Supervisor Office → Trading Engine upgrade-decision contract |
 | [[Regime Classification API]] | INT-007 | interface | Feature Vector → Regime Classification contract (canonical upstream for Gold) |
+| [[Gold Decision API]] | INT-009 | interface | FeatureVector + RegimeClassification → paper Gold DecisionPacket contract (planned) |
 
-(INT-002, 004/005, 008 reserved for future Phase 4 contracts)
+(INT-002, 004/005, 008 reserved for future Phase 4 contracts; INT-008 earmarked for a future Evaluation API)
 
 ## Events
 
@@ -133,6 +135,7 @@ Last updated: 2026-06-08
 | [[ADR - Feature Layer Contract]] | ADR-005 | decision_record | Deterministic snapshot-local feature rules; replay determinism; MOD-003-only input |
 | [[ADR - Gold DecisionPacket v0 Planning]] | ADR-006 | decision_record | Governance boundary for a future Gold DecisionPacket layer; creation gates + replay invariants; consumes SCHEMA-009 only; non-normative |
 | [[ADR - Deterministic Regime Taxonomy]] | ADR-007 | decision_record | Deterministic, config-driven, fail-closed regime taxonomy; satisfies ADR-006 gate (d) |
+| [[ADR - Gold Decision Confidence Semantics]] | ADR-008 | decision_record | Fixes the Gold v0 confidence/uncertainty model (deterministic ordinal trust score); closes ADR-006 §8 gate (e), finalizes (b)/(c) |
 
 ## Constraints
 
@@ -215,6 +218,7 @@ Last updated: 2026-06-08
 | [[Layer 2 Snapshot Schema]] | SCHEMA-001 | artifact_schema | Snapshot API output — Layer-2 truth payload (deterministic id, guards, series) |
 | [[Feature Vector Schema]] | SCHEMA-009 | artifact_schema | Feature Builder output — deterministic SCHEMA-001-derived features + provenance |
 | [[Regime Classification Schema]] | SCHEMA-010 | artifact_schema | Regime Classifier output — matched rule, regime, rule_margin, provenance, trace |
+| [[Gold DecisionPacket v0 Schema]] | SCHEMA-011 | artifact_schema | Gold Decision Builder output — direction, confidence/uncertainty, cited features, guard_refs (planned) |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
@@ -246,14 +250,14 @@ Last updated: 2026-06-08
 
 ## Statistics
 
-- **Total content nodes**: 124 (architecture: 4, system: 6, capability: 19, interface: 4, artifact_schema: 7, module: 5, file: 14, test: 9, gate: 1, predicate: 5, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 7, constraint: 3, api_doc_source: 2, benchmark_result: 1)
+- **Total content nodes**: 128 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 5, file: 14, test: 9, gate: 1, predicate: 5, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 8, constraint: 3, api_doc_source: 2, benchmark_result: 1)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 128
+- **Total files**: 132
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 124/124 content nodes (100%)
-- **Canonical ID coverage**: 124/124 content nodes (100%)
+- **Frontmatter coverage**: 128/128 content nodes (100%)
+- **Canonical ID coverage**: 128/128 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

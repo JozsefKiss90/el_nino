@@ -77,7 +77,7 @@ Output schema of MOD-004 Feature Builder; input is SCHEMA-001 (via a consumed `S
 
 ## Open Questions
 
-- `consumed_by` is empty: the downstream consumer (future regime/Gold DecisionPacket v0) does not exist yet — link it when authored. Until then the vector is the grounded artifact that justifies authoring v0.
+- `consumed_by` now names [[Market Regime Classifier]] (MOD-005), which consumes this vector to produce SCHEMA-010. The further-downstream Gold DecisionPacket v0 consumer remains deferred (ADR-006 §8); link it when authored.
 - Ratio features are admissible by ADR-005 but none are in the v0.1.0 set (no divisor with an obvious, unit-safe denominator in the initial set); add when a consumer needs one.
 
 ## Relationships

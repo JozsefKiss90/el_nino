@@ -80,6 +80,15 @@ def near_proximity(fv: FeatureVector, c: RegimeConfig, spec: MarginSpec) -> floa
     return clamp01(1.0 - distance / c.near_band)
 
 
+# Feature usage (ADR-007 / KA-011). The v1.0.0 taxonomy decides on 7 of the 14 SCHEMA-009
+# features: vol_level, rates_vol, real_yield_10y, breakeven_5y5y_fwd, curve_2s10s, usd_level,
+# equity_level. The other 7 are intentionally RESERVED for a future taxonomy_version, not used
+# here: real_yield_5y / breakeven_10y / breakeven_5y / curve_5s10s are redundant with the chosen
+# tenor (10y real, 5y5y breakeven, 2s10s curve); policy_spread adds no distinct snapshot-local
+# regime signal in v0; gold_price / gold_flow have no defensible absolute-level anchor (only
+# forbidden momentum/history would apply). Reserved features are never invented or fabricated —
+# they are promoted only via a governed version bump.
+
 # --- Predicates (pure; only read features guaranteed present by each rule's required set) --
 
 def _p_liquidity_stress(fv: FeatureVector, c: RegimeConfig) -> bool:

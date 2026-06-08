@@ -23,7 +23,7 @@ related_decisions:
 system_id: "trading-engine"
 bounded_context: "Signal generation from snapshots, order management, position tracking, and stop-loss management. Owns the L3 (execution) layer. Consumes L2 Snapshots and produces trades via broker APIs."
 contains_capabilities:
-  - "[[Signal Generation]]"
+  - "[[Gold Decision Generation]]"
   - "[[Order Management]]"
   - "[[Stop-Loss Management]]"
   - "[[Position Tracking]]"
@@ -63,11 +63,13 @@ Central system in the pipeline. Maps to Layer 3 (Execution) in the [[Layer Model
 
 ## Capabilities
 
-4 capabilities (created in Phase 3):
-1. **Signal Generation** (CAP-004) — apply strategy rules to snapshots, produce trade signals
+Capabilities under this system:
+1. ~~**Signal Generation** (CAP-004)~~ — _DEPRECATED 2026-06-08; superseded by Gold Decision Generation (CAP-020)_
 2. **Order Management** (CAP-005) — route orders, size positions, manage execution
 3. **Stop-Loss Management** (CAP-006) — place and adjust stops (fixed, trailing, floor-ratcheting)
 4. **Position Tracking** (CAP-007) — track open positions, monitor P&L, detect exits
+5. **Market Regime Classification** (CAP-019) — classify a feature vector into one deterministic macro regime
+6. **Gold Decision Generation** (CAP-020) — deterministic paper-trading Gold DecisionPacket (supersedes CAP-004)
 
 ## Key Interfaces
 
@@ -87,8 +89,9 @@ Central system in the pipeline. Maps to Layer 3 (Execution) in the [[Layer Model
 ## Relationships
 
 ### Contains
-- (Forward references: Signal Generation, Order Management, Stop-Loss Management, Position Tracking — Phase 3)
+- (Forward references: Order Management, Stop-Loss Management, Position Tracking — Phase 3)
 - [[Market Regime Classification]]
+- [[Gold Decision Generation]]
 
 ### Depends On
 - [[Data Pipeline]] — consumes snapshots

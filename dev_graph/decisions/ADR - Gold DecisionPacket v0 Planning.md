@@ -1,7 +1,7 @@
 ---
 type: decision_record
 canonical_id: ADR-006
-status: draft
+status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-07
@@ -20,6 +20,7 @@ related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Feature Layer Contract]]"
   - "[[ADR - Deterministic Regime Taxonomy]]"
+  - "[[ADR - Gold Decision Confidence Semantics]]"
 decision_id: "ADR-006"
 decision_date: 2026-06-07
 supersedes: []
@@ -31,9 +32,9 @@ decision_status: active
 
 ## Status
 
-**Proposed** (awaiting acceptance) — 2026-06-07.
+**Accepted** — proposed 2026-06-07, accepted 2026-06-08 (promoted `status: draft → active`). All five §8 Creation Gates are now satisfied: (a)/(d) closed by the MOD-004 and MOD-005 slices; (e) closed and (b)/(c) finalized by [[ADR - Gold Decision Confidence Semantics]] (ADR-008).
 
-This is a **governance and architectural-boundary** record. It does **not** author, define, or freeze the Gold DecisionPacket v0 schema. It establishes the constraints under which such a contract may *later* be created. (The dev_graph `status` enum has no `proposed` value; this node carries `status: draft` as its governed equivalent until accepted.)
+This is a **governance and architectural-boundary** record. It does **not** author, define, or freeze the Gold DecisionPacket v0 schema. It establishes the constraints under which such a contract may *later* be created — now unblocked, to be authored contract-first in the next slice.
 
 ## Context
 
@@ -94,15 +95,17 @@ This ADR does **not** define or freeze the Gold DecisionPacket contract. The nor
 ### 8. Creation Gates
 A normative Gold DecisionPacket SCHEMA node may be authored **only after ALL** of the following hold:
 
-a. **MOD-004 Feature Builder implemented** — ✅ satisfied (active/tested as of 2026-06-07).
-b. **Deterministic feature coverage validated** — the available features are confirmed sufficient (or the gaps explicitly accepted) for the intended regime/confidence/direction outputs.
-c. **Replay requirements finalized** — the full replay key (§3) and the meaning of `model_version` / `decision_policy_version` / `configuration` are pinned.
-d. **Regime taxonomy exists** — `regime_class` values are enumerated and grounded.
-e. **Confidence semantics agreed** — the scalar `confidence` (+`uncertainty`) model is fixed (see ADR-004: the 3-component performance/calibration/sample_quality variant is **not** adopted into the frozen scalar model without a formal amendment).
+a. **MOD-004 Feature Builder implemented** — ✅ **Closed** (active/tested as of 2026-06-07).
+b. **Deterministic feature coverage validated** — the available features are confirmed sufficient (or the gaps explicitly accepted) for the intended regime/confidence/direction outputs. ✅ **Satisfied (gaps explicitly accepted)** by ADR-008 §9: the 14 features suffice for v0; the 7 reserved features (`real_yield_5y`, `breakeven_10y`, `breakeven_5y`, `curve_5s10s`, `policy_spread`, `gold_price`, `gold_flow`) are accepted out of scope; the synthetic-coverage caveat is recorded.
+c. **Replay requirements finalized** — the full replay key (§3) and the meaning of `model_version` / `decision_policy_version` / `configuration` are pinned. ✅ **Closed** by ADR-008 §8: `model_version` is N/A for the rule-based v0; `decision_policy_version` + `configuration` are pinned; the regime version-triple composes in.
+d. **Regime taxonomy exists** — `regime_class` values are enumerated and grounded. ✅ **Closed** (ADR-007 / SCHEMA-010; see Update below).
+e. **Confidence semantics agreed** — the scalar `confidence` (+`uncertainty`) model is fixed (see ADR-004: the 3-component performance/calibration/sample_quality variant is **not** adopted into the frozen scalar model without a formal amendment). ✅ **Closed** by ADR-008: fixed as a deterministic ordinal trust score (anchor = within-rule `rule_margin`; discounts = secondary/near/staleness/revision/coverage; NEUTRAL + INDETERMINATE floors); explicitly **not** a calibrated probability and **not** the 3-component variant.
 
-Until every gate passes, no Gold DecisionPacket SCHEMA node, module, guard, or implementation code is created.
+**All five gates now pass (2026-06-08).** The Gold DecisionPacket SCHEMA node, builder module, Gold Decision API, and L3 guards become authorable contract-first in the next slice; none are created by this ADR or by ADR-008.
 
-> **Update (2026-06-08):** gate **(d) is satisfied** — [[ADR - Deterministic Regime Taxonomy]] (ADR-007) authors the enumerated, grounded regime taxonomy and its contract [[Regime Classification Schema]] (SCHEMA-010), produced by [[Market Regime Classifier]] (MOD-005) and exposed via [[Regime Classification API]] (INT-007). That slice also materially advances (b) feature-coverage (the 14 features are exercised by the classifier), (c) replay-finalization (the regime replay key is pinned), and (e) confidence-semantics (the scalar is fixed as a rule-local `rule_margin`, not the 3-component variant). The Gold DecisionPacket SCHEMA/module/guards remain **unauthored**. Note: SCHEMA-010 (named here as a v0 candidate in §7) is now used for the regime contract; the Gold DecisionPacket candidate shifts to the next free id.
+> **Update (2026-06-08):** gate **(d) is satisfied** — [[ADR - Deterministic Regime Taxonomy]] (ADR-007) authors the enumerated, grounded regime taxonomy and its contract [[Regime Classification Schema]] (SCHEMA-010), produced by [[Market Regime Classifier]] (MOD-005) and exposed via [[Regime Classification API]] (INT-007). That slice also advanced (b) feature-coverage and (c) replay-finalization by pinning the regime contract and its replay key. (Note: the regime `rule_margin` is a rule-local activation margin, explicitly **not** the Gold confidence scalar — gate (e) is closed separately by ADR-008, below.) The Gold DecisionPacket SCHEMA/module/guards remain **unauthored**. Note: SCHEMA-010 (named here as a v0 candidate in §7) is now used for the regime contract; the Gold DecisionPacket candidate shifts to the next free id.
+
+> **Update (2026-06-08, ADR-008):** gates **(e), (c), and (b) are now satisfied** by [[ADR - Gold Decision Confidence Semantics]] (ADR-008): (e) fixes the v0 `confidence`/`uncertainty` model as a deterministic ordinal trust score (not a probability, not the ADR-004 3-component variant); (c) finalizes the Gold replay key (`model_version` N/A for the rule-based v0); (b) accepts the 7 reserved-feature gaps. **All five §8 gates now pass**, and this ADR is promoted to `status: active`. The Gold DecisionPacket SCHEMA (next free id, never SCHEMA-004), builder module, Gold Decision API, and L3 guards remain unauthored — created contract-first in the next slice.
 
 ## Illustrative Field Sketch (non-normative)
 

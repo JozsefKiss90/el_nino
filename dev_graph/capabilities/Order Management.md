@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -60,7 +60,7 @@ Central execution capability. Receives validated signals, calculates position si
 ### Contains
 
 ### Depends On
-- [[Signal Generation]]
+- [[Signal Generation]] — _DEPRECATED (CAP-004); live order routing is itself deferred (ADR-006 Non-Goals). The gold v0 successor [[Gold Decision Generation]] is paper-only and does NOT feed Order Management._
 - [[systems/Risk Control]] — trade validation
 
 ### Provides

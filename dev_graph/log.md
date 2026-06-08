@@ -779,7 +779,7 @@ fields (`evaluated_rule_ids`, `skipped_rule_ids`, `failed_required_features`); i
 
 ### Metrics
 
-- Total content nodes: 123 (109 + 14). Active: 122 (REF-004 deprecated).
+- Total content nodes: 124 (110 + 14). Active: 123 (REF-004 deprecated). (The pre-slice base was 110; the prior index headline of 109 was a long-standing off-by-one, corrected here and in index.md.)
 - Type counts: capability 18→19, interface 3→4, artifact_schema 6→7, module 4→5, file 10→14, test 7→9,
   pattern 10→11, knowledge_asset 10→11, decision_record 6→7, benchmark_result 0→1.
 - Canonical ID + frontmatter coverage: 123/123 (100%). Populated dirs 21→22 (benchmarks); empty 4→3.
@@ -804,3 +804,87 @@ evidence-confidence coherence ✓.
   out of this slice's scope.
 - Optional `python dev_graph/sync_to_neo4j.py` when Neo4j is up (no script change needed — `benchmark_result`
   and interface/relationship mappings already exist).
+
+## 2026-06-08 governance | ADR-008 Gold Decision Confidence Semantics — closes ADR-006 §8(e); promotes ADR-006 draft→active
+
+**Slice.** Governance + design slice closing the single load-bearing open Gold-DecisionPacket creation gate. After MOD-005 closed gate (d), gate **(e) "Confidence semantics agreed"** was the only genuinely-open gate: the regime `rule_margin` is, per ADR-007 §Decision-3, a *rule-local activation margin* explicitly NOT epistemic confidence, so the Gold confidence scalar was undefined. Authored **ADR-008** to FIX the v0 confidence/uncertainty model; promoted **ADR-006** draft→active with all five §8 gates now passing. **No `src`/`tests`/schema/code** (ADR-006 §8 honored) — the Gold SCHEMA/builder/API/L3-guards remain for the next slice. STEP-0 brief: `GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md`.
+
+### Nodes Created (1)
+
+- **ADR-008 Gold Decision Confidence Semantics** (decision_record, active/not-started, confidence confirmed, evidence [design, ADR, code]). Fixes: (1) v0 `confidence` ∈ [0,1] = deterministic **ordinal trust score**, explicitly NOT a calibrated probability; (2) anchor = within-matched-rule normalized `rule_margin` (never raw per-rule scales 0.5–50); (3) discounts = `secondary_matching_rules` (ambiguity), `near_matching_rules` (fragility), cited-feature `revision_risk`/`max_staleness_days` (data quality), `failed_required_features`/`unavailable_features` (coverage); (4) floors = NEUTRAL confident-quiet, INDETERMINATE → min confidence/max uncertainty; (5) `uncertainty` = structural-penalty aggregate (not strict `1−confidence`); (6) REJECTS ADR-004's 3-component performance/calibration/sample_quality variant and forbids SCHEMA-005 calibration bleed (ADR-004 separation); (7) confidence form/weights governed by `decision_policy_version` (bump it, never `taxonomy_version`); empirical recalibration an expected v1 amendment; (8) finalizes the Gold replay key (gate c; `model_version` N/A for the rule-based v0); (9) accepts the 7 reserved-feature gaps (gate b); (10) records the CAP-004 deprecate-and-supersede decision; (11) no schema/code.
+
+### Changes to existing nodes (2)
+
+- **ADR-006 Gold DecisionPacket v0 Planning**: `status: draft → active`; Status "Proposed" → "Accepted" (reconciles prose vs `decision_status: active` — DEBT-18); §8 gate board re-marked — (a)/(d) Closed, (b) Satisfied (gaps accepted), (c) Closed, (e) Closed → "all five gates now pass"; corrected the prior 2026-06-08 note's "(e) materially advanced via rule_margin" framing (rule_margin is NOT the Gold confidence) and added an ADR-008 update note; `related_decisions += [[ADR - Gold Decision Confidence Semantics]]`.
+- **index.md**: ADR-008 row added to Decisions; Statistics refreshed (decision_record 7→8; total content nodes 124→125; total files 128→129; coverage 125/125).
+
+### Decision content folded in (per the STEP-0 brief, user-resolved)
+
+- **CAP-004 "Signal Generation" = deprecate-and-supersede** (NOT keep-as-legacy, NOT repurpose-in-place). Rationale: CAP-004 is a not-started, wiki-derived intraday indicator-stack (VWAP/EMA/RVOL over raw L2 → trade signals to Order Management) — obsolete vs the realized deterministic pipeline (SCHEMA-001→MOD-003→MOD-004→MOD-005→Gold; FeatureVector+RegimeClassification → paper DecisionPacket). Decision recorded in ADR-008 §10; **execution deferred to the next slice** — the `status: deprecated` flip + `### Supersedes → [[Signal Generation]]` are applied on the new gold-decision capability node when authored (deprecate-with-successor, no dangling deprecation). Distinct from CAP-015 treasury (SYS-006), untouched.
+
+### Verification (governance slice — no pytest)
+
+- **Empirical sanity check** (the one real snapshot `952cc83a…`, via `consume→build_features→classify`): RESTRICTIVE_RATES / R04 / `rule_margin` 0.46 (real_yield_10y 1.96 vs 1.50, scale 1.0); `secondary`=∅, `near`={R08_strong_usd}, `failed_required`=∅, `unavailable`=∅; provenance staleness 2, revision_risk False. Illustrative v0 weights → confidence ≈ 0.40 / uncertainty ≈ 0.60 (sensible: a modest restrictive-rates call with one competing regime nearby earns middling trust). Floors behave (NEUTRAL>0; INDETERMINATE→0/1). Validates the *structure*; weights stay non-frozen under `decision_policy_version`. (temp script created + deleted; no repo artifact.)
+- **11 dev_graph lint checks** on touched nodes (ADR-008, ADR-006, index.md): frontmatter ✓, enums ✓ (status active / impl not-started / confidence confirmed / evidence ⊆ allowed), orphan/≥1 inbound ✓ (ADR-008 ← ADR-006 `related_decisions` + its Justified-By targets), stale ✓, broken wikilinks ✓ (all ADR-008 outbound links resolve: ADR-006/007/004/005, Regime Classification Schema, Feature Vector Schema, Canonical Ownership, Signal Generation, Decision Making), module checks N/A, type-content alignment ✓ (ADR has Status/Context/Decision/Consequences), deprecated refs ✓ (CAP-004 still active until Slice 2), canonical_id uniqueness ✓ (ADR-008 new), evidence-confidence coherence ✓ (confirmed + 3 evidence values).
+- **Gate-board coherence**: ADR-006 §8 reads all-pass; advanced-vs-satisfied wording collision corrected (no contradiction for admissibility check #7).
+- **DEBT-05**: index per-type tally verified to sum to the headline (125) — coherent.
+
+### Metrics
+
+- Total content nodes: 125 (124 + ADR-008). Active: 124 (REF-004 deprecated). decision_record 7→8; all other type counts unchanged.
+- Canonical ID + frontmatter coverage: 125/125 (100%). No code changed: 0 files under `src/**` or `tests/**`. No tests run (governance-only slice).
+- vs Phase 5 soft ceiling 200: 125.
+
+### Deferred / open (Slice 2 — now unblocked)
+
+- **Gold DecisionPacket v0**: author contract-first the normative SCHEMA (next free id, never SCHEMA-004), the gold decision builder module (next free MOD id) realizing it, the Gold Decision API (next free INT id — re-derive; do not assume INT-009), tests + a confidence-distribution benchmark; wire INT-007 `output_schema consumed_by` → the gold builder.
+- **CAP-004 execution**: deprecate CAP-004 + author the gold-decision capability (next free CAP id) under SYS-002 carrying `### Supersedes → [[Signal Generation]]`; add it to SYS-002 `contains_capabilities`.
+- **L3 guards** (`duplicate_ok`/`operational_ok` + the six-guard taxonomy): own governing ADR; never MOD-004 features (ADR-005 / ADR-006 §6).
+- **Hygiene pass (separate, before first trusted Neo4j/Graph-RAG export)**: DEBT-02/03/07 export-edge fixes + DEBT-04 KA→ADR backlinks. DEBT-01 publisher NameError rides with the real-corpus work.
+- **Real snapshot corpus**: converts gate (b) from accepted-gaps to fully-validated; enables governed `decision_policy_version` recalibration.
+
+## 2026-06-08 contract | Gold DecisionPacket v0 — Slice 2 STEP 1-2 (contract layer + capability + CAP-004 deprecation)
+
+**Slice (in progress).** Contract-first build of the Gold DecisionPacket v0 lineage, now that all ADR-006 §8 gates pass (ADR-008 closed (e); (b)/(c) finalized). This entry covers STEP 1 (contract nodes, no code) + STEP 2 (capability + CAP-004 deprecation). **Paused at the STEP-2 checkpoint for review before any code.** STEP-0 brief: `GOLD_DECISIONPACKET_V0_BRIEF.md`.
+
+### Nodes Created (3)
+
+- **SCHEMA-011 Gold DecisionPacket v0 Schema** (artifact_schema, planned/not-started, confidence inferred, evidence [design, ADR]). The `GoldDecisionPacket` contract — `paper_only`, instrument `GLD`. Field groups: decision (`packet_id`, `decision_mode`, `regime`, `direction` enum LONG/FLAT/AVOID/WATCH, `confidence`, `uncertainty`, `rationale`), provenance/identity (`source_snapshot_id` + echoed regime versions + `matched_rule_id` + `cited_features`), `decision_policy_version`, trust trace (`confidence_inputs`), `guard_refs` (six-guard taxonomy, bool|null), safety (`non_execution_notice`, `constraints`). New canonical id (002/003/006 reserved; never SCHEMA-004). `produced_by` empty until MOD-006.
+- **INT-009 Gold Decision API** (interface, planned/not-started, stability experimental). `build_decision(fv, rc, guards=None, config=DEFAULT, as_of=None) -> GoldDecisionPacket`. `input_schema` (primary) SCHEMA-010; Consumes both SCHEMA-009 + SCHEMA-010; output SCHEMA-011. INT-008 left earmarked for the future Evaluation API → this took **INT-009**.
+- **CAP-020 Gold Decision Generation** (capability, active/not-started) under SYS-002. `### Supersedes → [[Signal Generation]]`; consumes SCHEMA-009/010, produces SCHEMA-011, provides INT-009, realizes Pipeline Pattern; permanently separate from CAP-015 treasury (ADR-004).
+
+### CAP-004 deprecate-and-supersede (executed per ADR-008 §10)
+
+- **CAP-004 Signal Generation**: status active→deprecated, implementation_status not-started→deprecated, updated→2026-06-08; prominent DEPRECATED banner naming successor CAP-020 + ADR-008 §10 + the Deprecation Procedure (retained; excluded by admissibility #2). Outbound edges retained as historical (Procedure step 4).
+- **Inbound-edge rewiring (lint check 9):**
+  - **PAT-004 Pipeline Pattern**: `[[Signal Generation]]` → `[[Gold Decision Generation]]` in `instances`, `realized_by_capabilities`, and `### Realized By` (CAP-020 is the successor pipeline stage); updated→2026-06-08.
+  - **CAP-005 Order Management**: `### Depends On [[Signal Generation]]` annotated (deprecated; live order routing deferred per ADR-006 Non-Goals; the paper-only gold successor does NOT feed Order Management — annotated, not redirected); updated→2026-06-08.
+  - **SYS-002 Trading Engine**: `contains_capabilities` + `### Contains`: `[[Signal Generation]]` → `[[Gold Decision Generation]]` (others kept); `## Capabilities` prose reconciled (was stale — said "4 capabilities", omitted CAP-019) → now lists CAP-004 deprecated + 005/006/007/019/020.
+
+### Design decision settled (regime → direction)
+
+- The regime→direction mapping is **versioned decision-policy config under `decision_policy_version` v0, NOT a companion ADR** — no separation/governance hazard comparable to confidence (gold-internal, paper-only, structurally identical to RegimeConfig thresholds; already governed by ADR-008's `decision_policy_version` axis). Direction enum LONG/FLAT/AVOID/WATCH; INDETERMINATE→WATCH (fail-closed). The per-regime gold thesis is documented in SCHEMA-011 + the brief, flagged provisional/calibration-deferred, to be pinned + fingerprint-coherence-tested in the implementation config. Rationale in `GOLD_DECISIONPACKET_V0_BRIEF.md`.
+
+### Changes to existing nodes (5)
+
+- **index.md**: CAP-004 row struck through (deprecated); CAP-020 / INT-009 / SCHEMA-011 rows added; Statistics refreshed (capability 19→20 incl. 1 deprecated, interface 4→5, artifact_schema 7→8; total content nodes 125→128; total files 129→132; coverage 128/128); INT-008 reserved note clarified (Evaluation API).
+- **PAT-004**, **CAP-005**, **SYS-002**, **Signal Generation (CAP-004)** — as above.
+
+### Verification (contract checkpoint — no code yet)
+
+- **11 lint checks** on touched nodes: frontmatter ✓ (NO freeform keys — a stray `updated_note` mistakenly added to CAP-005 was caught and removed); enums ✓; orphans/≥1 inbound ✓ (SCHEMA-011 ← INT-009 output + CAP-020 produces; INT-009 ← CAP-020; CAP-020 ← SYS-002 + PAT-004 + INT-009); stale ✓; broken wikilinks ✓ (all new links resolve); **deprecated-reference (check 9) ✓** — post-flip, no ACTIVE node references `[[Signal Generation]]` except CAP-020's sanctioned `### Supersedes` and CAP-005's explicitly-annotated Depends-On; PAT-004 + SYS-002 redirected to the successor; type-content alignment ✓; canonical_id uniqueness ✓; evidence-confidence coherence ✓.
+- **Gate-board coherence**: ADR-006 §8 unchanged (still all-pass).
+- **Contract-first discipline**: zero `src/**`, `tests/**`, `benchmarks/**` changes; no module/file/test nodes yet (per the checkpoint).
+
+### Metrics
+
+- Total content nodes: 128 (125 + 3). Active: 126 (REF-004 + CAP-004 deprecated). capability 19→20, interface 4→5, artifact_schema 7→8.
+- Canonical ID + frontmatter coverage: 128/128 (100%). No code changed.
+- vs Phase 5 soft ceiling 200: 128.
+
+### Deferred / next (STEP 3-6, post-checkpoint)
+
+- **MOD-006 Gold Decision Builder** (`src/gold/decision_builder/`): `models.py` (SCHEMA-011 dataclasses + `Direction` enum), `config.py` (`DecisionPolicyConfig` — confidence weights + regime→direction table + `decision_policy_version` + `decision_policy_fingerprint`), `policy.py` (`trust_score` + `direction_for`), `decision_builder.py` (`build_decision`). Pure/total/stdlib/fail-closed; implement the ADR-008 confidence model.
+- **PRED-006 Duplicate OK / PRED-007 Operational OK + GATE-002 Gold Decision Gate** (L3 guard contracts; stateful computation deferred to the paper-trading runtime, ADR-006 Non-Goals).
+- **Tests + BENCH-002** (determinism, fail-closed, fingerprint coherence, golden artifact).
+- **Writeback**: file/test nodes (FILE-015+, TEST-010/011); bump CAP-020/MOD-006 implementation_status; wire INT-007 / SCHEMA-009 / SCHEMA-010 `consumed_by` → the gold builder; index.md + log.md; 11 lint checks; gate-board coherence.

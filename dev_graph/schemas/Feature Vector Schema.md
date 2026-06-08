@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-07
-updated: 2026-06-07
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -26,7 +26,8 @@ schema_version: "0.1.0"
 schema_path: "src/features/feature_builder/models.py"
 validated_by:
   - "[[test_feature_builder]]"
-consumed_by: []
+consumed_by:
+  - "[[Market Regime Classifier]]"
 produced_by:
   - "[[Feature Builder]]"
 ---
@@ -86,6 +87,7 @@ Output schema of MOD-004 Feature Builder; input is SCHEMA-001 (via a consumed `S
 
 ### Used By
 - [[models.py (features)]]
+- [[Market Regime Classifier]]
 
 ### Validated By
 - [[test_feature_builder]]

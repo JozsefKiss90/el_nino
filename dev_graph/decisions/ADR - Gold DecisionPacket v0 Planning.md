@@ -5,7 +5,7 @@ status: draft
 implementation_status: not-started
 canonical: true
 created: 2026-06-07
-updated: 2026-06-07
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -19,6 +19,7 @@ related_constraints:
 related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Feature Layer Contract]]"
+  - "[[ADR - Deterministic Regime Taxonomy]]"
 decision_id: "ADR-006"
 decision_date: 2026-06-07
 supersedes: []
@@ -100,6 +101,8 @@ d. **Regime taxonomy exists** — `regime_class` values are enumerated and groun
 e. **Confidence semantics agreed** — the scalar `confidence` (+`uncertainty`) model is fixed (see ADR-004: the 3-component performance/calibration/sample_quality variant is **not** adopted into the frozen scalar model without a formal amendment).
 
 Until every gate passes, no Gold DecisionPacket SCHEMA node, module, guard, or implementation code is created.
+
+> **Update (2026-06-08):** gate **(d) is satisfied** — [[ADR - Deterministic Regime Taxonomy]] (ADR-007) authors the enumerated, grounded regime taxonomy and its contract [[Regime Classification Schema]] (SCHEMA-010), produced by [[Market Regime Classifier]] (MOD-005) and exposed via [[Regime Classification API]] (INT-007). That slice also materially advances (b) feature-coverage (the 14 features are exercised by the classifier), (c) replay-finalization (the regime replay key is pinned), and (e) confidence-semantics (the scalar is fixed as a rule-local `rule_margin`, not the 3-component variant). The Gold DecisionPacket SCHEMA/module/guards remain **unauthored**. Note: SCHEMA-010 (named here as a v0 candidate in §7) is now used for the regime contract; the Gold DecisionPacket candidate shifts to the next free id.
 
 ## Illustrative Field Sketch (non-normative)
 

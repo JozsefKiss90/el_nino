@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-05-25
-updated: 2026-06-06
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -227,6 +227,15 @@ WHERE type = "module"
 AND (related_tests = null OR length(related_tests) = 0)
 AND implementation_status != "not-started"
 SORT file.name ASC
+```
+
+## 22. Benchmark Inventory
+
+```dataview
+TABLE status, implementation_status, measures, updated
+FROM "dev_graph"
+WHERE type = "benchmark_result"
+SORT updated DESC
 ```
 
 ---

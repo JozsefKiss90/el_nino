@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -27,6 +27,7 @@ contains_capabilities:
   - "[[Order Management]]"
   - "[[Stop-Loss Management]]"
   - "[[Position Tracking]]"
+  - "[[Market Regime Classification]]"
 upstream_systems:
   - "[[Data Pipeline]]"
   - "[[Risk Control]]"
@@ -87,6 +88,7 @@ Central system in the pipeline. Maps to Layer 3 (Execution) in the [[Layer Model
 
 ### Contains
 - (Forward references: Signal Generation, Order Management, Stop-Loss Management, Position Tracking — Phase 3)
+- [[Market Regime Classification]]
 
 ### Depends On
 - [[Data Pipeline]] — consumes snapshots

@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-07
+Last updated: 2026-06-08
 
 ## Architecture
 
@@ -44,6 +44,7 @@ Last updated: 2026-06-07
 | [[capabilities/Treasury Management]] | CAP-016 | Supervisor Office | Track budget, enforce spend policy, approve/deny |
 | [[capabilities/Upgrade Evaluation]] | CAP-017 | Supervisor Office | Simulate upgrades, run paper trading, evaluate outcomes |
 | [[capabilities/Team Orchestration]] | CAP-018 | Supervisor Office | Manage agent desk assignments, coordinate upgrades |
+| [[capabilities/Market Regime Classification]] | CAP-019 | Trading Engine | Classify a feature vector into one deterministic macro regime (SCHEMA-010) |
 
 ## Knowledge Assets
 
@@ -59,6 +60,7 @@ Last updated: 2026-06-07
 | [[Agent Safety Principles]] | KA-008 | knowledge_asset | Multi-layer safety — credential isolation, phased autonomy |
 | [[Stateless Agent Architecture]] | KA-009 | knowledge_asset | Wake-Execute-Sleep — file-mediated agent continuity |
 | [[Paper Trading Validation]] | KA-010 | knowledge_asset | Mandatory simulated validation before live deployment |
+| [[Regime Taxonomy]] | KA-011 | knowledge_asset | Why deterministic enumerated regimes belong between features and decisions |
 
 ## Patterns
 
@@ -74,6 +76,7 @@ Last updated: 2026-06-07
 | [[patterns/Promotion Pattern]] | PAT-008 | governance | Promotion Validation |
 | [[patterns/CQRS Pattern]] | PAT-009 | structural | Snapshot Assembly |
 | [[patterns/Multi-Agent Coordination Pattern]] | PAT-010 | coordination | Team Orchestration |
+| [[patterns/Regime Classification Pattern]] | PAT-011 | behavioral | Market Regime Classification, Market Regime Classifier |
 
 ## Interfaces
 
@@ -82,8 +85,9 @@ Last updated: 2026-06-07
 | [[Snapshot API]] | INT-001 | interface | Data Pipeline → Trading Engine Layer-2 snapshot read contract |
 | [[Risk Check API]] | INT-003 | interface | Risk Control → Trading Engine trade-validation contract |
 | [[Decision API]] | INT-006 | interface | Supervisor Office → Trading Engine upgrade-decision contract |
+| [[Regime Classification API]] | INT-007 | interface | Feature Vector → Regime Classification contract (canonical upstream for Gold) |
 
-(INT-002, 004/005, 007/008 reserved for future Phase 4 contracts)
+(INT-002, 004/005, 008 reserved for future Phase 4 contracts)
 
 ## Events
 
@@ -109,7 +113,7 @@ Last updated: 2026-06-07
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
-| [[Dev Graph Dashboard]] | OBS-001 | observability | 21 Dataview queries for dev_graph health |
+| [[Dev Graph Dashboard]] | OBS-001 | observability | 22 Dataview queries for dev_graph health |
 
 ## Context Packs
 
@@ -128,6 +132,7 @@ Last updated: 2026-06-07
 | [[ADR - Decision Layer Re-grounding]] | ADR-004 | decision_record | Separates Supervisor treasury-upgrade branch from future Gold Trading Decision branch |
 | [[ADR - Feature Layer Contract]] | ADR-005 | decision_record | Deterministic snapshot-local feature rules; replay determinism; MOD-003-only input |
 | [[ADR - Gold DecisionPacket v0 Planning]] | ADR-006 | decision_record | Governance boundary for a future Gold DecisionPacket layer; creation gates + replay invariants; consumes SCHEMA-009 only; non-normative |
+| [[ADR - Deterministic Regime Taxonomy]] | ADR-007 | decision_record | Deterministic, config-driven, fail-closed regime taxonomy; satisfies ADR-006 gate (d) |
 
 ## Constraints
 
@@ -152,6 +157,7 @@ Last updated: 2026-06-07
 | [[Decision Engine]] | MOD-002 | module | Deterministic upgrade scoring under treasury constraints (plan only) |
 | [[Snapshot Consumer]] | MOD-003 | module | Fail-closed Layer-3 ingestion of the Layer-2 truth snapshot |
 | [[Feature Builder]] | MOD-004 | module | Deterministic snapshot-local Layer-2 → feature vector transform |
+| [[Market Regime Classifier]] | MOD-005 | module | Deterministic feature-vector → one macro regime (rule-selection engine) |
 
 ## Files
 
@@ -167,6 +173,10 @@ Last updated: 2026-06-07
 | [[consumer.py]] | FILE-008 | file | Fail-closed snapshot reader/gate (INT-001 consumer side) |
 | [[models.py (features)]] | FILE-009 | file | Dataclasses realizing SCHEMA-009 (Feature + FeatureVector + version) |
 | [[feature_builder.py]] | FILE-010 | file | FEATURE_REGISTRY + build_features() deterministic transform (MOD-004) |
+| [[regime_classifier.py]] | FILE-011 | file | classify() rule-selection driver (MOD-005) |
+| [[taxonomy.py]] | FILE-012 | file | Priority-ordered RULE_TABLE + margin/near helpers |
+| [[config.py (regime)]] | FILE-013 | file | RegimeConfig (versioned thresholds) + fail-closed loader |
+| [[models.py (regime)]] | FILE-014 | file | SCHEMA-010 models (Regime enum, RegimeClassification) |
 
 ## Tests
 
@@ -179,6 +189,8 @@ Last updated: 2026-06-07
 | [[test_models (snapshot)]] | TEST-005 | test | Unit tests for SCHEMA-001 models incl. id recomputation (8 tests) |
 | [[test_consumer]] | TEST-006 | test | Fail-closed Snapshot Consumer gate tests (8 tests) |
 | [[test_feature_builder]] | TEST-007 | test | Feature Builder tests — arithmetic, determinism, provenance (10 tests) |
+| [[test_regime_classifier]] | TEST-008 | test | Regime classifier — units, grid, determinism, fail-closed, completeness (~60) |
+| [[test_regime_bench]] | TEST-009 | test | Benchmark/replay harness determinism + coverage (5 tests) |
 
 ## Gates
 
@@ -202,6 +214,7 @@ Last updated: 2026-06-07
 |------|----|------|---------|
 | [[Layer 2 Snapshot Schema]] | SCHEMA-001 | artifact_schema | Snapshot API output — Layer-2 truth payload (deterministic id, guards, series) |
 | [[Feature Vector Schema]] | SCHEMA-009 | artifact_schema | Feature Builder output — deterministic SCHEMA-001-derived features + provenance |
+| [[Regime Classification Schema]] | SCHEMA-010 | artifact_schema | Regime Classifier output — matched rule, regime, rule_margin, provenance, trace |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
@@ -225,32 +238,34 @@ Last updated: 2026-06-07
 
 ## Benchmarks
 
-(Empty — populated in Phase 8 when benchmarks are recorded)
+| Node | ID | Type | Summary |
+|------|----|------|---------|
+| [[Regime Distribution Benchmark]] | BENCH-001 | benchmark_result | Regime replay determinism + synthetic distribution/coverage/entropy |
 
 ---
 
 ## Statistics
 
-- **Total content nodes**: 109 (architecture: 4, system: 6, capability: 18, interface: 3, artifact_schema: 6, module: 4, file: 10, test: 7, gate: 1, predicate: 5, pattern: 10, workflow: 1, knowledge_asset: 10, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 6, constraint: 3, api_doc_source: 2)
+- **Total content nodes**: 124 (architecture: 4, system: 6, capability: 19, interface: 4, artifact_schema: 7, module: 5, file: 14, test: 9, gate: 1, predicate: 5, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 7, constraint: 3, api_doc_source: 2, benchmark_result: 1)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 113
+- **Total files**: 128
 - **Active directories**: 23
-- **Populated directories**: 21 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs + root)
-- **Empty directories**: 4 (events, agents, skills, benchmarks)
-- **Frontmatter coverage**: 109/109 content nodes (100%)
-- **Canonical ID coverage**: 109/109 content nodes (100%)
+- **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
+- **Empty directories**: 3 (events, agents, skills)
+- **Frontmatter coverage**: 124/124 content nodes (100%)
+- **Canonical ID coverage**: 124/124 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
-- **Realizes edges**: 27 (23 capabilities + 2 modules + 2 files → patterns)
-- **Composes edges**: 2 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval)
-- **Originates From edges**: 12 (capabilities/systems → knowledge assets)
+- **Realizes edges**: 29 (24 capabilities + 3 modules + 2 files → patterns)
+- **Composes edges**: 3 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval; Regime Classification → Pipeline)
+- **Originates From edges**: 19 (capabilities/systems/modules/schemas/decisions → knowledge assets)
 - **Status enum**: 7 values
 - **Implementation status enum**: 7 values
 - **Confidence enum**: 5 values
 - **Evidence enum**: 7 values
 - **Lint checks**: 11
-- **Dashboard queries**: 21
+- **Dashboard queries**: 22
 - **Bootstrap date**: 2026-05-25
 - **Ontology redesign date**: 2026-06-06
 - **Phase 1 completion date**: 2026-06-06
@@ -261,3 +276,5 @@ Last updated: 2026-06-07
 - **Phase 5 (first coding session — Guardrail Engine) date**: 2026-06-06
 - **Phase 6 #1 (Trade Validation Gate + predicates) date**: 2026-06-06
 - **Phase 5 (second coding session — Decision Engine) date**: 2026-06-06
+- **MOD-004 (Feature Builder) date**: 2026-06-07
+- **Regime Taxonomy (MOD-005 / SCHEMA-010 / ADR-007 / CAP-019 / INT-007 / KA-011 / PAT-011 / BENCH-001) date**: 2026-06-08

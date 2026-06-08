@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-07
-updated: 2026-06-07
+updated: 2026-06-08
 confidence: confirmed
 evidence:
   - design
@@ -70,7 +70,7 @@ Realizes the Feature Layer governed by [[ADR - Feature Layer Contract]] (ADR-005
 ## Open Questions
 
 - Capability attachment: CAP-002 Feature Engineering is currently framed Layer-2-producer-side; this module derives features Layer-3-side from the raw snapshot — same producer/consumer seam as CAP-003/MOD-003. Resolve in a future re-grounding step; not forced here.
-- Consumer (regime / Gold DecisionPacket v0) does not exist yet; the vector is the grounding artifact that unblocks authoring it.
+- The regime consumer ([[Market Regime Classifier]], MOD-005) now consumes this vector; the Gold DecisionPacket v0 consumer remains deferred (ADR-006 §8).
 
 ## Relationships
 
@@ -93,6 +93,9 @@ Realizes the Feature Layer governed by [[ADR - Feature Layer Contract]] (ADR-005
 
 ### Depends On
 - [[Snapshot Consumer]]
+
+### Used By
+- [[Market Regime Classifier]]
 
 ### Justified By
 - [[ADR - Feature Layer Contract]]

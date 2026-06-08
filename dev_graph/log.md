@@ -711,3 +711,96 @@ Treasury branch (MOD-002 / INT-006 / SCHEMA-004 / SCHEMA-005) untouched and kept
   `operational_ok`, …), regime taxonomy.
 - ADR-006 `status: draft` is the governed stand-in for "Proposed" (no `proposed` enum value); promote to
   `active` on acceptance.
+
+## 2026-06-08 session | Deterministic Regime Taxonomy slice (MOD-005 / SCHEMA-010 / ADR-007)
+
+**Slice.** Implemented the deterministic, snapshot-local Regime Taxonomy layer — the canonical semantic
+abstraction between MOD-004 Feature Builder and the future Gold Decision Builder. Satisfies **ADR-006 §8(d)**
+(the explicit open creation gate). Contract-first (ADR-007 + SCHEMA-010 authored), then code, tests, benchmark,
+writeback. No Gold builder / execution / order / trade nodes (ADR-006 §8 still holds); MOD-001/002/003/004,
+INT-006, SCHEMA-001/004/005/009 untouched except additive downstream links on MOD-004 / SCHEMA-009.
+
+**ADR-005 reconciliation.** ADR-005 §2 forbids "inferred regimes" *as a feature class*, deferring such logic to
+"a later, explicitly stateful node with its own ADR." This is that node — and it is **rule-based and
+deterministic, not inferred/learned**. No contradiction: ADR-005 governs feature purity; ADR-007 governs a
+separate downstream classification layer that consumes pure features.
+
+**User refinements folded in:** scalar named `rule_margin` (rule-local activation margin, not confidence, with
+`rule_threshold`/`rule_scale` carried); thresholds config-driven + versioned (`RegimeConfig`, fingerprint
+coherence); rule-selection-first output (`matched_rule_id` primary, `regime` projected); NEUTRAL is the sole
+catch-all (conflict surfaced via `secondary_matching_rules`/`near_matching_rules`, no MIXED_SIGNAL); audit
+fields (`evaluated_rule_ids`, `skipped_rule_ids`, `failed_required_features`); independent
+`classification_trace_version`.
+
+### Nodes Created (14)
+
+- **ADR-007 Deterministic Regime Taxonomy** (decision_record, active/implemented).
+- **KA-011 Regime Taxonomy** (knowledge_asset) — why deterministic enumerated regimes belong between features and decisions.
+- **PAT-011 Regime Classification Pattern** (pattern, behavioral) — Snapshot → semantic abstraction → decision; composes Pipeline Pattern.
+- **CAP-019 Market Regime Classification** (capability, active/tested) — parent system Trading Engine (SYS-002).
+- **INT-007 Regime Classification API** (interface, active/implemented) — `classify(FeatureVector) -> RegimeClassification`; canonical upstream contract for the future Gold builder.
+- **SCHEMA-010 Regime Classification Schema** (artifact_schema, active/implemented).
+- **MOD-005 Market Regime Classifier** (module, active/tested).
+- **FILE-011 regime_classifier.py**, **FILE-012 taxonomy.py**, **FILE-013 config.py (regime)**, **FILE-014 models.py (regime)** — `src/regime/regime_classifier/`. FILE-013/014 basename-disambiguated (5th/6th `models.py`/`config.py`).
+- **TEST-008 test_regime_classifier**, **TEST-009 test_regime_bench**.
+- **BENCH-001 Regime Distribution Benchmark** (benchmark_result) — first benchmark node; populates the previously-empty `benchmarks/` directory.
+
+### Code shipped
+
+- `src/regime/regime_classifier/{models,config,taxonomy,regime_classifier}.py` (+ `__init__` ×2), stdlib frozen
+  dataclasses (ADR-003), zero runtime deps. `classify(fv, config, as_of) -> RegimeClassification`: pure, total,
+  no IO/clock/randomness/history. 12 regimes (11 signal + INDETERMINATE); priority-ordered RULE_TABLE; real PASS
+  fixture → RESTRICTIVE_RATES (rule_margin 0.46).
+- `tests/regime/{test_regime_classifier,test_regime_bench}.py` — ~65 tests incl. exhaustive grid sweep, golden
+  determinism, fail-closed, config coherence, trace metadata, taxonomy completeness.
+- `benchmarks/regime/run_regime_bench.py` + committed golden `artifacts/regime_bench.json` (deterministic
+  harness: real-replay byte-identical = true; synthetic sweep coverage 11/11; entropy ≈ 3.01 bits).
+- `pyproject.toml` wheel packages += `src/regime`.
+
+### Changes to existing nodes (5)
+
+- **MOD-004 Feature Builder**: `updated`→2026-06-08; added `### Used By → [[Market Regime Classifier]]`; Open
+  Questions updated (regime consumer now exists).
+- **SCHEMA-009 Feature Vector Schema**: `updated`→2026-06-08; `consumed_by += [[Market Regime Classifier]]`;
+  `### Used By += [[Market Regime Classifier]]`.
+- **SYS-002 Trading Engine**: `updated`→2026-06-08; `contains_capabilities += [[Market Regime Classification]]`;
+  Contains relationship added.
+- **ADR-006 Gold DecisionPacket v0 Planning**: `updated`→2026-06-08; added `[[ADR - Deterministic Regime Taxonomy]]`
+  to `related_decisions`; §8 update note (gate (d) satisfied; (b)/(c)/(e) advanced; SCHEMA-010 now used for regime →
+  Gold packet candidate shifts to next free id).
+- **index.md**: all 14 new nodes added; benchmarks section populated; statistics refreshed; "Last updated" → 2026-06-08.
+
+### Canonical-id reassignments (both non-binding reservations, assigned at authoring per ADR-004/006 precedent)
+
+- **SCHEMA-010**: ADR-006 §7 named it a *candidate* for the future Gold DecisionPacket; used here for the regime
+  contract → Gold DecisionPacket candidate shifts to the next free schema id.
+- **INT-007**: loosely earmarked as a future "Evaluation API" in a prior parenthetical; used here for the Regime
+  Classification API → the Evaluation API candidate shifts to INT-008. Index reserved note updated accordingly.
+
+### Metrics
+
+- Total content nodes: 123 (109 + 14). Active: 122 (REF-004 deprecated).
+- Type counts: capability 18→19, interface 3→4, artifact_schema 6→7, module 4→5, file 10→14, test 7→9,
+  pattern 10→11, knowledge_asset 10→11, decision_record 6→7, benchmark_result 0→1.
+- Canonical ID + frontmatter coverage: 123/123 (100%). Populated dirs 21→22 (benchmarks); empty 4→3.
+- Test result: **772 passed** (53 prior + 719 regime: 714 classifier + 5 bench). `mypy --strict` clean on
+  `src/regime` + tests; `ruff` clean. Five modules now implemented + tested (MOD-001..005).
+- vs Phase 5 soft ceiling 200: 123.
+
+### Lint (11 checks, touched nodes)
+
+Frontmatter ✓, enums ✓, orphans ✓ (every new node has ≥1 inbound link), stale ✓, broken wikilinks ✓ (all
+new links resolve to created nodes), module `related_constraints` ✓ (MOD-005 → Canonical Ownership),
+module `related_tests` ✓, type-content alignment ✓, deprecated refs ✓, canonical_id uniqueness ✓,
+evidence-confidence coherence ✓.
+
+### Deferred / open
+
+- Gold DecisionPacket v0 SCHEMA/module/L3-guards remain unauthored (ADR-006 §8); SCHEMA-010 exposed via INT-007
+  as the canonical input when that slice runs.
+- Domain-anchored thresholds await a real historical snapshot corpus for governed recalibration (future
+  `taxonomy_version` bump); replay/coverage evidence today = real determinism + clearly-labelled synthetic sweep.
+- Pre-existing: 2 mypy lambda-inference findings in `feature_builder.py` (MOD-004), surfaced by a newer mypy;
+  out of this slice's scope.
+- Optional `python dev_graph/sync_to_neo4j.py` when Neo4j is up (no script change needed — `benchmark_result`
+  and interface/relationship mappings already exist).

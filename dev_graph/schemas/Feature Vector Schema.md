@@ -28,6 +28,7 @@ validated_by:
   - "[[test_feature_builder]]"
 consumed_by:
   - "[[Market Regime Classifier]]"
+  - "[[Gold Decision Builder]]"
 produced_by:
   - "[[Feature Builder]]"
 ---
@@ -88,6 +89,7 @@ Output schema of MOD-004 Feature Builder; input is SCHEMA-001 (via a consumed `S
 ### Used By
 - [[models.py (features)]]
 - [[Market Regime Classifier]]
+- [[Gold Decision Builder]]
 
 ### Validated By
 - [[test_feature_builder]]

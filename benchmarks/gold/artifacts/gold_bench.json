@@ -1,0 +1,125 @@
+{
+  "benchmark_id": "BENCH-002",
+  "decision_policy_fingerprint": "555c3fb9ba1d17f17d65facfc4c7e6ddc34488ec6b436858bb708d6d3e7e9bdb",
+  "decision_policy_version": "0.1.0",
+  "determinism": {
+    "all_replays_byte_identical": true,
+    "consumable_count": 3,
+    "inputs": [
+      {
+        "byte_identical_replay": true,
+        "confidence": 0.39744,
+        "consumable": true,
+        "direction": "AVOID",
+        "name": "latest_snapshot_pass",
+        "packet_id": "gold-v0:0ebde87216151527",
+        "regime": "RESTRICTIVE_RATES",
+        "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "uncertainty": 0.136
+      },
+      {
+        "consumable": false,
+        "name": "snapshot_fail",
+        "reason": "gate_not_passed"
+      },
+      {
+        "consumable": false,
+        "name": "snapshot_forced",
+        "reason": "gate_not_passed"
+      },
+      {
+        "byte_identical_replay": true,
+        "confidence": 0.39744,
+        "consumable": true,
+        "direction": "AVOID",
+        "name": "src_latest_snapshot",
+        "packet_id": "gold-v0:0ebde87216151527",
+        "regime": "RESTRICTIVE_RATES",
+        "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "uncertainty": 0.136
+      },
+      {
+        "byte_identical_replay": true,
+        "confidence": 0.39744,
+        "consumable": true,
+        "direction": "AVOID",
+        "name": "src_snapshot",
+        "packet_id": "gold-v0:0ebde87216151527",
+        "regime": "RESTRICTIVE_RATES",
+        "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "uncertainty": 0.136
+      }
+    ]
+  },
+  "packet_schema_version": "0.1.0",
+  "synthetic_sweep": {
+    "confidence_stats": {
+      "max": 0.95,
+      "mean": 0.263828,
+      "min": 0.0
+    },
+    "direction_distribution_pct": {
+      "AVOID": 31.7241,
+      "FLAT": 29.3103,
+      "LONG": 30.3448,
+      "WATCH": 8.6207
+    },
+    "direction_frequency": {
+      "AVOID": 92,
+      "FLAT": 85,
+      "LONG": 88,
+      "WATCH": 25
+    },
+    "grid_axes": {
+      "breakeven_5y5y_fwd": [
+        1.8,
+        2.25,
+        2.6
+      ],
+      "curve_2s10s": [
+        -0.3,
+        0.5
+      ],
+      "rates_vol": [
+        60.0,
+        130.0
+      ],
+      "real_yield_10y": [
+        0.5,
+        1.2,
+        2.0
+      ],
+      "usd_level": [
+        110.0,
+        125.0
+      ],
+      "vol_level": [
+        10.0,
+        18.0,
+        28.0,
+        40.0
+      ]
+    },
+    "grid_cells": 290,
+    "regime_direction_map": {
+      "CURVE_INVERSION": "WATCH",
+      "DISINFLATION": "AVOID",
+      "INDETERMINATE": "WATCH",
+      "LIQUIDITY_STRESS": "LONG",
+      "LOW_VOL": "FLAT",
+      "NEUTRAL": "FLAT",
+      "REFLATION": "LONG",
+      "RESTRICTIVE_RATES": "AVOID",
+      "RISK_OFF": "LONG",
+      "RISK_ON": "FLAT",
+      "STRONG_USD": "AVOID",
+      "VOLATILE": "FLAT"
+    },
+    "synthetic": true,
+    "uncertainty_stats": {
+      "max": 1.0,
+      "mean": 0.327414,
+      "min": 0.0
+    }
+  }
+}

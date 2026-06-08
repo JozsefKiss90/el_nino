@@ -87,7 +87,7 @@ Last updated: 2026-06-08
 | [[Risk Check API]] | INT-003 | interface | Risk Control → Trading Engine trade-validation contract |
 | [[Decision API]] | INT-006 | interface | Supervisor Office → Trading Engine upgrade-decision contract |
 | [[Regime Classification API]] | INT-007 | interface | Feature Vector → Regime Classification contract (canonical upstream for Gold) |
-| [[Gold Decision API]] | INT-009 | interface | FeatureVector + RegimeClassification → paper Gold DecisionPacket contract (planned) |
+| [[Gold Decision API]] | INT-009 | interface | FeatureVector + RegimeClassification → paper Gold DecisionPacket contract |
 
 (INT-002, 004/005, 008 reserved for future Phase 4 contracts; INT-008 earmarked for a future Evaluation API)
 
@@ -161,6 +161,7 @@ Last updated: 2026-06-08
 | [[Snapshot Consumer]] | MOD-003 | module | Fail-closed Layer-3 ingestion of the Layer-2 truth snapshot |
 | [[Feature Builder]] | MOD-004 | module | Deterministic snapshot-local Layer-2 → feature vector transform |
 | [[Market Regime Classifier]] | MOD-005 | module | Deterministic feature-vector → one macro regime (rule-selection engine) |
+| [[Gold Decision Builder]] | MOD-006 | module | FeatureVector + RegimeClassification → deterministic paper-only Gold DecisionPacket (SCHEMA-011) |
 
 ## Files
 
@@ -180,6 +181,10 @@ Last updated: 2026-06-08
 | [[taxonomy.py]] | FILE-012 | file | Priority-ordered RULE_TABLE + margin/near helpers |
 | [[config.py (regime)]] | FILE-013 | file | RegimeConfig (versioned thresholds) + fail-closed loader |
 | [[models.py (regime)]] | FILE-014 | file | SCHEMA-010 models (Regime enum, RegimeClassification) |
+| [[models.py (gold)]] | FILE-015 | file | SCHEMA-011 models (GoldDecisionPacket, Direction enum, packet_id) |
+| [[config.py (gold)]] | FILE-016 | file | DecisionPolicyConfig — confidence weights + regime→direction table + fingerprint |
+| [[policy.py]] | FILE-017 | file | trust_score (ADR-008) + direction_for (pure helpers) |
+| [[builder.py]] | FILE-018 | file | build_decision() — Gold Decision API driver (MOD-006) |
 
 ## Tests
 
@@ -194,12 +199,15 @@ Last updated: 2026-06-08
 | [[test_feature_builder]] | TEST-007 | test | Feature Builder tests — arithmetic, determinism, provenance (10 tests) |
 | [[test_regime_classifier]] | TEST-008 | test | Regime classifier — units, grid, determinism, fail-closed, completeness (~60) |
 | [[test_regime_bench]] | TEST-009 | test | Benchmark/replay harness determinism + coverage (5 tests) |
+| [[test_decision_builder]] | TEST-010 | test | Gold builder — units, determinism, fail-closed, golden, fingerprint (20 tests) |
+| [[test_gold_bench]] | TEST-011 | test | Gold benchmark determinism + artifact-in-sync (6 tests) |
 
 ## Gates
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
 | [[Trade Validation Gate]] | GATE-001 | gate | Blocking trade-validation checkpoint (Risk Control) — enforced by GuardrailEngine.validate() |
+| [[Gold Decision Gate]] | GATE-002 | gate | Composes the L3 guards a Gold DecisionPacket cites (advisory; runtime deferred) |
 
 ## Predicates
 
@@ -210,6 +218,8 @@ Last updated: 2026-06-08
 | [[Max Trades OK]] | PRED-003 | predicate | trades_today < max_trades_per_day |
 | [[Max Positions OK]] | PRED-004 | predicate | open_positions < max_positions |
 | [[Withdrawal Disabled]] | PRED-005 | predicate | withdrawals must be disabled |
+| [[Duplicate OK]] | PRED-006 | predicate | L3 idempotency guard — snapshot not already decided (runtime deferred) |
+| [[Operational OK]] | PRED-007 | predicate | L3 operational guard — venue tradeable / preconditions hold (runtime deferred) |
 
 ## Schemas
 
@@ -218,7 +228,7 @@ Last updated: 2026-06-08
 | [[Layer 2 Snapshot Schema]] | SCHEMA-001 | artifact_schema | Snapshot API output — Layer-2 truth payload (deterministic id, guards, series) |
 | [[Feature Vector Schema]] | SCHEMA-009 | artifact_schema | Feature Builder output — deterministic SCHEMA-001-derived features + provenance |
 | [[Regime Classification Schema]] | SCHEMA-010 | artifact_schema | Regime Classifier output — matched rule, regime, rule_margin, provenance, trace |
-| [[Gold DecisionPacket v0 Schema]] | SCHEMA-011 | artifact_schema | Gold Decision Builder output — direction, confidence/uncertainty, cited features, guard_refs (planned) |
+| [[Gold DecisionPacket v0 Schema]] | SCHEMA-011 | artifact_schema | Gold Decision Builder output — direction, confidence/uncertainty, cited features, guard_refs |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
@@ -245,23 +255,24 @@ Last updated: 2026-06-08
 | Node | ID | Type | Summary |
 |------|----|------|---------|
 | [[Regime Distribution Benchmark]] | BENCH-001 | benchmark_result | Regime replay determinism + synthetic distribution/coverage/entropy |
+| [[Gold Decision Distribution Benchmark]] | BENCH-002 | benchmark_result | Gold packet replay determinism + direction/confidence distribution |
 
 ---
 
 ## Statistics
 
-- **Total content nodes**: 128 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 5, file: 14, test: 9, gate: 1, predicate: 5, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 8, constraint: 3, api_doc_source: 2, benchmark_result: 1)
+- **Total content nodes**: 139 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 6, file: 18, test: 11, gate: 2, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 8, constraint: 3, api_doc_source: 2, benchmark_result: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 132
+- **Total files**: 143
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 128/128 content nodes (100%)
-- **Canonical ID coverage**: 128/128 content nodes (100%)
+- **Frontmatter coverage**: 139/139 content nodes (100%)
+- **Canonical ID coverage**: 139/139 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
-- **Realizes edges**: 29 (24 capabilities + 3 modules + 2 files → patterns)
+- **Realizes edges**: 31 (25 capabilities + 4 modules + 2 files → patterns)
 - **Composes edges**: 3 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval; Regime Classification → Pipeline)
 - **Originates From edges**: 19 (capabilities/systems/modules/schemas/decisions → knowledge assets)
 - **Status enum**: 7 values

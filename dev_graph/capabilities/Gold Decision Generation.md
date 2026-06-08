@@ -2,18 +2,21 @@
 type: capability
 canonical_id: CAP-020
 status: active
-implementation_status: not-started
+implementation_status: tested
 canonical: true
 created: 2026-06-08
 updated: 2026-06-08
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - ADR
+  - code
 source_paths:
   - "GOLD_DECISIONPACKET_V0_BRIEF.md"
+  - "src/gold/decision_builder/builder.py"
 related_files: []
-related_tests: []
+related_tests:
+  - "[[test_decision_builder]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
@@ -22,7 +25,8 @@ related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
 capability_id: "gold-decision-generation"
 parent_system: "[[systems/Trading Engine]]"
-implemented_by: []
+implemented_by:
+  - "[[Gold Decision Builder]]"
 interfaces:
   - "[[Gold Decision API]]"
 ---
@@ -62,7 +66,7 @@ An L3 decision capability under [[systems/Trading Engine]] (SYS-002). It **super
 
 ## Open Questions
 
-- `implemented_by` is empty until MOD-006 Gold Decision Builder is authored (implementation step); link + bump `implementation_status` at writeback.
+- `implemented_by` → [[Gold Decision Builder]] (MOD-006), authored and tested (`implementation_status: tested`).
 
 ## Relationships
 
@@ -78,6 +82,12 @@ An L3 decision capability under [[systems/Trading Engine]] (SYS-002). It **super
 
 ### Produces
 - [[Gold DecisionPacket v0 Schema]]
+
+### Implemented By
+- [[Gold Decision Builder]]
+
+### Validated By
+- [[test_decision_builder]]
 
 ### Depends On
 - [[Market Regime Classification]]

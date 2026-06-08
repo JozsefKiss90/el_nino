@@ -67,7 +67,7 @@ Output interface of CAP-019 Market Regime Classification, implemented by MOD-005
 
 ## Open Questions
 
-- The Gold builder is not yet authored, so `output_schema` `consumed_by` is empty; link when authored.
+- The Gold builder ([[Gold Decision Builder]], MOD-006) is now authored; `output_schema` (SCHEMA-010) `consumed_by` → it.
 
 ## Relationships
 

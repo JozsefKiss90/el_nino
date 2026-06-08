@@ -888,3 +888,62 @@ evidence-confidence coherence ✓.
 - **PRED-006 Duplicate OK / PRED-007 Operational OK + GATE-002 Gold Decision Gate** (L3 guard contracts; stateful computation deferred to the paper-trading runtime, ADR-006 Non-Goals).
 - **Tests + BENCH-002** (determinism, fail-closed, fingerprint coherence, golden artifact).
 - **Writeback**: file/test nodes (FILE-015+, TEST-010/011); bump CAP-020/MOD-006 implementation_status; wire INT-007 / SCHEMA-009 / SCHEMA-010 `consumed_by` → the gold builder; index.md + log.md; 11 lint checks; gate-board coherence.
+
+## 2026-06-08 session | Gold DecisionPacket v0 — Slice 2 STEP 0/3-6 (builder, guards, tests, benchmark, writeback)
+
+**Slice complete.** Built the Gold Decision Builder (MOD-006) on the approved frozen contract (SCHEMA-011 / INT-009 / CAP-020). Contract fix first (STEP 0), then code, L3 guard nodes, tests, benchmark, writeback. All ADR-006 §8 gates pass; the gold lineage is now implemented + tested. Deferred (ADR-006 Non-Goals) unchanged.
+
+### STEP 0 — contract fix (packet_id)
+
+- **SCHEMA-011**: `packet_id` redefined as `gold-v0:` + first-16-hex SHA-256 over the **full identity tuple** (`source_snapshot_id`, `source_feature_schema_version`, `regime_taxonomy_version`, `regime_classifier_version`, `decision_policy_version`, `decision_policy_fingerprint`) — mirrors `Snapshot.recompute_id`. Closes an id-collision hazard across version/config bumps. Field row + determinism rule updated; pinned in the golden test.
+
+### Code shipped (MOD-006, `src/gold/decision_builder/`)
+
+- `models.py` — SCHEMA-011 dataclasses (`GoldDecisionPacket`, `Direction`/`DecisionMode` enums, `FeatureCitation`, `ConfidenceInputs`, `GuardRefs`) + byte-stable `to_dict()` + `compute_packet_id`.
+- `config.py` — `DecisionPolicyConfig` (confidence weights + floors + regime→direction table + `decision_policy_version`), `DEFAULT_DECISION_POLICY_CONFIG`, fail-closed `from_mapping`/`load_config`, `decision_policy_fingerprint()`.
+- `policy.py` — pure `trust_score` (ADR-008: within-rule `rule_margin` anchor, four structural discounts, NEUTRAL/INDETERMINATE floors, uncertainty = `1 − structural` penalty aggregate) + `direction_for`.
+- `builder.py` — `build_decision(fv, rc, guards=None, config=DEFAULT, as_of=None)`: snapshot-id consistency fail-closed → trust score → direction → cited features → templated rationale → packet. Pure/total/stdlib; no clock/RNG/IO/history.
+- `pyproject.toml` wheel packages += `src/gold`.
+
+### Confidence model + direction policy (pinned as `decision_policy_version` 0.1.0)
+
+- Weights: ambiguity 0.15/secondary, fragility 0.10/near, staleness 0.02/day (cap 0.5), revision 0.15, coverage 0.05/unavailable (cap 0.5); NEUTRAL floor 0.5; INDETERMINATE → conf 0.0 / unc 1.0. `decision_policy_fingerprint = 555c3fb9…9bdb`.
+- Regime→direction table (12 regimes, total; INDETERMINATE→WATCH): LIQUIDITY_STRESS/RISK_OFF/REFLATION→LONG; VOLATILE/RISK_ON/LOW_VOL/NEUTRAL→FLAT; RESTRICTIVE_RATES/DISINFLATION/STRONG_USD→AVOID; CURVE_INVERSION/INDETERMINATE→WATCH. **Provisional** — `LONG`-vs-`FLAT`-only and the DISINFLATION cell await user confirmation; both are one-line `decision_policy_version` config changes, not a rebuild.
+
+### L3 guard nodes (STEP 4 — contracts; runtime deferred)
+
+- **PRED-006 Duplicate OK**, **PRED-007 Operational OK** (predicates, planned/not-started) — the two net-new L3 guards (ADR-004 / ADR-006 §6); stateful computation deferred (ADR-006 Non-Goals); L3 guards, not MOD-004 features.
+- **GATE-002 Gold Decision Gate** (gate, planned/not-started, `blocking: false`) — composes the guards a packet's `guard_refs` cite; advisory in v0 (the pure builder always emits a packet; `guard_refs` = null for unevaluated guards).
+
+### Tests + benchmark (STEP 5)
+
+- `tests/gold/test_decision_builder.py` (TEST-010, 20 tests): real-snapshot golden (RESTRICTIVE_RATES → AVOID / confidence 0.39744 / uncertainty 0.136 / `packet_id gold-v0:0ebde87216151527`), byte-identical replay, INDETERMINATE fail-closed floor (WATCH/0.0/1.0), NEUTRAL confident-quiet floor, direction-table totality, fingerprint pin + drift + version-exclusion, packet_id sensitivity to both `decision_policy_version` and the config fingerprint, snapshot-mismatch fail-closed, guard-ref null/passthrough, config fail-closed.
+- `tests/gold/test_gold_bench.py` (TEST-011, 6 tests) + `benchmarks/gold/run_gold_bench.py` (BENCH-002) + committed golden `artifacts/gold_bench.json`: real-replay byte-identical (3 consumable), all 4 directions reachable, regime→direction map ↔ policy, artifact-in-sync.
+
+### Writeback — nodes created (11)
+
+- MOD-006 Gold Decision Builder; FILE-015 models.py (gold), FILE-016 config.py (gold), FILE-017 policy.py, FILE-018 builder.py; TEST-010 test_decision_builder, TEST-011 test_gold_bench; PRED-006/007; GATE-002; BENCH-002.
+
+### Writeback — nodes updated
+
+- **SCHEMA-011 / INT-009 / CAP-020**: planned/not-started → active/implemented (CAP-020 → tested); confidence inferred→confirmed; evidence += code; `produced_by`/`implemented_by` → [[Gold Decision Builder]]; related_files/tests wired; Open Questions refreshed.
+- **SCHEMA-009 + SCHEMA-010**: `consumed_by` += [[Gold Decision Builder]] (SCHEMA-010 was empty); `### Used By` updated. **INT-007** Open Question updated (gold builder now consumes SCHEMA-010).
+- **index.md**: 11 new rows; SCHEMA-011/INT-009 "(planned)" dropped; Statistics (total content nodes 128→139; module 5→6, file 14→18, test 9→11, gate 1→2, predicate 5→7, benchmark_result 1→2; total files 132→143; coverage 139/139; Realizes 29→31).
+
+### Verification
+
+- **pytest: 798 passed** (772 prior + 26 new gold). **mypy --strict clean** on `src/gold` (only the 2 pre-existing MOD-004 lambda-inference findings remain, out of scope). **ruff clean** on src/gold + tests/gold + benchmarks/gold.
+- Determinism: real snapshot replayed byte-identical; `decision_policy_fingerprint` coherence test green.
+- **11 dev_graph lint checks** on touched nodes: frontmatter ✓, enums ✓, orphan/≥1 inbound ✓, stale ✓, broken wikilinks ✓ (all new links resolve), module `related_constraints`/`related_tests` ✓ (MOD-006 → Canonical Ownership + 2 tests), type-content alignment ✓, deprecated refs ✓ (no active node references CAP-004 except the sanctioned Supersedes/annotation), canonical_id uniqueness ✓ (11 new ids), evidence-confidence coherence ✓.
+- **Gate-board coherence**: ADR-006 §8 unchanged (all-pass).
+
+### Metrics
+
+- Total content nodes: 139 (128 + 11). Active: 137 (REF-004 + CAP-004 deprecated). Six modules implemented + tested (MOD-001..006).
+- Canonical ID + frontmatter coverage: 139/139 (100%). vs Phase 5 soft ceiling 200: 139.
+
+### Deferred / open (unchanged — ADR-006 Non-Goals)
+
+- Direction-table confirmation (user): (a) long-or-flat-only, (b) the DISINFLATION cell — both `decision_policy_version` config changes, not a rebuild.
+- Paper-trading runtime + stateful L3 guard computation (`duplicate_ok`/`operational_ok`); live execution / broker / order routing / position sizing; learned/history-dependent regimes; real-corpus accumulation.
+- Hygiene pass DEBT-01/02/03/04/07 (separate, before the first trusted Neo4j/Graph-RAG export).

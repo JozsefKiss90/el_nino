@@ -24,7 +24,8 @@ schema_version: "1.0.0"
 schema_path: "src/regime/regime_classifier/models.py"
 validated_by:
   - "[[test_regime_classifier]]"
-consumed_by: []
+consumed_by:
+  - "[[Gold Decision Builder]]"
 produced_by:
   - "[[Market Regime Classifier]]"
 ---
@@ -93,7 +94,7 @@ Output schema of MOD-005; input is SCHEMA-009 (a FeatureVector). Governed by [[A
 
 ## Open Questions
 
-- `consumed_by` is empty: the Gold DecisionPacket builder is deferred (ADR-006 §8). Link when authored. (ADR-006 §7 reserved SCHEMA-010 as a *candidate* for the Gold packet; it is used here for the regime contract, so the Gold packet shifts to the next free id.)
+- `consumed_by` → [[Gold Decision Builder]] (MOD-006), now authored. (ADR-006 §7 reserved SCHEMA-010 as a *candidate* for the Gold packet; it is used here for the regime contract, so the Gold packet took the next free id, SCHEMA-011.)
 
 ## Relationships
 
@@ -103,6 +104,7 @@ Output schema of MOD-005; input is SCHEMA-009 (a FeatureVector). Governed by [[A
 ### Used By
 - [[models.py (regime)]]
 - [[Regime Classification API]]
+- [[Gold Decision Builder]]
 
 ### Validated By
 - [[test_regime_classifier]]

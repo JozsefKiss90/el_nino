@@ -1,19 +1,23 @@
 ---
 type: interface
 canonical_id: INT-009
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: implemented
 canonical: true
 created: 2026-06-08
 updated: 2026-06-08
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - ADR
+  - code
 source_paths:
   - "GOLD_DECISIONPACKET_V0_BRIEF.md"
-related_files: []
-related_tests: []
+  - "src/gold/decision_builder/builder.py"
+related_files:
+  - "[[builder.py]]"
+related_tests:
+  - "[[test_decision_builder]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
@@ -24,7 +28,8 @@ interface_version: "0.1.0"
 parent_capability: "[[Gold Decision Generation]]"
 input_schema: "[[Regime Classification Schema]]"
 output_schema: "[[Gold DecisionPacket v0 Schema]]"
-implemented_by: []
+implemented_by:
+  - "[[Gold Decision Builder]]"
 stability: experimental
 ---
 
@@ -75,7 +80,7 @@ Output interface of CAP-020 Gold Decision Generation, implemented (at the implem
 
 ## Open Questions
 
-- `implemented_by` is empty until MOD-006 Gold Decision Builder is authored (implementation step); link + bump to implemented at writeback.
+- `implemented_by` → [[Gold Decision Builder]] (MOD-006), now authored and tested (`status: active` / `implemented`).
 - The stateful L3 guards are deferred (ADR-006 Non-Goals); `guards` is optional in v0.
 
 ## Relationships
@@ -86,6 +91,12 @@ Output interface of CAP-020 Gold Decision Generation, implemented (at the implem
 
 ### Produces
 - [[Gold DecisionPacket v0 Schema]]
+
+### Implemented By
+- [[Gold Decision Builder]]
+
+### Validated By
+- [[test_decision_builder]]
 
 ### Justified By
 - [[ADR - Gold DecisionPacket v0 Planning]]

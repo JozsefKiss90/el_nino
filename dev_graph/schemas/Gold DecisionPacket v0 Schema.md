@@ -1,19 +1,23 @@
 ---
 type: artifact_schema
 canonical_id: SCHEMA-011
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: implemented
 canonical: true
 created: 2026-06-08
 updated: 2026-06-08
-confidence: inferred
+confidence: confirmed
 evidence:
   - design
   - ADR
+  - code
 source_paths:
   - "GOLD_DECISIONPACKET_V0_BRIEF.md"
-related_files: []
-related_tests: []
+  - "src/gold/decision_builder/models.py"
+related_files:
+  - "[[models.py (gold)]]"
+related_tests:
+  - "[[test_decision_builder]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
@@ -23,9 +27,11 @@ related_decisions:
 schema_id: "gold-decision-packet"
 schema_version: "0.1.0"
 schema_path: "src/gold/decision_builder/models.py"
-validated_by: []
+validated_by:
+  - "[[test_decision_builder]]"
 consumed_by: []
-produced_by: []
+produced_by:
+  - "[[Gold Decision Builder]]"
 ---
 
 # Gold DecisionPacket v0 Schema
@@ -52,7 +58,7 @@ Output schema of MOD-006 Gold Decision Builder; inputs are SCHEMA-009 (a Feature
 
 | Field | Type | Notes |
 |-------|------|-------|
-| packet_id | string | deterministic composite (e.g. `gold-v0:{source_snapshot_id}:{decision_policy_version}`) — never uuid/clock |
+| packet_id | string | `gold-v0:` + short SHA-256 digest over the **full identity tuple** (`source_snapshot_id`, `source_feature_schema_version`, `regime_taxonomy_version`, `regime_classifier_version`, `decision_policy_version`, `decision_policy_fingerprint`) — deterministic, never uuid/clock; mirrors `Snapshot.recompute_id` newline-hash. Closes id-collision across version/config bumps. |
 | packet_schema_version | string | this contract-shape version (e.g. `0.1.0`) |
 | instrument | string | the v0 fixed gold proxy (`GLD`) |
 | decision_mode | enum | `paper_only` (fixed — explicit non-execution) |
@@ -104,7 +110,7 @@ Output schema of MOD-006 Gold Decision Builder; inputs are SCHEMA-009 (a Feature
 - INDETERMINATE regime ⇒ `direction == WATCH` (fail-closed) and `confidence` at the defined minimum / `uncertainty` maxed (ADR-008 floors).
 - `cited_features[*].name` ∈ the 14 MOD-004 features (ADR-006 §5); each citation read verbatim from the FeatureVector (never inferred).
 - `regime` == the RegimeClassification's regime; `matched_rule_id` echoed; the three regime versions echoed unchanged.
-- **Determinism:** `(source_snapshot_id, source_feature_schema_version, regime_taxonomy_version, regime_classifier_version, decision_policy_version, configuration)` determines the entire packet (ADR-006 §3 / ADR-008 §8; `model_version` N/A for the rule-based v0). `to_dict()` emits alphabetically-sorted keys + rounded floats → byte-stable JSON.
+- **Determinism:** `(source_snapshot_id, source_feature_schema_version, regime_taxonomy_version, regime_classifier_version, decision_policy_version, configuration)` determines the entire packet (ADR-006 §3 / ADR-008 §8; `model_version` N/A for the rule-based v0; `configuration` = the `decision_policy_fingerprint`). `packet_id` is the SHA-256 digest over exactly this identity tuple (`gold-v0:` + first 16 hex), so it cannot collide across version/config bumps. `to_dict()` emits alphabetically-sorted keys + 6-dp-rounded confidence/uncertainty → byte-stable JSON.
 - No field depends on history, cross-snapshot state, external context, clock, or randomness.
 
 ## Direction Policy (versioned config — provisional)
@@ -113,11 +119,20 @@ Output schema of MOD-006 Gold Decision Builder; inputs are SCHEMA-009 (a Feature
 
 ## Open Questions
 
-- `produced_by` is empty until MOD-006 Gold Decision Builder is authored (implementation step); link + bump to implemented at writeback.
+- `produced_by` → [[Gold Decision Builder]] (MOD-006), now authored and tested (`status: active` / `implemented`).
 - `consumed_by` is empty: the paper-trading runtime that consumes the packet is deferred (ADR-006 Non-Goals); link when authored.
 - The stateful L3 guards (`duplicate_ok`, `operational_ok`) are authored as predicate nodes (PRED-006/007) + a gate (GATE-002), but their runtime computation needs the deferred paper-trading runtime; `guard_refs` carries `null` for unevaluated guards in v0.
 
 ## Relationships
+
+### Produced By
+- [[Gold Decision Builder]]
+
+### Used By
+- [[models.py (gold)]]
+
+### Validated By
+- [[test_decision_builder]]
 
 ### Justified By
 - [[ADR - Gold DecisionPacket v0 Planning]]

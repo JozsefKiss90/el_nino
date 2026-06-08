@@ -23,7 +23,8 @@ source_wiki_pages:
   - "wiki/systems/Architecture Overview.md"
   - "wiki/systems/Trading Engine Pipeline.md"
   - "wiki/governance/Trade Logging.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Ontology Redesign]]"
 informs_architecture:
   - "[[Runtime Topology]]"
 external_references: []

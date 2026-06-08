@@ -22,7 +22,8 @@ source_wiki_pages:
   - "wiki/systems/Three-Layer Trading System.md"
   - "wiki/systems/Trading Engine Pipeline.md"
   - "wiki/systems/Architecture Overview.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Decision Layer Re-grounding]]"
 informs_architecture:
   - "[[Layer Model]]"
   - "[[Context Map]]"

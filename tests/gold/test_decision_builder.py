@@ -87,7 +87,7 @@ def test_real_snapshot_golden() -> None:
     assert round(pkt.confidence, 2) == 0.40  # the brief's "confidence ≈ 0.40"
     assert round(pkt.uncertainty, 6) == 0.136
     # the full-key packet_id (digest over the whole identity tuple)
-    assert pkt.packet_id == "gold-v0:0ebde87216151527"
+    assert pkt.packet_id == "gold-v0:5653d07a0b3949d5"
     # cited features come verbatim from the regime provenance (real_yield_10y / DFII10)
     assert [c.name for c in pkt.cited_features] == ["real_yield_10y"]
     assert pkt.cited_features[0].value == 1.96
@@ -156,7 +156,7 @@ def test_decision_policy_fingerprint_pinned() -> None:
     # Pins the v0 policy set; an un-versioned edit to a weight or a table cell changes this.
     assert (
         DEFAULT_DECISION_POLICY_CONFIG.decision_policy_fingerprint()
-        == "555c3fb9ba1d17f17d65facfc4c7e6ddc34488ec6b436858bb708d6d3e7e9bdb"
+        == "be7e3192889ebe5deb100a9510fe2adc0fb676eb2eca199de3ffa1df9369a8a5"
     )
 
 

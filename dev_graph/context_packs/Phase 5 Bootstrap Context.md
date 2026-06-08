@@ -25,7 +25,7 @@ task_type: implementation
 required_nodes:
   - "[[Guardrail Engine]]"
   - "[[Guardrail Enforcement]]"
-  - "[[systems/Risk Control]]"
+  - "[[Risk Control]]"
   - "[[Guardrail Pattern]]"
   - "[[Guardrail Philosophy]]"
   - "[[Risk Check API]]"
@@ -75,7 +75,7 @@ The first session MUST record an Architecture Decision Record (next free id ADR-
 - [[Guardrail Enforcement]]
 - [[Guardrail Pattern]]
 - [[Guardrail Philosophy]]
-- [[systems/Risk Control]]
+- [[Risk Control]]
 - [[Risk Check API]]
 - [[Trade Validation Request Schema]]
 - [[Trade Validation Decision Schema]]

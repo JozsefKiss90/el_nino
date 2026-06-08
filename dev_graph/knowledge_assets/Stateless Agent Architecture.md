@@ -21,7 +21,8 @@ source_wiki_pages:
   - "wiki/memory/Agent Memory Architecture.md"
   - "wiki/agents/Stateless Agent Recovery.md"
   - "wiki/infrastructure/Claude Routines.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Ontology Redesign]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references: []

@@ -21,7 +21,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "feature-engineering"
-parent_system: "[[systems/Data Pipeline]]"
+parent_system: "[[Data Pipeline]]"
 implemented_by: []
 interfaces: []
 ---

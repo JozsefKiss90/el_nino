@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "market-scanning"
-parent_system: "[[systems/Data Pipeline]]"
+parent_system: "[[Data Pipeline]]"
 implemented_by: []
 interfaces:
   - "[[Market Data API]]"

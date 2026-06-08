@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "signal-generation"
-parent_system: "[[systems/Trading Engine]]"
+parent_system: "[[Trading Engine]]"
 implemented_by: []
 interfaces: []
 ---

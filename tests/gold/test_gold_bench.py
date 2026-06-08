@@ -40,7 +40,7 @@ def test_real_pass_packet_pinned() -> None:
     assert real["direction"] == "AVOID"
     assert real["confidence"] == 0.39744
     assert real["uncertainty"] == 0.136
-    assert real["packet_id"] == "gold-v0:0ebde87216151527"
+    assert real["packet_id"] == "gold-v0:5653d07a0b3949d5"
     # the FAIL/forced fixtures are non-consumable upstream (fail-closed)
     assert inputs["snapshot_fail"]["consumable"] is False
     assert inputs["snapshot_forced"]["consumable"] is False

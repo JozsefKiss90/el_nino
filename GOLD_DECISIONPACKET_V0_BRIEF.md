@@ -114,7 +114,7 @@ ADR-008 fixed *confidence*; nothing yet specifies how a regime maps to a gold st
 | VOLATILE | FLAT | elevated vol, direction unclear |
 | RESTRICTIVE_RATES | AVOID | high real yields are a gold headwind |
 | REFLATION | LONG | rising inflation expectations + easy real rates |
-| DISINFLATION | AVOID | falling inflation expectations |
+| DISINFLATION | FLAT | low inflation expectations — real-yield channel offsets the hedge headwind (finalized) |
 | CURVE_INVERSION | WATCH | recession signal, mixed for gold |
 | STRONG_USD | AVOID | strong USD headwind |
 | RISK_ON | FLAT | risk appetite competes with gold |

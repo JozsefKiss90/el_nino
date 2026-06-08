@@ -21,7 +21,8 @@ source_wiki_pages:
   - "wiki/memory/Context Budget Engineering.md"
   - "wiki/memory/Agent Memory Architecture.md"
   - "wiki/integrations/MCP Architecture.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Ontology Redesign]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references: []

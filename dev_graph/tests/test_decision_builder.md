@@ -28,7 +28,7 @@ required_for: []
 
 ## Definition
 
-Unit + determinism + fail-closed tests for the Gold Decision Builder (MOD-006). 20 tests covering: the real-snapshot golden (RESTRICTIVE_RATES → AVOID / confidence 0.39744 / uncertainty 0.136 / `packet_id gold-v0:0ebde87216151527`), byte-identical replay, the recorded `confidence_inputs`, the INDETERMINATE fail-closed floor (→ WATCH / 0.0 / 1.0), the NEUTRAL confident-quiet floor, direction-table totality, the pinned `decision_policy_fingerprint` + drift/version-exclusion behavior, `packet_id` sensitivity to both `decision_policy_version` and the config fingerprint, snapshot-id-mismatch fail-closed, guard-ref default-null + passthrough, and config fail-closed paths.
+Unit + determinism + fail-closed tests for the Gold Decision Builder (MOD-006). 20 tests covering: the real-snapshot golden (RESTRICTIVE_RATES → AVOID / confidence 0.39744 / uncertainty 0.136 / `packet_id gold-v0:5653d07a0b3949d5`), byte-identical replay, the recorded `confidence_inputs`, the INDETERMINATE fail-closed floor (→ WATCH / 0.0 / 1.0), the NEUTRAL confident-quiet floor, direction-table totality, the pinned `decision_policy_fingerprint` + drift/version-exclusion behavior, `packet_id` sensitivity to both `decision_policy_version` and the config fingerprint, snapshot-id-mismatch fail-closed, guard-ref default-null + passthrough, and config fail-closed paths.
 
 ## Purpose
 

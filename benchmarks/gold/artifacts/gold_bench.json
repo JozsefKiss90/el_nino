@@ -1,6 +1,6 @@
 {
   "benchmark_id": "BENCH-002",
-  "decision_policy_fingerprint": "555c3fb9ba1d17f17d65facfc4c7e6ddc34488ec6b436858bb708d6d3e7e9bdb",
+  "decision_policy_fingerprint": "be7e3192889ebe5deb100a9510fe2adc0fb676eb2eca199de3ffa1df9369a8a5",
   "decision_policy_version": "0.1.0",
   "determinism": {
     "all_replays_byte_identical": true,
@@ -12,7 +12,7 @@
         "consumable": true,
         "direction": "AVOID",
         "name": "latest_snapshot_pass",
-        "packet_id": "gold-v0:0ebde87216151527",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
         "regime": "RESTRICTIVE_RATES",
         "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "uncertainty": 0.136
@@ -33,7 +33,7 @@
         "consumable": true,
         "direction": "AVOID",
         "name": "src_latest_snapshot",
-        "packet_id": "gold-v0:0ebde87216151527",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
         "regime": "RESTRICTIVE_RATES",
         "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "uncertainty": 0.136
@@ -44,7 +44,7 @@
         "consumable": true,
         "direction": "AVOID",
         "name": "src_snapshot",
-        "packet_id": "gold-v0:0ebde87216151527",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
         "regime": "RESTRICTIVE_RATES",
         "snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "uncertainty": 0.136
@@ -59,14 +59,14 @@
       "min": 0.0
     },
     "direction_distribution_pct": {
-      "AVOID": 31.7241,
-      "FLAT": 29.3103,
+      "AVOID": 20.6897,
+      "FLAT": 40.3448,
       "LONG": 30.3448,
       "WATCH": 8.6207
     },
     "direction_frequency": {
-      "AVOID": 92,
-      "FLAT": 85,
+      "AVOID": 60,
+      "FLAT": 117,
       "LONG": 88,
       "WATCH": 25
     },
@@ -103,7 +103,7 @@
     "grid_cells": 290,
     "regime_direction_map": {
       "CURVE_INVERSION": "WATCH",
-      "DISINFLATION": "AVOID",
+      "DISINFLATION": "FLAT",
       "INDETERMINATE": "WATCH",
       "LIQUIDITY_STRESS": "LONG",
       "LOW_VOL": "FLAT",

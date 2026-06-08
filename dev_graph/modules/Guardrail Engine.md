@@ -44,7 +44,7 @@ Realizes the [[Guardrail Pattern]] in code and operationalizes the [[Guardrail P
 
 ## Architecture Role
 
-Primary module of [[Guardrail Enforcement]] within [[systems/Risk Control]]. Sits at the Trading-Engine → broker boundary. Stateless and synchronous: the caller blocks until a decision is returned.
+Primary module of [[Guardrail Enforcement]] within [[Risk Control]]. Sits at the Trading-Engine → broker boundary. Stateless and synchronous: the caller blocks until a decision is returned.
 
 ## Inputs (or Dependencies)
 

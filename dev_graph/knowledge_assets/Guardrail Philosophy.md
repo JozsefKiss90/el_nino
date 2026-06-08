@@ -23,7 +23,8 @@ source_wiki_pages:
   - "wiki/risk/Guardrail Architecture.md"
   - "wiki/risk/Autonomous Trading Risk Model.md"
   - "wiki/strategies/Paper Trading.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Implementation Substrate]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references: []

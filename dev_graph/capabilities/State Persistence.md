@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "state-persistence"
-parent_system: "[[systems/Agent Runtime]]"
+parent_system: "[[Agent Runtime]]"
 implemented_by: []
 interfaces:
   - "[[Memory API]]"

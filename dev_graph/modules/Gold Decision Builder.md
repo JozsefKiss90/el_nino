@@ -75,12 +75,13 @@ Realizes the gold decision layer governed by [[ADR - Gold DecisionPacket v0 Plan
 - `config.py` — `DecisionPolicyConfig` (confidence weights + floors + regime→direction table + `decision_policy_version`), `DEFAULT_DECISION_POLICY_CONFIG`, fail-closed `from_mapping`/`load_config` (`DecisionPolicyConfigError`), and `decision_policy_fingerprint()`.
 - `policy.py` — pure `trust_score` (ADR-008: anchor on within-rule `rule_margin`, four structural discounts, NEUTRAL/INDETERMINATE floors, uncertainty as penalty aggregate) + `direction_for`.
 - `builder.py` — `build_decision(fv, rc, guards, config, as_of)`: snapshot-id consistency check → trust score → direction lookup → cited features → templated rationale → packet.
-- Real PASS fixture → RESTRICTIVE_RATES / direction AVOID / confidence 0.39744 / uncertainty 0.136 / `packet_id gold-v0:0ebde87216151527`. 26 tests; benchmark BENCH-002 byte-identical replay = true.
+- Real PASS fixture → RESTRICTIVE_RATES / direction AVOID / confidence 0.39744 / uncertainty 0.136 / `packet_id gold-v0:5653d07a0b3949d5`. 29 gold tests (20 builder + 6 bench + 3 e2e); benchmark BENCH-002 byte-identical replay = true.
 
 ## Open Questions
 
 - The downstream consumer (paper-trading runtime) is deferred (ADR-006 Non-Goals); SCHEMA-011 is exposed via INT-009.
-- The regime→direction table is domain-anchored / provisional; economic recalibration is a future `decision_policy_version` bump. The `LONG`-vs-`FLAT`-only question and the DISINFLATION cell await confirmation (config change, not a rebuild).
+- The regime→direction table is domain-anchored / provisional; economic recalibration is a future `decision_policy_version` bump. v0 finalized 2026-06-08: DISINFLATION → FLAT (the real-yield channel offsets the inflation-expectations headwind); the 4-way enum is kept (AVOID is an informational headwind, not SHORT, on a long-only GLD proxy).
+- `LIQUIDITY_STRESS → LONG` assumes the safe-haven bid, which is the base case for a daily macro strategy; acute "dash-for-cash" episodes (Sep 2008, Mar 2020) can see gold sold first. Left LONG for v0; revisit with a real historical corpus.
 - The stateful L3 guards ([[Duplicate OK]], [[Operational OK]]) are authored as contracts; their runtime computation is deferred.
 
 ## Relationships

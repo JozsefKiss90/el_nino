@@ -18,7 +18,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "trade-logging"
-parent_system: "[[systems/Agent Runtime]]"
+parent_system: "[[Agent Runtime]]"
 implemented_by: []
 interfaces:
   - "[[Trade Log API]]"
@@ -58,7 +58,7 @@ Logging capability of Agent Runtime. Consumes trade data from all execution acti
 ### Contains
 
 ### Depends On
-- [[systems/Trading Engine]] — trade data source
+- [[Trading Engine]] — trade data source
 
 ### Provides
 - Trade data to [[Performance Scoring]]

@@ -18,7 +18,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "stop-loss-management"
-parent_system: "[[systems/Trading Engine]]"
+parent_system: "[[Trading Engine]]"
 implemented_by: []
 interfaces: []
 ---

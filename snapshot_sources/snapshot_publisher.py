@@ -622,7 +622,7 @@ def main() -> int:
     args = parse_args()
 
     try:
-        engine_version = H_get_engine_version()
+        engine_version = _get_engine_version()
         config_version = _get_config_version()
     except RuntimeError as exc:
         log.error("%s", exc)

@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "promotion-validation"
-parent_system: "[[systems/Evaluation Loop]]"
+parent_system: "[[Evaluation Loop]]"
 implemented_by: []
 interfaces: []
 ---
@@ -69,7 +69,7 @@ Governance capability of the Evaluation Loop. Guards the promotion gate in the S
 - [[Performance Scoring]]
 
 ### Provides
-- Promotion decisions to [[systems/Supervisor Office]]
+- Promotion decisions to [[Supervisor Office]]
 
 ### Realizes
 - [[Promotion Pattern]]

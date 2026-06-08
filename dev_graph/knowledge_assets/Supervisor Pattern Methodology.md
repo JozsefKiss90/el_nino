@@ -24,7 +24,8 @@ source_wiki_pages:
   - "wiki/systems/Syndicate Squad Architecture.md"
   - "wiki/agents/Supervisor Decision Engine.md"
   - "wiki/agents/Multi-Agent Orchestration.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Decision Layer Re-grounding]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references:

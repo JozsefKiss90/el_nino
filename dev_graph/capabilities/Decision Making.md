@@ -22,7 +22,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "decision-making"
-parent_system: "[[systems/Supervisor Office]]"
+parent_system: "[[Supervisor Office]]"
 implemented_by:
   - "[[Decision Engine]]"
 interfaces:
@@ -73,7 +73,7 @@ Primary capability of the Supervisor Office. Drives the upgrade lifecycle from w
 - [[Treasury Management]] — budget availability
 
 ### Provides
-- Upgrade decisions to [[systems/Trading Engine]] via Decision API
+- Upgrade decisions to [[Trading Engine]] via Decision API
 
 ### Realizes
 - [[Supervisor Pattern]]

@@ -20,7 +20,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "guardrail-enforcement"
-parent_system: "[[systems/Risk Control]]"
+parent_system: "[[Risk Control]]"
 implemented_by:
   - "[[Guardrail Engine]]"
 interfaces:
@@ -70,7 +70,7 @@ Primary capability of Risk Control. Positioned at the system boundary between Tr
 ### Depends On
 
 ### Provides
-- Trade validation decisions to [[systems/Trading Engine]]
+- Trade validation decisions to [[Trading Engine]]
 
 ### Realizes
 - [[Guardrail Pattern]]

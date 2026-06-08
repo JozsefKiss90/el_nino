@@ -22,7 +22,8 @@ knowledge_type: principle
 source_wiki_pages:
   - "wiki/systems/Three-Layer Trading System.md"
   - "wiki/systems/Architecture Overview.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Ontology Redesign]]"
 informs_architecture:
   - "[[Layer Model]]"
   - "[[Context Map]]"

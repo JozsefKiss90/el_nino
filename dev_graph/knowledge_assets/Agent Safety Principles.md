@@ -25,7 +25,8 @@ source_wiki_pages:
   - "wiki/risk/Guardrail Architecture.md"
   - "wiki/agents/Agent Self-Verification.md"
   - "wiki/security/API Credential Isolation.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Implementation Substrate]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references:

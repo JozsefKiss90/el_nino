@@ -24,7 +24,7 @@ related_decisions:
   - "[[ADR - Gold Decision Confidence Semantics]]"
   - "[[ADR - Decision Layer Re-grounding]]"
 capability_id: "gold-decision-generation"
-parent_system: "[[systems/Trading Engine]]"
+parent_system: "[[Trading Engine]]"
 implemented_by:
   - "[[Gold Decision Builder]]"
 interfaces:
@@ -43,7 +43,7 @@ Give the (deferred) paper-trading runtime a single, replay-safe, auditable gold 
 
 ## Architecture Role
 
-An L3 decision capability under [[systems/Trading Engine]] (SYS-002). It **supersedes** the deprecated [[Signal Generation]] (CAP-004) as the Trading Engine's decision-producing pipeline stage, but with a fundamentally different basis: deterministic FeatureVector + RegimeClassification inputs (never raw snapshots or an indicator stack) and a paper-only DecisionPacket output (never a live order to Order Management). It is the gold counterpart to the treasury [[Decision Making]] (CAP-015, under SYS-006) and is **permanently separate** from it (ADR-004). Realizes the [[Pipeline Pattern]] (the successor pipeline stage); governed by ADR-006 + [[ADR - Gold Decision Confidence Semantics]] (ADR-008).
+An L3 decision capability under [[Trading Engine]] (SYS-002). It **supersedes** the deprecated [[Signal Generation]] (CAP-004) as the Trading Engine's decision-producing pipeline stage, but with a fundamentally different basis: deterministic FeatureVector + RegimeClassification inputs (never raw snapshots or an indicator stack) and a paper-only DecisionPacket output (never a live order to Order Management). It is the gold counterpart to the treasury [[Decision Making]] (CAP-015, under SYS-006) and is **permanently separate** from it (ADR-004). Realizes the [[Pipeline Pattern]] (the successor pipeline stage); governed by ADR-006 + [[ADR - Gold Decision Confidence Semantics]] (ADR-008).
 
 ## Inputs
 

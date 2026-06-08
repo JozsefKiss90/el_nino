@@ -201,6 +201,7 @@ Last updated: 2026-06-08
 | [[test_regime_bench]] | TEST-009 | test | Benchmark/replay harness determinism + coverage (5 tests) |
 | [[test_decision_builder]] | TEST-010 | test | Gold builder — units, determinism, fail-closed, golden, fingerprint (20 tests) |
 | [[test_gold_bench]] | TEST-011 | test | Gold benchmark determinism + artifact-in-sync (6 tests) |
+| [[test_e2e_pipeline]] | TEST-012 | test | Full-chain snapshot→consume→features→regime→gold E2E determinism (3 tests) |
 
 ## Gates
 
@@ -261,14 +262,14 @@ Last updated: 2026-06-08
 
 ## Statistics
 
-- **Total content nodes**: 139 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 6, file: 18, test: 11, gate: 2, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 8, constraint: 3, api_doc_source: 2, benchmark_result: 2)
+- **Total content nodes**: 140 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 6, file: 18, test: 12, gate: 2, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 8, constraint: 3, api_doc_source: 2, benchmark_result: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 143
+- **Total files**: 144
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 139/139 content nodes (100%)
-- **Canonical ID coverage**: 139/139 content nodes (100%)
+- **Frontmatter coverage**: 140/140 content nodes (100%)
+- **Canonical ID coverage**: 140/140 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

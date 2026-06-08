@@ -27,8 +27,7 @@ module_name: "snapshot_consumer"
 module_path: "src/snapshot/snapshot_consumer"
 responsibility: "Read the Layer-2 truth snapshot and fail-closed gate it for Layer-3 consumption"
 depends_on: []
-provides:
-  - "[[Snapshot API]]"
+provides: []
 ---
 
 # Snapshot Consumer
@@ -74,14 +73,8 @@ Consumer side of the Snapshot API (INT-001). Reads SCHEMA-001. Output is a valid
 
 ## Relationships
 
-### Implements
-- [[Snapshot API]]
-
 ### Consumes
 - [[Layer 2 Snapshot Schema]]
-- [[Snapshot API]]
-
-### Provides
 - [[Snapshot API]]
 
 ### Validated By

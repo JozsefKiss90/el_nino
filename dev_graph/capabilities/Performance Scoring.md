@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "performance-scoring"
-parent_system: "[[systems/Evaluation Loop]]"
+parent_system: "[[Evaluation Loop]]"
 implemented_by: []
 interfaces: []
 ---
@@ -66,7 +66,7 @@ Analytical capability of the Evaluation Loop. Consumes trade data from Agent Run
 - [[Trade Logging]] — trade data source
 
 ### Provides
-- Scorecards to [[Promotion Validation]] and [[systems/Supervisor Office]]
+- Scorecards to [[Promotion Validation]] and [[Supervisor Office]]
 
 ### Realizes
 - [[Evaluation Loop Pattern]]

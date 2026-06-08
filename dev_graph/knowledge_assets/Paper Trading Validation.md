@@ -23,7 +23,8 @@ source_wiki_pages:
   - "wiki/risk/Autonomous Trading Risk Model.md"
   - "wiki/systems/Syndicate Squad Architecture.md"
   - "wiki/backtesting/Walk-Forward Optimization.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Gold DecisionPacket v0 Planning]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references: []

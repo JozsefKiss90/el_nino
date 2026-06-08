@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "order-management"
-parent_system: "[[systems/Trading Engine]]"
+parent_system: "[[Trading Engine]]"
 implemented_by: []
 interfaces:
   - "[[Execution API]]"
@@ -61,7 +61,7 @@ Central execution capability. Receives validated signals, calculates position si
 
 ### Depends On
 - [[Signal Generation]] — _DEPRECATED (CAP-004); live order routing is itself deferred (ADR-006 Non-Goals). The gold v0 successor [[Gold Decision Generation]] is paper-only and does NOT feed Order Management._
-- [[systems/Risk Control]] — trade validation
+- [[Risk Control]] — trade validation
 
 ### Provides
 - Executed orders to broker

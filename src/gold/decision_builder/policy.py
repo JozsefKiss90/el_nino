@@ -56,7 +56,12 @@ def trust_score(
     staleness = 1.0 - min(config.staleness_cap, config.staleness_weight * max_staleness)
     revision = 1.0 - (config.revision_penalty if revision_risk else 0.0)
     data_quality = revision * staleness
-    coverage = 1.0 - min(config.coverage_cap, config.coverage_weight * unavailable_count)
+    # coverage penalty over the DISTINCT features missing from the decision (ADR-008 §3:
+    # unavailable_features + failed_required_features). failed_required_features ⊆
+    # unavailable_features (an absent feature is omitted from the vector), so this equals
+    # unavailable_count today — both are read to match the spec literally and stay robust.
+    missing_features = set(fv.unavailable_features) | set(rc.failed_required_features)
+    coverage = 1.0 - min(config.coverage_cap, config.coverage_weight * len(missing_features))
 
     structural = ambiguity * fragility * data_quality * coverage
 

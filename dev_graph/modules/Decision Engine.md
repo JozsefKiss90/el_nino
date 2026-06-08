@@ -28,9 +28,7 @@ related_decisions:
 module_name: "decision_engine"
 module_path: "src/supervisor/decision_engine"
 responsibility: "Score upgrade options under treasury constraints and emit a deterministic decision packet"
-depends_on:
-  - "[[Performance Scoring]]"
-  - "[[Treasury Management]]"
+depends_on: []
 provides:
   - "[[Decision API]]"
 ---
@@ -51,7 +49,7 @@ Realizes the [[Supervisor Pattern]] in code — the algorithmic core of the Supe
 
 ## Architecture Role
 
-Primary module of [[Decision Making]] within [[systems/Supervisor Office]]. Consumes evaluation scorecards and treasury state; produces a [[Decision Packet Schema]] consumed downstream to drive the upgrade lifecycle.
+Primary module of [[Decision Making]] within [[Supervisor Office]]. Consumes evaluation scorecards and treasury state; produces a [[Decision Packet Schema]] consumed downstream to drive the upgrade lifecycle.
 
 ## Inputs (or Dependencies)
 
@@ -111,10 +109,6 @@ Concrete plan (grounded in `wiki/agents/Supervisor Decision Engine.md` Decision 
 ### Validated By
 - [[test_decision_engine]]
 - [[test_scoring]]
-
-### Depends On
-- [[Performance Scoring]]
-- [[Treasury Management]]
 
 ### Realizes
 - [[Supervisor Pattern]]

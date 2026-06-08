@@ -29,7 +29,7 @@ required_for: []
 
 ## Definition
 
-Tests for the gold benchmark + replay harness (BENCH-002): report determinism, real-snapshot packet replay byte-identical, the pinned real PASS packet (RESTRICTIVE_RATES → AVOID / 0.39744 / `gold-v0:0ebde87216151527`), all four directions reachable in the synthetic sweep, the observed regime→direction map matching the policy table, and the committed golden artifact staying in sync.
+Tests for the gold benchmark + replay harness (BENCH-002): report determinism, real-snapshot packet replay byte-identical, the pinned real PASS packet (RESTRICTIVE_RATES → AVOID / 0.39744 / `gold-v0:5653d07a0b3949d5`), all four directions reachable in the synthetic sweep, the observed regime→direction map matching the policy table, and the committed golden artifact staying in sync.
 
 ## Purpose
 

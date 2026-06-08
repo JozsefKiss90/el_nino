@@ -947,3 +947,34 @@ evidence-confidence coherence ✓.
 - Direction-table confirmation (user): (a) long-or-flat-only, (b) the DISINFLATION cell — both `decision_policy_version` config changes, not a rebuild.
 - Paper-trading runtime + stateful L3 guard computation (`duplicate_ok`/`operational_ok`); live execution / broker / order routing / position sizing; learned/history-dependent regimes; real-corpus accumulation.
 - Hygiene pass DEBT-01/02/03/04/07 (separate, before the first trusted Neo4j/Graph-RAG export).
+
+## 2026-06-08 finalize | Gold direction table v0 finalized — DISINFLATION AVOID→FLAT (`decision_policy_version` stays 0.1.0 — finalizing the provisional v0, nothing consumed; new `decision_policy_fingerprint be7e3192…a8a5`; real packet_id rehashes → `gold-v0:5653d07a0b3949d5`; `gold_bench.json` regenerated + 2 pinned tests + MOD-006/BENCH-002 nodes re-pinned; 4-way enum kept — AVOID is informational headwind, not SHORT, on long-only GLD; `LIQUIDITY_STRESS→LONG` dash-for-cash caveat recorded on MOD-006 Open Questions).
+
+## 2026-06-08 harden | Gold v0 epoch hardening — Stage 2 (hygiene + first trusted Neo4j export) + Stage 3 (full-chain E2E)
+
+### Stage 2 — hygiene + export
+
+- **DEBT-01**: `snapshot_publisher.py:625` `H_get_engine_version()` → `_get_engine_version()` (restores the producer leg — `main()` no longer NameErrors).
+- **DEBT-02**: MOD-003 Snapshot Consumer — dropped `provides: [[Snapshot API]]` + the `### Implements`/`### Provides` sections (a pure consumer cannot provide/implement the read contract; it `### Consumes` it).
+- **DEBT-03**: MOD-002 Decision Engine — removed the upward module→capability `depends_on` / `### Depends On` (Performance Scoring, Treasury Management) layer inversion (the real data dependency is already the `### Consumes [[Evaluation Scorecard Schema]]` edge).
+- **DEBT-07**: normalized path-qualified `[[dir/Name]]` → `[[Name]]` across 22 content nodes (parent_system + exported relationship sections); the exporter also tolerates path-qualified forms defensively.
+- **DEBT-04**: wired the 10 empty KA `informs_decisions` back-links (KA-001..010 → the ADR each principle informs; KA-011 already wired) — the KNOWLEDGE→DECISION leg is no longer 100% unwired.
+- **Exporter aligned to GOV-005** (`sync_to_neo4j.py`): all 23 content labels (was 17; added architecture/system/capability/interface/event/knowledge_asset/pattern), all 17 relationship sections (was 8; added Contains/Implements/Emits/Triggered By/Guards/Originates From/Justified By/Realizes/Composes), and **MERGE on `canonical_id`** (the GOV-005 primary key — resolves the Infrastructure Diagram REF-004/ARCH-004 basename collision); name→canonical_id resolution prefers the non-deprecated node; neo4j import made lazy so `--dry-run` validates offline (pyyaml installed into the venv).
+- **Export validation** (`--dry-run`): **139 nodes, 910 relationships, 5 skipped** — all 5 legitimate non-graph refs (deprecated Infrastructure Diagram → structural `CLAUDE`/`wiki/CLAUDE`; SYS-006 → 2 uncreated wiki-concept nodes). **Zero wikilink-form drops; zero deprecated-node dangling refs — CAP-004's `SUPERSEDES`/`DEPENDS_ON` edges all resolve.** A live sync needs Neo4j running + the `neo4j` package.
+
+### Stage 3 — full-chain E2E
+
+- **TEST-012 test_e2e_pipeline** (`tests/gold/test_e2e_pipeline.py`, e2e, 3 tests): `snapshot → consume → build_features → classify → build_decision` — byte-identical packet replay across two runs; the `snapshot_id` threads every stage unchanged + `recompute_id()` matches the published id; golden real packet (RESTRICTIVE_RATES → AVOID / 0.39744 / `gold-v0:5653d07a0b3949d5`). Closes the Regime Taxonomy audit's Warning 4.
+
+### Writeback / verification
+
+- Nodes created (1): TEST-012. Updated: MOD-002, MOD-003 (DEBT-02/03), 10 KAs (DEBT-04), 22 normalized nodes, `sync_to_neo4j.py`, `snapshot_publisher.py`; index.md (TEST-012 row; total content nodes 139→140; test 11→12; total files 143→144; coverage 140/140).
+- **pytest: 801 passed** (798 + 3 E2E). mypy/ruff unaffected (changed code files are tooling/producer, outside `src`).
+- 11 lint checks on touched nodes: frontmatter ✓, enums ✓, orphans ✓, broken wikilinks ✓ (export dry-run confirms 0 form-drops), deprecated refs ✓ (CAP-004 wired), canonical_id uniqueness ✓ (TEST-012 new), evidence-confidence ✓. Gate-board coherence: ADR-006 §8 unchanged (all-pass).
+
+## 2026-06-08 audit | Gold v0 final audit (Stage 4) + post-audit remediation
+
+- **GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md** produced — independent adversarial audit (8 read-only dimension auditors → adversarial verification, 0 critical candidates produced/survived → lead synthesis). **Verdict PASS, readiness 94/100**; all 8 dimensions PASS (Architecture, Replay Determinism, Ontology, ADR, Treasury/Gold Separation, Schema Correctness, Graph Integrity, Gold-Layer Readiness). No code/graph changes during the audit. Live export re-verified: 140 nodes / 920 edges / 5 legitimate skips.
+- **Post-audit remediation** (the audit's actionable low-severity findings, all numerically no-op): (1) `policy.py` coverage now reads `set(unavailable_features) | set(failed_required_features)` — literal ADR-008 §3 compliance; `failed_required ⊆ unavailable` so confidence/packet_id/fingerprint/`gold_bench.json` are unchanged; (2) added `src/gold/__init__.py` (package marker every sibling has); (3) cleared doc drift — MOD-006 node "26"→"29 gold tests"; audit doc records the export as 140/920 (the log Stage-2 139/910 was the pre-E2E count).
+- Re-verification: **pytest 801 passed; mypy --strict clean on src/gold; ruff clean.** Pinned real-snapshot facts unchanged (RESTRICTIVE_RATES / AVOID / 0.39744 / `gold-v0:5653d07a0b3949d5`). Gate-board coherence: ADR-006 §8 still all-pass.
+- **Gold DecisionPacket v0 epoch is closed.** Next epochs (not started — each needs its own planning ADR): (a) the paper-trading runtime that consumes the packet + computes the stateful L3 guards (`duplicate_ok`/`operational_ok`); (b) real-corpus accumulation (unblocked by DEBT-01) to convert the provisional domain-anchored regime thresholds + confidence weights + direction table from domain-anchored to empirically calibrated.

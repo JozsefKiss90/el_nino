@@ -18,7 +18,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "context-assembly"
-parent_system: "[[systems/Agent Runtime]]"
+parent_system: "[[Agent Runtime]]"
 implemented_by: []
 interfaces: []
 ---

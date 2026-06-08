@@ -23,7 +23,8 @@ source_wiki_pages:
   - "wiki/workflows/Office Action Loop.md"
   - "wiki/systems/Syndicate Squad Architecture.md"
   - "wiki/governance/Treasury Policy System.md"
-informs_decisions: []
+informs_decisions:
+  - "[[ADR - Decision Layer Re-grounding]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references:

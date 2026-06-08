@@ -39,9 +39,9 @@ Provide gold-layer determinism evidence and a paper-decision distribution, and p
 
 ## Results (v0)
 
-- Determinism: `all_replays_byte_identical = true`; real PASS → RESTRICTIVE_RATES / AVOID / confidence 0.39744 / `packet_id gold-v0:0ebde87216151527`.
+- Determinism: `all_replays_byte_identical = true`; real PASS → RESTRICTIVE_RATES / AVOID / confidence 0.39744 / `packet_id gold-v0:5653d07a0b3949d5`.
 - Synthetic sweep (292 cells): all four directions reachable (LONG/FLAT/AVOID/WATCH); confidence mean ≈ 0.264 (min 0.0 INDETERMINATE, max 0.95).
-- `decision_policy_version 0.1.0`; `decision_policy_fingerprint 555c3fb9…9bdb` recorded.
+- `decision_policy_version 0.1.0`; `decision_policy_fingerprint be7e3192…a8a5` recorded.
 
 ## Relationships
 

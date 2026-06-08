@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "snapshot-assembly"
-parent_system: "[[systems/Data Pipeline]]"
+parent_system: "[[Data Pipeline]]"
 implemented_by: []
 interfaces:
   - "[[Snapshot API]]"
@@ -62,7 +62,7 @@ Terminal capability in the Data Pipeline. Produces the output that crosses the s
 - [[Feature Engineering]]
 
 ### Provides
-- L2 Snapshots to [[systems/Trading Engine]] via Snapshot API
+- L2 Snapshots to [[Trading Engine]] via Snapshot API
 
 ### Validated By
 

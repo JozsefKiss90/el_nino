@@ -19,7 +19,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "team-orchestration"
-parent_system: "[[systems/Supervisor Office]]"
+parent_system: "[[Supervisor Office]]"
 implemented_by: []
 interfaces: []
 ---

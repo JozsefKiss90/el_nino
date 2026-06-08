@@ -18,7 +18,7 @@ related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
 capability_id: "exposure-tracking"
-parent_system: "[[systems/Risk Control]]"
+parent_system: "[[Risk Control]]"
 implemented_by: []
 interfaces: []
 ---

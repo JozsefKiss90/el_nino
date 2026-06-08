@@ -4,24 +4,31 @@ Dev Graph -> Neo4j Sync Script
 Parses all dev_graph markdown files, extracts YAML frontmatter and
 relationship sections, then MERGE-syncs to Neo4j as typed nodes and edges.
 
+Aligned with [[Neo4j Export Mapping]] (GOV-005): all 23 content labels, all 17
+relationship sections, and ``canonical_id`` as the node primary key (stable across
+renames and immune to basename collisions). Relationship targets are wikilink names,
+resolved to canonical_ids via a name index (path-qualified ``[[dir/Name]]`` forms are
+tolerated by stripping the directory prefix; on a name collision the non-deprecated
+node wins).
+
 Usage:
-    python dev_graph/sync_to_neo4j.py [--dry-run] [--clear]
+    python dev_graph/sync_to_neo4j.py [--dry-run] [--clear] [--verify-only]
 
 Options:
-    --dry-run   Print Cypher statements without executing
+    --dry-run   Print Cypher statements + the skipped-edge report without a live DB
     --clear     Delete all DevGraph-labeled nodes before syncing
 
-Requires:
-    pip install neo4j pyyaml
+``--dry-run`` does not import or contact Neo4j, so it validates the parse + edge
+resolution offline. ``neo4j`` + ``pyyaml`` are only required for a live sync.
 """
 
+import argparse
 import os
 import re
 import sys
-import yaml
-import argparse
 from pathlib import Path
-from neo4j import GraphDatabase
+
+import yaml
 
 # --- Configuration ---
 
@@ -33,7 +40,9 @@ NEO4J_DB = os.environ.get("NEO4J_DATABASE", "neo4j")
 DEV_GRAPH_DIR = Path(__file__).parent
 STRUCTURAL_FILES = {"CLAUDE", "index", "log", "README"}
 
-# Maps frontmatter `type` values to Neo4j labels (PascalCase)
+# Maps frontmatter `type` values to Neo4j labels (PascalCase). Per GOV-005 — all 23
+# content types (the 7 ontology-redesign types architecture/system/capability/interface/
+# event/knowledge_asset/pattern are included so their nodes + edges export).
 TYPE_TO_LABEL = {
     "module": "Module",
     "file": "File",
@@ -52,9 +61,16 @@ TYPE_TO_LABEL = {
     "governance": "Governance",
     "observability": "Observability",
     "reference": "Reference",
+    "architecture": "Architecture",
+    "system": "System",
+    "capability": "Capability",
+    "interface": "Interface",
+    "event": "Event",
+    "knowledge_asset": "KnowledgeAsset",
+    "pattern": "Pattern",
 }
 
-# Relationship section headings -> Neo4j relationship types
+# Relationship section headings -> Neo4j relationship types (all 17 per GOV-005).
 SECTION_TO_REL = {
     "Depends On": "DEPENDS_ON",
     "Provides": "PROVIDES",
@@ -64,6 +80,15 @@ SECTION_TO_REL = {
     "Used By": "USED_BY",
     "Produces": "PRODUCES",
     "Consumes": "CONSUMES",
+    "Contains": "CONTAINS",
+    "Implements": "IMPLEMENTS",
+    "Emits": "EMITS",
+    "Triggered By": "TRIGGERED_BY",
+    "Guards": "GUARDS",
+    "Originates From": "ORIGINATES_FROM",
+    "Justified By": "JUSTIFIED_BY",
+    "Realizes": "REALIZES",
+    "Composes": "COMPOSES",
 }
 
 # Frontmatter array fields -> Neo4j relationship types
@@ -111,21 +136,17 @@ def extract_wikilinks(text: str) -> list[str]:
 
 def parse_relationship_sections(content: str) -> dict[str, list[str]]:
     """Parse ## Relationships subsections for wikilinks."""
-    relationships = {}
-    # Find the ## Relationships section
+    relationships: dict[str, list[str]] = {}
     rel_match = re.search(r"^## Relationships\s*$", content, re.MULTILINE)
     if not rel_match:
         return relationships
 
     rel_text = content[rel_match.end():]
-    # Stop at the next ## heading (not ###)
     next_h2 = re.search(r"^## (?!#)", rel_text, re.MULTILINE)
     if next_h2:
         rel_text = rel_text[:next_h2.start()]
 
-    # Parse each ### subsection
     subsections = re.split(r"^### (.+)$", rel_text, flags=re.MULTILINE)
-    # subsections[0] is text before first ###, then alternating heading/content
     for i in range(1, len(subsections), 2):
         heading = subsections[i].strip()
         body = subsections[i + 1] if i + 1 < len(subsections) else ""
@@ -150,12 +171,16 @@ def parse_dev_graph_file(filepath: Path) -> dict | None:
         print(f"  SKIP {name}: unknown type '{node_type}'")
         return None
 
+    canonical_id = fm.get("canonical_id")
+    if not canonical_id:
+        print(f"  SKIP {name}: missing canonical_id")
+        return None
+
     # Collect scalar properties for Neo4j node
-    props = {"name": name}
+    props = {"name": name, "canonical_id": str(canonical_id)}
     scalar_fields = [
         "type", "status", "implementation_status", "canonical",
         "created", "updated", "confidence",
-        # Domain-specific scalars
         "module_name", "module_path", "responsibility", "language",
         "file_path", "test_path", "test_type", "gate_id", "gate_scope",
         "blocking", "predicate_id", "predicate_scope", "implemented_in",
@@ -168,10 +193,8 @@ def parse_dev_graph_file(filepath: Path) -> dict | None:
     for key in scalar_fields:
         val = fm.get(key)
         if val is not None:
-            # Convert dates to strings for Neo4j
             props[key] = str(val) if not isinstance(val, (str, bool, int, float)) else val
 
-    # Collect array properties (stored as Neo4j string arrays)
     array_fields = [
         "source_paths", "allowed_for_tasks",
         "required_nodes", "required_files", "required_tests", "required_docs",
@@ -183,27 +206,22 @@ def parse_dev_graph_file(filepath: Path) -> dict | None:
             props[key] = [str(v) for v in val if v]
 
     # Collect relationships from frontmatter arrays
-    fm_rels = {}
+    fm_rels: dict[str, list[str]] = {}
     for fm_key, rel_type in FRONTMATTER_TO_REL.items():
         val = fm.get(fm_key)
         if val and isinstance(val, list):
-            targets = []
+            targets: list[str] = []
             for item in val:
                 if not item:
                     continue
-                item_str = str(item)
-                # Extract wikilink target if wrapped in [[]]
-                wl = extract_wikilinks(item_str)
+                wl = extract_wikilinks(str(item))
                 if wl:
                     targets.extend(wl)
-                # Skip plain filesystem paths (not graph references)
             if targets:
                 fm_rels[rel_type] = targets
 
-    # Collect relationships from ## Relationships sections
     section_rels = parse_relationship_sections(content)
 
-    # Merge: section relationships augment frontmatter relationships
     all_rels = dict(fm_rels)
     for heading, targets in section_rels.items():
         rel_type = SECTION_TO_REL[heading]
@@ -213,9 +231,11 @@ def parse_dev_graph_file(filepath: Path) -> dict | None:
 
     return {
         "name": name,
+        "canonical_id": str(canonical_id),
         "label": label,
         "props": props,
         "relationships": all_rels,
+        "status": str(fm.get("status", "")),
         "filepath": str(filepath.relative_to(DEV_GRAPH_DIR.parent)),
     }
 
@@ -232,45 +252,70 @@ def scan_dev_graph() -> list[dict]:
     return nodes
 
 
+def build_name_index(nodes: list[dict]) -> dict[str, str]:
+    """Map node name (filename stem) -> canonical_id. On a name collision the
+    non-deprecated node wins (so a deprecated duplicate never shadows the live node)."""
+    index: dict[str, tuple[str, bool]] = {}
+    for n in nodes:
+        nm = n["name"]
+        cid = n["canonical_id"]
+        deprecated = n["status"] == "deprecated"
+        if nm not in index or (index[nm][1] and not deprecated):
+            index[nm] = (cid, deprecated)
+    return {nm: cid for nm, (cid, _dep) in index.items()}
+
+
+def resolve_target(target: str, name_index: dict[str, str]) -> str | None:
+    """Resolve a wikilink target (bare or path-qualified) to a canonical_id."""
+    cid = name_index.get(target)
+    if cid:
+        return cid
+    if "/" in target:  # tolerate path-qualified [[dir/Name]] forms
+        return name_index.get(target.split("/")[-1])
+    return None
+
+
 # --- Neo4j Sync ---
 
 def build_node_cypher(node: dict) -> tuple[str, dict]:
-    """Build a MERGE statement for a single node."""
+    """Build a MERGE statement for a single node, keyed on canonical_id (GOV-005)."""
     label = node["label"]
     props = node["props"]
 
-    # Use MERGE on name, then SET all properties
     set_clauses = []
-    params = {"name": props["name"]}
+    params = {"cid": node["canonical_id"]}
     for key, val in props.items():
-        if key == "name":
+        if key == "canonical_id":
             continue
         param_key = f"p_{key}"
         set_clauses.append(f"n.{key} = ${param_key}")
         params[param_key] = val
 
-    set_str = ", ".join(set_clauses) if set_clauses else "n.name = $name"
-    # Every node also gets a :DevGraph label for easy identification
-    cypher = f"MERGE (n:{label}:DevGraph {{name: $name}}) SET {set_str}"
+    set_str = ", ".join(set_clauses) if set_clauses else "n.canonical_id = $cid"
+    cypher = f"MERGE (n:{label}:DevGraph {{canonical_id: $cid}}) SET {set_str}"
     return cypher, params
 
 
-def build_rel_cypher(source_name: str, rel_type: str, target_name: str) -> tuple[str, dict]:
-    """Build a MERGE statement for a relationship between two DevGraph nodes."""
+def build_rel_cypher(source_cid: str, rel_type: str, target_cid: str) -> tuple[str, dict]:
+    """Build a MERGE statement for a relationship between two DevGraph nodes (by canonical_id)."""
     cypher = (
-        f"MATCH (a:DevGraph {{name: $source}}) "
-        f"MATCH (b:DevGraph {{name: $target}}) "
+        f"MATCH (a:DevGraph {{canonical_id: $source}}) "
+        f"MATCH (b:DevGraph {{canonical_id: $target}}) "
         f"MERGE (a)-[r:{rel_type}]->(b)"
     )
-    return cypher, {"source": source_name, "target": target_name}
+    return cypher, {"source": source_cid, "target": target_cid}
 
 
-def sync_to_neo4j(nodes: list[dict], dry_run: bool = False, clear: bool = False):
-    """Sync parsed nodes to Neo4j."""
-    if dry_run:
-        print("\n=== DRY RUN — Cypher statements ===\n")
+def sync_to_neo4j(nodes: list[dict], dry_run: bool = False, clear: bool = False) -> int:
+    """Sync parsed nodes to Neo4j. Returns the number of skipped (unresolvable) edges."""
+    name_index = build_name_index(nodes)
 
-    driver = None if dry_run else GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASS))
+    driver = None
+    if not dry_run:
+        from neo4j import GraphDatabase  # lazy: only needed for a live sync
+        driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASS))
+    else:
+        print("\n=== DRY RUN — Cypher statements (no DB connection) ===\n")
 
     try:
         if clear and not dry_run:
@@ -281,83 +326,77 @@ def sync_to_neo4j(nodes: list[dict], dry_run: bool = False, clear: bool = False)
                 print(f"  Deleted {summary.counters.nodes_deleted} nodes, "
                       f"{summary.counters.relationships_deleted} relationships")
 
-        # Phase 1: Create/update nodes
         print(f"\n--- Phase 1: Syncing {len(nodes)} nodes ---\n")
-        node_names = {n["name"] for n in nodes}
-
         for node in nodes:
             cypher, params = build_node_cypher(node)
             if dry_run:
-                print(f"// {node['name']} ({node['label']})")
-                print(f"{cypher}")
-                print(f"// params: {params}\n")
+                print(f"// {node['name']} ({node['canonical_id']} :{node['label']})")
+                print(f"{cypher}\n")
             else:
                 with driver.session(database=NEO4J_DB) as session:
                     session.run(cypher, params)
-                print(f"  MERGE :{node['label']} {node['name']}")
+                print(f"  MERGE :{node['label']} {node['canonical_id']} ({node['name']})")
 
-        # Phase 2: Create relationships
-        print(f"\n--- Phase 2: Syncing relationships ---\n")
+        print("\n--- Phase 2: Syncing relationships ---\n")
         rel_count = 0
-        skipped = []
+        skipped: list[tuple[str, str, str]] = []
 
         for node in nodes:
+            source_cid = node["canonical_id"]
             for rel_type, targets in node["relationships"].items():
                 for target in targets:
-                    if target not in node_names:
+                    target_cid = resolve_target(target, name_index)
+                    if target_cid is None:
                         skipped.append((node["name"], rel_type, target))
                         continue
-                    cypher, params = build_rel_cypher(node["name"], rel_type, target)
+                    cypher, params = build_rel_cypher(source_cid, rel_type, target_cid)
                     if dry_run:
-                        print(f"// {node['name']} -[{rel_type}]-> {target}")
+                        print(f"// {node['name']} -[{rel_type}]-> {target} ({target_cid})")
                         print(f"{cypher}\n")
                     else:
                         with driver.session(database=NEO4J_DB) as session:
                             session.run(cypher, params)
-                        print(f"  ({node['name']})-[:{rel_type}]->({target})")
+                        print(f"  ({node['canonical_id']})-[:{rel_type}]->({target_cid})")
                     rel_count += 1
 
-        # Summary
-        print(f"\n--- Summary ---")
+        print("\n--- Summary ---")
         print(f"  Nodes synced: {len(nodes)}")
         print(f"  Relationships created: {rel_count}")
         if skipped:
-            print(f"  Relationships skipped (target not in dev_graph): {len(skipped)}")
+            print(f"  Relationships SKIPPED (target not resolvable): {len(skipped)}")
             for src, rel, tgt in skipped:
                 print(f"    {src} -[{rel}]-> {tgt} (target not found)")
+        else:
+            print("  Relationships skipped: 0 (clean — every edge target resolved)")
+        return len(skipped)
 
     finally:
         if driver:
             driver.close()
 
 
-def verify_graph():
+def verify_graph() -> None:
     """Run verification queries against Neo4j and print results."""
+    from neo4j import GraphDatabase  # lazy
     print("\n=== Verification Queries ===\n")
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASS))
     try:
         with driver.session(database=NEO4J_DB) as session:
-            # Node count by label
             result = session.run(
-                "MATCH (n:DevGraph) "
-                "RETURN labels(n) AS labels, count(n) AS count "
-                "ORDER BY count DESC"
+                "MATCH (n:DevGraph) RETURN labels(n) AS labels, count(n) AS count ORDER BY count DESC"
             )
             print("Node counts by label:")
             total_nodes = 0
             for record in result:
-                # Filter out the 'DevGraph' label to show the type label
-                type_labels = [l for l in record["labels"] if l != "DevGraph"]
+                type_labels = [lbl for lbl in record["labels"] if lbl != "DevGraph"]
                 label = type_labels[0] if type_labels else "DevGraph"
                 print(f"  :{label} = {record['count']}")
                 total_nodes += record["count"]
             print(f"  TOTAL = {total_nodes}")
 
-            # Relationship count by type
             result = session.run(
                 "MATCH (:DevGraph)-[r]->(:DevGraph) "
-                "RETURN type(r) AS rel_type, count(r) AS count "
-                "ORDER BY count DESC"
+                "RETURN type(r) AS rel_type, count(r) AS count ORDER BY count DESC"
             )
             print("\nRelationship counts by type:")
             total_rels = 0
@@ -365,34 +404,13 @@ def verify_graph():
                 print(f"  {record['rel_type']} = {record['count']}")
                 total_rels += record["count"]
             print(f"  TOTAL = {total_rels}")
-
-            # Sample: show all constraint nodes and what they constrain
-            result = session.run(
-                "MATCH (a:DevGraph)-[:CONSTRAINED_BY]->(c:Constraint:DevGraph) "
-                "RETURN a.name AS node, c.name AS constraint "
-                "ORDER BY c.name, a.name"
-            )
-            print("\nConstraint relationships:")
-            for record in result:
-                print(f"  {record['node']} --CONSTRAINED_BY--> {record['constraint']}")
-
-            # Sample: show decision relationships
-            result = session.run(
-                "MATCH (a:DevGraph)-[:DECIDED_BY]->(d:DecisionRecord:DevGraph) "
-                "RETURN a.name AS node, d.name AS decision "
-                "ORDER BY d.name, a.name"
-            )
-            print("\nDecision relationships:")
-            for record in result:
-                print(f"  {record['node']} --DECIDED_BY--> {record['decision']}")
-
     finally:
         driver.close()
 
 
 # --- Main ---
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description="Sync dev_graph markdown to Neo4j")
     parser.add_argument("--dry-run", action="store_true", help="Print Cypher without executing")
     parser.add_argument("--clear", action="store_true", help="Clear existing DevGraph nodes first")
@@ -401,23 +419,19 @@ def main():
 
     if args.verify_only:
         verify_graph()
-        return
+        return 0
 
     print(f"Scanning {DEV_GRAPH_DIR} for markdown files...\n")
     nodes = scan_dev_graph()
     print(f"Found {len(nodes)} content nodes\n")
 
-    for node in nodes:
-        rel_count = sum(len(v) for v in node["relationships"].values())
-        print(f"  {node['label']:20s} {node['name']}")
-        if rel_count:
-            print(f"  {'':20s}   -> {rel_count} relationships")
-
-    sync_to_neo4j(nodes, dry_run=args.dry_run, clear=args.clear)
+    skipped = sync_to_neo4j(nodes, dry_run=args.dry_run, clear=args.clear)
 
     if not args.dry_run:
         verify_graph()
 
+    return 1 if skipped else 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

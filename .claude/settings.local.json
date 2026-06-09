@@ -68,7 +68,16 @@
       "Bash(python -m pytest tests/snapshot -q)",
       "Bash(xargs grep -l \"El Niño\\\\|gold\\\\|re-grounding\")",
       "Bash(xargs grep -l \"gold\\\\|treasury\")",
-      "Bash(.venv/Scripts/python.exe dev_graph/sync_to_neo4j.py --dry-run)"
+      "Bash(.venv/Scripts/python.exe dev_graph/sync_to_neo4j.py --dry-run)",
+      "Bash(.venv/Scripts/python.exe benchmarks/gold/run_gold_bench.py)",
+      "Bash(git --no-pager diff --stat benchmarks/gold/artifacts/gold_bench.json)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/gold -q)",
+      "Bash(.venv/Scripts/python.exe -m mypy --strict src/gold)",
+      "Bash(.venv/Scripts/python.exe -m ruff check src/gold tests/gold benchmarks/gold)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests -q)",
+      "Bash(.venv/Scripts/python.exe -m mypy --strict src/gold/paper_runtime)",
+      "Bash(.venv/Scripts/python.exe -m ruff check src/gold/paper_runtime)",
+      "Bash(.venv/Scripts/python.exe *)"
     ]
   }
 }

@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - design
@@ -82,6 +82,9 @@ An L3 decision capability under [[Trading Engine]] (SYS-002). It **supersedes** 
 
 ### Produces
 - [[Gold DecisionPacket v0 Schema]]
+
+### Used By
+- [[Paper-Trade Admission]]
 
 ### Implemented By
 - [[Gold Decision Builder]]

@@ -1015,3 +1015,47 @@ frontmatter ✓ (full decision_record schema); enums ✓ (status active, impl no
 - SCHEMA-012 (record) + SCHEMA-013 (ledger) + MOD-007 + INT-010 + CAP-021 + GATE-003; implement PRED-006/007; BENCH-003; the SCHEMA-011 `snapshot_guards` forward-compat addition (+ re-pin `test_e2e_pipeline` / `gold_bench` goldens); tests TEST-013..016; full dev_graph writeback.
 
 **CHECKPOINT — Slice 1 complete; paused for review before Slice 2.**
+
+## 2026-06-09 session | Paper-Trading Runtime — contract-first build (Slice 2, ADR-009)
+
+Built the stateful L3 paper-trading runtime that consumes the pure Gold DecisionPacket (SCHEMA-011) and computes the two stateful guards `duplicate_ok` (PRED-006) + `operational_ok` (PRED-007). **Wrap, not enrich-in-place**: `evaluate()` emits a NEW `RuntimeDecisionRecord` (SCHEMA-012) + a new `RuntimeLedger` (SCHEMA-013); the planning packet stays byte-identical/pure. Pure core + IO at the edge; self-describing append-only ledger; deterministic replay. Authored against ADR-009's nine constraints.
+
+### Step 0 — SCHEMA-011 additive `snapshot_guards` + `as_of` threading (post-audit)
+
+- Added a `SnapshotGuards` provenance block (`data_ok`/`freshness_ok`/`cooldown_ok`) to `GoldDecisionPacket`, **distinct from `guard_refs`** (the L3-outcome block). `build_decision(fv, rc, guards=None, snapshot_guards=None, config=DEFAULT, as_of=None)` — the chain orchestrator (which holds the snapshot) forwards `snapshot_guards` + `as_of = snapshot.clock_ts`; the builder copies them verbatim, never reads the snapshot. So the runtime consumes only SCHEMA-011, never raw SCHEMA-001.
+- `PACKET_SCHEMA_VERSION` 0.1.0 → **0.2.0** (additive). **`packet_id` unchanged** (it digests only the version tuple — excludes `snapshot_guards`/`as_of`/`packet_schema_version`): real PASS still `gold-v0:5653d07a0b3949d5`. `test_e2e_pipeline` threads the provenance (+1 assertion test); `gold_bench.json` re-pinned (1-line `packet_schema_version` diff). This block **post-dates** the Gold v0 94/100 final audit.
+
+### Implementation — `src/gold/paper_runtime/` (under the existing `src/gold` wheel; no pyproject change)
+
+- `models.py` — SCHEMA-012 `RuntimeDecisionRecord` (+ `Verdict`, `GuardOutcome`), SCHEMA-013 `RuntimeLedger`/`LedgerEntry`, `OperationalInput`, `compute_record_id`, `digest_snapshot_guards`. Reuses `_GUARD_NAMES` from the packet module (single guard ordering). `record_id = paper-v0:` + SHA-256 over (`packet_id` + `runtime_policy_fingerprint` + `as_of` + `operational_fingerprint` + `snapshot_guards_digest` + `prior_ledger.state_hash()`) — a per-evaluation identity binding prior state. Ledger entries are self-describing (snapshot-guards digest + operational fingerprint + `as_of` + verdict + `seq = len(prior.entries)`); `has_admit` counts only prior ADMITs (once-ever).
+- `config.py` — `RuntimePolicyConfig` (`require_operational`, `require_snapshot_guards`) + `runtime_policy_fingerprint()` (gold idiom verbatim; default `ab798cae…6f32`) + fail-closed `from_mapping`/`load_config`.
+- `predicates.py` — `duplicate_ok` (once-ever on a prior ADMIT), `operational_ok` (instrument + tradeable/venue_open/not-halt/not-degraded), echo `data_ok`/`freshness_ok`/`cooldown_ok` from `packet.snapshot_guards`; `supervisor_ok` = explicit `None` stub. `(passed, reason)` shape mirrors the risk predicates — **pattern only, never imported** (Context Map / ARCH-001 bounded-context hygiene; not ADR-004).
+- `engine.py` — pure `evaluate()`: full six-guard block (canonical order) + short-circuit conjunction over the required guards (first failure names it) → fail-closed verdict (WATCH/INDETERMINATE ⇒ HOLD; required-but-failed ⇒ REJECT; else ADMIT) → one ledger append. `RuntimeDecisionRecord.__post_init__`: ADMIT ⇔ no triggered guard; paper_only.
+- `runtime.py` — IO shell (`load_ledger` absent⇒empty/malformed⇒raise; `load_operational` default-closed; `persist_ledger` atomic) + `run_once` + the pure `run_sequence` replay driver.
+
+### Tests + benchmark (`tests/gold/`, `benchmarks/gold/`)
+
+- TEST-013 guards (14), TEST-014 engine (14), TEST-015 determinism + fingerprint coherence (6), TEST-016 ledger idempotency/seq/replay/IO (8), TEST-017 bench (8). **50 runtime tests.**
+- BENCH-003 `run_paper_runtime_bench.py` + committed `paper_runtime_bench.json` + in-sync test: real sequence (byte-identical, `no_enrich_back=true`; the 3 real paths are one content-identical snapshot ⇒ ADMIT then 3 duplicate REJECTs) + a clearly-labelled synthetic sweep exercising every verdict (ADMIT 3 / HOLD 1 / REJECT 3 with operational/data/duplicate attribution).
+
+### Writeback — nodes created (17)
+
+- SCHEMA-012 [[Runtime Decision Record Schema]], SCHEMA-013 [[Runtime Ledger Schema]]; INT-010 [[Paper Runtime API]]; MOD-007 [[Paper-Trading Runtime]]; CAP-021 [[Paper-Trade Admission]] (under SYS-002, downstream of CAP-020); GATE-003 [[Runtime Admission Gate]] (blocking, over the record); BENCH-003 [[Paper-Trading Runtime Benchmark]]; FILE-019..023 (models/config/predicates/engine/runtime); TEST-013..017.
+
+### Writeback — nodes updated
+
+- **PRED-006 / PRED-007**: planned/not-started → active/tested; `implemented_in` → `src/gold/paper_runtime/predicates.py`; `validated_by` → [[test_paper_runtime_guards]]; `### Guards` += [[Runtime Admission Gate]]; evidence += code.
+- **SCHEMA-011**: `schema_version` 0.1.0 → 0.2.0; `snapshot_guards` field documented; `consumed_by` → [[Paper-Trading Runtime]]; `### Consumed By` added; Open Questions resolved.
+- **GATE-002**: stays **advisory** (`blocking: false`); Open Question resolved — the blocking surface is GATE-003 over the record.
+- **CAP-020** `### Used By` → [[Paper-Trade Admission]]; **MOD-006** `### Used By` → [[Paper-Trading Runtime]] + builder signature note; **FILE-015/FILE-018** snapshot_guards notes; **KA-009** `informs_decisions` += [[ADR - Paper-Trading Runtime Planning]], `### Used By` += the runtime/admission nodes.
+- **index.md**: +17 rows; Statistics (total content nodes 141→158; capability 20→21, interface 5→6, artifact_schema 8→10, module 6→7, file 18→23, test 12→17, gate 2→3, benchmark_result 2→3; total files 145→162; coverage 158/158).
+
+### Verification
+
+- **pytest: 853 passed** (803 prior incl. Step-0 +2; +50 runtime). **mypy --strict** clean on `src/gold/paper_runtime` (only the 2 pre-existing MOD-004 lambda findings remain, out of scope). **ruff** clean on `src tests benchmarks`.
+- Determinism proofs: `run_sequence` twice byte-identical records + identical ending `state_hash`; re-presented snapshot ⇒ `duplicate_ok=False`; halted op ⇒ REJECT/`operational_ok`; editing a `RuntimePolicyConfig` flag without a version bump fails TEST-015 fingerprint pin; the packet built inside the runtime has `guard_refs == GuardRefs()` (no enrich-back); SCHEMA-011 `packet_id` unchanged after the additive block.
+- **11 lint checks** on touched nodes: frontmatter ✓, enums ✓, orphan/≥1 inbound ✓, stale ✓, broken wikilinks ✓, module `related_constraints`/`related_tests` ✓ (MOD-007 → Canonical Ownership + 5 tests), type-content alignment ✓, deprecated refs ✓ (CAP-021 carries **no** edge to CAP-004 / CAP-008 / Order Management), canonical_id uniqueness ✓ (17 new), evidence-confidence coherence ✓.
+
+### Deferred (ADR-009 Non-Goals — unchanged)
+
+- The wall-clock scheduler/daemon; live execution / broker / order routing / sizing / fills / P&L; a live operational-status feed; a **computed** cooldown guard (v0 echoes); multi-instrument; persistence beyond a local JSON ledger; a downstream paper-execution/evaluation layer. Epoch (b) real-corpus calibration stays blocked on DEBT-01.

@@ -5,11 +5,12 @@ status: planned
 implementation_status: not-started
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
-confidence: inferred
+updated: 2026-06-09
+confidence: confirmed
 evidence:
   - design
   - ADR
+  - code
 source_paths:
   - "GOLD_DECISIONPACKET_V0_BRIEF.md"
 related_files: []
@@ -51,7 +52,7 @@ Guards [[Gold Decision Generation]] (CAP-020). Composes [[Duplicate OK]] + [[Ope
 
 ## Open Questions
 
-- Whether `data_ok`/`freshness_ok` are echoed from the upstream snapshot guards (SCHEMA-001) or recomputed at L3 — resolved when the runtime is authored (the gold builder never reads raw SCHEMA-001 per ADR-006 §2, so they would arrive as guard inputs).
+- **Resolved (ADR-009):** `data_ok`/`freshness_ok`/`cooldown_ok` are echoed from the snapshot guards, forwarded onto the packet's `snapshot_guards` block (the gold builder never reads raw SCHEMA-001). GATE-002 stays **advisory** over the still-pure packet (whose `guard_refs` remain `null`); the **blocking** admission surface is [[Runtime Admission Gate]] (GATE-003) over the runtime record (SCHEMA-012), where the stateful guards ([[Duplicate OK]], [[Operational OK]]) are now computed by [[Paper-Trading Runtime]] (MOD-007).
 
 ## Relationships
 

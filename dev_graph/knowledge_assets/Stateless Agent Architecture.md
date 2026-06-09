@@ -4,7 +4,7 @@ canonical_id: KA-009
 status: active
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - wiki
@@ -23,6 +23,7 @@ source_wiki_pages:
   - "wiki/infrastructure/Claude Routines.md"
 informs_decisions:
   - "[[ADR - Ontology Redesign]]"
+  - "[[ADR - Paper-Trading Runtime Planning]]"
 informs_architecture:
   - "[[Context Map]]"
 external_references: []
@@ -65,5 +66,7 @@ Foundational knowledge asset. Motivates the Agent Runtime system, the Memory API
 
 ### Used By
 - [[Context Map]]
+- [[Paper-Trading Runtime]]
+- [[Paper-Trade Admission]]
 
 ### Originates From

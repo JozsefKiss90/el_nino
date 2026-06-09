@@ -5,7 +5,7 @@ status: implemented
 implementation_status: implemented
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - code
@@ -28,7 +28,7 @@ used_by: []
 
 ## Definition
 
-SCHEMA-011 dataclasses for the gold decision layer: `GoldDecisionPacket`, the `Direction` and `DecisionMode` enums, `FeatureCitation`, `ConfidenceInputs`, and `GuardRefs`, plus the byte-stable `to_dict()` and `compute_packet_id` (SHA-256 over the full identity tuple, mirroring `Snapshot.recompute_id`).
+SCHEMA-011 dataclasses for the gold decision layer: `GoldDecisionPacket`, the `Direction` and `DecisionMode` enums, `FeatureCitation`, `ConfidenceInputs`, `GuardRefs`, and the **v0.2.0 additive `SnapshotGuards`** L1 provenance block (ADR-009 §3; distinct from `GuardRefs`), plus the byte-stable `to_dict()` and `compute_packet_id` (SHA-256 over the full identity tuple, mirroring `Snapshot.recompute_id` — excludes `snapshot_guards`/`as_of`).
 
 ## Purpose
 

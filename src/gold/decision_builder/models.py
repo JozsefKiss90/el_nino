@@ -21,7 +21,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-PACKET_SCHEMA_VERSION = "0.1.0"
+PACKET_SCHEMA_VERSION = "0.2.0"
 # Confidence/uncertainty are rounded at serialization to neutralize float-format drift,
 # mirroring the regime layer's 6-dp margin convention.
 _FLOAT_PRECISION = 6
@@ -117,6 +117,30 @@ class GuardRefs:
 
 
 @dataclass(frozen=True)
+class SnapshotGuards:
+    """Snapshot-derived L1 guard provenance forwarded onto the packet (ADR-009 §3).
+
+    The data-quality / freshness / cooldown flags the Layer-2 snapshot published
+    (``Snapshot.guards``), copied verbatim by the chain orchestrator at build time so a
+    downstream consumer (the paper-trading runtime) reads them from the packet and never
+    re-reads the raw SCHEMA-001 snapshot. **Distinct from** ``GuardRefs`` — that is the
+    L3-outcome block (computed by the runtime); this is upstream L1 provenance. ``None`` on
+    the packet means the orchestrator did not forward a snapshot block (a pre-runtime caller).
+    """
+
+    data_ok: bool
+    freshness_ok: bool
+    cooldown_ok: bool
+
+    def to_dict(self) -> dict[str, bool]:
+        return {
+            "cooldown_ok": self.cooldown_ok,
+            "data_ok": self.data_ok,
+            "freshness_ok": self.freshness_ok,
+        }
+
+
+@dataclass(frozen=True)
 class GoldDecisionPacket:
     """Deterministic, paper-only gold decision for one snapshot (SCHEMA-011)."""
 
@@ -149,6 +173,8 @@ class GoldDecisionPacket:
     constraints: tuple[str, ...]
     # --- deterministic, caller-supplied (never wall-clock) ---
     as_of: str | None = None
+    # --- snapshot-derived L1 guard provenance (ADR-009 §3; forwarded by the orchestrator) ---
+    snapshot_guards: SnapshotGuards | None = None
 
     def __post_init__(self) -> None:
         if not 0.0 <= self.confidence <= 1.0:
@@ -192,6 +218,9 @@ class GoldDecisionPacket:
                 "source_snapshot_id": self.source_snapshot_id,
             },
             "rationale": self.rationale,
+            "snapshot_guards": (
+                self.snapshot_guards.to_dict() if self.snapshot_guards is not None else None
+            ),
             "uncertainty": round(self.uncertainty, _FLOAT_PRECISION),
         }
 

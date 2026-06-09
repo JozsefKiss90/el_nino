@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - design
@@ -24,12 +24,14 @@ related_decisions:
   - "[[ADR - Gold DecisionPacket v0 Planning]]"
   - "[[ADR - Gold Decision Confidence Semantics]]"
   - "[[ADR - Decision Layer Re-grounding]]"
+  - "[[ADR - Paper-Trading Runtime Planning]]"
 schema_id: "gold-decision-packet"
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 schema_path: "src/gold/decision_builder/models.py"
 validated_by:
   - "[[test_decision_builder]]"
-consumed_by: []
+consumed_by:
+  - "[[Paper-Trading Runtime]]"
 produced_by:
   - "[[Gold Decision Builder]]"
 ---
@@ -79,7 +81,8 @@ Output schema of MOD-006 Gold Decision Builder; inputs are SCHEMA-009 (a Feature
 | regime_classification_trace_version | string | echoed from the RegimeClassification |
 | matched_rule_id | string | the deciding regime rule (echoed) |
 | cited_features | array&lt;FeatureCitation&gt; | concrete MOD-004 features the decision rests on (§5: only the 14 real features) |
-| as_of | string \| null | deterministic caller-supplied; never wall-clock |
+| as_of | string \| null | deterministic caller-supplied (= `snapshot.clock_ts`); never wall-clock |
+| snapshot_guards | object \| null | **v0.2.0 additive (ADR-009 §3)** — the snapshot's L1 guard provenance (`data_ok`/`freshness_ok`/`cooldown_ok`) forwarded by the chain orchestrator so a downstream consumer reads it from the packet, never the raw snapshot. **Distinct from `guard_refs`** (the L3-outcome block). `null` for a pre-runtime caller. Excluded from `packet_id`. |
 
 *Versions*: `decision_policy_version` — the gold builder's policy axis (confidence weights + direction table), governed per ADR-008 §7 (bump it, never `taxonomy_version`).
 
@@ -120,13 +123,16 @@ Output schema of MOD-006 Gold Decision Builder; inputs are SCHEMA-009 (a Feature
 ## Open Questions
 
 - `produced_by` → [[Gold Decision Builder]] (MOD-006), now authored and tested (`status: active` / `implemented`).
-- `consumed_by` is empty: the paper-trading runtime that consumes the packet is deferred (ADR-006 Non-Goals); link when authored.
-- The stateful L3 guards (`duplicate_ok`, `operational_ok`) are authored as predicate nodes (PRED-006/007) + a gate (GATE-002), but their runtime computation needs the deferred paper-trading runtime; `guard_refs` carries `null` for unevaluated guards in v0.
+- `consumed_by` → [[Paper-Trading Runtime]] (MOD-007), authored under ADR-009: the runtime wraps the pure packet (it never enriches `guard_refs`). The **v0.2.0 additive `snapshot_guards` block** + populated `as_of` forward the snapshot's L1 provenance + deterministic clock onto the packet so the runtime consumes only SCHEMA-011 (`packet_id` is unchanged — it excludes both).
+- The stateful L3 guards (`duplicate_ok`, `operational_ok`) are now **implemented** in the runtime (PRED-006/007); the packet's `guard_refs` still carries `null` (the wrap keeps the planning packet pure), and the computed outcomes live on the [[Runtime Decision Record Schema]] (SCHEMA-012).
 
 ## Relationships
 
 ### Produced By
 - [[Gold Decision Builder]]
+
+### Consumed By
+- [[Paper-Trading Runtime]]
 
 ### Used By
 - [[models.py (gold)]]

@@ -51,7 +51,7 @@
       }
     ]
   },
-  "packet_schema_version": "0.1.0",
+  "packet_schema_version": "0.2.0",
   "synthetic_sweep": {
     "confidence_stats": {
       "max": 0.95,

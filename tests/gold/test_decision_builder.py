@@ -22,6 +22,7 @@ from gold.decision_builder import (
     DecisionPolicyConfigError,
     Direction,
     GuardRefs,
+    SnapshotGuards,
     build_decision,
 )
 from regime.regime_classifier import DEFAULT_REGIME_CONFIG, Regime, classify
@@ -222,6 +223,27 @@ def test_guard_refs_passthrough() -> None:
     assert pkt.guard_refs.duplicate_ok is True
     assert pkt.guard_refs.operational_ok is False
     assert pkt.guard_refs.data_ok is None
+
+
+# --- snapshot_guards provenance (ADR-009 §3 additive block) ---------------------------------
+
+def test_snapshot_guards_forwarded_without_moving_packet_id() -> None:
+    fv, rc, base = _real_packet()  # base built without snapshot_guards/as_of
+    sg = SnapshotGuards(data_ok=True, freshness_ok=True, cooldown_ok=False)
+    pkt = build_decision(fv, rc, snapshot_guards=sg, as_of="2026-05-01T22:00:00+00:00")
+    assert pkt.snapshot_guards == sg
+    assert pkt.to_dict()["snapshot_guards"] == {
+        "cooldown_ok": False,
+        "data_ok": True,
+        "freshness_ok": True,
+    }
+    assert pkt.as_of == "2026-05-01T22:00:00+00:00"
+    assert pkt.packet_schema_version == "0.2.0"
+    # the additive provenance + as_of are excluded from packet_id (no collision hazard)
+    assert pkt.packet_id == base.packet_id
+    # and absent on a pre-runtime caller (default None, serialized as null)
+    assert base.snapshot_guards is None
+    assert base.to_dict()["snapshot_guards"] is None
 
 
 # --- config fail-closed ---------------------------------------------------------------------

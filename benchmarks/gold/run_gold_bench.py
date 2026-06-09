@@ -33,6 +33,7 @@ from features.feature_builder.models import Feature, FeatureVector  # noqa: E402
 from gold.decision_builder import (  # noqa: E402
     DECISION_POLICY_VERSION,
     DEFAULT_DECISION_POLICY_CONFIG,
+    PACKET_SCHEMA_VERSION,
     Direction,
     build_decision,
 )
@@ -184,7 +185,7 @@ def build_report() -> dict[str, Any]:
         "benchmark_id": "BENCH-002",
         "decision_policy_version": DECISION_POLICY_VERSION,
         "decision_policy_fingerprint": DEFAULT_DECISION_POLICY_CONFIG.decision_policy_fingerprint(),
-        "packet_schema_version": "0.1.0",
+        "packet_schema_version": PACKET_SCHEMA_VERSION,
         "determinism": run_determinism(),
         "synthetic_sweep": run_synthetic_sweep(),
     }

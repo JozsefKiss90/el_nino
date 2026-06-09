@@ -22,6 +22,7 @@ from .models import (
     FeatureCitation,
     GoldDecisionPacket,
     GuardRefs,
+    SnapshotGuards,
     compute_packet_id,
 )
 from .policy import direction_for, trust_score
@@ -34,6 +35,7 @@ __all__ = [
     "FeatureCitation",
     "ConfidenceInputs",
     "GuardRefs",
+    "SnapshotGuards",
     "compute_packet_id",
     "PACKET_SCHEMA_VERSION",
     "DecisionPolicyConfig",

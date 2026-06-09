@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - design
@@ -74,7 +74,7 @@ Realizes the gold decision layer governed by [[ADR - Gold DecisionPacket v0 Plan
 - `models.py` — SCHEMA-011 dataclasses (`GoldDecisionPacket`, `Direction`/`DecisionMode` enums, `FeatureCitation`, `ConfidenceInputs`, `GuardRefs`) + `to_dict()` + `compute_packet_id` (SHA-256 over the full identity tuple, mirroring `Snapshot.recompute_id`).
 - `config.py` — `DecisionPolicyConfig` (confidence weights + floors + regime→direction table + `decision_policy_version`), `DEFAULT_DECISION_POLICY_CONFIG`, fail-closed `from_mapping`/`load_config` (`DecisionPolicyConfigError`), and `decision_policy_fingerprint()`.
 - `policy.py` — pure `trust_score` (ADR-008: anchor on within-rule `rule_margin`, four structural discounts, NEUTRAL/INDETERMINATE floors, uncertainty as penalty aggregate) + `direction_for`.
-- `builder.py` — `build_decision(fv, rc, guards, config, as_of)`: snapshot-id consistency check → trust score → direction lookup → cited features → templated rationale → packet.
+- `builder.py` — `build_decision(fv, rc, guards, snapshot_guards, config, as_of)`: snapshot-id consistency check → trust score → direction lookup → cited features → templated rationale → packet. The **v0.2.0 additive** `snapshot_guards` + `as_of` are caller-supplied provenance the orchestrator forwards (ADR-009 §3) — the builder copies them onto the packet verbatim, never reads the snapshot, and neither affects `packet_id`.
 - Real PASS fixture → RESTRICTIVE_RATES / direction AVOID / confidence 0.39744 / uncertainty 0.136 / `packet_id gold-v0:5653d07a0b3949d5`. 29 gold tests (20 builder + 6 bench + 3 e2e); benchmark BENCH-002 byte-identical replay = true.
 
 ## Open Questions
@@ -112,6 +112,9 @@ Realizes the gold decision layer governed by [[ADR - Gold DecisionPacket v0 Plan
 
 ### Realizes
 - [[Pipeline Pattern]]
+
+### Used By
+- [[Paper-Trading Runtime]]
 
 ### Constrained By
 - [[Canonical Ownership]]

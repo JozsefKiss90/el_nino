@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-09
+Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 
 ## Architecture
 
@@ -46,6 +46,7 @@ Last updated: 2026-06-09
 | [[capabilities/Team Orchestration]] | CAP-018 | Supervisor Office | Manage agent desk assignments, coordinate upgrades |
 | [[capabilities/Market Regime Classification]] | CAP-019 | Trading Engine | Classify a feature vector into one deterministic macro regime (SCHEMA-010) |
 | [[capabilities/Gold Decision Generation]] | CAP-020 | Trading Engine | FeatureVector + RegimeClassification → paper Gold DecisionPacket (SCHEMA-011); supersedes CAP-004 |
+| [[capabilities/Paper-Trade Admission]] | CAP-021 | Trading Engine | GoldDecisionPacket + runtime state → ADMIT/HOLD/REJECT RuntimeDecisionRecord (SCHEMA-012); computes L3 duplicate_ok/operational_ok |
 
 ## Knowledge Assets
 
@@ -88,6 +89,7 @@ Last updated: 2026-06-09
 | [[Decision API]] | INT-006 | interface | Supervisor Office → Trading Engine upgrade-decision contract |
 | [[Regime Classification API]] | INT-007 | interface | Feature Vector → Regime Classification contract (canonical upstream for Gold) |
 | [[Gold Decision API]] | INT-009 | interface | FeatureVector + RegimeClassification → paper Gold DecisionPacket contract |
+| [[Paper Runtime API]] | INT-010 | interface | GoldDecisionPacket + runtime state → RuntimeDecisionRecord + new ledger (evaluate / run_once / run_sequence) |
 
 (INT-002, 004/005, 008 reserved for future Phase 4 contracts; INT-008 earmarked for a future Evaluation API)
 
@@ -163,6 +165,7 @@ Last updated: 2026-06-09
 | [[Feature Builder]] | MOD-004 | module | Deterministic snapshot-local Layer-2 → feature vector transform |
 | [[Market Regime Classifier]] | MOD-005 | module | Deterministic feature-vector → one macro regime (rule-selection engine) |
 | [[Gold Decision Builder]] | MOD-006 | module | FeatureVector + RegimeClassification → deterministic paper-only Gold DecisionPacket (SCHEMA-011) |
+| [[Paper-Trading Runtime]] | MOD-007 | module | Stateful L3 admission — wraps the pure packet, computes duplicate_ok/operational_ok, append-only ledger |
 
 ## Files
 
@@ -186,6 +189,11 @@ Last updated: 2026-06-09
 | [[config.py (gold)]] | FILE-016 | file | DecisionPolicyConfig — confidence weights + regime→direction table + fingerprint |
 | [[policy.py]] | FILE-017 | file | trust_score (ADR-008) + direction_for (pure helpers) |
 | [[builder.py]] | FILE-018 | file | build_decision() — Gold Decision API driver (MOD-006) |
+| [[models.py (paper_runtime)]] | FILE-019 | file | SCHEMA-012/013 dataclasses (RuntimeDecisionRecord, RuntimeLedger, OperationalInput) + record_id |
+| [[config.py (paper_runtime)]] | FILE-020 | file | RuntimePolicyConfig + runtime_policy_fingerprint + fail-closed loaders |
+| [[predicates.py (paper_runtime)]] | FILE-021 | file | duplicate_ok / operational_ok + snapshot echoes (pure (passed, reason) guards) |
+| [[engine.py]] | FILE-022 | file | pure evaluate() — guard conjunction + fail-closed verdict + ledger append |
+| [[runtime.py]] | FILE-023 | file | IO boundary shell (run_once) + pure run_sequence replay driver |
 
 ## Tests
 
@@ -202,14 +210,20 @@ Last updated: 2026-06-09
 | [[test_regime_bench]] | TEST-009 | test | Benchmark/replay harness determinism + coverage (5 tests) |
 | [[test_decision_builder]] | TEST-010 | test | Gold builder — units, determinism, fail-closed, golden, fingerprint (20 tests) |
 | [[test_gold_bench]] | TEST-011 | test | Gold benchmark determinism + artifact-in-sync (6 tests) |
-| [[test_e2e_pipeline]] | TEST-012 | test | Full-chain snapshot→consume→features→regime→gold E2E determinism (3 tests) |
+| [[test_e2e_pipeline]] | TEST-012 | test | Full-chain snapshot→consume→features→regime→gold E2E determinism + forwarded provenance (4 tests) |
+| [[test_paper_runtime_guards]] | TEST-013 | test | Guard predicate units — dedup once-ever, operational, echoes, default-closed (14 tests) |
+| [[test_paper_runtime_engine]] | TEST-014 | test | evaluate() verdicts + fail-closed record __post_init__ (14 tests) |
+| [[test_paper_runtime_determinism]] | TEST-015 | test | Byte-identical record replay + runtime_policy_fingerprint coherence (6 tests) |
+| [[test_paper_runtime_ledger]] | TEST-016 | test | Ledger idempotency, seq continuity, sequence replay, IO round-trip (8 tests) |
+| [[test_paper_runtime_bench]] | TEST-017 | test | BENCH-003 determinism, idempotency, verdict sweep, artifact-in-sync (8 tests) |
 
 ## Gates
 
 | Node | ID | Type | Summary |
 |------|----|------|---------|
 | [[Trade Validation Gate]] | GATE-001 | gate | Blocking trade-validation checkpoint (Risk Control) — enforced by GuardrailEngine.validate() |
-| [[Gold Decision Gate]] | GATE-002 | gate | Composes the L3 guards a Gold DecisionPacket cites (advisory; runtime deferred) |
+| [[Gold Decision Gate]] | GATE-002 | gate | Composes the L3 guards a Gold DecisionPacket cites (advisory; blocking surface is GATE-003) |
+| [[Runtime Admission Gate]] | GATE-003 | gate | Blocking admission over the runtime record — composes the evaluated guards into ADMIT/HOLD/REJECT |
 
 ## Predicates
 
@@ -220,8 +234,8 @@ Last updated: 2026-06-09
 | [[Max Trades OK]] | PRED-003 | predicate | trades_today < max_trades_per_day |
 | [[Max Positions OK]] | PRED-004 | predicate | open_positions < max_positions |
 | [[Withdrawal Disabled]] | PRED-005 | predicate | withdrawals must be disabled |
-| [[Duplicate OK]] | PRED-006 | predicate | L3 idempotency guard — snapshot not already decided (runtime deferred) |
-| [[Operational OK]] | PRED-007 | predicate | L3 operational guard — venue tradeable / preconditions hold (runtime deferred) |
+| [[Duplicate OK]] | PRED-006 | predicate | L3 idempotency guard — snapshot not already ADMITted (implemented in MOD-007) |
+| [[Operational OK]] | PRED-007 | predicate | L3 operational guard — venue tradeable / preconditions hold (implemented in MOD-007) |
 
 ## Schemas
 
@@ -230,7 +244,9 @@ Last updated: 2026-06-09
 | [[Layer 2 Snapshot Schema]] | SCHEMA-001 | artifact_schema | Snapshot API output — Layer-2 truth payload (deterministic id, guards, series) |
 | [[Feature Vector Schema]] | SCHEMA-009 | artifact_schema | Feature Builder output — deterministic SCHEMA-001-derived features + provenance |
 | [[Regime Classification Schema]] | SCHEMA-010 | artifact_schema | Regime Classifier output — matched rule, regime, rule_margin, provenance, trace |
-| [[Gold DecisionPacket v0 Schema]] | SCHEMA-011 | artifact_schema | Gold Decision Builder output — direction, confidence/uncertainty, cited features, guard_refs |
+| [[Gold DecisionPacket v0 Schema]] | SCHEMA-011 | artifact_schema | Gold Decision Builder output — direction, confidence/uncertainty, cited features, guard_refs, snapshot_guards (v0.2.0); consumed by the runtime |
+| [[Runtime Decision Record Schema]] | SCHEMA-012 | artifact_schema | Paper runtime output — packet ref + six-guard block + ADMIT/HOLD/REJECT verdict + ledger hashes |
+| [[Runtime Ledger Schema]] | SCHEMA-013 | artifact_schema | Append-only self-describing dedup/admission state keyed by source_snapshot_id |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
@@ -258,19 +274,20 @@ Last updated: 2026-06-09
 |------|----|------|---------|
 | [[Regime Distribution Benchmark]] | BENCH-001 | benchmark_result | Regime replay determinism + synthetic distribution/coverage/entropy |
 | [[Gold Decision Distribution Benchmark]] | BENCH-002 | benchmark_result | Gold packet replay determinism + direction/confidence distribution |
+| [[Paper-Trading Runtime Benchmark]] | BENCH-003 | benchmark_result | Runtime replay determinism + idempotency + verdict distribution (real + synthetic) |
 
 ---
 
 ## Statistics
 
-- **Total content nodes**: 141 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 6, file: 18, test: 12, gate: 2, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 9, constraint: 3, api_doc_source: 2, benchmark_result: 2)
+- **Total content nodes**: 158 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 6, artifact_schema: 10, module: 7, file: 23, test: 17, gate: 3, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 9, constraint: 3, api_doc_source: 2, benchmark_result: 3)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 145
+- **Total files**: 162
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 141/141 content nodes (100%)
-- **Canonical ID coverage**: 141/141 content nodes (100%)
+- **Frontmatter coverage**: 158/158 content nodes (100%)
+- **Canonical ID coverage**: 158/158 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
@@ -295,3 +312,5 @@ Last updated: 2026-06-09
 - **Phase 5 (second coding session — Decision Engine) date**: 2026-06-06
 - **MOD-004 (Feature Builder) date**: 2026-06-07
 - **Regime Taxonomy (MOD-005 / SCHEMA-010 / ADR-007 / CAP-019 / INT-007 / KA-011 / PAT-011 / BENCH-001) date**: 2026-06-08
+- **Gold DecisionPacket v0 (MOD-006 / SCHEMA-011 / ADR-006 / ADR-008 / CAP-020 / INT-009 / GATE-002 / PRED-006-007 / BENCH-002) date**: 2026-06-08
+- **Paper-Trading Runtime (MOD-007 / SCHEMA-012-013 / ADR-009 / CAP-021 / INT-010 / GATE-003 / BENCH-003; SCHEMA-011 → v0.2.0) date**: 2026-06-09

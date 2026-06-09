@@ -14,7 +14,7 @@ import json
 from pathlib import Path
 
 from features.feature_builder import build_features
-from gold.decision_builder import GoldDecisionPacket, build_decision
+from gold.decision_builder import GoldDecisionPacket, SnapshotGuards, build_decision
 from regime.regime_classifier import classify
 from snapshot.snapshot_consumer import consume
 
@@ -28,7 +28,14 @@ def _run_pipeline(path: Path) -> GoldDecisionPacket:
     assert snap is not None
     fv = build_features(snap)
     rc = classify(fv)
-    return build_decision(fv, rc)
+    # The chain orchestrator holds the snapshot and forwards its L1 guard provenance + the
+    # deterministic clock onto the packet (ADR-009 §3). The builder never reads the snapshot.
+    snapshot_guards = SnapshotGuards(
+        data_ok=snap.guards.data_ok,
+        freshness_ok=snap.guards.freshness_ok,
+        cooldown_ok=snap.guards.cooldown_ok,
+    )
+    return build_decision(fv, rc, snapshot_guards=snapshot_guards, as_of=snap.clock_ts)
 
 
 def test_full_chain_byte_identical_replay() -> None:
@@ -44,6 +51,23 @@ def test_full_chain_golden_packet() -> None:
     assert pkt.direction.value == "AVOID"
     assert round(pkt.confidence, 6) == 0.39744
     assert pkt.decision_mode.value == "paper_only"
+    assert pkt.packet_id == "gold-v0:5653d07a0b3949d5"
+
+
+def test_full_chain_forwards_snapshot_provenance() -> None:
+    snap = consume(_REAL_PASS)
+    assert snap is not None
+    pkt = _run_pipeline(_REAL_PASS)
+    # snapshot-derived L1 guards forwarded onto the packet (ADR-009 §3) — distinct from guard_refs
+    assert pkt.snapshot_guards is not None
+    assert pkt.snapshot_guards.data_ok == snap.guards.data_ok
+    assert pkt.snapshot_guards.freshness_ok == snap.guards.freshness_ok
+    assert pkt.snapshot_guards.cooldown_ok == snap.guards.cooldown_ok
+    # as_of is the snapshot's deterministic clock (never wall-clock)
+    assert pkt.as_of == snap.clock_ts
+    # the L3-outcome block stays unevaluated — the pure packet never carries runtime state
+    assert pkt.guard_refs.to_dict() == {n: None for n in pkt.guard_refs.to_dict()}
+    # the additive provenance does NOT move packet_id (it digests only the version tuple)
     assert pkt.packet_id == "gold-v0:5653d07a0b3949d5"
 
 

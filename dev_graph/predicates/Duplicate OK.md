@@ -1,28 +1,34 @@
 ---
 type: predicate
 canonical_id: PRED-006
-status: planned
-implementation_status: not-started
+status: active
+implementation_status: tested
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
-confidence: inferred
+updated: 2026-06-09
+confidence: confirmed
 evidence:
   - design
   - ADR
+  - code
 source_paths:
   - "GOLD_DECISIONPACKET_V0_BRIEF.md"
-related_files: []
-related_tests: []
+  - "src/gold/paper_runtime/predicates.py"
+related_files:
+  - "[[predicates.py (paper_runtime)]]"
+related_tests:
+  - "[[test_paper_runtime_guards]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Gold DecisionPacket v0 Planning]]"
+  - "[[ADR - Paper-Trading Runtime Planning]]"
 predicate_id: "duplicate-ok"
 predicate_scope: "L3 idempotency guard — a snapshot_id must not have already produced a gold packet"
-implemented_in: "src/gold/decision_builder/models.py (GuardRefs.duplicate_ok carries the outcome; stateful computation deferred)"
-validated_by: []
+implemented_in: "src/gold/paper_runtime/predicates.py (duplicate_ok — once-ever on a prior ADMIT in the RuntimeLedger)"
+validated_by:
+  - "[[test_paper_runtime_guards]]"
 ---
 
 # Duplicate OK
@@ -37,12 +43,16 @@ Prevent a replayed or re-published snapshot from emitting a second, redundant pa
 
 ## Implementation Notes
 
-**Runtime computation is deferred** (ADR-006 Non-Goals — no paper-trading runtime / dedup store in v0). The Gold DecisionPacket (SCHEMA-011) carries the outcome in `guard_refs.duplicate_ok` (`bool | None`); v0 packets carry `null` (unevaluated). The stateful check is authored when the paper-trading runtime exists. `build_decision` accepts the outcome as an optional input (ADR-006 §2 permits future L3 guard outputs) and never computes it.
+**Implemented** in the paper-trading runtime (MOD-007) — [[ADR - Paper-Trading Runtime Planning]] (ADR-009) un-defers it. `duplicate_ok(packet, prior_ledger)` passes iff `not prior_ledger.has_admit(packet.source_snapshot_id)` — **once-ever**, keyed on a prior **ADMIT** (a prior HOLD/REJECT does not count as "already produced a packet"). It reads the explicit [[Runtime Ledger Schema]] (SCHEMA-013), never hidden state. The pure gold builder still leaves `guard_refs.duplicate_ok = null` (the wrap keeps the packet pure, ADR-009 §2); the computed outcome lives on the [[Runtime Decision Record Schema]] (SCHEMA-012).
 
 ## Relationships
 
 ### Guards
 - [[Gold Decision Gate]]
+- [[Runtime Admission Gate]]
+
+### Validated By
+- [[test_paper_runtime_guards]]
 
 ### Constrained By
 - [[Canonical Ownership]]
@@ -50,3 +60,4 @@ Prevent a replayed or re-published snapshot from emitting a second, redundant pa
 ### Justified By
 - [[ADR - Decision Layer Re-grounding]]
 - [[ADR - Gold DecisionPacket v0 Planning]]
+- [[ADR - Paper-Trading Runtime Planning]]

@@ -1,0 +1,66 @@
+---
+type: benchmark_result
+canonical_id: BENCH-003
+status: active
+implementation_status: implemented
+canonical: true
+created: 2026-06-09
+updated: 2026-06-09
+confidence: confirmed
+evidence:
+  - code
+  - benchmark
+source_paths:
+  - "benchmarks/gold/run_paper_runtime_bench.py"
+related_files: []
+related_tests:
+  - "[[test_paper_runtime_bench]]"
+related_constraints: []
+related_decisions:
+  - "[[ADR - Paper-Trading Runtime Planning]]"
+measures:
+  - "replay_determinism"
+  - "idempotency"
+  - "verdict_distribution"
+  - "no_enrich_back"
+  - "ledger_state_hash"
+---
+
+# Paper-Trading Runtime Benchmark
+
+## Definition
+
+The deterministic benchmark + replay harness for the paper-trading runtime (MOD-007). Two parts:
+(1) **real sequence** — build packets from the real consumable snapshots (with forwarded
+`snapshot_guards` + `as_of`, `guards` left `None`), thread them through `run_sequence` twice, assert
+byte-identical records + ending ledger, and re-present the first snapshot to evidence idempotency;
+(2) a clearly-labelled **synthetic sequence** that exercises the full verdict space (ADMIT / HOLD /
+REJECT-operational / REJECT-data / REJECT-duplicate) and records the verdict distribution.
+
+## Purpose
+
+Provide runtime determinism + idempotency evidence and a verdict distribution, pinned via a committed
+golden artifact (`benchmarks/gold/artifacts/paper_runtime_bench.json`) that a test asserts stays in
+sync. Also evidences **no enrich-back** (every packet's `guard_refs` stays unevaluated).
+
+## Results (v0)
+
+- Real sequence: `all_replays_byte_identical = true`, `no_enrich_back = true`. The three real snapshot
+  paths are content-identical (one underlying snapshot), so verdicts are `[ADMIT, REJECT, REJECT,
+  REJECT]` — the first admits, the rest are duplicates (`duplicate_ok`). Re-presented snapshot ⇒ REJECT
+  / `duplicate_ok`.
+- Synthetic sequence: `all_replays_byte_identical = true`; verdict distribution `ADMIT 3 / HOLD 1 /
+  REJECT 3` (operational / data / duplicate reject attribution pinned).
+- `runtime_policy_version 0.1.0`; `runtime_policy_fingerprint ab798cae…6f32`; record/ledger schema
+  versions `0.1.0`.
+
+## Relationships
+
+### Depends On
+- [[Paper-Trading Runtime]]
+
+### Validated By
+- [[test_paper_runtime_bench]]
+
+### Justified By
+- [[ADR - Paper-Trading Runtime Planning]]

@@ -5,7 +5,7 @@ status: implemented
 implementation_status: implemented
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - code
@@ -28,7 +28,7 @@ used_by: []
 
 ## Definition
 
-`build_decision(fv, rc, guards=None, config=DEFAULT, as_of=None) -> GoldDecisionPacket` — the public Gold Decision API (INT-009) driver: the pure, total, fail-closed assembly of a paper-only Gold DecisionPacket from a FeatureVector + RegimeClassification.
+`build_decision(fv, rc, guards=None, snapshot_guards=None, config=DEFAULT, as_of=None) -> GoldDecisionPacket` — the public Gold Decision API (INT-009) driver: the pure, total, fail-closed assembly of a paper-only Gold DecisionPacket from a FeatureVector + RegimeClassification.
 
 ## Purpose
 
@@ -36,7 +36,7 @@ Compose the contract: snapshot-id consistency check (fail-closed) → `trust_sco
 
 ## Implementation Notes
 
-Snapshot-id / feature-schema-version mismatch between `fv` and `rc` raises (fail-closed). `guards=None` ⇒ `GuardRefs` all-null. No IO/clock/randomness/history (ADR-006 §3). Implements [[Gold Decision API]] (INT-009).
+Snapshot-id / feature-schema-version mismatch between `fv` and `rc` raises (fail-closed). `guards=None` ⇒ `GuardRefs` all-null. The **v0.2.0 additive** `snapshot_guards`/`as_of` are caller-forwarded provenance (ADR-009 §3) copied onto the packet verbatim — never read from the snapshot, never in `packet_id`. No IO/clock/randomness/history (ADR-006 §3). Implements [[Gold Decision API]] (INT-009).
 
 ## Relationships
 

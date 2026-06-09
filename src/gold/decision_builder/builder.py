@@ -21,6 +21,7 @@ from .models import (
     FeatureCitation,
     GoldDecisionPacket,
     GuardRefs,
+    SnapshotGuards,
     compute_packet_id,
 )
 from .policy import direction_for, trust_score
@@ -58,10 +59,17 @@ def build_decision(
     fv: FeatureVector,
     rc: RegimeClassification,
     guards: GuardRefs | None = None,
+    snapshot_guards: SnapshotGuards | None = None,
     config: DecisionPolicyConfig | None = None,
     as_of: str | None = None,
 ) -> GoldDecisionPacket:
-    """Build a deterministic, paper-only Gold DecisionPacket (SCHEMA-011) for one snapshot."""
+    """Build a deterministic, paper-only Gold DecisionPacket (SCHEMA-011) for one snapshot.
+
+    ``snapshot_guards`` and ``as_of`` are **caller-supplied provenance** (ADR-009 §3): the chain
+    orchestrator (which ran ``consume()`` and holds the snapshot) forwards the snapshot's L1 guard
+    flags and ``snapshot.clock_ts`` here. The builder copies them onto the packet verbatim — it
+    never reads the raw snapshot, and never threads them through SCHEMA-009/010. Neither affects
+    ``packet_id`` (it digests only the version tuple)."""
     cfg = config if config is not None else DEFAULT_DECISION_POLICY_CONFIG
 
     # Fail-closed: the FeatureVector and RegimeClassification must describe the same snapshot.
@@ -111,4 +119,5 @@ def build_decision(
         non_execution_notice=_NON_EXECUTION_NOTICE,
         constraints=_CONSTRAINTS,
         as_of=as_of,
+        snapshot_guards=snapshot_guards,
     )

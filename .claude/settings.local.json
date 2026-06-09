@@ -67,7 +67,8 @@
       "Bash(python -c ' *)",
       "Bash(python -m pytest tests/snapshot -q)",
       "Bash(xargs grep -l \"El Niño\\\\|gold\\\\|re-grounding\")",
-      "Bash(xargs grep -l \"gold\\\\|treasury\")"
+      "Bash(xargs grep -l \"gold\\\\|treasury\")",
+      "Bash(.venv/Scripts/python.exe dev_graph/sync_to_neo4j.py --dry-run)"
     ]
   }
 }

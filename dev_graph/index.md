@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-08
+Last updated: 2026-06-09
 
 ## Architecture
 
@@ -136,6 +136,7 @@ Last updated: 2026-06-08
 | [[ADR - Gold DecisionPacket v0 Planning]] | ADR-006 | decision_record | Governance boundary for a future Gold DecisionPacket layer; creation gates + replay invariants; consumes SCHEMA-009 only; non-normative |
 | [[ADR - Deterministic Regime Taxonomy]] | ADR-007 | decision_record | Deterministic, config-driven, fail-closed regime taxonomy; satisfies ADR-006 gate (d) |
 | [[ADR - Gold Decision Confidence Semantics]] | ADR-008 | decision_record | Fixes the Gold v0 confidence/uncertainty model (deterministic ordinal trust score); closes ADR-006 §8 gate (e), finalizes (b)/(c) |
+| [[ADR - Paper-Trading Runtime Planning]] | ADR-009 | decision_record | Planning ADR for epoch (a) — stateful paper-trading runtime; wrap-not-enrich (packet stays pure), self-describing ledger, computes L3 duplicate_ok/operational_ok; Creation Gates all pass |
 
 ## Constraints
 
@@ -262,14 +263,14 @@ Last updated: 2026-06-08
 
 ## Statistics
 
-- **Total content nodes**: 140 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 6, file: 18, test: 12, gate: 2, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 8, constraint: 3, api_doc_source: 2, benchmark_result: 2)
+- **Total content nodes**: 141 (architecture: 4, system: 6, capability: 20 (incl. 1 deprecated), interface: 5, artifact_schema: 8, module: 6, file: 18, test: 12, gate: 2, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 9, constraint: 3, api_doc_source: 2, benchmark_result: 2)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 144
+- **Total files**: 145
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 140/140 content nodes (100%)
-- **Canonical ID coverage**: 140/140 content nodes (100%)
+- **Frontmatter coverage**: 141/141 content nodes (100%)
+- **Canonical ID coverage**: 141/141 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

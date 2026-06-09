@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-07
-updated: 2026-06-08
+updated: 2026-06-09
 confidence: confirmed
 evidence:
   - design
@@ -21,6 +21,7 @@ related_decisions:
   - "[[ADR - Feature Layer Contract]]"
   - "[[ADR - Deterministic Regime Taxonomy]]"
   - "[[ADR - Gold Decision Confidence Semantics]]"
+  - "[[ADR - Paper-Trading Runtime Planning]]"
 decision_id: "ADR-006"
 decision_date: 2026-06-07
 supersedes: []

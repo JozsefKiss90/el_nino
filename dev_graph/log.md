@@ -978,3 +978,40 @@ evidence-confidence coherence ✓.
 - **Post-audit remediation** (the audit's actionable low-severity findings, all numerically no-op): (1) `policy.py` coverage now reads `set(unavailable_features) | set(failed_required_features)` — literal ADR-008 §3 compliance; `failed_required ⊆ unavailable` so confidence/packet_id/fingerprint/`gold_bench.json` are unchanged; (2) added `src/gold/__init__.py` (package marker every sibling has); (3) cleared doc drift — MOD-006 node "26"→"29 gold tests"; audit doc records the export as 140/920 (the log Stage-2 139/910 was the pre-E2E count).
 - Re-verification: **pytest 801 passed; mypy --strict clean on src/gold; ruff clean.** Pinned real-snapshot facts unchanged (RESTRICTIVE_RATES / AVOID / 0.39744 / `gold-v0:5653d07a0b3949d5`). Gate-board coherence: ADR-006 §8 still all-pass.
 - **Gold DecisionPacket v0 epoch is closed.** Next epochs (not started — each needs its own planning ADR): (a) the paper-trading runtime that consumes the packet + computes the stateful L3 guards (`duplicate_ok`/`operational_ok`); (b) real-corpus accumulation (unblocked by DEBT-01) to convert the provisional domain-anchored regime thresholds + confidence weights + direction table from domain-anchored to empirically calibrated.
+
+## 2026-06-09 decision | ADR-009 Paper-Trading Runtime Planning — epoch (a) planning slice (Slice 1)
+
+Authored the planning / architectural-boundary ADR for epoch (a) — the first stateful Layer-3 component, the paper-trading runtime that consumes SCHEMA-011 and computes the two stateful L3 guards (`duplicate_ok`/`operational_ok`). **Governance only — no schema/module/interface/gate/code frozen** (that is Slice 2, gated on the checkpoint review of this ADR). Mirrors the ADR-006 → SCHEMA-011 contract-first rhythm. Architecture forks confirmed with the user (wrap-not-enrich; ADR-first then build slice; two named guards + echo snapshot guards) and hardened by an adversarial design review.
+
+### Decision (9 constraints)
+
+- **§2 Wrap, not enrich-in-place** — the runtime calls `build_decision(guards=None)` and emits a NEW decision record; the packet stays byte-identical/pure (`compute_packet_id` excludes `guard_refs`, so enriching would let one `packet_id` carry divergent content). Reconciles ADR-004 §3 / ADR-006 §3.
+- **§4 Stateful determinism** — state is an explicit in/out value (prior ledger → new ledger); pure `evaluate()` core + thin IO shell (mirrors `consume()` / `load_config()`). §5 self-describing append-only ledger keyed by `source_snapshot_id`, `seq = len(prior.entries)`; the ledger alone is sufficient replay state. Governing precedent: KA-009 Stateless Agent Architecture.
+- **§3 Input boundary** — core consumes only SCHEMA-011 + runtime state; snapshot guards + `as_of` forwarded through the packet (small forward-compat `snapshot_guards` block + `as_of = clock_ts` on SCHEMA-011, settled in Slice 2). Must not import `src/risk` — bounded-context hygiene (Context Map ARCH-001 / Canonical Ownership CON-003; **not** ADR-004).
+- **§6 Guard scope** — compute `duplicate_ok` (once-ever, keyed on a prior ADMIT) + `operational_ok`; echo `data_ok`/`freshness_ok`/`cooldown_ok`; `supervisor_ok` = explicit None stub; **computed cooldown cut to Future Work**.
+- **§1 CAP-008 disambiguation** — the future Paper-Trade Admission capability is complementary to but distinct from Guardrail Enforcement (CAP-008, Risk Control); no link/merge/supersede — recorded without a typed edge.
+- **§8 Gate plan** — a new blocking gate (GATE-003 candidate) governs the record; GATE-002 stays advisory over the pure packet. No node created here.
+- **§9 Creation Gates** — all five pass (pure packet, deterministic clock, named predicates, config/fingerprint + pure-engine/IO-boundary patterns) → contract authorable in Slice 2.
+
+### Writeback — nodes created (1)
+
+- ADR-009 [[ADR - Paper-Trading Runtime Planning]] (decision_record, active / not-started).
+
+### Writeback — nodes updated
+
+- ADR-004, ADR-006: `related_decisions` += [[ADR - Paper-Trading Runtime Planning]] (inbound links); `updated` → 2026-06-09.
+- index.md: +1 Decisions row; Statistics (total content nodes 140→141; decision_record 8→9; total files 144→145; coverage 141/141).
+
+### Lint (11 checks, touched nodes)
+
+frontmatter ✓ (full decision_record schema); enums ✓ (status active, impl not-started, confidence confirmed, evidence [design,ADR,code]); orphan/≥1 inbound ✓ (ADR-004/006 backlinks); stale ✓ (created today); broken wikilinks ✓ — all targets exist (SCHEMA-011, MOD-003/006, ADR-004/006, KA-009, CON-003, ARCH-001, CAP-008, MOD-001, GATE-001/002, PRED-006/007); the uncreated Slice-2 nodes are named as **plain-text candidates only** (no wikilinks); module constraints/tests n/a (ADR); type-content alignment ✓ (Status/Context/Decision/Consequences/Relationships); deprecated refs ✓ (no link to CAP-004); canonical_id uniqueness ✓ (ADR-009 new); evidence-confidence coherence ✓.
+
+### Note for the checkpoint review
+
+- **Citation resolution**: the "no-import `src/risk`" rule cites the **Context Map (ARCH-001)** bounded-context boundary as the primary authority (index shows CON-003 = *Canonical Ownership*, not a bounded-context constraint), plus Canonical Ownership (CON-003) as referenced. ADR-004 is correctly scoped to the treasury/gold boundary only.
+
+### Deferred (Slice 2 — gated on this ADR's review)
+
+- SCHEMA-012 (record) + SCHEMA-013 (ledger) + MOD-007 + INT-010 + CAP-021 + GATE-003; implement PRED-006/007; BENCH-003; the SCHEMA-011 `snapshot_guards` forward-compat addition (+ re-pin `test_e2e_pipeline` / `gold_bench` goldens); tests TEST-013..016; full dev_graph writeback.
+
+**CHECKPOINT — Slice 1 complete; paused for review before Slice 2.**

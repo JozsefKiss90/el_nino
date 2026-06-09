@@ -83,12 +83,14 @@ trade would pass both. The future admission capability must **not** link to, mer
 CAP-008 (see Relationships note).
 
 ### 2. Wrap, never enrich-in-place (the packet stays pure)
-The runtime MUST call `build_decision` with `guards=None`. It MUST NOT pass a filled `GuardRefs` into
-`build_decision`: because `compute_packet_id()` excludes `guard_refs`, doing so would make one
-`packet_id` carry divergent `to_dict()` content across runtime states — breaking "`packet_id` ⇒ identical
-content" and ADR-004 §3 (the packet must never depend on runtime state). All evaluated guard outcomes
-live on the **new wrapping record**, never on the packet. The `guards=` parameter on `build_decision` is
-retained as forward-compat, but is documented as **not** the runtime's enrichment path.
+The runtime consumes a **pre-built** `GoldDecisionPacket` and MUST NOT enrich it. The chain orchestrator
+that builds the packet for the runtime (the caller of `consume → build_features → classify →
+build_decision`) MUST call `build_decision` with `guards=None`; it MUST NOT pass a filled `GuardRefs`,
+because `compute_packet_id()` excludes `guard_refs`, so doing so would make one `packet_id` carry
+divergent `to_dict()` content across runtime states — breaking "`packet_id` ⇒ identical content" and
+ADR-004 §3 (the packet must never depend on runtime state). All evaluated guard outcomes live on the
+**new wrapping record**, never on the packet. The `guards=` parameter on `build_decision` is retained as
+forward-compat, but is documented as **not** the runtime's enrichment path.
 
 ### 3. Input boundary
 The runtime **core** consumes **only SCHEMA-011** (the `GoldDecisionPacket`) plus its own runtime state:

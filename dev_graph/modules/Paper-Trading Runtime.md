@@ -76,9 +76,10 @@ Runtime Planning]] (ADR-009); the record is gated by [[Runtime Admission Gate]] 
 
 ## Constraints
 
-- **Wrap, never enrich-in-place** — calls `build_decision(guards=None)`; the packet stays pure (the
-  packet's `guard_refs` excludes from `packet_id`, so enriching would collide). Guard outcomes live on
-  the record (ADR-009 §2).
+- **Wrap, never enrich-in-place** — the runtime consumes a pre-built packet and never enriches it; its
+  chain orchestrator builds the packet with `build_decision(guards=None)`, so the packet stays pure
+  (`packet_id` excludes `guard_refs`, so enriching would collide). Guard outcomes live on the record
+  (ADR-009 §2).
 - **Pure core + IO at the edge** — `evaluate()` is a pure function of explicit values; the only IO
   (ledger load/persist, operational load) is in `runtime.py` (mirrors `consume()` / `load_config`).
 - **Stateful determinism** — same (packet, prior ledger, operational input, policy) ⇒ identical record

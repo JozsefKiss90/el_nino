@@ -77,7 +77,12 @@
       "Bash(.venv/Scripts/python.exe -m pytest tests -q)",
       "Bash(.venv/Scripts/python.exe -m mypy --strict src/gold/paper_runtime)",
       "Bash(.venv/Scripts/python.exe -m ruff check src/gold/paper_runtime)",
-      "Bash(.venv/Scripts/python.exe *)"
+      "Bash(.venv/Scripts/python.exe *)",
+      "PowerShell(py *)",
+      "PowerShell(& \"C:\\\\Code\\\\el_nino\\\\voice_bridge\\\\.venv\\\\Scripts\\\\python.exe\" --version)",
+      "PowerShell(& \"C:\\\\Code\\\\el_nino\\\\voice_bridge\\\\.venv\\\\Scripts\\\\pip.exe\" install fastapi uvicorn faster-whisper piper-tts python-multipart 2>&1)",
+      "PowerShell(Start-Process cmd -ArgumentList \"/k\", \"C:\\\\Code\\\\el_nino\\\\voice_bridge\\\\start_bridge.bat\")",
+      "PowerShell(curl.exe http://127.0.0.1:8585/health 2>&1)"
     ]
   }
 }

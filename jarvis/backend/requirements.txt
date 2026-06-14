@@ -2,3 +2,7 @@ fastapi==0.115.6
 uvicorn[standard]==0.34.0
 neo4j==5.27.0
 pydantic==2.10.4
+anthropic>=0.40.0
+python-multipart>=0.0.9
+# Optional voice deps (Stage 5) — install only to enable the local STT/TTS bridge; the UI falls
+# back to Web Speech without them:  pip install faster-whisper   (+ a Piper binary & .onnx voice)

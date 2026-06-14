@@ -99,7 +99,20 @@
       "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 7687,7474 -State Listen -ErrorAction SilentlyContinue | Select-Object LocalPort,OwningProcess -Unique | ForEach-Object { $p=Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue; '\\\\''{0} -> PID {1} \\({2}\\)'\\\\'' -f $_.LocalPort, $_.OwningProcess, $p.ProcessName }')",
       "Bash(docker compose *)",
       "Bash(docker volume *)",
-      "Bash(docker rm *)"
+      "Bash(docker rm *)",
+      "Bash(xargs grep -H \"canonical_id:\")",
+      "PowerShell(docker ps --filter name=elnino-neo4j --format \"{{.Names}} {{.Status}}\"; \"---\"; \\(Get-Command python\\).Source; python --version)",
+      "PowerShell($env:NEO4J_PASSWORD = \"elnino_dev\"; python sync_to_neo4j.py --dry-run 2>&1 | Select-String -Pattern \"ADR-010|Nodes synced|Relationships created|SKIPPED|skipped\" | Select-Object -First 20)",
+      "PowerShell($env:NEO4J_PASSWORD = \"elnino_dev\"; python sync_to_neo4j.py --dry-run 2>&1 | Select-String -Pattern \"not found\")",
+      "PowerShell($env:NEO4J_PASSWORD = \"elnino_dev\"; python sync_to_neo4j.py --clear 2>&1 | Select-String -Pattern \"Deleted|Nodes synced|Relationships created|skipped|TOTAL|DecisionRecord\" | Select-Object -First 30)",
+      "PowerShell(python jarvis/export_graph_json.py)",
+      "Bash(awk 'length\\($0\\) < 200')",
+      "Bash(node *)",
+      "PowerShell(python -c \"import fastapi, uvicorn, neo4j; print\\('deps OK', fastapi.__version__, neo4j.__version__\\)\" 2>&1)",
+      "PowerShell(python -m pip install -q -r jarvis/backend/requirements.txt 2>&1 | Select-Object -Last 5; \"exit=$LASTEXITCODE\"; python -c \"import fastapi, uvicorn; print\\('deps OK'\\)\")",
+      "PowerShell(\\(Get-Command uv -ErrorAction SilentlyContinue\\).Source; \"---ensurepip---\"; python -m ensurepip --upgrade 2>&1 | Select-Object -Last 3)",
+      "PowerShell(python -m pip install -q -r jarvis/backend/requirements.txt 2>&1 | Select-Object -Last 3; python -c \"import fastapi, uvicorn; print\\('deps OK'\\)\")",
+      "PowerShell($env:NEO4J_PASSWORD=\"elnino_dev\"; Start-Process -FilePath python -ArgumentList \"-m\",\"uvicorn\",\"app:app\",\"--port\",\"8000\" -WorkingDirectory \"C:\\\\Code\\\\el_nino\\\\jarvis\\\\backend\" -WindowStyle Hidden; \"bridge starting...\")"
     ]
   }
 }

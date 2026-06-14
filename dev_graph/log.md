@@ -1099,3 +1099,37 @@ Operationalization slice only — **accumulates the corpus; does NOT calibrate.*
 
 - Changes outside el_nino were confined to the **Mr-Ripley producer repo** (1-line publisher fix; 2 new operational scripts; DB refreshed with real recent observations; one snapshot published). No el_nino `src/` change. dev_graph touched only here (this log entry) — no node/contract/`*_version` change. Producer/script files live in Mr-Ripley (a separate repo dev_graph does not track), so no file/test nodes were created for them.
 - **Calibration stays out of scope** and now has a forward-accumulating corpus to gate on. DTWEXBGS (weekly, 10-d threshold) is the most likely single-series daily blocker to watch.
+
+## [2026-06-14] writeback | ADR-010 JARVIS GraphRAG Integration (governance boundary)
+
+**Nodes Created:** `decisions/ADR - JARVIS GraphRAG Integration.md` (ADR-010, decision_record, status active, implementation_status not-started, confidence confirmed, evidence [design, ADR, code]).
+
+**Changes:**
+- Authored ADR-010 as a governance/boundary record (mirrors ADR-006/ADR-009 structure). Records the JARVIS↔dev_graph boundary for the integration roadmap (`jarvis/JARVIS_INTEGRATION_ROADMAP.md`): (1) JARVIS is a READ-ONLY consumer — reads Neo4j (live) or graph.json (offline), never authors; markdown stays canonical. (2) The bridge is the EXISTING `jarvis/backend/app.py` extended (graph + future /ask + future /voice + static serving) — not a separate voice_bridge.py; the cytoscape view is the reused render block. (3) Every graph-grounded answer cites canonical_ids and carries the node's evidence-class (fail-closed assistant). (4) Offline graph.json and live Neo4j are interchangeable projections behind one typed layer — never hand-edited. (5) Re-sync Neo4j only when the dev_graph changes (this slice does; later app slices do not). Non-Goals: writing to the graph, autonomous code generation, voice-driven app-building, a second source of truth, exposing the bridge beyond localhost.
+- index.md: added the ADR-010 row to the Decisions table and a dated entry to Statistics.
+
+**Lint (11 checks, touched node ADR-010):** 1 frontmatter complete ✓ · 2 enums valid (type decision_record, status active, impl not-started, confidence confirmed, evidence ⊂ allowed) ✓ · 3 not an orphan — inbound from index.md + outbound to ADR-002/ADR-001/CON-001/CON-003/API-002 ✓ · 4 fresh (created today) ✓ · 5 wikilinks resolve (ADR - Ontology Redesign, ADR - Dev Graph Bootstrap, No Wiki Mutation, Canonical Ownership, Anthropic API Docs, ADR - Gold DecisionPacket v0 Planning, ADR - Paper-Trading Runtime Planning) ✓ · 6 n/a (ADR) · 7 n/a (ADR) · 8 type-content aligned (Status/Context/Decision/Alternatives/Consequences) ✓ · 9 no deprecated refs ✓ · 10 canonical_id ADR-010 unique ✓ · 11 confidence confirmed has evidence ✓.
+
+**Metrics:** dev_graph nodes 158 → 159; decision_records 9 → 10 (ADR-001..010). Re-sync Neo4j (`python sync_to_neo4j.py --clear`) per the writeback checklist — this slice changed the dev_graph.
+
+## [2026-06-14] writeback | JARVIS GraphRAG integration — Stages 1–5 (app code, no node changes)
+
+Implemented the JARVIS<->dev_graph integration roadmap (`jarvis/JARVIS_INTEGRATION_ROADMAP.md`) under [[ADR - JARVIS GraphRAG Integration]] (ADR-010). Per ADR-010 §5, these are **application slices that do not change dev_graph nodes** — no node/edge/`*_version` change, **no Neo4j re-sync** (the Stage-0 ADR writeback already re-synced; the graph stays at 159 nodes / 1113 edges). No file/test nodes were created: this is JARVIS console/bridge tooling under `jarvis/`, outside the trading-engine (`src/`) implementation graph the dev_graph tracks.
+
+**Slices (all read-only consumers of the graph):**
+- **Stage 1** — `jarvis/export_graph_json.py`: deterministic offline projection reusing `sync_to_neo4j.py`'s parser; emits `jarvis/frontend/graph.json` (159 nodes / 1113 edges / 5 skipped — identical to the Neo4j sync). README note added.
+- **Stage 2** — `jarvis/frontend/jarvis.html`: graph-grounded answering on the current console (matched node -> 1-hop neighborhood -> answer from the `## Definition` summary + typed edges, cited `[MOD-006 · confirmed]` with evidence-class), mini cytoscape view, live-bridge-or-`graph.json` data layer, Neo4j chip flips LIVE. Original `sources/...html` untouched.
+- **Stage 3** — `jarvis/hud/` (Vite + React + TypeScript): typed data layer mirroring the FastAPI Pydantic models; **pure, Vitest-tested router** (`src/data/router.ts`, 16 tests green incl. the real-graph.json gate); hooks; components; ThemeContext (JARVIS/PIXEL); `/api` dev proxy. `npm run build` green.
+- **Stage 4** — `POST /ask` on `jarvis/backend/app.py`: GraphRAG (seed match -> Neo4j/graph.json neighborhood -> context block with evidence-class -> Claude API), returns `{answer, citations, subgraph}`; fail-closed (no LLM on no-match); 503 without `ANTHROPIC_API_KEY`. React `useClaudeUplink` with offline-router fallback.
+- **Stage 5** — voice router on the **same** app (`/voice/health|stt|tts`, Whisper/Piper optional -> graceful Web Speech fallback); built React `dist` mounted as StaticFiles -> single URL (`http://127.0.0.1:8000/`), API routes retain precedence.
+
+**Governance check:** read-only throughout (no write Cypher; bridge READ access mode + `_guard` blocklist intact); answers cite canonical_ids + evidence-class; `graph.json`/Neo4j are interchangeable projections regenerated from the markdown, never hand-edited. Lint: no dev_graph content nodes touched (only this log entry + the Stage-0 ADR-010, already linted).
+
+### [2026-06-14] addendum | adversarial review fixes (Stages 1-5)
+
+Ran a 30-agent adversarial review of the JARVIS integration; 23 findings confirmed, the actionable ones fixed (read-only/governance preserved):
+- Evidence-class on the live path: `sync_to_neo4j.py` now syncs the `evidence` array (added to `array_fields`); re-synced Neo4j (159/1113, idempotent) so the live bridge carries the same evidence-class as `graph.json` (ADR-010 sec 3). `graph.ts` mapBridgeNode extracts it. This is the only dev_graph-projection change in the review pass; no node CONTENT changed.
+- Router/console: completed REL_IN inverses (RELATES_TO_FILE/TEST, REQUIRED_FOR, CONSUMED_BY, PRODUCED_BY, SUPERSEDED_BY) so incoming edges read naturally; +1 Vitest (17 green).
+- Bridge hardening: /ask input bound (<=8000) + generic Claude/Whisper/Piper error messages (details server-side only); /voice/tts text bound (<=10000); Cypher _guard collapses whitespace + blocks apoc/call (defense-in-depth atop READ mode); clarified the StaticFiles mount-order/precedence comment.
+- HUD: live neighborhood preferred for isolated nodes; useClaudeUplink marks unavailable on non-503 failures; Web Speech shown as standby (fallback), not active.
+- Exporter: --stdout writes UTF-8 bytes (Windows console fix); docstring clarifies the summary extraction is novel (not shared with the sync parser).

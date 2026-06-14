@@ -42,6 +42,14 @@ set NEO4J_PASSWORD=elnino_dev   &&   python sync_to_neo4j.py --clear
 > The exporter auto-scopes to `dev_graph/` whether it lives in `dev_graph/` or the repo root
 > (override with the `DEV_GRAPH_DIR` env var). It prints node/edge counts by label at the end.
 
+> **Offline projection — regenerate `graph.json` alongside the Neo4j sync.** The JARVIS console can
+> answer from a server-less `frontend/graph.json` when the bridge is down. It is the *same* projection
+> as Neo4j (it reuses `sync_to_neo4j.py`'s parser — never hand-edit it). Regenerate it whenever the
+> dev_graph markdown changes, right after `sync_to_neo4j.py --clear`:
+> ```bash
+> python jarvis/export_graph_json.py    # writes jarvis/frontend/graph.json (159 nodes / 1113 edges)
+> ```
+
 **3 — run the API:**
 ```bash
 cd C:\Code\el_nino\jarvis\backend
@@ -103,6 +111,45 @@ integration (an inline graph panel inside JARVIS using the same `/subgraph` + `/
 endpoints) is the natural follow-up once this is running.
 
 ---
+
+## JARVIS GraphRAG console (Stages 1–5, ADR-010)
+
+The `frontend/index.html` explorer is one face; the **JARVIS console** is the other — a voice-style
+HUD that *answers from the graph*. It is a **read-only consumer** of the dev_graph (ADR-010): every
+structural answer cites its `canonical_id` and evidence-class, and is grounded in a retrieved
+subgraph (fail-closed — "not in the graph" rather than invent). Built in slices:
+
+| Stage | Deliverable | What it adds |
+|---|---|---|
+| 1 | `export_graph_json.py` → `frontend/graph.json` | deterministic offline projection (reuses the `sync_to_neo4j.py` parser) |
+| 2 | `frontend/jarvis.html` | graph-grounded answering on the current console + mini cytoscape view + LIVE chip |
+| 3 | `hud/` (Vite + React + TS) | the monolith refactored — typed data layer, a **pure Vitest-tested router**, hooks, components |
+| 4 | `POST /ask` on `backend/app.py` | GraphRAG over the Claude API — cited, evidence-annotated, read-only |
+| 5 | `/voice/*` + static mount on the same app | Whisper/Piper voice (Web Speech fallback) + **single URL** |
+
+### Run the React HUD
+
+```bash
+# 1) bridge (serves the graph API + /ask + /voice on :8000)
+cd jarvis/backend && pip install -r requirements.txt
+set NEO4J_PASSWORD=elnino_dev && uvicorn app:app --port 8000
+
+# 2a) dev — Vite proxies /api → the bridge (hot reload)
+cd jarvis/hud && npm install && npm test && npm run dev      # http://localhost:5173
+
+# 2b) prod — one URL: build the HUD, the bridge mounts dist
+cd jarvis/hud && npm run build
+#   then reload http://127.0.0.1:8000/  → the whole HUD serves from the bridge
+```
+
+- **`/ask` needs `ANTHROPIC_API_KEY`** in the bridge env (model via `JARVIS_ASK_MODEL`, default
+  `claude-sonnet-4-6`). Without it `/ask` returns 503 and the HUD falls back to the offline graph
+  router — still cited, still graph-grounded.
+- **Voice is optional.** `/voice/*` reports unavailable unless `faster-whisper` (STT) and a Piper
+  binary + `.onnx` voice (`PIPER_BIN`/`PIPER_VOICE`) are installed; the HUD uses **Web Speech**
+  (Chrome/Edge) otherwise.
+- The Stage-2 `jarvis.html` works offline too — serve `frontend/` statically (or open it with the
+  bridge up) and it answers from `graph.json`.
 
 ## Moving to Neo4j Aura (managed cloud) later
 Aura is just a different connection string — **the exporter, API, and UI are unchanged**:

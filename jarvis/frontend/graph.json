@@ -1,0 +1,7476 @@
+{
+  "meta": {
+    "node_count": 159,
+    "edge_count": 1113,
+    "skipped_edges": 5,
+    "source": "dev_graph markdown (sync_to_neo4j parser)"
+  },
+  "nodes": [
+    {
+      "id": "ADR-001",
+      "label": "DecisionRecord",
+      "name": "ADR - Dev Graph Bootstrap",
+      "summary": "ADR - Dev Graph Bootstrap",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-002",
+      "label": "DecisionRecord",
+      "name": "ADR - Ontology Redesign",
+      "summary": "ADR - Ontology Redesign",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-003",
+      "label": "DecisionRecord",
+      "name": "ADR - Implementation Substrate",
+      "summary": "ADR - Implementation Substrate",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-004",
+      "label": "DecisionRecord",
+      "name": "ADR - Decision Layer Re-grounding",
+      "summary": "ADR - Decision Layer Re-grounding",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code",
+        "layer2"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-005",
+      "label": "DecisionRecord",
+      "name": "ADR - Feature Layer Contract",
+      "summary": "ADR - Feature Layer Contract",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code",
+        "layer2"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-006",
+      "label": "DecisionRecord",
+      "name": "ADR - Gold DecisionPacket v0 Planning",
+      "summary": "ADR - Gold DecisionPacket v0 Planning",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-007",
+      "label": "DecisionRecord",
+      "name": "ADR - Deterministic Regime Taxonomy",
+      "summary": "ADR - Deterministic Regime Taxonomy",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code",
+        "ADR",
+        "layer2"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-008",
+      "label": "DecisionRecord",
+      "name": "ADR - Gold Decision Confidence Semantics",
+      "summary": "ADR - Gold Decision Confidence Semantics",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-009",
+      "label": "DecisionRecord",
+      "name": "ADR - Paper-Trading Runtime Planning",
+      "summary": "ADR - Paper-Trading Runtime Planning",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ADR-010",
+      "label": "DecisionRecord",
+      "name": "ADR - JARVIS GraphRAG Integration",
+      "summary": "ADR - JARVIS GraphRAG Integration",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "API-001",
+      "label": "ApiDocSource",
+      "name": "Alpaca API Docs",
+      "summary": "API documentation source node for the Alpaca trading API.",
+      "confidence": "confirmed",
+      "evidence": [
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "API-002",
+      "label": "ApiDocSource",
+      "name": "Anthropic API Docs",
+      "summary": "API documentation source node for the Anthropic/Claude API.",
+      "confidence": "confirmed",
+      "evidence": [
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ARCH-001",
+      "label": "Architecture",
+      "name": "Context Map",
+      "summary": "Formal bounded context diagram defining the 6 systems of the autonomous trading engine and the relationships between them.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ARCH-002",
+      "label": "Architecture",
+      "name": "Runtime Topology",
+      "summary": "Component interaction model showing how the 6 systems communicate at runtime through events, interfaces, and data flows.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ARCH-003",
+      "label": "Architecture",
+      "name": "Layer Model",
+      "summary": "Formal definition of the three architectural layers that structure the autonomous trading engine: Layer 1 (Data Ingestion), Layer 2 (Analysis & Strategy), and Layer 3 (Execution).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ARCH-004",
+      "label": "Architecture",
+      "name": "Infrastructure Diagram",
+      "summary": "Infrastructure Diagram",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BENCH-001",
+      "label": "BenchmarkResult",
+      "name": "Regime Distribution Benchmark",
+      "summary": "The first benchmark_result node (STEP 9 + STEP 10).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BENCH-002",
+      "label": "BenchmarkResult",
+      "name": "Gold Decision Distribution Benchmark",
+      "summary": "The deterministic benchmark + replay harness for the Gold Decision Builder (MOD-006).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BENCH-003",
+      "label": "BenchmarkResult",
+      "name": "Paper-Trading Runtime Benchmark",
+      "summary": "The deterministic benchmark + replay harness for the paper-trading runtime (MOD-007).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-001",
+      "label": "Capability",
+      "name": "Market Scanning",
+      "summary": "The capability to scan a universe of instruments, rank them by technical characteristics (momentum, volatility, ATR), and produce a focused watchlist for downstream analysis.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-002",
+      "label": "Capability",
+      "name": "Feature Engineering",
+      "summary": "The capability to calculate technical indicators from raw market data and assemble them into structured feature vectors for each watchlist candidate.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-003",
+      "label": "Capability",
+      "name": "Snapshot Assembly",
+      "summary": "The capability to assemble feature vectors into a deterministic Layer 2 Snapshot — the single source of truth consumed by all downstream systems.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-004",
+      "label": "Capability",
+      "name": "Signal Generation",
+      "summary": "The capability to apply strategy rules to Layer 2 Snapshots and produce actionable trade signals with conviction scores.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "deprecated"
+    },
+    {
+      "id": "CAP-005",
+      "label": "Capability",
+      "name": "Order Management",
+      "summary": "The capability to route trade signals to broker APIs, calculate position sizes, manage order lifecycle (placed → filled → cancelled), and handle partial fills and rejections.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-006",
+      "label": "Capability",
+      "name": "Stop-Loss Management",
+      "summary": "The capability to place, monitor, and adjust stop-loss orders for all open positions using multiple stop types: fixed percentage, trailing, and floor-ratcheting.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-007",
+      "label": "Capability",
+      "name": "Position Tracking",
+      "summary": "The capability to track all open positions, monitor real-time P&L, detect position exits (fills, stops, manual closes), and maintain current portfolio state.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-008",
+      "label": "Capability",
+      "name": "Guardrail Enforcement",
+      "summary": "The capability to evaluate trade validation predicates, enforce quality gates, and issue approve/block decisions for every trade request from the Trading Engine.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-009",
+      "label": "Capability",
+      "name": "Exposure Tracking",
+      "summary": "The capability to calculate current portfolio exposure, detect threshold breaches, and trigger circuit-breaking behavior when risk limits are approached or exceeded.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-010",
+      "label": "Capability",
+      "name": "State Persistence",
+      "summary": "The capability to read, write, and manage persistent memory files that enable stateless agent invocations to maintain continuity.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-011",
+      "label": "Capability",
+      "name": "Context Assembly",
+      "summary": "The capability to assemble the context window for each agent invocation within the token budget, prioritizing the most relevant information for the current task.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-012",
+      "label": "Capability",
+      "name": "Trade Logging",
+      "summary": "The capability to record structured trade journals for compliance, performance evaluation, and agent learning.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-013",
+      "label": "Capability",
+      "name": "Performance Scoring",
+      "summary": "The capability to calculate performance metrics from trade log data and produce evaluation scorecards that quantify strategy effectiveness.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-014",
+      "label": "Capability",
+      "name": "Promotion Validation",
+      "summary": "The capability to evaluate whether a strategy's scorecard meets promotion criteria and to manage the Paper Trading Promotion Gate that controls the PaperTrading → Validated lifecycle transition.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-015",
+      "label": "Capability",
+      "name": "Decision Making",
+      "summary": "The capability to score upgrade opportunities, select the best option under treasury constraints, and produce deterministic decision packets that govern system evolution.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "external",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-016",
+      "label": "Capability",
+      "name": "Treasury Management",
+      "summary": "The capability to track treasury budget, enforce spend policy (spendLimit, available balance), approve or deny upgrade spend requests, and record treasury deductions.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-017",
+      "label": "Capability",
+      "name": "Upgrade Evaluation",
+      "summary": "The capability to simulate upgrade outcomes, run paper trading for proposed changes, and evaluate whether upgrades actually improved the system using deterministic deltas.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-018",
+      "label": "Capability",
+      "name": "Team Orchestration",
+      "summary": "The capability to manage agent desk assignments, coordinate upgrade application across the agent team, and maintain team version state.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-019",
+      "label": "Capability",
+      "name": "Market Regime Classification",
+      "summary": "The capability to classify a single Layer-2-derived feature vector (SCHEMA-009) into exactly one deterministic macro-financial-conditions regime (SCHEMA-010), using only snapshot-local information.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-020",
+      "label": "Capability",
+      "name": "Gold Decision Generation",
+      "summary": "The capability to turn a Feature Vector (SCHEMA-009) + a Regime Classification (SCHEMA-010) into a deterministic, paper-trading **Gold DecisionPacket** (SCHEMA-011): a gold `direction` stance (the regime→direction policy) + `confidence`/`uncertainty` (the ADR-008 ordinal trust score) + the cited MOD-004 features + the L3 guard outcomes the packet honored.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CAP-021",
+      "label": "Capability",
+      "name": "Paper-Trade Admission",
+      "summary": "The capability to **admit** a pure Gold DecisionPacket (SCHEMA-011) for paper trading against explicit runtime state — computing the stateful L3 guards Duplicate OK (`duplicate_ok`) + Operational OK (`operational_ok`), echoing the snapshot guards, and emitting an `ADMIT`/`HOLD`/`REJECT` Runtime Decision Record Schema (SCHEMA-012) plus a new ledger.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CON-001",
+      "label": "Constraint",
+      "name": "No Wiki Mutation",
+      "summary": "Claude Code sessions operating on dev_graph MUST NOT modify any files in `wiki/**` or `raw/**`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CON-002",
+      "label": "Constraint",
+      "name": "Frontmatter Required",
+      "summary": "Every dev_graph node (except structural files: CLAUDE.md, index.md, log.md, README.md) MUST have valid YAML frontmatter containing all universal fields.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CON-003",
+      "label": "Constraint",
+      "name": "Canonical Ownership",
+      "summary": "Every implementation concept (module, file, test, gate, predicate, schema, workflow, agent, skill, constraint, API doc source, benchmark, decision) has exactly ONE canonical node in dev_graph.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "CTX-001",
+      "label": "ContextPack",
+      "name": "Context Pack Template",
+      "summary": "Canonical template for creating implementation context packs that prime Claude Code sessions.",
+      "confidence": "inferred",
+      "evidence": [
+        "design"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "CTX-002",
+      "label": "ContextPack",
+      "name": "Phase 5 Bootstrap Context",
+      "summary": "The context pack that prepares the FIRST real coding session.",
+      "confidence": "inferred",
+      "evidence": [
+        "design"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "FILE-001",
+      "label": "File",
+      "name": "guardrail_engine.py",
+      "summary": "The orchestrator source file of the Guardrail Engine module (MOD-001).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-002",
+      "label": "File",
+      "name": "predicates.py",
+      "summary": "The hard-limit predicate source file of the Guardrail Engine module (MOD-001).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-003",
+      "label": "File",
+      "name": "models.py",
+      "summary": "The data-model source file of the Guardrail Engine module (MOD-001).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-004",
+      "label": "File",
+      "name": "decision_engine.py",
+      "summary": "The orchestrator source file of the Decision Engine module (MOD-002).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-005",
+      "label": "File",
+      "name": "scoring.py",
+      "summary": "The deterministic weakness-scoring source file of the Decision Engine module (MOD-002).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-006",
+      "label": "File",
+      "name": "models.py (supervisor)",
+      "summary": "The data-model source file of the Decision Engine module (MOD-002), at `src/supervisor/decision_engine/models.py`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-007",
+      "label": "File",
+      "name": "models.py (snapshot)",
+      "summary": "The Layer-2 Snapshot contract (SCHEMA-001) realised as stdlib frozen dataclasses: `Snapshot`, `SeriesValue`, `Guards`, `QualitySummary`, plus `SnapshotContractError`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "layer2"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-008",
+      "label": "File",
+      "name": "consumer.py",
+      "summary": "The fail-closed Layer-3 gate over the Snapshot API (INT-001): `load_snapshot()`, `is_consumable()`, and the single entry point `consume()`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "layer2"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-009",
+      "label": "File",
+      "name": "models.py (features)",
+      "summary": "The Feature Vector contract (SCHEMA-009) as stdlib frozen dataclasses: `Feature` (value + provenance) and `FeatureVector` (snapshot_id, schema_version, name-sorted features, unavailable_features), plus the `FEATURE_SCHEMA_VERSION` constant.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-010",
+      "label": "File",
+      "name": "feature_builder.py",
+      "summary": "The deterministic transform: a fixed `FEATURE_REGISTRY` of `FeatureSpec`s plus `build_features(snapshot) -> FeatureVector`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "layer2"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-011",
+      "label": "File",
+      "name": "regime_classifier.py",
+      "summary": "The driver: `classify(fv, config=DEFAULT_REGIME_CONFIG, as_of=None) -> RegimeClassification`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-012",
+      "label": "File",
+      "name": "taxonomy.py",
+      "summary": "The declarative, priority-ordered `RULE_TABLE` of `RegimeRule`s (each a pure predicate + a `MarginSpec`) plus the pure `margin_value` / `near_proximity` helpers.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-013",
+      "label": "File",
+      "name": "config.py (regime)",
+      "summary": "`RegimeConfig` — the frozen, versioned dataclass holding every decision threshold, every rule-margin scale, the `near_band` trace parameter, the required-feature gate, and the three versions.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-014",
+      "label": "File",
+      "name": "models.py (regime)",
+      "summary": "The SCHEMA-010 output models: the `Regime` enum (12 values), `RegimeClassification` (frozen, with cross-field invariants + deterministic `to_dict()`), `FeatureProvenance`, and the version constants (`TAXONOMY_VERSION`, `CLASSIFIER_VERSION`, `CLASSIFICATION_TRACE_VERSION`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-015",
+      "label": "File",
+      "name": "models.py (gold)",
+      "summary": "SCHEMA-011 dataclasses for the gold decision layer: `GoldDecisionPacket`, the `Direction` and `DecisionMode` enums, `FeatureCitation`, `ConfidenceInputs`, `GuardRefs`, and the **v0.2.0 additive `SnapshotGuards`** L1 provenance block (ADR-009 §3; distinct from `GuardRefs`), plus the byte-stable `to_dict()` and `compute_packet_id` (SHA-256 over the full identity tuple, mirroring `Snapshot.recompute_id` — excludes `snapshot_guards`/`as_of`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-016",
+      "label": "File",
+      "name": "config.py (gold)",
+      "summary": "`DecisionPolicyConfig` — the versioned gold decision policy: the v0 confidence weights + floors AND the regime→direction table, governed by a single `decision_policy_version`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-017",
+      "label": "File",
+      "name": "policy.py",
+      "summary": "Pure decision-policy helpers: `trust_score(rc, fv, config)` (the ADR-008 ordinal trust score + structural-penalty-aggregate uncertainty) and `direction_for(rc, config)` (the versioned regime→direction lookup).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-018",
+      "label": "File",
+      "name": "builder.py",
+      "summary": "`build_decision(fv, rc, guards=None, snapshot_guards=None, config=DEFAULT, as_of=None) -> GoldDecisionPacket` — the public Gold Decision API (INT-009) driver: the pure, total, fail-closed assembly of a paper-only Gold DecisionPacket from a FeatureVector + RegimeClassification.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-019",
+      "label": "File",
+      "name": "models.py (paper_runtime)",
+      "summary": "The runtime's contract models (SCHEMA-012 + SCHEMA-013): `RuntimeDecisionRecord`, `Verdict`, `GuardOutcome`, `OperationalInput`, `LedgerEntry`, `RuntimeLedger`, plus `compute_record_id` and `digest_snapshot_guards`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-020",
+      "label": "File",
+      "name": "config.py (paper_runtime)",
+      "summary": "`RuntimePolicyConfig` (the `require_operational` / `require_snapshot_guards` admission flags) + `runtime_policy_version` + `runtime_policy_fingerprint()` + `DEFAULT_RUNTIME_POLICY_CONFIG` + fail-closed `from_mapping`/`load_config` (`RuntimePolicyConfigError`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-021",
+      "label": "File",
+      "name": "predicates.py (paper_runtime)",
+      "summary": "The L3 guard predicates: `duplicate_ok` (PRED-006), `operational_ok` (PRED-007), and the snapshot echoes `data_ok`/`freshness_ok`/`cooldown_ok`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-022",
+      "label": "File",
+      "name": "engine.py",
+      "summary": "`evaluate(packet, prior_ledger, operational_input, config) -> (record, new_ledger)` — the pure runtime admission core (the Paper Runtime API, INT-010) and the Runtime Admission Gate (GATE-003) verdict logic.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-023",
+      "label": "File",
+      "name": "runtime.py",
+      "summary": "The IO boundary shell + replay driver: `load_ledger` / `persist_ledger` / `load_operational`, `run_once` (single-step: load → evaluate → persist atomically), and `run_sequence` (pure, in-memory ledger-threading replay driver — the determinism / BENCH-003 vehicle).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "GATE-001",
+      "label": "Gate",
+      "name": "Trade Validation Gate",
+      "summary": "The blocking quality checkpoint at the Risk Control boundary: a proposed trade may proceed only if every hard-limit predicate passes.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "GATE-002",
+      "label": "Gate",
+      "name": "Gold Decision Gate",
+      "summary": "The Layer-3 checkpoint that composes the six-guard taxonomy outcomes a Gold DecisionPacket cites in its `guard_refs` — the snapshot-derived `data_ok`/`freshness_ok`, the Layer-3 stubs `supervisor_ok`/`cooldown_ok`, and the two net-new L3 guards Duplicate OK (`duplicate_ok`) and Operational OK (`operational_ok`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "GATE-003",
+      "label": "Gate",
+      "name": "Runtime Admission Gate",
+      "summary": "The blocking Layer-3 checkpoint over the **runtime record** (SCHEMA-012): it composes the evaluated six-guard block into a fail-closed `ADMIT`/`HOLD`/`REJECT` verdict, enforced in `evaluate()` and the `RuntimeDecisionRecord.__post_init__` invariant.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "GOV-001",
+      "label": "Governance",
+      "name": "Dev Graph Governance",
+      "summary": "Root governance document for the dev_graph implementation graph.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "GOV-002",
+      "label": "Governance",
+      "name": "Context Pack Assembly Rules",
+      "summary": "Rules governing how typed implementation context packs are assembled for Claude Code sessions.",
+      "confidence": "inferred",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "GOV-003",
+      "label": "Governance",
+      "name": "Admissibility Checks",
+      "summary": "Nine validation checks that every dev_graph node must pass before it can be included as authoritative context in a coding context pack.",
+      "confidence": "inferred",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "GOV-004",
+      "label": "Governance",
+      "name": "MCP Tooling Policy",
+      "summary": "Operation safety classification for all MCP tools when operating on the dev_graph.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "GOV-005",
+      "label": "Governance",
+      "name": "Neo4j Export Mapping",
+      "summary": "Defines how dev_graph markdown nodes map to Neo4j graph database entities for future graph traversal via the neo4j MCP server.",
+      "confidence": "inferred",
+      "evidence": [
+        "design"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "GOV-006",
+      "label": "Governance",
+      "name": "Database MCP Mapping",
+      "summary": "Defines how dev_graph metadata maps to PostgreSQL tables for future structured queries via the postgres MCP server.",
+      "confidence": "inferred",
+      "evidence": [
+        "design"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "GOV-007",
+      "label": "Governance",
+      "name": "API Documentation Policy",
+      "summary": "Governs which API documentation sources are admissible in coding context packs, how they are retrieved, and how freshness is maintained.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "INT-001",
+      "label": "Interface",
+      "name": "Snapshot API",
+      "summary": "The boundary contract by which Layer 3 obtains the Layer-2 truth snapshot.",
+      "confidence": "confirmed",
+      "evidence": [
+        "layer2",
+        "code",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "INT-003",
+      "label": "Interface",
+      "name": "Risk Check API",
+      "summary": "The synchronous contract by which the Trading Engine submits a proposed trade to Risk Control for validation and receives an approve/block decision.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "INT-006",
+      "label": "Interface",
+      "name": "Decision API",
+      "summary": "The contract by which the Supervisor Office emits an upgrade decision to the rest of the system.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "INT-007",
+      "label": "Interface",
+      "name": "Regime Classification API",
+      "summary": "The boundary contract by which a consumer obtains a deterministic regime classification for one snapshot: ``` classify(fv: FeatureVector, config: RegimeConfig = DEFAULT, as_of: str | None = None) -> RegimeClassification ``` Input schema: SCHEMA-009 Feature Vector.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "INT-009",
+      "label": "Interface",
+      "name": "Gold Decision API",
+      "summary": "The boundary contract by which a consumer obtains a deterministic gold paper-trading decision for one snapshot: ``` build_decision( fv: FeatureVector, # SCHEMA-009 (coverage + citation) rc: RegimeClassification, # SCHEMA-010 (primary input, via INT-007) guards: GuardRefs | None = None, # optional L3 guard outcomes (ADR-006 §2/§6) config: DecisionPolicyConfig = DEFAULT, # versioned confidence weights + direction table as_of: str | None = None, # deterministic, caller-supplied; never wall-clock ) -> GoldDecisionPacket # SCHEMA-011 ``` Primary input: SCHEMA-010 Regime Classification (the layer reasons over the regime label + provenance).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "INT-010",
+      "label": "Interface",
+      "name": "Paper Runtime API",
+      "summary": "The boundary contract by which a caller admits a pure gold packet against explicit runtime state: ``` evaluate( packet: GoldDecisionPacket, # SCHEMA-011 (consumed by reference; never mutated) prior_ledger: RuntimeLedger, # SCHEMA-013 (explicit state in) operational_input: OperationalInput, # versioned operational-readiness artifact config: RuntimePolicyConfig = DEFAULT, # versioned require-flags (+ fingerprint) ) -> tuple[RuntimeDecisionRecord, RuntimeLedger] # SCHEMA-012 + new SCHEMA-013 ``` The pure core is `evaluate()`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-001",
+      "label": "KnowledgeAsset",
+      "name": "Event Sourcing",
+      "summary": "The engineering principle that system state changes are captured as an immutable sequence of domain events rather than mutable state snapshots.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-002",
+      "label": "KnowledgeAsset",
+      "name": "CQRS",
+      "summary": "Command Query Responsibility Segregation — the engineering principle that the model used to read data (queries) should be separated from the model used to write data (commands).",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-003",
+      "label": "KnowledgeAsset",
+      "name": "Supervisor Pattern Methodology",
+      "summary": "The engineering methodology where a meta-agent (supervisor) assembles, evaluates, and upgrades a team of specialized worker agents under resource constraints.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-004",
+      "label": "KnowledgeAsset",
+      "name": "Office Action Methodology",
+      "summary": "The engineering methodology of governing autonomous agent interventions through a deterministic state machine with explicit integration checkpoints, auditable transitions, and graceful degradation.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-005",
+      "label": "KnowledgeAsset",
+      "name": "Guardrail Philosophy",
+      "summary": "The engineering principle that autonomous agent autonomy MUST be preceded by hard, non-negotiable constraints that the agent cannot reason around.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-006",
+      "label": "KnowledgeAsset",
+      "name": "Layer 2 Design Principles",
+      "summary": "The engineering principles governing the Layer 2 (Strategy Engine / Analysis) snapshot system — the deterministic truth layer that bridges data ingestion (L1) and execution (L3).",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-007",
+      "label": "KnowledgeAsset",
+      "name": "Context Engineering",
+      "summary": "The engineering principle that LLM agent context windows are finite resources that must be budgeted, prioritized, and managed like financial capital.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-008",
+      "label": "KnowledgeAsset",
+      "name": "Agent Safety Principles",
+      "summary": "The engineering guidance — derived from Anthropic's approach to AI safety in financial services and from the project's own risk model — that autonomous trading agents must be designed with multiple layers of safety: credential isolation, action constraints, self-verification, phased autonomy, and human oversight.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki",
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-009",
+      "label": "KnowledgeAsset",
+      "name": "Stateless Agent Architecture",
+      "summary": "The engineering principle that each agent invocation starts with zero inherent state.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-010",
+      "label": "KnowledgeAsset",
+      "name": "Paper Trading Validation",
+      "summary": "The engineering methodology that requires every trading strategy to pass simulated execution with real market data before live capital deployment.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "KA-011",
+      "label": "KnowledgeAsset",
+      "name": "Regime Taxonomy",
+      "summary": "The engineering principle that a small, enumerated set of **market regimes** — deterministic, snapshot-local macro-financial-conditions states — should sit as a named abstraction layer between raw derived features and trade-decision logic.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-001",
+      "label": "Module",
+      "name": "Guardrail Engine",
+      "summary": "The code boundary that implements the Guardrail Enforcement capability: it evaluates a conjunction of hard-limit trade-validation predicates and returns a single approve/block decision plus the identity of the first failing predicate.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-002",
+      "label": "Module",
+      "name": "Decision Engine",
+      "summary": "The code boundary that implements the Decision Making capability: it scores candidate upgrades against current office weaknesses under treasury constraints and returns a deterministic decision packet selecting the best upgrade (or \"no upgrade needed\").",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-003",
+      "label": "Module",
+      "name": "Snapshot Consumer",
+      "summary": "The Layer-3 ingestion boundary: the module that reads the Layer-2 truth snapshot (SCHEMA-001) via the Snapshot API (INT-001) and decides whether Layer 3 may act on it.",
+      "confidence": "confirmed",
+      "evidence": [
+        "layer2",
+        "code",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-004",
+      "label": "Module",
+      "name": "Feature Builder",
+      "summary": "The deterministic, snapshot-local transform that turns a validated `Snapshot` (from MOD-003) into a frozen feature vector (SCHEMA-009).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "layer2",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-005",
+      "label": "Module",
+      "name": "Market Regime Classifier",
+      "summary": "The deterministic, snapshot-local rule-selection engine that turns a Feature Vector (SCHEMA-009) into a frozen `RegimeClassification` (SCHEMA-010).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-006",
+      "label": "Module",
+      "name": "Gold Decision Builder",
+      "summary": "The deterministic, snapshot-local builder that turns a Feature Vector (SCHEMA-009) + a Regime Classification (SCHEMA-010) into a frozen, paper-only `GoldDecisionPacket` (SCHEMA-011).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-007",
+      "label": "Module",
+      "name": "Paper-Trading Runtime",
+      "summary": "The first **stateful** Layer-3 component: it consumes a pure Gold DecisionPacket v0 Schema (SCHEMA-011) plus explicit runtime state (a self-describing Runtime Ledger Schema + a versioned operational input) and emits a Runtime Decision Record Schema (SCHEMA-012) + a new ledger.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "OBS-001",
+      "label": "Observability",
+      "name": "Dev Graph Dashboard",
+      "summary": "Dev Graph Dashboard",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-001",
+      "label": "Pattern",
+      "name": "Supervisor Pattern",
+      "summary": "A meta-agent governs a team of specialized worker agents under resource constraints.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-002",
+      "label": "Pattern",
+      "name": "Guardrail Pattern",
+      "summary": "A validation checkpoint composed of boolean predicates that must ALL pass before an action is permitted.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-003",
+      "label": "Pattern",
+      "name": "Evaluation Loop Pattern",
+      "summary": "A cyclical pattern where system output is measured against defined metrics, scored into a structured scorecard, and fed back to governance for promotion or evolution decisions.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-004",
+      "label": "Pattern",
+      "name": "Pipeline Pattern",
+      "summary": "A linear sequence of processing stages where the output of each stage feeds as input to the next.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-005",
+      "label": "Pattern",
+      "name": "Event Sourcing Pattern",
+      "summary": "State changes are captured as an immutable, append-only sequence of domain events.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-006",
+      "label": "Pattern",
+      "name": "Context Assembly Pattern",
+      "summary": "A structured retrieval and assembly process that selects, prioritizes, and composes information into a bounded context window for a stateless agent invocation.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-007",
+      "label": "Pattern",
+      "name": "Treasury Approval Pattern",
+      "summary": "A two-gate financial approval process where resource spend requests must pass both a per-item limit check (spendLimit) and an available balance check before approval.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-008",
+      "label": "Pattern",
+      "name": "Promotion Pattern",
+      "summary": "A quantitative gate that controls promotion from a safe environment (paper trading) to a live environment (production).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-009",
+      "label": "Pattern",
+      "name": "CQRS Pattern",
+      "summary": "The read model (analytical snapshots) is separated from the write model (order execution).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-010",
+      "label": "Pattern",
+      "name": "Multi-Agent Coordination Pattern",
+      "summary": "Multiple specialized agents are organized into functional desks (Research, Strategy, Execution, Evaluator) under centralized coordination.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PAT-011",
+      "label": "Pattern",
+      "name": "Regime Classification Pattern",
+      "summary": "A behavioral pattern that interposes a deterministic **semantic abstraction** step between measurement and action: ``` Snapshot → Features → [Semantic abstraction: regime] → Decision → Execution ``` A priority-ordered rule table maps a feature vector to exactly one enumerated regime (first match wins), projecting `matched_rule_id → regime`, and the decision layer reasons over the regime rather than the raw features.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-001",
+      "label": "Predicate",
+      "name": "Position Size OK",
+      "summary": "Boolean condition: `size <= min(current_equity * max_position_pct, max_trade_size)`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-002",
+      "label": "Predicate",
+      "name": "Daily Loss Cap OK",
+      "summary": "Boolean condition: `daily_pnl > -daily_loss_cap`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-003",
+      "label": "Predicate",
+      "name": "Max Trades OK",
+      "summary": "Boolean condition: `trades_today < max_trades_per_day`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-004",
+      "label": "Predicate",
+      "name": "Max Positions OK",
+      "summary": "Boolean condition: `open_positions < max_positions`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-005",
+      "label": "Predicate",
+      "name": "Withdrawal Disabled",
+      "summary": "Boolean condition: `not config.allow_withdrawals`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-006",
+      "label": "Predicate",
+      "name": "Duplicate OK",
+      "summary": "Boolean L3 guard: `duplicate_ok` passes when the current `source_snapshot_id` has **not** already produced a Gold DecisionPacket (idempotency / de-duplication).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-007",
+      "label": "Predicate",
+      "name": "Operational OK",
+      "summary": "Boolean L3 guard: `operational_ok` passes when operational preconditions for acting on a gold decision hold — e.g.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "REF-001",
+      "label": "Reference",
+      "name": "REF - Wiki CLAUDE",
+      "summary": "Reference node pointing to the wiki's governance operations manual at `wiki/CLAUDE.md`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "REF-002",
+      "label": "Reference",
+      "name": "REF - Wiki Metadata Migration Plan",
+      "summary": "Reference node pointing to the wiki's metadata schema specification at `wiki/governance/Metadata Migration Plan.md`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "REF-003",
+      "label": "Reference",
+      "name": "REF - Wiki Graph Health Dashboard",
+      "summary": "Reference node pointing to the wiki's observability dashboard at `wiki/observability/Graph Health Dashboard.md`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "REF-004",
+      "label": "Reference",
+      "name": "Infrastructure Diagram",
+      "summary": "Infrastructure Diagram",
+      "confidence": "confirmed",
+      "evidence": [
+        "design"
+      ],
+      "status": "deprecated"
+    },
+    {
+      "id": "SCHEMA-001",
+      "label": "ArtifactSchema",
+      "name": "Layer 2 Snapshot Schema",
+      "summary": "The foundational data contract of the whole system: the deterministic, versioned, self-contained analytical assessment the Layer-2 engine (Mr.",
+      "confidence": "confirmed",
+      "evidence": [
+        "layer2",
+        "code",
+        "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-004",
+      "label": "ArtifactSchema",
+      "name": "Decision Packet Schema",
+      "summary": "The data contract for the deterministic decision output of the Supervisor Office: the selected upgrade (or none), the ranked option set with scores and block reasons, the rationale, and the post-decision treasury state.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-005",
+      "label": "ArtifactSchema",
+      "name": "Evaluation Scorecard Schema",
+      "summary": "The performance-evidence contract the Supervisor Office consumes to decide whether — and how — to upgrade.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-007",
+      "label": "ArtifactSchema",
+      "name": "Trade Validation Request Schema",
+      "summary": "The data contract for a proposed-trade validation request submitted to the Risk Check API.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-008",
+      "label": "ArtifactSchema",
+      "name": "Trade Validation Decision Schema",
+      "summary": "The data contract for the approve/block decision returned by the Risk Check API after a trade-validation request is evaluated.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-009",
+      "label": "ArtifactSchema",
+      "name": "Feature Vector Schema",
+      "summary": "The deterministic output contract of the Feature Builder (MOD-004): a frozen, snapshot-local vector of features derived purely from a single Layer-2 Snapshot (SCHEMA-001), each carrying its provenance.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "layer2",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-010",
+      "label": "ArtifactSchema",
+      "name": "Regime Classification Schema",
+      "summary": "The deterministic output contract of the Market Regime Classifier (MOD-005): a frozen `RegimeClassification` derived purely from one Feature Vector (SCHEMA-009).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-011",
+      "label": "ArtifactSchema",
+      "name": "Gold DecisionPacket v0 Schema",
+      "summary": "The deterministic output contract of the Gold Decision Builder (MOD-006): a frozen `GoldDecisionPacket` derived purely from one Feature Vector (SCHEMA-009) + one Regime Classification (SCHEMA-010).",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-012",
+      "label": "ArtifactSchema",
+      "name": "Runtime Decision Record Schema",
+      "summary": "The output contract of the paper-trading runtime's pure `evaluate()` (MOD-007): a frozen `RuntimeDecisionRecord` that **wraps** a pure Gold DecisionPacket v0 Schema (SCHEMA-011) by reference (`source_packet_id`) and carries the runtime's evaluated six-guard block plus a fail-closed `ADMIT`/`HOLD`/`REJECT` verdict.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SCHEMA-013",
+      "label": "ArtifactSchema",
+      "name": "Runtime Ledger Schema",
+      "summary": "The append-only, self-describing state artifact of the paper-trading runtime (MOD-007): a frozen `RuntimeLedger` of `LedgerEntry` records, keyed by `source_snapshot_id`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SYS-001",
+      "label": "System",
+      "name": "Data Pipeline",
+      "summary": "Bounded context responsible for acquiring market data from external providers, engineering features from raw data, and assembling deterministic Layer 2 Snapshots that serve as the single source of truth for the entire trading pipeline.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SYS-002",
+      "label": "System",
+      "name": "Trading Engine",
+      "summary": "Bounded context responsible for transforming Layer 2 analytical snapshots into trading decisions, executing orders through broker APIs, managing open positions, and enforcing stop-loss rules.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SYS-003",
+      "label": "System",
+      "name": "Risk Control",
+      "summary": "Bounded context responsible for enforcing hard constraints, tracking portfolio exposure, and providing circuit-breaking capability.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SYS-004",
+      "label": "System",
+      "name": "Agent Runtime",
+      "summary": "Bounded context responsible for agent memory persistence, context window assembly, and trade logging.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SYS-005",
+      "label": "System",
+      "name": "Evaluation Loop",
+      "summary": "Bounded context responsible for evaluating trading performance, validating promotion readiness, and managing the system lifecycle state machine.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "SYS-006",
+      "label": "System",
+      "name": "Supervisor Office",
+      "summary": "Bounded context responsible for meta-governance of the trading system: evaluating weaknesses, allocating treasury under policy constraints, selecting and applying upgrades, and orchestrating the agent team.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki",
+        "external"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "TEST-001",
+      "label": "Test",
+      "name": "test_predicates",
+      "summary": "Unit test suite for the hard-limit guardrail predicates (`predicates.py`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-002",
+      "label": "Test",
+      "name": "test_guardrail_engine",
+      "summary": "Behavioral test suite for the Guardrail Engine (`guardrail_engine.py`, MOD-001).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-003",
+      "label": "Test",
+      "name": "test_scoring",
+      "summary": "Unit test suite for the Decision Engine scoring functions (`scoring.py`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-004",
+      "label": "Test",
+      "name": "test_decision_engine",
+      "summary": "Behavioral test suite for the Decision Engine (`decision_engine.py`, MOD-002).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-005",
+      "label": "Test",
+      "name": "test_models (snapshot)",
+      "summary": "Unit tests for the SCHEMA-001 models, grounded against a verbatim copy of the real Ripley artifact (`fixtures/latest_snapshot_pass.json`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "layer2"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-006",
+      "label": "Test",
+      "name": "test_consumer",
+      "summary": "Tests for the fail-closed Snapshot Consumer gate (INT-001 consumer side).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "layer2"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-007",
+      "label": "Test",
+      "name": "test_feature_builder",
+      "summary": "Tests for the Feature Builder, grounded against the real Layer-2 artifact (`tests/snapshot/fixtures/latest_snapshot_pass.json`), consumed through MOD-003's `consume()`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "layer2"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-008",
+      "label": "Test",
+      "name": "test_regime_classifier",
+      "summary": "Tests for the Market Regime Classifier (MOD-005 / SCHEMA-010 / ADR-007), grounded against the real Layer-2 fixture (consumed via MOD-003) and a deterministic synthetic feature grid.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-009",
+      "label": "Test",
+      "name": "test_regime_bench",
+      "summary": "Tests for the regime benchmark + replay harness (BENCH-001).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-010",
+      "label": "Test",
+      "name": "test_decision_builder",
+      "summary": "Unit + determinism + fail-closed tests for the Gold Decision Builder (MOD-006).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-011",
+      "label": "Test",
+      "name": "test_gold_bench",
+      "summary": "Tests for the gold benchmark + replay harness (BENCH-002): report determinism, real-snapshot packet replay byte-identical, the pinned real PASS packet (RESTRICTIVE_RATES → AVOID / 0.39744 / `gold-v0:5653d07a0b3949d5`), all four directions reachable in the synthetic sweep, the observed regime→direction map matching the policy table, and the committed golden artifact staying in sync.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-012",
+      "label": "Test",
+      "name": "test_e2e_pipeline",
+      "summary": "The full-chain end-to-end determinism test: `snapshot → MOD-003.consume → MOD-004.build_features → MOD-005.classify → MOD-006.build_decision`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-013",
+      "label": "Test",
+      "name": "test_paper_runtime_guards",
+      "summary": "Unit tests for the runtime guard predicates (PRED-006/007 + echoes), each in isolation: once-ever dedup (prior ADMIT only), operational preconditions (halt / degraded / not-tradeable / venue-closed / wrong instrument / default-closed), and the snapshot echoes (true / false / default-closed-on-absent).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-014",
+      "label": "Test",
+      "name": "test_paper_runtime_engine",
+      "summary": "Behavioral tests for `evaluate()`: ADMIT / REJECT(duplicate) / REJECT(operational) / HOLD(WATCH) / HOLD(INDETERMINATE), the first-failure-names-the-guard order, the config require-flags, the `supervisor_ok` None stub, the canonical guard-block order, and the `RuntimeDecisionRecord` fail-closed `__post_init__` (ADMIT ⇔ no triggered guard).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-015",
+      "label": "Test",
+      "name": "test_paper_runtime_determinism",
+      "summary": "Determinism + fingerprint-coherence tests: a `RuntimeDecisionRecord` is byte-identical across two `evaluate()` runs from the same prior ledger; `record_id` binds the prior ledger state; the pinned `runtime_policy_fingerprint` (`ab798cae…6f32`) changes on a require-flag edit and is unchanged by a version-only bump; the fingerprint threads into `record_id`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-016",
+      "label": "Test",
+      "name": "test_paper_runtime_ledger",
+      "summary": "Ledger idempotency + sequence-replay tests: `run_sequence` twice ⇒ identical records + identical ending `state_hash`; a re-presented snapshot ⇒ duplicate / non-ADMIT; `has_admit` counts only ADMITs; append-only immutability + length-derived `seq`; a halted op mid-sequence ⇒ REJECT with the ledger still advancing; `state_hash` stable through serialization; `seq` continuity across persist/reload; default-closed loaders (absent ledger ⇒ empty, absent operational ⇒ closed).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-017",
+      "label": "Test",
+      "name": "test_paper_runtime_bench",
+      "summary": "Tests for the paper-runtime benchmark (BENCH-003): report determinism, both sequences byte-identical, no enrich-back (packet `guard_refs` stay unevaluated), the real re-presented snapshot flagged a duplicate, the synthetic sequence reaching every verdict (ADMIT 3 / HOLD 1 / REJECT 3) with pinned reject attribution, and the committed golden artifact staying in sync.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "WF-001",
+      "label": "Workflow",
+      "name": "System Lifecycle",
+      "summary": "The canonical state machine governing the operational lifecycle of the autonomous trading system.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "wiki"
+      ],
+      "status": "active"
+    }
+  ],
+  "edges": [
+    {
+      "source": "ADR-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "ADR-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "ADR-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "ADR-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "ADR-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "ADR-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ADR-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ADR-003",
+      "type": "USED_BY",
+      "target": "CTX-002"
+    },
+    {
+      "source": "ADR-003",
+      "type": "USED_BY",
+      "target": "MOD-001"
+    },
+    {
+      "source": "ADR-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ADR-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "ADR-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-004",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "ADR-004",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "ADR-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ADR-004",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "ADR-005",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "ADR-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-005",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "ADR-005",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "ADR-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-005",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "ADR-006",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "ADR-006",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "ADR-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-006",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "ADR-007",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-007",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "ADR-007",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "ADR-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-007",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "ADR-007",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "ADR-008",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "ADR-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "ADR-009",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "ADR-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "ADR-009",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "ADR-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-009",
+      "type": "ORIGINATES_FROM",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "ADR-009",
+      "type": "ORIGINATES_FROM",
+      "target": "CAP-008"
+    },
+    {
+      "source": "ADR-009",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "ADR-010",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-010",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "ADR-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ADR-010",
+      "type": "DEPENDS_ON",
+      "target": "API-002"
+    },
+    {
+      "source": "ADR-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "ADR-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "API-001",
+      "type": "CONSTRAINED_BY",
+      "target": "GOV-007"
+    },
+    {
+      "source": "API-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "API-002",
+      "type": "CONSTRAINED_BY",
+      "target": "GOV-007"
+    },
+    {
+      "source": "API-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "ARCH-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ARCH-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ARCH-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ARCH-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ARCH-002",
+      "type": "DEPENDS_ON",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "ARCH-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ARCH-003",
+      "type": "DEPENDS_ON",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "DEPENDS_ON",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "USED_BY",
+      "target": "CTX-001"
+    },
+    {
+      "source": "ARCH-004",
+      "type": "USED_BY",
+      "target": "OBS-001"
+    },
+    {
+      "source": "BENCH-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "BENCH-001",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "BENCH-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "BENCH-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "BENCH-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-009"
+    },
+    {
+      "source": "BENCH-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-009"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-011"
+    },
+    {
+      "source": "BENCH-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-011"
+    },
+    {
+      "source": "BENCH-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "BENCH-003",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "BENCH-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "BENCH-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-017"
+    },
+    {
+      "source": "BENCH-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-017"
+    },
+    {
+      "source": "CAP-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-001",
+      "type": "PROVIDES",
+      "target": "CAP-002"
+    },
+    {
+      "source": "CAP-001",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "CAP-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-002",
+      "type": "DEPENDS_ON",
+      "target": "CAP-001"
+    },
+    {
+      "source": "CAP-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-002",
+      "type": "PROVIDES",
+      "target": "CAP-003"
+    },
+    {
+      "source": "CAP-002",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "CAP-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-003",
+      "type": "DEPENDS_ON",
+      "target": "CAP-002"
+    },
+    {
+      "source": "CAP-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-003",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "CAP-003",
+      "type": "PROVIDES",
+      "target": "SYS-002"
+    },
+    {
+      "source": "CAP-003",
+      "type": "REALIZES",
+      "target": "PAT-009"
+    },
+    {
+      "source": "CAP-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-004",
+      "type": "DEPENDS_ON",
+      "target": "CAP-003"
+    },
+    {
+      "source": "CAP-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-004",
+      "type": "PROVIDES",
+      "target": "CAP-005"
+    },
+    {
+      "source": "CAP-004",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "CAP-004",
+      "type": "REALIZES",
+      "target": "PAT-005"
+    },
+    {
+      "source": "CAP-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-005",
+      "type": "DEPENDS_ON",
+      "target": "CAP-004"
+    },
+    {
+      "source": "CAP-005",
+      "type": "DEPENDS_ON",
+      "target": "CAP-020"
+    },
+    {
+      "source": "CAP-005",
+      "type": "DEPENDS_ON",
+      "target": "SYS-003"
+    },
+    {
+      "source": "CAP-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-005",
+      "type": "PROVIDES",
+      "target": "CAP-012"
+    },
+    {
+      "source": "CAP-005",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "CAP-005",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "CAP-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-006",
+      "type": "DEPENDS_ON",
+      "target": "CAP-007"
+    },
+    {
+      "source": "CAP-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-006",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "CAP-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-007",
+      "type": "DEPENDS_ON",
+      "target": "CAP-005"
+    },
+    {
+      "source": "CAP-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-007",
+      "type": "PROVIDES",
+      "target": "CAP-005"
+    },
+    {
+      "source": "CAP-007",
+      "type": "PROVIDES",
+      "target": "CAP-006"
+    },
+    {
+      "source": "CAP-007",
+      "type": "PROVIDES",
+      "target": "CAP-012"
+    },
+    {
+      "source": "CAP-007",
+      "type": "REALIZES",
+      "target": "PAT-005"
+    },
+    {
+      "source": "CAP-008",
+      "type": "CONTAINS",
+      "target": "GATE-001"
+    },
+    {
+      "source": "CAP-008",
+      "type": "CONTAINS",
+      "target": "PRED-001"
+    },
+    {
+      "source": "CAP-008",
+      "type": "CONTAINS",
+      "target": "PRED-002"
+    },
+    {
+      "source": "CAP-008",
+      "type": "CONTAINS",
+      "target": "PRED-003"
+    },
+    {
+      "source": "CAP-008",
+      "type": "CONTAINS",
+      "target": "PRED-004"
+    },
+    {
+      "source": "CAP-008",
+      "type": "CONTAINS",
+      "target": "PRED-005"
+    },
+    {
+      "source": "CAP-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-008",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "CAP-008",
+      "type": "PROVIDES",
+      "target": "SYS-002"
+    },
+    {
+      "source": "CAP-008",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "CAP-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-009",
+      "type": "PROVIDES",
+      "target": "CAP-008"
+    },
+    {
+      "source": "CAP-009",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "CAP-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-010",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "CAP-010",
+      "type": "REALIZES",
+      "target": "PAT-006"
+    },
+    {
+      "source": "CAP-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-011",
+      "type": "DEPENDS_ON",
+      "target": "CAP-010"
+    },
+    {
+      "source": "CAP-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-011",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-007"
+    },
+    {
+      "source": "CAP-011",
+      "type": "REALIZES",
+      "target": "PAT-006"
+    },
+    {
+      "source": "CAP-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-012",
+      "type": "DEPENDS_ON",
+      "target": "SYS-002"
+    },
+    {
+      "source": "CAP-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-012",
+      "type": "PROVIDES",
+      "target": "CAP-013"
+    },
+    {
+      "source": "CAP-012",
+      "type": "REALIZES",
+      "target": "PAT-005"
+    },
+    {
+      "source": "CAP-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-013",
+      "type": "DEPENDS_ON",
+      "target": "CAP-012"
+    },
+    {
+      "source": "CAP-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-013",
+      "type": "PROVIDES",
+      "target": "CAP-014"
+    },
+    {
+      "source": "CAP-013",
+      "type": "PROVIDES",
+      "target": "SYS-006"
+    },
+    {
+      "source": "CAP-013",
+      "type": "REALIZES",
+      "target": "PAT-003"
+    },
+    {
+      "source": "CAP-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-014",
+      "type": "DEPENDS_ON",
+      "target": "CAP-013"
+    },
+    {
+      "source": "CAP-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-014",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "CAP-014",
+      "type": "PROVIDES",
+      "target": "SYS-006"
+    },
+    {
+      "source": "CAP-014",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "CAP-014",
+      "type": "REALIZES",
+      "target": "PAT-008"
+    },
+    {
+      "source": "CAP-015",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-015",
+      "type": "DEPENDS_ON",
+      "target": "CAP-013"
+    },
+    {
+      "source": "CAP-015",
+      "type": "DEPENDS_ON",
+      "target": "CAP-016"
+    },
+    {
+      "source": "CAP-015",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-015",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "CAP-015",
+      "type": "PROVIDES",
+      "target": "SYS-002"
+    },
+    {
+      "source": "CAP-015",
+      "type": "REALIZES",
+      "target": "PAT-001"
+    },
+    {
+      "source": "CAP-016",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-016",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-016",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "CAP-016",
+      "type": "PROVIDES",
+      "target": "CAP-015"
+    },
+    {
+      "source": "CAP-016",
+      "type": "REALIZES",
+      "target": "PAT-007"
+    },
+    {
+      "source": "CAP-017",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-017",
+      "type": "DEPENDS_ON",
+      "target": "CAP-015"
+    },
+    {
+      "source": "CAP-017",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-017",
+      "type": "PROVIDES",
+      "target": "CAP-015"
+    },
+    {
+      "source": "CAP-017",
+      "type": "REALIZES",
+      "target": "PAT-003"
+    },
+    {
+      "source": "CAP-018",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-018",
+      "type": "DEPENDS_ON",
+      "target": "CAP-015"
+    },
+    {
+      "source": "CAP-018",
+      "type": "DEPENDS_ON",
+      "target": "CAP-017"
+    },
+    {
+      "source": "CAP-018",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CAP-018",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "CAP-018",
+      "type": "REALIZES",
+      "target": "PAT-010"
+    },
+    {
+      "source": "CAP-019",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "CAP-019",
+      "type": "CONTAINS",
+      "target": "MOD-005"
+    },
+    {
+      "source": "CAP-019",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "CAP-019",
+      "type": "DEPENDS_ON",
+      "target": "CAP-002"
+    },
+    {
+      "source": "CAP-019",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "CAP-019",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "CAP-019",
+      "type": "PRODUCES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "CAP-019",
+      "type": "PROVIDES",
+      "target": "INT-007"
+    },
+    {
+      "source": "CAP-019",
+      "type": "REALIZES",
+      "target": "PAT-011"
+    },
+    {
+      "source": "CAP-019",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "CAP-019",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "CAP-020",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "CAP-020",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "CAP-020",
+      "type": "CONSUMES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "CAP-020",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "CAP-020",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "CAP-020",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "CAP-020",
+      "type": "DEPENDS_ON",
+      "target": "CAP-019"
+    },
+    {
+      "source": "CAP-020",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "CAP-020",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "CAP-020",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "CAP-020",
+      "type": "PRODUCES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "CAP-020",
+      "type": "PROVIDES",
+      "target": "INT-009"
+    },
+    {
+      "source": "CAP-020",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "CAP-020",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "CAP-020",
+      "type": "SUPERSEDES",
+      "target": "CAP-004"
+    },
+    {
+      "source": "CAP-020",
+      "type": "USED_BY",
+      "target": "CAP-021"
+    },
+    {
+      "source": "CAP-020",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "CAP-021",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "CAP-021",
+      "type": "CONSUMES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "CAP-021",
+      "type": "CONSUMES",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "CAP-021",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "CAP-021",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "CAP-021",
+      "type": "DEPENDS_ON",
+      "target": "CAP-020"
+    },
+    {
+      "source": "CAP-021",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "CAP-021",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "CAP-021",
+      "type": "PRODUCES",
+      "target": "SCHEMA-012"
+    },
+    {
+      "source": "CAP-021",
+      "type": "PROVIDES",
+      "target": "INT-010"
+    },
+    {
+      "source": "CAP-021",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "CAP-021",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "CAP-021",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-016"
+    },
+    {
+      "source": "CAP-021",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "CAP-021",
+      "type": "VALIDATED_BY",
+      "target": "TEST-016"
+    },
+    {
+      "source": "CON-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CON-001",
+      "type": "USED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CON-001",
+      "type": "USED_BY",
+      "target": "GOV-001"
+    },
+    {
+      "source": "CON-001",
+      "type": "USED_BY",
+      "target": "GOV-004"
+    },
+    {
+      "source": "CON-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CON-002",
+      "type": "USED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CON-002",
+      "type": "USED_BY",
+      "target": "GOV-001"
+    },
+    {
+      "source": "CON-002",
+      "type": "USED_BY",
+      "target": "GOV-003"
+    },
+    {
+      "source": "CON-002",
+      "type": "VALIDATED_BY",
+      "target": "OBS-001"
+    },
+    {
+      "source": "CON-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CON-003",
+      "type": "USED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CON-003",
+      "type": "USED_BY",
+      "target": "GOV-001"
+    },
+    {
+      "source": "CON-003",
+      "type": "USED_BY",
+      "target": "GOV-002"
+    },
+    {
+      "source": "CON-003",
+      "type": "USED_BY",
+      "target": "GOV-003"
+    },
+    {
+      "source": "CTX-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "CTX-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "CTX-001",
+      "type": "DEPENDS_ON",
+      "target": "GOV-002"
+    },
+    {
+      "source": "CTX-001",
+      "type": "DEPENDS_ON",
+      "target": "GOV-003"
+    },
+    {
+      "source": "CTX-001",
+      "type": "VALIDATED_BY",
+      "target": "GOV-003"
+    },
+    {
+      "source": "CTX-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "CTX-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "CTX-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "CTX-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "CTX-002",
+      "type": "DEPENDS_ON",
+      "target": "CTX-001"
+    },
+    {
+      "source": "CTX-002",
+      "type": "DEPENDS_ON",
+      "target": "GOV-002"
+    },
+    {
+      "source": "CTX-002",
+      "type": "DEPENDS_ON",
+      "target": "GOV-003"
+    },
+    {
+      "source": "CTX-002",
+      "type": "VALIDATED_BY",
+      "target": "GOV-003"
+    },
+    {
+      "source": "FILE-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-001",
+      "type": "DEPENDS_ON",
+      "target": "FILE-002"
+    },
+    {
+      "source": "FILE-001",
+      "type": "DEPENDS_ON",
+      "target": "FILE-003"
+    },
+    {
+      "source": "FILE-001",
+      "type": "DEPENDS_ON",
+      "target": "MOD-001"
+    },
+    {
+      "source": "FILE-001",
+      "type": "IMPLEMENTS",
+      "target": "INT-003"
+    },
+    {
+      "source": "FILE-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "FILE-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-003"
+    },
+    {
+      "source": "FILE-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-002"
+    },
+    {
+      "source": "FILE-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-002"
+    },
+    {
+      "source": "FILE-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-002",
+      "type": "DEPENDS_ON",
+      "target": "FILE-003"
+    },
+    {
+      "source": "FILE-002",
+      "type": "DEPENDS_ON",
+      "target": "MOD-001"
+    },
+    {
+      "source": "FILE-002",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "FILE-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-003"
+    },
+    {
+      "source": "FILE-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "FILE-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "FILE-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-003",
+      "type": "DEPENDS_ON",
+      "target": "MOD-001"
+    },
+    {
+      "source": "FILE-003",
+      "type": "PRODUCES",
+      "target": "SCHEMA-007"
+    },
+    {
+      "source": "FILE-003",
+      "type": "PRODUCES",
+      "target": "SCHEMA-008"
+    },
+    {
+      "source": "FILE-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "FILE-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-002"
+    },
+    {
+      "source": "FILE-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "FILE-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-002"
+    },
+    {
+      "source": "FILE-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-004",
+      "type": "DEPENDS_ON",
+      "target": "FILE-005"
+    },
+    {
+      "source": "FILE-004",
+      "type": "DEPENDS_ON",
+      "target": "FILE-006"
+    },
+    {
+      "source": "FILE-004",
+      "type": "DEPENDS_ON",
+      "target": "MOD-002"
+    },
+    {
+      "source": "FILE-004",
+      "type": "IMPLEMENTS",
+      "target": "INT-006"
+    },
+    {
+      "source": "FILE-004",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-005"
+    },
+    {
+      "source": "FILE-004",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-006"
+    },
+    {
+      "source": "FILE-004",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-004"
+    },
+    {
+      "source": "FILE-004",
+      "type": "VALIDATED_BY",
+      "target": "TEST-004"
+    },
+    {
+      "source": "FILE-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-005",
+      "type": "DEPENDS_ON",
+      "target": "FILE-006"
+    },
+    {
+      "source": "FILE-005",
+      "type": "DEPENDS_ON",
+      "target": "MOD-002"
+    },
+    {
+      "source": "FILE-005",
+      "type": "REALIZES",
+      "target": "PAT-001"
+    },
+    {
+      "source": "FILE-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-006"
+    },
+    {
+      "source": "FILE-005",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-003"
+    },
+    {
+      "source": "FILE-005",
+      "type": "VALIDATED_BY",
+      "target": "TEST-003"
+    },
+    {
+      "source": "FILE-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-006",
+      "type": "DEPENDS_ON",
+      "target": "MOD-002"
+    },
+    {
+      "source": "FILE-006",
+      "type": "PRODUCES",
+      "target": "SCHEMA-004"
+    },
+    {
+      "source": "FILE-006",
+      "type": "PRODUCES",
+      "target": "SCHEMA-005"
+    },
+    {
+      "source": "FILE-006",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-003"
+    },
+    {
+      "source": "FILE-006",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-004"
+    },
+    {
+      "source": "FILE-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-003"
+    },
+    {
+      "source": "FILE-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-004"
+    },
+    {
+      "source": "FILE-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-007",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "FILE-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-007",
+      "type": "OWNS",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "FILE-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-005"
+    },
+    {
+      "source": "FILE-007",
+      "type": "USED_BY",
+      "target": "FILE-008"
+    },
+    {
+      "source": "FILE-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-005"
+    },
+    {
+      "source": "FILE-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-008",
+      "type": "DEPENDS_ON",
+      "target": "FILE-007"
+    },
+    {
+      "source": "FILE-008",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "FILE-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "FILE-008",
+      "type": "OWNS",
+      "target": "INT-001"
+    },
+    {
+      "source": "FILE-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-007"
+    },
+    {
+      "source": "FILE-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-006"
+    },
+    {
+      "source": "FILE-008",
+      "type": "VALIDATED_BY",
+      "target": "TEST-006"
+    },
+    {
+      "source": "FILE-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "FILE-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "FILE-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "FILE-009",
+      "type": "OWNS",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "FILE-009",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-010"
+    },
+    {
+      "source": "FILE-009",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-007"
+    },
+    {
+      "source": "FILE-009",
+      "type": "USED_BY",
+      "target": "FILE-010"
+    },
+    {
+      "source": "FILE-009",
+      "type": "VALIDATED_BY",
+      "target": "TEST-007"
+    },
+    {
+      "source": "FILE-010",
+      "type": "CONSUMES",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "FILE-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "FILE-010",
+      "type": "DEPENDS_ON",
+      "target": "FILE-009"
+    },
+    {
+      "source": "FILE-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "FILE-010",
+      "type": "IMPLEMENTS",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "FILE-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "FILE-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-009"
+    },
+    {
+      "source": "FILE-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-007"
+    },
+    {
+      "source": "FILE-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-007"
+    },
+    {
+      "source": "FILE-011",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "FILE-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-011",
+      "type": "DEPENDS_ON",
+      "target": "FILE-012"
+    },
+    {
+      "source": "FILE-011",
+      "type": "DEPENDS_ON",
+      "target": "FILE-013"
+    },
+    {
+      "source": "FILE-011",
+      "type": "DEPENDS_ON",
+      "target": "FILE-014"
+    },
+    {
+      "source": "FILE-011",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "FILE-011",
+      "type": "IMPLEMENTS",
+      "target": "INT-007"
+    },
+    {
+      "source": "FILE-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-011",
+      "type": "PRODUCES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "FILE-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-012"
+    },
+    {
+      "source": "FILE-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-013"
+    },
+    {
+      "source": "FILE-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-014"
+    },
+    {
+      "source": "FILE-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-012",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "FILE-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-012",
+      "type": "DEPENDS_ON",
+      "target": "FILE-013"
+    },
+    {
+      "source": "FILE-012",
+      "type": "DEPENDS_ON",
+      "target": "FILE-014"
+    },
+    {
+      "source": "FILE-012",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "FILE-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-012",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-013"
+    },
+    {
+      "source": "FILE-012",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-014"
+    },
+    {
+      "source": "FILE-012",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-012",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-013",
+      "type": "DEPENDS_ON",
+      "target": "FILE-014"
+    },
+    {
+      "source": "FILE-013",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "FILE-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-014"
+    },
+    {
+      "source": "FILE-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-013",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-014",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "FILE-014",
+      "type": "IMPLEMENTS",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "FILE-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "FILE-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-011"
+    },
+    {
+      "source": "FILE-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-014",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "FILE-015",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "FILE-015",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "FILE-015",
+      "type": "REALIZES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "FILE-015",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-015",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-016",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "FILE-016",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "FILE-016",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-016",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-017",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "FILE-017",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "FILE-017",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-017",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-018",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "FILE-018",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "FILE-018",
+      "type": "IMPLEMENTS",
+      "target": "INT-009"
+    },
+    {
+      "source": "FILE-018",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-018",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "FILE-019",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-019",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "FILE-019",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "FILE-019",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-015"
+    },
+    {
+      "source": "FILE-019",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-016"
+    },
+    {
+      "source": "FILE-019",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "FILE-019",
+      "type": "VALIDATED_BY",
+      "target": "TEST-015"
+    },
+    {
+      "source": "FILE-019",
+      "type": "VALIDATED_BY",
+      "target": "TEST-016"
+    },
+    {
+      "source": "FILE-020",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-020",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "FILE-020",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-015"
+    },
+    {
+      "source": "FILE-020",
+      "type": "VALIDATED_BY",
+      "target": "TEST-015"
+    },
+    {
+      "source": "FILE-021",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-021",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "FILE-021",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-013"
+    },
+    {
+      "source": "FILE-021",
+      "type": "VALIDATED_BY",
+      "target": "TEST-013"
+    },
+    {
+      "source": "FILE-022",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-022",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "FILE-022",
+      "type": "IMPLEMENTS",
+      "target": "INT-010"
+    },
+    {
+      "source": "FILE-022",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "FILE-022",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "FILE-023",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-023",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "FILE-023",
+      "type": "IMPLEMENTS",
+      "target": "INT-010"
+    },
+    {
+      "source": "FILE-023",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-016"
+    },
+    {
+      "source": "FILE-023",
+      "type": "VALIDATED_BY",
+      "target": "TEST-016"
+    },
+    {
+      "source": "GATE-001",
+      "type": "CONSUMES",
+      "target": "SCHEMA-007"
+    },
+    {
+      "source": "GATE-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "GATE-001",
+      "type": "DEPENDS_ON",
+      "target": "PRED-001"
+    },
+    {
+      "source": "GATE-001",
+      "type": "DEPENDS_ON",
+      "target": "PRED-002"
+    },
+    {
+      "source": "GATE-001",
+      "type": "DEPENDS_ON",
+      "target": "PRED-003"
+    },
+    {
+      "source": "GATE-001",
+      "type": "DEPENDS_ON",
+      "target": "PRED-004"
+    },
+    {
+      "source": "GATE-001",
+      "type": "DEPENDS_ON",
+      "target": "PRED-005"
+    },
+    {
+      "source": "GATE-001",
+      "type": "GUARDS",
+      "target": "CAP-008"
+    },
+    {
+      "source": "GATE-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "GATE-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-001"
+    },
+    {
+      "source": "GATE-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-002"
+    },
+    {
+      "source": "GATE-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-002"
+    },
+    {
+      "source": "GATE-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "GATE-002",
+      "type": "CONSUMES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "GATE-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "GATE-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "GATE-002",
+      "type": "DEPENDS_ON",
+      "target": "PRED-006"
+    },
+    {
+      "source": "GATE-002",
+      "type": "DEPENDS_ON",
+      "target": "PRED-007"
+    },
+    {
+      "source": "GATE-002",
+      "type": "GUARDS",
+      "target": "CAP-020"
+    },
+    {
+      "source": "GATE-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "GATE-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "GATE-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "GATE-003",
+      "type": "CONSUMES",
+      "target": "SCHEMA-012"
+    },
+    {
+      "source": "GATE-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "GATE-003",
+      "type": "DEPENDS_ON",
+      "target": "PRED-006"
+    },
+    {
+      "source": "GATE-003",
+      "type": "DEPENDS_ON",
+      "target": "PRED-007"
+    },
+    {
+      "source": "GATE-003",
+      "type": "GUARDS",
+      "target": "CAP-021"
+    },
+    {
+      "source": "GATE-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "GATE-003",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-022"
+    },
+    {
+      "source": "GATE-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "GATE-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "GOV-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "GOV-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "GOV-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "GOV-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-001",
+      "type": "DEPENDS_ON",
+      "target": "REF-001"
+    },
+    {
+      "source": "GOV-001",
+      "type": "DEPENDS_ON",
+      "target": "REF-002"
+    },
+    {
+      "source": "GOV-001",
+      "type": "VALIDATED_BY",
+      "target": "OBS-001"
+    },
+    {
+      "source": "GOV-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "GOV-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "GOV-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-002",
+      "type": "DEPENDS_ON",
+      "target": "CTX-001"
+    },
+    {
+      "source": "GOV-002",
+      "type": "DEPENDS_ON",
+      "target": "GOV-003"
+    },
+    {
+      "source": "GOV-002",
+      "type": "DEPENDS_ON",
+      "target": "GOV-007"
+    },
+    {
+      "source": "GOV-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "GOV-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "GOV-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-003",
+      "type": "DEPENDS_ON",
+      "target": "CON-002"
+    },
+    {
+      "source": "GOV-003",
+      "type": "DEPENDS_ON",
+      "target": "CON-003"
+    },
+    {
+      "source": "GOV-003",
+      "type": "USED_BY",
+      "target": "GOV-002"
+    },
+    {
+      "source": "GOV-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "GOV-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-004",
+      "type": "DEPENDS_ON",
+      "target": "CON-001"
+    },
+    {
+      "source": "GOV-004",
+      "type": "DEPENDS_ON",
+      "target": "GOV-001"
+    },
+    {
+      "source": "GOV-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "GOV-005",
+      "type": "DEPENDS_ON",
+      "target": "GOV-001"
+    },
+    {
+      "source": "GOV-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-006",
+      "type": "DEPENDS_ON",
+      "target": "GOV-001"
+    },
+    {
+      "source": "GOV-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "GOV-007",
+      "type": "DEPENDS_ON",
+      "target": "GOV-001"
+    },
+    {
+      "source": "GOV-007",
+      "type": "USED_BY",
+      "target": "API-001"
+    },
+    {
+      "source": "GOV-007",
+      "type": "USED_BY",
+      "target": "API-002"
+    },
+    {
+      "source": "GOV-007",
+      "type": "USED_BY",
+      "target": "GOV-002"
+    },
+    {
+      "source": "INT-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "INT-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "INT-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "INT-001",
+      "type": "PRODUCES",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "INT-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-008"
+    },
+    {
+      "source": "INT-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-006"
+    },
+    {
+      "source": "INT-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-006"
+    },
+    {
+      "source": "INT-003",
+      "type": "CONSUMES",
+      "target": "SCHEMA-007"
+    },
+    {
+      "source": "INT-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "INT-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "INT-003",
+      "type": "PRODUCES",
+      "target": "SCHEMA-008"
+    },
+    {
+      "source": "INT-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-002"
+    },
+    {
+      "source": "INT-006",
+      "type": "CONSUMES",
+      "target": "SCHEMA-005"
+    },
+    {
+      "source": "INT-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "INT-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "INT-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "INT-006",
+      "type": "PRODUCES",
+      "target": "SCHEMA-004"
+    },
+    {
+      "source": "INT-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-004"
+    },
+    {
+      "source": "INT-007",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "INT-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "INT-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "INT-007",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "INT-007",
+      "type": "PRODUCES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "INT-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-011"
+    },
+    {
+      "source": "INT-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "INT-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "INT-009",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "INT-009",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "INT-009",
+      "type": "CONSUMES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "INT-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "INT-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "INT-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "INT-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "INT-009",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "INT-009",
+      "type": "PRODUCES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "INT-009",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-018"
+    },
+    {
+      "source": "INT-009",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "INT-009",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "INT-010",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "INT-010",
+      "type": "CONSUMES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "INT-010",
+      "type": "CONSUMES",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "INT-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "INT-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "INT-010",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "INT-010",
+      "type": "PRODUCES",
+      "target": "SCHEMA-012"
+    },
+    {
+      "source": "INT-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-022"
+    },
+    {
+      "source": "INT-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-023"
+    },
+    {
+      "source": "INT-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "INT-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "KA-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "KA-001",
+      "type": "USED_BY",
+      "target": "ARCH-002"
+    },
+    {
+      "source": "KA-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "KA-002",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-002",
+      "type": "USED_BY",
+      "target": "ARCH-003"
+    },
+    {
+      "source": "KA-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "KA-003",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-004",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-005",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "KA-005",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-006",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-006",
+      "type": "USED_BY",
+      "target": "ARCH-003"
+    },
+    {
+      "source": "KA-007",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-008",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "KA-008",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-009",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-009",
+      "type": "USED_BY",
+      "target": "CAP-021"
+    },
+    {
+      "source": "KA-009",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "KA-010",
+      "type": "USED_BY",
+      "target": "ARCH-001"
+    },
+    {
+      "source": "KA-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "KA-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "KA-011",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "KA-011",
+      "type": "USED_BY",
+      "target": "CAP-019"
+    },
+    {
+      "source": "KA-011",
+      "type": "USED_BY",
+      "target": "PAT-011"
+    },
+    {
+      "source": "MOD-001",
+      "type": "CONSUMES",
+      "target": "SCHEMA-007"
+    },
+    {
+      "source": "MOD-001",
+      "type": "CONTAINS",
+      "target": "FILE-001"
+    },
+    {
+      "source": "MOD-001",
+      "type": "CONTAINS",
+      "target": "FILE-002"
+    },
+    {
+      "source": "MOD-001",
+      "type": "CONTAINS",
+      "target": "FILE-003"
+    },
+    {
+      "source": "MOD-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "MOD-001",
+      "type": "IMPLEMENTS",
+      "target": "INT-003"
+    },
+    {
+      "source": "MOD-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "MOD-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "MOD-001",
+      "type": "PRODUCES",
+      "target": "SCHEMA-008"
+    },
+    {
+      "source": "MOD-001",
+      "type": "PROVIDES",
+      "target": "INT-003"
+    },
+    {
+      "source": "MOD-001",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "MOD-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-001"
+    },
+    {
+      "source": "MOD-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "MOD-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-003"
+    },
+    {
+      "source": "MOD-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "MOD-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-002"
+    },
+    {
+      "source": "MOD-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "MOD-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-002"
+    },
+    {
+      "source": "MOD-002",
+      "type": "CONSUMES",
+      "target": "SCHEMA-005"
+    },
+    {
+      "source": "MOD-002",
+      "type": "CONTAINS",
+      "target": "FILE-004"
+    },
+    {
+      "source": "MOD-002",
+      "type": "CONTAINS",
+      "target": "FILE-005"
+    },
+    {
+      "source": "MOD-002",
+      "type": "CONTAINS",
+      "target": "FILE-006"
+    },
+    {
+      "source": "MOD-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "MOD-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "MOD-002",
+      "type": "IMPLEMENTS",
+      "target": "INT-006"
+    },
+    {
+      "source": "MOD-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "MOD-002",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "MOD-002",
+      "type": "PRODUCES",
+      "target": "SCHEMA-004"
+    },
+    {
+      "source": "MOD-002",
+      "type": "PROVIDES",
+      "target": "INT-006"
+    },
+    {
+      "source": "MOD-002",
+      "type": "REALIZES",
+      "target": "PAT-001"
+    },
+    {
+      "source": "MOD-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-004"
+    },
+    {
+      "source": "MOD-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-005"
+    },
+    {
+      "source": "MOD-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-006"
+    },
+    {
+      "source": "MOD-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-003"
+    },
+    {
+      "source": "MOD-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-004"
+    },
+    {
+      "source": "MOD-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-003"
+    },
+    {
+      "source": "MOD-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-004"
+    },
+    {
+      "source": "MOD-003",
+      "type": "CONSUMES",
+      "target": "INT-001"
+    },
+    {
+      "source": "MOD-003",
+      "type": "CONSUMES",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "MOD-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "MOD-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "MOD-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "MOD-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "MOD-003",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "MOD-003",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "MOD-003",
+      "type": "REALIZES",
+      "target": "PAT-009"
+    },
+    {
+      "source": "MOD-003",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-007"
+    },
+    {
+      "source": "MOD-003",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-008"
+    },
+    {
+      "source": "MOD-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-005"
+    },
+    {
+      "source": "MOD-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-006"
+    },
+    {
+      "source": "MOD-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-005"
+    },
+    {
+      "source": "MOD-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-006"
+    },
+    {
+      "source": "MOD-004",
+      "type": "CONSUMES",
+      "target": "MOD-003"
+    },
+    {
+      "source": "MOD-004",
+      "type": "CONSUMES",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "MOD-004",
+      "type": "CONTAINS",
+      "target": "FILE-009"
+    },
+    {
+      "source": "MOD-004",
+      "type": "CONTAINS",
+      "target": "FILE-010"
+    },
+    {
+      "source": "MOD-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "MOD-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "MOD-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "MOD-004",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "MOD-004",
+      "type": "IMPLEMENTS",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "MOD-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "MOD-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "MOD-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "MOD-004",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "MOD-004",
+      "type": "PRODUCES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "MOD-004",
+      "type": "PROVIDES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "MOD-004",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-009"
+    },
+    {
+      "source": "MOD-004",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-010"
+    },
+    {
+      "source": "MOD-004",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-007"
+    },
+    {
+      "source": "MOD-004",
+      "type": "USED_BY",
+      "target": "MOD-005"
+    },
+    {
+      "source": "MOD-004",
+      "type": "VALIDATED_BY",
+      "target": "TEST-007"
+    },
+    {
+      "source": "MOD-005",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "MOD-005",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "MOD-005",
+      "type": "CONTAINS",
+      "target": "FILE-011"
+    },
+    {
+      "source": "MOD-005",
+      "type": "CONTAINS",
+      "target": "FILE-012"
+    },
+    {
+      "source": "MOD-005",
+      "type": "CONTAINS",
+      "target": "FILE-013"
+    },
+    {
+      "source": "MOD-005",
+      "type": "CONTAINS",
+      "target": "FILE-014"
+    },
+    {
+      "source": "MOD-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "MOD-005",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "MOD-005",
+      "type": "IMPLEMENTS",
+      "target": "INT-007"
+    },
+    {
+      "source": "MOD-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "MOD-005",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "MOD-005",
+      "type": "PRODUCES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "MOD-005",
+      "type": "PROVIDES",
+      "target": "INT-007"
+    },
+    {
+      "source": "MOD-005",
+      "type": "REALIZES",
+      "target": "PAT-011"
+    },
+    {
+      "source": "MOD-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-011"
+    },
+    {
+      "source": "MOD-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-012"
+    },
+    {
+      "source": "MOD-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-013"
+    },
+    {
+      "source": "MOD-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-014"
+    },
+    {
+      "source": "MOD-005",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "MOD-005",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-009"
+    },
+    {
+      "source": "MOD-005",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "MOD-005",
+      "type": "VALIDATED_BY",
+      "target": "TEST-009"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONSUMES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONTAINS",
+      "target": "FILE-015"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONTAINS",
+      "target": "FILE-016"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONTAINS",
+      "target": "FILE-017"
+    },
+    {
+      "source": "MOD-006",
+      "type": "CONTAINS",
+      "target": "FILE-018"
+    },
+    {
+      "source": "MOD-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "MOD-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "MOD-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "MOD-006",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "MOD-006",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "MOD-006",
+      "type": "IMPLEMENTS",
+      "target": "INT-009"
+    },
+    {
+      "source": "MOD-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "MOD-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "MOD-006",
+      "type": "PRODUCES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "MOD-006",
+      "type": "PROVIDES",
+      "target": "INT-009"
+    },
+    {
+      "source": "MOD-006",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "MOD-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-015"
+    },
+    {
+      "source": "MOD-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-016"
+    },
+    {
+      "source": "MOD-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-017"
+    },
+    {
+      "source": "MOD-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-018"
+    },
+    {
+      "source": "MOD-006",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "MOD-006",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-011"
+    },
+    {
+      "source": "MOD-006",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "MOD-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "MOD-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-011"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONSUMES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONSUMES",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONTAINS",
+      "target": "FILE-019"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONTAINS",
+      "target": "FILE-020"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONTAINS",
+      "target": "FILE-021"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONTAINS",
+      "target": "FILE-022"
+    },
+    {
+      "source": "MOD-007",
+      "type": "CONTAINS",
+      "target": "FILE-023"
+    },
+    {
+      "source": "MOD-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "MOD-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "MOD-007",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "MOD-007",
+      "type": "IMPLEMENTS",
+      "target": "INT-010"
+    },
+    {
+      "source": "MOD-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "MOD-007",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "MOD-007",
+      "type": "PRODUCES",
+      "target": "SCHEMA-012"
+    },
+    {
+      "source": "MOD-007",
+      "type": "PRODUCES",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "MOD-007",
+      "type": "PROVIDES",
+      "target": "INT-010"
+    },
+    {
+      "source": "MOD-007",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-019"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-020"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-021"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-022"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-023"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-013"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-015"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-016"
+    },
+    {
+      "source": "MOD-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-017"
+    },
+    {
+      "source": "MOD-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-013"
+    },
+    {
+      "source": "MOD-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "MOD-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-015"
+    },
+    {
+      "source": "MOD-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-016"
+    },
+    {
+      "source": "MOD-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-017"
+    },
+    {
+      "source": "OBS-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "OBS-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "OBS-001",
+      "type": "DEPENDS_ON",
+      "target": "CON-002"
+    },
+    {
+      "source": "OBS-001",
+      "type": "DEPENDS_ON",
+      "target": "REF-003"
+    },
+    {
+      "source": "PAT-001",
+      "type": "COMPOSES",
+      "target": "PAT-007"
+    },
+    {
+      "source": "PAT-001",
+      "type": "COMPOSES",
+      "target": "PAT-010"
+    },
+    {
+      "source": "PAT-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "PAT-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-002",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "PAT-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-003",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "PAT-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-004",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-001"
+    },
+    {
+      "source": "PAT-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-005",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-001"
+    },
+    {
+      "source": "PAT-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-006",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-007"
+    },
+    {
+      "source": "PAT-006",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "PAT-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-007",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "PAT-007",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-004"
+    },
+    {
+      "source": "PAT-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-008",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "PAT-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-009",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-002"
+    },
+    {
+      "source": "PAT-009",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "PAT-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PAT-010",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "PAT-011",
+      "type": "COMPOSES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "PAT-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "PAT-011",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "PRED-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-001",
+      "type": "GUARDS",
+      "target": "GATE-001"
+    },
+    {
+      "source": "PRED-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "PRED-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-002",
+      "type": "GUARDS",
+      "target": "GATE-001"
+    },
+    {
+      "source": "PRED-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "PRED-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-003",
+      "type": "GUARDS",
+      "target": "GATE-001"
+    },
+    {
+      "source": "PRED-003",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-003",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "PRED-003",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-003",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-004",
+      "type": "GUARDS",
+      "target": "GATE-001"
+    },
+    {
+      "source": "PRED-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-004",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "PRED-004",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-004",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-005",
+      "type": "GUARDS",
+      "target": "GATE-001"
+    },
+    {
+      "source": "PRED-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "PRED-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "PRED-005",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-005",
+      "type": "VALIDATED_BY",
+      "target": "TEST-001"
+    },
+    {
+      "source": "PRED-006",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "PRED-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "PRED-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "PRED-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "PRED-006",
+      "type": "GUARDS",
+      "target": "GATE-002"
+    },
+    {
+      "source": "PRED-006",
+      "type": "GUARDS",
+      "target": "GATE-003"
+    },
+    {
+      "source": "PRED-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "PRED-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "PRED-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "PRED-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-021"
+    },
+    {
+      "source": "PRED-006",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-013"
+    },
+    {
+      "source": "PRED-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-013"
+    },
+    {
+      "source": "PRED-007",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "PRED-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "PRED-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "PRED-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "PRED-007",
+      "type": "GUARDS",
+      "target": "GATE-002"
+    },
+    {
+      "source": "PRED-007",
+      "type": "GUARDS",
+      "target": "GATE-003"
+    },
+    {
+      "source": "PRED-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "PRED-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "PRED-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "PRED-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-021"
+    },
+    {
+      "source": "PRED-007",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-013"
+    },
+    {
+      "source": "PRED-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-013"
+    },
+    {
+      "source": "REF-001",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "REF-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "REF-001",
+      "type": "USED_BY",
+      "target": "GOV-001"
+    },
+    {
+      "source": "REF-001",
+      "type": "USED_BY",
+      "target": "OBS-001"
+    },
+    {
+      "source": "REF-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "REF-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "REF-002",
+      "type": "USED_BY",
+      "target": "GOV-001"
+    },
+    {
+      "source": "REF-003",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "REF-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "REF-003",
+      "type": "PROVIDES",
+      "target": "OBS-001"
+    },
+    {
+      "source": "REF-003",
+      "type": "USED_BY",
+      "target": "OBS-001"
+    },
+    {
+      "source": "REF-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "REF-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-002"
+    },
+    {
+      "source": "REF-004",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "REF-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-001"
+    },
+    {
+      "source": "REF-004",
+      "type": "USED_BY",
+      "target": "CTX-001"
+    },
+    {
+      "source": "REF-004",
+      "type": "USED_BY",
+      "target": "OBS-001"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "CONSUMED_BY",
+      "target": "MOD-003"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-007"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-005"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "USED_BY",
+      "target": "FILE-007"
+    },
+    {
+      "source": "SCHEMA-001",
+      "type": "VALIDATED_BY",
+      "target": "TEST-005"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "PRODUCED_BY",
+      "target": "MOD-002"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "USED_BY",
+      "target": "FILE-006"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "USED_BY",
+      "target": "INT-006"
+    },
+    {
+      "source": "SCHEMA-004",
+      "type": "USED_BY",
+      "target": "MOD-002"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "CONSUMED_BY",
+      "target": "MOD-002"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "USED_BY",
+      "target": "FILE-006"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "USED_BY",
+      "target": "INT-006"
+    },
+    {
+      "source": "SCHEMA-005",
+      "type": "USED_BY",
+      "target": "MOD-002"
+    },
+    {
+      "source": "SCHEMA-007",
+      "type": "CONSUMED_BY",
+      "target": "MOD-001"
+    },
+    {
+      "source": "SCHEMA-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-007",
+      "type": "USED_BY",
+      "target": "FILE-003"
+    },
+    {
+      "source": "SCHEMA-007",
+      "type": "USED_BY",
+      "target": "INT-003"
+    },
+    {
+      "source": "SCHEMA-007",
+      "type": "USED_BY",
+      "target": "MOD-001"
+    },
+    {
+      "source": "SCHEMA-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SCHEMA-008",
+      "type": "PRODUCED_BY",
+      "target": "MOD-001"
+    },
+    {
+      "source": "SCHEMA-008",
+      "type": "USED_BY",
+      "target": "FILE-003"
+    },
+    {
+      "source": "SCHEMA-008",
+      "type": "USED_BY",
+      "target": "INT-003"
+    },
+    {
+      "source": "SCHEMA-008",
+      "type": "USED_BY",
+      "target": "MOD-001"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "CONSUMED_BY",
+      "target": "MOD-005"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "CONSUMED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "PRODUCED_BY",
+      "target": "MOD-004"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-009"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-007"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "USED_BY",
+      "target": "FILE-009"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "USED_BY",
+      "target": "MOD-005"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "USED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "SCHEMA-009",
+      "type": "VALIDATED_BY",
+      "target": "TEST-007"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "CONSUMED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "PRODUCED_BY",
+      "target": "MOD-005"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-014"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-008"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "USED_BY",
+      "target": "FILE-014"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "USED_BY",
+      "target": "INT-007"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "USED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "SCHEMA-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-008"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "CONSUMED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "CONSUMES",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "CONSUMES",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "PRODUCED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-015"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-010"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "USED_BY",
+      "target": "FILE-015"
+    },
+    {
+      "source": "SCHEMA-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-010"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "CONSUMES",
+      "target": "SCHEMA-011"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "PRODUCED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-019"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-014"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-015"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "USED_BY",
+      "target": "FILE-019"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "VALIDATED_BY",
+      "target": "TEST-014"
+    },
+    {
+      "source": "SCHEMA-012",
+      "type": "VALIDATED_BY",
+      "target": "TEST-015"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "CONSUMED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "PRODUCED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-019"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-016"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "USED_BY",
+      "target": "FILE-019"
+    },
+    {
+      "source": "SCHEMA-013",
+      "type": "VALIDATED_BY",
+      "target": "TEST-016"
+    },
+    {
+      "source": "SYS-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SYS-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-001"
+    },
+    {
+      "source": "SYS-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-002"
+    },
+    {
+      "source": "SYS-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "SYS-001",
+      "type": "USED_BY",
+      "target": "SYS-002"
+    },
+    {
+      "source": "SYS-002",
+      "type": "CONTAINS",
+      "target": "CAP-019"
+    },
+    {
+      "source": "SYS-002",
+      "type": "CONTAINS",
+      "target": "CAP-020"
+    },
+    {
+      "source": "SYS-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SYS-002",
+      "type": "DEPENDS_ON",
+      "target": "SYS-001"
+    },
+    {
+      "source": "SYS-002",
+      "type": "DEPENDS_ON",
+      "target": "SYS-003"
+    },
+    {
+      "source": "SYS-002",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-001"
+    },
+    {
+      "source": "SYS-002",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "SYS-002",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-006"
+    },
+    {
+      "source": "SYS-002",
+      "type": "USED_BY",
+      "target": "SYS-004"
+    },
+    {
+      "source": "SYS-002",
+      "type": "USED_BY",
+      "target": "SYS-005"
+    },
+    {
+      "source": "SYS-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SYS-003",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "SYS-003",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-008"
+    },
+    {
+      "source": "SYS-003",
+      "type": "USED_BY",
+      "target": "SYS-002"
+    },
+    {
+      "source": "SYS-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SYS-004",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-007"
+    },
+    {
+      "source": "SYS-004",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-009"
+    },
+    {
+      "source": "SYS-004",
+      "type": "USED_BY",
+      "target": "SYS-001"
+    },
+    {
+      "source": "SYS-004",
+      "type": "USED_BY",
+      "target": "SYS-002"
+    },
+    {
+      "source": "SYS-004",
+      "type": "USED_BY",
+      "target": "SYS-005"
+    },
+    {
+      "source": "SYS-004",
+      "type": "USED_BY",
+      "target": "SYS-006"
+    },
+    {
+      "source": "SYS-005",
+      "type": "CONTAINS",
+      "target": "WF-001"
+    },
+    {
+      "source": "SYS-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SYS-005",
+      "type": "DEPENDS_ON",
+      "target": "SYS-004"
+    },
+    {
+      "source": "SYS-005",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "SYS-005",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "SYS-005",
+      "type": "USED_BY",
+      "target": "SYS-006"
+    },
+    {
+      "source": "SYS-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "SYS-006",
+      "type": "DEPENDS_ON",
+      "target": "SYS-004"
+    },
+    {
+      "source": "SYS-006",
+      "type": "DEPENDS_ON",
+      "target": "SYS-005"
+    },
+    {
+      "source": "SYS-006",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-003"
+    },
+    {
+      "source": "SYS-006",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-004"
+    },
+    {
+      "source": "TEST-001",
+      "type": "COVERS",
+      "target": "FILE-002"
+    },
+    {
+      "source": "TEST-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-001",
+      "type": "DEPENDS_ON",
+      "target": "FILE-002"
+    },
+    {
+      "source": "TEST-001",
+      "type": "DEPENDS_ON",
+      "target": "FILE-003"
+    },
+    {
+      "source": "TEST-001",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-002"
+    },
+    {
+      "source": "TEST-002",
+      "type": "COVERS",
+      "target": "FILE-001"
+    },
+    {
+      "source": "TEST-002",
+      "type": "COVERS",
+      "target": "MOD-001"
+    },
+    {
+      "source": "TEST-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-002",
+      "type": "DEPENDS_ON",
+      "target": "FILE-001"
+    },
+    {
+      "source": "TEST-002",
+      "type": "DEPENDS_ON",
+      "target": "FILE-003"
+    },
+    {
+      "source": "TEST-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-001"
+    },
+    {
+      "source": "TEST-003",
+      "type": "COVERS",
+      "target": "FILE-005"
+    },
+    {
+      "source": "TEST-003",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-003",
+      "type": "DEPENDS_ON",
+      "target": "FILE-005"
+    },
+    {
+      "source": "TEST-003",
+      "type": "DEPENDS_ON",
+      "target": "FILE-006"
+    },
+    {
+      "source": "TEST-003",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-005"
+    },
+    {
+      "source": "TEST-004",
+      "type": "COVERS",
+      "target": "FILE-004"
+    },
+    {
+      "source": "TEST-004",
+      "type": "COVERS",
+      "target": "MOD-002"
+    },
+    {
+      "source": "TEST-004",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-004",
+      "type": "DEPENDS_ON",
+      "target": "FILE-004"
+    },
+    {
+      "source": "TEST-004",
+      "type": "DEPENDS_ON",
+      "target": "FILE-006"
+    },
+    {
+      "source": "TEST-004",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-004"
+    },
+    {
+      "source": "TEST-005",
+      "type": "COVERS",
+      "target": "FILE-007"
+    },
+    {
+      "source": "TEST-005",
+      "type": "COVERS",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "TEST-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-007"
+    },
+    {
+      "source": "TEST-005",
+      "type": "USED_BY",
+      "target": "FILE-007"
+    },
+    {
+      "source": "TEST-005",
+      "type": "USED_BY",
+      "target": "SCHEMA-001"
+    },
+    {
+      "source": "TEST-006",
+      "type": "COVERS",
+      "target": "FILE-008"
+    },
+    {
+      "source": "TEST-006",
+      "type": "COVERS",
+      "target": "INT-001"
+    },
+    {
+      "source": "TEST-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "TEST-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-008"
+    },
+    {
+      "source": "TEST-006",
+      "type": "USED_BY",
+      "target": "FILE-008"
+    },
+    {
+      "source": "TEST-006",
+      "type": "USED_BY",
+      "target": "INT-001"
+    },
+    {
+      "source": "TEST-007",
+      "type": "COVERS",
+      "target": "FILE-009"
+    },
+    {
+      "source": "TEST-007",
+      "type": "COVERS",
+      "target": "FILE-010"
+    },
+    {
+      "source": "TEST-007",
+      "type": "COVERS",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "TEST-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "TEST-007",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "TEST-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-009"
+    },
+    {
+      "source": "TEST-007",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-010"
+    },
+    {
+      "source": "TEST-007",
+      "type": "USED_BY",
+      "target": "FILE-009"
+    },
+    {
+      "source": "TEST-007",
+      "type": "USED_BY",
+      "target": "FILE-010"
+    },
+    {
+      "source": "TEST-007",
+      "type": "USED_BY",
+      "target": "SCHEMA-009"
+    },
+    {
+      "source": "TEST-008",
+      "type": "COVERS",
+      "target": "FILE-011"
+    },
+    {
+      "source": "TEST-008",
+      "type": "COVERS",
+      "target": "FILE-012"
+    },
+    {
+      "source": "TEST-008",
+      "type": "COVERS",
+      "target": "FILE-013"
+    },
+    {
+      "source": "TEST-008",
+      "type": "COVERS",
+      "target": "FILE-014"
+    },
+    {
+      "source": "TEST-008",
+      "type": "COVERS",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "TEST-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "TEST-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "TEST-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-011"
+    },
+    {
+      "source": "TEST-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-012"
+    },
+    {
+      "source": "TEST-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-013"
+    },
+    {
+      "source": "TEST-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-014"
+    },
+    {
+      "source": "TEST-008",
+      "type": "USED_BY",
+      "target": "FILE-011"
+    },
+    {
+      "source": "TEST-008",
+      "type": "USED_BY",
+      "target": "FILE-012"
+    },
+    {
+      "source": "TEST-008",
+      "type": "USED_BY",
+      "target": "FILE-013"
+    },
+    {
+      "source": "TEST-008",
+      "type": "USED_BY",
+      "target": "FILE-014"
+    },
+    {
+      "source": "TEST-008",
+      "type": "USED_BY",
+      "target": "SCHEMA-010"
+    },
+    {
+      "source": "TEST-009",
+      "type": "COVERS",
+      "target": "BENCH-001"
+    },
+    {
+      "source": "TEST-009",
+      "type": "COVERS",
+      "target": "MOD-005"
+    },
+    {
+      "source": "TEST-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "TEST-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "TEST-009",
+      "type": "USED_BY",
+      "target": "BENCH-001"
+    },
+    {
+      "source": "TEST-009",
+      "type": "USED_BY",
+      "target": "MOD-005"
+    },
+    {
+      "source": "TEST-010",
+      "type": "COVERS",
+      "target": "MOD-006"
+    },
+    {
+      "source": "TEST-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "TEST-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "TEST-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-018"
+    },
+    {
+      "source": "TEST-010",
+      "type": "USED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "TEST-011",
+      "type": "COVERS",
+      "target": "BENCH-002"
+    },
+    {
+      "source": "TEST-011",
+      "type": "COVERS",
+      "target": "MOD-006"
+    },
+    {
+      "source": "TEST-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "TEST-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "TEST-011",
+      "type": "USED_BY",
+      "target": "BENCH-002"
+    },
+    {
+      "source": "TEST-011",
+      "type": "USED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "TEST-012",
+      "type": "COVERS",
+      "target": "MOD-003"
+    },
+    {
+      "source": "TEST-012",
+      "type": "COVERS",
+      "target": "MOD-004"
+    },
+    {
+      "source": "TEST-012",
+      "type": "COVERS",
+      "target": "MOD-005"
+    },
+    {
+      "source": "TEST-012",
+      "type": "COVERS",
+      "target": "MOD-006"
+    },
+    {
+      "source": "TEST-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "TEST-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "TEST-012",
+      "type": "USED_BY",
+      "target": "MOD-003"
+    },
+    {
+      "source": "TEST-012",
+      "type": "USED_BY",
+      "target": "MOD-004"
+    },
+    {
+      "source": "TEST-012",
+      "type": "USED_BY",
+      "target": "MOD-005"
+    },
+    {
+      "source": "TEST-012",
+      "type": "USED_BY",
+      "target": "MOD-006"
+    },
+    {
+      "source": "TEST-013",
+      "type": "COVERS",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-021"
+    },
+    {
+      "source": "TEST-013",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-014",
+      "type": "COVERS",
+      "target": "INT-010"
+    },
+    {
+      "source": "TEST-014",
+      "type": "COVERS",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-022"
+    },
+    {
+      "source": "TEST-014",
+      "type": "USED_BY",
+      "target": "INT-010"
+    },
+    {
+      "source": "TEST-014",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-015",
+      "type": "COVERS",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-015",
+      "type": "COVERS",
+      "target": "SCHEMA-012"
+    },
+    {
+      "source": "TEST-015",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-015",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-015",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-020"
+    },
+    {
+      "source": "TEST-015",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-015",
+      "type": "USED_BY",
+      "target": "SCHEMA-012"
+    },
+    {
+      "source": "TEST-016",
+      "type": "COVERS",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-016",
+      "type": "COVERS",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "TEST-016",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-016",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-016",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-023"
+    },
+    {
+      "source": "TEST-016",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-016",
+      "type": "USED_BY",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "TEST-017",
+      "type": "COVERS",
+      "target": "BENCH-003"
+    },
+    {
+      "source": "TEST-017",
+      "type": "COVERS",
+      "target": "MOD-007"
+    },
+    {
+      "source": "TEST-017",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-017",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-017",
+      "type": "USED_BY",
+      "target": "BENCH-003"
+    },
+    {
+      "source": "TEST-017",
+      "type": "USED_BY",
+      "target": "MOD-007"
+    },
+    {
+      "source": "WF-001",
+      "type": "DECIDED_BY",
+      "target": "ADR-002"
+    },
+    {
+      "source": "WF-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "WF-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-008"
+    },
+    {
+      "source": "WF-001",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "WF-001",
+      "type": "USED_BY",
+      "target": "SYS-005"
+    },
+    {
+      "source": "WF-001",
+      "type": "USED_BY",
+      "target": "SYS-006"
+    }
+  ]
+}

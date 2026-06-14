@@ -139,6 +139,7 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[ADR - Deterministic Regime Taxonomy]] | ADR-007 | decision_record | Deterministic, config-driven, fail-closed regime taxonomy; satisfies ADR-006 gate (d) |
 | [[ADR - Gold Decision Confidence Semantics]] | ADR-008 | decision_record | Fixes the Gold v0 confidence/uncertainty model (deterministic ordinal trust score); closes ADR-006 §8 gate (e), finalizes (b)/(c) |
 | [[ADR - Paper-Trading Runtime Planning]] | ADR-009 | decision_record | Planning ADR for epoch (a) — stateful paper-trading runtime; wrap-not-enrich (packet stays pure), self-describing ledger, computes L3 duplicate_ok/operational_ok; Creation Gates all pass |
+| [[ADR - JARVIS GraphRAG Integration]] | ADR-010 | decision_record | Governance boundary for wiring the JARVIS console to the dev_graph — read-only consumer; bridge extended (not a new server); answers cite canonical_ids + evidence-class; offline graph.json / live Neo4j duality; non-normative |
 
 ## Constraints
 
@@ -314,3 +315,4 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 - **Regime Taxonomy (MOD-005 / SCHEMA-010 / ADR-007 / CAP-019 / INT-007 / KA-011 / PAT-011 / BENCH-001) date**: 2026-06-08
 - **Gold DecisionPacket v0 (MOD-006 / SCHEMA-011 / ADR-006 / ADR-008 / CAP-020 / INT-009 / GATE-002 / PRED-006-007 / BENCH-002) date**: 2026-06-08
 - **Paper-Trading Runtime (MOD-007 / SCHEMA-012-013 / ADR-009 / CAP-021 / INT-010 / GATE-003 / BENCH-003; SCHEMA-011 → v0.2.0) date**: 2026-06-09
+- **JARVIS GraphRAG Integration (ADR-010) date**: 2026-06-14

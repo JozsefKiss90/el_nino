@@ -205,6 +205,8 @@ def parse_dev_graph_file(filepath: Path) -> dict | None:
             props[key] = str(val) if not isinstance(val, (str, bool, int, float)) else val
 
     array_fields = [
+        "evidence",  # evidence-class provenance — kept in sync with graph.json so the live Neo4j
+                     # path carries the same evidence array as the offline projection (ADR-010 §3)
         "source_paths", "allowed_for_tasks",
         "required_nodes", "required_files", "required_tests", "required_docs",
         "required_artifacts",

@@ -129,3 +129,6 @@ flowchart TD
 - All context packs
 
 ### Originates From
+
+
+docker run -d --name elnino-neo4j -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/elnino_dev -e NEO4J_PLUGINS='["apoc"]' -v elnino_neo4j_data:/data neo4j:5-community

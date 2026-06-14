@@ -45,8 +45,7 @@
         }
       },
     "postgres": {
-      "type": "stdio",
-      "command": "npx",
+1      "command": "npx",
       "args": [
         "-y",
         "mcp-postgres-server"

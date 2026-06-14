@@ -37,7 +37,16 @@ NEO4J_USER = os.environ.get("NEO4J_USERNAME", "neo4j")
 NEO4J_PASS = os.environ.get("NEO4J_PASSWORD", "password")
 NEO4J_DB = os.environ.get("NEO4J_DATABASE", "neo4j")
 
-DEV_GRAPH_DIR = Path(__file__).parent
+# Resolve the dev_graph dir robustly whether this script lives in dev_graph/ (its
+# documented home) or at the repo root: scan ONLY dev_graph, never the whole repo
+# (which would sweep wiki/ + raw/ + root docs). Override with DEV_GRAPH_DIR env if set.
+_here = Path(__file__).resolve().parent
+DEV_GRAPH_DIR = Path(
+    os.environ.get(
+        "DEV_GRAPH_DIR",
+        _here if _here.name == "dev_graph" else _here / "dev_graph",
+    )
+)
 STRUCTURAL_FILES = {"CLAUDE", "index", "log", "README"}
 
 # Maps frontmatter `type` values to Neo4j labels (PascalCase). Per GOV-005 — all 23

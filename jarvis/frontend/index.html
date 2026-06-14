@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>El Niño · dev_graph explorer</title>
+<!-- Offline: vendor cytoscape into ./vendor/cytoscape.min.js (see README). CDN fallback below. -->
+<script src="./vendor/cytoscape.min.js"
+        onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js';"></script>
+<style>
+  :root{--bg:#0a0f14;--panel:#0f1822;--line:#16242e;--ink:#cfe9f2;--dim:#6f8a98;--cy:#27e0e0;--cy2:#0bb;--warn:#e0a127;--bad:#e05a5a;}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:13px/1.4 ui-monospace,Menlo,Consolas,monospace}
+  #app{display:grid;grid-template-columns:300px 1fr 300px;grid-template-rows:48px 1fr;height:100%}
+  header{grid-column:1/4;display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid #14222e;background:#0c141d}
+  header .t{font-weight:700;letter-spacing:.12em;color:var(--cy)}
+  .chip{font-size:11px;padding:3px 9px;border-radius:10px;border:1px solid #1d3340}
+  .chip.on{color:#0a0;border-color:#0a0;box-shadow:0 0 8px #0a04 inset}
+  .chip.off{color:var(--bad);border-color:#502}
+  aside{background:var(--panel);border-right:1px solid #14222e;padding:12px;overflow:auto}
+  aside.r{border-right:0;border-left:1px solid #14222e}
+  #cy{background:radial-gradient(circle at 50% 40%,#0c161f,#070b0f);position:relative}
+  input,select,button{background:#0b1620;color:var(--ink);border:1px solid #1d3340;border-radius:5px;padding:6px 8px;font:inherit}
+  button{cursor:pointer}button:hover{border-color:var(--cy)}
+  .lbl{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin:14px 0 6px}
+  .res{padding:6px 8px;border:1px solid #122230;border-radius:5px;margin-bottom:5px;cursor:pointer}
+  .res:hover{border-color:var(--cy);background:#0b1a24}
+  .res .id{color:var(--cy);font-size:11px}
+  .res .nm{color:var(--ink)}
+  .legend span{display:inline-flex;align-items:center;gap:5px;margin:2px 8px 2px 0;font-size:11px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  #info pre{white-space:pre-wrap;word-break:break-word;background:#0b1620;border:1px solid #122230;border-radius:5px;padding:8px;font-size:11px;color:#9fc7d6}
+  .hint{color:var(--dim);font-size:11px}
+  .row{display:flex;gap:6px}.row>*{flex:1}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <span class="t">EL NIÑO · DEV_GRAPH</span>
+    <span id="chip" class="chip off">◐ connecting…</span>
+    <span class="hint" id="counts"></span>
+    <span style="flex:1"></span>
+    <span class="hint">click a node = expand neighbors · scroll = zoom</span>
+  </header>
+
+  <aside class="l">
+    <div class="lbl">Search</div>
+    <div class="row"><input id="q" placeholder="name or ID (e.g. MOD-006, regime)" /><button id="go">↵</button></div>
+    <div class="lbl">Focus by type</div>
+    <select id="labelSel"><option value="">— whole graph —</option></select>
+    <div class="row" style="margin-top:8px"><button id="loadSel">Load</button><button id="fit">Fit</button><button id="reset">Reset</button></div>
+    <div class="lbl">Results</div>
+    <div id="results"></div>
+  </aside>
+
+  <div id="cy"></div>
+
+  <aside class="r">
+    <div class="lbl">Legend</div>
+    <div id="legend" class="legend"></div>
+    <div class="lbl">Selected node</div>
+    <div id="info"><span class="hint">Click a node to inspect its properties and expand its edges.</span></div>
+  </aside>
+</div>
+
+<script>
+const API = (localStorage.getItem("JARVIS_API") || "http://localhost:8000").replace(/\/$/,"");
+const $ = s => document.querySelector(s);
+
+// stable-ish color per label
+const PALETTE = ["#27e0e0","#7ad27a","#e0a127","#c77adf","#5a9ee0","#e07a7a","#9fe0c1","#e0d27a","#7a8fe0","#e07ac1","#7ae0a1","#b0b0b0"];
+const labelColor = {};
+function colorFor(l){ if(!(l in labelColor)) labelColor[l]=PALETTE[Object.keys(labelColor).length%PALETTE.length]; return labelColor[l]; }
+
+const cy = cytoscape({
+  container: $("#cy"),
+  style: [
+    {selector:"node",style:{
+      "background-color":"data(color)","label":"data(id)","color":"#cfe9f2","font-size":"8px",
+      "text-valign":"center","text-halign":"center","text-margin-y":"-10px","width":18,"height":18,
+      "border-width":1,"border-color":"#0a0f14"}},
+    {selector:"node:selected",style:{"border-width":3,"border-color":"#27e0e0","width":24,"height":24}},
+    {selector:"edge",style:{
+      "width":1,"line-color":"#1d3a47","target-arrow-color":"#1d3a47","target-arrow-shape":"triangle",
+      "curve-style":"bezier","arrow-scale":.7,"label":"data(type)","font-size":"6px","color":"#456",
+      "text-rotation":"autorotate"}},
+    {selector:"edge:selected",style:{"line-color":"#27e0e0","target-arrow-color":"#27e0e0"}},
+  ],
+  layout:{name:"cose",animate:false,nodeRepulsion:9000,idealEdgeLength:70},
+  wheelSensitivity:.25,
+});
+
+function addGraph(g, {replace=false}={}){
+  if(replace) cy.elements().remove();
+  const seen = new Set(cy.nodes().map(n=>n.id()));
+  const eles = [];
+  (g.nodes||[]).forEach(n=>{ if(n.id && !seen.has(n.id)){ seen.add(n.id);
+    eles.push({data:{id:n.id,label:n.label,name:n.name||n.id,color:colorFor(n.label)}});}});
+  const eseen = new Set(cy.edges().map(e=>e.id()));
+  (g.edges||[]).forEach(e=>{ const id=`${e.source}|${e.type}|${e.target}`;
+    if(!eseen.has(id) && e.source && e.target){ eseen.add(id);
+      eles.push({data:{id,source:e.source,target:e.target,type:e.type}});}});
+  cy.add(eles);
+  cy.layout({name:"cose",animate:false,nodeRepulsion:9000,idealEdgeLength:70}).run();
+}
+
+async function api(path){ const r=await fetch(API+path); if(!r.ok) throw new Error(r.status+" "+path); return r.json(); }
+
+async function boot(){
+  try{
+    const h=await api("/health");
+    if(h.neo4j){ $("#chip").className="chip on"; $("#chip").textContent="● LIVE";
+      $("#counts").textContent=`${h.node_count} nodes · ${h.edge_count} edges · ${API}`; }
+    else { $("#chip").className="chip off"; $("#chip").textContent="◐ API up · Neo4j down";
+      $("#counts").textContent=h.detail||""; }
+  }catch(e){ $("#chip").className="chip off"; $("#chip").textContent="✕ API unreachable";
+    $("#counts").textContent=`start the API at ${API} (see README)`; return; }
+
+  try{
+    const m=await api("/meta"); const sel=$("#labelSel"); const leg=$("#legend");
+    (m.labels||[]).forEach(l=>{
+      colorFor(l.label);
+      sel.insertAdjacentHTML("beforeend",`<option value="${l.label}">${l.label} (${l.count})</option>`);
+      leg.insertAdjacentHTML("beforeend",
+        `<span><i class="dot" style="background:${colorFor(l.label)}"></i>${l.label} ${l.count}</span>`);
+    });
+  }catch(e){}
+
+  loadSubgraph("");          // whole dev_graph on first paint (it's small)
+}
+
+async function loadSubgraph(label){
+  try{ const g=await api("/subgraph?limit=600"+(label?`&label=${encodeURIComponent(label)}`:""));
+    addGraph(g,{replace:true}); cy.fit(undefined,40);
+  }catch(e){ console.warn(e); }
+}
+
+async function expand(id){
+  try{ const g=await api(`/node/${encodeURIComponent(id)}/neighbors?depth=1&limit=300`); addGraph(g); }
+  catch(e){ console.warn(e); }
+}
+
+async function showNode(id){
+  try{ const n=await api(`/node/${encodeURIComponent(id)}`);
+    const p=n.props||{};
+    $("#info").innerHTML =
+      `<div class="res"><span class="id">${n.id}</span> · <span style="color:${colorFor(n.label)}">${n.label}</span>`+
+      `<div class="nm">${p.name||""}</div></div>`+
+      `<pre>${Object.entries(p).map(([k,v])=>`${k}: ${Array.isArray(v)?v.join(", "):v}`).join("\n")}</pre>`+
+      `<button onclick="expand('${n.id}')">⤢ expand neighbors</button>`;
+  }catch(e){ $("#info").innerHTML=`<span class="hint">${e}</span>`; }
+}
+
+async function doSearch(){
+  const q=$("#q").value.trim(); const box=$("#results"); box.innerHTML="<span class='hint'>…</span>";
+  try{ const r=await api(`/search?limit=60&q=${encodeURIComponent(q)}`);
+    box.innerHTML = (r.nodes||[]).map(n=>
+      `<div class="res" data-id="${n.id}"><span class="id">${n.id}</span> ${n.label}<div class="nm">${n.name||""}</div></div>`
+    ).join("") || "<span class='hint'>no matches</span>";
+    box.querySelectorAll(".res").forEach(el=>el.onclick=()=>{ const id=el.dataset.id;
+      showNode(id); expand(id); });
+  }catch(e){ box.innerHTML=`<span class='hint'>${e}</span>`; }
+}
+
+cy.on("tap","node",ev=>{ const id=ev.target.id(); showNode(id); expand(id); });
+$("#go").onclick=doSearch; $("#q").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch();});
+$("#loadSel").onclick=()=>loadSubgraph($("#labelSel").value);
+$("#fit").onclick=()=>cy.fit(undefined,40);
+$("#reset").onclick=()=>loadSubgraph("");
+window.expand=expand;
+boot();
+</script>
+</body>
+</html>

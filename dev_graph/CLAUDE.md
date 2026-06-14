@@ -546,6 +546,35 @@ Summary:
 - **Human-review-required**: Overwriting existing nodes, moving nodes, neo4j/postgres writes
 - **Prohibited**: Deleting nodes, writing to wiki/** from dev_graph sessions
 
+### Proactive Graph Queries (neo4j MCP)
+
+When the `neo4j` MCP is connected, USE IT PROACTIVELY — without waiting to be asked — for the
+structural questions the markdown answers poorly. Do not ask the operator to request these; run them
+as a normal part of the work:
+
+- **Before any structural or contract change**, run an impact query and state the blast radius:
+  what depends on the node — `MATCH (x:DevGraph)-[*1..2]->(n:DevGraph {canonical_id:'<ID>'}) RETURN DISTINCT x` —
+  and what it depends on (reverse the arrow).
+- **Traceability**, on demand and when grounding a change: KA → ADR → System → Capability → Module →
+  File → Test chains; `shortestPath` between two canonical_ids.
+- **Consistency audits** (complement the Lint Workflow, do not replace it): orphans
+  `MATCH (n:DevGraph) WHERE NOT (n)--() RETURN n.canonical_id`, deprecated-still-referenced, dangling
+  edges, hub integrity, status distribution.
+
+Rules of use:
+1. The graph is **READ-ONLY** — never author into Neo4j. Edit the markdown (the canonical source), then
+   re-sync. The MCP is configured `NEO4J_READ_ONLY=true`; keep it so.
+2. The graph reflects the **last sync**. Trust it only if the writeback that last changed the dev_graph
+   re-synced (see the Writeback Checklist). If in doubt, re-sync or say the graph may be stale.
+3. If the `neo4j` MCP is **not connected** (or the DB is down), fall back to Smart Connections / Dataview
+   / grep + reading the markdown, and say which you used — never invent edges from memory.
+4. Do **not** query the graph for trivial, non-structural edits (typos, formatting) — reach for it when
+   traversal genuinely beats grep/Dataview/reading.
+
+This makes graph-grounded impact/traceability/audit a default behavior of dev_graph sessions, not a
+thing the operator must request each time. (Instruction-level habit, not a hard gate; for mechanical
+enforcement add an orchestration hook per the workflow-governance model.)
+
 ---
 
 ## Dataview Governance
@@ -871,4 +900,8 @@ Run at the end of EVERY session that creates or modifies code:
    deprecated refs, canonical_id uniqueness, evidence-confidence coherence).
 8. Append `## [DATE] writeback | <title>` to `dev_graph/log.md` (Nodes Created / Changes / Metrics).
 9. Update `dev_graph/index.md` (move nodes out of "(Empty …)" placeholders; refresh Statistics).
-10. (Optional) `python dev_graph/sync_to_neo4j.py` if Neo4j is up.
+10. **Re-sync Neo4j** when this writeback changed the dev_graph and Neo4j is up:
+    `python dev_graph/sync_to_neo4j.py --clear` — regenerates the read-only graph the `neo4j` MCP
+    serves, so the next session's proactive graph queries (see MCP Operations → Proactive Graph
+    Queries) are current. Skip only if no node or edge changed. Never edit Neo4j directly; the markdown
+    is canonical and `--clear` re-projection is idempotent.

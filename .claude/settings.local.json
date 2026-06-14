@@ -77,7 +77,13 @@
       "Bash(.venv/Scripts/python.exe -m pytest tests -q)",
       "Bash(.venv/Scripts/python.exe -m mypy --strict src/gold/paper_runtime)",
       "Bash(.venv/Scripts/python.exe -m ruff check src/gold/paper_runtime)",
-      "Bash(.venv/Scripts/python.exe *)"
+      "Bash(.venv/Scripts/python.exe *)",
+      "PowerShell(Get-ChildItem -Path C:\\\\Code\\\\el_nino -Force | Select-Object Name, @{N='Type';E={if\\($_.PSIsContainer\\){'DIR'}else{'file'}}}, Length, LastWriteTime | Format-Table -AutoSize)",
+      "PowerShell(Write-Output \"=== el_nino\\\\snapshot_sources \\(recursive, non-pycache\\) ===\"; Get-ChildItem -Path C:\\\\Code\\\\el_nino\\\\snapshot_sources -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '__pycache__' } | Select-Object @{N='Rel';E={$_.FullName.Replace\\('C:\\\\Code\\\\el_nino\\\\',''\\)}}, @{N='Type';E={if\\($_.PSIsContainer\\){'DIR'}else{'file'}}}, Length, LastWriteTime | Format-Table -AutoSize)",
+      "PowerShell(Write-Output \"=== log.md locations ===\"; Get-ChildItem -Path C:\\\\Code\\\\el_nino -Recurse -File -Filter \"log.md\" -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\\\.venv|__pycache__' } | Select-Object FullName, Length, LastWriteTime | Format-Table -AutoSize; Write-Output \"=== dev_graph dir ===\"; Get-ChildItem -Path C:\\\\Code\\\\el_nino\\\\dev_graph -Force -ErrorAction SilentlyContinue | Select-Object Name, @{N='Type';E={if\\($_.PSIsContainer\\){'DIR'}else{'file'}}}, Length | Format-Table -AutoSize)",
+      "Read(//c/Code/Mr-Ripley/**)",
+      "Bash(\"C:\\\\Code\\\\Mr-Ripley\\\\venv\\\\Scripts\\\\python.exe\" --version)",
+      "Bash(\"C:\\\\Code\\\\el_nino\\\\.venv\\\\Scripts\\\\python.exe\" --version)"
     ]
   }
 }

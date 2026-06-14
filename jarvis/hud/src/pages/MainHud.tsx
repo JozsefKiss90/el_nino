@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Caption } from "../components/Caption";
-import { ConnectorArray } from "../components/ConnectorArray";
-import { Console, type Message } from "../components/Console";
-import { ContextFeed } from "../components/ContextFeed";
-import { GraphView } from "../components/GraphView";
-import { OperatorPanel } from "../components/OperatorPanel";
-import { Reactor } from "../components/Reactor";
+import { ConnectorArray } from "../components/main/ConnectorArray";
+import { ConsolePanel, type Message } from "../components/main/ConsolePanel";
+import { ContextFeed } from "../components/main/ContextFeed";
+import { DecisionCore } from "../components/main/DecisionCore";
+import { EpochTrack } from "../components/main/EpochTrack";
+import { KnowledgeGraph } from "../components/main/KnowledgeGraph";
+import { LiveMarketIntel } from "../components/main/LiveMarketIntel";
+import { OperatorPanel } from "../components/main/OperatorPanel";
+import { StrategyStrip } from "../components/main/StrategyStrip";
+import { SystemVitals } from "../components/main/SystemVitals";
+import { TruthCorpus } from "../components/main/TruthCorpus";
 import type { Answer, Citation } from "../data/types";
 import { useClaudeUplink } from "../hooks/useClaudeUplink";
 import type { GraphHook } from "../hooks/useGraph";
@@ -13,15 +17,30 @@ import { useReactorState } from "../hooks/useReactorState";
 import { useSpeech } from "../hooks/useSpeech";
 import { useVoiceBridge } from "../hooks/useVoiceBridge";
 
+// MainHud (#pg-main) — ported 1:1 from the TARGET (jarvis/sources/el_nino_jarvis_interface (6).html,
+// lines 434-593): the operator/vitals/corpus/knowledge-graph left column, the DECISION CORE (reactor
+// + orbits + readouts + console) center, the context/market/connectors/epoch right column, and the
+// doctrine strip. The Console + KnowledgeGraph + ContextFeed + ConnectorArray are the live, graph-
+// grounded, read-only versions (ADR-010); the orchestration below is preserved from Stage 4.
 const WELCOME: Message = {
   role: "j",
   text:
     "El Niño interface online. I answer from the live dev_graph — every structural claim cites its " +
-    "canonical_id and evidence-class, and the matched node + neighborhood render in the DEV_GRAPH VIEW. " +
+    "canonical_id and evidence-class, and the matched node + neighborhood render in the KNOWLEDGE GRAPH. " +
     'Try "what depends on the Gold Decision Builder?" or "what does ADR-010 decide?".',
 };
 
-export function MainHud({ graph, pendingQuery, onConsumed }: { graph: GraphHook; pendingQuery: string | null; onConsumed: () => void }) {
+export function MainHud({
+  graph,
+  corpus,
+  pendingQuery,
+  onConsumed,
+}: {
+  graph: GraphHook;
+  corpus: { count: number; day: number };
+  pendingQuery: string | null;
+  onConsumed: () => void;
+}) {
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [answer, setAnswer] = useState<Answer | null>(null);
   const [voiceOn, setVoiceOn] = useState(false);
@@ -95,7 +114,7 @@ export function MainHud({ graph, pendingQuery, onConsumed }: { graph: GraphHook;
   );
   submitRef.current = submit;
 
-  // consume a cross-page query (a graph node / flow stage clicked on another tab)
+  // consume a cross-page query (a graph node / flow stage / pipeline module clicked on another tab)
   useEffect(() => {
     if (pendingQuery) {
       submitRef.current(pendingQuery);
@@ -128,21 +147,24 @@ export function MainHud({ graph, pendingQuery, onConsumed }: { graph: GraphHook;
   }, [speech, reactor]);
 
   return (
-    <div className="grid3">
-      <div className="col">
-        <div className="panel core">
-          <div className="ph"><span className="pt">REACTOR CORE</span><span className="tag c">VOICE</span></div>
-          <div className="core">
-            <Reactor state={reactor.state} onTap={onMic} />
-            <Caption state={reactor.state} text="" />
-          </div>
+    <div className="page show" id="pg-main">
+      <div className="main">
+        {/* LEFT */}
+        <div className="col">
+          <OperatorPanel />
+          <SystemVitals />
+          <TruthCorpus corpus={corpus} />
+          <KnowledgeGraph answer={answer} onQuery={submit} />
         </div>
-        <OperatorPanel />
-      </div>
 
-      <div className="col">
-        <div className="panel">
-          <Console
+        {/* CENTER — REACTOR + CONSOLE */}
+        <div className="panel core">
+          <div className="ph" style={{ width: "100%" }}>
+            <span className="pt">DECISION CORE — LAST FULL L3 RUN · SNAPSHOT 2026-03-15</span>
+            <span className="tag g">VERDICT: ADMIT</span>
+          </div>
+          <DecisionCore reactorState={reactor.state} onReactorTap={onMic} />
+          <ConsolePanel
             messages={messages}
             onSubmit={submit}
             onCite={(id) => submit(id)}
@@ -152,31 +174,17 @@ export function MainHud({ graph, pendingQuery, onConsumed }: { graph: GraphHook;
             onToggleVoice={() => setVoiceOn((v) => !v)}
           />
         </div>
+
+        {/* RIGHT */}
+        <div className="col">
+          <ContextFeed answer={answer} onRelated={submit} />
+          <LiveMarketIntel />
+          <ConnectorArray source={graph.source} voiceBridgeOnline={voiceBridge.online} uplinkAvailable={uplink.available} />
+          <EpochTrack />
+        </div>
       </div>
 
-      <div className="col">
-        <ContextFeed answer={answer} onRelated={submit} />
-        <div className="panel gv-wrap">
-          <div className="ph">
-            <span className="pt">DEV_GRAPH VIEW</span>
-            <span className={`tag ${graph.source === "live" ? "g" : "a"}`}>
-              {graph.source === "live" ? "● LIVE BRIDGE" : graph.source === "offline" ? "◐ OFFLINE graph.json" : "✕ NO GRAPH"}
-            </span>
-          </div>
-          {answer && answer.subgraph.nodes.length > 0 ? (
-            <GraphView graph={answer.subgraph} focus={answer.focus} onNodeClick={(_, name) => submit(name)} />
-          ) : (
-            <div className="gv-empty">Ask a structural question and the matched node + neighborhood render here. Click a node to expand it.</div>
-          )}
-        </div>
-        <ConnectorArray
-          source={graph.source}
-          health={graph.health}
-          nodeCount={graph.nodeCount}
-          voiceBridgeOnline={voiceBridge.online}
-          uplinkAvailable={uplink.available}
-        />
-      </div>
+      <StrategyStrip />
     </div>
   );
 }

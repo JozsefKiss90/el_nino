@@ -83,7 +83,23 @@
       "PowerShell(Write-Output \"=== log.md locations ===\"; Get-ChildItem -Path C:\\\\Code\\\\el_nino -Recurse -File -Filter \"log.md\" -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\\\.venv|__pycache__' } | Select-Object FullName, Length, LastWriteTime | Format-Table -AutoSize; Write-Output \"=== dev_graph dir ===\"; Get-ChildItem -Path C:\\\\Code\\\\el_nino\\\\dev_graph -Force -ErrorAction SilentlyContinue | Select-Object Name, @{N='Type';E={if\\($_.PSIsContainer\\){'DIR'}else{'file'}}}, Length | Format-Table -AutoSize)",
       "Read(//c/Code/Mr-Ripley/**)",
       "Bash(\"C:\\\\Code\\\\Mr-Ripley\\\\venv\\\\Scripts\\\\python.exe\" --version)",
-      "Bash(\"C:\\\\Code\\\\el_nino\\\\.venv\\\\Scripts\\\\python.exe\" --version)"
+      "Bash(\"C:\\\\Code\\\\el_nino\\\\.venv\\\\Scripts\\\\python.exe\" --version)",
+      "Bash(python -c \"import neo4j_mcp_server; print\\('module OK', neo4j_mcp_server.__file__\\)\")",
+      "Bash(echo \"---EXIT:$?---\")",
+      "Bash(powershell -Command \"Test-NetConnection -ComputerName localhost -Port 7687 -InformationLevel Quiet\")",
+      "Bash(grep -iE \"Location|entry_points|console|\\\\.py$|__main__|cli\")",
+      "Bash(python -c \"import importlib.metadata as m; [print\\(e.name,'=',e.value\\) for e in m.entry_points\\(\\).select\\(group='console_scripts'\\) if 'neo4j' in e.value.lower\\(\\) or 'neo4j' in e.name.lower\\(\\)]\")",
+      "Bash(C:/Users/jozse/AppData/Local/Programs/Python/Python310/python.exe --version)",
+      "Bash(C:/Users/jozse/AppData/Local/Programs/Python/Python310/python.exe -c 'import neo4j_mcp_server; print\\('\\\\''import OK:'\\\\'', neo4j_mcp_server.__file__\\)')",
+      "Bash(py -3.10 --version)",
+      "Bash(timeout 8 py -3.10 -m neo4j_mcp_server)",
+      "Bash(NEO4J_URI=\"bolt://localhost:7687\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" timeout 8 py -3.10 -m neo4j_mcp_server)",
+      "Read(//c/Users/jozse/AppData/Local/Programs/Python/Python310/lib/site-packages/neo4j_mcp_server/**)",
+      "Bash(powershell -Command 'Select-String -Path '\\\\''C:/Users/jozse/AppData/Local/Programs/Python/Python310/lib/site-packages/neo4j_mcp_server/bin/neo4j-mcp-server.exe'\\\\'' -Pattern '\\\\''NEO4J_[A-Z_]+'\\\\'' -AllMatches | ForEach-Object { $_.Matches.Value } | Sort-Object -Unique')",
+      "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 7687,7474 -State Listen -ErrorAction SilentlyContinue | Select-Object LocalPort,OwningProcess -Unique | ForEach-Object { $p=Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue; '\\\\''{0} -> PID {1} \\({2}\\)'\\\\'' -f $_.LocalPort, $_.OwningProcess, $p.ProcessName }')",
+      "Bash(docker compose *)",
+      "Bash(docker volume *)",
+      "Bash(docker rm *)"
     ]
   }
 }

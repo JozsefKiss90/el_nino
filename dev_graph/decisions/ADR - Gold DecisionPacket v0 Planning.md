@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-07
-updated: 2026-06-09
+updated: 2026-06-16
 confidence: confirmed
 evidence:
   - design
@@ -22,6 +22,7 @@ related_decisions:
   - "[[ADR - Deterministic Regime Taxonomy]]"
   - "[[ADR - Gold Decision Confidence Semantics]]"
   - "[[ADR - Paper-Trading Runtime Planning]]"
+  - "[[ADR - Execution Layer Planning]]"
 decision_id: "ADR-006"
 decision_date: 2026-06-07
 supersedes: []

@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
+Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-identical replay benchmark + FILE-029 + TEST-021; ADR-011 §7 gate (d) closed, gates (a)–(e) reconciled Closed)
 
 ## Architecture
 
@@ -90,6 +90,7 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[Regime Classification API]] | INT-007 | interface | Feature Vector → Regime Classification contract (canonical upstream for Gold) |
 | [[Gold Decision API]] | INT-009 | interface | FeatureVector + RegimeClassification → paper Gold DecisionPacket contract |
 | [[Paper Runtime API]] | INT-010 | interface | GoldDecisionPacket + runtime state → RuntimeDecisionRecord + new ledger (evaluate / run_once / run_sequence) |
+| [[Execution API]] | INT-011 | interface | Execution port (planned) — ADMIT RuntimeDecisionRecord (SCHEMA-012) + portfolio state → ExecutionRecord (SCHEMA-014) + new PortfolioState; simulated + Alpaca-paper adapters; parent CAP-005 |
 
 (INT-002, 004/005, 008 reserved for future Phase 4 contracts; INT-008 earmarked for a future Evaluation API)
 
@@ -140,6 +141,7 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[ADR - Gold Decision Confidence Semantics]] | ADR-008 | decision_record | Fixes the Gold v0 confidence/uncertainty model (deterministic ordinal trust score); closes ADR-006 §8 gate (e), finalizes (b)/(c) |
 | [[ADR - Paper-Trading Runtime Planning]] | ADR-009 | decision_record | Planning ADR for epoch (a) — stateful paper-trading runtime; wrap-not-enrich (packet stays pure), self-describing ledger, computes L3 duplicate_ok/operational_ok; Creation Gates all pass |
 | [[ADR - JARVIS GraphRAG Integration]] | ADR-010 | decision_record | Governance boundary for wiring the JARVIS console to the dev_graph — read-only consumer; bridge extended (not a new server); answers cite canonical_ids + evidence-class; offline graph.json / live Neo4j duality; non-normative |
+| [[ADR - Execution Layer Planning]] | ADR-011 | decision_record | Governance boundary for the execution/portfolio epoch — port/adapter determinism split (deterministic offline fill-simulator core vs non-replayable Alpaca paper adapter); paper_only / virtual-money; re-grounds the live path CAP-020 → MOD-007 ADMIT → execution + wires GATE-001 / PRED-001..005; decoupled from DEBT-01 & epoch (b); **accepted 2026-06-16**, Creation Gates remain open; non-normative |
 
 ## Constraints
 
@@ -167,6 +169,7 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[Market Regime Classifier]] | MOD-005 | module | Deterministic feature-vector → one macro regime (rule-selection engine) |
 | [[Gold Decision Builder]] | MOD-006 | module | FeatureVector + RegimeClassification → deterministic paper-only Gold DecisionPacket (SCHEMA-011) |
 | [[Paper-Trading Runtime]] | MOD-007 | module | Stateful L3 admission — wraps the pure packet, computes duplicate_ok/operational_ok, append-only ledger |
+| [[Execution]] | MOD-008 | module | Paper execution — ADMIT → (paper) fill + portfolio state; deterministic simulated-broker core behind INT-011; wires GATE-001; realizes CAP-005, produces CAP-007 state |
 
 ## Files
 
@@ -195,6 +198,12 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[predicates.py (paper_runtime)]] | FILE-021 | file | duplicate_ok / operational_ok + snapshot echoes (pure (passed, reason) guards) |
 | [[engine.py]] | FILE-022 | file | pure evaluate() — guard conjunction + fail-closed verdict + ledger append |
 | [[runtime.py]] | FILE-023 | file | IO boundary shell (run_once) + pure run_sequence replay driver |
+| [[models.py (execution)]] | FILE-024 | file | SCHEMA-014/015 dataclasses (ExecutionRecord, PortfolioState/Position/ExecutionEntry, Fill, GuardResult) + compute_execution_id |
+| [[config.py (execution)]] | FILE-025 | file | ExecutionPolicyConfig (fixed default_size) + FillModelConfig + fingerprints + fail-closed loaders |
+| [[adapters.py]] | FILE-026 | file | ExecutionPort Protocol + SimulatedBrokerAdapter (deterministic fill); Alpaca-paper adapter deferred |
+| [[engine.py (execution)]] | FILE-027 | file | pure execute() — fail-closed fill decision + portfolio transition + record (no IO/risk) |
+| [[runtime.py (execution)]] | FILE-028 | file | IO shell + GATE-001 guard-wiring orchestrator (run_once / pure run_sequence) — the only src/risk importer |
+| [[run_execution_bench.py]] | FILE-029 | file | BENCH-004 harness — deterministic real + synthetic replay over execution run_sequence; emits the committed golden artifact |
 
 ## Tests
 
@@ -217,6 +226,10 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[test_paper_runtime_determinism]] | TEST-015 | test | Byte-identical record replay + runtime_policy_fingerprint coherence (6 tests) |
 | [[test_paper_runtime_ledger]] | TEST-016 | test | Ledger idempotency, seq continuity, sequence replay, IO round-trip (8 tests) |
 | [[test_paper_runtime_bench]] | TEST-017 | test | BENCH-003 determinism, idempotency, verdict sweep, artifact-in-sync (8 tests) |
+| [[test_execution_engine]] | TEST-018 | test | execute() fill/no-fill paths, portfolio math, fail-closed + idempotency, record invariants (10 tests) |
+| [[test_execution_determinism]] | TEST-019 | test | BENCH-004 core — byte-identical replay, persist/load round-trip, idempotent sequence (5 tests) |
+| [[test_execution_guards]] | TEST-020 | test | GATE-001 guard-wiring — APPROVE/BLOCK mapping, no-fill on block, env-independent captured config (5 tests) |
+| [[test_execution_bench]] | TEST-021 | test | BENCH-004 determinism, real-corpus grounding, fill/idempotency/guard-block attribution, artifact-in-sync (15 tests) |
 
 ## Gates
 
@@ -248,6 +261,8 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[Gold DecisionPacket v0 Schema]] | SCHEMA-011 | artifact_schema | Gold Decision Builder output — direction, confidence/uncertainty, cited features, guard_refs, snapshot_guards (v0.2.0); consumed by the runtime |
 | [[Runtime Decision Record Schema]] | SCHEMA-012 | artifact_schema | Paper runtime output — packet ref + six-guard block + ADMIT/HOLD/REJECT verdict + ledger hashes |
 | [[Runtime Ledger Schema]] | SCHEMA-013 | artifact_schema | Append-only self-describing dedup/admission state keyed by source_snapshot_id |
+| [[Execution Record Schema]] | SCHEMA-014 | artifact_schema | Execution layer output (planned) — wraps an ADMIT record + (paper) fill + guard provenance; paper_only; replayable flag |
+| [[Portfolio State Schema]] | SCHEMA-015 | artifact_schema | Execution layer state (planned) — append-only self-describing per-instrument positions + executions history (mark-to-snapshot P&L); realizes CAP-007 |
 | [[Decision Packet Schema]] | SCHEMA-004 | artifact_schema | Decision API output — selected upgrade, ranked options, rationale |
 | [[Evaluation Scorecard Schema]] | SCHEMA-005 | artifact_schema | Decision API input — performance evidence (pnl, calibration, drawdown, disagreement) |
 | [[Trade Validation Request Schema]] | SCHEMA-007 | artifact_schema | Risk Check API input — trade params + portfolio context |
@@ -276,19 +291,20 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 | [[Regime Distribution Benchmark]] | BENCH-001 | benchmark_result | Regime replay determinism + synthetic distribution/coverage/entropy |
 | [[Gold Decision Distribution Benchmark]] | BENCH-002 | benchmark_result | Gold packet replay determinism + direction/confidence distribution |
 | [[Paper-Trading Runtime Benchmark]] | BENCH-003 | benchmark_result | Runtime replay determinism + idempotency + verdict distribution (real + synthetic) |
+| [[Execution Layer Benchmark]] | BENCH-004 | benchmark_result | Execution byte-identical sequence-replay determinism + idempotency + fill/guard-block distribution (real + synthetic); closes ADR-011 gate (d) |
 
 ---
 
 ## Statistics
 
-- **Total content nodes**: 158 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 6, artifact_schema: 10, module: 7, file: 23, test: 17, gate: 3, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 9, constraint: 3, api_doc_source: 2, benchmark_result: 3)
+- **Total content nodes**: 175 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 8, file: 29, test: 21, gate: 3, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 11, constraint: 3, api_doc_source: 2, benchmark_result: 4)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 162
+- **Total files**: 179
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 158/158 content nodes (100%)
-- **Canonical ID coverage**: 158/158 content nodes (100%)
+- **Frontmatter coverage**: 175/175 content nodes (100%)
+- **Canonical ID coverage**: 175/175 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
@@ -316,3 +332,7 @@ Last updated: 2026-06-09 (Paper-Trading Runtime epoch)
 - **Gold DecisionPacket v0 (MOD-006 / SCHEMA-011 / ADR-006 / ADR-008 / CAP-020 / INT-009 / GATE-002 / PRED-006-007 / BENCH-002) date**: 2026-06-08
 - **Paper-Trading Runtime (MOD-007 / SCHEMA-012-013 / ADR-009 / CAP-021 / INT-010 / GATE-003 / BENCH-003; SCHEMA-011 → v0.2.0) date**: 2026-06-09
 - **JARVIS GraphRAG Integration (ADR-010) date**: 2026-06-14
+- **Execution Layer Planning (ADR-011) date**: 2026-06-16 (drafted + accepted)
+- **Execution layer contract — STEP 1 (INT-011 / SCHEMA-014 / SCHEMA-015; CAP-005 re-grounded, CAP-007 realized) date**: 2026-06-16
+- **Execution layer simulator core — STEP 2 (MOD-008 Execution + FILE-024..028 + TEST-018..020; INT-011/SCHEMA-014/015 → implemented; GATE-001 wired in-progress→implemented; src/execution + 19 tests) date**: 2026-06-16
+- **Execution layer replay benchmark — STEP 4 (BENCH-004 Execution Layer Benchmark + FILE-029 run_execution_bench.py + TEST-021 test_execution_bench; committed golden execution_bench.json; ADR-011 §7 gate (d) Closed, gates (a)–(e) reconciled Closed, (f) deferred; full suite 887 green) date**: 2026-06-16

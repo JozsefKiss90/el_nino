@@ -36,7 +36,7 @@ dev_graph writeback; re-sync Neo4j when the dev_graph changes.
 
 Current state (what already exists — do not redo)
 
-AssetLocationStatusNeo4j (158 nodes / 1106 edges)Docker elnino-neo4j, bolt 7687✅ live, restart: unless-stoppedRead-only graph APIjarvis/backend/app.py✅ /health /meta /node /neighbors /search /path /subgraphCytoscape graph explorerjarvis/frontend/index.html✅ standalone; the GraphView building blockneo4j MCP (read-only).mcp.json✅ connected; CLAUDE.md instructs proactive useExportersync_to_neo4j.py✅ scoped to dev_graph/, idempotent --clearJARVIS console (target UI)jarvis/sources/el_nino_jarvis_interface (6).html207 KB monolith; keyword KB; voice stubs (:8585); Neo4j chipVoice bridge voice_bridge.py—❌ does not exist yet (referenced by the HTML)
+AssetLocationStatusNeo4j (158 nodes / 1106 edges)Docker elnino-neo4j, bolt 7688 (host)→7687 (container)✅ live, restart: unless-stoppedRead-only graph APIjarvis/backend/app.py✅ /health /meta /node /neighbors /search /path /subgraphCytoscape graph explorerjarvis/frontend/index.html✅ standalone; the GraphView building blockneo4j MCP (read-only).mcp.json✅ connected; CLAUDE.md instructs proactive useExportersync_to_neo4j.py✅ scoped to dev_graph/, idempotent --clearJARVIS console (target UI)jarvis/sources/el_nino_jarvis_interface (6).html207 KB monolith; keyword KB; voice stubs (:8585); Neo4j chipVoice bridge voice_bridge.py—❌ does not exist yet (referenced by the HTML)
 
 The console currently answers from a hardcoded keyword corpus, not the graph. That is the gap Stage 2
 closes.

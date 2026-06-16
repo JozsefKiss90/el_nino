@@ -2,10 +2,10 @@
 type: gate
 canonical_id: GATE-001
 status: active
-implementation_status: in-progress
+implementation_status: implemented
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-16
 confidence: confirmed
 evidence:
   - design
@@ -21,6 +21,7 @@ related_tests:
 related_constraints: []
 related_decisions:
   - "[[ADR - Ontology Redesign]]"
+  - "[[ADR - Execution Layer Planning]]"
 gate_id: "trade-validation-gate"
 gate_scope: "Risk Control trade-validation boundary — every proposed trade before broker submission"
 required_artifacts:
@@ -53,12 +54,15 @@ Realized by `guardrail_engine.py` (FILE-001): `GuardrailEngine.validate()` evalu
 
 ## Open Questions
 
-- `in-progress`: the validation logic exists and is tested, but the gate is not yet wired into a live trade-submission pipeline (no order router / execution module exists yet). Advance to `implemented` when the gate is invoked at the runtime trade boundary.
+- **Wired (2026-06-16):** the gate is now invoked at the trade boundary by the [[Execution]] module (MOD-008) — the orchestrator runs `GuardrailEngine.validate()` before `execute()` (ADR-011 §4 / gate c), so a failing predicate blocks the (paper) fill. Advanced `in-progress → implemented`. (Live-money order routing remains a Non-Goal; this is the paper-execution boundary.)
 
 ## Relationships
 
 ### Guards
 - [[Guardrail Enforcement]]
+
+### Used By
+- [[Execution]]
 
 ### Depends On
 - [[Position Size OK]]

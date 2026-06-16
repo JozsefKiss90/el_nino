@@ -98,7 +98,7 @@ graph TB
     end
 
     subgraph Databases["Databases (localhost)"]
-        NEO4J["Neo4j<br/>bolt://localhost:7687<br/>APOC plugin<br/>(Graph-RAG)"]
+        NEO4J["Neo4j<br/>bolt://localhost:7688<br/>APOC plugin<br/>(Graph-RAG)"]
         POSTGRES["PostgreSQL<br/>localhost:5432<br/>db: layer_3_wiki"]
     end
 

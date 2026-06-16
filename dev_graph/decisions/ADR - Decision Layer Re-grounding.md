@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-07
-updated: 2026-06-09
+updated: 2026-06-16
 confidence: confirmed
 evidence:
   - design
@@ -24,6 +24,7 @@ related_decisions:
   - "[[ADR - Implementation Substrate]]"
   - "[[ADR - Gold DecisionPacket v0 Planning]]"
   - "[[ADR - Paper-Trading Runtime Planning]]"
+  - "[[ADR - Execution Layer Planning]]"
 decision_id: "ADR-004"
 decision_date: 2026-06-07
 supersedes: []

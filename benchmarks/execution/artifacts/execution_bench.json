@@ -1,0 +1,175 @@
+{
+  "all_replays_byte_identical": true,
+  "benchmark_id": "BENCH-004",
+  "execution_policy_fingerprint": "2c11b5b1c7460f0bd93af6b83b85662ffbfd6bd9045aec63f2ed5e3381ed1a37",
+  "execution_policy_version": "0.1.0",
+  "execution_schema_version": "0.1.0",
+  "fill_model_fingerprint": "b8428da1ec418acc46349ea68d2501282896e79e84dad694d0b214eb359aea0b",
+  "fill_model_version": "0.1.0",
+  "guard_block_attribution": {
+    "SYN4_long_block": "position_size_ok"
+  },
+  "measures": [
+    "replay_determinism",
+    "idempotency",
+    "fill_distribution",
+    "portfolio_state_hash",
+    "guard_block_attribution"
+  ],
+  "pinned_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+  "portfolio_schema_version": "0.1.0",
+  "real_sequence": {
+    "all_replays_byte_identical": true,
+    "consumable_inputs": [
+      {
+        "label": "latest_snapshot_pass",
+        "runtime_triggered_guard": null,
+        "runtime_verdict": "ADMIT",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
+      },
+      {
+        "label": "src_latest_snapshot",
+        "runtime_triggered_guard": "duplicate_ok",
+        "runtime_verdict": "REJECT",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
+      },
+      {
+        "label": "src_snapshot",
+        "runtime_triggered_guard": "duplicate_ok",
+        "runtime_verdict": "REJECT",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
+      }
+    ],
+    "ending_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+    "fill_distribution": {
+      "filled": 0,
+      "no_fill": 2
+    },
+    "guard_config_fingerprint": "7f9033e3b321752ebb2afa82871025555ffaedf9459086bb0e742fcf2106c92e",
+    "idempotency": {
+      "re_presented_filled": false,
+      "re_presented_label": "latest_snapshot_pass__re_presented",
+      "re_presented_reason": "non-LONG stance AVOID \u2014 no paper fill in v0"
+    },
+    "real_admit_count": 1,
+    "real_corpus_note": "Both banked snapshots classify RESTRICTIVE_RATES \u2192 AVOID (non-LONG); the execution engine fills only an approved LONG, so the real ADMIT is a deterministic no-fill (non-LONG stance) and never reaches the once-ever fill-dedup branch. The fill + no-double-fill idempotency are exercised by the synthetic sequence. 05c8369d\u2026 lives only in the Mr-Ripley truth DB.",
+    "results": [
+      {
+        "blocked_by": null,
+        "direction": "AVOID",
+        "execution_id": "exec-v0:e7e54032b6f448a9",
+        "fill_price": null,
+        "filled": false,
+        "guard_approved": true,
+        "label": "latest_snapshot_pass__admit",
+        "new_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
+      },
+      {
+        "blocked_by": null,
+        "direction": "AVOID",
+        "execution_id": "exec-v0:e7e54032b6f448a9",
+        "fill_price": null,
+        "filled": false,
+        "guard_approved": true,
+        "label": "latest_snapshot_pass__re_presented",
+        "new_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
+      }
+    ],
+    "sequence_length": 2
+  },
+  "synthetic_sequence": {
+    "approve": {
+      "all_replays_byte_identical": true,
+      "ending_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+      "fill_distribution": {
+        "filled": 1,
+        "no_fill": 3
+      },
+      "guard_config_fingerprint": "7f9033e3b321752ebb2afa82871025555ffaedf9459086bb0e742fcf2106c92e",
+      "results": [
+        {
+          "blocked_by": null,
+          "direction": "LONG",
+          "execution_id": "exec-v0:9eb25ab1a96452e6",
+          "fill_price": 100.05,
+          "filled": true,
+          "guard_approved": true,
+          "label": "SYN1_long_fill",
+          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "reason": "filled",
+          "source_snapshot_id": "SYN1"
+        },
+        {
+          "blocked_by": null,
+          "direction": "AVOID",
+          "execution_id": "exec-v0:1bb06f64b5502796",
+          "fill_price": null,
+          "filled": false,
+          "guard_approved": true,
+          "label": "SYN2_avoid_nofill",
+          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
+          "source_snapshot_id": "SYN2"
+        },
+        {
+          "blocked_by": null,
+          "direction": "FLAT",
+          "execution_id": "exec-v0:82b4681ff9ac99f5",
+          "fill_price": null,
+          "filled": false,
+          "guard_approved": true,
+          "label": "SYN3_flat_nofill",
+          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "reason": "non-LONG stance FLAT \u2014 no paper fill in v0",
+          "source_snapshot_id": "SYN3"
+        },
+        {
+          "blocked_by": null,
+          "direction": "LONG",
+          "execution_id": "exec-v0:4aba1bed3a98c070",
+          "fill_price": null,
+          "filled": false,
+          "guard_approved": true,
+          "label": "SYN1_long_duplicate",
+          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "reason": "already executed (idempotent \u2014 once-ever)",
+          "source_snapshot_id": "SYN1"
+        }
+      ],
+      "sequence_length": 4
+    },
+    "fill_distribution": {
+      "filled": 1,
+      "no_fill": 4
+    },
+    "guard_block": {
+      "all_replays_byte_identical": true,
+      "ending_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+      "fill_distribution": {
+        "filled": 0,
+        "no_fill": 1
+      },
+      "guard_config_fingerprint": "261a1c04a7bcddcee4dfbc4e35814a0003e649d879e4565c1525ed70fb81e8a6",
+      "results": [
+        {
+          "blocked_by": "position_size_ok",
+          "direction": "LONG",
+          "execution_id": "exec-v0:0c14f232990eabae",
+          "fill_price": null,
+          "filled": false,
+          "guard_approved": false,
+          "label": "SYN4_long_block",
+          "new_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+          "reason": "blocked by position_size_ok",
+          "source_snapshot_id": "SYN4"
+        }
+      ],
+      "sequence_length": 1
+    },
+    "synthetic": true
+  }
+}

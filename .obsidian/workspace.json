@@ -65,12 +65,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/systems/Claude-Assisted Trading Stack.md",
+                "file": "dev_graph/architecture/Layer Model.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Claude-Assisted Trading Stack"
+              "title": "Layer Model"
             }
           }
         ],
@@ -259,19 +259,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "1a203f309fbb4986",
+  "active": "6e355511c4142154",
   "lastOpenFiles": [
+    "jarvis/start.ps1.tmp.251968.f9ba3fe1e230",
+    "jarvis/docker-compose.yml.tmp.225148.8f7fecefa086",
+    "dev_graph/architecture/Context Map.md.tmp.225148.5cd30161a3aa",
+    "dev_graph/Infrastructure Diagram.md.tmp.225148.0a620c172427",
+    "dev_graph/architecture/Infrastructure Diagram.md.tmp.225148.834ac2e14376",
+    "JARVIS_el_nino_integration_and_refactor_roadmap.md.tmp.225148.c5c5651ca542",
+    "dev_graph/architecture/Context Map.md.tmp.225148.76c9eff541f0",
+    "jarvis/sources/EL NINO JARVIS Cyberpunk.html.tmp.225148.52642eb55fa8",
+    "jarvis/sources/el_nino_jarvis_interface (6).html.tmp.225148.dacbdb8e77a4",
+    "dev_graph/index.md",
+    "wiki/systems/Claude-Assisted Trading Stack.md",
     "benchmarks/regime/__pycache__/run_regime_bench.cpython-310.pyc",
     "tests/regime/__pycache__/test_regime_bench.cpython-310-pytest-9.0.2.pyc",
-    "src/regime/regime_classifier/__pycache__/regime_classifier.cpython-312.pyc",
-    "src/regime/regime_classifier/__pycache__/models.cpython-312.pyc",
-    "src/regime/regime_classifier/__pycache__/config.cpython-312.pyc",
-    "src/regime/regime_classifier/__pycache__/__init__.cpython-312.pyc",
-    "src/regime/__pycache__/__init__.cpython-312.pyc",
-    "dev_graph/index.md.tmp.128008.67dd2c2fa4fb",
-    "dev_graph/index.md.tmp.128008.5fa32e2b8e6d",
-    "dev_graph/log.md.tmp.128008.511d7d339bdf",
-    "dev_graph/index.md.tmp.128008.c743d34167d9",
     "dev_graph/benchmarks/Regime Distribution Benchmark.md",
     "dev_graph/tests/test_regime_bench.md",
     "dev_graph/tests/test_regime_classifier.md",
@@ -295,8 +297,6 @@
     "dev_graph/files/scoring.py.md",
     "dev_graph/files/decision_engine.py.md",
     "dev_graph/schemas/Evaluation Scorecard Schema.md",
-    "dev_graph/predicates/Withdrawal Disabled.md",
-    "dev_graph/predicates/Max Positions OK.md",
     "Untitled.canvas"
   ]
 }

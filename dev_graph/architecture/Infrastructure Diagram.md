@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-01
-updated: 2026-06-06
+updated: 2026-06-15
 confidence: confirmed
 evidence:
   - design
@@ -104,7 +104,7 @@ graph TB
     end
 
     subgraph Databases["Databases (localhost)"]
-        NEO4J["Neo4j<br/>bolt://localhost:7687<br/>APOC plugin<br/>(Graph-RAG)"]
+        NEO4J["Neo4j<br/>bolt://localhost:7688<br/>APOC plugin<br/>(Graph-RAG)"]
         POSTGRES["PostgreSQL<br/>localhost:5432<br/>db: layer_3_wiki"]
     end
 

@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-15
 confidence: confirmed
 evidence:
   - design
@@ -131,4 +131,4 @@ flowchart TD
 ### Originates From
 
 
-docker run -d --name elnino-neo4j -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/elnino_dev -e NEO4J_PLUGINS='["apoc"]' -v elnino_neo4j_data:/data neo4j:5-community
+docker run -d --name elnino-neo4j -p 7475:7474 -p 7688:7687 -e NEO4J_AUTH=neo4j/elnino_dev -e NEO4J_PLUGINS='["apoc"]' -v elnino_neo4j_data:/data neo4j:5-community

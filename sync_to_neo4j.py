@@ -32,7 +32,7 @@ import yaml
 
 # --- Configuration ---
 
-NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7688")
 NEO4J_USER = os.environ.get("NEO4J_USERNAME", "neo4j")
 NEO4J_PASS = os.environ.get("NEO4J_PASSWORD", "password")
 NEO4J_DB = os.environ.get("NEO4J_DATABASE", "neo4j")

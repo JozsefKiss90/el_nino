@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-16
 confidence: confirmed
 evidence:
   - design
@@ -20,6 +20,7 @@ related_constraints:
 related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Gold DecisionPacket v0 Planning]]"
+  - "[[ADR - Execution Layer Planning]]"
 decision_id: "ADR-009"
 decision_date: 2026-06-09
 supersedes: []

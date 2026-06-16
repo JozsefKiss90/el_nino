@@ -10,7 +10,7 @@ seed subgraphs. Every query is READ-ONLY and parameterized:
   * all user input flows through query parameters, never string interpolation.
 
 Config via env (same vars as sync_to_neo4j.py / .mcp.json):
-  NEO4J_URI (default bolt://localhost:7687), NEO4J_USERNAME, NEO4J_PASSWORD, NEO4J_DATABASE.
+  NEO4J_URI (default bolt://localhost:7688), NEO4J_USERNAME, NEO4J_PASSWORD, NEO4J_DATABASE.
 For Neo4j Aura, set NEO4J_URI=neo4j+s://<dbid>.databases.neo4j.io and the Aura credentials —
 nothing else changes.
 
@@ -35,7 +35,7 @@ from neo4j import GraphDatabase
 from neo4j.exceptions import Neo4jError, ServiceUnavailable
 from pydantic import BaseModel
 
-NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7688")
 NEO4J_USER = os.environ.get("NEO4J_USERNAME", "neo4j")
 NEO4J_PASS = os.environ.get("NEO4J_PASSWORD", "password")
 NEO4J_DB = os.environ.get("NEO4J_DATABASE", "neo4j")

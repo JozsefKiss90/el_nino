@@ -1,3 +1,4 @@
+import type { GraphStats } from "../data/graph";
 import { Architecture } from "../components/ops/Architecture";
 import { AuditDriftStatus } from "../components/ops/AuditDriftStatus";
 import { EpochRoadmap } from "../components/ops/EpochRoadmap";
@@ -12,7 +13,7 @@ import { The12PivotalPoints } from "../components/ops/The12PivotalPoints";
 // Mr-Ripley audit-drift board. Ported 1:1 from the TARGET (jarvis/sources/el_nino_jarvis_interface
 // (6).html, lines 597-712). The corpus count is live (App's counter); clicking a pipeline module
 // raises a cross-page graph query (onQuery) that switches to the console and queries that node.
-export function OpsDeck({ corpus, onQuery }: { corpus: { count: number; day: number }; onQuery: (q: string) => void }) {
+export function OpsDeck({ corpus, onQuery, stats }: { corpus: { count: number; day: number }; onQuery: (q: string) => void; stats?: GraphStats | null }) {
   return (
     <div className="page show" id="pg-ops">
       <PipelineStatus onQuery={onQuery} />
@@ -20,7 +21,7 @@ export function OpsDeck({ corpus, onQuery }: { corpus: { count: number; day: num
       <LivePipelineResult />
       <EpochRoadmap />
       <div className="grid two">
-        <Architecture />
+        <Architecture stats={stats} />
         <NextActions />
       </div>
       <The12PivotalPoints />

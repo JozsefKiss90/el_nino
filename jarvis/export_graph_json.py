@@ -21,8 +21,9 @@ It contacts no database — it reads the markdown exactly as ``sync_to_neo4j.py
 --dry-run`` does. Output: ``jarvis/frontend/graph.json``.
 
 Usage:
-    python jarvis/export_graph_json.py            # writes jarvis/frontend/graph.json
-    python jarvis/export_graph_json.py --stdout   # print to stdout instead
+    python jarvis/export_graph_json.py            # writes BOTH graph.json copies (frontend + hud)
+    python jarvis/export_graph_json.py --out x.json   # write a single explicit path
+    python jarvis/export_graph_json.py --stdout   # print pure JSON to stdout (diagnostics → stderr)
 """
 
 from __future__ import annotations
@@ -42,7 +43,17 @@ sys.path.insert(0, str(REPO_ROOT))
 
 import sync_to_neo4j as sync  # noqa: E402  (path set above)
 
-OUTPUT_PATH = Path(__file__).resolve().parent / "frontend" / "graph.json"
+# The TWO consumers of the offline projection: the standalone cytoscape explorer reads
+# frontend/graph.json, the React HUD reads hud/public/graph.json. A bare run writes BOTH from one
+# parse so the copies can never drift (PROJECTION_SYNC_PLAN.md Rec 1). --out overrides with a single
+# explicit path. The first entry is also the canonical path referenced elsewhere (e.g. the backend
+# /ask corpus, JARVIS_GRAPH_JSON default).
+_JARVIS_DIR = Path(__file__).resolve().parent
+DEFAULT_TARGETS = [
+    _JARVIS_DIR / "frontend" / "graph.json",
+    _JARVIS_DIR / "hud" / "public" / "graph.json",
+]
+OUTPUT_PATH = DEFAULT_TARGETS[0]  # canonical single path (kept for back-compat references)
 
 _DEFINITION_RE = re.compile(r"^## Definition\s*$", re.MULTILINE)
 _NEXT_H2_RE = re.compile(r"^## ", re.MULTILINE)
@@ -130,8 +141,9 @@ def build_graph() -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Export the dev_graph to graph.json")
-    parser.add_argument("--stdout", action="store_true", help="print to stdout instead of writing the file")
-    parser.add_argument("--out", type=Path, default=OUTPUT_PATH, help="output path (default jarvis/frontend/graph.json)")
+    parser.add_argument("--stdout", action="store_true", help="print pure JSON to stdout (diagnostics to stderr)")
+    parser.add_argument("--out", type=Path, default=None,
+                        help="write a single explicit path (default: BOTH frontend/ and hud/public/ copies)")
     args = parser.parse_args()
 
     graph = build_graph()
@@ -140,18 +152,24 @@ def main() -> int:
 
     if args.stdout:
         # write UTF-8 bytes directly — print() uses the console locale (cp1250 on Windows PowerShell)
-        # and would raise UnicodeEncodeError on the '→'/'·' characters in node summaries.
+        # and would raise UnicodeEncodeError on the '→'/'·' characters in node summaries. stdout stays
+        # PURE JSON (no trailing diagnostics) so callers can diff/pipe it — e.g. the pre-commit hook
+        # compares this against the committed graph.json (PROJECTION_SYNC_PLAN.md Rec 3).
         sys.stdout.buffer.write((payload + "\n").encode("utf-8"))
     else:
-        args.out.parent.mkdir(parents=True, exist_ok=True)
-        args.out.write_text(payload + "\n", encoding="utf-8")
-        print(f"Wrote {args.out} — {graph['meta']['node_count']} nodes, "
-              f"{graph['meta']['edge_count']} edges ({graph['meta']['skipped_edges']} skipped).")
+        targets = [args.out] if args.out is not None else DEFAULT_TARGETS
+        for out in targets:
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(payload + "\n", encoding="utf-8")
+            print(f"Wrote {out} — {graph['meta']['node_count']} nodes, "
+                  f"{graph['meta']['edge_count']} edges ({graph['meta']['skipped_edges']} skipped).",
+                  file=sys.stderr)
 
+    # Diagnostics ALWAYS go to stderr so --stdout output is a clean JSON document.
     if skipped:
-        print(f"\nSkipped {len(skipped)} unresolvable edge(s) (same as the Neo4j sync):")
+        print(f"\nSkipped {len(skipped)} unresolvable edge(s) (same as the Neo4j sync):", file=sys.stderr)
         for src, rel, tgt in skipped:
-            print(f"  {src} -[{rel}]-> {tgt}")
+            print(f"  {src} -[{rel}]-> {tgt}", file=sys.stderr)
     return 0
 
 

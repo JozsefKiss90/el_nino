@@ -1,4 +1,6 @@
 import { useCallback, useState } from "react";
+import { MatrixRain } from "./components/MatrixRain";
+import { graphStats } from "./data/graph";
 import { useClock } from "./hooks/useClock";
 import { useCorpusCounter } from "./hooks/useCorpusCounter";
 import { useGraph } from "./hooks/useGraph";
@@ -31,9 +33,15 @@ export default function App() {
 
   const time = clock.slice(11, 19) || "--:--:--";
   const date = clock.slice(0, 10) || "SYNCING…";
+  // Graph-derived counts for the chrome — drives the OPS architecture line + the GRAPH 3D tab title
+  // off the live projection instead of a hardcoded (and drifting) string (PROJECTION_SYNC_PLAN Rec 4).
+  const stats = graphStats(graph.graph);
+  const graphSize = stats ? `${stats.nodes} nodes / ${stats.edges} edges` : "live dev_graph";
 
   return (
-    <div className="wrap">
+    <>
+      <MatrixRain />
+      <div className="wrap">
       {/* ================= TOP HUD ================= */}
       <div className="hud">
         <div className="brand">
@@ -46,7 +54,7 @@ export default function App() {
           <span className="pill block"><i>⛔</i>LIVE EXEC BLOCKED</span>
         </div>
         <button className="theme-btn" onClick={toggle}>
-          THEME: {theme === "jarvis" ? "JARVIS" : "PIXEL"} ◄►
+          MODE: {theme === "jarvis" ? "SYNTHWAVE" : "MATRIX"} ◄►
         </button>
         <div className="clock"><b>{time}</b><span>{date} UTC</span></div>
       </div>
@@ -56,7 +64,7 @@ export default function App() {
         <button className={`tab ${tab === "main" ? "act" : ""}`} onClick={() => setTab("main")}>MAIN · JARVIS HUD</button>
         <button className={`tab ${tab === "ops" ? "act" : ""}`} onClick={() => setTab("ops")}>OPS DECK</button>
         <button className={`tab ${tab === "flow" ? "act" : ""}`} onClick={() => setTab("flow")}>SYSTEM FLOW</button>
-        <button className="tab off" title="Placeholder — wires to Neo4j dev_graph (140 nodes / 920 edges)">GRAPH 3D — OFFLINE</button>
+        <button className="tab off" title={`Placeholder — wires to Neo4j dev_graph (${graphSize})`}>GRAPH 3D — OFFLINE</button>
         <button className="tab off" title="Placeholder — unlocks after E2b scorecard ships">BACKTEST LAB — AWAITING E2b</button>
       </div>
 
@@ -79,7 +87,7 @@ export default function App() {
       {tab === "main" && (
         <MainHud graph={graph} corpus={corpus} pendingQuery={pendingQuery} onConsumed={consumeQuery} />
       )}
-      {tab === "ops" && <OpsDeck corpus={corpus} onQuery={raiseQuery} />}
+      {tab === "ops" && <OpsDeck corpus={corpus} onQuery={raiseQuery} stats={stats} />}
       {tab === "flow" && <SystemFlow graph={graph} onQuery={raiseQuery} />}
 
       {/* ================= FOOTER ================= */}
@@ -88,6 +96,7 @@ export default function App() {
         <span>TRUTH IS CONSTRAINED · CLAIMS ARE EARNED · EXECUTION IS FORBIDDEN UNTIL PROVEN SAFE</span>
         <span>GENERATED 2026-06-12 · MARKET INTEL: WEB PULL (APPROX.)</span>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

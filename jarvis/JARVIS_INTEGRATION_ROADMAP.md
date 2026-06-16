@@ -37,7 +37,7 @@ replace its hardcoded keyword KB with graph-grounded answering, then refactor th
 
 | Asset | Location | Status |
 |---|---|---|
-| Neo4j (158 nodes / 1106 edges) | Docker `elnino-neo4j`, bolt 7687 | ✅ live, `restart: unless-stopped` |
+| Neo4j (158 nodes / 1106 edges) | Docker `elnino-neo4j`, bolt 7688 (host) → 7687 (container) | ✅ live, `restart: unless-stopped` |
 | Read-only graph API | `jarvis/backend/app.py` | ✅ `/health /meta /node /neighbors /search /path /subgraph` |
 | Cytoscape graph explorer | `jarvis/frontend/index.html` | ✅ standalone; the GraphView building block |
 | `neo4j` MCP (read-only) | `.mcp.json` | ✅ connected; CLAUDE.md instructs proactive use |

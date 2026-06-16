@@ -67,6 +67,28 @@ function mapBridgeNode(n: BridgeNodeRaw): GraphData["nodes"][number] {
   };
 }
 
+/** Graph-derived facts for the dashboard chrome — so hardcoded node/edge/ADR strings stop drifting
+ * (PROJECTION_SYNC_PLAN.md Rec 4). Derived from the loaded projection; null until the graph loads,
+ * letting callers fall back to a static current value. */
+export interface GraphStats {
+  nodes: number;
+  edges: number;
+  adrRange: string; // e.g. "ADR-001–010"
+}
+
+export function graphStats(graph: GraphData | null): GraphStats | null {
+  if (!graph || graph.nodes.length === 0) return null;
+  const adrNums = graph.nodes
+    .map((n) => /^ADR-0*(\d+)$/.exec(n.id))
+    .filter((m): m is RegExpExecArray => m !== null)
+    .map((m) => Number(m[1]));
+  const pad = (x: number) => String(x).padStart(3, "0");
+  const adrRange = adrNums.length
+    ? `ADR-${pad(Math.min(...adrNums))}–${pad(Math.max(...adrNums))}`
+    : "";
+  return { nodes: graph.nodes.length, edges: graph.edges.length, adrRange };
+}
+
 /** Decide the active source: live bridge if healthy, else offline graph.json, else none. */
 export async function detectSource(): Promise<{ source: GraphSource; health: Health | null; graph: GraphData | null }> {
   const [health, graph] = await Promise.all([probeHealth(), loadGraphJson()]);

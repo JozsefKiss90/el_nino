@@ -12,6 +12,10 @@ Neo4j is **not** part of the trading runtime — it's a rebuildable mirror of th
 for traversal (dependency chains, impact, shortest path). The markdown stays canonical; you
 can `--clear` and re-sync any time.
 
+> **New here? Read [`CLAUDE.md`](CLAUDE.md) first** — the operations manual for this folder
+> (read-only-consumer rules, the projection chain, and how to keep everything in sync). The
+> hardening plan for the sync glue is [`PROJECTION_SYNC_PLAN.md`](PROJECTION_SYNC_PLAN.md).
+
 ---
 
 ## Prerequisites
@@ -23,13 +27,17 @@ can `--clear` and re-sync any time.
 **1 — start Neo4j (with APOC):**
 ```bash
 docker run -d --name elnino-neo4j \
-  -p 7474:7474 -p 7687:7687 \
+  -p 7475:7474 -p 7688:7687 \
   -e NEO4J_AUTH=neo4j/elnino_dev \
   -e NEO4J_PLUGINS='["apoc"]' \
   -v elnino_neo4j_data:/data \
   neo4j:5-community
 ```
-Wait ~15s, then confirm the Neo4j Browser is up at <http://localhost:7474> (login `neo4j` / `elnino_dev`).
+> Host ports are `7475` (browser) and `7688` (bolt) — remapped off Neo4j's defaults so this stack
+> coexists with the Knowledge-Graph-App `kg-dev-neo4j-1` container, which holds `7474`/`7687`. The
+> container still listens on `7474`/`7687` internally; only the host mapping differs.
+
+Wait ~15s, then confirm the Neo4j Browser is up at <http://localhost:7475> (login `neo4j` / `elnino_dev`).
 
 **2 — populate the graph from the dev_graph (one-time, repeatable):**
 ```bash
@@ -43,12 +51,25 @@ set NEO4J_PASSWORD=elnino_dev   &&   python sync_to_neo4j.py --clear
 > (override with the `DEV_GRAPH_DIR` env var). It prints node/edge counts by label at the end.
 
 > **Offline projection — regenerate `graph.json` alongside the Neo4j sync.** The JARVIS console can
-> answer from a server-less `frontend/graph.json` when the bridge is down. It is the *same* projection
-> as Neo4j (it reuses `sync_to_neo4j.py`'s parser — never hand-edit it). Regenerate it whenever the
-> dev_graph markdown changes, right after `sync_to_neo4j.py --clear`:
+> answer from a server-less `graph.json` when the bridge is down. It is the *same* projection as Neo4j
+> (it reuses `sync_to_neo4j.py`'s parser — never hand-edit it). There are **two copies** — the
+> standalone explorer reads `frontend/graph.json`, the React HUD reads `hud/public/graph.json` — and a
+> bare exporter run writes **both** from one parse, so they stay byte-identical:
 > ```bash
-> python jarvis/export_graph_json.py    # writes jarvis/frontend/graph.json (159 nodes / 1113 edges)
+> python jarvis/export_graph_json.py    # → frontend/graph.json AND hud/public/graph.json
 > ```
+> **Don't run the projections by hand** — use the one fail-fast re-projection command (Neo4j +
+> dry-run validate + both `graph.json`) so they can never half-run onto different markdown:
+> ```powershell
+> powershell -ExecutionPolicy Bypass -File jarvis\resync-devgraph.ps1   # -NoNeo4j to skip the DB
+> ```
+> A `pre-commit` hook (`jarvis/hooks/pre-commit`, install via `sh jarvis/hooks/install.sh`) blocks any
+> commit that changes `dev_graph/**.md` while leaving `graph.json` stale. See
+> [`PROJECTION_SYNC_PLAN.md`](PROJECTION_SYNC_PLAN.md) for the full design.
+>
+> **Note:** the HUD's node index and the backend `/ask` seed matcher read `graph.json`, *not* Neo4j —
+> even in live mode. Re-syncing Neo4j **alone does not refresh the HUD**; always rebuild both
+> projections together (and `npm run build` to re-bake `hud/dist/graph.json` for the served bundle).
 
 **3 — run the API:**
 ```bash
@@ -84,7 +105,7 @@ docker compose up -d api frontend
 ---
 
 ## Wiring it into the JARVIS console
-Your `el_nino_jarvis_interface.html` already lists *"Neo4j dev_graph · bolt://localhost:7687 ·
+Your `el_nino_jarvis_interface.html` already lists *"Neo4j dev_graph · bolt://localhost:7688 ·
 ◐ LOCAL ONLY"* as a status chip. Drop this snippet in just before `</body>` to flip it **LIVE**
 off the API health check and add a button that opens the explorer:
 

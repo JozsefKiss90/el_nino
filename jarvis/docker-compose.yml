@@ -20,12 +20,22 @@ services:
     container_name: elnino-neo4j
     restart: unless-stopped
     ports:
-      - "7474:7474"   # Neo4j Browser (http://localhost:7474)
-      - "7687:7687"   # Bolt
+      # Host ports remapped off the defaults (7474/7687) so this stack can run alongside the
+      # Knowledge-Graph-App's kg-dev-neo4j-1 container, which already holds 7474/7687 on the host.
+      # The container still listens on 7474/7687 internally, so the in-compose api service below
+      # (bolt://neo4j:7687) is unaffected — only the host-published ports change.
+      - "7475:7474"   # Neo4j Browser (http://localhost:7475)
+      - "7688:7687"   # Bolt (host) -> 7687 (container)
     environment:
       NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:-elnino_dev}"
       NEO4J_PLUGINS: '["apoc"]'
       NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+      # Bolt still LISTENS on 7687 inside the container (so the in-compose api's direct
+      # bolt://neo4j:7687 is unchanged), but the server ADVERTISES 7688 — the host-published
+      # port. The Neo4j Browser connects via the neo4j:// routing scheme and uses the advertised
+      # address, so without this it would route to host 7687 (the other kg-dev-neo4j-1 container).
+      # Direct bolt:// clients (sync script, MCP, api) ignore the advertised address.
+      NEO4J_server_bolt_advertised__address: "localhost:7688"
     volumes:
       - neo4j_data:/data
       - neo4j_logs:/logs

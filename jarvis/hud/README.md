@@ -38,9 +38,11 @@ npm run dev       # http://localhost:5173  (/api proxies to the bridge on :8000;
 npm run build     # tsc + vite → dist/   (Stage 5 mounts dist on the bridge → single URL)
 ```
 
-`public/graph.json` is the offline projection — regenerate it (and the Neo4j sync) from the
-dev_graph markdown with `python ../export_graph_json.py --out hud/public/graph.json`; never
-hand-edit it.
+`public/graph.json` is the offline projection — never hand-edit it. A bare `python
+../export_graph_json.py` (run from the repo root: `python jarvis/export_graph_json.py`) rewrites
+**both** this copy and `../frontend/graph.json` from the dev_graph markdown. Better: run the one
+re-projection command `jarvis/resync-devgraph.ps1` (Neo4j + both `graph.json`). See
+`../CLAUDE.md` and `../PROJECTION_SYNC_PLAN.md`.
 
 The HUD works **offline** (graph.json) with no server, and upgrades to **live** multi-hop traversal
 when the bridge's `GET /health` passes. The connector chips reflect the active source.

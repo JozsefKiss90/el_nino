@@ -1,0 +1,47 @@
+#!/bin/sh
+# pre-commit - guard the server-less graph.json projection against dev_graph drift.
+# (PROJECTION_SYNC_PLAN.md Rec 3.) Scoped to staged dev_graph/**.md changes. READ-ONLY: it never
+# touches Neo4j - a hook must not require a running DB - it only checks that the graph.json copies
+# you are committing match the current dev_graph markdown, and blocks the commit if they are stale.
+#
+# Install:  cp jarvis/hooks/pre-commit .git/hooks/pre-commit   (or run jarvis/hooks/install.sh)
+# Bypass once (discouraged):  git commit --no-verify
+
+# Act only when a dev_graph markdown file is part of this commit.
+changed=$(git diff --cached --name-only --diff-filter=ACMR -- 'dev_graph/*.md' 'dev_graph/**/*.md' 2>/dev/null)
+if [ -z "$changed" ]; then
+  exit 0
+fi
+
+repo=$(git rev-parse --show-toplevel)
+py="$repo/.venv/Scripts/python.exe"
+[ -x "$py" ] || py=python
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+# Regenerate the projection from the working-tree markdown. --stdout is pure JSON (diagnostics go to
+# stderr) and contacts no DB, exactly like sync_to_neo4j.py --dry-run.
+if ! "$py" "$repo/jarvis/export_graph_json.py" --stdout > "$tmp" 2>/dev/null; then
+  echo "pre-commit: export_graph_json.py failed - cannot validate graph.json. Fix the dev_graph parse." >&2
+  exit 1
+fi
+
+# Compare against the STAGED graph.json blobs (what the commit will contain). A copy that is missing
+# from the index, or stale, fails the check - forcing a regenerate + git add.
+stale=""
+for f in "jarvis/frontend/graph.json" "jarvis/hud/public/graph.json"; do
+  if ! git show ":$f" 2>/dev/null | cmp -s "$tmp" -; then
+    stale="$stale $f"
+  fi
+done
+
+if [ -n "$stale" ]; then
+  echo "pre-commit: dev_graph markdown changed but graph.json is STALE (or unstaged):$stale" >&2
+  echo "  Re-project, then stage the result:" >&2
+  echo "    powershell -ExecutionPolicy Bypass -File jarvis/resync-devgraph.ps1   # (-NoNeo4j to skip the DB)" >&2
+  echo "    git add$stale" >&2
+  exit 1
+fi
+
+exit 0

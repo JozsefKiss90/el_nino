@@ -29,7 +29,7 @@ export function ConnectorArray({ source, voiceBridgeOnline, uplinkAvailable }: P
     { n: "Embedded KB + Snapshot", s: "20 series · corpus → console", cls: "st-on", txt: "● LIVE" },
     { n: "Voice I/O", s: "Web Speech ⇄ local bridge (Whisper + Piper)", ...voice },
     { n: "Layer-2 Truth DB", s: "SQLite MCP", cls: "st-sb", txt: "◐ LOCAL ONLY" },
-    { n: "Neo4j dev_graph", s: "bolt://localhost:7687", ...neo4j },
+    { n: "Neo4j dev_graph", s: "bolt://localhost:7688", ...neo4j },
     { n: "mcpvault / Obsidian", s: "wiki read-write", cls: "st-sb", txt: "◐ LOCAL ONLY" },
     { n: "PostgreSQL", s: "graph sync target", cls: "st-sb", txt: "◐ LOCAL ONLY" },
     { n: "Google Drive", s: "doc search", cls: "st-dn", txt: "✕ NOT GRANTED" },

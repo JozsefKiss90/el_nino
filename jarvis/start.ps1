@@ -1,8 +1,8 @@
-# start.ps1 — bring up the JARVIS HUD at http://127.0.0.1:8000/
+# start.ps1 - bring up the JARVIS HUD at http://127.0.0.1:8000/
 #
 # The HUD is served by the read-only FastAPI bridge (it mounts the built React dist). This script
 # is idempotent: it ensures Neo4j is running, builds the HUD once if needed, then starts the bridge
-# in the foreground (Ctrl+C to stop). Nothing here auto-starts on reboot — run it when you want the UI.
+# in the foreground (Ctrl+C to stop). Nothing here auto-starts on reboot - run it when you want the UI.
 #
 #   Usage:   powershell -ExecutionPolicy Bypass -File C:\Code\el_nino\jarvis\start.ps1
 #   Then:    open http://127.0.0.1:8000/   in Chrome/Edge
@@ -16,7 +16,7 @@ $venvPy = Join-Path $repo ".venv\Scripts\python.exe"
 $backend = Join-Path $repo "jarvis\backend"
 $hud     = Join-Path $repo "jarvis\hud"
 
-if (-not (Test-Path $venvPy)) { throw "venv python not found at $venvPy — create it and pip install jarvis\backend\requirements.txt" }
+if (-not (Test-Path $venvPy)) { throw "venv python not found at $venvPy - create it and pip install jarvis\backend\requirements.txt" }
 
 # 1) Neo4j (the graph store). Normally already up via restart:unless-stopped; start it if stopped.
 $running = docker ps --filter "name=elnino-neo4j" --format "{{.Names}}"

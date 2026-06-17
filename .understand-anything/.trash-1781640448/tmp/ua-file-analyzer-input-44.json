@@ -1,0 +1,20 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "wiki/systems/Architecture Overview.md", "language": "markdown", "sizeLines": 160, "fileCategory": "docs"},
+    {"path": "wiki/systems/Claude-Assisted Trading Stack.md", "language": "markdown", "sizeLines": 220, "fileCategory": "docs"},
+    {"path": "wiki/systems/LLM Failure Modes in Trading.md", "language": "markdown", "sizeLines": 219, "fileCategory": "docs"},
+    {"path": "wiki/systems/Syndicate Squad Architecture.md", "language": "markdown", "sizeLines": 144, "fileCategory": "docs"},
+    {"path": "wiki/systems/Three-Layer Trading System.md", "language": "markdown", "sizeLines": 140, "fileCategory": "docs"},
+    {"path": "wiki/systems/Trading Engine Pipeline.md", "language": "markdown", "sizeLines": 184, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "wiki/systems/Architecture Overview.md": [],
+    "wiki/systems/Claude-Assisted Trading Stack.md": [],
+    "wiki/systems/LLM Failure Modes in Trading.md": [],
+    "wiki/systems/Syndicate Squad Architecture.md": [],
+    "wiki/systems/Three-Layer Trading System.md": [],
+    "wiki/systems/Trading Engine Pipeline.md": []
+  },
+  "neighborMap": {}
+}

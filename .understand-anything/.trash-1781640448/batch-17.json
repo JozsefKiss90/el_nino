@@ -1,0 +1,185 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/files/adapters.py.md",
+      "type": "document",
+      "name": "adapters.py.md",
+      "filePath": "dev_graph/files/adapters.py.md",
+      "summary": "Dev graph file node documenting adapters.py — the adapter layer that translates external data sources into internal domain models, implementing the snapshot ingestion interface.",
+      "tags": ["documentation", "data-model", "infrastructure", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/builder.py.md",
+      "type": "document",
+      "name": "builder.py.md",
+      "filePath": "dev_graph/files/builder.py.md",
+      "summary": "Dev graph file node documenting builder.py — responsible for constructing feature vectors and assembling structured data objects from raw inputs within the trading engine pipeline.",
+      "tags": ["documentation", "data-model", "factory", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (execution).md",
+      "type": "document",
+      "name": "config.py (execution).md",
+      "filePath": "dev_graph/files/config.py (execution).md",
+      "summary": "Dev graph file node documenting the execution subsystem's config.py, which defines Pydantic configuration models controlling trade execution parameters and guardrail thresholds.",
+      "tags": ["documentation", "configuration", "data-model", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (gold).md",
+      "type": "document",
+      "name": "config.py (gold).md",
+      "filePath": "dev_graph/files/config.py (gold).md",
+      "summary": "Dev graph file node documenting the gold benchmark subsystem's config.py, which supplies determinism and sweep parameters used in gold benchmark evaluation runs.",
+      "tags": ["documentation", "configuration", "data-model", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (paper_runtime).md",
+      "type": "document",
+      "name": "config.py (paper_runtime).md",
+      "filePath": "dev_graph/files/config.py (paper_runtime).md",
+      "summary": "Dev graph file node documenting the paper_runtime subsystem's config.py, which defines configuration models for paper-trading simulation timing, latency budgets, and replay settings.",
+      "tags": ["documentation", "configuration", "data-model", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (regime).md",
+      "type": "document",
+      "name": "config.py (regime).md",
+      "filePath": "dev_graph/files/config.py (regime).md",
+      "summary": "Dev graph file node documenting the regime classifier's config.py, which holds hyperparameter and threshold settings that control regime-detection logic and is justified by an ADR.",
+      "tags": ["documentation", "configuration", "data-model", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/consumer.py.md",
+      "type": "document",
+      "name": "consumer.py.md",
+      "filePath": "dev_graph/files/consumer.py.md",
+      "summary": "Dev graph file node documenting consumer.py — the event consumer that ingests tick or snapshot events from the Layer-2 producer and dispatches them into the processing pipeline.",
+      "tags": ["documentation", "event-handler", "middleware", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/decision_engine.py.md",
+      "type": "document",
+      "name": "decision_engine.py.md",
+      "filePath": "dev_graph/files/decision_engine.py.md",
+      "summary": "Dev graph file node documenting decision_engine.py — the core decision module that evaluates feature vectors against strategy rules to produce trade signals, implementing the decision interface.",
+      "tags": ["documentation", "service", "api-handler", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/engine.py (execution).md",
+      "type": "document",
+      "name": "engine.py (execution).md",
+      "filePath": "dev_graph/files/engine.py (execution).md",
+      "summary": "Dev graph file node documenting engine.py in the execution subsystem — the deterministic execution engine that simulates order placement and fill logic in a paper-trading context.",
+      "tags": ["documentation", "service", "middleware", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/engine.py.md",
+      "type": "document",
+      "name": "engine.py.md",
+      "filePath": "dev_graph/files/engine.py.md",
+      "summary": "Dev graph file node documenting the top-level engine.py — the central orchestration engine that coordinates feature building, regime classification, decision, and execution subsystems.",
+      "tags": ["documentation", "entry-point", "service", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/feature_builder.py.md",
+      "type": "document",
+      "name": "feature_builder.py.md",
+      "filePath": "dev_graph/files/feature_builder.py.md",
+      "summary": "Dev graph file node documenting feature_builder.py — computes technical and statistical feature vectors from raw market data snapshots, consuming snapshot schemas and implementing the feature-builder interface.",
+      "tags": ["documentation", "data-model", "utility", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/guardrail_engine.py.md",
+      "type": "document",
+      "name": "guardrail_engine.py.md",
+      "filePath": "dev_graph/files/guardrail_engine.py.md",
+      "summary": "Dev graph file node documenting guardrail_engine.py — enforces risk and safety constraints on proposed trade signals before they reach execution, implementing the Guardrail Pattern.",
+      "tags": ["documentation", "service", "validation", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (execution).md",
+      "type": "document",
+      "name": "models.py (execution).md",
+      "filePath": "dev_graph/files/models.py (execution).md",
+      "summary": "Dev graph file node documenting models.py in the execution subsystem, which defines Pydantic data models for order requests, fill records, and execution results.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (features).md",
+      "type": "document",
+      "name": "models.py (features).md",
+      "filePath": "dev_graph/files/models.py (features).md",
+      "summary": "Dev graph file node documenting models.py in the features subsystem, which defines immutable Pydantic feature vector schemas consumed downstream by the decision engine and regime classifier.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (gold).md",
+      "type": "document",
+      "name": "models.py (gold).md",
+      "filePath": "dev_graph/files/models.py (gold).md",
+      "summary": "Dev graph file node documenting models.py for the gold benchmark subsystem, which defines result schemas used to record and compare deterministic benchmark outputs.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (paper_runtime).md",
+      "type": "document",
+      "name": "models.py (paper_runtime).md",
+      "filePath": "dev_graph/files/models.py (paper_runtime).md",
+      "summary": "Dev graph file node documenting models.py for the paper_runtime subsystem, defining data models for simulated runtime state, positions, and latency tracking during paper-trading runs.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (regime).md",
+      "type": "document",
+      "name": "models.py (regime).md",
+      "filePath": "dev_graph/files/models.py (regime).md",
+      "summary": "Dev graph file node documenting models.py for the regime classifier, which defines Pydantic schemas representing market regime labels and classification confidence outputs.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (snapshot).md",
+      "type": "document",
+      "name": "models.py (snapshot).md",
+      "filePath": "dev_graph/files/models.py (snapshot).md",
+      "summary": "Dev graph file node documenting models.py for the snapshot subsystem, defining the canonical snapshot data structures shared across the feature builder and adapter layers.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (supervisor).md",
+      "type": "document",
+      "name": "models.py (supervisor).md",
+      "filePath": "dev_graph/files/models.py (supervisor).md",
+      "summary": "Dev graph file node documenting models.py for the supervisor subsystem, which defines data models for agent command/result messages and supervisor state tracking.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py.md",
+      "type": "document",
+      "name": "models.py.md",
+      "filePath": "dev_graph/files/models.py.md",
+      "summary": "Dev graph file node documenting the top-level models.py, which provides shared base Pydantic models and common type aliases used across all subsystems in the trading engine.",
+      "tags": ["documentation", "data-model", "schema-definition", "type-definition"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

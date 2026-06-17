@@ -1,0 +1,137 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/patterns/CQRS Pattern.md",
+      "type": "document",
+      "name": "CQRS Pattern.md",
+      "filePath": "dev_graph/patterns/CQRS Pattern.md",
+      "summary": "Dev graph pattern node (PAT-009) defining the CQRS structural pattern that separates the read model (analytical snapshots) from the write model (order execution), each independently optimized for query performance versus transactional correctness.",
+      "tags": ["documentation", "architecture-pattern", "cqrs", "schema-definition", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with frontmatter including canonical_id PAT-009, pattern_type structural, realized by Snapshot Assembly capability."
+    },
+    {
+      "id": "document:dev_graph/patterns/Context Assembly Pattern.md",
+      "type": "document",
+      "name": "Context Assembly Pattern.md",
+      "filePath": "dev_graph/patterns/Context Assembly Pattern.md",
+      "summary": "Dev graph pattern node (PAT-006) defining the Context Assembly structural pattern — a budget-aware, intent-aware, admissibility-checked retrieval and assembly process that composes information into a bounded context window for stateless agent invocations.",
+      "tags": ["documentation", "architecture-pattern", "context-engineering", "agent", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-006, realized by State Persistence and Context Assembly capabilities."
+    },
+    {
+      "id": "document:dev_graph/patterns/Evaluation Loop Pattern.md",
+      "type": "document",
+      "name": "Evaluation Loop Pattern.md",
+      "filePath": "dev_graph/patterns/Evaluation Loop Pattern.md",
+      "summary": "Dev graph pattern node (PAT-003) defining the Evaluation Loop behavioral pattern — a cyclical process where system output is measured, scored into a structured scorecard, and fed back to governance for promotion or evolution decisions.",
+      "tags": ["documentation", "architecture-pattern", "evaluation", "feedback-loop", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-003, pattern_type behavioral, realized by Performance Scoring and Upgrade Evaluation capabilities."
+    },
+    {
+      "id": "document:dev_graph/patterns/Event Sourcing Pattern.md",
+      "type": "document",
+      "name": "Event Sourcing Pattern.md",
+      "filePath": "dev_graph/patterns/Event Sourcing Pattern.md",
+      "summary": "Dev graph pattern node (PAT-005) defining the Event Sourcing behavioral pattern — state changes captured as an immutable, append-only event log where current state is derived by replaying history, applied to trade logging and position tracking.",
+      "tags": ["documentation", "architecture-pattern", "event-sourcing", "immutability", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-005, pattern_type behavioral, realized by Trade Logging and Position Tracking capabilities."
+    },
+    {
+      "id": "document:dev_graph/patterns/Guardrail Pattern.md",
+      "type": "document",
+      "name": "Guardrail Pattern.md",
+      "filePath": "dev_graph/patterns/Guardrail Pattern.md",
+      "summary": "Dev graph pattern node (PAT-002) defining the Guardrail governance pattern — a validation checkpoint of boolean predicates at system boundaries that ALL must pass before any action is permitted, applied to trading execution, promotion, and treasury decisions.",
+      "tags": ["documentation", "architecture-pattern", "governance", "validation", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-002, pattern_type governance, realized by four capabilities: Guardrail Enforcement, Promotion Validation, Stop-Loss Management, Order Management."
+    },
+    {
+      "id": "document:dev_graph/patterns/Multi-Agent Coordination Pattern.md",
+      "type": "document",
+      "name": "Multi-Agent Coordination Pattern.md",
+      "filePath": "dev_graph/patterns/Multi-Agent Coordination Pattern.md",
+      "summary": "Dev graph pattern node (PAT-010) defining the Multi-Agent Coordination pattern — multiple specialized agents organized into functional desks (Research, Strategy, Execution, Evaluator) under a single serialized orchestrator with no peer-to-peer communication.",
+      "tags": ["documentation", "architecture-pattern", "multi-agent", "orchestration", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-010, pattern_type coordination, realized by Team Orchestration capability."
+    },
+    {
+      "id": "document:dev_graph/patterns/Pipeline Pattern.md",
+      "type": "document",
+      "name": "Pipeline Pattern.md",
+      "filePath": "dev_graph/patterns/Pipeline Pattern.md",
+      "summary": "Dev graph pattern node (PAT-004) defining the Pipeline structural pattern — a linear sequence of processing stages where each stage has a single responsibility and defined input/output types, applied to the market data → features → snapshots → signals → orders flow.",
+      "tags": ["documentation", "architecture-pattern", "pipeline", "data-processing", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-004, pattern_type structural, realized by Market Scanning, Feature Engineering, Gold Decision Generation, and Order Management."
+    },
+    {
+      "id": "document:dev_graph/patterns/Promotion Pattern.md",
+      "type": "document",
+      "name": "Promotion Pattern.md",
+      "filePath": "dev_graph/patterns/Promotion Pattern.md",
+      "summary": "Dev graph pattern node (PAT-008) defining the Promotion governance pattern — a quantitative gate controlling lifecycle transitions from paper trading to live production, requiring measurable evidence against pre-defined thresholds plus human approval.",
+      "tags": ["documentation", "architecture-pattern", "governance", "promotion", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-008, pattern_type governance, realized by Promotion Validation capability."
+    },
+    {
+      "id": "document:dev_graph/patterns/Regime Classification Pattern.md",
+      "type": "document",
+      "name": "Regime Classification Pattern.md",
+      "filePath": "dev_graph/patterns/Regime Classification Pattern.md",
+      "summary": "Dev graph pattern node (PAT-011) defining the Regime Classification behavioral pattern — a deterministic semantic abstraction step between measurement and action using a priority-ordered rule table that maps feature vectors to exactly one enumerated regime label.",
+      "tags": ["documentation", "architecture-pattern", "regime-classification", "deterministic", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-011, evidenced by both design and code (src/regime/regime_classifier/taxonomy.py), composes Pipeline Pattern."
+    },
+    {
+      "id": "document:dev_graph/patterns/Supervisor Pattern.md",
+      "type": "document",
+      "name": "Supervisor Pattern.md",
+      "filePath": "dev_graph/patterns/Supervisor Pattern.md",
+      "summary": "Dev graph pattern node (PAT-001) defining the Supervisor coordination pattern — a meta-agent governing a team of specialized worker agents under resource constraints with evidence-based evaluation, institutional memory, and deterministic scoring.",
+      "tags": ["documentation", "architecture-pattern", "supervisor", "multi-agent", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-001, composes Multi-Agent Coordination Pattern and Treasury Approval Pattern; realized by Decision Making, Team Orchestration, and Upgrade Evaluation capabilities."
+    },
+    {
+      "id": "document:dev_graph/patterns/Treasury Approval Pattern.md",
+      "type": "document",
+      "name": "Treasury Approval Pattern.md",
+      "filePath": "dev_graph/patterns/Treasury Approval Pattern.md",
+      "summary": "Dev graph pattern node (PAT-007) defining the Treasury Approval governance pattern — a two-gate financial approval process (per-item spendLimit plus available balance) where failed attempts still deduct from budget and all deductions are recorded in an audit trail.",
+      "tags": ["documentation", "architecture-pattern", "governance", "treasury", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Governed dev_graph canonical node with canonical_id PAT-007, pattern_type governance, realized by Treasury Management capability."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/patterns/Supervisor Pattern.md",
+      "target": "document:dev_graph/patterns/Multi-Agent Coordination Pattern.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/patterns/Supervisor Pattern.md",
+      "target": "document:dev_graph/patterns/Treasury Approval Pattern.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/patterns/Regime Classification Pattern.md",
+      "target": "document:dev_graph/patterns/Pipeline Pattern.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

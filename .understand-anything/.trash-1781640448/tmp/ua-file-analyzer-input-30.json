@@ -1,0 +1,14 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html", "language": "html", "sizeLines": 1373, "fileCategory": "markup"},
+    {"path": "jarvis/frontend/graph.json", "language": "json", "sizeLines": 8571, "fileCategory": "config"},
+    {"path": "jarvis/frontend/index.html", "language": "html", "sizeLines": 175, "fileCategory": "markup"}
+  ],
+  "batchImportData": {
+    "jarvis/frontend/EL NINO JARVIS Cyberpunk.html": [],
+    "jarvis/frontend/graph.json": [],
+    "jarvis/frontend/index.html": []
+  },
+  "neighborMap": {}
+}

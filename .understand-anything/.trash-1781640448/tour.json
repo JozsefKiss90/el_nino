@@ -1,0 +1,92 @@
+[
+  {
+    "order": 1,
+    "title": "System Overview & Layer Model",
+    "description": "There is no README at the root, so start where the architecture is defined. el_nino is a three-layer trading system; this Layer Model formalizes L1 Data Ingestion, L2 Analysis/Strategy, and L3 Execution with their data contracts and failure modes, while the Context Map names the six bounded contexts (Data Pipeline, Trading Engine, Risk Control, Agent Runtime, Evaluation Loop, Supervisor Office) and the interfaces between them. Read these two together to get the map of the whole system before touching any code.",
+    "nodeIds": ["document:dev_graph/architecture/Layer Model.md", "document:dev_graph/architecture/Context Map.md", "document:final_strategic_review.md"]
+  },
+  {
+    "order": 2,
+    "title": "Data Ingestion: Snapshots",
+    "description": "The pipeline begins with data. el_nino is a Layer-3 consumer, so its truth arrives as immutable snapshots produced by the ingestion layer. The snapshot publisher reads the observations database, runs quality gates, computes a deterministic snapshot ID, and exports the JSON file; the query tool lets you inspect that SQLite database directly. Everything downstream is a pure function of one of these snapshots, which is what makes the engine replayable.",
+    "nodeIds": ["file:snapshot_sources/snapshot_publisher.py", "file:snapshot_sources/query_db.py", "config:snapshot_sources/latest_snapshot.json"],
+    "languageLesson": "Determinism by design: computing a content-addressed snapshot ID (a hash of the inputs) means the same observations always yield the same ID, so later stages can assert byte-identical replay and provenance."
+  },
+  {
+    "order": 3,
+    "title": "Snapshot Consumer & Features",
+    "description": "Now we enter the deterministic engine under src/. The snapshot consumer loads, validates, and gates a snapshot JSON before it is allowed into the pipeline; the feature builder then transforms that raw Snapshot into a typed FeatureVector using named specs for level and spread computations. The feature models.py is one of the most depended-upon files in the codebase (high fan-in), because the FeatureVector type is the contract every later stage reads from.",
+    "nodeIds": ["file:src/snapshot/snapshot_consumer/consumer.py", "file:src/features/feature_builder/feature_builder.py", "file:src/features/feature_builder/models.py"],
+    "languageLesson": "Python dataclasses model the domain as immutable typed records. A 'typed contract' file like models.py defines the vocabulary (FeatureVector) that flows between stages, decoupling producers from consumers."
+  },
+  {
+    "order": 4,
+    "title": "Regime Classification",
+    "description": "Building on the FeatureVector from Step 3, the regime classifier evaluates an ordered list of RegimeRules to decide which market regime currently holds, resolving the winning regime plus secondary and near-miss sets. The taxonomy enumerates the allowed regimes and the config supplies the rule thresholds. This is a deterministic, rules-first classifier by design (per the Deterministic Regime Taxonomy ADR) rather than a learned model, so its output is auditable.",
+    "nodeIds": ["file:src/regime/regime_classifier/regime_classifier.py", "file:src/regime/regime_classifier/taxonomy.py", "file:src/regime/regime_classifier/models.py"]
+  },
+  {
+    "order": 5,
+    "title": "Gold Decision Packet",
+    "description": "This is the heart of the engine. The decision builder assembles a GoldDecisionPacket from the FeatureVector (Step 3) and regime classification (Step 4), computing a trust score, a direction, guard references, and a deterministic packet ID. Its models.py has the highest fan-in in the entire codebase — the GoldDecisionPacket is the central artifact that risk, runtime, and execution all consume. The policy module encodes how confidence and direction are derived.",
+    "nodeIds": ["file:src/gold/decision_builder/builder.py", "file:src/gold/decision_builder/models.py", "file:src/gold/decision_builder/policy.py"],
+    "languageLesson": "A deterministic packet ID (hash of the packet's inputs) turns each decision into a content-addressed, idempotent record — two runs over the same snapshot produce the same packet ID, enabling the golden-replay tests in Step 11."
+  },
+  {
+    "order": 6,
+    "title": "Risk Guardrails",
+    "description": "Before any decision can act, it must clear risk. The GuardrailEngine composes configurable risk predicates — position size, max positions, daily loss cap, duplicate detection — into a sequential validation pipeline exposed through a single validate() method. This realizes the project's Guardrail Pattern: small boolean predicates, each independently testable, chained so that the first failure blocks the trade.",
+    "nodeIds": ["file:src/risk/guardrail_engine/guardrail_engine.py", "file:src/risk/guardrail_engine/predicates.py", "file:src/risk/guardrail_engine/models.py"]
+  },
+  {
+    "order": 7,
+    "title": "Paper-Trading Runtime",
+    "description": "The paper runtime is where decisions meet a stateful ledger. Its engine runs all required guard predicates against an incoming GoldDecisionPacket and emits a RuntimeDecisionRecord, while runtime.py orchestrates loading and persisting the JSON ledger and drives the engine in single-shot (run_once) and batch (run_sequence) modes. This layer admits or rejects packets without touching real money, recording every outcome for evaluation.",
+    "nodeIds": ["file:src/gold/paper_runtime/runtime.py", "file:src/gold/paper_runtime/engine.py", "file:src/gold/paper_runtime/predicates.py"]
+  },
+  {
+    "order": 8,
+    "title": "Supervisor Decision Engine",
+    "description": "Above the per-trade flow sits the supervisor, which makes portfolio-level allocation choices. The DecisionEngine evaluates upgrade options against an EvaluationScorecard and a treasury budget, scoring and ranking candidates to produce a DecisionPacket. The scoring module holds the ranking math. This realizes the Supervisor Pattern — a coordinating authority that decides which strategies earn more capital.",
+    "nodeIds": ["file:src/supervisor/decision_engine/decision_engine.py", "file:src/supervisor/decision_engine/scoring.py", "file:src/supervisor/decision_engine/models.py"]
+  },
+  {
+    "order": 9,
+    "title": "Execution Layer",
+    "description": "The pipeline terminates in execution. The execute() function applies an approved decision to a portfolio state, computing fills and returning an ExecutionRecord with full traceability; runtime.py orchestrates single-trade and batch-sequence execution including portfolio persistence and a final guardrail check. The __init__.py barrel re-exports the whole subsystem as one public API (notice its high fan-out — it pulls together adapters, config, engine, models, and runtime).",
+    "nodeIds": ["file:src/execution/engine.py", "file:src/execution/runtime.py", "file:src/execution/__init__.py"],
+    "languageLesson": "Python package __init__.py files act as 'barrel' modules: re-exporting submodule symbols gives callers a single clean import surface (from execution import ...) and hides internal file layout."
+  },
+  {
+    "order": 10,
+    "title": "Verification: Determinism & Benchmarks",
+    "description": "Because every stage is deterministic, the test suite can enforce that property directly. The end-to-end pipeline test verifies byte-identical replay, golden packet output, and snapshot-ID provenance flowing through the full decision chain. The gold benchmark runner checks policy determinism against real snapshots and sweeps a synthetic feature grid to characterize confidence coverage. These are the quality gates that make the engine trustworthy.",
+    "nodeIds": ["file:tests/gold/test_e2e_pipeline.py", "file:benchmarks/gold/run_gold_bench.py", "file:tests/risk/test_guardrail_engine.py"]
+  },
+  {
+    "order": 11,
+    "title": "JARVIS Backend & Neo4j Sync",
+    "description": "JARVIS is a separate, read-only intelligence layer over the system. The sync script parses every dev_graph Markdown node — frontmatter, wikilinks, relationship sections — and projects them into a Neo4j graph; export_graph_json produces a static graph.json projection from the same parser. The FastAPI backend then serves read-only graph endpoints (node, neighbors, search, shortest_path, subgraph) plus a Claude-powered GraphRAG /ask endpoint and voice STT/TTS.",
+    "nodeIds": ["file:sync_to_neo4j.py", "file:jarvis/export_graph_json.py", "file:jarvis/backend/app.py"]
+  },
+  {
+    "order": 12,
+    "title": "JARVIS HUD Frontend",
+    "description": "The React + TypeScript + Vite HUD visualizes that graph. main.tsx mounts the App inside a ThemeProvider; MainHud.tsx is the orchestrating page (highest fan-out in the frontend) that wires together every sub-panel, voice hooks, and the Claude uplink. The useGraph hook loads the knowledge graph from the live API with a static JSON fallback, types.ts defines the shared node/edge/message contracts, and GraphView renders it interactively with Cytoscape.",
+    "nodeIds": ["file:jarvis/hud/src/main.tsx", "file:jarvis/hud/src/pages/MainHud.tsx", "file:jarvis/hud/src/hooks/useGraph.ts", "file:jarvis/hud/src/data/types.ts", "file:jarvis/hud/src/components/GraphView.tsx"],
+    "languageLesson": "React custom hooks (useGraph) encapsulate stateful data-fetching logic behind a function, while a central types.ts gives the whole app one TypeScript source of truth for graph nodes and edges — the same contract role models.py plays on the Python side."
+  },
+  {
+    "order": 13,
+    "title": "Containerization & Build Config",
+    "description": "The docker-compose stack ties JARVIS together: Neo4j 5 (with APOC), the read-only FastAPI API on port 8000, and an nginx-served static frontend on 8080, with named volumes for a pre-seeded graph. The backend Dockerfile is a single-stage Python image launched via uvicorn, and pyproject.toml packages the seven src/ sub-packages and configures pytest and mypy. The JARVIS README is the operational quick-start for running the stack.",
+    "nodeIds": ["service:jarvis/docker-compose.yml", "service:jarvis/backend/Dockerfile", "config:pyproject.toml", "document:jarvis/README.md"],
+    "languageLesson": "docker-compose orchestrates multiple services with explicit ports and named volumes; the Neo4j data volume is pre-seeded so the graph API starts read-only against an existing projection rather than rebuilding it at boot."
+  },
+  {
+    "order": 14,
+    "title": "The Knowledge Substrate",
+    "description": "Finally, the design substrate that everything traces back to. dev_graph/CLAUDE.md is the authoritative operations manual for the Engineering Digital Twin: 24 node types, frontmatter schemas, canonical IDs, a 17-type relationship model, and an 11-check lint workflow. Its index catalogs every system, capability, module, ADR, pattern, and schema node — this is the ontology that the JARVIS sync (Step 11) projects into Neo4j and that records why each layer of the engine was built the way it is.",
+    "nodeIds": ["document:dev_graph/CLAUDE.md", "document:dev_graph/index.md", "document:wiki/index.md"]
+  }
+]

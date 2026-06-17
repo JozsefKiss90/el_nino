@@ -1,0 +1,68 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/predicates/Daily Loss Cap OK.md",
+      "type": "document",
+      "name": "Daily Loss Cap OK.md",
+      "filePath": "dev_graph/predicates/Daily Loss Cap OK.md",
+      "summary": "Dev graph predicate node (PRED-002) defining the Daily Loss Cap OK boolean condition: blocks new trading once realized daily P&L reaches or exceeds the configured loss cap, implemented as `daily_loss_cap_ok()` in the guardrail engine.",
+      "tags": ["documentation", "predicate", "risk-management", "guardrail", "trading-safety"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Duplicate OK.md",
+      "type": "document",
+      "name": "Duplicate OK.md",
+      "filePath": "dev_graph/predicates/Duplicate OK.md",
+      "summary": "Dev graph predicate node (PRED-006) defining the Duplicate OK L3 idempotency guard: ensures a snapshot_id has not already produced a Gold DecisionPacket, preventing replay-induced duplicate decisions in the paper-trading runtime.",
+      "tags": ["documentation", "predicate", "idempotency", "decision-pipeline", "paper-trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/predicates/Max Positions OK.md",
+      "type": "document",
+      "name": "Max Positions OK.md",
+      "filePath": "dev_graph/predicates/Max Positions OK.md",
+      "summary": "Dev graph predicate node (PRED-004) defining the Max Positions OK boolean condition: blocks new trades when the count of concurrently open positions reaches the configured maximum, bounding simultaneous exposure.",
+      "tags": ["documentation", "predicate", "risk-management", "guardrail", "position-sizing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Max Trades OK.md",
+      "type": "document",
+      "name": "Max Trades OK.md",
+      "filePath": "dev_graph/predicates/Max Trades OK.md",
+      "summary": "Dev graph predicate node (PRED-003) defining the Max Trades OK boolean condition: enforces the daily trade count cap (`MAX_TRADES_PER_DAY`) to prevent overtrading, implemented in the guardrail engine predicates module.",
+      "tags": ["documentation", "predicate", "risk-management", "guardrail", "trading-safety"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Operational OK.md",
+      "type": "document",
+      "name": "Operational OK.md",
+      "filePath": "dev_graph/predicates/Operational OK.md",
+      "summary": "Dev graph predicate node (PRED-007) defining the Operational OK L3 runtime guard: verifies instrument tradability, venue openness, and absence of halts or degradation before acting on a Gold DecisionPacket, keeping operational state out of the deterministic snapshot-local decision core.",
+      "tags": ["documentation", "predicate", "operational-readiness", "paper-trading", "decision-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/predicates/Position Size OK.md",
+      "type": "document",
+      "name": "Position Size OK.md",
+      "filePath": "dev_graph/predicates/Position Size OK.md",
+      "summary": "Dev graph predicate node (PRED-001) defining the Position Size OK boolean condition: enforces that a proposed trade size does not exceed the lesser of a percentage-of-equity cap and an absolute dollar cap, implemented as a pure function in the guardrail engine.",
+      "tags": ["documentation", "predicate", "risk-management", "guardrail", "position-sizing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Withdrawal Disabled.md",
+      "type": "document",
+      "name": "Withdrawal Disabled.md",
+      "filePath": "dev_graph/predicates/Withdrawal Disabled.md",
+      "summary": "Dev graph predicate node (PRED-005) defining the Withdrawal Disabled invariant: a fail-closed safety predicate that blocks all trades if withdrawals are ever enabled, enforcing that the autonomous agent can never initiate fund movement.",
+      "tags": ["documentation", "predicate", "safety-invariant", "guardrail", "risk-management"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

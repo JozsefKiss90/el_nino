@@ -1,0 +1,85 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/modules/Decision Engine.md",
+      "type": "document",
+      "name": "Decision Engine.md",
+      "filePath": "dev_graph/modules/Decision Engine.md",
+      "summary": "Dev-graph module node (MOD-002, canonical_id) documenting the Decision Engine — the algorithmic core of the Supervisor Office that scores upgrade options under treasury constraints and emits a deterministic decision packet, currently active and tested.",
+      "tags": ["documentation", "module-definition", "trading-engine", "decision-making", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed Engineering Digital Twin node with structured YAML frontmatter, canonical_id MOD-002, and a full Relationships section covering Implements, Consumes, Produces, Contains, Validated By, Realizes, Justified By, and Originates From."
+    },
+    {
+      "id": "document:dev_graph/modules/Execution.md",
+      "type": "document",
+      "name": "Execution.md",
+      "filePath": "dev_graph/modules/Execution.md",
+      "summary": "Dev-graph module node (MOD-008) documenting the Execution module — the first money-shaped Layer-3 module that consumes an ADMIT RuntimeDecisionRecord and produces an ExecutionRecord plus updated PortfolioState via a deterministic, replay-safe simulated-broker core.",
+      "tags": ["documentation", "module-definition", "execution-layer", "paper-trading", "dev-graph"],
+      "complexity": "complex",
+      "languageNotes": "Canonical module node with canonical_id MOD-008; documents ADR-011 bounded-context discipline, determinism boundary between engine.py (pure) and runtime.py (IO), and BENCH-004 byte-identical replay invariant."
+    },
+    {
+      "id": "document:dev_graph/modules/Feature Builder.md",
+      "type": "document",
+      "name": "Feature Builder.md",
+      "filePath": "dev_graph/modules/Feature Builder.md",
+      "summary": "Dev-graph module node (MOD-004) documenting the Feature Builder — a deterministic, snapshot-local transform that converts a validated Layer-2 Snapshot into a frozen, provenance-tagged feature vector (SCHEMA-009) with 14 macro features, currently active and tested.",
+      "tags": ["documentation", "module-definition", "feature-engineering", "deterministic", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Documents the FEATURE_REGISTRY pattern (name-sorted, pure-function specs mirroring the guardrail predicate-tuple convention) and the ADR-005 forbidden feature classes (no history, momentum, rolling windows)."
+    },
+    {
+      "id": "document:dev_graph/modules/Gold Decision Builder.md",
+      "type": "document",
+      "name": "Gold Decision Builder.md",
+      "filePath": "dev_graph/modules/Gold Decision Builder.md",
+      "summary": "Dev-graph module node (MOD-006) documenting the Gold Decision Builder — a deterministic, snapshot-local builder that turns a FeatureVector and RegimeClassification into a frozen GoldDecisionPacket (SCHEMA-011) encoding direction, confidence, uncertainty, and cited features for paper-trading consumption.",
+      "tags": ["documentation", "module-definition", "gold-signal", "decision-builder", "dev-graph"],
+      "complexity": "complex",
+      "languageNotes": "Documents ADR-008 confidence semantics (ordinal trust score, not a probability), the fail-closed INDETERMINATE→WATCH path, and the SHA-256 packet_id determinism invariant mirroring Snapshot.recompute_id."
+    },
+    {
+      "id": "document:dev_graph/modules/Guardrail Engine.md",
+      "type": "document",
+      "name": "Guardrail Engine.md",
+      "filePath": "dev_graph/modules/Guardrail Engine.md",
+      "summary": "Dev-graph module node (MOD-001) documenting the Guardrail Engine — the risk-control boundary that evaluates a conjunction of hard-limit trade-validation predicates and returns a single deterministic APPROVE/BLOCK decision, implemented as a fail-closed, synchronous external validator.",
+      "tags": ["documentation", "module-definition", "risk-control", "guardrail", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Earliest module in the registry (MOD-001); implements the Guardrail Pattern (external validator the trading agent cannot reason around) with short-circuit conjunction predicate evaluation and fail-closed config loading."
+    },
+    {
+      "id": "document:dev_graph/modules/Market Regime Classifier.md",
+      "type": "document",
+      "name": "Market Regime Classifier.md",
+      "filePath": "dev_graph/modules/Market Regime Classifier.md",
+      "summary": "Dev-graph module node (MOD-005) documenting the Market Regime Classifier — a deterministic, snapshot-local priority-ordered rule engine that classifies a FeatureVector into one of 12 market regime classes (SCHEMA-010), forming the third stage of the Layer-3 analysis pipeline.",
+      "tags": ["documentation", "module-definition", "regime-classification", "deterministic", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Documents the RULE_TABLE declarative priority-ordered structure mirroring MOD-004's FEATURE_REGISTRY; classifies into 12 regimes including INDETERMINATE as fail-closed terminal; governed by ADR-007 Deterministic Regime Taxonomy."
+    },
+    {
+      "id": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "document",
+      "name": "Paper-Trading Runtime.md",
+      "filePath": "dev_graph/modules/Paper-Trading Runtime.md",
+      "summary": "Dev-graph module node (MOD-007) documenting the Paper-Trading Runtime — the first stateful Layer-3 component that admits a pure GoldDecisionPacket against explicit runtime state (ledger + operational input), computes two stateful L3 guards, and emits a RuntimeDecisionRecord with ADMIT/HOLD/REJECT verdict.",
+      "tags": ["documentation", "module-definition", "paper-trading", "stateful", "dev-graph"],
+      "complexity": "complex",
+      "languageNotes": "Documents the wrap-never-enrich-in-place pattern (guard outcomes on the record, not the packet), the pure-core/IO-at-the-edge separation mirroring Execution (MOD-008), and 50 tests including BENCH-003 synthetic verdict sweep."
+    },
+    {
+      "id": "document:dev_graph/modules/Snapshot Consumer.md",
+      "type": "document",
+      "name": "Snapshot Consumer.md",
+      "filePath": "dev_graph/modules/Snapshot Consumer.md",
+      "summary": "Dev-graph module node (MOD-003) documenting the Snapshot Consumer — the Layer-2 to Layer-3 ingestion boundary that reads the truth snapshot and applies a fail-closed gate, ensuring no downstream stage ever re-implements the 'is this snapshot safe to use?' check.",
+      "tags": ["documentation", "module-definition", "snapshot-ingestion", "fail-closed", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "First in the Layer-3 data path (SCHEMA-001 → MOD-003 → features → decision); implements CQRS and Pipeline patterns; mode 2 DB-query replay deferred; uses stdlib-only zero-runtime-dependency constraint (ADR-003)."
+    }
+  ],
+  "edges": []
+}

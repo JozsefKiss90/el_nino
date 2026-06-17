@@ -1,0 +1,990 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/hud/src/assets/portrait.ts",
+      "type": "file",
+      "name": "portrait.ts",
+      "filePath": "jarvis/hud/src/assets/portrait.ts",
+      "summary": "Exports a static base64-encoded operator portrait image constant used by the OperatorPanel HUD component.",
+      "tags": ["utility", "asset", "component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/GraphView.tsx",
+      "type": "file",
+      "name": "GraphView.tsx",
+      "filePath": "jarvis/hud/src/components/GraphView.tsx",
+      "summary": "Renders an interactive Cytoscape.js graph visualization for the JARVIS knowledge graph, supporting node click callbacks and live data updates.",
+      "tags": ["component", "data-visualization", "event-handler"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Cytoscape.js via useRef and useEffect for imperative graph management within React."
+    },
+    {
+      "id": "function:jarvis/hud/src/components/GraphView.tsx:GraphView",
+      "type": "function",
+      "name": "GraphView",
+      "filePath": "jarvis/hud/src/components/GraphView.tsx",
+      "lineRange": [25, 93],
+      "summary": "React component that initializes and manages a Cytoscape graph instance, re-renders nodes/edges on graph prop changes, and fires onNodeClick on selection.",
+      "tags": ["component", "data-visualization", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "type": "file",
+      "name": "ConnectorArray.tsx",
+      "filePath": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "summary": "HUD panel displaying a status grid of JARVIS system connectors (voice bridge, Claude uplink) with online/offline indicators.",
+      "tags": ["component", "middleware", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/ConnectorArray.tsx:ConnectorArray",
+      "type": "function",
+      "name": "ConnectorArray",
+      "filePath": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "lineRange": [12, 53],
+      "summary": "Renders a grid of connection-status rows showing the source, voice bridge, and uplink availability for the JARVIS HUD.",
+      "tags": ["component", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "type": "file",
+      "name": "ConsolePanel.tsx",
+      "filePath": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "summary": "Interactive console panel for the JARVIS HUD providing message history, user input, voice toggle, and citation click-through.",
+      "tags": ["component", "event-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/ConsolePanel.tsx:ConsolePanel",
+      "type": "function",
+      "name": "ConsolePanel",
+      "filePath": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "lineRange": [33, 91],
+      "summary": "Full-featured chat console with scrollable message history, hint chip shortcuts, mic button, and voice toggle for the JARVIS HUD.",
+      "tags": ["component", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/ContextFeed.tsx",
+      "type": "file",
+      "name": "ContextFeed.tsx",
+      "filePath": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "summary": "Displays the contextual answer and related node links returned by a JARVIS knowledge graph query.",
+      "tags": ["component", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/ContextFeed.tsx:ContextFeed",
+      "type": "function",
+      "name": "ContextFeed",
+      "filePath": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "lineRange": [5, 34],
+      "summary": "Renders the answer text and a list of clickable related node links from a graph router response.",
+      "tags": ["component", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "type": "file",
+      "name": "DecisionCore.tsx",
+      "filePath": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "summary": "Animated orbital reactor visualization panel showing strategic orbit rings and core read-outs for the JARVIS decision engine state.",
+      "tags": ["component", "data-visualization", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/DecisionCore.tsx:DecisionCore",
+      "type": "function",
+      "name": "DecisionCore",
+      "filePath": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "lineRange": [13, 66],
+      "summary": "Renders the animated orbital rings and core metric readouts representing the JARVIS reactor decision state.",
+      "tags": ["component", "data-visualization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/EpochTrack.tsx",
+      "type": "file",
+      "name": "EpochTrack.tsx",
+      "filePath": "jarvis/hud/src/components/main/EpochTrack.tsx",
+      "summary": "Static HUD panel displaying epoch and session tracking information for the JARVIS interface.",
+      "tags": ["component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "type": "file",
+      "name": "KnowledgeGraph.tsx",
+      "filePath": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "summary": "HUD panel embedding the GraphView component to display the active knowledge graph subgraph with a query submission trigger.",
+      "tags": ["component", "data-visualization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph",
+      "type": "function",
+      "name": "KnowledgeGraph",
+      "filePath": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "lineRange": [7, 27],
+      "summary": "Renders the GraphView canvas and a query button allowing the user to explore the currently focused knowledge graph node.",
+      "tags": ["component", "data-visualization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "type": "file",
+      "name": "LiveMarketIntel.tsx",
+      "filePath": "jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "summary": "Static HUD panel placeholder for live market intelligence feed display in the JARVIS interface.",
+      "tags": ["component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "type": "file",
+      "name": "OperatorPanel.tsx",
+      "filePath": "jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "summary": "Displays the operator identity panel with a portrait image and designation label in the JARVIS HUD header.",
+      "tags": ["component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "type": "file",
+      "name": "StrategyStrip.tsx",
+      "filePath": "jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "summary": "Static HUD strip panel displaying the current active trading strategies for the JARVIS interface.",
+      "tags": ["component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/SystemVitals.tsx",
+      "type": "file",
+      "name": "SystemVitals.tsx",
+      "filePath": "jarvis/hud/src/components/main/SystemVitals.tsx",
+      "summary": "Renders a set of gauge metrics from the snapshot data source to display system performance vitals in the JARVIS HUD.",
+      "tags": ["component", "data-visualization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "type": "file",
+      "name": "TruthCorpus.tsx",
+      "filePath": "jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "summary": "Displays the truth corpus document list panel for the JARVIS HUD, showing available knowledge sources.",
+      "tags": ["component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/data/api.ts",
+      "type": "file",
+      "name": "api.ts",
+      "filePath": "jarvis/hud/src/data/api.ts",
+      "summary": "Exports the FastAPI backend base URL and graph JSON static URL constants used by all data-fetching hooks.",
+      "tags": ["configuration", "utility", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/data/router.test.ts",
+      "type": "file",
+      "name": "router.test.ts",
+      "filePath": "jarvis/hud/src/data/router.test.ts",
+      "summary": "Comprehensive unit test suite for the graph router module covering tokenization, normalization, node matching, neighborhood expansion, and answer composition.",
+      "tags": ["test", "utility", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:jarvis/hud/src/data/router.ts",
+      "type": "file",
+      "name": "router.ts",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "summary": "Client-side knowledge graph query router that indexes graph nodes, scores text matches, expands neighborhoods, and composes structured answers with citations.",
+      "tags": ["utility", "service", "api-handler"],
+      "complexity": "complex",
+      "languageNotes": "Pure TypeScript with no external dependencies; implements TF-IDF-style scoring and BFS neighborhood expansion over a flat graph object."
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:buildIndex",
+      "type": "function",
+      "name": "buildIndex",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [18, 22],
+      "summary": "Builds a lookup index mapping node IDs to graph nodes and flattening edge lists for fast retrieval.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:scoreNode",
+      "type": "function",
+      "name": "scoreNode",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [45, 61],
+      "summary": "Scores a graph node against a normalized query string using name, summary, tag, and token overlap heuristics.",
+      "tags": ["utility", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:matchNode",
+      "type": "function",
+      "name": "matchNode",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [64, 78],
+      "summary": "Finds and ranks graph nodes matching a free-text query using scoreNode, returning the top candidates.",
+      "tags": ["utility", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:neighborhood",
+      "type": "function",
+      "name": "neighborhood",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [81, 96],
+      "summary": "Expands a 1-hop neighborhood around a node ID, returning connected nodes and edges for subgraph visualization.",
+      "tags": ["utility", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:compose",
+      "type": "function",
+      "name": "compose",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [126, 165],
+      "summary": "Composes a natural-language answer string from a matched node and its neighborhood edges, collecting citation IDs.",
+      "tags": ["utility", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:route",
+      "type": "function",
+      "name": "route",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [185, 230],
+      "summary": "Primary routing function that matches a query against the graph index, expands results, composes answers, and returns a structured RouteResult.",
+      "tags": ["api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/router.ts:routeGraph",
+      "type": "function",
+      "name": "routeGraph",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [233, 235],
+      "summary": "Convenience wrapper that builds an index from a raw graph and immediately routes a query through it.",
+      "tags": ["utility", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/data/snapshot.ts",
+      "type": "file",
+      "name": "snapshot.ts",
+      "filePath": "jarvis/hud/src/data/snapshot.ts",
+      "summary": "Provides static mock snapshot data constants (SNAPSHOT, SERIES, ORBITS, CORE_READ, VITALS_GAUGES) used by HUD display components.",
+      "tags": ["data-model", "utility"],
+      "complexity": "moderate",
+      "languageNotes": "Pure data file with no functions; all exports are typed constant arrays used for UI demonstration."
+    },
+    {
+      "id": "file:jarvis/hud/src/data/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "jarvis/hud/src/data/types.ts",
+      "summary": "Defines the shared TypeScript interface and type definitions for JARVIS HUD data structures including graph nodes, edges, messages, and router results.",
+      "tags": ["type-definition", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "type": "file",
+      "name": "useClaudeUplink.ts",
+      "filePath": "jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "summary": "Custom React hook that manages HTTP communication with the JARVIS FastAPI Claude uplink endpoint, tracking availability and pending state.",
+      "tags": ["hook", "api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useClaudeUplink.ts:useClaudeUplink",
+      "type": "function",
+      "name": "useClaudeUplink",
+      "filePath": "jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "lineRange": [22, 58],
+      "summary": "React hook wrapping the /ask endpoint with availability probing, request state, and error handling for the Claude intelligence layer.",
+      "tags": ["hook", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "type": "file",
+      "name": "useGraph.ts",
+      "filePath": "jarvis/hud/src/hooks/useGraph.ts",
+      "summary": "Custom React hook that loads the knowledge graph from the backend (live API or static JSON fallback), builds a query index, and exposes the ask function.",
+      "tags": ["hook", "service", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useGraph.ts:useGraph",
+      "type": "function",
+      "name": "useGraph",
+      "filePath": "jarvis/hud/src/hooks/useGraph.ts",
+      "lineRange": [23, 72],
+      "summary": "Detects the data source, loads and indexes the graph on mount, then exposes a reactive ask callback that routes queries through the graph router.",
+      "tags": ["hook", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useReactorState.ts",
+      "type": "file",
+      "name": "useReactorState.ts",
+      "filePath": "jarvis/hud/src/hooks/useReactorState.ts",
+      "summary": "Lightweight React hook managing the JARVIS reactor animation state (idle, speak, listen) for the DecisionCore visualization.",
+      "tags": ["hook", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useReactorState.ts:useReactorState",
+      "type": "function",
+      "name": "useReactorState",
+      "filePath": "jarvis/hud/src/hooks/useReactorState.ts",
+      "lineRange": [6, 19],
+      "summary": "Returns idle, speak, and listen transition callbacks that drive the DecisionCore animation state machine.",
+      "tags": ["hook", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useSpeech.ts",
+      "type": "file",
+      "name": "useSpeech.ts",
+      "filePath": "jarvis/hud/src/hooks/useSpeech.ts",
+      "summary": "Custom React hook providing Web Speech API text-to-speech and speech recognition capabilities for the JARVIS voice interface.",
+      "tags": ["hook", "service", "event-handler"],
+      "complexity": "moderate",
+      "languageNotes": "Uses native browser SpeechSynthesis and SpeechRecognition APIs; strips citation tags before speaking."
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useSpeech.ts:useSpeech",
+      "type": "function",
+      "name": "useSpeech",
+      "filePath": "jarvis/hud/src/hooks/useSpeech.ts",
+      "lineRange": [23, 75],
+      "summary": "Provides speak, cancel, listen, and stopListening callbacks backed by browser SpeechSynthesis and SpeechRecognition with an external state callback.",
+      "tags": ["hook", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "type": "file",
+      "name": "useVoiceBridge.ts",
+      "filePath": "jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "summary": "Custom React hook that manages server-side voice processing via the JARVIS backend, including STT upload and TTS audio retrieval.",
+      "tags": ["hook", "api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useVoiceBridge.ts:useVoiceBridge",
+      "type": "function",
+      "name": "useVoiceBridge",
+      "filePath": "jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "lineRange": [14, 60],
+      "summary": "Polls the backend voice health endpoint on mount, then exposes stt and tts callbacks for audio blob upload and synthesis blob retrieval.",
+      "tags": ["hook", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "type": "file",
+      "name": "MainHud.tsx",
+      "filePath": "jarvis/hud/src/pages/MainHud.tsx",
+      "summary": "Top-level JARVIS HUD page component orchestrating all sub-panels, voice/speech hooks, Claude uplink, graph queries, and reactor state into a unified sci-fi interface.",
+      "tags": ["component", "entry-point", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/hud/src/pages/MainHud.tsx:MainHud",
+      "type": "function",
+      "name": "MainHud",
+      "filePath": "jarvis/hud/src/pages/MainHud.tsx",
+      "lineRange": [33, 190],
+      "summary": "Root HUD page that wires together all hooks and sub-components, routes queries through the graph or Claude uplink, and dispatches voice output.",
+      "tags": ["component", "entry-point", "event-handler"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:jarvis/hud/src/components/GraphView.tsx",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ContextFeed.tsx",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "target": "file:jarvis/hud/src/data/snapshot.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "target": "file:jarvis/hud/src/hooks/useReactorState.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "target": "file:jarvis/hud/src/components/GraphView.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "target": "file:jarvis/hud/src/assets/portrait.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/SystemVitals.tsx",
+      "target": "file:jarvis/hud/src/data/snapshot.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.test.ts",
+      "target": "file:jarvis/hud/src/data/router.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.test.ts",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "target": "file:jarvis/hud/src/data/api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "file:jarvis/hud/src/data/graph.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "file:jarvis/hud/src/data/router.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "target": "file:jarvis/hud/src/data/api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/ContextFeed.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/EpochTrack.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/SystemVitals.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/data/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useReactorState.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useSpeech.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/hud/src/components/GraphView.tsx",
+      "target": "function:jarvis/hud/src/components/GraphView.tsx:GraphView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/components/GraphView.tsx",
+      "target": "function:jarvis/hud/src/components/GraphView.tsx:GraphView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "target": "function:jarvis/hud/src/components/main/ConnectorArray.tsx:ConnectorArray",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "target": "function:jarvis/hud/src/components/main/ConnectorArray.tsx:ConnectorArray",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "target": "function:jarvis/hud/src/components/main/ConsolePanel.tsx:ConsolePanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "target": "function:jarvis/hud/src/components/main/ConsolePanel.tsx:ConsolePanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ContextFeed.tsx",
+      "target": "function:jarvis/hud/src/components/main/ContextFeed.tsx:ContextFeed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/ContextFeed.tsx",
+      "target": "function:jarvis/hud/src/components/main/ContextFeed.tsx:ContextFeed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "target": "function:jarvis/hud/src/components/main/DecisionCore.tsx:DecisionCore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "target": "function:jarvis/hud/src/components/main/DecisionCore.tsx:DecisionCore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "target": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "target": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:buildIndex",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:buildIndex",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:scoreNode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:scoreNode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:matchNode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:matchNode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:neighborhood",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:neighborhood",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:compose",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:compose",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:route",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:route",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:routeGraph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:routeGraph",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "target": "function:jarvis/hud/src/hooks/useClaudeUplink.ts:useClaudeUplink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "target": "function:jarvis/hud/src/hooks/useClaudeUplink.ts:useClaudeUplink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "function:jarvis/hud/src/hooks/useGraph.ts:useGraph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "function:jarvis/hud/src/hooks/useGraph.ts:useGraph",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useReactorState.ts",
+      "target": "function:jarvis/hud/src/hooks/useReactorState.ts:useReactorState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useReactorState.ts",
+      "target": "function:jarvis/hud/src/hooks/useReactorState.ts:useReactorState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useSpeech.ts",
+      "target": "function:jarvis/hud/src/hooks/useSpeech.ts:useSpeech",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useSpeech.ts",
+      "target": "function:jarvis/hud/src/hooks/useSpeech.ts:useSpeech",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "target": "function:jarvis/hud/src/hooks/useVoiceBridge.ts:useVoiceBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "target": "function:jarvis/hud/src/hooks/useVoiceBridge.ts:useVoiceBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "function:jarvis/hud/src/pages/MainHud.tsx:MainHud",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "function:jarvis/hud/src/pages/MainHud.tsx:MainHud",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/data/router.test.ts",
+      "target": "file:jarvis/hud/src/data/router.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:buildIndex",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "target": "function:jarvis/hud/src/data/router.ts:route",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useReactorState.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useSpeech.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/hud/src/pages/MainHud.tsx",
+      "target": "file:jarvis/hud/src/hooks/useGraph.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

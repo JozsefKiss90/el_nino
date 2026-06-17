@@ -1,0 +1,2073 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 24,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/hud/src/assets/portrait.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "exports": [
+        {
+          "name": "OPERATOR_PORTRAIT",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/GraphView.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 93,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "colorFor",
+          "startLine": 13,
+          "endLine": 16,
+          "params": [
+            "label"
+          ]
+        },
+        {
+          "name": "GraphView",
+          "startLine": 25,
+          "endLine": 93,
+          "params": [
+            "{ graph, focus, height, onNodeClick }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "GraphView",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "colorFor",
+          "callee": "Object.keys",
+          "lineNumber": 14
+        },
+        {
+          "caller": "GraphView",
+          "callee": "useRef",
+          "lineNumber": 26
+        },
+        {
+          "caller": "GraphView",
+          "callee": "useRef",
+          "lineNumber": 27
+        },
+        {
+          "caller": "GraphView",
+          "callee": "useRef",
+          "lineNumber": 28
+        },
+        {
+          "caller": "GraphView",
+          "callee": "useEffect",
+          "lineNumber": 32
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cytoscape",
+          "lineNumber": 34
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.on",
+          "lineNumber": 58
+        },
+        {
+          "caller": "GraphView",
+          "callee": "clickRef.current",
+          "lineNumber": 58
+        },
+        {
+          "caller": "GraphView",
+          "callee": "ev.target.id",
+          "lineNumber": 58
+        },
+        {
+          "caller": "GraphView",
+          "callee": "ev.target.data",
+          "lineNumber": 58
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.destroy",
+          "lineNumber": 61
+        },
+        {
+          "caller": "GraphView",
+          "callee": "useEffect",
+          "lineNumber": 67
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.elements().remove",
+          "lineNumber": 70
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.elements",
+          "lineNumber": 70
+        },
+        {
+          "caller": "GraphView",
+          "callee": "seen.has",
+          "lineNumber": 74
+        },
+        {
+          "caller": "GraphView",
+          "callee": "seen.add",
+          "lineNumber": 75
+        },
+        {
+          "caller": "GraphView",
+          "callee": "eles.push",
+          "lineNumber": 76
+        },
+        {
+          "caller": "GraphView",
+          "callee": "colorFor",
+          "lineNumber": 77
+        },
+        {
+          "caller": "GraphView",
+          "callee": "seen.has",
+          "lineNumber": 83
+        },
+        {
+          "caller": "GraphView",
+          "callee": "seen.has",
+          "lineNumber": 83
+        },
+        {
+          "caller": "GraphView",
+          "callee": "eles.push",
+          "lineNumber": 84
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.add",
+          "lineNumber": 87
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.layout({ name: \"cose\", animate: false, nodeRepulsion: 8000, idealEdgeLength: 60 } as cytoscape.LayoutOptions).run",
+          "lineNumber": 88
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.layout",
+          "lineNumber": 88
+        },
+        {
+          "caller": "GraphView",
+          "callee": "cy.fit",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 49,
+      "functions": [
+        {
+          "name": "ConnectorArray",
+          "startLine": 12,
+          "endLine": 53,
+          "params": [
+            "{ source, voiceBridgeOnline, uplinkAvailable }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConnectorArray",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConnectorArray",
+          "callee": "rows.map",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 84,
+      "functions": [
+        {
+          "name": "ConsolePanel",
+          "startLine": 33,
+          "endLine": 91,
+          "params": [
+            "{ messages, onSubmit, onCite, onMic, micActive, voiceOn, onToggleVoice }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConsolePanel",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConsolePanel",
+          "callee": "useState",
+          "lineNumber": 34
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "useRef",
+          "lineNumber": 35
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "useEffect",
+          "lineNumber": 37
+        },
+        {
+          "caller": "submit",
+          "callee": "val.trim",
+          "lineNumber": 43
+        },
+        {
+          "caller": "submit",
+          "callee": "setVal",
+          "lineNumber": 45
+        },
+        {
+          "caller": "submit",
+          "callee": "onSubmit",
+          "lineNumber": 46
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "messages.map",
+          "lineNumber": 56
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "m.citations.map",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "onCite",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "setVal",
+          "lineNumber": 74
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "submit",
+          "lineNumber": 75
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "HINTS.map",
+          "lineNumber": 85
+        },
+        {
+          "caller": "ConsolePanel",
+          "callee": "onSubmit",
+          "lineNumber": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "ContextFeed",
+          "startLine": 5,
+          "endLine": 34,
+          "params": [
+            "{ answer, onRelated }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ContextFeed",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ContextFeed",
+          "callee": "answer.related.map",
+          "lineNumber": 25
+        },
+        {
+          "caller": "ContextFeed",
+          "callee": "onRelated",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "DecisionCore",
+          "startLine": 13,
+          "endLine": 66,
+          "params": [
+            "{ reactorState, onReactorTap }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DecisionCore",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DecisionCore",
+          "callee": "ORBITS.map",
+          "lineNumber": 34
+        },
+        {
+          "caller": "DecisionCore",
+          "callee": "CORE_READ.map",
+          "lineNumber": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/EpochTrack.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 21,
+      "functions": [
+        {
+          "name": "EpochTrack",
+          "startLine": 3,
+          "endLine": 21,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EpochTrack",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "KnowledgeGraph",
+          "startLine": 7,
+          "endLine": 27,
+          "params": [
+            "{ answer, onQuery }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KnowledgeGraph",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "KnowledgeGraph",
+          "callee": "onQuery",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "LiveMarketIntel",
+          "startLine": 3,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "LiveMarketIntel",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "OperatorPanel",
+          "startLine": 5,
+          "endLine": 17,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "OperatorPanel",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 35,
+      "functions": [
+        {
+          "name": "StrategyStrip",
+          "startLine": 3,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "StrategyStrip",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/SystemVitals.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "SystemVitals",
+          "startLine": 5,
+          "endLine": 29,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SystemVitals",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SystemVitals",
+          "callee": "VITALS_GAUGES.map",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "TruthCorpus",
+          "startLine": 3,
+          "endLine": 18,
+          "params": [
+            "{ corpus }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TruthCorpus",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/data/api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 6,
+      "exports": [
+        {
+          "name": "API_BASE",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "GRAPH_JSON_URL",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/data/router.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 168,
+      "nonEmptyLines": 154,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/data/router.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 235,
+      "nonEmptyLines": 212,
+      "functions": [
+        {
+          "name": "buildIndex",
+          "startLine": 18,
+          "endLine": 22,
+          "params": [
+            "graph"
+          ]
+        },
+        {
+          "name": "normalize",
+          "startLine": 31,
+          "endLine": 33,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "tokenize",
+          "startLine": 35,
+          "endLine": 37,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "scoreNode",
+          "startLine": 45,
+          "endLine": 61,
+          "params": [
+            "nq",
+            "toks",
+            "n"
+          ]
+        },
+        {
+          "name": "matchNode",
+          "startLine": 64,
+          "endLine": 78,
+          "params": [
+            "idx",
+            "q"
+          ]
+        },
+        {
+          "name": "neighborhood",
+          "startLine": 81,
+          "endLine": 96,
+          "params": [
+            "idx",
+            "id"
+          ]
+        },
+        {
+          "name": "relName",
+          "startLine": 121,
+          "endLine": 123,
+          "params": [
+            "idx",
+            "id"
+          ]
+        },
+        {
+          "name": "compose",
+          "startLine": 126,
+          "endLine": 165,
+          "params": [
+            "idx",
+            "node",
+            "neigh"
+          ]
+        },
+        {
+          "name": "confClassOf",
+          "startLine": 167,
+          "endLine": 171,
+          "params": [
+            "confidence"
+          ]
+        },
+        {
+          "name": "route",
+          "startLine": 185,
+          "endLine": 230,
+          "params": [
+            "idx",
+            "q"
+          ]
+        },
+        {
+          "name": "routeGraph",
+          "startLine": 233,
+          "endLine": 235,
+          "params": [
+            "graph",
+            "q"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "buildIndex",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "normalize",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "tokenize",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "scoreNode",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "matchNode",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "neighborhood",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "compose",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "route",
+          "line": 185,
+          "isDefault": false
+        },
+        {
+          "name": "routeGraph",
+          "line": 233,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "buildIndex",
+          "callee": "byId.set",
+          "lineNumber": 20
+        },
+        {
+          "caller": "normalize",
+          "callee": "(s || \"\").toLowerCase().replace(/[^a-z0-9 ]/g, \" \").replace(/\\s+/g, \" \").trim",
+          "lineNumber": 32
+        },
+        {
+          "caller": "normalize",
+          "callee": "(s || \"\").toLowerCase().replace(/[^a-z0-9 ]/g, \" \").replace",
+          "lineNumber": 32
+        },
+        {
+          "caller": "normalize",
+          "callee": "(s || \"\").toLowerCase().replace",
+          "lineNumber": 32
+        },
+        {
+          "caller": "normalize",
+          "callee": "(s || \"\").toLowerCase",
+          "lineNumber": 32
+        },
+        {
+          "caller": "tokenize",
+          "callee": "normalize(s).split(\" \").filter",
+          "lineNumber": 36
+        },
+        {
+          "caller": "tokenize",
+          "callee": "normalize(s).split",
+          "lineNumber": 36
+        },
+        {
+          "caller": "tokenize",
+          "callee": "normalize",
+          "lineNumber": 36
+        },
+        {
+          "caller": "tokenize",
+          "callee": "STOP.has",
+          "lineNumber": 36
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "normalize",
+          "lineNumber": 46
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "normalize",
+          "lineNumber": 47
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "idn.replace",
+          "lineNumber": 48
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "normalize",
+          "lineNumber": 49
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nm.split",
+          "lineNumber": 50
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nq.includes",
+          "lineNumber": 52
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nq.replace(/ /g, \"\").includes",
+          "lineNumber": 53
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nq.replace",
+          "lineNumber": 53
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nq.includes",
+          "lineNumber": 54
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nmTok.includes",
+          "lineNumber": 56
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "nm.includes",
+          "lineNumber": 57
+        },
+        {
+          "caller": "scoreNode",
+          "callee": "sm.includes",
+          "lineNumber": 58
+        },
+        {
+          "caller": "matchNode",
+          "callee": "normalize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "matchNode",
+          "callee": "tokenize",
+          "lineNumber": 66
+        },
+        {
+          "caller": "matchNode",
+          "callee": "scoreNode",
+          "lineNumber": 71
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "idx.byId.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "nodes.set",
+          "lineNumber": 84
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "edges.push",
+          "lineNumber": 88
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "idx.byId.get",
+          "lineNumber": 89
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "idx.byId.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "nodes.set",
+          "lineNumber": 91
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "nodes.set",
+          "lineNumber": 92
+        },
+        {
+          "caller": "neighborhood",
+          "callee": "nodes.values",
+          "lineNumber": 95
+        },
+        {
+          "caller": "relName",
+          "callee": "idx.byId.get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "compose",
+          "callee": "node.evidence.join",
+          "lineNumber": 132
+        },
+        {
+          "caller": "compose",
+          "callee": "(outG[e.type] ??= []).push",
+          "lineNumber": 141
+        },
+        {
+          "caller": "compose",
+          "callee": "relName",
+          "lineNumber": 141
+        },
+        {
+          "caller": "compose",
+          "callee": "citeSeen.has",
+          "lineNumber": 142
+        },
+        {
+          "caller": "compose",
+          "callee": "citeSeen.add",
+          "lineNumber": 142
+        },
+        {
+          "caller": "compose",
+          "callee": "citeIds.push",
+          "lineNumber": 142
+        },
+        {
+          "caller": "compose",
+          "callee": "(inG[e.type] ??= []).push",
+          "lineNumber": 144
+        },
+        {
+          "caller": "compose",
+          "callee": "relName",
+          "lineNumber": 144
+        },
+        {
+          "caller": "compose",
+          "callee": "citeSeen.has",
+          "lineNumber": 145
+        },
+        {
+          "caller": "compose",
+          "callee": "citeSeen.add",
+          "lineNumber": 145
+        },
+        {
+          "caller": "compose",
+          "callee": "citeIds.push",
+          "lineNumber": 145
+        },
+        {
+          "caller": "compose",
+          "callee": "Object.keys",
+          "lineNumber": 150
+        },
+        {
+          "caller": "compose",
+          "callee": "parts.push",
+          "lineNumber": 151
+        },
+        {
+          "caller": "compose",
+          "callee": "t.toLowerCase().replace",
+          "lineNumber": 151
+        },
+        {
+          "caller": "compose",
+          "callee": "t.toLowerCase",
+          "lineNumber": 151
+        },
+        {
+          "caller": "compose",
+          "callee": "outG[t].join",
+          "lineNumber": 151
+        },
+        {
+          "caller": "compose",
+          "callee": "Object.keys",
+          "lineNumber": 153
+        },
+        {
+          "caller": "compose",
+          "callee": "parts.push",
+          "lineNumber": 154
+        },
+        {
+          "caller": "compose",
+          "callee": "inG[t].join",
+          "lineNumber": 154
+        },
+        {
+          "caller": "compose",
+          "callee": "parts.join",
+          "lineNumber": 157
+        },
+        {
+          "caller": "compose",
+          "callee": "citeIds.map",
+          "lineNumber": 160
+        },
+        {
+          "caller": "compose",
+          "callee": "idx.byId.get",
+          "lineNumber": 162
+        },
+        {
+          "caller": "route",
+          "callee": "matchNode",
+          "lineNumber": 186
+        },
+        {
+          "caller": "route",
+          "callee": "FALLBACK_SUGGESTIONS.map((s) => `\"${s}\"`).join",
+          "lineNumber": 194
+        },
+        {
+          "caller": "route",
+          "callee": "FALLBACK_SUGGESTIONS.map",
+          "lineNumber": 194
+        },
+        {
+          "caller": "route",
+          "callee": "neighborhood",
+          "lineNumber": 205
+        },
+        {
+          "caller": "route",
+          "callee": "compose",
+          "lineNumber": 206
+        },
+        {
+          "caller": "route",
+          "callee": "seen.has",
+          "lineNumber": 212
+        },
+        {
+          "caller": "route",
+          "callee": "seen.add",
+          "lineNumber": 213
+        },
+        {
+          "caller": "route",
+          "callee": "related.push",
+          "lineNumber": 214
+        },
+        {
+          "caller": "route",
+          "callee": "relName",
+          "lineNumber": 214
+        },
+        {
+          "caller": "route",
+          "callee": "(node.label || \"NODE\").toUpperCase",
+          "lineNumber": 221
+        },
+        {
+          "caller": "route",
+          "callee": "confClassOf",
+          "lineNumber": 225
+        },
+        {
+          "caller": "route",
+          "callee": "related.slice",
+          "lineNumber": 227
+        },
+        {
+          "caller": "routeGraph",
+          "callee": "route",
+          "lineNumber": 234
+        },
+        {
+          "caller": "routeGraph",
+          "callee": "buildIndex",
+          "lineNumber": 234
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/data/snapshot.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 85,
+      "exports": [
+        {
+          "name": "SNAPSHOT",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "SERIES",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "ORBITS",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "CORE_READ",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "VITALS_GAUGES",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/data/types.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "useClaudeUplink",
+          "startLine": 22,
+          "endLine": 58,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useClaudeUplink",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useClaudeUplink",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "useCallback",
+          "lineNumber": 26
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "setPending",
+          "lineNumber": 27
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "fetch",
+          "lineNumber": 29
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "JSON.stringify",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "setAvailable",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "setAvailable",
+          "lineNumber": 39
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "r.json",
+          "lineNumber": 42
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "setAvailable",
+          "lineNumber": 43
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "setAvailable",
+          "lineNumber": 50
+        },
+        {
+          "caller": "useClaudeUplink",
+          "callee": "setPending",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useGraph.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "useGraph",
+          "startLine": 23,
+          "endLine": 72,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useGraph",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useGraph",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useRef",
+          "lineNumber": 29
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useEffect",
+          "lineNumber": 31
+        },
+        {
+          "caller": "useGraph",
+          "callee": "(async () => {\n      const { source: src, health: h, graph } = await detectSource();\n      if (!alive) return;\n      setSource(src);\n      setHealth(h);\n      if (graph) {\n        idxRef.current = buildIndex(graph);\n        setGraph(graph);\n        setCounts({ n: graph.nodes.length, e: graph.edges.length });\n      } else if (h) {\n        setCounts({ n: h.node_count, e: h.edge_count });\n      }\n      setReady(true);\n    })",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useGraph",
+          "callee": "detectSource",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useGraph",
+          "callee": "setSource",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useGraph",
+          "callee": "setHealth",
+          "lineNumber": 37
+        },
+        {
+          "caller": "useGraph",
+          "callee": "buildIndex",
+          "lineNumber": 39
+        },
+        {
+          "caller": "useGraph",
+          "callee": "setGraph",
+          "lineNumber": 40
+        },
+        {
+          "caller": "useGraph",
+          "callee": "setCounts",
+          "lineNumber": 41
+        },
+        {
+          "caller": "useGraph",
+          "callee": "setCounts",
+          "lineNumber": 43
+        },
+        {
+          "caller": "useGraph",
+          "callee": "setReady",
+          "lineNumber": 45
+        },
+        {
+          "caller": "useGraph",
+          "callee": "useCallback",
+          "lineNumber": 52
+        },
+        {
+          "caller": "useGraph",
+          "callee": "route",
+          "lineNumber": 56
+        },
+        {
+          "caller": "useGraph",
+          "callee": "liveNeighborhood",
+          "lineNumber": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useReactorState.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "useReactorState",
+          "startLine": 6,
+          "endLine": 19,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useReactorState",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useReactorState",
+          "callee": "useState",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useReactorState",
+          "callee": "useCallback",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useReactorState",
+          "callee": "setState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useReactorState",
+          "callee": "useCallback",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useReactorState",
+          "callee": "setState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useReactorState",
+          "callee": "useCallback",
+          "lineNumber": 17
+        },
+        {
+          "caller": "useReactorState",
+          "callee": "setState",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useSpeech.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 75,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "useSpeech",
+          "startLine": 23,
+          "endLine": 75,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useSpeech",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useSpeech",
+          "callee": "useRef",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "useCallback",
+          "lineNumber": 31
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "text.replace(/\\[[A-Z]+-\\d+[^\\]]*\\]/g, \"\").replace",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "text.replace",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "window.speechSynthesis.cancel",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "onState",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "onState",
+          "lineNumber": 37
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "onState",
+          "lineNumber": 38
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "window.speechSynthesis.speak",
+          "lineNumber": 39
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "useCallback",
+          "lineNumber": 42
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "window.speechSynthesis.cancel",
+          "lineNumber": 43
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "useCallback",
+          "lineNumber": 46
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "t.trim",
+          "lineNumber": 57
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "onResult",
+          "lineNumber": 57
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "t.trim",
+          "lineNumber": 57
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "onState",
+          "lineNumber": 59
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "onState",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "rec.start",
+          "lineNumber": 61
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "useCallback",
+          "lineNumber": 66
+        },
+        {
+          "caller": "useSpeech",
+          "callee": "recRef.current?.stop",
+          "lineNumber": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "useVoiceBridge",
+          "startLine": 14,
+          "endLine": 60,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useVoiceBridge",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useVoiceBridge",
+          "callee": "useState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "useEffect",
+          "lineNumber": 17
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fetch(`${API_BASE}/voice/health`, { cache: \"no-store\" })\n      .then((r) => (r.ok ? r.json() : null))\n      .then((j) => {\n        if (alive) setOnline(!!(j && j.ok));\n      })\n      .catch",
+          "lineNumber": 19
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fetch(`${API_BASE}/voice/health`, { cache: \"no-store\" })\n      .then((r) => (r.ok ? r.json() : null))\n      .then",
+          "lineNumber": 19
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fetch(`${API_BASE}/voice/health`, { cache: \"no-store\" })\n      .then",
+          "lineNumber": 19
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fetch",
+          "lineNumber": 19
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "r.json",
+          "lineNumber": 20
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "setOnline",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "setOnline",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "useCallback",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fd.append",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fetch",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "r.json",
+          "lineNumber": 38
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "useCallback",
+          "lineNumber": 45
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "fetch",
+          "lineNumber": 47
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "JSON.stringify",
+          "lineNumber": 50
+        },
+        {
+          "caller": "useVoiceBridge",
+          "callee": "r.blob",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/pages/MainHud.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 190,
+      "nonEmptyLines": 177,
+      "functions": [
+        {
+          "name": "MainHud",
+          "startLine": 33,
+          "endLine": 190,
+          "params": [
+            "{\n  graph,\n  corpus,\n  pendingQuery,\n  onConsumed,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MainHud",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "MainHud",
+          "callee": "useState",
+          "lineNumber": 44
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useState",
+          "lineNumber": 45
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useState",
+          "lineNumber": 46
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useReactorState",
+          "lineNumber": 47
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useSpeech",
+          "lineNumber": 48
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useVoiceBridge",
+          "lineNumber": 49
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useClaudeUplink",
+          "lineNumber": 50
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useRef",
+          "lineNumber": 51
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useCallback",
+          "lineNumber": 53
+        },
+        {
+          "caller": "MainHud",
+          "callee": "voiceBridge.tts(text).then",
+          "lineNumber": 57
+        },
+        {
+          "caller": "MainHud",
+          "callee": "voiceBridge.tts",
+          "lineNumber": 57
+        },
+        {
+          "caller": "MainHud",
+          "callee": "URL.createObjectURL",
+          "lineNumber": 59
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.speak",
+          "lineNumber": 60
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 61
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 62
+        },
+        {
+          "caller": "MainHud",
+          "callee": "a.play().catch",
+          "lineNumber": 63
+        },
+        {
+          "caller": "MainHud",
+          "callee": "a.play",
+          "lineNumber": 63
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 63
+        },
+        {
+          "caller": "MainHud",
+          "callee": "speech.speak",
+          "lineNumber": 65
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.speak",
+          "lineNumber": 65
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 65
+        },
+        {
+          "caller": "MainHud",
+          "callee": "speech.speak",
+          "lineNumber": 69
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.speak",
+          "lineNumber": 69
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 69
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useCallback",
+          "lineNumber": 75
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setMessages",
+          "lineNumber": 77
+        },
+        {
+          "caller": "MainHud",
+          "callee": "uplink.ask",
+          "lineNumber": 81
+        },
+        {
+          "caller": "MainHud",
+          "callee": "up.subgraph.nodes.map",
+          "lineNumber": 83
+        },
+        {
+          "caller": "MainHud",
+          "callee": "up.citations.map",
+          "lineNumber": 84
+        },
+        {
+          "caller": "MainHud",
+          "callee": "byId.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "MainHud",
+          "callee": "up.subgraph.nodes.filter((n) => n.id !== up.citations[0]).map((n) => n.name).slice",
+          "lineNumber": 85
+        },
+        {
+          "caller": "MainHud",
+          "callee": "up.subgraph.nodes.filter((n) => n.id !== up.citations[0]).map",
+          "lineNumber": 85
+        },
+        {
+          "caller": "MainHud",
+          "callee": "up.subgraph.nodes.filter",
+          "lineNumber": 85
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setMessages",
+          "lineNumber": 98
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setAnswer",
+          "lineNumber": 99
+        },
+        {
+          "caller": "MainHud",
+          "callee": "speak",
+          "lineNumber": 100
+        },
+        {
+          "caller": "MainHud",
+          "callee": "graph.ask",
+          "lineNumber": 104
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setMessages",
+          "lineNumber": 106
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setAnswer",
+          "lineNumber": 107
+        },
+        {
+          "caller": "MainHud",
+          "callee": "speak",
+          "lineNumber": 108
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setMessages",
+          "lineNumber": 110
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useEffect",
+          "lineNumber": 118
+        },
+        {
+          "caller": "MainHud",
+          "callee": "submitRef.current",
+          "lineNumber": 120
+        },
+        {
+          "caller": "MainHud",
+          "callee": "onConsumed",
+          "lineNumber": 121
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useCallback",
+          "lineNumber": 125
+        },
+        {
+          "caller": "MainHud",
+          "callee": "speech.stopListening",
+          "lineNumber": 127
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 128
+        },
+        {
+          "caller": "MainHud",
+          "callee": "speech.listen",
+          "lineNumber": 132
+        },
+        {
+          "caller": "MainHud",
+          "callee": "submitRef.current",
+          "lineNumber": 132
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.listen",
+          "lineNumber": 132
+        },
+        {
+          "caller": "MainHud",
+          "callee": "reactor.idle",
+          "lineNumber": 132
+        },
+        {
+          "caller": "MainHud",
+          "callee": "useEffect",
+          "lineNumber": 137
+        },
+        {
+          "caller": "onKey",
+          "callee": "speech.cancel",
+          "lineNumber": 140
+        },
+        {
+          "caller": "onKey",
+          "callee": "speech.stopListening",
+          "lineNumber": 141
+        },
+        {
+          "caller": "onKey",
+          "callee": "reactor.idle",
+          "lineNumber": 142
+        },
+        {
+          "caller": "MainHud",
+          "callee": "window.addEventListener",
+          "lineNumber": 145
+        },
+        {
+          "caller": "MainHud",
+          "callee": "window.removeEventListener",
+          "lineNumber": 146
+        },
+        {
+          "caller": "MainHud",
+          "callee": "submit",
+          "lineNumber": 170
+        },
+        {
+          "caller": "MainHud",
+          "callee": "setVoiceOn",
+          "lineNumber": 174
+        }
+      ],
+      "metrics": {
+        "importCount": 17,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

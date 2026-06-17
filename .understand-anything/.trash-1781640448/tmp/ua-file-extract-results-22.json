@@ -1,0 +1,738 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/knowledge_assets/Agent Safety Principles.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 73,
+      "nonEmptyLines": 58,
+      "sections": [
+        {
+          "heading": "Agent Safety Principles",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/CQRS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 69,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "CQRS",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Engineering Implications",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Context Engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 68,
+      "nonEmptyLines": 53,
+      "sections": [
+        {
+          "heading": "Context Engineering",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Event Sourcing.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Event Sourcing",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Engineering Implications",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Guardrail Philosophy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Guardrail Philosophy",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 71,
+      "nonEmptyLines": 56,
+      "sections": [
+        {
+          "heading": "Layer 2 Design Principles",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Office Action Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Office Action Methodology",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Paper Trading Validation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Paper Trading Validation",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 72,
+      "nonEmptyLines": 56,
+      "sections": [
+        {
+          "heading": "Regime Taxonomy",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Stateless Agent Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 72,
+      "nonEmptyLines": 57,
+      "sections": [
+        {
+          "heading": "Stateless Agent Architecture",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 73,
+      "nonEmptyLines": 58,
+      "sections": [
+        {
+          "heading": "Supervisor Pattern Methodology",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Architectural Constraints",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    }
+  ]
+}

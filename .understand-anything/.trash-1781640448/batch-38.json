@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/concepts/EMA Crossover.md",
+      "type": "document",
+      "name": "EMA Crossover.md",
+      "filePath": "wiki/concepts/EMA Crossover.md",
+      "summary": "Wiki concept reference covering the Exponential Moving Average Crossover signal, including its definition, standard configuration (fast/slow period pairs), signal logic for bullish/bearish crossovers, calculation details, inputs/outputs, failure modes, and tradeoffs as a trend-following indicator used in the trading engine.",
+      "tags": ["documentation", "trading-signal", "technical-indicator", "ema", "trend-following"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/concepts/Options Trading.md",
+      "type": "document",
+      "name": "Options Trading.md",
+      "filePath": "wiki/concepts/Options Trading.md",
+      "summary": "Comprehensive wiki concept page explaining options trading fundamentals — call/put options, premium, strike price, expiration, selling options for income generation, and the insurance analogy — with architecture role context, implementation notes, open questions, and future extension points for the paper-trading system.",
+      "tags": ["documentation", "options-trading", "financial-concepts", "derivatives", "trading-strategy"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/concepts/Relative Volume Filter.md",
+      "type": "document",
+      "name": "Relative Volume Filter.md",
+      "filePath": "wiki/concepts/Relative Volume Filter.md",
+      "summary": "Wiki concept reference describing the Relative Volume Filter (RVOL) — a pre-trade liquidity gate that compares current volume to a rolling average and blocks entries when volume is below a configured threshold — covering configuration, signal logic, inputs, outputs, failure modes, and tradeoffs.",
+      "tags": ["documentation", "technical-indicator", "volume-filter", "trade-filter", "liquidity"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/concepts/VWAP.md",
+      "type": "document",
+      "name": "VWAP.md",
+      "filePath": "wiki/concepts/VWAP.md",
+      "summary": "Wiki concept reference for Volume Weighted Average Price (VWAP), detailing its intraday calculation (cumulative TPV / cumulative volume), three roles in the system as trend filter, entry signal via VWAP crossover, and safety gate, plus inputs, outputs, failure modes, implementation notes, and tradeoffs.",
+      "tags": ["documentation", "technical-indicator", "vwap", "trading-signal", "trend-filter"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

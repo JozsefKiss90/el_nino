@@ -1,0 +1,386 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/agents/Agent Self-Verification.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 86,
+      "nonEmptyLines": 60,
+      "sections": [
+        {
+          "heading": "Agent Self-Verification",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Self-Verification in Opus 4.6",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Verification Patterns",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Signal Verification",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Memory Verification",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Execution Verification",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "wiki/agents/Multi-Agent Orchestration.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 143,
+      "nonEmptyLines": 101,
+      "sections": [
+        {
+          "heading": "Multi-Agent Orchestration",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Orchestration Patterns",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Pattern 1: Supervisor-Worker (Syndicate Squad)",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Pattern 2: Sequential Routines (Implicit Multi-Agent)",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Pattern 3: Delegated Subagents",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Agent Roles (Syndicate Squad)",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Coordination Mechanisms",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 111
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 133
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "wiki/agents/Stateless Agent Recovery.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 87,
+      "nonEmptyLines": 61,
+      "sections": [
+        {
+          "heading": "Stateless Agent Recovery",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Recovery Protocol",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Insight",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Recovery Files (Priority Order)",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "wiki/agents/Supervisor Decision Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 134,
+      "nonEmptyLines": 98,
+      "sections": [
+        {
+          "heading": "Supervisor Decision Engine",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Decision Algorithm",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Scoring Function",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "Early Exit",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Treasury Mechanics",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Multi-Round Evolution",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    }
+  ]
+}

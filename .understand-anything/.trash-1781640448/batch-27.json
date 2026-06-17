@@ -1,0 +1,164 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/systems/Agent Runtime.md",
+      "type": "document",
+      "name": "Agent Runtime.md",
+      "filePath": "dev_graph/systems/Agent Runtime.md",
+      "summary": "Dev-graph system node (SYS-004) defining the Agent Runtime bounded context, which provides state persistence, context window assembly, and trade logging infrastructure via the Wake-Execute-Sleep lifecycle. Serves as the lateral memory service consumed by all other systems.",
+      "tags": ["documentation", "architecture", "system-boundary", "dev-graph", "agent-infrastructure"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed system node following dev_graph schema v2.2.0 with canonical_id SYS-004 and relationship sections structured for Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/systems/Data Pipeline.md",
+      "type": "document",
+      "name": "Data Pipeline.md",
+      "filePath": "dev_graph/systems/Data Pipeline.md",
+      "summary": "Dev-graph system node (SYS-001) defining the Data Pipeline bounded context, responsible for market data ingestion, feature engineering, and deterministic Layer 2 Snapshot assembly — the single source of truth consumed by all downstream trading systems.",
+      "tags": ["documentation", "architecture", "system-boundary", "dev-graph", "data-pipeline"],
+      "complexity": "moderate",
+      "languageNotes": "Canonical system node with upstream dependencies on Alpaca, TradingView, and Perplexity external APIs; downstream contract expressed through the Snapshot API (INT-001)."
+    },
+    {
+      "id": "document:dev_graph/systems/Evaluation Loop.md",
+      "type": "document",
+      "name": "Evaluation Loop.md",
+      "filePath": "dev_graph/systems/Evaluation Loop.md",
+      "summary": "Dev-graph system node (SYS-005) defining the Evaluation Loop bounded context, which closes the feedback loop by scoring trading performance, validating promotion readiness against quantitative thresholds, and managing the system lifecycle state machine.",
+      "tags": ["documentation", "architecture", "system-boundary", "dev-graph", "evaluation"],
+      "complexity": "moderate",
+      "languageNotes": "Connects Agent Runtime (upstream trade data source) to Supervisor Office (downstream recipient of evaluation scorecards and promotion decisions)."
+    },
+    {
+      "id": "document:dev_graph/systems/Risk Control.md",
+      "type": "document",
+      "name": "Risk Control.md",
+      "filePath": "dev_graph/systems/Risk Control.md",
+      "summary": "Dev-graph system node (SYS-003) defining the Risk Control bounded context, a separate guardrail enforcement layer that validates every trade request from the Trading Engine before it can reach broker APIs, ensuring hard limits cannot be bypassed by agent logic.",
+      "tags": ["documentation", "architecture", "system-boundary", "dev-graph", "risk-management"],
+      "complexity": "moderate",
+      "languageNotes": "Explicitly designed as an external validation boundary because the LLM agent cannot self-enforce constraints; sits between the Trading Engine and broker APIs."
+    },
+    {
+      "id": "document:dev_graph/systems/Supervisor Office.md",
+      "type": "document",
+      "name": "Supervisor Office.md",
+      "filePath": "dev_graph/systems/Supervisor Office.md",
+      "summary": "Dev-graph system node (SYS-006) defining the Supervisor Office bounded context, the meta-governance system that manages upgrade evaluation, treasury budget allocation, team orchestration, and the Office Action Loop state machine governing how the trading system evolves.",
+      "tags": ["documentation", "architecture", "system-boundary", "dev-graph", "meta-governance"],
+      "complexity": "moderate",
+      "languageNotes": "Implements the Syndicate Squad architecture where the supervisor is the product; operates on a longer cadence than the trading pipeline and manages four capabilities (CAP-015 through CAP-018)."
+    },
+    {
+      "id": "document:dev_graph/systems/Trading Engine.md",
+      "type": "document",
+      "name": "Trading Engine.md",
+      "filePath": "dev_graph/systems/Trading Engine.md",
+      "summary": "Dev-graph system node (SYS-002) defining the Trading Engine bounded context, the central execution layer that transforms Layer 2 snapshots into trading decisions, routes orders through broker APIs, manages position lifecycle, and enforces stop-loss rules.",
+      "tags": ["documentation", "architecture", "system-boundary", "dev-graph", "execution-engine"],
+      "complexity": "moderate",
+      "languageNotes": "Five active capabilities including the newer Gold Decision Generation (CAP-020) which supersedes the deprecated Signal Generation (CAP-004); interfaces with Data Pipeline, Risk Control, Supervisor Office, Agent Runtime, and broker APIs."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/systems/Evaluation Loop.md",
+      "target": "document:dev_graph/systems/Agent Runtime.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Supervisor Office.md",
+      "target": "document:dev_graph/systems/Evaluation Loop.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Supervisor Office.md",
+      "target": "document:dev_graph/systems/Agent Runtime.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Trading Engine.md",
+      "target": "document:dev_graph/systems/Data Pipeline.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Trading Engine.md",
+      "target": "document:dev_graph/systems/Risk Control.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Trading Engine.md",
+      "target": "document:dev_graph/systems/Supervisor Office.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Trading Engine.md",
+      "target": "document:dev_graph/systems/Agent Runtime.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Data Pipeline.md",
+      "target": "document:dev_graph/systems/Trading Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Agent Runtime.md",
+      "target": "document:dev_graph/systems/Trading Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Agent Runtime.md",
+      "target": "document:dev_graph/systems/Evaluation Loop.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Agent Runtime.md",
+      "target": "document:dev_graph/systems/Supervisor Office.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Agent Runtime.md",
+      "target": "document:dev_graph/systems/Data Pipeline.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Risk Control.md",
+      "target": "document:dev_graph/systems/Trading Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/systems/Evaluation Loop.md",
+      "target": "document:dev_graph/systems/Supervisor Office.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

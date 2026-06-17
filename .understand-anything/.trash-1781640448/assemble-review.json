@@ -1,0 +1,17 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 4,
+  "edgesRestored": 4,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 2,
+  "complexityRemapped": 0,
+  "notes": [
+    "Step 1 (Fixed section sanity): the merge report's single correction (1 tested_by edge direction flip) is reasonable and not systemic. Node ID/complexity corrections were not flagged as heavy; complexity in the assembled graph is well-balanced (simple 250 / moderate 246 / complex 115) and all values were valid enums. No upstream-pattern concerns.",
+    "Step 2 (dropped calls edges): recovered 4 function nodes for sync_to_neo4j.py (parse_frontmatter L128-136, scan_dev_graph L254-263, build_name_index L266-276, resolve_target L279-286). batch-46 analyzed sync_to_neo4j.py but only emitted 4 of its functions and missed these 4; export_graph_json.py (batch-45) emitted calls edges to them, which the merge script then dropped as dangling. All 4 are real module-level exported functions (significance filter passes) and export_graph_json.py line 44 imports sync_to_neo4j and lines 88/89/95/116 call them, so the calls edges are grounded. Restored all 4 calls edges plus 4 contains edges (file:sync_to_neo4j.py -> each function) to satisfy the contains-per-function convention.",
+    "Step 2 (invalid produces edges): the 2 produces edges (file:snapshot_sources/snapshot_publisher.py -> config:snapshot_sources/latest_snapshot.json and -> config:snapshot_sources/snapshot.json) use a type not in the file-analyzer schema. snapshot_publisher.py does write these JSON artifacts (confirmed in source), but no valid edge type expresses code-generates-data-artifact; deploys/migrates/defines_schema do not fit and depends_on would invert the direction. Remapped both to related (weight 0.5) as the closest non-speculative valid type, with a description noting the original semantics.",
+    "Step 2: no nodes with missing id and no unknown node types or unknown complexity values were present in the assembled graph; nothing else required recovery.",
+    "Step 3 (cross-batch import edges): all 149 imports edges implied by importMap (149 import relationships across 429 entries; 280 entries import nothing) are already present in the assembled graph. 0 missing, matching the merge script's recovery pass. No speculative edges added.",
+    "Post-fix validation: 615 nodes, 644 edges. No duplicate node ids, no nodes missing id, no dangling edges, no invalid edge types, no invalid node types, no invalid complexity values.",
+    "Remaining concern (data quality, not fixed): batch-46 under-extracted sync_to_neo4j.py functions (4 of ~12 module-level defs). This is an upstream file-analyzer omission; the cross-batch calls edges happened to surface 4 of the missing ones, but other significant functions in that file (e.g. parse_relationship_sections, build_node_cypher, build_rel_cypher) remain absent as nodes because nothing references them cross-batch. Not recovered here since no edge or importMap evidence backs them and the spec scopes recovery to edge/importMap-backed nodes."
+  ]
+}

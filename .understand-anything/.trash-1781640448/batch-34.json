@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "type": "config",
+      "name": "latest_snapshot_pass.json",
+      "filePath": "tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "summary": "Test fixture representing a fully passing snapshot output from the gold engine, with verdict PASS, all guards green, and complete tier1/tier2 series data including quality_summary and values_by_group.",
+      "tags": ["test", "fixture", "snapshot", "data", "configuration"],
+      "complexity": "complex",
+      "languageNotes": "Gold-engine snapshot schema with 21 top-level keys including guards, revision_risk_summary, tier1_series, tier2_series, quality_summary, values_by_group, and values — used by snapshot regression tests to verify engine output shape and content."
+    },
+    {
+      "id": "config:tests/snapshot/fixtures/snapshot_fail.json",
+      "type": "config",
+      "name": "snapshot_fail.json",
+      "filePath": "tests/snapshot/fixtures/snapshot_fail.json",
+      "summary": "Test fixture representing a failing snapshot output with verdict FAIL and guards data_ok and freshness_ok set to false, used to validate that snapshot tests correctly detect and report bad engine outputs.",
+      "tags": ["test", "fixture", "snapshot", "failure-case", "configuration"],
+      "complexity": "complex",
+      "languageNotes": "Same schema as latest_snapshot_pass.json but with verdict FAIL and guards data_ok=false, freshness_ok=false — exercises the negative path in snapshot regression testing."
+    },
+    {
+      "id": "config:tests/snapshot/fixtures/snapshot_forced.json",
+      "type": "config",
+      "name": "snapshot_forced.json",
+      "filePath": "tests/snapshot/fixtures/snapshot_forced.json",
+      "summary": "Test fixture representing a forced snapshot output where verdict is PASS but the forced flag is true, used to test the supervisor-veto bypass and forced-snapshot handling in the gold engine.",
+      "tags": ["test", "fixture", "snapshot", "forced-mode", "configuration"],
+      "complexity": "complex",
+      "languageNotes": "Identical schema to other snapshot fixtures but with forced=true and guards.forced=true, exercising the forced-override execution path through the snapshot guard logic."
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "target": "config:tests/snapshot/fixtures/snapshot_fail.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "target": "config:tests/snapshot/fixtures/snapshot_forced.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

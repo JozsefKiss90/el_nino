@@ -1,0 +1,112 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": "src/execution/__init__.py",
+      "language": "python",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/adapters.py",
+      "language": "python",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/config.py",
+      "language": "python",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/engine.py",
+      "language": "python",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/models.py",
+      "language": "python",
+      "sizeLines": 328,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/runtime.py",
+      "language": "python",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/__init__.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/guardrail_engine.py",
+      "language": "python",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/models.py",
+      "language": "python",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/predicates.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "src/execution/__init__.py": [
+      "src/execution/adapters.py",
+      "src/execution/config.py",
+      "src/execution/engine.py",
+      "src/execution/models.py",
+      "src/execution/runtime.py"
+    ],
+    "src/execution/adapters.py": [
+      "src/execution/config.py",
+      "src/execution/models.py",
+      "src/gold/decision_builder/models.py"
+    ],
+    "src/execution/config.py": [],
+    "src/execution/engine.py": [
+      "src/execution/adapters.py",
+      "src/execution/config.py",
+      "src/execution/models.py",
+      "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/models.py"
+    ],
+    "src/execution/models.py": [
+      "src/gold/decision_builder/models.py"
+    ],
+    "src/execution/runtime.py": [
+      "src/execution/adapters.py",
+      "src/execution/config.py",
+      "src/execution/engine.py",
+      "src/execution/models.py",
+      "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/models.py",
+      "src/risk/guardrail_engine/guardrail_engine.py",
+      "src/risk/guardrail_engine/models.py"
+    ],
+    "src/risk/guardrail_engine/__init__.py": [
+      "src/risk/guardrail_engine/guardrail_engine.py",
+      "src/risk/guardrail_engine/models.py"
+    ],
+    "src/risk/guardrail_engine/guardrail_engine.py": [
+      "src/risk/guardrail_engine/models.py",
+      "src/risk/guardrail_engine/predicates.py"
+    ],
+    "src/risk/guardrail_engine/models.py": [],
+    "src/risk/guardrail_engine/predicates.py": [
+      "src/risk/guardrail_engine/models.py"
+    ]
+  }
+}

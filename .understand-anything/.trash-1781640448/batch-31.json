@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "id": "document:jarvis/hud/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "jarvis/hud/README.md",
+      "summary": "Developer guide for the JARVIS HUD React + TypeScript application (Stage 3 refactor, ADR-010), documenting its src/ layout — data layer, hooks, components, and pages — plus run commands for dev, test, and build, and the graph.json offline/live projection strategy.",
+      "tags": ["documentation", "entry-point", "development", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "jarvis/hud/index.html",
+      "summary": "Vite entry-point HTML shell for the JARVIS HUD React application; mounts the React root div, loads sci-fi Google Fonts (Chakra Petch, Orbitron, Share Tech Mono, JetBrains Mono, Press Start 2P), and bootstraps main.tsx via ES module script.",
+      "tags": ["entry-point", "markup", "infrastructure"],
+      "complexity": "simple",
+      "languageNotes": "Sets data-theme='jarvis' on the html element, activating CSS custom-property theming without JavaScript."
+    },
+    {
+      "id": "config:jarvis/hud/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "jarvis/hud/package.json",
+      "summary": "NPM package manifest for the el-nino-jarvis-hud React + TypeScript app, declaring Vite/Vitest as the build and test toolchain, React 18 and Cytoscape as runtime dependencies, and scripts for dev server, tsc+vite build, preview, and test runs.",
+      "tags": ["configuration", "build-system", "dependency-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:jarvis/hud/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "jarvis/hud/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the JARVIS HUD; targets ES2021 with strict mode, bundler module resolution, noEmit (Vite handles transpilation), react-jsx transform, and strict unused-locals/parameters checking covering src/ and config files.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple",
+      "languageNotes": "Uses moduleResolution: 'bundler' and allowImportingTsExtensions, the recommended Vite + TypeScript configuration that delegates emit to Vite while TypeScript handles only type-checking."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:jarvis/hud/README.md",
+      "target": "file:jarvis/hud/index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:jarvis/hud/package.json",
+      "target": "config:jarvis/hud/tsconfig.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:jarvis/hud/tsconfig.json",
+      "target": "file:jarvis/hud/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

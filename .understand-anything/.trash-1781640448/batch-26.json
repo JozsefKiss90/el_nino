@@ -1,0 +1,172 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/schemas/Decision Packet Schema.md",
+      "type": "document",
+      "name": "Decision Packet Schema.md",
+      "filePath": "dev_graph/schemas/Decision Packet Schema.md",
+      "summary": "Dev graph artifact schema node defining the Decision Packet data structure — the envelope carrying a trading decision from the engine to downstream consumers, with field definitions, validation rules, and relationship traceability.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "type": "document",
+      "name": "Evaluation Scorecard Schema.md",
+      "filePath": "dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "summary": "Dev graph artifact schema node defining the Evaluation Scorecard structure used to capture benchmark and performance metrics for trading strategy evaluation, with field definitions and validation rules.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Execution Record Schema.md",
+      "type": "document",
+      "name": "Execution Record Schema.md",
+      "filePath": "dev_graph/schemas/Execution Record Schema.md",
+      "summary": "Dev graph artifact schema node defining the Execution Record structure that captures the outcome of an executed trade, including the consumed inputs, producing modules, validation gates, and full relationship traceability chain.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Feature Vector Schema.md",
+      "type": "document",
+      "name": "Feature Vector Schema.md",
+      "filePath": "dev_graph/schemas/Feature Vector Schema.md",
+      "summary": "Dev graph artifact schema node defining the Feature Vector structure that encodes market signals and technical indicators consumed by the regime classifier and decision engine, with field definitions and traceability.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "type": "document",
+      "name": "Gold DecisionPacket v0 Schema.md",
+      "filePath": "dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "summary": "Dev graph artifact schema node defining the Gold DecisionPacket v0 structure — the versioned ground-truth decision envelope produced by the gold standard benchmarking pipeline, including direction policy, validation rules, and full relationship traceability.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "complex",
+      "languageNotes": "Explicitly versioned as v0 and marked provisional with a direction policy section, indicating the schema is under active stabilization as benchmark contracts harden."
+    },
+    {
+      "id": "document:dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "type": "document",
+      "name": "Layer 2 Snapshot Schema.md",
+      "filePath": "dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "summary": "Dev graph artifact schema node defining the Layer 2 Snapshot structure — the deterministic ingest payload emitted by the external Mr-Ripley producer and consumed by the el_nino trading engine, with identity hashing rules and validation constraints.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate",
+      "languageNotes": "Includes a dedicated Identity section covering deterministic hashing, reflecting the cross-layer boundary contract between the Layer-2 producer (Mr-Ripley) and the Layer-3 engine (el_nino)."
+    },
+    {
+      "id": "document:dev_graph/schemas/Portfolio State Schema.md",
+      "type": "document",
+      "name": "Portfolio State Schema.md",
+      "filePath": "dev_graph/schemas/Portfolio State Schema.md",
+      "summary": "Dev graph artifact schema node defining the Portfolio State structure representing the current holdings, cash, and risk metrics snapshot consumed and produced by the portfolio management module during the trading loop.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Regime Classification Schema.md",
+      "type": "document",
+      "name": "Regime Classification Schema.md",
+      "filePath": "dev_graph/schemas/Regime Classification Schema.md",
+      "summary": "Dev graph artifact schema node defining the Regime Classification output structure that encodes the market regime label and confidence emitted by the regime classifier and consumed by the decision engine.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Runtime Decision Record Schema.md",
+      "type": "document",
+      "name": "Runtime Decision Record Schema.md",
+      "filePath": "dev_graph/schemas/Runtime Decision Record Schema.md",
+      "summary": "Dev graph artifact schema node defining the Runtime Decision Record structure — the audit-trail artifact capturing why a specific trade decision was made at runtime, consumed by the ledger and evaluation pipeline.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Runtime Ledger Schema.md",
+      "type": "document",
+      "name": "Runtime Ledger Schema.md",
+      "filePath": "dev_graph/schemas/Runtime Ledger Schema.md",
+      "summary": "Dev graph artifact schema node defining the Runtime Ledger structure — the append-only log of all runtime decisions and executions used for portfolio reconciliation, PnL calculation, and audit, with consumption and validation traceability.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Trade Validation Decision Schema.md",
+      "type": "document",
+      "name": "Trade Validation Decision Schema.md",
+      "filePath": "dev_graph/schemas/Trade Validation Decision Schema.md",
+      "summary": "Dev graph artifact schema node defining the Trade Validation Decision structure — the response emitted by the risk/validation module indicating whether a proposed trade is approved or rejected, with field definitions and relationship traceability.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/schemas/Trade Validation Request Schema.md",
+      "type": "document",
+      "name": "Trade Validation Request Schema.md",
+      "filePath": "dev_graph/schemas/Trade Validation Request Schema.md",
+      "summary": "Dev graph artifact schema node defining the Trade Validation Request structure — the input envelope sent to the risk/validation module to assess a proposed trade before execution, with field definitions and relationship traceability.",
+      "tags": ["schema-definition", "documentation", "data-pipeline", "api-schema"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/schemas/Trade Validation Request Schema.md",
+      "target": "document:dev_graph/schemas/Trade Validation Decision Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Feature Vector Schema.md",
+      "target": "document:dev_graph/schemas/Regime Classification Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Regime Classification Schema.md",
+      "target": "document:dev_graph/schemas/Decision Packet Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Decision Packet Schema.md",
+      "target": "document:dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Decision Packet Schema.md",
+      "target": "document:dev_graph/schemas/Execution Record Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Runtime Decision Record Schema.md",
+      "target": "document:dev_graph/schemas/Runtime Ledger Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Portfolio State Schema.md",
+      "target": "document:dev_graph/schemas/Execution Record Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "target": "document:dev_graph/schemas/Feature Vector Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

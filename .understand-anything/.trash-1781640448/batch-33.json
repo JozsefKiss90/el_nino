@@ -1,0 +1,77 @@
+{
+  "nodes": [
+    {
+      "id": "document:raw/Claude for Financial Services.md",
+      "type": "document",
+      "name": "Claude for Financial Services.md",
+      "filePath": "raw/Claude for Financial Services.md",
+      "summary": "Scraped Anthropic article announcing the Claude Financial Analysis Solution, covering the partner ecosystem (FactSet, Bloomberg, Snowflake, S&P Global), enterprise use cases (due diligence, compliance, financial modeling), and integration pathways via AWS Marketplace. Serves as raw reference material capturing market context for AI-assisted financial analysis.",
+      "tags": ["documentation", "financial-services", "ai-integration", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:raw/build-spec.md",
+      "type": "document",
+      "name": "build-spec.md",
+      "filePath": "raw/build-spec.md",
+      "summary": "Hackathon build specification for 'The Syndicate Squad' — a wallet-native multi-agent office system where a supervisor assembles, funds, evaluates, and upgrades agent teams under treasury policy constraints. Defines MVP screens, domain model (MissionRecord, AgentIdentity, TreasuryRequest, etc.), demo flow, and frontend/integration architecture using Next.js, OWS, XMTP, and x402.",
+      "tags": ["documentation", "architecture", "multi-agent", "specification"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:raw/calude_alpaca_trader.md",
+      "type": "document",
+      "name": "calude_alpaca_trader.md",
+      "filePath": "raw/calude_alpaca_trader.md",
+      "summary": "Single-line stub document — likely a captured transcript or placeholder referencing Claude-based Alpaca paper trading automation covering stock trading strategies (trailing stop, wheel strategy, copy trading of congressional trades) via the Alpaca API.",
+      "tags": ["documentation", "trading", "reference", "stub"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:raw/claude_cowork_trader.md",
+      "type": "document",
+      "name": "claude_cowork_trader.md",
+      "filePath": "raw/claude_cowork_trader.md",
+      "summary": "Captured transcript of a YouTube video walkthrough demonstrating how to use Claude's agentic 'co-work' mode as a crypto trading assistant, covering Blofin API integration, automated trailing stop strategies, TradingView webhook automation, and the wheel options strategy executed via Alpaca paper trading.",
+      "tags": ["documentation", "trading", "agentic-ai", "tutorial"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:raw/claude_opus_trader.md",
+      "type": "document",
+      "name": "claude_opus_trader.md",
+      "filePath": "raw/claude_opus_trader.md",
+      "summary": "Captured transcript of a YouTube tutorial on building a 24/7 AI trading agent using Claude Opus 4.7 with Claude Code routines, Alpaca API, Perplexity for research, and ClickUp for notifications — covering cron-based scheduling, memory architecture for stateless agents, and migration from an OpenClaw trading bot.",
+      "tags": ["documentation", "trading", "agentic-ai", "tutorial"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:raw/claude_stock_trader.md",
+      "type": "document",
+      "name": "claude_stock_trader.md",
+      "filePath": "raw/claude_stock_trader.md",
+      "summary": "Empty or near-empty stub document likely intended to capture a Claude stock trading walkthrough transcript; no meaningful content was found at analysis time.",
+      "tags": ["documentation", "trading", "stub", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:raw/claude_tradingview.md",
+      "type": "document",
+      "name": "claude_tradingview.md",
+      "filePath": "raw/claude_tradingview.md",
+      "summary": "Empty or near-empty stub document likely intended to capture content relating to Claude integration with TradingView; no meaningful content was found at analysis time.",
+      "tags": ["documentation", "trading", "stub", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:raw/ows-dev-squad.md",
+      "type": "document",
+      "name": "ows-dev-squad.md",
+      "filePath": "raw/ows-dev-squad.md",
+      "summary": "Comprehensive architecture specification for the Syndicate Squad wallet-native supervisor system, with 35 sections covering system diagram, 13 main components (Dashboard, Domain Model, Scenario Layer, Action Orchestrator, Supervisor Decision Engine, Upgrade Simulator, Multi-Round Evolution Engine, Paper Trading Engine, Replay Proof Harness, Session Layer, Integration Adapters, x402 Payment, MoonPay), data flows, OWS/XMTP/x402/MoonPay integrations, and a real-vs-simulated boundary analysis.",
+      "tags": ["documentation", "architecture", "multi-agent", "specification"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

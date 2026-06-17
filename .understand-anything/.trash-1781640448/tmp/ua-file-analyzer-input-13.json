@@ -1,0 +1,16 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/benchmarks/Execution Layer Benchmark.md", "language": "markdown", "sizeLines": 84, "fileCategory": "docs"},
+    {"path": "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md", "language": "markdown", "sizeLines": 56, "fileCategory": "docs"},
+    {"path": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md", "language": "markdown", "sizeLines": 66, "fileCategory": "docs"},
+    {"path": "dev_graph/benchmarks/Regime Distribution Benchmark.md", "language": "markdown", "sizeLines": 68, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/benchmarks/Execution Layer Benchmark.md": [],
+    "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md": [],
+    "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md": [],
+    "dev_graph/benchmarks/Regime Distribution Benchmark.md": []
+  },
+  "neighborMap": {}
+}

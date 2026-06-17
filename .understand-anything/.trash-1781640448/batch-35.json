@@ -1,0 +1,62 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "wiki/CLAUDE.md",
+      "summary": "Authoritative operations manual governing all Claude Code sessions that work on the wiki knowledge corpus, defining the vault structure, frontmatter schema, naming conventions, canonical ownership rules, ingestion workflow, lint checks, MCP operational governance, schema evolution procedures, and semantic confidence lifecycle for the Markdown-based wiki knowledge graph.",
+      "tags": ["documentation", "governance", "configuration", "schema-definition", "knowledge-graph"],
+      "complexity": "complex",
+      "languageNotes": "Structured as a multi-section governance schema with 94 sections covering 17 top-level domains; defines 7 type enums, 6 status enums, and explicit schema validation rules in a purely Markdown/YAML specification format."
+    },
+    {
+      "id": "document:wiki/index.md",
+      "type": "document",
+      "name": "index.md",
+      "filePath": "wiki/index.md",
+      "summary": "Master navigational index for the wiki knowledge corpus, cataloging all canonical pages across 16 topic domains including Systems, Concepts, Strategies, Execution, Memory, Risk, Backtesting, Agents, Infrastructure, Integrations, Security, Governance, Workflows, Research, Sources, and vault statistics.",
+      "tags": ["documentation", "entry-point", "knowledge-graph", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/log.md",
+      "type": "document",
+      "name": "log.md",
+      "filePath": "wiki/log.md",
+      "summary": "Chronological operations log for the wiki vault, recording all ingestion batches, governance changes, and metadata migration phases with timestamps, source documents processed, pages created or updated, contradictions identified, and architecture gaps noted.",
+      "tags": ["documentation", "audit-log", "governance", "knowledge-graph"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/CLAUDE.md",
+      "target": "document:wiki/index.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/CLAUDE.md",
+      "target": "document:wiki/log.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/index.md",
+      "target": "document:wiki/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/log.md",
+      "target": "document:wiki/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

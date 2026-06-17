@@ -1,0 +1,115 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/knowledge_assets/Agent Safety Principles.md",
+      "type": "document",
+      "name": "Agent Safety Principles.md",
+      "filePath": "dev_graph/knowledge_assets/Agent Safety Principles.md",
+      "summary": "Knowledge asset (KA-008) defining the engineering guidance for multi-layer autonomous agent safety in financial trading contexts, covering credential isolation, self-verification, phased autonomy, AI-specific risk taxonomy, and fail-safe defaults.",
+      "tags": ["documentation", "knowledge-asset", "security", "agent-safety", "trading-risk"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with frontmatter-governed ontology type 'knowledge_asset' and canonical_id KA-008; confirmed confidence backed by wiki and external evidence."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/CQRS.md",
+      "type": "document",
+      "name": "CQRS.md",
+      "filePath": "dev_graph/knowledge_assets/CQRS.md",
+      "summary": "Knowledge asset (KA-002) defining CQRS as the foundational principle that separates the Layer 2 read model (analytical snapshots) from the Layer 3 write model (order execution), explaining why each has different consistency requirements and optimization goals.",
+      "tags": ["documentation", "knowledge-asset", "architecture", "cqrs", "data-model"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-002; principle knowledge_type with confirmed confidence from wiki and design evidence."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Context Engineering.md",
+      "type": "document",
+      "name": "Context Engineering.md",
+      "filePath": "dev_graph/knowledge_assets/Context Engineering.md",
+      "summary": "Knowledge asset (KA-007) formalizing the principle that LLM context windows are finite resources requiring structured budgeting, typed retrieval via context packs, and admissibility gates to avoid loading irrelevant or stale knowledge into agent context.",
+      "tags": ["documentation", "knowledge-asset", "context-management", "llm", "agent-design"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-007; informs the Context Map architecture and motivates the Context Pack Assembly Rules and Admissibility Checks governance."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Event Sourcing.md",
+      "type": "document",
+      "name": "Event Sourcing.md",
+      "filePath": "dev_graph/knowledge_assets/Event Sourcing.md",
+      "summary": "Knowledge asset (KA-001) defining Event Sourcing as the foundational principle that all trading state changes are captured as immutable domain events enabling replay, audit trails, and temporal queries throughout the trading pipeline.",
+      "tags": ["documentation", "knowledge-asset", "event-sourcing", "architecture", "audit"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-001; the oldest knowledge asset (KA-001) confirming event-driven architecture as the first-class principle for the trading engine."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Guardrail Philosophy.md",
+      "type": "document",
+      "name": "Guardrail Philosophy.md",
+      "filePath": "dev_graph/knowledge_assets/Guardrail Philosophy.md",
+      "summary": "Knowledge asset (KA-005) articulating the principle that autonomous agent autonomy requires non-negotiable external enforcement mechanisms — hard limits that cannot be bypassed through agent reasoning, including mandatory paper trading before live deployment.",
+      "tags": ["documentation", "knowledge-asset", "guardrails", "risk-management", "agent-safety"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-005; directly motivates the Risk Control system boundary, Guardrail Pattern, all predicate and gate nodes, and paper trading validation requirement."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "type": "document",
+      "name": "Layer 2 Design Principles.md",
+      "filePath": "dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "summary": "Knowledge asset (KA-006) defining the five principles governing the Layer 2 snapshot system — snapshot as truth, deterministic assembly, schema stability as the most critical contract, temporal independence of snapshots, and strict separation from execution.",
+      "tags": ["documentation", "knowledge-asset", "layer2", "snapshot", "architecture"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-006; motivates the Snapshot Assembly capability, Snapshot API interface, and the CQRS separation between analysis and execution."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Office Action Methodology.md",
+      "type": "document",
+      "name": "Office Action Methodology.md",
+      "filePath": "dev_graph/knowledge_assets/Office Action Methodology.md",
+      "summary": "Knowledge asset (KA-004) defining the methodology of governing autonomous agent interventions through a deterministic state machine with explicit integration checkpoints, bidirectional treasury approval flow, and audit-by-design event emission for every transition.",
+      "tags": ["documentation", "knowledge-asset", "state-machine", "governance", "multi-agent"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-004; methodology knowledge_type derived from the OWS Dev Squad architecture; motivates the Office Action Loop workflow and Treasury Approval pattern."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Paper Trading Validation.md",
+      "type": "document",
+      "name": "Paper Trading Validation.md",
+      "filePath": "dev_graph/knowledge_assets/Paper Trading Validation.md",
+      "summary": "Knowledge asset (KA-010) defining paper trading as a mandatory evidence-generation stage for strategy validation, specifying quantitative promotion criteria (>=3 metrics improved, no regressions, >=12% average improvement) before any live capital deployment.",
+      "tags": ["documentation", "knowledge-asset", "paper-trading", "validation", "strategy"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-010; methodology knowledge_type; directly motivates the Evaluation Loop Pattern, Promotion Pattern, Paper Trading Promotion Gate, and system lifecycle state machine."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "type": "document",
+      "name": "Regime Taxonomy.md",
+      "filePath": "dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "summary": "Knowledge asset (KA-011) establishing market regimes as a deterministic enumerated abstraction layer between the Feature Vector and trade-decision logic, making execution rules regime-conditional, auditable, and testable without threshold spaghetti scattered across decision sites.",
+      "tags": ["documentation", "knowledge-asset", "market-regime", "feature-engineering", "trading-strategy"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-011; unique in having 'Justified By' relationship referencing ADR-007 (Deterministic Regime Taxonomy), reflecting its direct architectural mandate status."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Stateless Agent Architecture.md",
+      "type": "document",
+      "name": "Stateless Agent Architecture.md",
+      "filePath": "dev_graph/knowledge_assets/Stateless Agent Architecture.md",
+      "summary": "Knowledge asset (KA-009) defining the Wake-Execute-Sleep stateless agent lifecycle principle, where agent continuity is reconstructed entirely from persistent files at each invocation with git as the persistence layer and token-budgeted memory loading.",
+      "tags": ["documentation", "knowledge-asset", "stateless", "agent-design", "persistence"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-009; more recently updated (2026-06-09) than most peers, reflecting active usage of this principle in the Paper-Trading Runtime and Paper-Trade Admission systems."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Supervisor Pattern Methodology.md",
+      "type": "document",
+      "name": "Supervisor Pattern Methodology.md",
+      "filePath": "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md",
+      "summary": "Knowledge asset (KA-003) defining the Supervisor Pattern as a meta-agent methodology where a resource-constrained supervisor assembles, evaluates, and upgrades specialized worker agents using evidence-based promotion criteria and treasury management.",
+      "tags": ["documentation", "knowledge-asset", "supervisor-pattern", "multi-agent", "governance"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph canonical knowledge asset with canonical_id KA-003; methodology knowledge_type derived from the OWS Dev Squad architecture; motivates the Supervisor Office system design, Office Action Loop, and Treasury Policy System."
+    }
+  ],
+  "edges": []
+}

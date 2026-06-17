@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/sources/SRC - Build Spec.md",
+      "type": "document",
+      "name": "SRC - Build Spec.md",
+      "filePath": "wiki/sources/SRC - Build Spec.md",
+      "summary": "Wiki source document capturing the MVP build specification for el_nino, extracting key concepts, visible UI elements, demo flow requirements, and domain model types from an original planning artifact.",
+      "tags": ["documentation", "specification", "build-system", "domain-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Alpaca Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Alpaca Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Alpaca Trader.md",
+      "summary": "Wiki source document summarizing a Claude-powered Alpaca paper-trading bot, cataloguing demonstrated strategies, key insights, performance claims, and contradictions found against the existing wiki knowledge base.",
+      "tags": ["documentation", "trading", "llm-integration", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Cowork Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Cowork Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Cowork Trader.md",
+      "summary": "Wiki source document covering Claude Co-work Trader functionality, comparing Claude Co-work mode against regular Claude for trading use cases, and highlighting key security considerations extracted from the source.",
+      "tags": ["documentation", "trading", "llm-integration", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Opus Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Opus Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Opus Trader.md",
+      "summary": "Wiki source document summarizing a Claude Opus-based trading agent, extracting key concepts, a routine schedule for automated trading operations, and key insights about Opus model capabilities in financial contexts.",
+      "tags": ["documentation", "trading", "llm-integration", "automation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Stock Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Stock Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Stock Trader.md",
+      "summary": "Wiki source document summarizing a Claude-driven stock trading system, extracting performance data, key claims, and notable caveats from the original source artifact.",
+      "tags": ["documentation", "trading", "benchmark", "performance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude TradingView Integration.md",
+      "type": "document",
+      "name": "SRC - Claude TradingView Integration.md",
+      "filePath": "wiki/sources/SRC - Claude TradingView Integration.md",
+      "summary": "Wiki source document covering integration patterns between Claude and TradingView, including architecture patterns, one-shot prompt patterns, and strategy scraping patterns extracted from the source.",
+      "tags": ["documentation", "trading", "integration", "architecture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude for Financial Services.md",
+      "type": "document",
+      "name": "SRC - Claude for Financial Services.md",
+      "filePath": "wiki/sources/SRC - Claude for Financial Services.md",
+      "summary": "Wiki source document summarizing Claude's financial services capabilities, data provider integrations, consulting partners, benchmark claims, and institutional testimonials from an Anthropic marketing or product source.",
+      "tags": ["documentation", "financial-services", "llm-integration", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - LLM Wiki Methodology.md",
+      "type": "document",
+      "name": "SRC - LLM Wiki Methodology.md",
+      "filePath": "wiki/sources/SRC - LLM Wiki Methodology.md",
+      "summary": "Wiki source document describing the methodology used to construct the LLM-powered wiki knowledge base, covering the core architecture, operations pipeline, and key insight about knowledge extraction from source documents.",
+      "tags": ["documentation", "methodology", "knowledge-base", "architecture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - OWS Dev Squad.md",
+      "type": "document",
+      "name": "SRC - OWS Dev Squad.md",
+      "filePath": "wiki/sources/SRC - OWS Dev Squad.md",
+      "summary": "Wiki source document capturing the OWS Dev Squad system design, including core domain types, architecture thesis, key design decisions, and current documented gaps from an original planning or team artifact.",
+      "tags": ["documentation", "architecture", "domain-model", "design"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

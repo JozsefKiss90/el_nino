@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/interfaces/Decision API.md",
+      "type": "document",
+      "name": "Decision API.md",
+      "filePath": "dev_graph/interfaces/Decision API.md",
+      "summary": "Dev graph interface node defining the Decision API contract: its inputs (feature vector + regime classification), outputs (trade decision with confidence and rationale), error modes, and stability guarantees. Serves as the ontology-governed specification linking the regime and execution subsystems.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "trading-engine"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/interfaces/Execution API.md",
+      "type": "document",
+      "name": "Execution API.md",
+      "filePath": "dev_graph/interfaces/Execution API.md",
+      "summary": "Dev graph interface node specifying the Execution API contract: how trade decisions are translated into simulated paper-trading orders, covering input schemas, output order records, error modes, constraints, and traceability relationships to ADRs and knowledge assets. The most detailed interface spec in the batch at 153 lines.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "trading-engine"],
+      "complexity": "moderate",
+      "languageNotes": "Includes Implemented By, Constrained By, and Originates From relationship subsections, indicating full traceability through the dev_graph ontology hierarchy."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Gold Decision API.md",
+      "type": "document",
+      "name": "Gold Decision API.md",
+      "filePath": "dev_graph/interfaces/Gold Decision API.md",
+      "summary": "Dev graph interface node defining the Gold Decision API contract: the specialized decision interface for backtesting and benchmark (gold) evaluation paths, specifying input feature vectors, output gold-labeled decisions, error modes, and full traceability links.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "backtesting"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "type": "document",
+      "name": "Paper Runtime API.md",
+      "filePath": "dev_graph/interfaces/Paper Runtime API.md",
+      "summary": "Dev graph interface node specifying the Paper Runtime API: the orchestration contract that drives the paper-trading simulation loop, consuming market snapshots and decisions and producing portfolio state, with full contract, error mode, and relationship traceability sections.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "paper-trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/interfaces/Regime Classification API.md",
+      "type": "document",
+      "name": "Regime Classification API.md",
+      "filePath": "dev_graph/interfaces/Regime Classification API.md",
+      "summary": "Dev graph interface node defining the Regime Classification API contract: classifies market conditions from raw feature vectors into regime labels, specifying inputs, output schema, error modes, stability, and traceability to ADRs and knowledge assets.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "regime-detection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/interfaces/Risk Check API.md",
+      "type": "document",
+      "name": "Risk Check API.md",
+      "filePath": "dev_graph/interfaces/Risk Check API.md",
+      "summary": "Dev graph interface node defining the Risk Check API contract: a guard interface that validates proposed trade decisions against position limits and risk thresholds before execution, with contract, error modes, and relationship traceability.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "risk-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/interfaces/Snapshot API.md",
+      "type": "document",
+      "name": "Snapshot API.md",
+      "filePath": "dev_graph/interfaces/Snapshot API.md",
+      "summary": "Dev graph interface node specifying the Snapshot API contract: the data-ingestion interface responsible for fetching and normalizing market snapshots from external sources, with output schema, error modes, stability, and full traceability relationships.",
+      "tags": ["documentation", "api-schema", "schema-definition", "interface", "data-ingestion"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

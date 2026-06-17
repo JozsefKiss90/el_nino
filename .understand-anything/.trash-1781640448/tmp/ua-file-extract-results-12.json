@@ -1,0 +1,366 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/architecture/Context Map.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 134,
+      "nonEmptyLines": 103,
+      "sections": [
+        {
+          "heading": "Context Map",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Bounded Contexts",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "System Boundaries",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Cross-System Interfaces",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 122
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 131
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "dev_graph/architecture/Infrastructure Diagram.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 202,
+      "nonEmptyLines": 173,
+      "sections": [
+        {
+          "heading": "Infrastructure Diagram",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Diagram",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Key Architecture Summary",
+          "level": 2,
+          "line": 167
+        },
+        {
+          "heading": "Critical Constraint",
+          "level": 2,
+          "line": 179
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 183
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 185
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 189
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 193
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 198
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 200
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/architecture/Layer Model.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 127,
+      "nonEmptyLines": 95,
+      "sections": [
+        {
+          "heading": "Layer Model",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Layer Definitions",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Layer 1: Data Ingestion",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Layer 2: Analysis & Strategy (The Snapshot Layer)",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Layer 3: Execution",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Layer Interaction Model",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Mapping to Systems",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 118
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 122
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "dev_graph/architecture/Runtime Topology.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 117,
+      "nonEmptyLines": 94,
+      "sections": [
+        {
+          "heading": "Runtime Topology",
+          "level": 1,
+          "line": 26
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Runtime Data Flow",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Event Flow Summary",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Runtime Scheduling",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 113
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 117
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

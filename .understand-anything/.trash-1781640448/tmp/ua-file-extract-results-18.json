@@ -1,0 +1,566 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/files/policy.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 47,
+      "nonEmptyLines": 37,
+      "sections": [
+        {
+          "heading": "policy.py",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 43
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/files/predicates.py (paper_runtime).md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 43,
+      "sections": [
+        {
+          "heading": "predicates.py (paper_runtime)",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/files/predicates.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 51,
+      "sections": [
+        {
+          "heading": "predicates.py",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/files/regime_classifier.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 57,
+      "sections": [
+        {
+          "heading": "regime_classifier.py",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/files/run_execution_bench.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 69,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "run_execution_bench.py",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/files/runtime.py (execution).md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 60,
+      "nonEmptyLines": 49,
+      "sections": [
+        {
+          "heading": "runtime.py (execution)",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/files/runtime.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 55,
+      "nonEmptyLines": 44,
+      "sections": [
+        {
+          "heading": "runtime.py",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/files/scoring.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 62,
+      "nonEmptyLines": 47,
+      "sections": [
+        {
+          "heading": "scoring.py",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/files/taxonomy.py.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 68,
+      "nonEmptyLines": 52,
+      "sections": [
+        {
+          "heading": "taxonomy.py",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    }
+  ]
+}

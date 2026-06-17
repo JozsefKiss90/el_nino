@@ -1,0 +1,22 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/interfaces/Decision API.md", "language": "markdown", "sizeLines": 83, "fileCategory": "docs"},
+    {"path": "dev_graph/interfaces/Execution API.md", "language": "markdown", "sizeLines": 153, "fileCategory": "docs"},
+    {"path": "dev_graph/interfaces/Gold Decision API.md", "language": "markdown", "sizeLines": 109, "fileCategory": "docs"},
+    {"path": "dev_graph/interfaces/Paper Runtime API.md", "language": "markdown", "sizeLines": 112, "fileCategory": "docs"},
+    {"path": "dev_graph/interfaces/Regime Classification API.md", "language": "markdown", "sizeLines": 90, "fileCategory": "docs"},
+    {"path": "dev_graph/interfaces/Risk Check API.md", "language": "markdown", "sizeLines": 78, "fileCategory": "docs"},
+    {"path": "dev_graph/interfaces/Snapshot API.md", "language": "markdown", "sizeLines": 91, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/interfaces/Decision API.md": [],
+    "dev_graph/interfaces/Execution API.md": [],
+    "dev_graph/interfaces/Gold Decision API.md": [],
+    "dev_graph/interfaces/Paper Runtime API.md": [],
+    "dev_graph/interfaces/Regime Classification API.md": [],
+    "dev_graph/interfaces/Risk Check API.md": [],
+    "dev_graph/interfaces/Snapshot API.md": []
+  },
+  "neighborMap": {}
+}

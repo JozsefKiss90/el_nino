@@ -1,0 +1,54 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 1373,
+      "nonEmptyLines": 1289,
+      "metrics": {}
+    },
+    {
+      "path": "jarvis/frontend/graph.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 8571,
+      "nonEmptyLines": 8571,
+      "sections": [
+        {
+          "heading": "meta",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "nodes",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "edges",
+          "level": 1,
+          "line": 2099
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "jarvis/frontend/index.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 175,
+      "nonEmptyLines": 159,
+      "metrics": {}
+    }
+  ]
+}

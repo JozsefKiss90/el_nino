@@ -1,0 +1,42 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/infrastructure/Claude Co-work.md",
+      "type": "document",
+      "name": "Claude Co-work.md",
+      "filePath": "wiki/infrastructure/Claude Co-work.md",
+      "summary": "Wiki knowledge article defining Claude Co-work as an infrastructure concept — covering its architecture role, key capabilities (exchange connection, TradingView webhook integration), trading use cases, inputs/outputs, failure modes, and tradeoffs within the el_nino system.",
+      "tags": ["documentation", "infrastructure", "ai-tooling", "trading", "integration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/infrastructure/Claude Code.md",
+      "type": "document",
+      "name": "Claude Code.md",
+      "filePath": "wiki/infrastructure/Claude Code.md",
+      "summary": "Wiki knowledge article defining Claude Code as an infrastructure tool — covering its definition, purpose, operational modes, context management, subscription tiers, and comparison with Claude Co-work and Claude Chat in the context of this project.",
+      "tags": ["documentation", "infrastructure", "ai-tooling", "developer-tool"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/infrastructure/Claude Routines.md",
+      "type": "document",
+      "name": "Claude Routines.md",
+      "filePath": "wiki/infrastructure/Claude Routines.md",
+      "summary": "Wiki knowledge article defining Claude Routines — a cron-based scheduled automation pattern covering routine architecture, local vs. remote execution, standard trading cron schedules, cloud environment setup, permissions, and prompt structure for autonomous scheduled agents.",
+      "tags": ["documentation", "infrastructure", "ci-cd", "automation", "scheduling"],
+      "complexity": "moderate",
+      "languageNotes": "Covers both local cron jobs and cloud-based remote routines, with a detailed standard trading schedule section relevant to the el_nino trading system."
+    },
+    {
+      "id": "document:wiki/infrastructure/Railway Deployment.md",
+      "type": "document",
+      "name": "Railway Deployment.md",
+      "filePath": "wiki/infrastructure/Railway Deployment.md",
+      "summary": "Wiki knowledge article describing Railway as the cloud deployment platform used in the project — covering configuration, environment variables, inputs/outputs, dependencies, and tradeoffs of deploying services via Railway.",
+      "tags": ["documentation", "infrastructure", "deployment", "cloud"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/agents/Agent Self-Verification.md",
+      "type": "document",
+      "name": "Agent Self-Verification.md",
+      "filePath": "wiki/agents/Agent Self-Verification.md",
+      "summary": "Wiki knowledge article defining the agent self-verification pattern, covering signal, memory, and execution verification protocols used by autonomous agents to detect and recover from erroneous states.",
+      "tags": ["documentation", "agents", "verification", "patterns"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "type": "document",
+      "name": "Multi-Agent Orchestration.md",
+      "filePath": "wiki/agents/Multi-Agent Orchestration.md",
+      "summary": "Comprehensive wiki article describing multi-agent orchestration patterns including Supervisor-Worker (Syndicate Squad), Sequential Routines, and Delegated Subagents, with coordination mechanisms, failure modes, and tradeoff analysis.",
+      "tags": ["documentation", "agents", "orchestration", "architecture"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/agents/Stateless Agent Recovery.md",
+      "type": "document",
+      "name": "Stateless Agent Recovery.md",
+      "filePath": "wiki/agents/Stateless Agent Recovery.md",
+      "summary": "Wiki knowledge article defining the stateless agent recovery protocol, describing how agents reconstruct context from scratch after failure using a priority-ordered set of recovery files.",
+      "tags": ["documentation", "agents", "recovery", "resilience"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/agents/Supervisor Decision Engine.md",
+      "type": "document",
+      "name": "Supervisor Decision Engine.md",
+      "filePath": "wiki/agents/Supervisor Decision Engine.md",
+      "summary": "Wiki knowledge article detailing the Supervisor Decision Engine algorithm, including the multi-round scoring function, early-exit logic, treasury mechanics, and its role in routing tasks to the optimal worker agent in the Syndicate Squad.",
+      "tags": ["documentation", "agents", "decision-making", "orchestration"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "target": "document:wiki/agents/Supervisor Decision Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "target": "document:wiki/agents/Agent Self-Verification.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "target": "document:wiki/agents/Stateless Agent Recovery.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Supervisor Decision Engine.md",
+      "target": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

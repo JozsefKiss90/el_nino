@@ -1,0 +1,661 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/features/feature_builder/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/features/feature_builder/__init__.py",
+      "summary": "Package barrel for the feature_builder module, re-exporting FeatureBuilder and model types for public consumption.",
+      "tags": ["entry-point", "barrel", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/feature_builder/feature_builder.py",
+      "type": "file",
+      "name": "feature_builder.py",
+      "filePath": "src/features/feature_builder/feature_builder.py",
+      "summary": "Core feature construction logic that transforms a raw Snapshot into a typed FeatureVector, applying named specs for level and spread computations.",
+      "tags": ["feature-engineering", "data-model", "transformation"],
+      "complexity": "moderate",
+      "languageNotes": "Uses dataclasses (FeatureSpec) and a top-level build_features function rather than a class-based builder pattern."
+    },
+    {
+      "id": "file:src/features/feature_builder/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/features/feature_builder/models.py",
+      "summary": "Defines Feature and FeatureVector dataclasses that carry computed signal values, staleness metadata, and revision-risk information through the pipeline.",
+      "tags": ["data-model", "type-definition", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/regime/regime_classifier/__init__.py",
+      "summary": "Package barrel for the regime_classifier module, re-exporting configuration, models, classifier, and taxonomy symbols for callers in other batches.",
+      "tags": ["entry-point", "barrel", "regime-classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/regime/regime_classifier/config.py",
+      "summary": "Defines RegimeConfig, a validated dataclass holding all threshold and scale parameters for macro-regime classification, plus a load_config factory that reads and validates JSON config files.",
+      "tags": ["configuration", "validation", "regime-classification"],
+      "complexity": "complex",
+      "languageNotes": "Uses dataclasses with __post_init__ validation, a classmethod factory from_mapping, and SHA-256 decision fingerprinting for config identity."
+    },
+    {
+      "id": "file:src/regime/regime_classifier/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/regime/regime_classifier/models.py",
+      "summary": "Defines the Regime enum and the RegimeClassification output dataclass, which carries the full classification result including matched rule, provenance, secondary matches, and near-miss rules.",
+      "tags": ["data-model", "type-definition", "regime-classification"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/regime_classifier.py",
+      "type": "file",
+      "name": "regime_classifier.py",
+      "filePath": "src/regime/regime_classifier/regime_classifier.py",
+      "summary": "Implements the core classify function that evaluates ordered RegimeRules against a FeatureVector, resolving the winning regime and populating secondary/near-miss sets.",
+      "tags": ["service", "regime-classification", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/taxonomy.py",
+      "type": "file",
+      "name": "taxonomy.py",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "summary": "Encodes the full macro-regime rule taxonomy: MarginSpec and RegimeRule dataclasses plus 14 named predicate functions and margin/proximity utilities covering all supported regime labels.",
+      "tags": ["business-logic", "regime-classification", "data-model"],
+      "complexity": "complex",
+      "languageNotes": "Predicate functions are pure lambdas parameterised by (fv, config) to enable rule-engine evaluation without closures."
+    },
+    {
+      "id": "file:src/snapshot/snapshot_consumer/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/snapshot/snapshot_consumer/__init__.py",
+      "summary": "Package barrel for the snapshot_consumer module, re-exporting consumer and model symbols for external use.",
+      "tags": ["entry-point", "barrel", "snapshot"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "type": "file",
+      "name": "consumer.py",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "summary": "Provides load_snapshot, is_consumable, and consume functions that read, validate, and gate snapshot JSON files before they enter the processing pipeline.",
+      "tags": ["service", "snapshot", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "summary": "Defines the full snapshot ingestion contract: SeriesValue, Guards, QualitySummary, and the top-level Snapshot dataclass with SHA-256 identity verification and strict from_dict deserialization.",
+      "tags": ["data-model", "type-definition", "snapshot"],
+      "complexity": "complex",
+      "languageNotes": "Uses SHA-256 recompute_id for deterministic snapshot identity; from_dict methods implement strict contract enforcement with SnapshotContractError."
+    },
+    {
+      "id": "function:src/features/feature_builder/feature_builder.py:build_features",
+      "type": "function",
+      "name": "build_features",
+      "filePath": "src/features/feature_builder/feature_builder.py",
+      "lineRange": [73, 104],
+      "summary": "Iterates over all FeatureSpec definitions, applies each spec's transformation function to the snapshot's series values, and returns a FeatureVector with computed features and unavailability tracking.",
+      "tags": ["feature-engineering", "transformation", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/features/feature_builder/models.py:Feature",
+      "type": "class",
+      "name": "Feature",
+      "filePath": "src/features/feature_builder/models.py",
+      "lineRange": [20, 27],
+      "summary": "Dataclass representing a single computed feature with its value, input series, staleness bound, and revision-risk flag.",
+      "tags": ["data-model", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/features/feature_builder/models.py:FeatureVector",
+      "type": "class",
+      "name": "FeatureVector",
+      "filePath": "src/features/feature_builder/models.py",
+      "lineRange": [31, 51],
+      "summary": "Immutable container for a complete set of computed features keyed by name, with snapshot identity, schema version, and unavailable-feature tracking.",
+      "tags": ["data-model", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/config.py:RegimeConfig",
+      "type": "class",
+      "name": "RegimeConfig",
+      "filePath": "src/regime/regime_classifier/config.py",
+      "lineRange": [65, 182],
+      "summary": "Validated dataclass holding all VIX, MOVE, yield curve, and scale thresholds for regime classification, with SHA-256 fingerprinting and a classmethod factory for JSON config loading.",
+      "tags": ["configuration", "validation", "regime-classification"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/regime/regime_classifier/config.py",
+      "lineRange": [185, 196],
+      "summary": "Reads a JSON config file from disk and deserializes it into a validated RegimeConfig instance, raising RegimeConfigError on missing file or parse errors.",
+      "tags": ["configuration", "factory", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/models.py:RegimeClassification",
+      "type": "class",
+      "name": "RegimeClassification",
+      "filePath": "src/regime/regime_classifier/models.py",
+      "lineRange": [90, 177],
+      "summary": "Primary output dataclass for the regime classifier, capturing the winning regime, its matching rule metadata, feature provenance, secondary and near-miss rules, and versioning fields.",
+      "tags": ["data-model", "regime-classification", "type-definition"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/models.py:FeatureProvenance",
+      "type": "class",
+      "name": "FeatureProvenance",
+      "filePath": "src/regime/regime_classifier/models.py",
+      "lineRange": [70, 86],
+      "summary": "Records provenance metadata for a single feature used in a classification decision, including its computed value, inputs, staleness, and revision risk.",
+      "tags": ["data-model", "observability", "regime-classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "type": "function",
+      "name": "classify",
+      "filePath": "src/regime/regime_classifier/regime_classifier.py",
+      "lineRange": [38, 136],
+      "summary": "Main classification entry point: evaluates all taxonomy rules against a FeatureVector and config, returns a RegimeClassification with the winning regime and full audit trail of evaluated, skipped, secondary, and near-miss rules.",
+      "tags": ["business-logic", "regime-classification", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/taxonomy.py:RegimeRule",
+      "type": "class",
+      "name": "RegimeRule",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [42, 51],
+      "summary": "Dataclass binding a regime label to its rule ID, priority, required/trigger features, predicate callable, and margin spec for confidence scoring.",
+      "tags": ["data-model", "regime-classification", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/taxonomy.py:margin_value",
+      "type": "function",
+      "name": "margin_value",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [59, 66],
+      "summary": "Computes a normalized 0-1 confidence margin for a rule match by measuring the feature value's distance from the rule threshold scaled by the scale factor.",
+      "tags": ["utility", "regime-classification", "scoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/taxonomy.py:near_proximity",
+      "type": "function",
+      "name": "near_proximity",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [69, 80],
+      "summary": "Determines how close a feature value is to a rule's threshold, returning a 0-1 proximity score used for near-miss rule detection.",
+      "tags": ["utility", "regime-classification", "scoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "class",
+      "name": "Snapshot",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [162, 242],
+      "summary": "Top-level snapshot dataclass encapsulating engine version, verdict, guards, quality summary, and all series values, with SHA-256 identity recomputation and strict contract-validated deserialization.",
+      "tags": ["data-model", "snapshot", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "class",
+      "name": "SeriesValue",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [41, 90],
+      "summary": "Represents a single time-series observation with identity metadata including series ID, tier, group, observation timestamp, staleness, source, and revision risk.",
+      "tags": ["data-model", "snapshot"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "class",
+      "name": "Guards",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [94, 131],
+      "summary": "Aggregates all snapshot quality gate flags (data_ok, freshness_ok, cooldown_ok, risk_ok, supervisor_veto, etc.) that determine whether a snapshot is eligible for processing.",
+      "tags": ["data-model", "validation", "snapshot"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "function",
+      "name": "load_snapshot",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [26, 39],
+      "summary": "Reads a JSON snapshot file from a given path and deserializes it into a Snapshot instance, returning None if the file does not exist.",
+      "tags": ["utility", "snapshot", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "type": "function",
+      "name": "consume",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [59, 72],
+      "summary": "Orchestrates the full snapshot ingestion flow: loads the snapshot file and validates it with is_consumable before returning it for downstream processing.",
+      "tags": ["service", "snapshot", "entry-point"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/features/feature_builder/__init__.py",
+      "target": "file:src/features/feature_builder/feature_builder.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/feature_builder/__init__.py",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/feature_builder/feature_builder.py",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/feature_builder/feature_builder.py",
+      "target": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/__init__.py",
+      "target": "file:src/regime/regime_classifier/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/__init__.py",
+      "target": "file:src/regime/regime_classifier/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/__init__.py",
+      "target": "file:src/regime/regime_classifier/regime_classifier.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/__init__.py",
+      "target": "file:src/regime/regime_classifier/taxonomy.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/config.py",
+      "target": "file:src/regime/regime_classifier/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/regime_classifier.py",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/regime_classifier.py",
+      "target": "file:src/regime/regime_classifier/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/regime_classifier.py",
+      "target": "file:src/regime/regime_classifier/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/regime_classifier.py",
+      "target": "file:src/regime/regime_classifier/taxonomy.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "file:src/regime/regime_classifier/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "file:src/regime/regime_classifier/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/__init__.py",
+      "target": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/__init__.py",
+      "target": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/feature_builder/feature_builder.py",
+      "target": "function:src/features/feature_builder/feature_builder.py:build_features",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/features/feature_builder/feature_builder.py",
+      "target": "function:src/features/feature_builder/feature_builder.py:build_features",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/features/feature_builder/models.py",
+      "target": "class:src/features/feature_builder/models.py:Feature",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/features/feature_builder/models.py",
+      "target": "class:src/features/feature_builder/models.py:FeatureVector",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/features/feature_builder/models.py",
+      "target": "class:src/features/feature_builder/models.py:Feature",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/features/feature_builder/models.py",
+      "target": "class:src/features/feature_builder/models.py:FeatureVector",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/config.py",
+      "target": "class:src/regime/regime_classifier/config.py:RegimeConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/config.py",
+      "target": "function:src/regime/regime_classifier/config.py:load_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/config.py",
+      "target": "class:src/regime/regime_classifier/config.py:RegimeConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/config.py",
+      "target": "function:src/regime/regime_classifier/config.py:load_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/models.py",
+      "target": "class:src/regime/regime_classifier/models.py:RegimeClassification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/models.py",
+      "target": "class:src/regime/regime_classifier/models.py:FeatureProvenance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/models.py",
+      "target": "class:src/regime/regime_classifier/models.py:RegimeClassification",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/models.py",
+      "target": "class:src/regime/regime_classifier/models.py:FeatureProvenance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/regime_classifier.py",
+      "target": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/regime_classifier.py",
+      "target": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "class:src/regime/regime_classifier/taxonomy.py:RegimeRule",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "function:src/regime/regime_classifier/taxonomy.py:margin_value",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "function:src/regime/regime_classifier/taxonomy.py:near_proximity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "class:src/regime/regime_classifier/taxonomy.py:RegimeRule",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "function:src/regime/regime_classifier/taxonomy.py:margin_value",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/regime/regime_classifier/taxonomy.py",
+      "target": "function:src/regime/regime_classifier/taxonomy.py:near_proximity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "target": "class:src/regime/regime_classifier/models.py:RegimeClassification",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "target": "function:src/regime/regime_classifier/taxonomy.py:margin_value",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "target": "function:src/regime/regime_classifier/taxonomy.py:near_proximity",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/features/feature_builder/feature_builder.py:build_features",
+      "target": "class:src/features/feature_builder/models.py:FeatureVector",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

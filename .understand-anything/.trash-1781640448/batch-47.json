@@ -1,0 +1,556 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/gold/test_paper_runtime_ledger.py",
+      "type": "file",
+      "name": "test_paper_runtime_ledger.py",
+      "filePath": "tests/gold/test_paper_runtime_ledger.py",
+      "summary": "Unit tests for the RuntimeLedger in the gold paper-runtime subsystem, verifying sequence continuity, immutability, deduplication, halt behavior, and state-hash stability across persist/reload cycles.",
+      "tags": ["test", "ledger", "gold", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_ledger.py:_packet",
+      "type": "function",
+      "name": "_packet",
+      "filePath": "tests/gold/test_paper_runtime_ledger.py",
+      "lineRange": [38, 63],
+      "summary": "Factory helper that builds a GoldDecisionPacket with ConfidenceInputs and GuardRefs for use in ledger test cases.",
+      "tags": ["test", "factory", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_ledger.py:test_seq_continuity_across_persist_and_reload",
+      "type": "function",
+      "name": "test_seq_continuity_across_persist_and_reload",
+      "filePath": "tests/gold/test_paper_runtime_ledger.py",
+      "lineRange": [131, 142],
+      "summary": "Verifies that ledger sequence numbers continue monotonically after persist-and-reload cycles using tmp_path fixture.",
+      "tags": ["test", "ledger", "persistence"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/regime/test_regime_bench.py",
+      "type": "file",
+      "name": "test_regime_bench.py",
+      "filePath": "tests/regime/test_regime_bench.py",
+      "summary": "Smoke tests for the regime benchmark module, confirming report determinism, byte-identical real replays, restrictive rate gating, synthetic sweep coverage, and committed artifact synchronization.",
+      "tags": ["test", "benchmark", "regime", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/regime/test_regime_classifier.py",
+      "type": "file",
+      "name": "test_regime_classifier.py",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "summary": "Comprehensive test suite for the regime classifier covering all signal-regime labels, boundary conditions, serialization, config loading and injection, provenance propagation, and rule-table invariants.",
+      "tags": ["test", "regime", "classifier", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/regime/test_regime_classifier.py:make_fv",
+      "type": "function",
+      "name": "make_fv",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "lineRange": [77, 94],
+      "summary": "Builds a FeatureVector from a canonical set of macro signal defaults, with optional field dropping and schema-version override, used as the primary test fixture factory.",
+      "tags": ["test", "factory", "feature-vector"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/regime/test_regime_classifier.py:_valid_kwargs",
+      "type": "function",
+      "name": "_valid_kwargs",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "lineRange": [97, 115],
+      "summary": "Returns a dict of valid kwargs for constructing a RegimeClassification, used as a baseline for validation-error tests that mutate specific fields.",
+      "tags": ["test", "factory", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/regime/test_regime_classifier.py:test_golden_real_fixture",
+      "type": "function",
+      "name": "test_golden_real_fixture",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "lineRange": [231, 241],
+      "summary": "Golden-path test that consumes a real fixture snapshot, classifies it, and asserts exact label, margin, and rule-id values against pinned expected results.",
+      "tags": ["test", "golden", "regime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/regime/test_regime_classifier.py:test_trace_version_independent_of_decision",
+      "type": "function",
+      "name": "test_trace_version_independent_of_decision",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "lineRange": [458, 471],
+      "summary": "Verifies that the trace version field in a classification result is independent of the decision label across two different feature vectors.",
+      "tags": ["test", "regime", "versioning"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/risk/test_guardrail_engine.py",
+      "type": "file",
+      "name": "test_guardrail_engine.py",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "summary": "Tests for the GuardrailEngine covering approval, predicate-named blocking, malformed requests, short-circuit behavior, determinism, environment-config loading, and decision invariants.",
+      "tags": ["test", "guardrail", "risk", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/risk/test_guardrail_engine.py:make_config",
+      "type": "function",
+      "name": "make_config",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "lineRange": [21, 31],
+      "summary": "Builds a GuardrailConfig with sensible defaults for use across guardrail engine test cases, with keyword-override support.",
+      "tags": ["test", "factory", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/risk/test_guardrail_engine.py:make_request",
+      "type": "function",
+      "name": "make_request",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "lineRange": [34, 46],
+      "summary": "Builds a TradeValidationRequest with sensible defaults for use across guardrail engine test cases, with keyword-override support.",
+      "tags": ["test", "factory", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/risk/test_guardrail_engine.py:test_load_config_from_env_reads_values",
+      "type": "function",
+      "name": "test_load_config_from_env_reads_values",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "lineRange": [81, 91],
+      "summary": "Verifies that load_config_from_env correctly reads all expected GuardrailConfig values from environment variable overrides.",
+      "tags": ["test", "guardrail", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/risk/test_predicates.py",
+      "type": "file",
+      "name": "test_predicates.py",
+      "filePath": "tests/risk/test_predicates.py",
+      "summary": "Unit tests for individual risk predicates (position_size_ok, daily_loss_cap_ok, max_trades_ok, max_positions_ok, withdrawal_disabled) verifying boundary and cap behavior.",
+      "tags": ["test", "risk", "predicates", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/risk/test_predicates.py:make_config",
+      "type": "function",
+      "name": "make_config",
+      "filePath": "tests/risk/test_predicates.py",
+      "lineRange": [20, 30],
+      "summary": "Builds a GuardrailConfig with default values for predicate unit tests, supporting keyword overrides for targeted boundary testing.",
+      "tags": ["test", "factory", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/risk/test_predicates.py:make_request",
+      "type": "function",
+      "name": "make_request",
+      "filePath": "tests/risk/test_predicates.py",
+      "lineRange": [33, 45],
+      "summary": "Builds a TradeValidationRequest with default values for predicate unit tests, supporting keyword overrides for targeted boundary testing.",
+      "tags": ["test", "factory", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/snapshot/test_consumer.py",
+      "type": "file",
+      "name": "test_consumer.py",
+      "filePath": "tests/snapshot/test_consumer.py",
+      "summary": "Tests for the snapshot consumer verifying pass/fail gate behavior, forced/dry-run rejection, absent file handling, malformed snapshot error propagation, and str-path acceptance.",
+      "tags": ["test", "snapshot", "consumer", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/snapshot/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "tests/snapshot/test_models.py",
+      "summary": "Tests for snapshot Pydantic models verifying real fixture parsing, recomputed-ID matching, series fidelity, guard and quality summary parsing, and error handling for missing or malformed payloads.",
+      "tags": ["test", "snapshot", "data-model", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/snapshot/test_models.py:test_series_value_full_fidelity",
+      "type": "function",
+      "name": "test_series_value_full_fidelity",
+      "filePath": "tests/snapshot/test_models.py",
+      "lineRange": [47, 59],
+      "summary": "Validates that all numeric fields in the snapshot series values are parsed with full floating-point fidelity from the real fixture.",
+      "tags": ["test", "snapshot", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/snapshot/test_models.py:test_guards_parsed",
+      "type": "function",
+      "name": "test_guards_parsed",
+      "filePath": "tests/snapshot/test_models.py",
+      "lineRange": [62, 71],
+      "summary": "Asserts that guardrail fields in the snapshot are parsed correctly, including status flags and threshold values from the real fixture.",
+      "tags": ["test", "snapshot", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/supervisor/test_decision_engine.py",
+      "type": "file",
+      "name": "test_decision_engine.py",
+      "filePath": "tests/supervisor/test_decision_engine.py",
+      "summary": "Tests for the supervisor DecisionEngine covering early-exit promotion, highest-score selection with treasury burn, budget and exclusion filtering, determinism, and packet/option invariant enforcement.",
+      "tags": ["test", "supervisor", "decision-engine", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/supervisor/test_scoring.py",
+      "type": "file",
+      "name": "test_scoring.py",
+      "filePath": "tests/supervisor/test_scoring.py",
+      "summary": "Unit tests for supervisor scoring functions (weakness_severity, score_option) verifying calibration weakness, binary PnL weakness, zero for unknown dimensions, cost-efficiency weighting, and nonpositive cost rejection.",
+      "tags": ["test", "supervisor", "scoring", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/execution/Position Sizing.md",
+      "type": "document",
+      "name": "Position Sizing.md",
+      "filePath": "wiki/execution/Position Sizing.md",
+      "summary": "Knowledge base article covering position sizing definition, sizing logic (percentage and absolute cap), ladder-buying scale-in, environment variable configuration, and failure modes in the trading engine.",
+      "tags": ["documentation", "execution", "risk", "trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/execution/Stop-Loss Systems.md",
+      "type": "document",
+      "name": "Stop-Loss Systems.md",
+      "filePath": "wiki/execution/Stop-Loss Systems.md",
+      "summary": "Knowledge base article describing fixed, trailing, and time-based stop-loss types including floor-ratcheting logic and midday routine stop management in the trading engine.",
+      "tags": ["documentation", "execution", "risk", "trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/glossary/Glossary.md",
+      "type": "document",
+      "name": "Glossary.md",
+      "filePath": "wiki/glossary/Glossary.md",
+      "summary": "Project-wide glossary of trading and engineering terms used throughout the el_nino knowledge base and source code.",
+      "tags": ["documentation", "glossary", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/memory/Agent Memory Architecture.md",
+      "type": "document",
+      "name": "Agent Memory Architecture.md",
+      "filePath": "wiki/memory/Agent Memory Architecture.md",
+      "summary": "Comprehensive wiki article on agent memory architecture describing structural, operational, and derived memory types, design principles (files-as-personality, read-before-act, write-before-exit, git-as-persistence), and context budget implications.",
+      "tags": ["documentation", "agent", "memory", "architecture"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/memory/Context Budget Engineering.md",
+      "type": "document",
+      "name": "Context Budget Engineering.md",
+      "filePath": "wiki/memory/Context Budget Engineering.md",
+      "summary": "Wiki article on context window budget management covering budget categories, optimization strategies (selective reading, memory windowing, context resets, prompt engineering, tiered file architecture), and context window sizes across models.",
+      "tags": ["documentation", "agent", "context-window", "optimization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/observability/Graph Health Dashboard.md",
+      "type": "document",
+      "name": "Graph Health Dashboard.md",
+      "filePath": "wiki/observability/Graph Health Dashboard.md",
+      "summary": "Dataview-powered wiki dashboard monitoring metadata coverage, frontmatter completeness, confidence distribution, orphan and weakly connected pages, stale pages, ontology distribution, and the contradiction registry.",
+      "tags": ["documentation", "observability", "monitoring", "dashboard"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/research/Research Ingestion Workflow.md",
+      "type": "document",
+      "name": "Research Ingestion Workflow.md",
+      "filePath": "wiki/research/Research Ingestion Workflow.md",
+      "summary": "Wiki article describing the wiki and trading-research ingestion workflows including step-by-step procedures, source processing rules, quality criteria, and pre-market research routines.",
+      "tags": ["documentation", "workflow", "research", "ingestion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "type": "document",
+      "name": "Autonomous Trading Risk Model.md",
+      "filePath": "wiki/risk/Autonomous Trading Risk Model.md",
+      "summary": "Comprehensive risk taxonomy covering market, execution, system, AI-specific, and governance risk categories with risk parameters, phased mitigation strategies, and operational constraints for autonomous trading.",
+      "tags": ["documentation", "risk", "trading", "governance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/risk/Guardrail Architecture.md",
+      "type": "document",
+      "name": "Guardrail Architecture.md",
+      "filePath": "wiki/risk/Guardrail Architecture.md",
+      "summary": "Wiki article defining the guardrail architecture with hard limits, soft limits, and behavioral rules, covering implementation via environment variables, strategy files, and CLAUDE.md, plus options trading constraints.",
+      "tags": ["documentation", "risk", "guardrail", "architecture"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/security/API Credential Isolation.md",
+      "type": "document",
+      "name": "API Credential Isolation.md",
+      "filePath": "wiki/security/API Credential Isolation.md",
+      "summary": "Wiki article on API credential isolation rules, incident evidence, and exchange API permission model for securely segregating trading credentials.",
+      "tags": ["documentation", "security", "credentials", "api-schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/security/Environment Variable Management.md",
+      "type": "document",
+      "name": "Environment Variable Management.md",
+      "filePath": "wiki/security/Environment Variable Management.md",
+      "summary": "Wiki article covering environment variable storage locations, required variable names, critical rules, and naming precision for the trading engine runtime.",
+      "tags": ["documentation", "security", "configuration", "environment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/workflows/Office Action Loop.md",
+      "type": "document",
+      "name": "Office Action Loop.md",
+      "filePath": "wiki/workflows/Office Action Loop.md",
+      "summary": "Wiki article describing the office action loop state machine, available actions, and action execution flow for driving the trading agent through its intraday operational cycle.",
+      "tags": ["documentation", "workflow", "agent", "trading"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:tests/gold/test_paper_runtime_ledger.py",
+      "target": "function:tests/gold/test_paper_runtime_ledger.py:_packet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_ledger.py",
+      "target": "function:tests/gold/test_paper_runtime_ledger.py:test_seq_continuity_across_persist_and_reload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_ledger.py",
+      "target": "function:tests/gold/test_paper_runtime_ledger.py:_packet",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_ledger.py",
+      "target": "function:tests/gold/test_paper_runtime_ledger.py:test_seq_continuity_across_persist_and_reload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:make_fv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:_valid_kwargs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:test_golden_real_fixture",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:test_trace_version_independent_of_decision",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:make_fv",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:_valid_kwargs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:test_golden_real_fixture",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:test_trace_version_independent_of_decision",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:make_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:make_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:test_load_config_from_env_reads_values",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:make_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:make_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:test_load_config_from_env_reads_values",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/risk/test_predicates.py",
+      "target": "function:tests/risk/test_predicates.py:make_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_predicates.py",
+      "target": "function:tests/risk/test_predicates.py:make_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_predicates.py",
+      "target": "function:tests/risk/test_predicates.py:make_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/risk/test_predicates.py",
+      "target": "function:tests/risk/test_predicates.py:make_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/snapshot/test_models.py",
+      "target": "function:tests/snapshot/test_models.py:test_series_value_full_fidelity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/snapshot/test_models.py",
+      "target": "function:tests/snapshot/test_models.py:test_guards_parsed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/snapshot/test_models.py",
+      "target": "function:tests/snapshot/test_models.py:test_series_value_full_fidelity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/snapshot/test_models.py",
+      "target": "function:tests/snapshot/test_models.py:test_guards_parsed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:wiki/risk/Guardrail Architecture.md",
+      "target": "file:tests/risk/test_guardrail_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Guardrail Architecture.md",
+      "target": "file:tests/risk/test_predicates.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "target": "file:tests/risk/test_guardrail_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Guardrail Architecture.md",
+      "target": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/memory/Context Budget Engineering.md",
+      "target": "document:wiki/memory/Agent Memory Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/security/Environment Variable Management.md",
+      "target": "document:wiki/security/API Credential Isolation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/execution/Position Sizing.md",
+      "target": "document:wiki/execution/Stop-Loss Systems.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

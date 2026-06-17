@@ -1,0 +1,147 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": ".mcp.json",
+      "language": "json",
+      "sizeLines": 61,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ADR-011_drafting_prompt.md",
+      "language": "markdown",
+      "sizeLines": 57,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ADR-011_promote_and_plan_prompt.md",
+      "language": "markdown",
+      "sizeLines": 61,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "language": "markdown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "language": "markdown",
+      "sizeLines": 215,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "language": "markdown",
+      "sizeLines": 143,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "language": "markdown",
+      "sizeLines": 262,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "language": "markdown",
+      "sizeLines": 265,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "language": "markdown",
+      "sizeLines": 238,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "sizeLines": 62,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "language": "markdown",
+      "sizeLines": 271,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "STEP4_BENCH004_prompt.md",
+      "language": "markdown",
+      "sizeLines": 45,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "audit_plan.md",
+      "language": "markdown",
+      "sizeLines": 743,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "audit_plan_addendum.md",
+      "language": "markdown",
+      "sizeLines": 750,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "language": "markdown",
+      "sizeLines": 96,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph_stabilization_audit_2026-06-07.md",
+      "language": "markdown",
+      "sizeLines": 221,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "final_strategic_review.md",
+      "language": "markdown",
+      "sizeLines": 1098,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "llm-wiki.md",
+      "language": "markdown",
+      "sizeLines": 74,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    ".mcp.json": [],
+    "ADR-011_drafting_prompt.md": [],
+    "ADR-011_promote_and_plan_prompt.md": [],
+    "CLAUDE.md": [],
+    "EPOCH_B_CORPUS_RUNBOOK.md": [],
+    "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md": [],
+    "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md": [],
+    "GOLD_DECISIONPACKET_V0_BRIEF.md": [],
+    "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md": [],
+    "JARVIS_el_nino_integration_and_refactor_roadmap.md": [],
+    "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md": [],
+    "REGIME_IMPLEMENTATION_BRIEF.md": [],
+    "REGIME_TAXONOMY_FINAL_AUDIT.md": [],
+    "STEP4_BENCH004_prompt.md": [],
+    "audit_plan.md": [],
+    "audit_plan_addendum.md": [],
+    "dev_graph_next_step_recommendation_2026-06-08.md": [],
+    "dev_graph_stabilization_audit_2026-06-07.md": [],
+    "final_strategic_review.md": [],
+    "llm-wiki.md": []
+  }
+}

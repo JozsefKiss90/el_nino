@@ -1,0 +1,633 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/patterns/CQRS Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 59,
+      "nonEmptyLines": 48,
+      "sections": [
+        {
+          "heading": "CQRS Pattern",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Context Assembly Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 63,
+      "nonEmptyLines": 52,
+      "sections": [
+        {
+          "heading": "Context Assembly Pattern",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Evaluation Loop Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 61,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "Evaluation Loop Pattern",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Event Sourcing Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 61,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "Event Sourcing Pattern",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Guardrail Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Guardrail Pattern",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Multi-Agent Coordination Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 58,
+      "nonEmptyLines": 47,
+      "sections": [
+        {
+          "heading": "Multi-Agent Coordination Pattern",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Pipeline Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Pipeline Pattern",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Promotion Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 58,
+      "nonEmptyLines": 47,
+      "sections": [
+        {
+          "heading": "Promotion Pattern",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Regime Classification Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 69,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "Regime Classification Pattern",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Composes",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Supervisor Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 68,
+      "nonEmptyLines": 56,
+      "sections": [
+        {
+          "heading": "Supervisor Pattern",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Composes",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/patterns/Treasury Approval Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 60,
+      "nonEmptyLines": 49,
+      "sections": [
+        {
+          "heading": "Treasury Approval Pattern",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Structural Constraints",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "When to Apply",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Realized By",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    }
+  ]
+}

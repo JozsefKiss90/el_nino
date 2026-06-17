@@ -1,0 +1,184 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": "benchmarks/execution/artifacts/execution_bench.json",
+      "language": "json",
+      "sizeLines": 175,
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/execution/run_execution_bench.py",
+      "language": "python",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "benchmarks/gold/artifacts/gold_bench.json",
+      "language": "json",
+      "sizeLines": 125,
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "language": "json",
+      "sizeLines": 115,
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/gold/run_gold_bench.py",
+      "language": "python",
+      "sizeLines": 210,
+      "fileCategory": "code"
+    },
+    {
+      "path": "benchmarks/gold/run_paper_runtime_bench.py",
+      "language": "python",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "benchmarks/regime/artifacts/regime_bench.json",
+      "language": "json",
+      "sizeLines": 136,
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/regime/run_regime_bench.py",
+      "language": "python",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "dev_graph/api_docs/Alpaca API Docs.md",
+      "language": "markdown",
+      "sizeLines": 97,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/api_docs/Anthropic API Docs.md",
+      "language": "markdown",
+      "sizeLines": 98,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Upgrade Evaluation.md",
+      "language": "markdown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/context_packs/Context Pack Template.md",
+      "language": "markdown",
+      "sizeLines": 143,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "language": "markdown",
+      "sizeLines": 167,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/observability/Dev Graph Dashboard.md",
+      "language": "markdown",
+      "sizeLines": 273,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_scoring.md",
+      "language": "markdown",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/workflows/System Lifecycle.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/backend/app.py",
+      "language": "python",
+      "sizeLines": 638,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/backend/requirements.txt",
+      "language": "txt",
+      "sizeLines": 8,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/export_graph_json.py",
+      "language": "python",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hooks/install.sh",
+      "language": "shell",
+      "sizeLines": 10,
+      "fileCategory": "script"
+    },
+    {
+      "path": "jarvis/hooks/pre-commit",
+      "language": "unknown",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/public/graph.json",
+      "language": "json",
+      "sizeLines": 8571,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jarvis/hud/src/theme.css",
+      "language": "css",
+      "sizeLines": 446,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/hud/src/vite-env.d.ts",
+      "language": "typescript",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "benchmarks/execution/artifacts/execution_bench.json": [],
+    "benchmarks/execution/run_execution_bench.py": [],
+    "benchmarks/gold/artifacts/gold_bench.json": [],
+    "benchmarks/gold/artifacts/paper_runtime_bench.json": [],
+    "benchmarks/gold/run_gold_bench.py": [],
+    "benchmarks/gold/run_paper_runtime_bench.py": [],
+    "benchmarks/regime/artifacts/regime_bench.json": [],
+    "benchmarks/regime/run_regime_bench.py": [],
+    "dev_graph/api_docs/Alpaca API Docs.md": [],
+    "dev_graph/api_docs/Anthropic API Docs.md": [],
+    "dev_graph/capabilities/Upgrade Evaluation.md": [],
+    "dev_graph/context_packs/Context Pack Template.md": [],
+    "dev_graph/context_packs/Phase 5 Bootstrap Context.md": [],
+    "dev_graph/observability/Dev Graph Dashboard.md": [],
+    "dev_graph/tests/test_scoring.md": [],
+    "dev_graph/workflows/System Lifecycle.md": [],
+    "jarvis/backend/app.py": [],
+    "jarvis/backend/requirements.txt": [],
+    "jarvis/export_graph_json.py": [
+      "sync_to_neo4j.py"
+    ],
+    "jarvis/hooks/install.sh": [],
+    "jarvis/hooks/pre-commit": [],
+    "jarvis/hud/public/graph.json": [],
+    "jarvis/hud/src/theme.css": [],
+    "jarvis/hud/src/vite-env.d.ts": [],
+    "jarvis/hud/vite.config.ts": []
+  }
+}

@@ -1,0 +1,627 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/hud/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "jarvis/hud/vitest.config.ts",
+      "summary": "Vitest configuration for the JARVIS HUD frontend package, specifying the test runner environment and framework settings.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:snapshot_sources/latest_snapshot.json",
+      "type": "config",
+      "name": "latest_snapshot.json",
+      "filePath": "snapshot_sources/latest_snapshot.json",
+      "summary": "The most recent published trading snapshot containing tier-1 and tier-2 series values, quality summary, guard results, revision policy, and system metadata. Used as the canonical current snapshot artifact.",
+      "tags": ["data", "configuration", "snapshot", "trading-engine"],
+      "complexity": "complex",
+      "languageNotes": "21 top-level keys including snapshot_id, verdict, guards, tier1_series, tier2_series, values_by_group, and quality_summary — a denormalized snapshot of the full system state."
+    },
+    {
+      "id": "file:snapshot_sources/query_db.py",
+      "type": "file",
+      "name": "query_db.py",
+      "filePath": "snapshot_sources/query_db.py",
+      "summary": "CLI tool for inspecting the SQLite observations database, providing subcommands for listing tables, viewing series data, checking freshness, comparing series, exporting to CSV, and browsing snapshot history.",
+      "tags": ["utility", "entry-point", "data-pipeline", "script"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_freshness",
+      "type": "function",
+      "name": "cmd_freshness",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [213, 287],
+      "summary": "Displays per-series data freshness status by comparing the latest observation timestamps against expected staleness thresholds from the series registry.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_registry",
+      "type": "function",
+      "name": "cmd_registry",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [325, 377],
+      "summary": "Lists all series from the series registry with tier, group, and metadata, providing a human-readable overview of the registered data sources.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_series",
+      "type": "function",
+      "name": "cmd_series",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [380, 440],
+      "summary": "Queries and displays historical observations for a specific series with optional date range filtering and tail limit.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_compare",
+      "type": "function",
+      "name": "cmd_compare",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [443, 491],
+      "summary": "Renders a side-by-side tabular comparison of multiple time series aligned on the same timestamps.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_snapshots",
+      "type": "function",
+      "name": "cmd_snapshots",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [494, 536],
+      "summary": "Lists the most recent trading snapshots from the database with verdict, guard results, and flags.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_snapshot_detail",
+      "type": "function",
+      "name": "cmd_snapshot_detail",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [539, 594],
+      "summary": "Shows detailed contents of a specific snapshot including tier-grouped series values and quality metadata.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:cmd_status",
+      "type": "function",
+      "name": "cmd_status",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [729, 785],
+      "summary": "Prints a database health summary showing series counts, total observations, latest snapshot metadata, and per-series staleness status.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:parse_args",
+      "type": "function",
+      "name": "parse_args",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [791, 851],
+      "summary": "Builds and parses the argparse CLI argument specification for all query_db subcommands.",
+      "tags": ["entry-point", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/query_db.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "snapshot_sources/query_db.py",
+      "lineRange": [854, 894],
+      "summary": "CLI entry point that dispatches to the appropriate subcommand handler based on parsed arguments.",
+      "tags": ["entry-point", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:snapshot_sources/run_backfill.py",
+      "type": "file",
+      "name": "run_backfill.py",
+      "filePath": "snapshot_sources/run_backfill.py",
+      "summary": "Orchestration script that runs one or more data-source adapters to backfill historical observations into the SQLite database, supporting windowed and full-history modes.",
+      "tags": ["entry-point", "data-pipeline", "script", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/run_backfill.py:run_all",
+      "type": "function",
+      "name": "run_all",
+      "filePath": "snapshot_sources/run_backfill.py",
+      "lineRange": [154, 195],
+      "summary": "Runs all specified adapters sequentially, building appropriate CLI argument lists for window or full-history mode and collecting per-adapter results.",
+      "tags": ["data-pipeline", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/run_backfill.py:_window_args",
+      "type": "function",
+      "name": "_window_args",
+      "filePath": "snapshot_sources/run_backfill.py",
+      "lineRange": [198, 241],
+      "summary": "Constructs adapter-specific CLI arguments for a date-windowed backfill by mapping adapter names to their expected parameter formats.",
+      "tags": ["data-pipeline", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/run_backfill.py:_print_summary",
+      "type": "function",
+      "name": "_print_summary",
+      "filePath": "snapshot_sources/run_backfill.py",
+      "lineRange": [262, 311],
+      "summary": "Logs a structured summary of backfill results by adapter, reporting successes, warnings, and failures.",
+      "tags": ["utility", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/run_backfill.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "snapshot_sources/run_backfill.py",
+      "lineRange": [399, 466],
+      "summary": "CLI entry point for the backfill runner — parses arguments, validates inputs, selects adapters, and invokes run_all with timing.",
+      "tags": ["entry-point", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:snapshot_sources/snapshot_publisher.py",
+      "type": "file",
+      "name": "snapshot_publisher.py",
+      "filePath": "snapshot_sources/snapshot_publisher.py",
+      "summary": "Core snapshot publication pipeline that reads the observation database, runs quality gates, computes a deterministic snapshot ID, writes the snapshot to the database, and exports it as JSON.",
+      "tags": ["entry-point", "data-pipeline", "service", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/snapshot_publisher.py:_write_snapshot",
+      "type": "function",
+      "name": "_write_snapshot",
+      "filePath": "snapshot_sources/snapshot_publisher.py",
+      "lineRange": [158, 217],
+      "summary": "Persists a snapshot record and its associated series values into the database within a single transaction.",
+      "tags": ["data-pipeline", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/snapshot_publisher.py:_minimal_quality_check",
+      "type": "function",
+      "name": "_minimal_quality_check",
+      "filePath": "snapshot_sources/snapshot_publisher.py",
+      "lineRange": [280, 345],
+      "summary": "Fallback quality gate that checks Tier-1 series freshness against the observation database when the full quality gate module is unavailable.",
+      "tags": ["validation", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/snapshot_publisher.py:compute_snapshot_id",
+      "type": "function",
+      "name": "compute_snapshot_id",
+      "filePath": "snapshot_sources/snapshot_publisher.py",
+      "lineRange": [352, 381],
+      "summary": "Deterministically computes a content-addressed snapshot ID by hashing clock timestamp, engine version, config version, and sorted series values.",
+      "tags": ["utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:snapshot_sources/snapshot_publisher.py:write_snapshot_json",
+      "type": "function",
+      "name": "write_snapshot_json",
+      "filePath": "snapshot_sources/snapshot_publisher.py",
+      "lineRange": [388, 497],
+      "summary": "Serializes the full snapshot payload — including tier-grouped values, guards, revision policy, and quality summary — to a JSON file.",
+      "tags": ["data-pipeline", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:snapshot_sources/snapshot_publisher.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "snapshot_sources/snapshot_publisher.py",
+      "lineRange": [621, 769],
+      "summary": "CLI entry point for the snapshot publisher — manages the full publish lifecycle including quality gate, snapshot existence check, database write, and JSON export.",
+      "tags": ["entry-point", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:snapshot_sources/snapshot.json",
+      "type": "config",
+      "name": "snapshot.json",
+      "filePath": "snapshot_sources/snapshot.json",
+      "summary": "Placeholder or working-copy snapshot JSON file in the snapshot_sources directory, used as a staging target by the snapshot publisher.",
+      "tags": ["data", "configuration", "snapshot"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/features/__init__.py",
+      "summary": "Python package initializer for the src.features module, making it importable as a package.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/gold/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/gold/__init__.py",
+      "summary": "Python package initializer for the src.gold module, making the gold (decision-making) subsystem importable as a package.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/regime/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/regime/__init__.py",
+      "summary": "Python package initializer for the src.regime module, making the regime classification subsystem importable as a package.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/risk/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/risk/__init__.py",
+      "summary": "Python package initializer for the src.risk module, making the risk management subsystem importable as a package.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/snapshot/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/snapshot/__init__.py",
+      "summary": "Python package initializer for the src.snapshot module, making the snapshot subsystem importable as a package.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/supervisor/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/supervisor/__init__.py",
+      "summary": "Python package initializer for the src.supervisor module, making the supervisor subsystem importable as a package.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sync_to_neo4j.py",
+      "type": "file",
+      "name": "sync_to_neo4j.py",
+      "filePath": "sync_to_neo4j.py",
+      "summary": "ETL script that parses all dev_graph Markdown nodes (frontmatter + wikilinks + relationship sections) and synchronizes them as nodes and edges into the Neo4j graph database, enabling graph-based querying of the engineering knowledge graph.",
+      "tags": ["entry-point", "data-pipeline", "script", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:sync_to_neo4j.py:parse_dev_graph_file",
+      "type": "function",
+      "name": "parse_dev_graph_file",
+      "filePath": "sync_to_neo4j.py",
+      "lineRange": [169, 251],
+      "summary": "Parses a single dev_graph Markdown file into a structured node representation including frontmatter, extracted wikilinks, and parsed relationship sections.",
+      "tags": ["data-pipeline", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:sync_to_neo4j.py:sync_to_neo4j",
+      "type": "function",
+      "name": "sync_to_neo4j",
+      "filePath": "sync_to_neo4j.py",
+      "lineRange": [320, 386],
+      "summary": "Connects to Neo4j, optionally clears existing DevGraph nodes and relationships, then bulk-inserts all parsed nodes and their resolved edges using generated Cypher statements.",
+      "tags": ["data-pipeline", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:sync_to_neo4j.py:verify_graph",
+      "type": "function",
+      "name": "verify_graph",
+      "filePath": "sync_to_neo4j.py",
+      "lineRange": [389, 419],
+      "summary": "Runs validation queries against the Neo4j graph to report node counts, edge counts, orphan nodes, and isolated canonical nodes after a sync.",
+      "tags": ["utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sync_to_neo4j.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sync_to_neo4j.py",
+      "lineRange": [424, 444],
+      "summary": "CLI entry point for the Neo4j sync script — parses arguments and orchestrates the scan, sync, and optional verification steps.",
+      "tags": ["entry-point", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/execution/test_execution_bench.py",
+      "type": "file",
+      "name": "test_execution_bench.py",
+      "filePath": "tests/execution/test_execution_bench.py",
+      "summary": "Test suite validating the execution benchmark harness for determinism, byte-identical replay, corpus grounding, fill distribution, idempotency, guard attribution, and artifact consistency.",
+      "tags": ["test", "validation", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/execution/test_execution_determinism.py",
+      "type": "file",
+      "name": "test_execution_determinism.py",
+      "filePath": "tests/execution/test_execution_determinism.py",
+      "summary": "Tests that the execution engine produces byte-identical results across replays and preserves state hash through persist/load round-trips.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/execution/test_execution_engine.py",
+      "type": "file",
+      "name": "test_execution_engine.py",
+      "filePath": "tests/execution/test_execution_engine.py",
+      "summary": "Unit tests for the execution engine covering fill logic, position accumulation, guard blocking, idempotency, input validation, and execution record invariants.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/execution/test_execution_guards.py",
+      "type": "file",
+      "name": "test_execution_guards.py",
+      "filePath": "tests/execution/test_execution_guards.py",
+      "summary": "Tests for execution guard logic including position-size blocking, withdrawal-enabled blocking, fill suppression, and config override behavior.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/features/test_feature_builder.py",
+      "type": "file",
+      "name": "test_feature_builder.py",
+      "filePath": "tests/features/test_feature_builder.py",
+      "summary": "Tests for the feature builder verifying correct feature set construction, value accuracy, provenance propagation, determinism, and handling of missing input series.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_decision_builder.py",
+      "type": "file",
+      "name": "test_decision_builder.py",
+      "filePath": "tests/gold/test_decision_builder.py",
+      "summary": "Comprehensive tests for the gold decision builder covering golden-file comparisons, byte-identical replay, policy fingerprinting, guard reference passthrough, and config validation.",
+      "tags": ["test", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/gold/test_e2e_pipeline.py",
+      "type": "file",
+      "name": "test_e2e_pipeline.py",
+      "filePath": "tests/gold/test_e2e_pipeline.py",
+      "summary": "End-to-end pipeline tests that verify byte-identical replay, golden packet output, snapshot provenance propagation, and snapshot ID flow through the full trading decision pipeline.",
+      "tags": ["test", "validation", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_gold_bench.py",
+      "type": "file",
+      "name": "test_gold_bench.py",
+      "filePath": "tests/gold/test_gold_bench.py",
+      "summary": "Tests for the gold benchmark harness checking determinism, byte-identical replay, pinned pass-packet values, direction reachability, and artifact sync.",
+      "tags": ["test", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_bench.py",
+      "type": "file",
+      "name": "test_paper_runtime_bench.py",
+      "filePath": "tests/gold/test_paper_runtime_bench.py",
+      "summary": "Tests for the paper-trading runtime benchmark harness covering determinism, byte-identical replay, idempotency, verdict reachability, and artifact sync.",
+      "tags": ["test", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_determinism.py",
+      "type": "file",
+      "name": "test_paper_runtime_determinism.py",
+      "filePath": "tests/gold/test_paper_runtime_determinism.py",
+      "summary": "Tests that the paper-trading runtime produces byte-identical records across runs and that policy fingerprints are stable and correctly bound into record IDs.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_engine.py",
+      "type": "file",
+      "name": "test_paper_runtime_engine.py",
+      "filePath": "tests/gold/test_paper_runtime_engine.py",
+      "summary": "Unit tests for the paper-trading runtime engine covering admit/reject logic, guard ordering, operational state checks, config defaults, and record invariants.",
+      "tags": ["test", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_guards.py",
+      "type": "file",
+      "name": "test_paper_runtime_guards.py",
+      "filePath": "tests/gold/test_paper_runtime_guards.py",
+      "summary": "Tests for paper-trading runtime guards covering duplicate detection, operational state checks, venue conditions, and snapshot provenance echoing.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_freshness",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_registry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_series",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_compare",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_snapshots",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_snapshot_detail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:cmd_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:parse_args",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/query_db.py",
+      "target": "function:snapshot_sources/query_db.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/run_backfill.py",
+      "target": "function:snapshot_sources/run_backfill.py:run_all",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/run_backfill.py",
+      "target": "function:snapshot_sources/run_backfill.py:_window_args",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/run_backfill.py",
+      "target": "function:snapshot_sources/run_backfill.py:_print_summary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/run_backfill.py",
+      "target": "function:snapshot_sources/run_backfill.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "function:snapshot_sources/snapshot_publisher.py:_write_snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "function:snapshot_sources/snapshot_publisher.py:_minimal_quality_check",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "function:snapshot_sources/snapshot_publisher.py:compute_snapshot_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "function:snapshot_sources/snapshot_publisher.py:write_snapshot_json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "function:snapshot_sources/snapshot_publisher.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sync_to_neo4j.py",
+      "target": "function:sync_to_neo4j.py:parse_dev_graph_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sync_to_neo4j.py",
+      "target": "function:sync_to_neo4j.py:sync_to_neo4j",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sync_to_neo4j.py",
+      "target": "function:sync_to_neo4j.py:verify_graph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sync_to_neo4j.py",
+      "target": "function:sync_to_neo4j.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "config:snapshot_sources/latest_snapshot.json",
+      "type": "produces",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:snapshot_sources/snapshot_publisher.py",
+      "target": "config:snapshot_sources/snapshot.json",
+      "type": "produces",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sync_to_neo4j.py",
+      "target": "file:jarvis/export_graph_json.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

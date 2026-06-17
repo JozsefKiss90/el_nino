@@ -1,0 +1,2150 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "files": [
+    {
+      "path": ".mcp.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "ADR-011_drafting_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ADR-011_promote_and_plan_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "audit_plan_addendum.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "audit_plan.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "benchmarks/execution/artifacts/execution_bench.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/execution/run_execution_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "benchmarks/gold/artifacts/gold_bench.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/gold/run_gold_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "benchmarks/gold/run_paper_runtime_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "benchmarks/regime/artifacts/regime_bench.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/regime/run_regime_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph_stabilization_audit_2026-06-07.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/api_docs/Alpaca API Docs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/api_docs/Anthropic API Docs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/architecture/Context Map.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/architecture/Infrastructure Diagram.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/architecture/Layer Model.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/architecture/Runtime Topology.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Context Assembly.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Decision Making.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Exposure Tracking.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Feature Engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Gold Decision Generation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Guardrail Enforcement.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Market Regime Classification.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Market Scanning.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Order Management.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Paper-Trade Admission.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Performance Scoring.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Position Tracking.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Promotion Validation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Signal Generation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Snapshot Assembly.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/State Persistence.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Stop-Loss Management.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Team Orchestration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Trade Logging.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Treasury Management.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/capabilities/Upgrade Evaluation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/constraints/Canonical Ownership.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/constraints/Frontmatter Required.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/constraints/No Wiki Mutation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/context_packs/Context Pack Template.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Implementation Substrate.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Ontology Redesign.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/adapters.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/builder.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/config.py (execution).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/config.py (gold).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/config.py (paper_runtime).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/config.py (regime).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/consumer.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/decision_engine.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/engine.py (execution).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/engine.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/feature_builder.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/guardrail_engine.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (execution).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (features).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (gold).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (paper_runtime).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (regime).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (snapshot).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py (supervisor).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/models.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/policy.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/predicates.py (paper_runtime).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/predicates.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/regime_classifier.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/run_execution_bench.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/runtime.py (execution).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/runtime.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/scoring.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/taxonomy.py.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/gates/Gold Decision Gate.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/gates/Runtime Admission Gate.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/gates/Trade Validation Gate.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/Admissibility Checks.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/API Documentation Policy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/Context Pack Assembly Rules.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/Database MCP Mapping.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/Dev Graph Governance.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/MCP Tooling Policy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/Neo4j Export Mapping.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/REF - Wiki CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/REF - Wiki Graph Health Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/governance/REF - Wiki Metadata Migration Plan.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/index.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/Infrastructure Diagram.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Decision API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Execution API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Gold Decision API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Paper Runtime API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Regime Classification API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Risk Check API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/interfaces/Snapshot API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Agent Safety Principles.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Context Engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/CQRS.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Event Sourcing.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Guardrail Philosophy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Office Action Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Paper Trading Validation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Stateless Agent Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/log.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Decision Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Execution.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Feature Builder.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Gold Decision Builder.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Guardrail Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Market Regime Classifier.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Paper-Trading Runtime.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Snapshot Consumer.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/observability/Dev Graph Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Context Assembly Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/CQRS Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Evaluation Loop Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Event Sourcing Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Guardrail Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Multi-Agent Coordination Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Pipeline Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Promotion Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Regime Classification Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Supervisor Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/patterns/Treasury Approval Pattern.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Daily Loss Cap OK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Duplicate OK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Max Positions OK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Max Trades OK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Operational OK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Position Size OK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Withdrawal Disabled.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Decision Packet Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Execution Record Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Feature Vector Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Portfolio State Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Regime Classification Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Runtime Decision Record Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Runtime Ledger Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Trade Validation Decision Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Trade Validation Request Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/systems/Agent Runtime.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/systems/Data Pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/systems/Evaluation Loop.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/systems/Risk Control.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/systems/Supervisor Office.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/systems/Trading Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_consumer.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_decision_builder.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_decision_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_e2e_pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_execution_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_execution_determinism.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_execution_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_execution_guards.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_feature_builder.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_gold_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_guardrail_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_models (snapshot).md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_paper_runtime_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_paper_runtime_determinism.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_paper_runtime_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_paper_runtime_guards.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_paper_runtime_ledger.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_predicates.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_regime_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_regime_classifier.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_scoring.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/workflows/System Lifecycle.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "final_strategic_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/.env.example",
+      "language": "config",
+      "fileCategory": "config"
+    },
+    {
+      "path": "jarvis/backend/app.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/backend/Dockerfile",
+      "language": "dockerfile",
+      "fileCategory": "infra"
+    },
+    {
+      "path": "jarvis/backend/requirements.txt",
+      "language": "txt",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/docker-compose.yml",
+      "language": "yaml",
+      "fileCategory": "infra"
+    },
+    {
+      "path": "jarvis/export_graph_json.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/frontend/graph.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "jarvis/frontend/index.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/hooks/install.sh",
+      "language": "shell",
+      "fileCategory": "script"
+    },
+    {
+      "path": "jarvis/hooks/pre-commit",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/index.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/hud/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "jarvis/hud/public/graph.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "jarvis/hud/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/hud/src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/assets/portrait.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/FlowInvariants.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/GovernanceSpine.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/LaNinaBranch.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/ProgressiveReveal.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/GraphView.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/EpochTrack.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/SystemVitals.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/MatrixRain.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/Architecture.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/AuditDriftStatus.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/EpochRoadmap.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/LivePipelineResult.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/MetricCards.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/NextActions.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/PipelineStatus.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/The12PivotalPoints.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/api.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/graph.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/router.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/router.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/snapshot.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/types.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useClock.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useCorpusCounter.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useGraph.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useReactorState.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useSpeech.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/pages/MainHud.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/pages/OpsDeck.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/pages/SystemFlow.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/theme.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/hud/src/theme/ThemeContext.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/vite-env.d.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/tsconfig.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "jarvis/hud/vite.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/JARVIS_INTEGRATION_ROADMAP.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/PROJECTION_SYNC_PLAN.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/resync-devgraph.ps1",
+      "language": "powershell",
+      "fileCategory": "script"
+    },
+    {
+      "path": "jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/sources/el_nino_jarvis_interface (6).html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "jarvis/sources/el_nino_project_plan_v1.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/sources/sarkallatos_pontok.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jarvis/start.ps1",
+      "language": "powershell",
+      "fileCategory": "script"
+    },
+    {
+      "path": "llm-wiki.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "population_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "project_structure.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "raw/build-spec.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/calude_alpaca_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/Claude for Financial Services.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/claude_cowork_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/claude_opus_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/claude_stock_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/claude_tradingview.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "raw/ows-dev-squad.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "slice2 fit assessment and roadmap.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "snapshot_sources/latest_snapshot.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "snapshot_sources/query_db.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "snapshot_sources/run_backfill.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "snapshot_sources/snapshot_publisher.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "snapshot_sources/snapshot.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/execution/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/adapters.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/config.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/runtime.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/features/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/features/feature_builder/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/features/feature_builder/feature_builder.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/features/feature_builder/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/decision_builder/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/decision_builder/builder.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/decision_builder/config.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/decision_builder/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/decision_builder/policy.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/paper_runtime/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/paper_runtime/config.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/paper_runtime/engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/paper_runtime/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/paper_runtime/predicates.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gold/paper_runtime/runtime.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/config.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/regime_classifier.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/taxonomy.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/guardrail_engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/risk/guardrail_engine/predicates.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/consumer.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/supervisor/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/supervisor/decision_engine/__init__.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/supervisor/decision_engine/decision_engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/supervisor/decision_engine/models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/supervisor/decision_engine/scoring.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "STEP4_BENCH004_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sync_to_neo4j.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/execution/test_execution_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/execution/test_execution_determinism.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/execution/test_execution_engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/execution/test_execution_guards.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/features/test_feature_builder.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_decision_builder.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_e2e_pipeline.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_gold_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_paper_runtime_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_paper_runtime_determinism.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_paper_runtime_engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_paper_runtime_guards.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/gold/test_paper_runtime_ledger.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/regime/test_regime_bench.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/regime/test_regime_classifier.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/risk/test_guardrail_engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/risk/test_predicates.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/snapshot/fixtures/snapshot_fail.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/snapshot/fixtures/snapshot_forced.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/snapshot/test_consumer.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/snapshot/test_models.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/supervisor/test_decision_engine.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/supervisor/test_scoring.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ultimateplan.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/agents/Agent Self-Verification.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/agents/Multi-Agent Orchestration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/agents/Stateless Agent Recovery.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/agents/Supervisor Decision Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/backtesting/Backtesting Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/backtesting/Overfitting Detection.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/backtesting/Walk-Forward Optimization.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/concepts/EMA Crossover.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/concepts/Options Trading.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/concepts/Relative Volume Filter.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/concepts/VWAP.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/execution/Position Sizing.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/execution/Stop-Loss Systems.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/glossary/Glossary.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/governance/Metadata Migration Plan.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/governance/Trade Logging.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/governance/Treasury Policy System.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/index.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/infrastructure/Claude Co-work.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/infrastructure/Claude Code.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/infrastructure/Claude Routines.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/infrastructure/Railway Deployment.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/Alpaca API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/Capital Trades Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/Exchange API Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/MCP Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/Perplexity API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/TradingView Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/integrations/Webhook Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/log.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/memory/Agent Memory Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/memory/Context Budget Engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/observability/Graph Health Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/research/Research Ingestion Workflow.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/risk/Autonomous Trading Risk Model.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/risk/Guardrail Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/security/API Credential Isolation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/security/Environment Variable Management.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Build Spec.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Alpaca Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Cowork Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Claude for Financial Services.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Opus Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Stock Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - Claude TradingView Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - LLM Wiki Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/sources/SRC - OWS Dev Squad.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/strategies/Copy Trading Strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/strategies/Paper Trading.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/strategies/Signal Confirmation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/strategies/VWAP Crossover Strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/strategies/Wheel Strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/systems/Architecture Overview.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/systems/Claude-Assisted Trading Stack.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/systems/LLM Failure Modes in Trading.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/systems/Syndicate Squad Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/systems/Three-Layer Trading System.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/systems/Trading Engine Pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "wiki/workflows/Office Action Loop.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    }
+  ]
+}

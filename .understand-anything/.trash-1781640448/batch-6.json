@@ -1,0 +1,990 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/execution/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/execution/__init__.py",
+      "summary": "Package barrel for the execution subsystem, re-exporting all public symbols from adapters, config, engine, models, and runtime to provide a unified public API.",
+      "tags": ["entry-point", "barrel", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/execution/adapters.py",
+      "type": "file",
+      "name": "adapters.py",
+      "filePath": "src/execution/adapters.py",
+      "summary": "Defines the ExecutionPort abstract adapter interface and SimulatedBrokerAdapter implementation, bridging the execution engine to different fill backends.",
+      "tags": ["service", "middleware", "execution", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/execution/adapters.py:ExecutionPort",
+      "type": "class",
+      "name": "ExecutionPort",
+      "filePath": "src/execution/adapters.py",
+      "lineRange": [23, 45],
+      "summary": "Abstract base class defining the port interface that all broker/execution adapters must implement, including mode, replayability, and fill operations.",
+      "tags": ["service", "type-definition", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/execution/adapters.py:SimulatedBrokerAdapter",
+      "type": "class",
+      "name": "SimulatedBrokerAdapter",
+      "filePath": "src/execution/adapters.py",
+      "lineRange": [49, 71],
+      "summary": "Concrete simulation adapter implementing ExecutionPort for paper-trading environments, generating Fill objects with slippage modeling.",
+      "tags": ["service", "data-model", "adapter", "simulation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/execution/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/execution/config.py",
+      "summary": "Defines FillModelConfig and ExecutionPolicyConfig dataclasses with deterministic fingerprinting, validation, and JSON deserialization for execution policy configuration.",
+      "tags": ["config", "data-model", "validation", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/execution/config.py:FillModelConfig",
+      "type": "class",
+      "name": "FillModelConfig",
+      "filePath": "src/execution/config.py",
+      "lineRange": [35, 70],
+      "summary": "Dataclass for fill model parameters (slippage_bps, version) with a SHA256 fingerprint method and validated from_mapping factory.",
+      "tags": ["config", "data-model", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/execution/config.py:ExecutionPolicyConfig",
+      "type": "class",
+      "name": "ExecutionPolicyConfig",
+      "filePath": "src/execution/config.py",
+      "lineRange": [74, 109],
+      "summary": "Dataclass for execution policy parameters (size, instrument, equity, version) with SHA256 fingerprinting and validated from_mapping factory.",
+      "tags": ["config", "data-model", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/execution/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/execution/config.py",
+      "lineRange": [112, 123],
+      "summary": "Loads and deserializes an ExecutionPolicyConfig from a JSON file path, raising ExecutionPolicyConfigError on missing file or invalid schema.",
+      "tags": ["utility", "config", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/execution/engine.py",
+      "type": "file",
+      "name": "engine.py",
+      "filePath": "src/execution/engine.py",
+      "summary": "Core execution engine containing the execute() function that applies a trading decision to a portfolio state, computing fills and returning an ExecutionRecord with full traceability.",
+      "tags": ["service", "execution", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/execution/engine.py:execute",
+      "type": "function",
+      "name": "execute",
+      "filePath": "src/execution/engine.py",
+      "lineRange": [66, 138],
+      "summary": "Main execution function that validates a trade admission, applies buy/sell logic via the broker adapter, and produces a fully hashed ExecutionRecord with before/after portfolio state.",
+      "tags": ["service", "execution", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/execution/engine.py:_apply_buy",
+      "type": "function",
+      "name": "_apply_buy",
+      "filePath": "src/execution/engine.py",
+      "lineRange": [43, 63],
+      "summary": "Internal helper that computes the updated Position after a buy fill, calculating new average cost, quantity, and unrealized PnL.",
+      "tags": ["utility", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/execution/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/execution/models.py",
+      "summary": "Comprehensive data model module for the execution layer, defining Position, PortfolioState, ExecutionEntry, ExecutionRecord, Fill, GuardResult, and the compute_execution_id hash function.",
+      "tags": ["data-model", "serialization", "execution", "type-definition"],
+      "complexity": "complex",
+      "languageNotes": "Heavy use of Python dataclasses with SHA256 hashing for deterministic state fingerprinting and full to_dict/from_dict round-trip serialization."
+    },
+    {
+      "id": "class:src/execution/models.py:PortfolioState",
+      "type": "class",
+      "name": "PortfolioState",
+      "filePath": "src/execution/models.py",
+      "lineRange": [182, 243],
+      "summary": "Immutable-style container for portfolio positions and execution history with state_hash fingerprinting, append semantics, and full JSON serialization.",
+      "tags": ["data-model", "serialization", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/execution/models.py:ExecutionRecord",
+      "type": "class",
+      "name": "ExecutionRecord",
+      "filePath": "src/execution/models.py",
+      "lineRange": [274, 328],
+      "summary": "Top-level audit record for a single execution event, containing fill details, guard results, before/after portfolio hashes, and replayability flags for full traceability.",
+      "tags": ["data-model", "serialization", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/execution/models.py:Position",
+      "type": "class",
+      "name": "Position",
+      "filePath": "src/execution/models.py",
+      "lineRange": [97, 128],
+      "summary": "Dataclass representing a single instrument position with quantity, average cost, realized and unrealized PnL, with to_dict/from_dict serialization.",
+      "tags": ["data-model", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/execution/models.py:ExecutionEntry",
+      "type": "class",
+      "name": "ExecutionEntry",
+      "filePath": "src/execution/models.py",
+      "lineRange": [132, 172],
+      "summary": "Ledger entry recording a single fill event inside a PortfolioState, linking back to source snapshot and decision record IDs.",
+      "tags": ["data-model", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/execution/models.py:GuardResult",
+      "type": "class",
+      "name": "GuardResult",
+      "filePath": "src/execution/models.py",
+      "lineRange": [52, 71],
+      "summary": "Dataclass capturing the outcome of guardrail evaluation: approval status, blocking predicate name, and reason string.",
+      "tags": ["data-model", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/execution/models.py:compute_execution_id",
+      "type": "function",
+      "name": "compute_execution_id",
+      "filePath": "src/execution/models.py",
+      "lineRange": [249, 270],
+      "summary": "Computes a deterministic SHA256 execution ID from source record ID, fill model version, policy fingerprint, instrument price, and prior portfolio state hash.",
+      "tags": ["utility", "serialization", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/execution/runtime.py",
+      "type": "file",
+      "name": "runtime.py",
+      "filePath": "src/execution/runtime.py",
+      "summary": "Orchestrates single-trade (run_once) and batch-sequence (run_sequence) execution workflows, handling portfolio persistence, guardrail evaluation, and engine invocation.",
+      "tags": ["service", "execution", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/execution/runtime.py:run_once",
+      "type": "function",
+      "name": "run_once",
+      "filePath": "src/execution/runtime.py",
+      "lineRange": [124, 141],
+      "summary": "Executes a single trade end-to-end: loads portfolio, runs guardrail check, calls execute(), and persists the updated portfolio state.",
+      "tags": ["service", "execution", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/execution/runtime.py:run_sequence",
+      "type": "function",
+      "name": "run_sequence",
+      "filePath": "src/execution/runtime.py",
+      "lineRange": [144, 166],
+      "summary": "Executes a sequence of trade items deterministically, accumulating portfolio state across executions and returning a tuple of ExecutionRecords.",
+      "tags": ["service", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/execution/runtime.py:run_guard",
+      "type": "function",
+      "name": "run_guard",
+      "filePath": "src/execution/runtime.py",
+      "lineRange": [104, 121],
+      "summary": "Runs the GuardrailEngine against a trade request and converts the decision into a GuardResult, bridging the guardrail and execution model layers.",
+      "tags": ["service", "validation", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/execution/runtime.py:build_guard_request",
+      "type": "function",
+      "name": "build_guard_request",
+      "filePath": "src/execution/runtime.py",
+      "lineRange": [78, 101],
+      "summary": "Constructs a TradeValidationRequest from a direction, current portfolio state, and execution config for submission to the guardrail engine.",
+      "tags": ["utility", "validation", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/risk/guardrail_engine/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/risk/guardrail_engine/__init__.py",
+      "summary": "Package barrel for the guardrail engine subsystem, re-exporting GuardrailEngine and its models as the public risk-check API.",
+      "tags": ["entry-point", "barrel", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "type": "file",
+      "name": "guardrail_engine.py",
+      "filePath": "src/risk/guardrail_engine/guardrail_engine.py",
+      "summary": "Implements GuardrailEngine, which composes configurable risk predicates into a sequential validation pipeline and exposes a validate() method for trade screening.",
+      "tags": ["service", "validation", "risk", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/risk/guardrail_engine/guardrail_engine.py:GuardrailEngine",
+      "type": "class",
+      "name": "GuardrailEngine",
+      "filePath": "src/risk/guardrail_engine/guardrail_engine.py",
+      "lineRange": [61, 92],
+      "summary": "Risk gate engine initialized with a GuardrailConfig and a tuple of predicate functions; validate() runs each predicate in order and returns the first blocking TradeValidationDecision.",
+      "tags": ["service", "validation", "risk"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/risk/guardrail_engine/guardrail_engine.py:load_config_from_env",
+      "type": "function",
+      "name": "load_config_from_env",
+      "filePath": "src/risk/guardrail_engine/guardrail_engine.py",
+      "lineRange": [35, 58],
+      "summary": "Builds a GuardrailConfig from environment variable dict, validating required keys and coercing types, raising GuardrailConfigError on missing or invalid values.",
+      "tags": ["config", "utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/risk/guardrail_engine/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/risk/guardrail_engine/models.py",
+      "summary": "Data model module for the guardrail engine, defining TradeDirection, TradeValidationRequest, TradeValidationDecision, and GuardrailConfig dataclasses.",
+      "tags": ["data-model", "type-definition", "risk", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/risk/guardrail_engine/models.py:GuardrailConfig",
+      "type": "class",
+      "name": "GuardrailConfig",
+      "filePath": "src/risk/guardrail_engine/models.py",
+      "lineRange": [60, 73],
+      "summary": "Configuration dataclass holding all risk thresholds: max trade size, daily trades, position percentage, position count, daily loss cap, and withdrawal flag.",
+      "tags": ["config", "data-model", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/risk/guardrail_engine/models.py:TradeValidationRequest",
+      "type": "class",
+      "name": "TradeValidationRequest",
+      "filePath": "src/risk/guardrail_engine/models.py",
+      "lineRange": [23, 37],
+      "summary": "Input dataclass for guardrail validation, carrying trade parameters (symbol, direction, size, strategy_id) and current portfolio context (equity, daily PnL, trades today, open positions).",
+      "tags": ["data-model", "validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/risk/guardrail_engine/models.py:TradeValidationDecision",
+      "type": "class",
+      "name": "TradeValidationDecision",
+      "filePath": "src/risk/guardrail_engine/models.py",
+      "lineRange": [41, 56],
+      "summary": "Result dataclass from guardrail validation with approved flag, triggered predicate name, and reason string; validates mutual consistency in __post_init__.",
+      "tags": ["data-model", "validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/risk/guardrail_engine/predicates.py",
+      "type": "file",
+      "name": "predicates.py",
+      "filePath": "src/risk/guardrail_engine/predicates.py",
+      "summary": "Defines the five core risk predicate functions (position_size_ok, daily_loss_cap_ok, max_trades_ok, max_positions_ok, withdrawal_disabled) used by GuardrailEngine.",
+      "tags": ["validation", "risk", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/risk/guardrail_engine/predicates.py:position_size_ok",
+      "type": "function",
+      "name": "position_size_ok",
+      "filePath": "src/risk/guardrail_engine/predicates.py",
+      "lineRange": [14, 21],
+      "summary": "Predicate that checks whether the requested trade size stays within configured max_trade_size and max_position_pct of equity.",
+      "tags": ["validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/risk/guardrail_engine/predicates.py:daily_loss_cap_ok",
+      "type": "function",
+      "name": "daily_loss_cap_ok",
+      "filePath": "src/risk/guardrail_engine/predicates.py",
+      "lineRange": [24, 32],
+      "summary": "Predicate that blocks trading when daily PnL has breached the configured daily_loss_cap threshold.",
+      "tags": ["validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/risk/guardrail_engine/predicates.py:max_trades_ok",
+      "type": "function",
+      "name": "max_trades_ok",
+      "filePath": "src/risk/guardrail_engine/predicates.py",
+      "lineRange": [35, 43],
+      "summary": "Predicate that blocks new trades when the daily trade count has reached or exceeded max_trades_per_day.",
+      "tags": ["validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/risk/guardrail_engine/predicates.py:max_positions_ok",
+      "type": "function",
+      "name": "max_positions_ok",
+      "filePath": "src/risk/guardrail_engine/predicates.py",
+      "lineRange": [46, 54],
+      "summary": "Predicate that blocks new trades when open position count has reached the configured max_positions limit.",
+      "tags": ["validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/risk/guardrail_engine/predicates.py:withdrawal_disabled",
+      "type": "function",
+      "name": "withdrawal_disabled",
+      "filePath": "src/risk/guardrail_engine/predicates.py",
+      "lineRange": [57, 63],
+      "summary": "Predicate that blocks withdrawal-type trades when allow_withdrawals is disabled in the guardrail config.",
+      "tags": ["validation", "risk"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/adapters.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/runtime.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "file:src/execution/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "file:src/execution/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "file:src/execution/adapters.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "file:src/execution/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "file:src/execution/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/execution/adapters.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/execution/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/execution/engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/execution/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "file:src/risk/guardrail_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/__init__.py",
+      "target": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/__init__.py",
+      "target": "file:src/risk/guardrail_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "target": "file:src/risk/guardrail_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "target": "file:src/risk/guardrail_engine/predicates.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "file:src/risk/guardrail_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/adapters.py",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/config.py",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/engine.py",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/models.py",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/__init__.py",
+      "target": "file:src/execution/runtime.py",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "class:src/execution/adapters.py:ExecutionPort",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "class:src/execution/adapters.py:SimulatedBrokerAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "class:src/execution/adapters.py:ExecutionPort",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/adapters.py",
+      "target": "class:src/execution/adapters.py:SimulatedBrokerAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/config.py",
+      "target": "class:src/execution/config.py:FillModelConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/config.py",
+      "target": "class:src/execution/config.py:ExecutionPolicyConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/config.py",
+      "target": "function:src/execution/config.py:load_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/config.py",
+      "target": "class:src/execution/config.py:FillModelConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/config.py",
+      "target": "class:src/execution/config.py:ExecutionPolicyConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/config.py",
+      "target": "function:src/execution/config.py:load_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "function:src/execution/engine.py:execute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "function:src/execution/engine.py:_apply_buy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/engine.py",
+      "target": "function:src/execution/engine.py:execute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:PortfolioState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:ExecutionRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:Position",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:ExecutionEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:GuardResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "function:src/execution/models.py:compute_execution_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:PortfolioState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:ExecutionRecord",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:Position",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:ExecutionEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "class:src/execution/models.py:GuardResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/models.py",
+      "target": "function:src/execution/models.py:compute_execution_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:run_once",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:run_sequence",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:run_guard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:build_guard_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:run_once",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:run_sequence",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:run_guard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/execution/runtime.py",
+      "target": "function:src/execution/runtime.py:build_guard_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "target": "class:src/risk/guardrail_engine/guardrail_engine.py:GuardrailEngine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "target": "function:src/risk/guardrail_engine/guardrail_engine.py:load_config_from_env",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "target": "class:src/risk/guardrail_engine/guardrail_engine.py:GuardrailEngine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "target": "function:src/risk/guardrail_engine/guardrail_engine.py:load_config_from_env",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/models.py",
+      "target": "class:src/risk/guardrail_engine/models.py:GuardrailConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/models.py",
+      "target": "class:src/risk/guardrail_engine/models.py:TradeValidationRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/models.py",
+      "target": "class:src/risk/guardrail_engine/models.py:TradeValidationDecision",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/models.py",
+      "target": "class:src/risk/guardrail_engine/models.py:GuardrailConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/models.py",
+      "target": "class:src/risk/guardrail_engine/models.py:TradeValidationRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/models.py",
+      "target": "class:src/risk/guardrail_engine/models.py:TradeValidationDecision",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:position_size_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:daily_loss_cap_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:max_trades_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:max_positions_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:withdrawal_disabled",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:position_size_ok",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:daily_loss_cap_ok",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:max_trades_ok",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:max_positions_ok",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/risk/guardrail_engine/predicates.py",
+      "target": "function:src/risk/guardrail_engine/predicates.py:withdrawal_disabled",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/execution/runtime.py:run_guard",
+      "target": "class:src/risk/guardrail_engine/guardrail_engine.py:GuardrailEngine",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/execution/runtime.py:run_once",
+      "target": "function:src/execution/engine.py:execute",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/execution/runtime.py:run_sequence",
+      "target": "function:src/execution/engine.py:execute",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:src/risk/guardrail_engine/guardrail_engine.py:GuardrailEngine",
+      "target": "file:src/risk/guardrail_engine/predicates.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

@@ -1,0 +1,4731 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 21,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "tests/gold/test_paper_runtime_ledger.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 148,
+      "nonEmptyLines": 120,
+      "functions": [
+        {
+          "name": "_packet",
+          "startLine": 38,
+          "endLine": 63,
+          "params": [
+            "snapshot_id",
+            "direction"
+          ]
+        },
+        {
+          "name": "_seq",
+          "startLine": 66,
+          "endLine": 73,
+          "params": []
+        },
+        {
+          "name": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "startLine": 78,
+          "endLine": 84,
+          "params": []
+        },
+        {
+          "name": "test_re_presented_snapshot_is_duplicate_non_admit",
+          "startLine": 87,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "test_has_admit_only_counts_admits",
+          "startLine": 95,
+          "endLine": 100,
+          "params": []
+        },
+        {
+          "name": "test_append_is_immutable_and_seq_is_length_derived",
+          "startLine": 105,
+          "endLine": 112,
+          "params": []
+        },
+        {
+          "name": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "startLine": 115,
+          "endLine": 120,
+          "params": []
+        },
+        {
+          "name": "test_state_hash_stable_through_serialization",
+          "startLine": 125,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "test_seq_continuity_across_persist_and_reload",
+          "startLine": 131,
+          "endLine": 142,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_load_defaults_absent_ledger_empty_and_operational_closed",
+          "startLine": 145,
+          "endLine": 148,
+          "params": [
+            "tmp_path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_packet",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "_seq",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "test_re_presented_snapshot_is_duplicate_non_admit",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "test_has_admit_only_counts_admits",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "test_append_is_immutable_and_seq_is_length_derived",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "test_state_hash_stable_through_serialization",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "test_seq_continuity_across_persist_and_reload",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "test_load_defaults_absent_ledger_empty_and_operational_closed",
+          "line": 145,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_packet",
+          "callee": "GoldDecisionPacket",
+          "lineNumber": 39
+        },
+        {
+          "caller": "_packet",
+          "callee": "ConfidenceInputs",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_packet",
+          "callee": "GuardRefs",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_seq",
+          "callee": "_packet",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_seq",
+          "callee": "_packet",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_seq",
+          "callee": "_packet",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_seq",
+          "callee": "_packet",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "run_sequence",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "_seq",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "run_sequence",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "_seq",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "json.dumps",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "r.to_dict",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "json.dumps",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "r.to_dict",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "led_a.state_hash",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_run_sequence_twice_identical_records_and_ending_ledger",
+          "callee": "led_b.state_hash",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_re_presented_snapshot_is_duplicate_non_admit",
+          "callee": "run_sequence",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_re_presented_snapshot_is_duplicate_non_admit",
+          "callee": "_seq",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_re_presented_snapshot_is_duplicate_non_admit",
+          "callee": "len",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_has_admit_only_counts_admits",
+          "callee": "run_sequence",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_has_admit_only_counts_admits",
+          "callee": "_packet",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_has_admit_only_counts_admits",
+          "callee": "led.has_admit",
+          "lineNumber": 97
+        },
+        {
+          "caller": "test_has_admit_only_counts_admits",
+          "callee": "evaluate",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_has_admit_only_counts_admits",
+          "callee": "_packet",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "RuntimeLedger.empty",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "LedgerEntry",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "led0.next_seq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "led0.append",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "len",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "len",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_append_is_immutable_and_seq_is_length_derived",
+          "callee": "led1.next_seq",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "callee": "_packet",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "callee": "_packet",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "callee": "_packet",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "callee": "run_sequence",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_halted_op_mid_sequence_rejects_but_ledger_advances",
+          "callee": "len",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "run_sequence",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "_seq",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "RuntimeLedger.from_dict",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "json.loads",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "json.dumps",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "led.to_dict",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "reparsed.state_hash",
+          "lineNumber": 128
+        },
+        {
+          "caller": "test_state_hash_stable_through_serialization",
+          "callee": "led.state_hash",
+          "lineNumber": 128
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "run_once",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "_packet",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "load_ledger",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "reloaded.next_seq",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "run_once",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "_packet",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_seq_continuity_across_persist_and_reload",
+          "callee": "load_ledger",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_load_defaults_absent_ledger_empty_and_operational_closed",
+          "callee": "load_ledger",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_load_defaults_absent_ledger_empty_and_operational_closed",
+          "callee": "load_operational",
+          "lineNumber": 147
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/regime/test_regime_bench.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "test_report_is_deterministic",
+          "startLine": 21,
+          "endLine": 24,
+          "params": []
+        },
+        {
+          "name": "test_real_replays_byte_identical",
+          "startLine": 27,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "test_real_pass_is_restrictive_rates_and_gate_fails_closed",
+          "startLine": 33,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "test_synthetic_sweep_full_coverage",
+          "startLine": 41,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "test_committed_artifact_in_sync",
+          "startLine": 47,
+          "endLine": 49,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_report_is_deterministic",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "test_real_replays_byte_identical",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "test_real_pass_is_restrictive_rates_and_gate_fails_closed",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "test_synthetic_sweep_full_coverage",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "test_committed_artifact_in_sync",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_report_is_deterministic",
+          "callee": "bench.build_report",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_report_is_deterministic",
+          "callee": "bench.build_report",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_report_is_deterministic",
+          "callee": "json.dumps",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_report_is_deterministic",
+          "callee": "json.dumps",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_real_replays_byte_identical",
+          "callee": "bench.build_report",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_real_pass_is_restrictive_rates_and_gate_fails_closed",
+          "callee": "bench.build_report",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_synthetic_sweep_full_coverage",
+          "callee": "bench.build_report",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_committed_artifact_in_sync",
+          "callee": "json.loads",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_committed_artifact_in_sync",
+          "callee": "bench.ARTIFACT_PATH.read_text",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_committed_artifact_in_sync",
+          "callee": "bench.build_report",
+          "lineNumber": 49
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/regime/test_regime_classifier.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 579,
+      "nonEmptyLines": 441,
+      "functions": [
+        {
+          "name": "make_fv",
+          "startLine": 77,
+          "endLine": 94,
+          "params": [
+            "snapshot_id",
+            "schema_version",
+            "drop"
+          ]
+        },
+        {
+          "name": "_valid_kwargs",
+          "startLine": 97,
+          "endLine": 115,
+          "params": []
+        },
+        {
+          "name": "test_liquidity_stress_fires",
+          "startLine": 122,
+          "endLine": 125,
+          "params": []
+        },
+        {
+          "name": "test_risk_off_fires",
+          "startLine": 128,
+          "endLine": 130,
+          "params": []
+        },
+        {
+          "name": "test_volatile_fires",
+          "startLine": 133,
+          "endLine": 134,
+          "params": []
+        },
+        {
+          "name": "test_restrictive_rates_fires",
+          "startLine": 137,
+          "endLine": 139,
+          "params": []
+        },
+        {
+          "name": "test_reflation_requires_both_clauses",
+          "startLine": 142,
+          "endLine": 145,
+          "params": []
+        },
+        {
+          "name": "test_disinflation_fires",
+          "startLine": 148,
+          "endLine": 149,
+          "params": []
+        },
+        {
+          "name": "test_curve_inversion_fires",
+          "startLine": 152,
+          "endLine": 153,
+          "params": []
+        },
+        {
+          "name": "test_strong_usd_fires",
+          "startLine": 156,
+          "endLine": 157,
+          "params": []
+        },
+        {
+          "name": "test_risk_on_fires",
+          "startLine": 160,
+          "endLine": 163,
+          "params": []
+        },
+        {
+          "name": "test_low_vol_when_equity_absent",
+          "startLine": 166,
+          "endLine": 168,
+          "params": []
+        },
+        {
+          "name": "test_neutral_catch_all",
+          "startLine": 171,
+          "endLine": 177,
+          "params": []
+        },
+        {
+          "name": "test_grid_exactly_one_valid_label",
+          "startLine": 197,
+          "endLine": 213,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "test_priority_monotonic_risk_off_beats_volatile",
+          "startLine": 216,
+          "endLine": 218,
+          "params": []
+        },
+        {
+          "name": "test_determinism_same_inputs_same_output",
+          "startLine": 225,
+          "endLine": 228,
+          "params": []
+        },
+        {
+          "name": "test_golden_real_fixture",
+          "startLine": 231,
+          "endLine": 241,
+          "params": []
+        },
+        {
+          "name": "test_golden_to_dict_serialization",
+          "startLine": 244,
+          "endLine": 248,
+          "params": []
+        },
+        {
+          "name": "test_to_dict_keys_sorted_and_stable",
+          "startLine": 255,
+          "endLine": 259,
+          "params": []
+        },
+        {
+          "name": "test_to_dict_json_roundtrip",
+          "startLine": 262,
+          "endLine": 266,
+          "params": []
+        },
+        {
+          "name": "test_indeterminate_nonzero_margin_raises",
+          "startLine": 269,
+          "endLine": 281,
+          "params": []
+        },
+        {
+          "name": "test_indeterminate_missing_reason_raises",
+          "startLine": 284,
+          "endLine": 296,
+          "params": []
+        },
+        {
+          "name": "test_neutral_with_threshold_raises",
+          "startLine": 299,
+          "endLine": 311,
+          "params": []
+        },
+        {
+          "name": "test_margin_out_of_range_raises",
+          "startLine": 314,
+          "endLine": 316,
+          "params": []
+        },
+        {
+          "name": "test_matched_rule_in_secondary_raises",
+          "startLine": 319,
+          "endLine": 321,
+          "params": []
+        },
+        {
+          "name": "test_config_fingerprint_pinned_to_taxonomy_version",
+          "startLine": 328,
+          "endLine": 330,
+          "params": []
+        },
+        {
+          "name": "test_near_band_excluded_from_fingerprint",
+          "startLine": 333,
+          "endLine": 335,
+          "params": []
+        },
+        {
+          "name": "test_from_mapping_roundtrip",
+          "startLine": 338,
+          "endLine": 340,
+          "params": []
+        },
+        {
+          "name": "test_from_mapping_unknown_key_raises",
+          "startLine": 343,
+          "endLine": 345,
+          "params": []
+        },
+        {
+          "name": "test_from_mapping_missing_version_raises",
+          "startLine": 348,
+          "endLine": 350,
+          "params": []
+        },
+        {
+          "name": "test_from_mapping_bad_required_features_raises",
+          "startLine": 353,
+          "endLine": 355,
+          "params": []
+        },
+        {
+          "name": "test_invalid_scale_raises",
+          "startLine": 358,
+          "endLine": 360,
+          "params": []
+        },
+        {
+          "name": "test_load_config_file",
+          "startLine": 363,
+          "endLine": 368,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_load_config_missing_file_raises",
+          "startLine": 371,
+          "endLine": 373,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_load_config_bad_json_raises",
+          "startLine": 376,
+          "endLine": 380,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_injected_config_reclassifies",
+          "startLine": 383,
+          "endLine": 386,
+          "params": []
+        },
+        {
+          "name": "test_missing_required_feature_is_indeterminate",
+          "startLine": 394,
+          "endLine": 402,
+          "params": [
+            "feat"
+          ]
+        },
+        {
+          "name": "test_near_matching_listed_label_stays_neutral",
+          "startLine": 409,
+          "endLine": 413,
+          "params": []
+        },
+        {
+          "name": "test_secondary_matching_listed",
+          "startLine": 416,
+          "endLine": 419,
+          "params": []
+        },
+        {
+          "name": "test_secondary_ordered_by_margin_not_priority",
+          "startLine": 422,
+          "endLine": 426,
+          "params": []
+        },
+        {
+          "name": "test_evaluated_skipped_partition_when_full",
+          "startLine": 433,
+          "endLine": 438,
+          "params": []
+        },
+        {
+          "name": "test_skipped_on_missing_per_rule_feature",
+          "startLine": 441,
+          "endLine": 446,
+          "params": []
+        },
+        {
+          "name": "test_matched_not_in_secondary",
+          "startLine": 449,
+          "endLine": 451,
+          "params": []
+        },
+        {
+          "name": "test_trace_version_independent_of_decision",
+          "startLine": 458,
+          "endLine": 471,
+          "params": []
+        },
+        {
+          "name": "test_vix_exactly_crisis_is_risk_off",
+          "startLine": 478,
+          "endLine": 479,
+          "params": []
+        },
+        {
+          "name": "test_real_yield_exactly_threshold_is_restrictive",
+          "startLine": 482,
+          "endLine": 483,
+          "params": []
+        },
+        {
+          "name": "test_curve_exactly_zero_not_inverted",
+          "startLine": 486,
+          "endLine": 487,
+          "params": []
+        },
+        {
+          "name": "test_be_exactly_two_not_disinflation",
+          "startLine": 490,
+          "endLine": 491,
+          "params": []
+        },
+        {
+          "name": "test_rule_margin_reconstructs_deciding_feature",
+          "startLine": 498,
+          "endLine": 502,
+          "params": []
+        },
+        {
+          "name": "test_terminals_have_none_threshold_and_scale",
+          "startLine": 505,
+          "endLine": 509,
+          "params": []
+        },
+        {
+          "name": "test_every_rule_reachable",
+          "startLine": 532,
+          "endLine": 535,
+          "params": [
+            "rule_id",
+            "over",
+            "drop"
+          ]
+        },
+        {
+          "name": "test_rule_ids_unique_and_priorities_contiguous",
+          "startLine": 538,
+          "endLine": 541,
+          "params": []
+        },
+        {
+          "name": "test_every_signal_regime_in_table_once",
+          "startLine": 544,
+          "endLine": 549,
+          "params": []
+        },
+        {
+          "name": "test_neutral_is_last_and_unconditional",
+          "startLine": 552,
+          "endLine": 556,
+          "params": []
+        },
+        {
+          "name": "test_no_rule_match_raises_when_neutral_removed",
+          "startLine": 559,
+          "endLine": 563,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_provenance_propagates_revision_and_staleness",
+          "startLine": 570,
+          "endLine": 579,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "make_fv",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "_valid_kwargs",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "test_liquidity_stress_fires",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "test_risk_off_fires",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "test_volatile_fires",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "test_restrictive_rates_fires",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "test_reflation_requires_both_clauses",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "test_disinflation_fires",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "test_curve_inversion_fires",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "test_strong_usd_fires",
+          "line": 156,
+          "isDefault": false
+        },
+        {
+          "name": "test_risk_on_fires",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "test_low_vol_when_equity_absent",
+          "line": 166,
+          "isDefault": false
+        },
+        {
+          "name": "test_neutral_catch_all",
+          "line": 171,
+          "isDefault": false
+        },
+        {
+          "name": "test_grid_exactly_one_valid_label",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "test_priority_monotonic_risk_off_beats_volatile",
+          "line": 216,
+          "isDefault": false
+        },
+        {
+          "name": "test_determinism_same_inputs_same_output",
+          "line": 225,
+          "isDefault": false
+        },
+        {
+          "name": "test_golden_real_fixture",
+          "line": 231,
+          "isDefault": false
+        },
+        {
+          "name": "test_golden_to_dict_serialization",
+          "line": 244,
+          "isDefault": false
+        },
+        {
+          "name": "test_to_dict_keys_sorted_and_stable",
+          "line": 255,
+          "isDefault": false
+        },
+        {
+          "name": "test_to_dict_json_roundtrip",
+          "line": 262,
+          "isDefault": false
+        },
+        {
+          "name": "test_indeterminate_nonzero_margin_raises",
+          "line": 269,
+          "isDefault": false
+        },
+        {
+          "name": "test_indeterminate_missing_reason_raises",
+          "line": 284,
+          "isDefault": false
+        },
+        {
+          "name": "test_neutral_with_threshold_raises",
+          "line": 299,
+          "isDefault": false
+        },
+        {
+          "name": "test_margin_out_of_range_raises",
+          "line": 314,
+          "isDefault": false
+        },
+        {
+          "name": "test_matched_rule_in_secondary_raises",
+          "line": 319,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_fingerprint_pinned_to_taxonomy_version",
+          "line": 328,
+          "isDefault": false
+        },
+        {
+          "name": "test_near_band_excluded_from_fingerprint",
+          "line": 333,
+          "isDefault": false
+        },
+        {
+          "name": "test_from_mapping_roundtrip",
+          "line": 338,
+          "isDefault": false
+        },
+        {
+          "name": "test_from_mapping_unknown_key_raises",
+          "line": 343,
+          "isDefault": false
+        },
+        {
+          "name": "test_from_mapping_missing_version_raises",
+          "line": 348,
+          "isDefault": false
+        },
+        {
+          "name": "test_from_mapping_bad_required_features_raises",
+          "line": 353,
+          "isDefault": false
+        },
+        {
+          "name": "test_invalid_scale_raises",
+          "line": 358,
+          "isDefault": false
+        },
+        {
+          "name": "test_load_config_file",
+          "line": 363,
+          "isDefault": false
+        },
+        {
+          "name": "test_load_config_missing_file_raises",
+          "line": 371,
+          "isDefault": false
+        },
+        {
+          "name": "test_load_config_bad_json_raises",
+          "line": 376,
+          "isDefault": false
+        },
+        {
+          "name": "test_injected_config_reclassifies",
+          "line": 383,
+          "isDefault": false
+        },
+        {
+          "name": "test_missing_required_feature_is_indeterminate",
+          "line": 393,
+          "isDefault": false
+        },
+        {
+          "name": "test_near_matching_listed_label_stays_neutral",
+          "line": 409,
+          "isDefault": false
+        },
+        {
+          "name": "test_secondary_matching_listed",
+          "line": 416,
+          "isDefault": false
+        },
+        {
+          "name": "test_secondary_ordered_by_margin_not_priority",
+          "line": 422,
+          "isDefault": false
+        },
+        {
+          "name": "test_evaluated_skipped_partition_when_full",
+          "line": 433,
+          "isDefault": false
+        },
+        {
+          "name": "test_skipped_on_missing_per_rule_feature",
+          "line": 441,
+          "isDefault": false
+        },
+        {
+          "name": "test_matched_not_in_secondary",
+          "line": 449,
+          "isDefault": false
+        },
+        {
+          "name": "test_trace_version_independent_of_decision",
+          "line": 458,
+          "isDefault": false
+        },
+        {
+          "name": "test_vix_exactly_crisis_is_risk_off",
+          "line": 478,
+          "isDefault": false
+        },
+        {
+          "name": "test_real_yield_exactly_threshold_is_restrictive",
+          "line": 482,
+          "isDefault": false
+        },
+        {
+          "name": "test_curve_exactly_zero_not_inverted",
+          "line": 486,
+          "isDefault": false
+        },
+        {
+          "name": "test_be_exactly_two_not_disinflation",
+          "line": 490,
+          "isDefault": false
+        },
+        {
+          "name": "test_rule_margin_reconstructs_deciding_feature",
+          "line": 498,
+          "isDefault": false
+        },
+        {
+          "name": "test_terminals_have_none_threshold_and_scale",
+          "line": 505,
+          "isDefault": false
+        },
+        {
+          "name": "test_every_rule_reachable",
+          "line": 531,
+          "isDefault": false
+        },
+        {
+          "name": "test_rule_ids_unique_and_priorities_contiguous",
+          "line": 538,
+          "isDefault": false
+        },
+        {
+          "name": "test_every_signal_regime_in_table_once",
+          "line": 544,
+          "isDefault": false
+        },
+        {
+          "name": "test_neutral_is_last_and_unconditional",
+          "line": 552,
+          "isDefault": false
+        },
+        {
+          "name": "test_no_rule_match_raises_when_neutral_removed",
+          "line": 559,
+          "isDefault": false
+        },
+        {
+          "name": "test_provenance_propagates_revision_and_staleness",
+          "line": 570,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "make_fv",
+          "callee": "dict",
+          "lineNumber": 84
+        },
+        {
+          "caller": "make_fv",
+          "callee": "values.update",
+          "lineNumber": 85
+        },
+        {
+          "caller": "make_fv",
+          "callee": "values.pop",
+          "lineNumber": 87
+        },
+        {
+          "caller": "make_fv",
+          "callee": "values.items",
+          "lineNumber": 89
+        },
+        {
+          "caller": "make_fv",
+          "callee": "isinstance",
+          "lineNumber": 90
+        },
+        {
+          "caller": "make_fv",
+          "callee": "Feature",
+          "lineNumber": 93
+        },
+        {
+          "caller": "make_fv",
+          "callee": "float",
+          "lineNumber": 93
+        },
+        {
+          "caller": "make_fv",
+          "callee": "FeatureVector",
+          "lineNumber": 94
+        },
+        {
+          "caller": "make_fv",
+          "callee": "tuple",
+          "lineNumber": 94
+        },
+        {
+          "caller": "make_fv",
+          "callee": "sorted",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_valid_kwargs",
+          "callee": "dict",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_valid_kwargs",
+          "callee": "base.update",
+          "lineNumber": 114
+        },
+        {
+          "caller": "test_liquidity_stress_fires",
+          "callee": "classify",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_liquidity_stress_fires",
+          "callee": "make_fv",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_risk_off_fires",
+          "callee": "classify",
+          "lineNumber": 129
+        },
+        {
+          "caller": "test_risk_off_fires",
+          "callee": "make_fv",
+          "lineNumber": 129
+        },
+        {
+          "caller": "test_volatile_fires",
+          "callee": "classify",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_volatile_fires",
+          "callee": "make_fv",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_restrictive_rates_fires",
+          "callee": "classify",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_restrictive_rates_fires",
+          "callee": "make_fv",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_reflation_requires_both_clauses",
+          "callee": "classify",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_reflation_requires_both_clauses",
+          "callee": "make_fv",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_reflation_requires_both_clauses",
+          "callee": "classify",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_reflation_requires_both_clauses",
+          "callee": "make_fv",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_disinflation_fires",
+          "callee": "classify",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_disinflation_fires",
+          "callee": "make_fv",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_curve_inversion_fires",
+          "callee": "classify",
+          "lineNumber": 153
+        },
+        {
+          "caller": "test_curve_inversion_fires",
+          "callee": "make_fv",
+          "lineNumber": 153
+        },
+        {
+          "caller": "test_strong_usd_fires",
+          "callee": "classify",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_strong_usd_fires",
+          "callee": "make_fv",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_risk_on_fires",
+          "callee": "classify",
+          "lineNumber": 161
+        },
+        {
+          "caller": "test_risk_on_fires",
+          "callee": "make_fv",
+          "lineNumber": 161
+        },
+        {
+          "caller": "test_low_vol_when_equity_absent",
+          "callee": "classify",
+          "lineNumber": 167
+        },
+        {
+          "caller": "test_low_vol_when_equity_absent",
+          "callee": "make_fv",
+          "lineNumber": 167
+        },
+        {
+          "caller": "test_neutral_catch_all",
+          "callee": "classify",
+          "lineNumber": 172
+        },
+        {
+          "caller": "test_neutral_catch_all",
+          "callee": "make_fv",
+          "lineNumber": 172
+        },
+        {
+          "caller": "test_grid_exactly_one_valid_label",
+          "callee": "classify",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_grid_exactly_one_valid_label",
+          "callee": "make_fv",
+          "lineNumber": 200
+        },
+        {
+          "caller": "test_grid_exactly_one_valid_label",
+          "callee": "set",
+          "lineNumber": 210
+        },
+        {
+          "caller": "test_priority_monotonic_risk_off_beats_volatile",
+          "callee": "classify",
+          "lineNumber": 217
+        },
+        {
+          "caller": "test_priority_monotonic_risk_off_beats_volatile",
+          "callee": "make_fv",
+          "lineNumber": 217
+        },
+        {
+          "caller": "test_priority_monotonic_risk_off_beats_volatile",
+          "callee": "classify",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_priority_monotonic_risk_off_beats_volatile",
+          "callee": "make_fv",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "make_fv",
+          "lineNumber": 226
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "classify",
+          "lineNumber": 227
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "classify",
+          "lineNumber": 227
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "classify(fv).to_dict",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "classify",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "classify(fv).to_dict",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_determinism_same_inputs_same_output",
+          "callee": "classify",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_golden_real_fixture",
+          "callee": "consume",
+          "lineNumber": 232
+        },
+        {
+          "caller": "test_golden_real_fixture",
+          "callee": "classify",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_golden_real_fixture",
+          "callee": "build_features",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_golden_real_fixture",
+          "callee": "pytest.approx",
+          "lineNumber": 237
+        },
+        {
+          "caller": "test_golden_to_dict_serialization",
+          "callee": "consume",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_golden_to_dict_serialization",
+          "callee": "classify",
+          "lineNumber": 247
+        },
+        {
+          "caller": "test_golden_to_dict_serialization",
+          "callee": "build_features",
+          "lineNumber": 247
+        },
+        {
+          "caller": "test_golden_to_dict_serialization",
+          "callee": "json.dumps",
+          "lineNumber": 248
+        },
+        {
+          "caller": "test_golden_to_dict_serialization",
+          "callee": "rc.to_dict",
+          "lineNumber": 248
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "classify",
+          "lineNumber": 256
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "make_fv",
+          "lineNumber": 256
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "rc.to_dict",
+          "lineNumber": 257
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "list",
+          "lineNumber": 258
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "d.keys",
+          "lineNumber": 258
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "sorted",
+          "lineNumber": 258
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "d.keys",
+          "lineNumber": 258
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "rc.to_dict",
+          "lineNumber": 259
+        },
+        {
+          "caller": "test_to_dict_keys_sorted_and_stable",
+          "callee": "rc.to_dict",
+          "lineNumber": 259
+        },
+        {
+          "caller": "test_to_dict_json_roundtrip",
+          "callee": "classify",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_to_dict_json_roundtrip",
+          "callee": "make_fv",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_to_dict_json_roundtrip",
+          "callee": "json.loads",
+          "lineNumber": 264
+        },
+        {
+          "caller": "test_to_dict_json_roundtrip",
+          "callee": "json.dumps",
+          "lineNumber": 264
+        },
+        {
+          "caller": "test_to_dict_json_roundtrip",
+          "callee": "rc.to_dict",
+          "lineNumber": 264
+        },
+        {
+          "caller": "test_indeterminate_nonzero_margin_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 270
+        },
+        {
+          "caller": "test_indeterminate_nonzero_margin_raises",
+          "callee": "RegimeClassification",
+          "lineNumber": 271
+        },
+        {
+          "caller": "test_indeterminate_nonzero_margin_raises",
+          "callee": "_valid_kwargs",
+          "lineNumber": 272
+        },
+        {
+          "caller": "test_indeterminate_missing_reason_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_indeterminate_missing_reason_raises",
+          "callee": "RegimeClassification",
+          "lineNumber": 286
+        },
+        {
+          "caller": "test_indeterminate_missing_reason_raises",
+          "callee": "_valid_kwargs",
+          "lineNumber": 287
+        },
+        {
+          "caller": "test_neutral_with_threshold_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 300
+        },
+        {
+          "caller": "test_neutral_with_threshold_raises",
+          "callee": "RegimeClassification",
+          "lineNumber": 301
+        },
+        {
+          "caller": "test_neutral_with_threshold_raises",
+          "callee": "_valid_kwargs",
+          "lineNumber": 302
+        },
+        {
+          "caller": "test_margin_out_of_range_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 315
+        },
+        {
+          "caller": "test_margin_out_of_range_raises",
+          "callee": "RegimeClassification",
+          "lineNumber": 316
+        },
+        {
+          "caller": "test_margin_out_of_range_raises",
+          "callee": "_valid_kwargs",
+          "lineNumber": 316
+        },
+        {
+          "caller": "test_matched_rule_in_secondary_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 320
+        },
+        {
+          "caller": "test_matched_rule_in_secondary_raises",
+          "callee": "RegimeClassification",
+          "lineNumber": 321
+        },
+        {
+          "caller": "test_matched_rule_in_secondary_raises",
+          "callee": "_valid_kwargs",
+          "lineNumber": 321
+        },
+        {
+          "caller": "test_config_fingerprint_pinned_to_taxonomy_version",
+          "callee": "DEFAULT_REGIME_CONFIG.decision_fingerprint",
+          "lineNumber": 330
+        },
+        {
+          "caller": "test_near_band_excluded_from_fingerprint",
+          "callee": "replace(DEFAULT_REGIME_CONFIG, near_band=0.1).decision_fingerprint",
+          "lineNumber": 335
+        },
+        {
+          "caller": "test_near_band_excluded_from_fingerprint",
+          "callee": "replace",
+          "lineNumber": 335
+        },
+        {
+          "caller": "test_from_mapping_roundtrip",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 339
+        },
+        {
+          "caller": "test_from_mapping_unknown_key_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 344
+        },
+        {
+          "caller": "test_from_mapping_unknown_key_raises",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 345
+        },
+        {
+          "caller": "test_from_mapping_missing_version_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 349
+        },
+        {
+          "caller": "test_from_mapping_missing_version_raises",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 350
+        },
+        {
+          "caller": "test_from_mapping_bad_required_features_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 354
+        },
+        {
+          "caller": "test_from_mapping_bad_required_features_raises",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 355
+        },
+        {
+          "caller": "test_invalid_scale_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 359
+        },
+        {
+          "caller": "test_invalid_scale_raises",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 360
+        },
+        {
+          "caller": "test_load_config_file",
+          "callee": "p.write_text",
+          "lineNumber": 365
+        },
+        {
+          "caller": "test_load_config_file",
+          "callee": "json.dumps",
+          "lineNumber": 365
+        },
+        {
+          "caller": "test_load_config_file",
+          "callee": "load_config",
+          "lineNumber": 366
+        },
+        {
+          "caller": "test_load_config_missing_file_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 372
+        },
+        {
+          "caller": "test_load_config_missing_file_raises",
+          "callee": "load_config",
+          "lineNumber": 373
+        },
+        {
+          "caller": "test_load_config_bad_json_raises",
+          "callee": "p.write_text",
+          "lineNumber": 378
+        },
+        {
+          "caller": "test_load_config_bad_json_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 379
+        },
+        {
+          "caller": "test_load_config_bad_json_raises",
+          "callee": "load_config",
+          "lineNumber": 380
+        },
+        {
+          "caller": "test_injected_config_reclassifies",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 384
+        },
+        {
+          "caller": "test_injected_config_reclassifies",
+          "callee": "classify",
+          "lineNumber": 385
+        },
+        {
+          "caller": "test_injected_config_reclassifies",
+          "callee": "make_fv",
+          "lineNumber": 385
+        },
+        {
+          "caller": "test_injected_config_reclassifies",
+          "callee": "classify",
+          "lineNumber": 386
+        },
+        {
+          "caller": "test_injected_config_reclassifies",
+          "callee": "make_fv",
+          "lineNumber": 386
+        },
+        {
+          "caller": "test_missing_required_feature_is_indeterminate",
+          "callee": "classify",
+          "lineNumber": 395
+        },
+        {
+          "caller": "test_missing_required_feature_is_indeterminate",
+          "callee": "make_fv",
+          "lineNumber": 395
+        },
+        {
+          "caller": "test_near_matching_listed_label_stays_neutral",
+          "callee": "classify",
+          "lineNumber": 411
+        },
+        {
+          "caller": "test_near_matching_listed_label_stays_neutral",
+          "callee": "make_fv",
+          "lineNumber": 411
+        },
+        {
+          "caller": "test_secondary_matching_listed",
+          "callee": "classify",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_secondary_matching_listed",
+          "callee": "make_fv",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_secondary_ordered_by_margin_not_priority",
+          "callee": "classify",
+          "lineNumber": 424
+        },
+        {
+          "caller": "test_secondary_ordered_by_margin_not_priority",
+          "callee": "make_fv",
+          "lineNumber": 424
+        },
+        {
+          "caller": "test_evaluated_skipped_partition_when_full",
+          "callee": "classify",
+          "lineNumber": 434
+        },
+        {
+          "caller": "test_evaluated_skipped_partition_when_full",
+          "callee": "make_fv",
+          "lineNumber": 434
+        },
+        {
+          "caller": "test_evaluated_skipped_partition_when_full",
+          "callee": "set",
+          "lineNumber": 436
+        },
+        {
+          "caller": "test_evaluated_skipped_partition_when_full",
+          "callee": "set",
+          "lineNumber": 436
+        },
+        {
+          "caller": "test_evaluated_skipped_partition_when_full",
+          "callee": "len",
+          "lineNumber": 438
+        },
+        {
+          "caller": "test_evaluated_skipped_partition_when_full",
+          "callee": "len",
+          "lineNumber": 438
+        },
+        {
+          "caller": "test_skipped_on_missing_per_rule_feature",
+          "callee": "classify",
+          "lineNumber": 442
+        },
+        {
+          "caller": "test_skipped_on_missing_per_rule_feature",
+          "callee": "make_fv",
+          "lineNumber": 442
+        },
+        {
+          "caller": "test_matched_not_in_secondary",
+          "callee": "classify",
+          "lineNumber": 450
+        },
+        {
+          "caller": "test_matched_not_in_secondary",
+          "callee": "make_fv",
+          "lineNumber": 450
+        },
+        {
+          "caller": "test_trace_version_independent_of_decision",
+          "callee": "replace",
+          "lineNumber": 459
+        },
+        {
+          "caller": "test_trace_version_independent_of_decision",
+          "callee": "make_fv",
+          "lineNumber": 460
+        },
+        {
+          "caller": "test_trace_version_independent_of_decision",
+          "callee": "classify",
+          "lineNumber": 461
+        },
+        {
+          "caller": "test_trace_version_independent_of_decision",
+          "callee": "classify",
+          "lineNumber": 462
+        },
+        {
+          "caller": "test_trace_version_independent_of_decision",
+          "callee": "decision",
+          "lineNumber": 470
+        },
+        {
+          "caller": "test_trace_version_independent_of_decision",
+          "callee": "decision",
+          "lineNumber": 470
+        },
+        {
+          "caller": "test_vix_exactly_crisis_is_risk_off",
+          "callee": "classify",
+          "lineNumber": 479
+        },
+        {
+          "caller": "test_vix_exactly_crisis_is_risk_off",
+          "callee": "make_fv",
+          "lineNumber": 479
+        },
+        {
+          "caller": "test_real_yield_exactly_threshold_is_restrictive",
+          "callee": "classify",
+          "lineNumber": 483
+        },
+        {
+          "caller": "test_real_yield_exactly_threshold_is_restrictive",
+          "callee": "make_fv",
+          "lineNumber": 483
+        },
+        {
+          "caller": "test_curve_exactly_zero_not_inverted",
+          "callee": "classify",
+          "lineNumber": 487
+        },
+        {
+          "caller": "test_curve_exactly_zero_not_inverted",
+          "callee": "make_fv",
+          "lineNumber": 487
+        },
+        {
+          "caller": "test_be_exactly_two_not_disinflation",
+          "callee": "classify",
+          "lineNumber": 491
+        },
+        {
+          "caller": "test_be_exactly_two_not_disinflation",
+          "callee": "make_fv",
+          "lineNumber": 491
+        },
+        {
+          "caller": "test_rule_margin_reconstructs_deciding_feature",
+          "callee": "classify",
+          "lineNumber": 499
+        },
+        {
+          "caller": "test_rule_margin_reconstructs_deciding_feature",
+          "callee": "make_fv",
+          "lineNumber": 499
+        },
+        {
+          "caller": "test_rule_margin_reconstructs_deciding_feature",
+          "callee": "pytest.approx",
+          "lineNumber": 502
+        },
+        {
+          "caller": "test_terminals_have_none_threshold_and_scale",
+          "callee": "classify",
+          "lineNumber": 506
+        },
+        {
+          "caller": "test_terminals_have_none_threshold_and_scale",
+          "callee": "make_fv",
+          "lineNumber": 506
+        },
+        {
+          "caller": "test_terminals_have_none_threshold_and_scale",
+          "callee": "classify",
+          "lineNumber": 508
+        },
+        {
+          "caller": "test_terminals_have_none_threshold_and_scale",
+          "callee": "make_fv",
+          "lineNumber": 508
+        },
+        {
+          "caller": "test_every_rule_reachable",
+          "callee": "classify",
+          "lineNumber": 534
+        },
+        {
+          "caller": "test_every_rule_reachable",
+          "callee": "make_fv",
+          "lineNumber": 534
+        },
+        {
+          "caller": "test_rule_ids_unique_and_priorities_contiguous",
+          "callee": "len",
+          "lineNumber": 540
+        },
+        {
+          "caller": "test_rule_ids_unique_and_priorities_contiguous",
+          "callee": "len",
+          "lineNumber": 540
+        },
+        {
+          "caller": "test_rule_ids_unique_and_priorities_contiguous",
+          "callee": "set",
+          "lineNumber": 540
+        },
+        {
+          "caller": "test_rule_ids_unique_and_priorities_contiguous",
+          "callee": "list",
+          "lineNumber": 541
+        },
+        {
+          "caller": "test_rule_ids_unique_and_priorities_contiguous",
+          "callee": "range",
+          "lineNumber": 541
+        },
+        {
+          "caller": "test_rule_ids_unique_and_priorities_contiguous",
+          "callee": "len",
+          "lineNumber": 541
+        },
+        {
+          "caller": "test_every_signal_regime_in_table_once",
+          "callee": "table_regimes.count",
+          "lineNumber": 549
+        },
+        {
+          "caller": "test_no_rule_match_raises_when_neutral_removed",
+          "callee": "tuple",
+          "lineNumber": 560
+        },
+        {
+          "caller": "test_no_rule_match_raises_when_neutral_removed",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 561
+        },
+        {
+          "caller": "test_no_rule_match_raises_when_neutral_removed",
+          "callee": "pytest.raises",
+          "lineNumber": 562
+        },
+        {
+          "caller": "test_no_rule_match_raises_when_neutral_removed",
+          "callee": "classify",
+          "lineNumber": 563
+        },
+        {
+          "caller": "test_no_rule_match_raises_when_neutral_removed",
+          "callee": "make_fv",
+          "lineNumber": 563
+        },
+        {
+          "caller": "test_provenance_propagates_revision_and_staleness",
+          "callee": "Feature",
+          "lineNumber": 571
+        },
+        {
+          "caller": "test_provenance_propagates_revision_and_staleness",
+          "callee": "classify",
+          "lineNumber": 572
+        },
+        {
+          "caller": "test_provenance_propagates_revision_and_staleness",
+          "callee": "make_fv",
+          "lineNumber": 572
+        },
+        {
+          "caller": "test_provenance_propagates_revision_and_staleness",
+          "callee": "len",
+          "lineNumber": 574
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 56,
+        "functionCount": 56,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/risk/test_guardrail_engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "make_config",
+          "startLine": 21,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "make_request",
+          "startLine": 34,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "test_approves_when_all_predicates_pass",
+          "startLine": 49,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "test_blocks_oversized_position_and_names_predicate",
+          "startLine": 55,
+          "endLine": 58,
+          "params": []
+        },
+        {
+          "name": "test_blocks_malformed_request",
+          "startLine": 61,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "test_short_circuits_on_first_failing_predicate",
+          "startLine": 67,
+          "endLine": 72,
+          "params": []
+        },
+        {
+          "name": "test_validation_is_deterministic",
+          "startLine": 75,
+          "endLine": 78,
+          "params": []
+        },
+        {
+          "name": "test_load_config_from_env_reads_values",
+          "startLine": 81,
+          "endLine": 91,
+          "params": []
+        },
+        {
+          "name": "test_load_config_fails_closed_on_missing_var",
+          "startLine": 94,
+          "endLine": 96,
+          "params": []
+        },
+        {
+          "name": "test_decision_invariant_rejects_blocked_without_predicate",
+          "startLine": 99,
+          "endLine": 101,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "make_config",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "make_request",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "test_approves_when_all_predicates_pass",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "test_blocks_oversized_position_and_names_predicate",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "test_blocks_malformed_request",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "test_short_circuits_on_first_failing_predicate",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "test_validation_is_deterministic",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "test_load_config_from_env_reads_values",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "test_load_config_fails_closed_on_missing_var",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "test_decision_invariant_rejects_blocked_without_predicate",
+          "line": 99,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "make_config",
+          "callee": "dict",
+          "lineNumber": 22
+        },
+        {
+          "caller": "make_config",
+          "callee": "base.update",
+          "lineNumber": 30
+        },
+        {
+          "caller": "make_config",
+          "callee": "GuardrailConfig",
+          "lineNumber": 31
+        },
+        {
+          "caller": "make_request",
+          "callee": "dict",
+          "lineNumber": 35
+        },
+        {
+          "caller": "make_request",
+          "callee": "base.update",
+          "lineNumber": 45
+        },
+        {
+          "caller": "make_request",
+          "callee": "TradeValidationRequest",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_approves_when_all_predicates_pass",
+          "callee": "GuardrailEngine(make_config()).validate",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_approves_when_all_predicates_pass",
+          "callee": "GuardrailEngine",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_approves_when_all_predicates_pass",
+          "callee": "make_config",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_approves_when_all_predicates_pass",
+          "callee": "make_request",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_blocks_oversized_position_and_names_predicate",
+          "callee": "GuardrailEngine(make_config()).validate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_blocks_oversized_position_and_names_predicate",
+          "callee": "GuardrailEngine",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_blocks_oversized_position_and_names_predicate",
+          "callee": "make_config",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_blocks_oversized_position_and_names_predicate",
+          "callee": "make_request",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_blocks_malformed_request",
+          "callee": "GuardrailEngine(make_config()).validate",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_blocks_malformed_request",
+          "callee": "GuardrailEngine",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_blocks_malformed_request",
+          "callee": "make_config",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_blocks_malformed_request",
+          "callee": "make_request",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_short_circuits_on_first_failing_predicate",
+          "callee": "GuardrailEngine(make_config()).validate",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_short_circuits_on_first_failing_predicate",
+          "callee": "GuardrailEngine",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_short_circuits_on_first_failing_predicate",
+          "callee": "make_config",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_short_circuits_on_first_failing_predicate",
+          "callee": "make_request",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_validation_is_deterministic",
+          "callee": "GuardrailEngine",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_validation_is_deterministic",
+          "callee": "make_config",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_validation_is_deterministic",
+          "callee": "make_request",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_validation_is_deterministic",
+          "callee": "engine.validate",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_validation_is_deterministic",
+          "callee": "engine.validate",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_load_config_from_env_reads_values",
+          "callee": "load_config_from_env",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_load_config_fails_closed_on_missing_var",
+          "callee": "pytest.raises",
+          "lineNumber": 95
+        },
+        {
+          "caller": "test_load_config_fails_closed_on_missing_var",
+          "callee": "load_config_from_env",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_decision_invariant_rejects_blocked_without_predicate",
+          "callee": "pytest.raises",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_decision_invariant_rejects_blocked_without_predicate",
+          "callee": "TradeValidationDecision",
+          "lineNumber": 101
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/risk/test_predicates.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "make_config",
+          "startLine": 20,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "make_request",
+          "startLine": 33,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "test_position_size_ok_passes_at_pct_limit",
+          "startLine": 48,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "test_position_size_ok_blocks_above_pct_limit",
+          "startLine": 53,
+          "endLine": 56,
+          "params": []
+        },
+        {
+          "name": "test_position_size_ok_uses_absolute_cap_when_smaller",
+          "startLine": 59,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "test_daily_loss_cap_ok_blocks_at_cap",
+          "startLine": 67,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "test_max_trades_ok_blocks_at_limit",
+          "startLine": 72,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "test_max_positions_ok_blocks_at_limit",
+          "startLine": 77,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "test_withdrawal_disabled_blocks_when_enabled",
+          "startLine": 82,
+          "endLine": 84,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "make_config",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "make_request",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "test_position_size_ok_passes_at_pct_limit",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "test_position_size_ok_blocks_above_pct_limit",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "test_position_size_ok_uses_absolute_cap_when_smaller",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "test_daily_loss_cap_ok_blocks_at_cap",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "test_max_trades_ok_blocks_at_limit",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "test_max_positions_ok_blocks_at_limit",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "test_withdrawal_disabled_blocks_when_enabled",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "make_config",
+          "callee": "dict",
+          "lineNumber": 21
+        },
+        {
+          "caller": "make_config",
+          "callee": "base.update",
+          "lineNumber": 29
+        },
+        {
+          "caller": "make_config",
+          "callee": "GuardrailConfig",
+          "lineNumber": 30
+        },
+        {
+          "caller": "make_request",
+          "callee": "dict",
+          "lineNumber": 34
+        },
+        {
+          "caller": "make_request",
+          "callee": "base.update",
+          "lineNumber": 44
+        },
+        {
+          "caller": "make_request",
+          "callee": "TradeValidationRequest",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_position_size_ok_passes_at_pct_limit",
+          "callee": "position_size_ok",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_position_size_ok_passes_at_pct_limit",
+          "callee": "make_request",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_position_size_ok_passes_at_pct_limit",
+          "callee": "make_config",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_position_size_ok_blocks_above_pct_limit",
+          "callee": "position_size_ok",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_position_size_ok_blocks_above_pct_limit",
+          "callee": "make_request",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_position_size_ok_blocks_above_pct_limit",
+          "callee": "make_config",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_position_size_ok_uses_absolute_cap_when_smaller",
+          "callee": "position_size_ok",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_position_size_ok_uses_absolute_cap_when_smaller",
+          "callee": "make_request",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_position_size_ok_uses_absolute_cap_when_smaller",
+          "callee": "make_config",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_daily_loss_cap_ok_blocks_at_cap",
+          "callee": "daily_loss_cap_ok",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_daily_loss_cap_ok_blocks_at_cap",
+          "callee": "make_request",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_daily_loss_cap_ok_blocks_at_cap",
+          "callee": "make_config",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_daily_loss_cap_ok_blocks_at_cap",
+          "callee": "daily_loss_cap_ok",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_daily_loss_cap_ok_blocks_at_cap",
+          "callee": "make_request",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_daily_loss_cap_ok_blocks_at_cap",
+          "callee": "make_config",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_max_trades_ok_blocks_at_limit",
+          "callee": "max_trades_ok",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_max_trades_ok_blocks_at_limit",
+          "callee": "make_request",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_max_trades_ok_blocks_at_limit",
+          "callee": "make_config",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_max_trades_ok_blocks_at_limit",
+          "callee": "max_trades_ok",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_max_trades_ok_blocks_at_limit",
+          "callee": "make_request",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_max_trades_ok_blocks_at_limit",
+          "callee": "make_config",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_max_positions_ok_blocks_at_limit",
+          "callee": "max_positions_ok",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_max_positions_ok_blocks_at_limit",
+          "callee": "make_request",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_max_positions_ok_blocks_at_limit",
+          "callee": "make_config",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_max_positions_ok_blocks_at_limit",
+          "callee": "max_positions_ok",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_max_positions_ok_blocks_at_limit",
+          "callee": "make_request",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_max_positions_ok_blocks_at_limit",
+          "callee": "make_config",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_withdrawal_disabled_blocks_when_enabled",
+          "callee": "withdrawal_disabled",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_withdrawal_disabled_blocks_when_enabled",
+          "callee": "make_request",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_withdrawal_disabled_blocks_when_enabled",
+          "callee": "make_config",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_withdrawal_disabled_blocks_when_enabled",
+          "callee": "withdrawal_disabled",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_withdrawal_disabled_blocks_when_enabled",
+          "callee": "make_request",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_withdrawal_disabled_blocks_when_enabled",
+          "callee": "make_config",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/snapshot/test_consumer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 55,
+      "functions": [
+        {
+          "name": "test_consume_returns_pass_snapshot",
+          "startLine": 29,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "test_is_consumable_true_for_pass",
+          "startLine": 36,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "test_failed_gate_outputs_nothing",
+          "startLine": 40,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "test_forced_snapshot_rejected_fail_closed",
+          "startLine": 45,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "test_dry_run_snapshot_rejected",
+          "startLine": 54,
+          "endLine": 59,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_absent_file_outputs_nothing",
+          "startLine": 62,
+          "endLine": 64,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_malformed_snapshot_raises_not_silently_none",
+          "startLine": 67,
+          "endLine": 73,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_consume_accepts_str_path",
+          "startLine": 76,
+          "endLine": 77,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_consume_returns_pass_snapshot",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "test_is_consumable_true_for_pass",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "test_failed_gate_outputs_nothing",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "test_forced_snapshot_rejected_fail_closed",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "test_dry_run_snapshot_rejected",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "test_absent_file_outputs_nothing",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "test_malformed_snapshot_raises_not_silently_none",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "test_consume_accepts_str_path",
+          "line": 76,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_consume_returns_pass_snapshot",
+          "callee": "consume",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_consume_returns_pass_snapshot",
+          "callee": "isinstance",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_is_consumable_true_for_pass",
+          "callee": "is_consumable",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_is_consumable_true_for_pass",
+          "callee": "load_snapshot",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_failed_gate_outputs_nothing",
+          "callee": "is_consumable",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_failed_gate_outputs_nothing",
+          "callee": "load_snapshot",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_failed_gate_outputs_nothing",
+          "callee": "consume",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_forced_snapshot_rejected_fail_closed",
+          "callee": "load_snapshot",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_forced_snapshot_rejected_fail_closed",
+          "callee": "is_consumable",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_forced_snapshot_rejected_fail_closed",
+          "callee": "consume",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_dry_run_snapshot_rejected",
+          "callee": "json.loads",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_dry_run_snapshot_rejected",
+          "callee": "PASS.read_text",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_dry_run_snapshot_rejected",
+          "callee": "p.write_text",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_dry_run_snapshot_rejected",
+          "callee": "json.dumps",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_dry_run_snapshot_rejected",
+          "callee": "consume",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_absent_file_outputs_nothing",
+          "callee": "load_snapshot",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_absent_file_outputs_nothing",
+          "callee": "consume",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_malformed_snapshot_raises_not_silently_none",
+          "callee": "json.loads",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_malformed_snapshot_raises_not_silently_none",
+          "callee": "PASS.read_text",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_malformed_snapshot_raises_not_silently_none",
+          "callee": "p.write_text",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_malformed_snapshot_raises_not_silently_none",
+          "callee": "json.dumps",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_malformed_snapshot_raises_not_silently_none",
+          "callee": "pytest.raises",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_malformed_snapshot_raises_not_silently_none",
+          "callee": "consume",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_consume_accepts_str_path",
+          "callee": "consume",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_consume_accepts_str_path",
+          "callee": "str",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/snapshot/test_models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "_load",
+          "startLine": 24,
+          "endLine": 25,
+          "params": [
+            "name"
+          ]
+        },
+        {
+          "name": "test_parses_real_artifact_top_level",
+          "startLine": 28,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "test_recomputed_id_matches_published",
+          "startLine": 40,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "test_series_value_full_fidelity",
+          "startLine": 47,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "test_guards_parsed",
+          "startLine": 62,
+          "endLine": 71,
+          "params": []
+        },
+        {
+          "name": "test_quality_summary_parsed",
+          "startLine": 74,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "test_missing_required_key_raises",
+          "startLine": 83,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "test_missing_values_by_group_raises",
+          "startLine": 90,
+          "endLine": 94,
+          "params": []
+        },
+        {
+          "name": "test_non_object_payload_raises",
+          "startLine": 97,
+          "endLine": 99,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_load",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "test_parses_real_artifact_top_level",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "test_recomputed_id_matches_published",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "test_series_value_full_fidelity",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "test_guards_parsed",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "test_quality_summary_parsed",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "test_missing_required_key_raises",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "test_missing_values_by_group_raises",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "test_non_object_payload_raises",
+          "line": 97,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_load",
+          "callee": "json.loads",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_load",
+          "callee": "(FIXTURES / name).read_text",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_parses_real_artifact_top_level",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_parses_real_artifact_top_level",
+          "callee": "_load",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_parses_real_artifact_top_level",
+          "callee": "len",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_recomputed_id_matches_published",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_recomputed_id_matches_published",
+          "callee": "_load",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_recomputed_id_matches_published",
+          "callee": "snap.recompute_id",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_series_value_full_fidelity",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_series_value_full_fidelity",
+          "callee": "_load",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_guards_parsed",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_guards_parsed",
+          "callee": "_load",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_quality_summary_parsed",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_quality_summary_parsed",
+          "callee": "_load",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_missing_required_key_raises",
+          "callee": "_load",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_missing_required_key_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_missing_required_key_raises",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_missing_values_by_group_raises",
+          "callee": "_load",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_missing_values_by_group_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_missing_values_by_group_raises",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_non_object_payload_raises",
+          "callee": "pytest.raises",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_non_object_payload_raises",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 99
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/supervisor/test_decision_engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "card",
+          "startLine": 18,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "test_early_exit_when_promotable",
+          "startLine": 32,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "test_selects_highest_scoring_allowed_and_burns_treasury",
+          "startLine": 39,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "test_budget_filter_blocks_unaffordable",
+          "startLine": 45,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "test_exclusion_filter_skips_excluded",
+          "startLine": 52,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "test_decision_is_deterministic",
+          "startLine": 60,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "test_packet_invariant_rejects_selected_not_allowed",
+          "startLine": 65,
+          "endLine": 72,
+          "params": []
+        },
+        {
+          "name": "test_ranked_option_requires_blocked_reason",
+          "startLine": 75,
+          "endLine": 77,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "card",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "test_early_exit_when_promotable",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "test_selects_highest_scoring_allowed_and_burns_treasury",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "test_budget_filter_blocks_unaffordable",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "test_exclusion_filter_skips_excluded",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "test_decision_is_deterministic",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "test_packet_invariant_rejects_selected_not_allowed",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "test_ranked_option_requires_blocked_reason",
+          "line": 75,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "card",
+          "callee": "dict",
+          "lineNumber": 19
+        },
+        {
+          "caller": "card",
+          "callee": "base.update",
+          "lineNumber": 20
+        },
+        {
+          "caller": "card",
+          "callee": "EvaluationScorecard",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_early_exit_when_promotable",
+          "callee": "DecisionEngine().decide",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_early_exit_when_promotable",
+          "callee": "DecisionEngine",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_early_exit_when_promotable",
+          "callee": "card",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_selects_highest_scoring_allowed_and_burns_treasury",
+          "callee": "DecisionEngine().decide",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_selects_highest_scoring_allowed_and_burns_treasury",
+          "callee": "DecisionEngine",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_selects_highest_scoring_allowed_and_burns_treasury",
+          "callee": "card",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_budget_filter_blocks_unaffordable",
+          "callee": "DecisionEngine().decide",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_budget_filter_blocks_unaffordable",
+          "callee": "DecisionEngine",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_budget_filter_blocks_unaffordable",
+          "callee": "card",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_budget_filter_blocks_unaffordable",
+          "callee": "TreasuryState",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_budget_filter_blocks_unaffordable",
+          "callee": "all",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_exclusion_filter_skips_excluded",
+          "callee": "DecisionEngine().decide",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_exclusion_filter_skips_excluded",
+          "callee": "DecisionEngine",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_exclusion_filter_skips_excluded",
+          "callee": "card",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_exclusion_filter_skips_excluded",
+          "callee": "next",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_decision_is_deterministic",
+          "callee": "DecisionEngine",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_decision_is_deterministic",
+          "callee": "engine.decide",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_decision_is_deterministic",
+          "callee": "card",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_decision_is_deterministic",
+          "callee": "engine.decide",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_decision_is_deterministic",
+          "callee": "card",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_packet_invariant_rejects_selected_not_allowed",
+          "callee": "pytest.raises",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_packet_invariant_rejects_selected_not_allowed",
+          "callee": "DecisionPacket",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_packet_invariant_rejects_selected_not_allowed",
+          "callee": "RankedOption",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_ranked_option_requires_blocked_reason",
+          "callee": "pytest.raises",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_ranked_option_requires_blocked_reason",
+          "callee": "RankedOption",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/supervisor/test_scoring.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "card",
+          "startLine": 12,
+          "endLine": 15,
+          "params": []
+        },
+        {
+          "name": "test_calibration_weakness",
+          "startLine": 18,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "test_pnl_weakness_is_binary",
+          "startLine": 22,
+          "endLine": 24,
+          "params": []
+        },
+        {
+          "name": "test_unknown_dimension_is_zero",
+          "startLine": 27,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "test_score_option_is_cost_efficiency_weighted",
+          "startLine": 31,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "test_score_option_rejects_nonpositive_cost",
+          "startLine": 37,
+          "endLine": 39,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "card",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_weakness",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "test_pnl_weakness_is_binary",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "test_unknown_dimension_is_zero",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "test_score_option_is_cost_efficiency_weighted",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "test_score_option_rejects_nonpositive_cost",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "card",
+          "callee": "dict",
+          "lineNumber": 13
+        },
+        {
+          "caller": "card",
+          "callee": "base.update",
+          "lineNumber": 14
+        },
+        {
+          "caller": "card",
+          "callee": "EvaluationScorecard",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_calibration_weakness",
+          "callee": "weakness_severity",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_calibration_weakness",
+          "callee": "card",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_pnl_weakness_is_binary",
+          "callee": "weakness_severity",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_pnl_weakness_is_binary",
+          "callee": "card",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_pnl_weakness_is_binary",
+          "callee": "weakness_severity",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_pnl_weakness_is_binary",
+          "callee": "card",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_unknown_dimension_is_zero",
+          "callee": "weakness_severity",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_unknown_dimension_is_zero",
+          "callee": "card",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_score_option_is_cost_efficiency_weighted",
+          "callee": "UpgradeOption",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_score_option_is_cost_efficiency_weighted",
+          "callee": "score_option",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_score_option_is_cost_efficiency_weighted",
+          "callee": "card",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_score_option_is_cost_efficiency_weighted",
+          "callee": "pytest.approx",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_score_option_rejects_nonpositive_cost",
+          "callee": "pytest.raises",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_score_option_rejects_nonpositive_cost",
+          "callee": "score_option",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_score_option_rejects_nonpositive_cost",
+          "callee": "UpgradeOption",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_score_option_rejects_nonpositive_cost",
+          "callee": "card",
+          "lineNumber": 39
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "wiki/execution/Position Sizing.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 119,
+      "nonEmptyLines": 84,
+      "sections": [
+        {
+          "heading": "Position Sizing",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Standard Parameters",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Sizing Logic",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Configuration via Environment",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Ladder Buying (Scale-In)",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "wiki/execution/Stop-Loss Systems.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 122,
+      "nonEmptyLines": 86,
+      "sections": [
+        {
+          "heading": "Stop-Loss Systems",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Stop-Loss Types",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Fixed Stop",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Trailing Stop",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "Floor Ratcheting Logic",
+          "level": 4,
+          "line": 40
+        },
+        {
+          "heading": "Time-Based Stop",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Configuration by Strategy",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Midday Routine Stop Management",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/glossary/Glossary.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 90,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "Glossary",
+          "level": 1,
+          "line": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "wiki/memory/Agent Memory Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 191,
+      "nonEmptyLines": 137,
+      "sections": [
+        {
+          "heading": "Agent Memory Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Memory Model",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Memory File Types",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Structural Memory (read-mostly)",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Operational Memory (read-write)",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Derived Memory (generated)",
+          "level": 3,
+          "line": 72
+        },
+        {
+          "heading": "Key Design Principles",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "1. Files as Personality",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "2. Read Before Act",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "3. Write Before Exit",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "4. Git as Persistence Layer",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Context Budget Implications",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 113
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Operational Constraints",
+          "level": 2,
+          "line": 143
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 150
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Migration Pattern",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Institutional Memory (Syndicate Squad)",
+          "level": 3,
+          "line": 166
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 186
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 28
+      }
+    },
+    {
+      "path": "wiki/memory/Context Budget Engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 171,
+      "nonEmptyLines": 126,
+      "sections": [
+        {
+          "heading": "Context Budget Engineering",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Mental Model",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Budget Structure",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Budget Categories",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Optimization Strategies",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "1. Selective Reading",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "2. Memory Windowing",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "3. Context Resets",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "4. Prompt Engineering for Token Efficiency",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "5. Tiered File Architecture",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Context Window Sizes",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 155
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 168
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 23
+      }
+    },
+    {
+      "path": "wiki/observability/Graph Health Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 160,
+      "nonEmptyLines": 126,
+      "sections": [
+        {
+          "heading": "Graph Health Dashboard",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Metadata Coverage",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Pages Missing Frontmatter",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Confidence Distribution",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Orphan Pages",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Weakly Connected Pages",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Stale Pages (>30 days without update)",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Ontology Overview (Domain Distribution)",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Type Distribution",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Stub Tracking",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Source Coverage",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Source Provenance (pages citing each source)",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Contradiction Registry",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Recently Updated Notes",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Ingestion Timeline",
+          "level": 2,
+          "line": 136
+        },
+        {
+          "heading": "Stale Confidence",
+          "level": 2,
+          "line": 145
+        },
+        {
+          "heading": "Known Distinct Pairs",
+          "level": 2,
+          "line": 156
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/research/Research Ingestion Workflow.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 158,
+      "nonEmptyLines": 120,
+      "sections": [
+        {
+          "heading": "Research Ingestion Workflow",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Wiki Ingestion Workflow",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Steps",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Trading Research Ingestion",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Pre-Market Research Routine",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Source Processing Rules",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "For Wiki Sources",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "For Market Research",
+          "level": 3,
+          "line": 93
+        },
+        {
+          "heading": "Quality Criteria",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 155
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "wiki/risk/Autonomous Trading Risk Model.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 204,
+      "nonEmptyLines": 154,
+      "sections": [
+        {
+          "heading": "Autonomous Trading Risk Model",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Risk Taxonomy",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Risk Categories",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Market Risk",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Execution Risk",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "System Risk",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "AI-Specific Risk",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Governance Risk",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "Risk Parameters",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Phased Risk Mitigation",
+          "level": 2,
+          "line": 129
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 146
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 155
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Operational Constraints",
+          "level": 2,
+          "line": 168
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 175
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 183
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 190
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 198
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "wiki/risk/Guardrail Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 148,
+      "nonEmptyLines": 107,
+      "sections": [
+        {
+          "heading": "Guardrail Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Guardrail Categories",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Hard Limits (Non-Negotiable)",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Soft Limits (Configurable)",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Behavioral Rules",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Why Guardrails Are Critical",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Implementation",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Environment Variables",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Strategy File",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "CLAUDE.md",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Contradictions",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Options Trading Constraint",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 143
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "wiki/security/API Credential Isolation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 88,
+      "nonEmptyLines": 60,
+      "sections": [
+        {
+          "heading": "API Credential Isolation",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Isolation Rules",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Incident Evidence",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Exchange API Permission Model",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "wiki/security/Environment Variable Management.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 108,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "Environment Variable Management",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Storage Locations",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Required Variables",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Critical Rules",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Naming Precision",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "wiki/workflows/Office Action Loop.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 84,
+      "nonEmptyLines": 61,
+      "sections": [
+        {
+          "heading": "Office Action Loop",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "State Machine",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Actions",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Action Execution Flow",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    }
+  ]
+}

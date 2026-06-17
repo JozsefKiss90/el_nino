@@ -1,0 +1,225 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": "jarvis/hud/src/assets/portrait.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/GraphView.tsx",
+      "language": "typescript",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/EpochTrack.tsx",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/SystemVitals.tsx",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/api.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/router.test.ts",
+      "language": "typescript",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/router.ts",
+      "language": "typescript",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/snapshot.ts",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/data/types.ts",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useGraph.ts",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useReactorState.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useSpeech.ts",
+      "language": "typescript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useVoiceBridge.ts",
+      "language": "typescript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jarvis/hud/src/pages/MainHud.tsx",
+      "language": "typescript",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "jarvis/hud/src/assets/portrait.ts": [],
+    "jarvis/hud/src/components/GraphView.tsx": [
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/components/main/ConnectorArray.tsx": [
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/components/main/ConsolePanel.tsx": [
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/components/main/ContextFeed.tsx": [
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/components/main/DecisionCore.tsx": [
+      "jarvis/hud/src/data/snapshot.ts",
+      "jarvis/hud/src/hooks/useReactorState.ts"
+    ],
+    "jarvis/hud/src/components/main/EpochTrack.tsx": [],
+    "jarvis/hud/src/components/main/KnowledgeGraph.tsx": [
+      "jarvis/hud/src/components/GraphView.tsx",
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/components/main/LiveMarketIntel.tsx": [],
+    "jarvis/hud/src/components/main/OperatorPanel.tsx": [
+      "jarvis/hud/src/assets/portrait.ts"
+    ],
+    "jarvis/hud/src/components/main/StrategyStrip.tsx": [],
+    "jarvis/hud/src/components/main/SystemVitals.tsx": [
+      "jarvis/hud/src/data/snapshot.ts"
+    ],
+    "jarvis/hud/src/components/main/TruthCorpus.tsx": [],
+    "jarvis/hud/src/data/api.ts": [],
+    "jarvis/hud/src/data/router.test.ts": [
+      "jarvis/hud/src/data/router.ts",
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/data/router.ts": [
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/data/snapshot.ts": [],
+    "jarvis/hud/src/data/types.ts": [],
+    "jarvis/hud/src/hooks/useClaudeUplink.ts": [
+      "jarvis/hud/src/data/api.ts",
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/hooks/useGraph.ts": [
+      "jarvis/hud/src/data/graph.ts",
+      "jarvis/hud/src/data/router.ts",
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/hooks/useReactorState.ts": [],
+    "jarvis/hud/src/hooks/useSpeech.ts": [],
+    "jarvis/hud/src/hooks/useVoiceBridge.ts": [
+      "jarvis/hud/src/data/api.ts"
+    ],
+    "jarvis/hud/src/pages/MainHud.tsx": [
+      "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "jarvis/hud/src/components/main/EpochTrack.tsx",
+      "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "jarvis/hud/src/components/main/SystemVitals.tsx",
+      "jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "jarvis/hud/src/data/types.ts",
+      "jarvis/hud/src/hooks/useClaudeUplink.ts",
+      "jarvis/hud/src/hooks/useGraph.ts",
+      "jarvis/hud/src/hooks/useReactorState.ts",
+      "jarvis/hud/src/hooks/useSpeech.ts",
+      "jarvis/hud/src/hooks/useVoiceBridge.ts"
+    ]
+  }
+}

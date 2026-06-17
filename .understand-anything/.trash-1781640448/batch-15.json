@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/constraints/Canonical Ownership.md",
+      "type": "document",
+      "name": "Canonical Ownership.md",
+      "filePath": "dev_graph/constraints/Canonical Ownership.md",
+      "summary": "Hard invariant constraint (CON-003) requiring that every implementation concept in dev_graph has exactly one canonical node with no duplicates, ensuring unambiguous retrieval and clean graph traversal for context pack assembly.",
+      "tags": ["documentation", "governance", "constraint", "ontology", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph constraint node with 18 structured sections including Constraint Expression, Severity (blocking), Verification, Enforcement Rules, and Relationships. Referenced by Dev Graph Governance, Context Pack Assembly Rules, and Admissibility Checks."
+    },
+    {
+      "id": "document:dev_graph/constraints/Frontmatter Required.md",
+      "type": "document",
+      "name": "Frontmatter Required.md",
+      "filePath": "dev_graph/constraints/Frontmatter Required.md",
+      "summary": "Hard invariant constraint (CON-002) mandating that every dev_graph content node (excluding structural files) must carry valid YAML frontmatter with all universal schema fields, ensuring Dataview queryability, MCP filterability, and Neo4j/Postgres export readiness.",
+      "tags": ["documentation", "governance", "constraint", "schema-definition", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Defines the exact YAML predicate expression for frontmatter completeness and references per-session and weekly lint verification mechanisms including the Dev Graph Dashboard Dataview query."
+    },
+    {
+      "id": "document:dev_graph/constraints/No Wiki Mutation.md",
+      "type": "document",
+      "name": "No Wiki Mutation.md",
+      "filePath": "dev_graph/constraints/No Wiki Mutation.md",
+      "summary": "Foundational hard boundary constraint (CON-001) prohibiting all Claude Code dev_graph sessions from modifying any files in wiki/** or raw/**, preserving the integrity of the mature wiki knowledge graph and enforcing strict two-graph architectural separation.",
+      "tags": ["documentation", "governance", "constraint", "security", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Severity is Error (blocking) with no exceptions. Verification relies on pre-commit git diff checks and MCP operation audits. This is the foundational constraint loaded at every dev_graph session via the CLAUDE.md import chain."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/constraints/Canonical Ownership.md",
+      "target": "document:dev_graph/constraints/Frontmatter Required.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/constraints/Canonical Ownership.md",
+      "target": "document:dev_graph/constraints/No Wiki Mutation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/constraints/Frontmatter Required.md",
+      "target": "document:dev_graph/constraints/No Wiki Mutation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

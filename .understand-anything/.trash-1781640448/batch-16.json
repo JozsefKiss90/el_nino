@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "document",
+      "name": "ADR - Decision Layer Re-grounding.md",
+      "filePath": "dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "summary": "Architecture Decision Record re-grounding the Gold Decision layer by formalizing invariant design constraints for the GoldDecisionPacket, ensuring deterministic replay, provenance, and guard separation as non-negotiable properties of the decision output.",
+      "tags": ["documentation", "decision-record", "architecture", "gold-layer", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "document",
+      "name": "ADR - Deterministic Regime Taxonomy.md",
+      "filePath": "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "summary": "Architecture Decision Record establishing the closed, deterministic regime taxonomy (e.g., trending, ranging, volatile) used by the Gold layer, with explicit replay guarantees, no-adaptive-learning rationale, and no-hidden-state invariant grounding it as SCHEMA-010.",
+      "tags": ["documentation", "decision-record", "regime-classification", "determinism", "schema"],
+      "complexity": "moderate",
+      "languageNotes": "Specifies replay and determinism guarantees as formal invariants, with a canonical-id note anchoring the taxonomy to SCHEMA-010."
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "type": "document",
+      "name": "ADR - Dev Graph Bootstrap.md",
+      "filePath": "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "summary": "Architecture Decision Record authorizing the creation of the dev_graph as a separate Obsidian vault layered on top of the wiki, providing an ontology-governed engineering knowledge graph distinct from the domain wiki and external tool stores.",
+      "tags": ["documentation", "decision-record", "dev-graph", "architecture", "knowledge-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "type": "document",
+      "name": "ADR - Execution Layer Planning.md",
+      "filePath": "dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "summary": "Architecture Decision Record defining the Execution layer planning scope, port/adapter determinism boundary, paper-only virtual-money safety posture, and creation gates for the execution-layer schemas, making this the primary architectural blueprint for the trade execution pipeline.",
+      "tags": ["documentation", "decision-record", "execution-layer", "architecture", "trading-engine"],
+      "complexity": "complex",
+      "languageNotes": "At 360 lines this is the most detailed ADR in the batch; it includes an illustrative field sketch, 7 decision sub-sections, explicit non-goals, and creation gates."
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "type": "document",
+      "name": "ADR - Feature Layer Contract.md",
+      "filePath": "dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "summary": "Architecture Decision Record establishing the Feature layer contract: deterministic feature eligibility rules, forbidden feature classes (e.g., lookahead, ML outputs), provenance requirements, and replay/counterfactual determinism rule enforcing a clean input boundary.",
+      "tags": ["documentation", "decision-record", "feature-engineering", "determinism", "contract"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "type": "document",
+      "name": "ADR - Gold Decision Confidence Semantics.md",
+      "filePath": "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "summary": "Architecture Decision Record defining the confidence-score semantics for GoldDecisionPacket outputs, specifying a bounded numeric model, evidence-class requirements, and sanity checks against real snapshot data to prevent overconfident or ungrounded signals.",
+      "tags": ["documentation", "decision-record", "confidence-model", "gold-layer", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "document",
+      "name": "ADR - Gold DecisionPacket v0 Planning.md",
+      "filePath": "dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "summary": "Architecture Decision Record planning the v0 GoldDecisionPacket bounded context: permanent separation from upstream layers, determinism/replay invariants, provenance requirements, guard separation, creation gates, and an illustrative field sketch that serves as the structural blueprint for the Gold output schema.",
+      "tags": ["documentation", "decision-record", "gold-layer", "schema-design", "architecture"],
+      "complexity": "moderate",
+      "languageNotes": "Contains a non-normative illustrative field sketch with typed field candidates, serving as the draft schema before formal schema freeze."
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "type": "document",
+      "name": "ADR - Implementation Substrate.md",
+      "filePath": "dev_graph/decisions/ADR - Implementation Substrate.md",
+      "summary": "Architecture Decision Record selecting the Python implementation substrate (plain dataclasses over Pydantic, src/ layout, pip+venv over poetry) for the trading engine core, justifying minimal-dependency choices that prioritize determinism and testability.",
+      "tags": ["documentation", "decision-record", "python", "implementation-strategy", "toolchain"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "type": "document",
+      "name": "ADR - JARVIS GraphRAG Integration.md",
+      "filePath": "dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "summary": "Architecture Decision Record defining the JARVIS GraphRAG integration architecture: JARVIS as a read-only consumer of the dev_graph via the existing FastAPI bridge, with every answer citing canonical_ids, offline graph.json and live Neo4j as interchangeable sources behind a typed layer, and a re-sync governance habit.",
+      "tags": ["documentation", "decision-record", "jarvis", "graph-rag", "fastapi"],
+      "complexity": "moderate",
+      "languageNotes": "Establishes the interchangeability of offline graph.json and live Neo4j as a key architectural invariant for the JARVIS read layer."
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Ontology Redesign.md",
+      "type": "document",
+      "name": "ADR - Ontology Redesign.md",
+      "filePath": "dev_graph/decisions/ADR - Ontology Redesign.md",
+      "summary": "Architecture Decision Record authorizing the dev_graph ontology redesign from a simple tagging scheme to a typed, hierarchical Engineering Digital Twin with 24 node types, explicit relationship model, and closed enum governance, superseding earlier informal ontology approaches.",
+      "tags": ["documentation", "decision-record", "ontology", "dev-graph", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "document",
+      "name": "ADR - Paper-Trading Runtime Planning.md",
+      "filePath": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "summary": "Architecture Decision Record defining the Paper-Trading runtime planning scope: bounded context separation from Gold, wrap-not-enrich-in-place invariant, stateful determinism reconciling prior ADRs, append-only ledger design, policy fingerprinting, and creation gates for the paper-trading execution layer.",
+      "tags": ["documentation", "decision-record", "paper-trading", "runtime", "architecture"],
+      "complexity": "complex",
+      "languageNotes": "At 270 lines this ADR explicitly reconciles ADR-004 §3 and ADR-006 §3 on stateful determinism, and introduces policy fingerprinting with a fail-closed verdict mechanism."
+    }
+  ],
+  "edges": []
+}

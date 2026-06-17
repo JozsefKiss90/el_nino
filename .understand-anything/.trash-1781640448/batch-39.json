@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/governance/Metadata Migration Plan.md",
+      "type": "document",
+      "name": "Metadata Migration Plan.md",
+      "filePath": "wiki/governance/Metadata Migration Plan.md",
+      "summary": "Comprehensive 6-part migration plan for applying frontmatter governance across the wiki knowledge vault, covering schema design, phased rollout, observability dashboards, MCP readiness, and anti-entropy architecture with 87 sections across 820 lines.",
+      "tags": ["documentation", "governance", "configuration", "database", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/governance/Trade Logging.md",
+      "type": "document",
+      "name": "Trade Logging.md",
+      "filePath": "wiki/governance/Trade Logging.md",
+      "summary": "Wiki knowledge page defining the trade logging subsystem: its log structure, accounting optimization strategies, and block-level logging mechanics used in the paper-trading engine.",
+      "tags": ["documentation", "governance", "data-pipeline", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/governance/Treasury Policy System.md",
+      "type": "document",
+      "name": "Treasury Policy System.md",
+      "filePath": "wiki/governance/Treasury Policy System.md",
+      "summary": "Wiki knowledge page defining the treasury policy system: the capital allocation model, policy-gated decisions for position sizing, and the mechanics governing treasury management in the trading engine.",
+      "tags": ["documentation", "governance", "configuration", "monitoring"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

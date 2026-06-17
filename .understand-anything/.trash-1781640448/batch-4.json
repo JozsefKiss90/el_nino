@@ -1,0 +1,858 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/gold/decision_builder/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/gold/decision_builder/__init__.py",
+      "summary": "Package barrel for the decision_builder submodule, re-exporting the builder, config, models, and policy symbols for external consumers.",
+      "tags": ["entry-point", "barrel", "decision-builder"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/gold/decision_builder/builder.py",
+      "type": "file",
+      "name": "builder.py",
+      "filePath": "src/gold/decision_builder/builder.py",
+      "summary": "Assembles a GoldDecisionPacket from a feature vector and regime classification by computing trust score, direction, guard references, and a deterministic packet ID.",
+      "tags": ["service", "factory", "decision-builder"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/gold/decision_builder/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/gold/decision_builder/config.py",
+      "summary": "Defines DecisionPolicyConfig dataclass with validated fields controlling confidence weights, direction mapping, and fingerprinting; provides a JSON file loader.",
+      "tags": ["config", "data-model", "decision-builder"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/gold/decision_builder/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/gold/decision_builder/models.py",
+      "summary": "Core domain models for the gold decision layer: Direction and DecisionMode enums, citation and confidence dataclasses, guard references, and the GoldDecisionPacket with a deterministic packet ID computation.",
+      "tags": ["data-model", "type-definition", "decision-builder"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/gold/decision_builder/policy.py",
+      "type": "file",
+      "name": "policy.py",
+      "filePath": "src/gold/decision_builder/policy.py",
+      "summary": "Implements the trust score calculation and direction resolution policy, translating regime classification and feature vectors into confidence and uncertainty values via configurable weights.",
+      "tags": ["service", "validation", "decision-builder"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/gold/paper_runtime/__init__.py",
+      "summary": "Package barrel for the paper_runtime submodule, re-exporting config, engine, models, predicates, and runtime symbols for external consumers.",
+      "tags": ["entry-point", "barrel", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/gold/paper_runtime/config.py",
+      "summary": "Defines RuntimePolicyConfig dataclass with guard activation flags and versioning; computes a deterministic SHA-256 policy fingerprint and provides a JSON file loader.",
+      "tags": ["config", "data-model", "paper-runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/engine.py",
+      "type": "file",
+      "name": "engine.py",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "summary": "Core gate-evaluation engine for the paper trading runtime, running all required guard predicates against an incoming GoldDecisionPacket and producing a RuntimeDecisionRecord with ledger update.",
+      "tags": ["service", "api-handler", "paper-runtime"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "summary": "Domain models for the paper trading runtime: operational input, guard outcomes, ledger entries, the immutable RuntimeLedger with state hashing, and the final RuntimeDecisionRecord with deterministic ID computation.",
+      "tags": ["data-model", "type-definition", "paper-runtime"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/predicates.py",
+      "type": "file",
+      "name": "predicates.py",
+      "filePath": "src/gold/paper_runtime/predicates.py",
+      "summary": "Boolean guard predicate functions (duplicate_ok, operational_ok, data_ok, freshness_ok, cooldown_ok) that evaluate a GoldDecisionPacket against runtime conditions and return GuardOutcome results.",
+      "tags": ["validation", "service", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/runtime.py",
+      "type": "file",
+      "name": "runtime.py",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "summary": "High-level runtime orchestration for the paper trading layer: loads and persists the JSON ledger, loads operational input, and drives the engine in single-shot (run_once) and batch (run_sequence) modes.",
+      "tags": ["service", "entry-point", "paper-runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/decision_builder/builder.py:build_decision",
+      "type": "function",
+      "name": "build_decision",
+      "filePath": "src/gold/decision_builder/builder.py",
+      "lineRange": [58, 123],
+      "summary": "Constructs a complete GoldDecisionPacket from feature vector, regime classification, guard results, and config by computing trust score, direction, rationale, guard refs, and a deterministic packet ID.",
+      "tags": ["factory", "service", "decision-builder"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/decision_builder/config.py:DecisionPolicyConfig",
+      "type": "class",
+      "name": "DecisionPolicyConfig",
+      "filePath": "src/gold/decision_builder/config.py",
+      "lineRange": [73, 184],
+      "summary": "Dataclass holding all decision policy parameters including confidence weights, coverage and staleness caps, and a direction lookup table; validates on construction and produces a SHA-256 policy fingerprint.",
+      "tags": ["config", "data-model", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/gold/decision_builder/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/gold/decision_builder/config.py",
+      "lineRange": [187, 198],
+      "summary": "Loads a DecisionPolicyConfig from a JSON file path, raising DecisionPolicyConfigError on I/O or parse failures.",
+      "tags": ["config", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:GoldDecisionPacket",
+      "type": "class",
+      "name": "GoldDecisionPacket",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [144, 225],
+      "summary": "Primary output artifact of the gold decision layer; carries direction, confidence, uncertainty, rationale, guard references, snapshot guard results, and all version/traceability fields, with post-init validation.",
+      "tags": ["data-model", "type-definition", "decision-builder"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:FeatureCitation",
+      "type": "class",
+      "name": "FeatureCitation",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [46, 62],
+      "summary": "Dataclass capturing a cited feature's name, value, input keys, staleness, and revision risk for inclusion in a decision packet's rationale.",
+      "tags": ["data-model", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:ConfidenceInputs",
+      "type": "class",
+      "name": "ConfidenceInputs",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [66, 84],
+      "summary": "Dataclass aggregating the raw inputs to the confidence calculation: anchor strength, feature counts, staleness, revision risk, and unavailable count.",
+      "tags": ["data-model", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:GuardRefs",
+      "type": "class",
+      "name": "GuardRefs",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [101, 116],
+      "summary": "Dataclass recording boolean outcomes for each decision-layer guard check (data, freshness, supervisor, cooldown, duplicate, operational).",
+      "tags": ["data-model", "type-definition", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/decision_builder/models.py:compute_packet_id",
+      "type": "function",
+      "name": "compute_packet_id",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [228, 253],
+      "summary": "Computes a deterministic SHA-256 packet ID from version provenance fields (snapshot ID, feature schema version, regime versions, decision policy version and fingerprint).",
+      "tags": ["utility", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/decision_builder/policy.py:trust_score",
+      "type": "function",
+      "name": "trust_score",
+      "filePath": "src/gold/decision_builder/policy.py",
+      "lineRange": [20, 84],
+      "summary": "Computes confidence and uncertainty scores from regime classification and feature vector using configurable weights for ambiguity, fragility, staleness, revision risk, and coverage; returns a ConfidenceInputs pair.",
+      "tags": ["service", "validation", "decision-builder"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/config.py:RuntimePolicyConfig",
+      "type": "class",
+      "name": "RuntimePolicyConfig",
+      "filePath": "src/gold/paper_runtime/config.py",
+      "lineRange": [37, 69],
+      "summary": "Dataclass controlling which runtime guards are required (operational, snapshot) and storing the runtime policy version; produces a SHA-256 fingerprint for traceability.",
+      "tags": ["config", "data-model", "paper-runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "type": "function",
+      "name": "evaluate",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [65, 145],
+      "summary": "Runs all required guard predicates against a GoldDecisionPacket, builds a ledger entry with verdict and guard outcomes, appends it to the ledger, and returns the updated ledger plus a RuntimeDecisionRecord.",
+      "tags": ["service", "api-handler", "paper-runtime"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:RuntimeLedger",
+      "type": "class",
+      "name": "RuntimeLedger",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [193, 244],
+      "summary": "Immutable append-only ledger of LedgerEntry records with SHA-256 state hashing, admission detection, sequence management, and JSON serialization/deserialization.",
+      "tags": ["data-model", "type-definition", "paper-runtime"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:OperationalInput",
+      "type": "class",
+      "name": "OperationalInput",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [70, 135],
+      "summary": "Dataclass representing real-time trading venue state (tradeable, venue_open, halt, degraded) with a SHA-256 fingerprint and a factory method for constructing a closed-market sentinel value.",
+      "tags": ["data-model", "type-definition", "paper-runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:RuntimeDecisionRecord",
+      "type": "class",
+      "name": "RuntimeDecisionRecord",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [287, 337],
+      "summary": "Final output record of the paper runtime containing the guard verdict, triggered guard, all guard outcomes, ledger state hashes, and full version traceability fields.",
+      "tags": ["data-model", "type-definition", "paper-runtime"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/models.py:compute_record_id",
+      "type": "function",
+      "name": "compute_record_id",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [259, 283],
+      "summary": "Computes a deterministic SHA-256 record ID from the source packet ID, runtime policy fingerprint, as-of timestamp, operational fingerprint, snapshot guards digest, and prior ledger state hash.",
+      "tags": ["utility", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:run_once",
+      "type": "function",
+      "name": "run_once",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [75, 86],
+      "summary": "Orchestrates a single-shot paper runtime evaluation: loads the ledger and operational input from disk, calls evaluate, persists the updated ledger, and returns the decision record.",
+      "tags": ["service", "entry-point", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:run_sequence",
+      "type": "function",
+      "name": "run_sequence",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [89, 105],
+      "summary": "Runs a batch of GoldDecisionPackets through the paper runtime engine against an in-memory ledger, collecting all RuntimeDecisionRecords and returning the final ledger alongside results.",
+      "tags": ["service", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:load_ledger",
+      "type": "function",
+      "name": "load_ledger",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [32, 46],
+      "summary": "Loads a RuntimeLedger from a JSON file, returning an empty ledger if the file does not exist, and raising RuntimeContractError on parse errors.",
+      "tags": ["utility", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/predicates.py:duplicate_ok",
+      "type": "function",
+      "name": "duplicate_ok",
+      "filePath": "src/gold/paper_runtime/predicates.py",
+      "lineRange": [26, 30],
+      "summary": "Guard predicate returning a GuardOutcome indicating whether the incoming packet is a duplicate by checking the prior ledger for an admitted entry with the same packet ID.",
+      "tags": ["validation", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/predicates.py:operational_ok",
+      "type": "function",
+      "name": "operational_ok",
+      "filePath": "src/gold/paper_runtime/predicates.py",
+      "lineRange": [33, 43],
+      "summary": "Guard predicate that checks the OperationalInput to confirm the venue is open, not halted, not degraded, and the instrument is tradeable.",
+      "tags": ["validation", "paper-runtime"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/gold/decision_builder/__init__.py",
+      "target": "file:src/gold/decision_builder/builder.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/__init__.py",
+      "target": "file:src/gold/decision_builder/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/__init__.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/__init__.py",
+      "target": "file:src/gold/decision_builder/policy.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "file:src/gold/decision_builder/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "file:src/gold/decision_builder/policy.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "file:src/regime/regime_classifier/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/config.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/config.py",
+      "target": "file:src/regime/regime_classifier/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/policy.py",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/policy.py",
+      "target": "file:src/gold/decision_builder/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/policy.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/policy.py",
+      "target": "file:src/regime/regime_classifier/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/__init__.py",
+      "target": "file:src/gold/paper_runtime/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/__init__.py",
+      "target": "file:src/gold/paper_runtime/engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/__init__.py",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/__init__.py",
+      "target": "file:src/gold/paper_runtime/predicates.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/__init__.py",
+      "target": "file:src/gold/paper_runtime/runtime.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "file:src/gold/paper_runtime/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "file:src/gold/paper_runtime/predicates.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/predicates.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/predicates.py",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "file:src/gold/paper_runtime/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "file:src/gold/paper_runtime/engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "function:src/gold/decision_builder/builder.py:build_decision",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/builder.py",
+      "target": "function:src/gold/decision_builder/builder.py:build_decision",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/config.py",
+      "target": "class:src/gold/decision_builder/config.py:DecisionPolicyConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/config.py",
+      "target": "class:src/gold/decision_builder/config.py:DecisionPolicyConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/config.py",
+      "target": "function:src/gold/decision_builder/config.py:load_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/config.py",
+      "target": "function:src/gold/decision_builder/config.py:load_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:GoldDecisionPacket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:GoldDecisionPacket",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:FeatureCitation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:FeatureCitation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:ConfidenceInputs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:ConfidenceInputs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:GuardRefs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "class:src/gold/decision_builder/models.py:GuardRefs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "function:src/gold/decision_builder/models.py:compute_packet_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/models.py",
+      "target": "function:src/gold/decision_builder/models.py:compute_packet_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/decision_builder/policy.py",
+      "target": "function:src/gold/decision_builder/policy.py:trust_score",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/decision_builder/policy.py",
+      "target": "function:src/gold/decision_builder/policy.py:trust_score",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/config.py",
+      "target": "class:src/gold/paper_runtime/config.py:RuntimePolicyConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/config.py",
+      "target": "class:src/gold/paper_runtime/config.py:RuntimePolicyConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "class:src/gold/paper_runtime/models.py:RuntimeLedger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "class:src/gold/paper_runtime/models.py:RuntimeLedger",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "class:src/gold/paper_runtime/models.py:OperationalInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "class:src/gold/paper_runtime/models.py:OperationalInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "class:src/gold/paper_runtime/models.py:RuntimeDecisionRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "class:src/gold/paper_runtime/models.py:RuntimeDecisionRecord",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "function:src/gold/paper_runtime/models.py:compute_record_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/models.py",
+      "target": "function:src/gold/paper_runtime/models.py:compute_record_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "function:src/gold/paper_runtime/runtime.py:run_once",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "function:src/gold/paper_runtime/runtime.py:run_once",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "function:src/gold/paper_runtime/runtime.py:run_sequence",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "function:src/gold/paper_runtime/runtime.py:run_sequence",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "function:src/gold/paper_runtime/runtime.py:load_ledger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "function:src/gold/paper_runtime/runtime.py:load_ledger",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/predicates.py",
+      "target": "function:src/gold/paper_runtime/predicates.py:duplicate_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/predicates.py",
+      "target": "function:src/gold/paper_runtime/predicates.py:duplicate_ok",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/predicates.py",
+      "target": "function:src/gold/paper_runtime/predicates.py:operational_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/gold/paper_runtime/predicates.py",
+      "target": "function:src/gold/paper_runtime/predicates.py:operational_ok",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/gold/decision_builder/builder.py:build_decision",
+      "target": "function:src/gold/decision_builder/policy.py:trust_score",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/gold/decision_builder/builder.py:build_decision",
+      "target": "function:src/gold/decision_builder/models.py:compute_packet_id",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/gold/paper_runtime/runtime.py:run_once",
+      "target": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/gold/paper_runtime/runtime.py:run_sequence",
+      "target": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "target": "function:src/gold/paper_runtime/predicates.py:duplicate_ok",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "target": "function:src/gold/paper_runtime/predicates.py:operational_ok",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/gold/paper_runtime/engine.py",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/gold/paper_runtime/runtime.py",
+      "target": "file:src/gold/paper_runtime/engine.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

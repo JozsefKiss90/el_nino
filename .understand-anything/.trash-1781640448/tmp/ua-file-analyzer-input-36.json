@@ -1,0 +1,16 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "wiki/agents/Agent Self-Verification.md", "language": "markdown", "sizeLines": 86, "fileCategory": "docs"},
+    {"path": "wiki/agents/Multi-Agent Orchestration.md", "language": "markdown", "sizeLines": 143, "fileCategory": "docs"},
+    {"path": "wiki/agents/Stateless Agent Recovery.md", "language": "markdown", "sizeLines": 87, "fileCategory": "docs"},
+    {"path": "wiki/agents/Supervisor Decision Engine.md", "language": "markdown", "sizeLines": 134, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "wiki/agents/Agent Self-Verification.md": [],
+    "wiki/agents/Multi-Agent Orchestration.md": [],
+    "wiki/agents/Stateless Agent Recovery.md": [],
+    "wiki/agents/Supervisor Decision Engine.md": []
+  },
+  "neighborMap": {}
+}

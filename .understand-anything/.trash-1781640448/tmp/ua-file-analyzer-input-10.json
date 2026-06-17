@@ -1,0 +1,19 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "population_strategy.md", "language": "markdown", "sizeLines": 1162, "fileCategory": "docs"},
+    {"path": "project_structure.md", "language": "markdown", "sizeLines": 243, "fileCategory": "docs"},
+    {"path": "pyproject.toml", "language": "toml", "sizeLines": 29, "fileCategory": "config"},
+    {"path": "slice2 fit assessment and roadmap.md", "language": "markdown", "sizeLines": 336, "fileCategory": "docs"},
+    {"path": "the-gold-decisionpacket-v0-glowing-meerkat.md", "language": "markdown", "sizeLines": 251, "fileCategory": "docs"},
+    {"path": "ultimateplan.md", "language": "markdown", "sizeLines": 475, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "population_strategy.md": [],
+    "project_structure.md": [],
+    "pyproject.toml": [],
+    "slice2 fit assessment and roadmap.md": [],
+    "the-gold-decisionpacket-v0-glowing-meerkat.md": [],
+    "ultimateplan.md": []
+  }
+}

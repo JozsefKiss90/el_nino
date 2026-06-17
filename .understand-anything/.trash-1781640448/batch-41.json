@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/integrations/Alpaca API.md",
+      "type": "document",
+      "name": "Alpaca API.md",
+      "filePath": "wiki/integrations/Alpaca API.md",
+      "summary": "Comprehensive wiki reference for the Alpaca API integration, covering authentication, credential persistence, supported API endpoints, paper vs. live trading modes, and how it connects to the trading system.",
+      "tags": ["documentation", "api-schema", "integration", "trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/Capital Trades Integration.md",
+      "type": "document",
+      "name": "Capital Trades Integration.md",
+      "filePath": "wiki/integrations/Capital Trades Integration.md",
+      "summary": "Wiki reference documenting the Capital Trades integration, detailing the connection method, Smart Money Concept data provided, latency considerations, tradeoffs, and open questions for institutional trade data ingestion.",
+      "tags": ["documentation", "integration", "data-pipeline", "trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/Exchange API Integration.md",
+      "type": "document",
+      "name": "Exchange API Integration.md",
+      "filePath": "wiki/integrations/Exchange API Integration.md",
+      "summary": "Wiki reference covering exchange API integration patterns including authentication, configuration, supported exchanges, spot vs. futures operations, and example trade command structure.",
+      "tags": ["documentation", "integration", "api-schema", "trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/MCP Architecture.md",
+      "type": "document",
+      "name": "MCP Architecture.md",
+      "filePath": "wiki/integrations/MCP Architecture.md",
+      "summary": "Wiki reference describing the Model Context Protocol (MCP) architecture used within the trading system, covering Alpaca MCP server, TradingView MCP, and institutional data MCP connectors.",
+      "tags": ["documentation", "infrastructure", "integration", "architecture"],
+      "complexity": "simple",
+      "languageNotes": "Describes the MCP protocol as the middleware layer bridging AI agents to external trading data and broker APIs."
+    },
+    {
+      "id": "document:wiki/integrations/Perplexity API.md",
+      "type": "document",
+      "name": "Perplexity API.md",
+      "filePath": "wiki/integrations/Perplexity API.md",
+      "summary": "Wiki reference for the Perplexity API integration, documenting usage, configuration, inputs, outputs, dependencies, and tradeoffs for AI-assisted research within the trading system.",
+      "tags": ["documentation", "integration", "api-schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/integrations/TradingView Integration.md",
+      "type": "document",
+      "name": "TradingView Integration.md",
+      "filePath": "wiki/integrations/TradingView Integration.md",
+      "summary": "Wiki reference documenting three TradingView integration patterns — MCP direct connection, webhook bridge with Claude in the middle, and computer-use co-work — along with webhook configuration and strategy development guidance.",
+      "tags": ["documentation", "integration", "trading", "webhook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/Webhook Architecture.md",
+      "type": "document",
+      "name": "Webhook Architecture.md",
+      "filePath": "wiki/integrations/Webhook Architecture.md",
+      "summary": "Wiki reference describing the webhook architecture flow for ingesting external trading signals, including configuration, failure modes, and how webhooks bridge TradingView alerts to the trading engine.",
+      "tags": ["documentation", "integration", "infrastructure", "webhook"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

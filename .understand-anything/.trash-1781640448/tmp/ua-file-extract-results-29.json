@@ -1,0 +1,337 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/.env.example",
+      "language": "config",
+      "fileCategory": "config",
+      "totalLines": 12,
+      "nonEmptyLines": 11,
+      "definitions": [
+        {
+          "name": "NEO4J_URI",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 3,
+          "endLine": 3
+        },
+        {
+          "name": "NEO4J_USERNAME",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "NEO4J_PASSWORD",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "NEO4J_DATABASE",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 6,
+          "endLine": 6
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 4
+      }
+    },
+    {
+      "path": "jarvis/CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 105,
+      "nonEmptyLines": 78,
+      "sections": [
+        {
+          "heading": "JARVIS Operations Manual",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Prime directive — JARVIS is a read-only consumer (ADR-010)",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "The projection chain (know this before changing anything)",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "When the dev_graph changes — re-project EVERYTHING (one command)",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Component contract — two classes, one boundary",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Backend safety invariants (do not weaken)",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Pointers",
+          "level": 2,
+          "line": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "jarvis/JARVIS_INTEGRATION_ROADMAP.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 254,
+      "nonEmptyLines": 217,
+      "sections": [
+        {
+          "heading": "JARVIS ↔ Neo4j ↔ MCP — Integration & Refactor Roadmap",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Governing principles (baked into every stage)",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Current state (what already exists — do not redo)",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Stage 0 — ADR-010: JARVIS GraphRAG Integration (governance only)",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Stage 1 — `graph.json` exporter + bridge confirmation (offline seed)",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Stage 2 — Graph-driven console on the *current* HTML (the capability win)",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Stage 3 — React refactor (Vite + React + TypeScript)",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "Stage 4 — LLM uplink = GraphRAG (`/ask`)",
+          "level": 2,
+          "line": 174
+        },
+        {
+          "heading": "Stage 5 — Voice bridge (Whisper/Piper) + single-URL serving",
+          "level": 2,
+          "line": 202
+        },
+        {
+          "heading": "Sequence & dependencies",
+          "level": 2,
+          "line": 225
+        },
+        {
+          "heading": "Risks & notes",
+          "level": 2,
+          "line": 245
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "jarvis/PROJECTION_SYNC_PLAN.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 165,
+      "nonEmptyLines": 122,
+      "sections": [
+        {
+          "heading": "JARVIS Projection-Sync Plan",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Problem statement",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Drift already present (evidence)",
+          "level": 3,
+          "line": 43
+        },
+        {
+          "heading": "Recommendation 1 — Kill the duplicate `graph.json`",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Recommendation 2 — One `resync-devgraph.ps1`",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Recommendation 3 — Optional git `pre-commit` hook (right granularity)",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Recommendation 4 — Decide the dashboard chrome's contract",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Sequence",
+          "level": 2,
+          "line": 144
+        },
+        {
+          "heading": "Non-goals",
+          "level": 2,
+          "line": 159
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "jarvis/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 188,
+      "nonEmptyLines": 159,
+      "sections": [
+        {
+          "heading": "JARVIS dev_graph stack",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Prerequisites",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Offline quick start (recommended)",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Full stack via docker-compose (containerized)",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Wiring it into the JARVIS console",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "JARVIS GraphRAG console (Stages 1–5, ADR-010)",
+          "level": 2,
+          "line": 136
+        },
+        {
+          "heading": "Run the React HUD",
+          "level": 3,
+          "line": 151
+        },
+        {
+          "heading": "Moving to Neo4j Aura (managed cloud) later",
+          "level": 2,
+          "line": 175
+        },
+        {
+          "heading": "Notes & safety",
+          "level": 2,
+          "line": 182
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "jarvis/docker-compose.yml",
+      "language": "yaml",
+      "fileCategory": "infra",
+      "totalLines": 80,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "services",
+          "level": 1,
+          "line": 17
+        },
+        {
+          "heading": "volumes",
+          "level": 1,
+          "line": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "jarvis/resync-devgraph.ps1",
+      "language": "powershell",
+      "fileCategory": "script",
+      "totalLines": 71,
+      "nonEmptyLines": 63,
+      "metrics": {}
+    },
+    {
+      "path": "jarvis/start.ps1",
+      "language": "powershell",
+      "fileCategory": "script",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "metrics": {}
+    }
+  ]
+}

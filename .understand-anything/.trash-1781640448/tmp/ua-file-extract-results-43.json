@@ -1,0 +1,532 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/strategies/Copy Trading Strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 176,
+      "nonEmptyLines": 117,
+      "sections": [
+        {
+          "heading": "Copy Trading Strategy",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Signal Sources",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "US Politicians (Congress)",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "Other Smart Money Sources",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "Target Selection",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Replication Logic",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Latency Analysis",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Strategy Isolation",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Scheduling",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Performance Evidence",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 121
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 130
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 158
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 166
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 174
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "wiki/strategies/Paper Trading.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 123,
+      "nonEmptyLines": 89,
+      "sections": [
+        {
+          "heading": "Paper Trading",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Implementation Variants",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Alpaca Paper Trading",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Custom Balance Paper Accounts",
+          "level": 4,
+          "line": 35
+        },
+        {
+          "heading": "TradingView Paper Mode",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Syndicate Squad Paper Trading Engine",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Promotion Criteria",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "From Paper to Live",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Syndicate Squad Promotion Logic",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 117
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "wiki/strategies/Signal Confirmation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 131,
+      "nonEmptyLines": 95,
+      "sections": [
+        {
+          "heading": "Signal Confirmation",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Confirmation Pattern",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Standard Indicator Stack",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Three-Layer System (Equities)",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "TradingView Scalping System (Crypto)",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Safety Filter Extension",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/strategies/VWAP Crossover Strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 82,
+      "nonEmptyLines": 55,
+      "sections": [
+        {
+          "heading": "VWAP Crossover Strategy",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Entry Rules (Long)",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Exit Rules",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Validated Performance",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Strategy Origin",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "wiki/strategies/Wheel Strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 225,
+      "nonEmptyLines": 168,
+      "sections": [
+        {
+          "heading": "Wheel Strategy",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Strategy Cycle",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Stage 1: Sell Cash-Secured Put",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Stage 2: Sell Covered Call",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Hard Rules",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Strike and Expiration Selection",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Monitoring Schedule",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Claude Automation",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 145
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 172
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 206
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 214
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 223
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    }
+  ]
+}

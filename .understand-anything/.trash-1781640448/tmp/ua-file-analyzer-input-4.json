@@ -1,0 +1,136 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "src/gold/decision_builder/__init__.py", "language": "python", "sizeLines": 49, "fileCategory": "code"},
+    {"path": "src/gold/decision_builder/builder.py", "language": "python", "sizeLines": 123, "fileCategory": "code"},
+    {"path": "src/gold/decision_builder/config.py", "language": "python", "sizeLines": 202, "fileCategory": "code"},
+    {"path": "src/gold/decision_builder/models.py", "language": "python", "sizeLines": 253, "fileCategory": "code"},
+    {"path": "src/gold/decision_builder/policy.py", "language": "python", "sizeLines": 89, "fileCategory": "code"},
+    {"path": "src/gold/paper_runtime/__init__.py", "language": "python", "sizeLines": 66, "fileCategory": "code"},
+    {"path": "src/gold/paper_runtime/config.py", "language": "python", "sizeLines": 87, "fileCategory": "code"},
+    {"path": "src/gold/paper_runtime/engine.py", "language": "python", "sizeLines": 145, "fileCategory": "code"},
+    {"path": "src/gold/paper_runtime/models.py", "language": "python", "sizeLines": 341, "fileCategory": "code"},
+    {"path": "src/gold/paper_runtime/predicates.py", "language": "python", "sizeLines": 66, "fileCategory": "code"},
+    {"path": "src/gold/paper_runtime/runtime.py", "language": "python", "sizeLines": 105, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/gold/decision_builder/__init__.py": [
+      "src/gold/decision_builder/builder.py",
+      "src/gold/decision_builder/config.py",
+      "src/gold/decision_builder/models.py",
+      "src/gold/decision_builder/policy.py"
+    ],
+    "src/gold/decision_builder/builder.py": [
+      "src/features/feature_builder/models.py",
+      "src/gold/decision_builder/config.py",
+      "src/gold/decision_builder/models.py",
+      "src/gold/decision_builder/policy.py",
+      "src/regime/regime_classifier/__init__.py"
+    ],
+    "src/gold/decision_builder/config.py": [
+      "src/gold/decision_builder/models.py",
+      "src/regime/regime_classifier/__init__.py"
+    ],
+    "src/gold/decision_builder/models.py": [],
+    "src/gold/decision_builder/policy.py": [
+      "src/features/feature_builder/models.py",
+      "src/gold/decision_builder/config.py",
+      "src/gold/decision_builder/models.py",
+      "src/regime/regime_classifier/__init__.py"
+    ],
+    "src/gold/paper_runtime/__init__.py": [
+      "src/gold/paper_runtime/config.py",
+      "src/gold/paper_runtime/engine.py",
+      "src/gold/paper_runtime/models.py",
+      "src/gold/paper_runtime/predicates.py",
+      "src/gold/paper_runtime/runtime.py"
+    ],
+    "src/gold/paper_runtime/config.py": [],
+    "src/gold/paper_runtime/engine.py": [
+      "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/config.py",
+      "src/gold/paper_runtime/models.py",
+      "src/gold/paper_runtime/predicates.py"
+    ],
+    "src/gold/paper_runtime/models.py": [
+      "src/gold/decision_builder/models.py"
+    ],
+    "src/gold/paper_runtime/predicates.py": [
+      "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/models.py"
+    ],
+    "src/gold/paper_runtime/runtime.py": [
+      "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/config.py",
+      "src/gold/paper_runtime/engine.py",
+      "src/gold/paper_runtime/models.py"
+    ]
+  },
+  "neighborMap": {
+    "src/gold/decision_builder/builder.py": [
+      {
+        "path": "src/features/feature_builder/models.py",
+        "batchIndex": 3,
+        "symbols": ["Feature", "FeatureVector"]
+      },
+      {
+        "path": "src/regime/regime_classifier/__init__.py",
+        "batchIndex": 3,
+        "symbols": []
+      }
+    ],
+    "src/gold/decision_builder/config.py": [
+      {
+        "path": "src/regime/regime_classifier/__init__.py",
+        "batchIndex": 3,
+        "symbols": []
+      }
+    ],
+    "src/gold/decision_builder/models.py": [
+      {
+        "path": "src/execution/adapters.py",
+        "batchIndex": 6,
+        "symbols": ["ExecutionPort", "SimulatedBrokerAdapter"]
+      },
+      {
+        "path": "src/execution/engine.py",
+        "batchIndex": 6,
+        "symbols": ["_apply_buy", "execute"]
+      },
+      {
+        "path": "src/execution/models.py",
+        "batchIndex": 6,
+        "symbols": ["ExecutionContractError", "ExecutionMode", "GuardResult", "Fill", "Position", "ExecutionEntry", "_replace_position", "PortfolioState", "compute_execution_id", "ExecutionRecord"]
+      },
+      {
+        "path": "src/execution/runtime.py",
+        "batchIndex": 6,
+        "symbols": ["load_portfolio", "persist_portfolio", "build_guard_request", "run_guard", "run_once", "run_sequence"]
+      }
+    ],
+    "src/gold/decision_builder/policy.py": [
+      {
+        "path": "src/features/feature_builder/models.py",
+        "batchIndex": 3,
+        "symbols": ["Feature", "FeatureVector"]
+      },
+      {
+        "path": "src/regime/regime_classifier/__init__.py",
+        "batchIndex": 3,
+        "symbols": []
+      }
+    ],
+    "src/gold/paper_runtime/models.py": [
+      {
+        "path": "src/execution/engine.py",
+        "batchIndex": 6,
+        "symbols": ["_apply_buy", "execute"]
+      },
+      {
+        "path": "src/execution/runtime.py",
+        "batchIndex": 6,
+        "symbols": ["load_portfolio", "persist_portfolio", "build_guard_request", "run_guard", "run_once", "run_sequence"]
+      }
+    ]
+  }
+}

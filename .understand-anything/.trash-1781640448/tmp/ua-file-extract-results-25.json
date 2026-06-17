@@ -1,0 +1,409 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/predicates/Daily Loss Cap OK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "Daily Loss Cap OK",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/predicates/Duplicate OK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 63,
+      "nonEmptyLines": 51,
+      "sections": [
+        {
+          "heading": "Duplicate OK",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/predicates/Max Positions OK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "Max Positions OK",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/predicates/Max Trades OK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "Max Trades OK",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/predicates/Operational OK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 63,
+      "nonEmptyLines": 51,
+      "sections": [
+        {
+          "heading": "Operational OK",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/predicates/Position Size OK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "Position Size OK",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/predicates/Withdrawal Disabled.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "Withdrawal Disabled",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    }
+  ]
+}

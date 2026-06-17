@@ -1,0 +1,63 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": "dev_graph/modules/Decision Engine.md",
+      "language": "markdown",
+      "sizeLines": 120,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Execution.md",
+      "language": "markdown",
+      "sizeLines": 154,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Feature Builder.md",
+      "language": "markdown",
+      "sizeLines": 106,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Gold Decision Builder.md",
+      "language": "markdown",
+      "sizeLines": 124,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Guardrail Engine.md",
+      "language": "markdown",
+      "sizeLines": 115,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Market Regime Classifier.md",
+      "language": "markdown",
+      "sizeLines": 113,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Paper-Trading Runtime.md",
+      "language": "markdown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Snapshot Consumer.md",
+      "language": "markdown",
+      "sizeLines": 93,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "dev_graph/modules/Decision Engine.md": [],
+    "dev_graph/modules/Execution.md": [],
+    "dev_graph/modules/Feature Builder.md": [],
+    "dev_graph/modules/Gold Decision Builder.md": [],
+    "dev_graph/modules/Guardrail Engine.md": [],
+    "dev_graph/modules/Market Regime Classifier.md": [],
+    "dev_graph/modules/Paper-Trading Runtime.md": [],
+    "dev_graph/modules/Snapshot Consumer.md": []
+  }
+}

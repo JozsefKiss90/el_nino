@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {
+      "id": "service:jarvis/backend/Dockerfile",
+      "type": "service",
+      "name": "Dockerfile",
+      "filePath": "jarvis/backend/Dockerfile",
+      "summary": "Single-stage Docker build for the JARVIS read-only FastAPI backend, installing Python dependencies from requirements.txt and launching the app via uvicorn on port 8000 with Neo4j credentials injected at runtime.",
+      "tags": ["containerization", "infrastructure", "deployment", "api-handler"],
+      "complexity": "simple",
+      "languageNotes": "Single-stage build using python:3.12-slim; NEO4J_* env vars are injected at runtime by docker-compose or the host environment, not baked into the image."
+    }
+  ],
+  "edges": [
+    {
+      "source": "service:jarvis/backend/Dockerfile",
+      "target": "file:jarvis/backend/app.py",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

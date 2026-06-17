@@ -1,0 +1,95 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/files/policy.py.md",
+      "type": "document",
+      "name": "policy.py.md",
+      "filePath": "dev_graph/files/policy.py.md",
+      "summary": "Dev-graph file node (FILE-017) documenting src/gold/decision_builder/policy.py — pure decision-policy helpers implementing the ADR-008 ordinal trust score and versioned regime-to-direction lookup for the Gold Decision Builder module.",
+      "tags": ["documentation", "dev-graph", "file-node", "gold-decision-builder"],
+      "complexity": "simple",
+      "languageNotes": "Dev-graph ontology node of type 'file'; describes a pure Python module with no IO or side effects."
+    },
+    {
+      "id": "document:dev_graph/files/predicates.py (paper_runtime).md",
+      "type": "document",
+      "name": "predicates.py (paper_runtime).md",
+      "filePath": "dev_graph/files/predicates.py (paper_runtime).md",
+      "summary": "Dev-graph file node (FILE-021) documenting src/gold/paper_runtime/predicates.py — the L3 guard predicates (duplicate_ok PRED-006, operational_ok PRED-007, and snapshot echoes) for the Paper-Trading Runtime module, each returning a (passed, reason) tuple.",
+      "tags": ["documentation", "dev-graph", "file-node", "paper-trading-runtime"],
+      "complexity": "simple",
+      "languageNotes": "Describes bounded-context hygiene: the (passed, reason) pattern mirrors risk predicates but is never cross-imported."
+    },
+    {
+      "id": "document:dev_graph/files/predicates.py.md",
+      "type": "document",
+      "name": "predicates.py.md",
+      "filePath": "dev_graph/files/predicates.py.md",
+      "summary": "Dev-graph file node (FILE-002) documenting src/risk/guardrail_engine/predicates.py — the hard-limit predicate library of the Guardrail Engine (MOD-001), encoding non-negotiable trading guardrails as pure (request, config) -> (passed, reason) functions and realizing the Guardrail Pattern (PAT-002).",
+      "tags": ["documentation", "dev-graph", "file-node", "guardrail-engine"],
+      "complexity": "moderate",
+      "languageNotes": "Earliest FILE canonical_id (FILE-002) indicating a foundational node; owns a named ALL_PREDICATES evaluation-order list."
+    },
+    {
+      "id": "document:dev_graph/files/regime_classifier.py.md",
+      "type": "document",
+      "name": "regime_classifier.py.md",
+      "filePath": "dev_graph/files/regime_classifier.py.md",
+      "summary": "Dev-graph file node (FILE-011) documenting src/regime/regime_classifier/regime_classifier.py — the deterministic regime-classification driver that maps a FeatureVector to exactly one RegimeClassification via priority-ordered RULE_TABLE, implementing the Regime Classification API (INT-007).",
+      "tags": ["documentation", "dev-graph", "file-node", "market-regime-classifier"],
+      "complexity": "moderate",
+      "languageNotes": "Highest relationship density in this batch: Depends On, Implements, Consumes, Produces, Validated By, and Justified By sections all populated."
+    },
+    {
+      "id": "document:dev_graph/files/run_execution_bench.py.md",
+      "type": "document",
+      "name": "run_execution_bench.py.md",
+      "filePath": "dev_graph/files/run_execution_bench.py.md",
+      "summary": "Dev-graph file node (FILE-029) documenting benchmarks/execution/run_execution_bench.py — the BENCH-004 deterministic benchmark harness that proves the ADR-011 execution-determinism invariant by replaying ADMIT sequences through the full execution chain and producing a committed golden artifact.",
+      "tags": ["documentation", "dev-graph", "file-node", "benchmark"],
+      "complexity": "moderate",
+      "languageNotes": "Most recently created node in this batch (2026-06-16); the golden artifact it produces is verified byte-for-byte by test_execution_bench (TEST-021)."
+    },
+    {
+      "id": "document:dev_graph/files/runtime.py (execution).md",
+      "type": "document",
+      "name": "runtime.py (execution).md",
+      "filePath": "dev_graph/files/runtime.py (execution).md",
+      "summary": "Dev-graph file node (FILE-028) documenting src/execution/runtime.py — the IO boundary shell and guard-wiring composition root for the Execution module, the sole file permitted to import src/risk (bounded-context hygiene), and the implementor of the Execution API (INT-011).",
+      "tags": ["documentation", "dev-graph", "file-node", "execution-layer"],
+      "complexity": "moderate",
+      "languageNotes": "Enforces ADR-009 §3 bounded-context hygiene: explicitly the only file that imports src/risk, keeping the pure execute() core free of risk dependencies."
+    },
+    {
+      "id": "document:dev_graph/files/runtime.py.md",
+      "type": "document",
+      "name": "runtime.py.md",
+      "filePath": "dev_graph/files/runtime.py.md",
+      "summary": "Dev-graph file node (FILE-023) documenting src/gold/paper_runtime/runtime.py — the IO boundary shell and replay driver for the Paper-Trading Runtime module, providing load/persist ledger operations and a pure run_sequence replay driver for determinism verification.",
+      "tags": ["documentation", "dev-graph", "file-node", "paper-trading-runtime"],
+      "complexity": "simple",
+      "languageNotes": "Mirrors the IO-isolation pattern of the execution layer; run_sequence is the no-IO vehicle for BENCH-003 byte-identical replay."
+    },
+    {
+      "id": "document:dev_graph/files/scoring.py.md",
+      "type": "document",
+      "name": "scoring.py.md",
+      "filePath": "dev_graph/files/scoring.py.md",
+      "summary": "Dev-graph file node (FILE-005) documenting src/supervisor/decision_engine/scoring.py — the deterministic weakness-scoring library of the Decision Engine (MOD-002), implementing severity-weighted cost-efficiency scoring for upgrade options and realizing the Supervisor Pattern (PAT-001).",
+      "tags": ["documentation", "dev-graph", "file-node", "decision-engine"],
+      "complexity": "simple",
+      "languageNotes": "Uses a WEAKNESS_DIMENSIONS registry mapping dimension names to severity functions, paralleling the guardrail predicate registry pattern."
+    },
+    {
+      "id": "document:dev_graph/files/taxonomy.py.md",
+      "type": "document",
+      "name": "taxonomy.py.md",
+      "filePath": "dev_graph/files/taxonomy.py.md",
+      "summary": "Dev-graph file node (FILE-012) documenting src/regime/regime_classifier/taxonomy.py — the declarative, priority-ordered RULE_TABLE of RegimeRules encoding the complete regime taxonomy as data rather than control flow, consumed by regime_classifier.py and governed by ADR-007.",
+      "tags": ["documentation", "dev-graph", "file-node", "market-regime-classifier"],
+      "complexity": "moderate",
+      "languageNotes": "Expresses 11 signal rules (R01..R11 plus NEUTRAL catch-all) as a data table; thresholds/scales are config-driven with no hard-coded numeric constants."
+    }
+  ],
+  "edges": []
+}

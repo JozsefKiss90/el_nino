@@ -1,0 +1,770 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/hud/src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 93,
+      "functions": [
+        {
+          "name": "App",
+          "startLine": 19,
+          "endLine": 102,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "App",
+          "line": 19,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "App",
+          "callee": "useGraph",
+          "lineNumber": 20
+        },
+        {
+          "caller": "App",
+          "callee": "useClock",
+          "lineNumber": 21
+        },
+        {
+          "caller": "App",
+          "callee": "useCorpusCounter",
+          "lineNumber": 22
+        },
+        {
+          "caller": "App",
+          "callee": "useTheme",
+          "lineNumber": 23
+        },
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "App",
+          "callee": "useCallback",
+          "lineNumber": 28
+        },
+        {
+          "caller": "App",
+          "callee": "setPendingQuery",
+          "lineNumber": 29
+        },
+        {
+          "caller": "App",
+          "callee": "setTab",
+          "lineNumber": 30
+        },
+        {
+          "caller": "App",
+          "callee": "useCallback",
+          "lineNumber": 32
+        },
+        {
+          "caller": "App",
+          "callee": "setPendingQuery",
+          "lineNumber": 32
+        },
+        {
+          "caller": "App",
+          "callee": "clock.slice",
+          "lineNumber": 34
+        },
+        {
+          "caller": "App",
+          "callee": "clock.slice",
+          "lineNumber": 35
+        },
+        {
+          "caller": "App",
+          "callee": "graphStats",
+          "lineNumber": 38
+        },
+        {
+          "caller": "App",
+          "callee": "setTab",
+          "lineNumber": 64
+        },
+        {
+          "caller": "App",
+          "callee": "setTab",
+          "lineNumber": 65
+        },
+        {
+          "caller": "App",
+          "callee": "setTab",
+          "lineNumber": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/MatrixRain.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "MatrixRain",
+          "startLine": 7,
+          "endLine": 65,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MatrixRain",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "MatrixRain",
+          "callee": "useRef",
+          "lineNumber": 8
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "useEffect",
+          "lineNumber": 10
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "c.getContext",
+          "lineNumber": 13
+        },
+        {
+          "caller": "resize",
+          "callee": "Math.ceil",
+          "lineNumber": 24
+        },
+        {
+          "caller": "resize",
+          "callee": "Math.floor",
+          "lineNumber": 26
+        },
+        {
+          "caller": "resize",
+          "callee": "Math.random",
+          "lineNumber": 26
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "resize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "window.addEventListener",
+          "lineNumber": 29
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "window.matchMedia",
+          "lineNumber": 31
+        },
+        {
+          "caller": "frame",
+          "callee": "x.fillRect",
+          "lineNumber": 35
+        },
+        {
+          "caller": "frame",
+          "callee": "glyphs.charAt",
+          "lineNumber": 39
+        },
+        {
+          "caller": "frame",
+          "callee": "Math.floor",
+          "lineNumber": 39
+        },
+        {
+          "caller": "frame",
+          "callee": "Math.random",
+          "lineNumber": 39
+        },
+        {
+          "caller": "frame",
+          "callee": "x.fillText",
+          "lineNumber": 42
+        },
+        {
+          "caller": "frame",
+          "callee": "x.fillText",
+          "lineNumber": 44
+        },
+        {
+          "caller": "frame",
+          "callee": "Math.random",
+          "lineNumber": 45
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "window.setInterval",
+          "lineNumber": 52
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "x.fillRect",
+          "lineNumber": 55
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "window.removeEventListener",
+          "lineNumber": 59
+        },
+        {
+          "caller": "MatrixRain",
+          "callee": "window.clearInterval",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/FlowInvariants.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 14,
+      "functions": [
+        {
+          "name": "FlowInvariants",
+          "startLine": 3,
+          "endLine": 14,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "FlowInvariants",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/GovernanceSpine.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "GovernanceSpine",
+          "startLine": 3,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GovernanceSpine",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/LaNinaBranch.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "LaNinaBranch",
+          "startLine": 3,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "LaNinaBranch",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/flow/ProgressiveReveal.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "ProgressiveReveal",
+          "startLine": 12,
+          "endLine": 115,
+          "params": [
+            "{ revealed, complete, hint, onNext, onAll }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProgressiveReveal",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 16
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 29
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 42
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 50
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 82
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 90
+        },
+        {
+          "caller": "ProgressiveReveal",
+          "callee": "stepCls",
+          "lineNumber": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useClock.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "useClock",
+          "startLine": 4,
+          "endLine": 11,
+          "params": []
+        },
+        {
+          "name": "fmt",
+          "startLine": 13,
+          "endLine": 18,
+          "params": [
+            "d"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useClock",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useClock",
+          "callee": "useState",
+          "lineNumber": 5
+        },
+        {
+          "caller": "useClock",
+          "callee": "fmt",
+          "lineNumber": 5
+        },
+        {
+          "caller": "useClock",
+          "callee": "useEffect",
+          "lineNumber": 6
+        },
+        {
+          "caller": "useClock",
+          "callee": "setInterval",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useClock",
+          "callee": "setNow",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useClock",
+          "callee": "fmt",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useClock",
+          "callee": "clearInterval",
+          "lineNumber": 8
+        },
+        {
+          "caller": "fmt",
+          "callee": "d.getUTCFullYear",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "p",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "d.getUTCMonth",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "p",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "d.getUTCDate",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "p",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "d.getUTCHours",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "p",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fmt",
+          "callee": "d.getUTCMinutes",
+          "lineNumber": 16
+        },
+        {
+          "caller": "fmt",
+          "callee": "p",
+          "lineNumber": 17
+        },
+        {
+          "caller": "fmt",
+          "callee": "d.getUTCSeconds",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/hooks/useCorpusCounter.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "useCorpusCounter",
+          "startLine": 9,
+          "endLine": 16,
+          "params": []
+        },
+        {
+          "name": "compute",
+          "startLine": 18,
+          "endLine": 21,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useCorpusCounter",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useCorpusCounter",
+          "callee": "useState",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useCorpusCounter",
+          "callee": "compute",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useCorpusCounter",
+          "callee": "useEffect",
+          "lineNumber": 11
+        },
+        {
+          "caller": "useCorpusCounter",
+          "callee": "setInterval",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useCorpusCounter",
+          "callee": "setState",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useCorpusCounter",
+          "callee": "compute",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useCorpusCounter",
+          "callee": "clearInterval",
+          "lineNumber": 13
+        },
+        {
+          "caller": "compute",
+          "callee": "Math.max",
+          "lineNumber": 19
+        },
+        {
+          "caller": "compute",
+          "callee": "Math.floor",
+          "lineNumber": 19
+        },
+        {
+          "caller": "compute",
+          "callee": "Date.now",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/pages/SystemFlow.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "SystemFlow",
+          "startLine": 25,
+          "endLine": 70,
+          "params": [
+            "{ graph, onQuery }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SystemFlow",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SystemFlow",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SystemFlow",
+          "callee": "Array.from",
+          "lineNumber": 35
+        },
+        {
+          "caller": "SystemFlow",
+          "callee": "setRevealed",
+          "lineNumber": 47
+        },
+        {
+          "caller": "SystemFlow",
+          "callee": "Math.min",
+          "lineNumber": 47
+        },
+        {
+          "caller": "SystemFlow",
+          "callee": "setRevealed",
+          "lineNumber": 48
+        },
+        {
+          "caller": "SystemFlow",
+          "callee": "onQuery",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/theme/ThemeContext.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "ThemeProvider",
+          "startLine": 16,
+          "endLine": 29,
+          "params": [
+            "{ children }"
+          ]
+        },
+        {
+          "name": "useTheme",
+          "startLine": 31,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ThemeProvider",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "useTheme",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ThemeProvider",
+          "callee": "useState",
+          "lineNumber": 17
+        },
+        {
+          "caller": "ThemeProvider",
+          "callee": "useEffect",
+          "lineNumber": 19
+        },
+        {
+          "caller": "ThemeProvider",
+          "callee": "document.documentElement.setAttribute",
+          "lineNumber": 20
+        },
+        {
+          "caller": "ThemeProvider",
+          "callee": "useMemo",
+          "lineNumber": 23
+        },
+        {
+          "caller": "ThemeProvider",
+          "callee": "setTheme",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useTheme",
+          "callee": "useContext",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

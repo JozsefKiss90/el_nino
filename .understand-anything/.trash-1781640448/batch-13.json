@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "type": "document",
+      "name": "Execution Layer Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "summary": "Dev graph benchmark_result node (BENCH-004) recording execution-layer determinism and idempotency evidence: byte-identical sequence replay, fill distribution, guard-block attribution, and pinned portfolio-state hash, serving as the closing artifact for ADR-011 §7 gate (d).",
+      "tags": ["benchmark", "determinism", "execution-layer", "documentation", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology type is benchmark_result (BENCH-004); measures replay_determinism, idempotency, fill_distribution, portfolio_state_hash, and guard_block_attribution."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Gold Decision Distribution Benchmark.md",
+      "type": "document",
+      "name": "Gold Decision Distribution Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md",
+      "summary": "Dev graph benchmark_result node (BENCH-002) recording gold-layer decision determinism and synthetic direction distribution across the regime feature grid, pinned via a committed golden artifact that a regression test asserts stays in sync.",
+      "tags": ["benchmark", "determinism", "gold-layer", "documentation", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Ontology type is benchmark_result (BENCH-002); measures replay_determinism, direction_distribution, regime_direction_map, confidence_stats, and uncertainty_stats."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "type": "document",
+      "name": "Paper-Trading Runtime Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "summary": "Dev graph benchmark_result node (BENCH-003) recording paper-trading runtime determinism, idempotency, verdict distribution, and no-enrich-back invariant evidence, pinned via a committed golden artifact validated by a regression test.",
+      "tags": ["benchmark", "determinism", "paper-trading", "documentation", "dev-graph"],
+      "complexity": "simple",
+      "languageNotes": "Ontology type is benchmark_result (BENCH-003); measures replay_determinism, idempotency, verdict_distribution, no_enrich_back, and ledger_state_hash."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "type": "document",
+      "name": "Regime Distribution Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "summary": "Dev graph benchmark_result node (BENCH-001, the first in the project) recording market-regime classifier determinism and synthetic feature-grid distribution covering all 11 signal regimes, with Shannon entropy and balance metrics pinned as a committable golden artifact.",
+      "tags": ["benchmark", "determinism", "regime-classification", "documentation", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology type is benchmark_result (BENCH-001); measures distribution, coverage, entropy, classification_balance, unclassified_pct, rule_utilization, and regime_frequency."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "target": "file:benchmarks/execution/run_execution_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/benchmarks/Gold Decision Distribution Benchmark.md",
+      "target": "file:benchmarks/gold/run_gold_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "target": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "target": "file:benchmarks/regime/run_regime_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

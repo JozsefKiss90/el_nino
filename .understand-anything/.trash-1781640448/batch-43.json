@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/strategies/Copy Trading Strategy.md",
+      "type": "document",
+      "name": "Copy Trading Strategy.md",
+      "filePath": "wiki/strategies/Copy Trading Strategy.md",
+      "summary": "Comprehensive wiki entry defining the copy trading strategy that replicates smart-money signals from US Congressional disclosures and other institutional sources, covering signal sources, replication logic, latency analysis, scheduling, and performance evidence across 22 structured sections.",
+      "tags": ["documentation", "trading-strategy", "copy-trading", "signal-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/strategies/Paper Trading.md",
+      "type": "document",
+      "name": "Paper Trading.md",
+      "filePath": "wiki/strategies/Paper Trading.md",
+      "summary": "Wiki reference covering paper trading concepts and implementation variants — Alpaca paper accounts, TradingView paper mode, and the Syndicate Squad paper trading engine — including promotion criteria for transitioning strategies from paper to live trading.",
+      "tags": ["documentation", "trading-strategy", "paper-trading", "backtesting"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/strategies/Signal Confirmation.md",
+      "type": "document",
+      "name": "Signal Confirmation.md",
+      "filePath": "wiki/strategies/Signal Confirmation.md",
+      "summary": "Wiki entry describing the signal confirmation pattern used to validate trade entries, including the standard three-layer indicator stack for equities, TradingView scalping system for crypto, and safety filter extensions with multi-indicator convergence requirements.",
+      "tags": ["documentation", "trading-strategy", "signal-processing", "technical-analysis"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/strategies/VWAP Crossover Strategy.md",
+      "type": "document",
+      "name": "VWAP Crossover Strategy.md",
+      "filePath": "wiki/strategies/VWAP Crossover Strategy.md",
+      "summary": "Concise wiki reference defining the VWAP Crossover intraday trading strategy, including long entry rules, exit rules, validated performance benchmarks, and strategy origin — one of the core signal generators in the el_nino trading engine.",
+      "tags": ["documentation", "trading-strategy", "vwap", "technical-analysis"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/strategies/Wheel Strategy.md",
+      "type": "document",
+      "name": "Wheel Strategy.md",
+      "filePath": "wiki/strategies/Wheel Strategy.md",
+      "summary": "Detailed wiki entry describing the options Wheel Strategy (cash-secured puts and covered calls cycle), covering both stages, hard rules, strike/expiration selection, monitoring schedule, and Claude automation integration across 20 structured sections.",
+      "tags": ["documentation", "trading-strategy", "options", "wheel-strategy"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

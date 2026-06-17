@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "type": "file",
+      "name": "EL NINO JARVIS Cyberpunk.html",
+      "filePath": "jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "summary": "Prototype or design mockup of the JARVIS UI in a cyberpunk visual style, containing a full self-contained HTML/CSS/JS dashboard intended as a reference or source design for the JARVIS graph-intelligence interface.",
+      "tags": ["markup", "ui-prototype", "dashboard", "design-reference"],
+      "complexity": "complex",
+      "languageNotes": "Large self-contained HTML file (1373 lines) likely embedding inline CSS and JavaScript — a prototype artifact in the jarvis/sources directory indicating it predates the React/Vite production frontend."
+    },
+    {
+      "id": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "type": "document",
+      "name": "OPUS_CONTEXT_DUMP.md",
+      "filePath": "jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "summary": "Comprehensive project context dump capturing the Mr. Ripley / El Niño system architecture, epoch roadmap, current implementation status, La Niña architecture specification, scorecard schema, and dashboard design requirements — intended to provide an LLM with full project context for dashboard generation.",
+      "tags": ["documentation", "architecture", "context-pack", "planning"],
+      "complexity": "complex",
+      "languageNotes": "Written primarily in Hungarian with embedded English technical terminology; contains 32 sections covering system architecture, roadmap epochs E1-E6, and La Niña governance specification."
+    },
+    {
+      "id": "file:jarvis/sources/el_nino_jarvis_interface (6).html",
+      "type": "file",
+      "name": "el_nino_jarvis_interface (6).html",
+      "filePath": "jarvis/sources/el_nino_jarvis_interface (6).html",
+      "summary": "Version 6 of the JARVIS interface prototype HTML file, representing an iterative design artifact for the El Niño JARVIS dashboard UI prior to the React/Vite production implementation.",
+      "tags": ["markup", "ui-prototype", "dashboard", "design-reference"],
+      "complexity": "complex",
+      "languageNotes": "The '(6)' in the filename indicates this is at least the sixth iteration of the interface prototype, typical of design-by-iteration workflows."
+    },
+    {
+      "id": "document:jarvis/sources/el_nino_project_plan_v1.md",
+      "type": "document",
+      "name": "el_nino_project_plan_v1.md",
+      "filePath": "jarvis/sources/el_nino_project_plan_v1.md",
+      "summary": "Master planning document for the El Niño Layer-3 decision engine project, covering the six-epoch roadmap (E1-E6), Slice 2 fit assessment, La Niña architecture with the 19-point problem inventory, backtesting and paper trading strategy, human-approved policy evolution process, and key terminology — the authoritative strategic blueprint for the entire system.",
+      "tags": ["documentation", "planning", "architecture", "roadmap"],
+      "complexity": "complex",
+      "languageNotes": "Bilingual document mixing Hungarian section headers with English technical content; 56 sections spanning 596 lines covering strategic planning, architecture decisions, and epoch-by-epoch implementation guidance."
+    },
+    {
+      "id": "document:jarvis/sources/sarkallatos_pontok.md",
+      "type": "document",
+      "name": "sarkallatos_pontok.md",
+      "filePath": "jarvis/sources/sarkallatos_pontok.md",
+      "summary": "Concise summary of key open questions and agreed negotiation points for the El Niño / La Niña system, covering La Niña monitor architecture, backtest and paper trading decisions, data collection and learning strategy, and look-ahead bias handling.",
+      "tags": ["documentation", "planning", "architecture", "open-questions"],
+      "complexity": "simple",
+      "languageNotes": "Written entirely in Hungarian ('sarkallatos pontok' means 'cardinal/pivotal points'); acts as a decision-tracking artifact complementing the larger project plan."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:jarvis/sources/el_nino_project_plan_v1.md",
+      "target": "document:jarvis/sources/sarkallatos_pontok.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "target": "document:jarvis/sources/el_nino_project_plan_v1.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "target": "document:jarvis/sources/sarkallatos_pontok.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "target": "file:jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "target": "file:jarvis/sources/el_nino_jarvis_interface (6).html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

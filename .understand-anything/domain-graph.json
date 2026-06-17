@@ -1,0 +1,613 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "el_nino",
+    "languages": ["Python", "TypeScript"],
+    "frameworks": ["FastAPI", "React", "Vite", "Neo4j", "pytest"],
+    "description": "El Nino is the Layer-3 autonomous paper-trading engine: it consumes deterministic Layer-2 market-state snapshots, derives features, classifies the market regime, builds a paper-only gold decision packet, admits it through a runtime guard block, and simulates execution against a paper portfolio. A Risk Control guardrail engine validates proposed trades against hard limits, a Supervisor Office decision engine selects capability upgrades under treasury constraints, and a JARVIS graph-intelligence front end exposes the project's engineering dev_graph via a read-only FastAPI/Neo4j bridge with a GraphRAG console and voice I/O.",
+    "analyzedAt": "2026-06-16T00:00:00Z",
+    "gitCommitHash": "f9b1a22ce1edc974bcfe5c3dec4ec6319ffe5019"
+  },
+  "nodes": [
+    {
+      "id": "domain:trading-decision-pipeline",
+      "type": "domain",
+      "name": "Trading Decision Pipeline (Layer-3 Analysis)",
+      "summary": "The deterministic, snapshot-local analysis chain that turns one Layer-2 truth snapshot into a paper-only gold decision packet. It enforces a fail-closed consumption gate, derives a feature vector, selects a market regime via a rule table, and builds a cited, paper-only decision. Same snapshot plus same versions always yields a byte-identical packet.",
+      "tags": ["pipeline", "deterministic", "market-state", "paper-trading", "core"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": ["Snapshot", "FeatureVector", "RegimeClassification", "GoldDecisionPacket", "FeatureCitation"],
+        "businessRules": [
+          "Layer-3 MUST NOT read raw observations; it only consumes latest_snapshot.json or queries by snapshot_id",
+          "Fail-closed: a non-consumable snapshot (quality gate failed / absent) produces no output",
+          "Deterministic: same snapshot + same schema/policy versions => bit-identical packet",
+          "Packets are always paper_only planning artifacts, never live orders (ADR-006)",
+          "Cited features are read verbatim from the feature vector, never invented"
+        ],
+        "crossDomainInteractions": [
+          "Emits the GoldDecisionPacket consumed by the Paper-Trading Runtime & Execution domain",
+          "Forwards snapshot guard flags so downstream runtime guards can echo provenance"
+        ]
+      }
+    },
+    {
+      "id": "domain:paper-trading-runtime",
+      "type": "domain",
+      "name": "Paper-Trading Runtime & Execution",
+      "summary": "Wraps a pure gold decision packet in stateful, append-only runtime admission, then simulates execution against a paper portfolio. The runtime evaluates a six-guard block and emits an ADMIT / HOLD / REJECT verdict plus a ledger entry; execution fills only an approved LONG on a fresh snapshot, marking the portfolio. Everything is paper_only and never mutates the upstream packet.",
+      "tags": ["runtime", "execution", "admission", "portfolio", "deterministic", "paper-trading"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": ["RuntimeDecisionRecord", "RuntimeLedger", "LedgerEntry", "OperationalInput", "ExecutionRecord", "PortfolioState", "Position", "Fill"],
+        "businessRules": [
+          "Runtime wraps the GoldDecisionPacket by reference and never mutates or re-emits it (ADR-009)",
+          "Verdict is fail-closed: WATCH packet HOLDs, first failing required guard REJECTs, else ADMIT",
+          "Idempotent on source_snapshot_id (once-ever execution discipline)",
+          "Each evaluation appends exactly one self-describing ledger entry; no hidden clock or state",
+          "Only an approved LONG on a fresh snapshot fills; everything else yields a no-fill record"
+        ],
+        "crossDomainInteractions": [
+          "Consumes the GoldDecisionPacket produced by the Trading Decision Pipeline domain",
+          "Receives a forwarded GuardResult from the Risk Control domain (never recomputes it at execution)"
+        ]
+      }
+    },
+    {
+      "id": "domain:risk-control",
+      "type": "domain",
+      "name": "Risk Control (Guardrail Engine)",
+      "summary": "The trade-validation boundary that enforces hard-limit predicates as a short-circuit conjunction. Given a TradeValidationRequest it evaluates position size, daily-loss cap, max trades, max positions, and withdrawal-disabled checks, returning an approve/block decision that names the first failing predicate. Stateless, synchronous, deterministic, and fail-closed.",
+      "tags": ["risk", "guardrail", "validation", "predicates", "fail-closed"],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entities": ["TradeValidationRequest", "TradeValidationDecision", "GuardrailConfig", "TradeDirection"],
+        "businessRules": [
+          "ALL hard-limit predicates must pass to approve a trade (short-circuit conjunction)",
+          "Config is loaded fail-closed from the environment (hard limits)",
+          "Withdrawal must be disabled for any trade to be approved",
+          "Identical inputs always yield an identical decision (deterministic, stateless)"
+        ],
+        "crossDomainInteractions": [
+          "Produces the GuardResult forwarded into the Paper-Trading Runtime & Execution domain's execution gate (GATE-001)"
+        ]
+      }
+    },
+    {
+      "id": "domain:supervisor-office",
+      "type": "domain",
+      "name": "Supervisor Office (Upgrade Decisions)",
+      "summary": "The capability-evolution decision engine that scores candidate upgrades for the trading office under treasury constraints and institutional memory. Given a performance scorecard it either declares the office promotable (no upgrade needed) or ranks affordable, non-excluded upgrade options and selects one, emitting a deterministic decision packet with the resulting treasury state.",
+      "tags": ["supervisor", "decision-engine", "scoring", "treasury", "governance"],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entities": ["EvaluationScorecard", "UpgradeOption", "RankedOption", "DecisionPacket", "TreasuryState", "DecisionConfig"],
+        "businessRules": [
+          "Office is promotable (no upgrade) when realized PnL exceeds threshold and calibration is met",
+          "Options over the available treasury budget are ranked but not affordable",
+          "Options in institutional memory's exclusion set are ranked but never selected",
+          "Identical scorecard + catalog + treasury => identical decision packet (deterministic)"
+        ],
+        "crossDomainInteractions": [
+          "Evaluates performance derived from runtime/execution outcomes of the Paper-Trading Runtime domain"
+        ]
+      }
+    },
+    {
+      "id": "domain:jarvis-graph-intelligence",
+      "type": "domain",
+      "name": "JARVIS Graph Intelligence",
+      "summary": "The operator-facing front end and read-only graph bridge over the project's engineering dev_graph in Neo4j. A FastAPI service exposes node lookup, neighbor expansion, search, shortest path, and seed subgraphs, plus a GraphRAG ask endpoint and local Whisper/Piper voice I/O. The React HUD renders the graph, an answer console, and live pipeline/connector status.",
+      "tags": ["jarvis", "graph-rag", "fastapi", "neo4j", "voice", "frontend", "observability"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": ["DevGraph node", "Health", "AskRequest", "Answer", "Citation", "GraphSource", "TtsRequest"],
+        "businessRules": [
+          "Every Neo4j query is READ-ONLY and parameterized; a keyword guard blocks mutating Cypher",
+          "GraphRAG answers are grounded ONLY in a retrieved dev_graph subgraph, cited and evidence-annotated",
+          "Ask returns 503 when no Claude key is configured; the UI falls back to the offline pure router",
+          "Voice STT/TTS return 503 when local Whisper/Piper is unavailable (Web Speech fallback)"
+        ],
+        "crossDomainInteractions": [
+          "Visualizes the Trading Decision Pipeline and Paper-Trading Runtime stages as live pipeline status",
+          "Reads the dev_graph that documents all other domains' modules, schemas, and decisions"
+        ]
+      }
+    },
+
+    {
+      "id": "flow:consume-and-analyze-snapshot",
+      "type": "flow",
+      "name": "Consume and Analyze Snapshot",
+      "summary": "The end-to-end Layer-3 analysis chain: consume a Layer-2 snapshot through the fail-closed gate, build a feature vector, classify the market regime, and build a paper-only gold decision packet.",
+      "tags": ["pipeline", "deterministic", "analysis"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "snapshot.snapshot_consumer.consume(latest_snapshot.json)",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "flow:admit-decision",
+      "type": "flow",
+      "name": "Admit Gold Decision",
+      "summary": "Evaluate a gold decision packet against append-only runtime state: compute the six-guard block, resolve a fail-closed ADMIT/HOLD/REJECT verdict, append a ledger entry, and emit a runtime decision record.",
+      "tags": ["runtime", "admission", "guards", "ledger"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "gold.paper_runtime.engine.evaluate(packet, prior_ledger, operational_input, config)",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "flow:simulate-execution",
+      "type": "flow",
+      "name": "Simulate Execution",
+      "summary": "Act on an ADMIT record: confirm the verdict, apply the forwarded guard result, simulate a fill via the broker adapter for an approved LONG on a fresh snapshot, fold it into the portfolio, and emit an execution record.",
+      "tags": ["execution", "fill", "portfolio", "idempotent"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "execution.engine.execute(admit, direction, instrument_price, prior_portfolio, guard_result, ...)",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "flow:validate-trade",
+      "type": "flow",
+      "name": "Validate Trade",
+      "summary": "Evaluate a proposed trade against hard-limit guardrail predicates as a short-circuit conjunction, returning an approve/block decision that names the first failing predicate.",
+      "tags": ["risk", "validation", "guardrail"],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "risk.guardrail_engine.GuardrailEngine.validate(TradeValidationRequest)",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "flow:select-upgrade",
+      "type": "flow",
+      "name": "Select Capability Upgrade",
+      "summary": "Decide whether the trading office needs an upgrade: short-circuit when promotable, otherwise score each catalog option, apply budget and institutional-memory exclusions, and emit a decision packet with the resulting treasury state.",
+      "tags": ["supervisor", "scoring", "decision"],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "supervisor.decision_engine.DecisionEngine.decide(scorecard, catalog, treasury, excluded_ids)",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "flow:query-dev-graph",
+      "type": "flow",
+      "name": "Query Dev Graph",
+      "summary": "Serve read-only graph traversal over the dev_graph in Neo4j: report health, search or look up nodes, expand neighbors to a bounded depth, and return seed subgraphs for the HUD.",
+      "tags": ["graph", "neo4j", "read-only", "api"],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "GET /search, GET /node/{cid}, GET /node/{cid}/neighbors, GET /subgraph",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:graph-rag-ask",
+      "type": "flow",
+      "name": "GraphRAG Ask",
+      "summary": "Answer an operator question grounded only in a retrieved dev_graph subgraph: route the question, retrieve the relevant subgraph, ground and cite the answer (Claude uplink or offline pure router), and return a cited, evidence-annotated answer.",
+      "tags": ["graph-rag", "ask", "cited", "fail-closed"],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "POST /ask",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:voice-interaction",
+      "type": "flow",
+      "name": "Voice Interaction",
+      "summary": "Provide local voice I/O for the HUD: report voice-subsystem health, transcribe uploaded audio via Whisper (STT), and synthesize speech via Piper (TTS), each failing closed with 503 when the local model is unavailable.",
+      "tags": ["voice", "stt", "tts", "local"],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "GET /voice/health, POST /voice/stt, POST /voice/tts",
+        "entryType": "http"
+      }
+    },
+
+    {
+      "id": "step:consume-and-analyze-snapshot:load-snapshot",
+      "type": "step",
+      "name": "Load Snapshot",
+      "summary": "Load and parse latest_snapshot.json into a Snapshot model; an absent file is a legitimate 'no snapshot yet' (None), while a malformed payload raises a loud SnapshotContractError.",
+      "tags": ["ingestion", "snapshot"],
+      "complexity": "moderate",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [26, 39]
+    },
+    {
+      "id": "step:consume-and-analyze-snapshot:consumption-gate",
+      "type": "step",
+      "name": "Apply Consumption Gate",
+      "summary": "Fail-closed gate: a snapshot is consumable only if its Layer-2 quality gate passed; consume() returns the snapshot only when it is safe to act on, otherwise None so downstream stages output nothing.",
+      "tags": ["gate", "fail-closed"],
+      "complexity": "moderate",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [42, 60]
+    },
+    {
+      "id": "step:consume-and-analyze-snapshot:build-features",
+      "type": "step",
+      "name": "Build Feature Vector",
+      "summary": "Derive a frozen, snapshot-local FeatureVector from the consumed snapshot, with each feature carrying provenance (input series ids, max staleness, revision risk).",
+      "tags": ["features", "deterministic"],
+      "complexity": "moderate",
+      "filePath": "src/features/feature_builder/feature_builder.py"
+    },
+    {
+      "id": "step:consume-and-analyze-snapshot:classify-regime",
+      "type": "step",
+      "name": "Classify Market Regime",
+      "summary": "Run the rule-selection classifier over the feature vector to produce a RegimeClassification: the primary output is matched_rule_id and the regime is a pure projection of the matched rule.",
+      "tags": ["regime", "rule-table", "classification"],
+      "complexity": "moderate",
+      "filePath": "src/regime/regime_classifier/regime_classifier.py"
+    },
+    {
+      "id": "step:consume-and-analyze-snapshot:build-decision",
+      "type": "step",
+      "name": "Build Gold Decision Packet",
+      "summary": "Combine the feature vector and regime classification into a deterministic, paper-only GoldDecisionPacket with a chosen direction, trust-score confidence, cited drivers, and a templated rationale.",
+      "tags": ["decision", "paper-only", "cited"],
+      "complexity": "complex",
+      "filePath": "src/gold/decision_builder/builder.py",
+      "lineRange": [58, 75]
+    },
+
+    {
+      "id": "step:admit-decision:evaluate-guard-block",
+      "type": "step",
+      "name": "Evaluate Six-Guard Block",
+      "summary": "Compute every runtime guard (duplicate_ok, operational_ok, data_ok, freshness_ok, cooldown_ok, supervisor_ok stub) in canonical order to form the full audit block.",
+      "tags": ["guards", "audit"],
+      "complexity": "moderate",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [72, 83]
+    },
+    {
+      "id": "step:admit-decision:resolve-verdict",
+      "type": "step",
+      "name": "Resolve Fail-Closed Verdict",
+      "summary": "Determine ADMIT/HOLD/REJECT: a WATCH packet HOLDs (no actionable stance), the first failing required guard REJECTs naming the guard, and otherwise the packet is ADMITted.",
+      "tags": ["verdict", "fail-closed"],
+      "complexity": "complex",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [85, 101]
+    },
+    {
+      "id": "step:admit-decision:append-ledger",
+      "type": "step",
+      "name": "Append Ledger Entry",
+      "summary": "Append exactly one self-describing LedgerEntry carrying this evaluation's inputs (snapshot id, packet id, verdict, triggered guard, digests, sequence) to the append-only runtime ledger.",
+      "tags": ["ledger", "append-only"],
+      "complexity": "moderate",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [103, 117]
+    },
+    {
+      "id": "step:admit-decision:emit-record",
+      "type": "step",
+      "name": "Emit Runtime Decision Record",
+      "summary": "Build the RuntimeDecisionRecord with a per-evaluation record_id binding the prior ledger state, the verdict, the full guard outcomes, ledger-state hashes, and the non-execution notice.",
+      "tags": ["record", "identity"],
+      "complexity": "moderate",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [119, 145]
+    },
+
+    {
+      "id": "step:simulate-execution:check-admit",
+      "type": "step",
+      "name": "Check ADMIT Precondition",
+      "summary": "Total, fail-closed entry: a non-ADMIT input is a caller error; an already-executed snapshot, a non-LONG stance, or a blocked guard short-circuits to a no-fill record (portfolio unchanged).",
+      "tags": ["precondition", "idempotent"],
+      "complexity": "moderate",
+      "filePath": "src/execution/engine.py",
+      "lineRange": [66, 80]
+    },
+    {
+      "id": "step:simulate-execution:run-guard",
+      "type": "step",
+      "name": "Apply Forwarded Guard Result",
+      "summary": "Use the forwarded GATE-001 GuardResult (from the Guardrail Engine) as the execution gate; the outcome is never recomputed in the execution layer (no src/risk import).",
+      "tags": ["guard", "gate"],
+      "complexity": "moderate",
+      "filePath": "src/execution/engine.py"
+    },
+    {
+      "id": "step:simulate-execution:simulate-fill",
+      "type": "step",
+      "name": "Simulate Broker Fill",
+      "summary": "For an approved LONG on a fresh snapshot, derive the fill via the SimulatedBrokerAdapter and fill model at the instrument price re-derived from the source snapshot.",
+      "tags": ["fill", "broker-adapter"],
+      "complexity": "moderate",
+      "filePath": "src/execution/adapters.py"
+    },
+    {
+      "id": "step:simulate-execution:update-portfolio",
+      "type": "step",
+      "name": "Update Paper Portfolio",
+      "summary": "Fold the buy into the position, recompute average cost and unrealized PnL marked at the mark price, and return a new, self-describing PortfolioState (state is an explicit value).",
+      "tags": ["portfolio", "position", "pnl"],
+      "complexity": "moderate",
+      "filePath": "src/execution/engine.py",
+      "lineRange": [43, 63]
+    },
+    {
+      "id": "step:simulate-execution:emit-execution-record",
+      "type": "step",
+      "name": "Emit Execution Record",
+      "summary": "Produce the ExecutionRecord (with execution id and the appended ExecutionEntry) plus the new PortfolioState, always paper_only and wrapping the ADMIT record by reference.",
+      "tags": ["record", "paper-only"],
+      "complexity": "moderate",
+      "filePath": "src/execution/models.py"
+    },
+
+    {
+      "id": "step:validate-trade:load-config",
+      "type": "step",
+      "name": "Load Hard-Limit Config",
+      "summary": "Load the fail-closed GuardrailConfig of hard limits from the environment; capturing it makes validation environment-independent and replay-deterministic.",
+      "tags": ["config", "fail-closed"],
+      "complexity": "simple",
+      "filePath": "src/risk/guardrail_engine/guardrail_engine.py"
+    },
+    {
+      "id": "step:validate-trade:validate-request",
+      "type": "step",
+      "name": "Validate Request Shape",
+      "summary": "Reject a malformed TradeValidationRequest before predicate evaluation so contract violations are caught loudly rather than approved by accident.",
+      "tags": ["validation", "contract"],
+      "complexity": "simple",
+      "filePath": "src/risk/guardrail_engine/guardrail_engine.py"
+    },
+    {
+      "id": "step:validate-trade:evaluate-predicates",
+      "type": "step",
+      "name": "Evaluate Hard-Limit Predicates",
+      "summary": "Run each pure predicate (position size, daily-loss cap, max trades, max positions, withdrawal disabled) as (request, config) -> (passed, reason).",
+      "tags": ["predicates", "pure"],
+      "complexity": "moderate",
+      "filePath": "src/risk/guardrail_engine/predicates.py"
+    },
+    {
+      "id": "step:validate-trade:short-circuit",
+      "type": "step",
+      "name": "Short-Circuit on First Failure",
+      "summary": "Evaluate predicates as a short-circuit conjunction: ALL must pass to approve; the first failing predicate stops evaluation and is named in the decision.",
+      "tags": ["short-circuit", "conjunction"],
+      "complexity": "moderate",
+      "filePath": "src/risk/guardrail_engine/guardrail_engine.py"
+    },
+    {
+      "id": "step:validate-trade:emit-decision",
+      "type": "step",
+      "name": "Emit Validation Decision",
+      "summary": "Return a deterministic TradeValidationDecision (approve or block) carrying the verdict and, on block, the first failing predicate's reason.",
+      "tags": ["decision", "deterministic"],
+      "complexity": "simple",
+      "filePath": "src/risk/guardrail_engine/models.py"
+    },
+
+    {
+      "id": "step:select-upgrade:check-promotable",
+      "type": "step",
+      "name": "Check Promotable Short-Circuit",
+      "summary": "Early exit: if realized PnL exceeds the promotable threshold and calibration is met, return a packet with no selected upgrade ('office is promotable — no upgrade needed').",
+      "tags": ["short-circuit", "promotion"],
+      "complexity": "simple",
+      "filePath": "src/supervisor/decision_engine/decision_engine.py",
+      "lineRange": [37, 47]
+    },
+    {
+      "id": "step:select-upgrade:score-options",
+      "type": "step",
+      "name": "Score Upgrade Options",
+      "summary": "Score every candidate upgrade in the catalog against the evaluation scorecard using the deterministic scoring function.",
+      "tags": ["scoring"],
+      "complexity": "moderate",
+      "filePath": "src/supervisor/decision_engine/scoring.py"
+    },
+    {
+      "id": "step:select-upgrade:apply-budget-and-exclusions",
+      "type": "step",
+      "name": "Apply Budget and Exclusions",
+      "summary": "Filter scored options: mark those excluded by institutional memory and those over the available treasury budget as unselectable, ranking the rest.",
+      "tags": ["budget", "treasury", "exclusions"],
+      "complexity": "moderate",
+      "filePath": "src/supervisor/decision_engine/decision_engine.py",
+      "lineRange": [49, 65]
+    },
+    {
+      "id": "step:select-upgrade:emit-decision-packet",
+      "type": "step",
+      "name": "Emit Decision Packet",
+      "summary": "Select the best affordable, non-excluded option and emit a DecisionPacket with the ranked options, rationale, and the resulting treasury state.",
+      "tags": ["decision", "packet"],
+      "complexity": "moderate",
+      "filePath": "src/supervisor/decision_engine/models.py"
+    },
+
+    {
+      "id": "step:query-dev-graph:check-health",
+      "type": "step",
+      "name": "Check Bridge Health",
+      "summary": "Report liveness, Neo4j connectivity, and graph size; the front-end connector chip flips to LIVE when this returns ok && neo4j.",
+      "tags": ["health", "neo4j"],
+      "complexity": "simple",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [181, 197]
+    },
+    {
+      "id": "step:query-dev-graph:search-or-lookup",
+      "type": "step",
+      "name": "Search or Look Up Node",
+      "summary": "Resolve a node by canonical_id or run a label/text search over the dev_graph, returning the matching nodes' property bags.",
+      "tags": ["search", "lookup"],
+      "complexity": "moderate",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [213, 260]
+    },
+    {
+      "id": "step:query-dev-graph:expand-neighbors",
+      "type": "step",
+      "name": "Expand Neighbors",
+      "summary": "Traverse outbound/inbound/both edges from a node to a bounded depth (1-3) to assemble its local neighborhood for the HUD.",
+      "tags": ["traversal", "neighbors"],
+      "complexity": "moderate",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [222, 244]
+    },
+    {
+      "id": "step:query-dev-graph:return-subgraph",
+      "type": "step",
+      "name": "Return Seed Subgraph",
+      "summary": "Return a seed subgraph (by label or whole graph, bounded by limit) or a shortest path between two canonical_ids for graph rendering.",
+      "tags": ["subgraph", "render"],
+      "complexity": "moderate",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [263, 300]
+    },
+
+    {
+      "id": "step:graph-rag-ask:route-question",
+      "type": "step",
+      "name": "Route Question",
+      "summary": "Match the operator's question to the most relevant dev_graph node via the pure, unit-tested question-to-answer router (the offline projection / Stage-3 gate).",
+      "tags": ["router", "pure"],
+      "complexity": "moderate",
+      "filePath": "jarvis/hud/src/data/router.ts",
+      "lineRange": [1, 60]
+    },
+    {
+      "id": "step:graph-rag-ask:retrieve-subgraph",
+      "type": "step",
+      "name": "Retrieve Grounding Subgraph",
+      "summary": "Retrieve the dev_graph subgraph that grounds the answer; the live bridge layers a multi-hop neighborhood on top of the pure router's projection.",
+      "tags": ["retrieval", "grounding"],
+      "complexity": "moderate",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [465, 500]
+    },
+    {
+      "id": "step:graph-rag-ask:ground-and-cite",
+      "type": "step",
+      "name": "Ground and Cite Answer",
+      "summary": "Explain the question grounded ONLY in the retrieved subgraph via the Claude uplink, or fall back to the offline pure router; the answer is cited and evidence-annotated.",
+      "tags": ["graph-rag", "cited", "fail-closed"],
+      "complexity": "complex",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [465, 534]
+    },
+    {
+      "id": "step:graph-rag-ask:return-answer",
+      "type": "step",
+      "name": "Return Cited Answer",
+      "summary": "Return the matched node, evidence class, citations, and related threads to the console; on missing Claude key respond 503 so the UI keeps the offline graph answering.",
+      "tags": ["answer", "console"],
+      "complexity": "moderate",
+      "filePath": "jarvis/hud/src/components/main/ContextFeed.tsx"
+    },
+
+    {
+      "id": "step:voice-interaction:check-voice-health",
+      "type": "step",
+      "name": "Check Voice Health",
+      "summary": "Report whether local Whisper (STT) and Piper (TTS) are available so the HUD can choose local voice or Web Speech fallback.",
+      "tags": ["voice", "health"],
+      "complexity": "simple",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [535, 546]
+    },
+    {
+      "id": "step:voice-interaction:transcribe-stt",
+      "type": "step",
+      "name": "Transcribe Audio (STT)",
+      "summary": "Transcribe uploaded audio via the local Whisper model, returning 503 when Whisper is unavailable.",
+      "tags": ["stt", "whisper"],
+      "complexity": "moderate",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [547, 576]
+    },
+    {
+      "id": "step:voice-interaction:synthesize-tts",
+      "type": "step",
+      "name": "Synthesize Speech (TTS)",
+      "summary": "Synthesize speech from text via local Piper, returning 503 when Piper or the voice model is not configured (Web Speech fallback).",
+      "tags": ["tts", "piper"],
+      "complexity": "moderate",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [577, 616]
+    }
+  ],
+  "edges": [
+    { "source": "domain:trading-decision-pipeline", "target": "flow:consume-and-analyze-snapshot", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:consume-and-analyze-snapshot", "target": "step:consume-and-analyze-snapshot:load-snapshot", "type": "flow_step", "direction": "forward", "weight": 0.2 },
+    { "source": "flow:consume-and-analyze-snapshot", "target": "step:consume-and-analyze-snapshot:consumption-gate", "type": "flow_step", "direction": "forward", "weight": 0.4 },
+    { "source": "flow:consume-and-analyze-snapshot", "target": "step:consume-and-analyze-snapshot:build-features", "type": "flow_step", "direction": "forward", "weight": 0.6 },
+    { "source": "flow:consume-and-analyze-snapshot", "target": "step:consume-and-analyze-snapshot:classify-regime", "type": "flow_step", "direction": "forward", "weight": 0.8 },
+    { "source": "flow:consume-and-analyze-snapshot", "target": "step:consume-and-analyze-snapshot:build-decision", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "domain:paper-trading-runtime", "target": "flow:admit-decision", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+    { "source": "domain:paper-trading-runtime", "target": "flow:simulate-execution", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:admit-decision", "target": "step:admit-decision:evaluate-guard-block", "type": "flow_step", "direction": "forward", "weight": 0.2 },
+    { "source": "flow:admit-decision", "target": "step:admit-decision:resolve-verdict", "type": "flow_step", "direction": "forward", "weight": 0.5 },
+    { "source": "flow:admit-decision", "target": "step:admit-decision:append-ledger", "type": "flow_step", "direction": "forward", "weight": 0.8 },
+    { "source": "flow:admit-decision", "target": "step:admit-decision:emit-record", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:simulate-execution", "target": "step:simulate-execution:check-admit", "type": "flow_step", "direction": "forward", "weight": 0.2 },
+    { "source": "flow:simulate-execution", "target": "step:simulate-execution:run-guard", "type": "flow_step", "direction": "forward", "weight": 0.4 },
+    { "source": "flow:simulate-execution", "target": "step:simulate-execution:simulate-fill", "type": "flow_step", "direction": "forward", "weight": 0.6 },
+    { "source": "flow:simulate-execution", "target": "step:simulate-execution:update-portfolio", "type": "flow_step", "direction": "forward", "weight": 0.8 },
+    { "source": "flow:simulate-execution", "target": "step:simulate-execution:emit-execution-record", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "domain:risk-control", "target": "flow:validate-trade", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:validate-trade", "target": "step:validate-trade:load-config", "type": "flow_step", "direction": "forward", "weight": 0.2 },
+    { "source": "flow:validate-trade", "target": "step:validate-trade:validate-request", "type": "flow_step", "direction": "forward", "weight": 0.4 },
+    { "source": "flow:validate-trade", "target": "step:validate-trade:evaluate-predicates", "type": "flow_step", "direction": "forward", "weight": 0.6 },
+    { "source": "flow:validate-trade", "target": "step:validate-trade:short-circuit", "type": "flow_step", "direction": "forward", "weight": 0.8 },
+    { "source": "flow:validate-trade", "target": "step:validate-trade:emit-decision", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "domain:supervisor-office", "target": "flow:select-upgrade", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:select-upgrade", "target": "step:select-upgrade:check-promotable", "type": "flow_step", "direction": "forward", "weight": 0.25 },
+    { "source": "flow:select-upgrade", "target": "step:select-upgrade:score-options", "type": "flow_step", "direction": "forward", "weight": 0.5 },
+    { "source": "flow:select-upgrade", "target": "step:select-upgrade:apply-budget-and-exclusions", "type": "flow_step", "direction": "forward", "weight": 0.75 },
+    { "source": "flow:select-upgrade", "target": "step:select-upgrade:emit-decision-packet", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "domain:jarvis-graph-intelligence", "target": "flow:query-dev-graph", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+    { "source": "domain:jarvis-graph-intelligence", "target": "flow:graph-rag-ask", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+    { "source": "domain:jarvis-graph-intelligence", "target": "flow:voice-interaction", "type": "contains_flow", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:query-dev-graph", "target": "step:query-dev-graph:check-health", "type": "flow_step", "direction": "forward", "weight": 0.25 },
+    { "source": "flow:query-dev-graph", "target": "step:query-dev-graph:search-or-lookup", "type": "flow_step", "direction": "forward", "weight": 0.5 },
+    { "source": "flow:query-dev-graph", "target": "step:query-dev-graph:expand-neighbors", "type": "flow_step", "direction": "forward", "weight": 0.75 },
+    { "source": "flow:query-dev-graph", "target": "step:query-dev-graph:return-subgraph", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:graph-rag-ask", "target": "step:graph-rag-ask:route-question", "type": "flow_step", "direction": "forward", "weight": 0.25 },
+    { "source": "flow:graph-rag-ask", "target": "step:graph-rag-ask:retrieve-subgraph", "type": "flow_step", "direction": "forward", "weight": 0.5 },
+    { "source": "flow:graph-rag-ask", "target": "step:graph-rag-ask:ground-and-cite", "type": "flow_step", "direction": "forward", "weight": 0.75 },
+    { "source": "flow:graph-rag-ask", "target": "step:graph-rag-ask:return-answer", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "flow:voice-interaction", "target": "step:voice-interaction:check-voice-health", "type": "flow_step", "direction": "forward", "weight": 0.3 },
+    { "source": "flow:voice-interaction", "target": "step:voice-interaction:transcribe-stt", "type": "flow_step", "direction": "forward", "weight": 0.6 },
+    { "source": "flow:voice-interaction", "target": "step:voice-interaction:synthesize-tts", "type": "flow_step", "direction": "forward", "weight": 1.0 },
+
+    { "source": "domain:trading-decision-pipeline", "target": "domain:paper-trading-runtime", "type": "cross_domain", "direction": "forward", "description": "The analysis pipeline emits a GoldDecisionPacket that the paper-trading runtime wraps (never mutates) and evaluates for admission.", "weight": 0.8 },
+    { "source": "domain:risk-control", "target": "domain:paper-trading-runtime", "type": "cross_domain", "direction": "forward", "description": "The guardrail engine produces a GuardResult that is forwarded into the execution gate (GATE-001); execution never recomputes it.", "weight": 0.6 },
+    { "source": "domain:paper-trading-runtime", "target": "domain:supervisor-office", "type": "cross_domain", "direction": "forward", "description": "Runtime and execution outcomes feed the performance scorecard the Supervisor Office scores upgrade decisions against.", "weight": 0.4 },
+    { "source": "domain:jarvis-graph-intelligence", "target": "domain:trading-decision-pipeline", "type": "cross_domain", "direction": "forward", "description": "The JARVIS HUD and graph bridge visualize and answer questions about the trading pipeline's modules and stages via the engineering dev_graph.", "weight": 0.4 }
+  ],
+  "layers": [],
+  "tour": []
+}

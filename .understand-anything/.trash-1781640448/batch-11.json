@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "dev_graph/CLAUDE.md",
+      "summary": "Authoritative operations manual for the dev_graph Engineering Digital Twin, defining the full ontology governance: 24 node types, frontmatter schemas, canonical IDs, relationship model, lint workflow (11 checks), schema evolution procedures, context pack assembly, and end-of-session writeback checklist.",
+      "tags": ["documentation", "governance", "configuration", "schema-definition", "ontology"],
+      "complexity": "complex",
+      "languageNotes": "56 sections covering the complete lifecycle of ontology-governed nodes — from frontmatter enums through confidence lifecycle, MCP operations policy, and Neo4j writeback procedure."
+    },
+    {
+      "id": "document:dev_graph/Infrastructure Diagram.md",
+      "type": "document",
+      "name": "Infrastructure Diagram.md",
+      "filePath": "dev_graph/Infrastructure Diagram.md",
+      "summary": "Deprecated dev_graph architecture node containing the Layer 2/3 infrastructure diagram and key architecture summary; superseded by more granular system and architecture nodes but retained per deprecation policy.",
+      "tags": ["documentation", "infrastructure", "architecture", "deprecated"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "dev_graph/README.md",
+      "summary": "Human-readable orientation guide for the dev_graph vault, explaining its purpose as an Engineering Digital Twin, its relationship to the wiki, quick-start instructions, MCP access points, and directory structure overview.",
+      "tags": ["documentation", "entry-point", "overview", "onboarding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/index.md",
+      "type": "document",
+      "name": "index.md",
+      "filePath": "dev_graph/index.md",
+      "summary": "Master index of all dev_graph nodes across 23 directories (architecture, systems, capabilities, knowledge assets, patterns, interfaces, events, governance, modules, files, tests, gates, predicates, schemas, workflows, agents, skills, benchmarks, and more), with section-level navigation and statistics.",
+      "tags": ["documentation", "index", "navigation", "ontology"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/log.md",
+      "type": "document",
+      "name": "log.md",
+      "filePath": "dev_graph/log.md",
+      "summary": "Chronological operations log capturing all dev_graph sessions from the initial bootstrap (2026-05-25) through the Execution Layer STEP 4 writeback (2026-06-16), recording nodes created/updated, code shipped, ADRs authored, lint results, and metrics per session.",
+      "tags": ["documentation", "changelog", "audit-trail", "governance"],
+      "complexity": "complex",
+      "languageNotes": "147 sections spanning 20+ discrete session entries; functions as the authoritative change audit trail for the dev_graph ontology, referenced by the writeback checklist in CLAUDE.md."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/README.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/README.md",
+      "target": "document:dev_graph/index.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/index.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/log.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/Infrastructure Diagram.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

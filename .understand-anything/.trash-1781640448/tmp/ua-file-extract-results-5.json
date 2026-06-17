@@ -1,0 +1,511 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/hud/src/components/ops/Architecture.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 20,
+      "functions": [
+        {
+          "name": "Architecture",
+          "startLine": 7,
+          "endLine": 21,
+          "params": [
+            "{ stats }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Architecture",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/AuditDriftStatus.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 21,
+      "functions": [
+        {
+          "name": "AuditDriftStatus",
+          "startLine": 3,
+          "endLine": 21,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AuditDriftStatus",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/EpochRoadmap.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "EpochRoadmap",
+          "startLine": 2,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EpochRoadmap",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/LivePipelineResult.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "LivePipelineResult",
+          "startLine": 2,
+          "endLine": 15,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "LivePipelineResult",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/MetricCards.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 12,
+      "functions": [
+        {
+          "name": "MetricCards",
+          "startLine": 3,
+          "endLine": 12,
+          "params": [
+            "{ corpus }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MetricCards",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/NextActions.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "NextActions",
+          "startLine": 2,
+          "endLine": 17,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NextActions",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/PipelineStatus.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "PipelineStatus",
+          "startLine": 3,
+          "endLine": 22,
+          "params": [
+            "{ onQuery }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PipelineStatus",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PipelineStatus",
+          "callee": "onQuery",
+          "lineNumber": 8
+        },
+        {
+          "caller": "PipelineStatus",
+          "callee": "onQuery",
+          "lineNumber": 10
+        },
+        {
+          "caller": "PipelineStatus",
+          "callee": "onQuery",
+          "lineNumber": 12
+        },
+        {
+          "caller": "PipelineStatus",
+          "callee": "onQuery",
+          "lineNumber": 14
+        },
+        {
+          "caller": "PipelineStatus",
+          "callee": "onQuery",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/components/ops/The12PivotalPoints.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "The12PivotalPoints",
+          "startLine": 2,
+          "endLine": 30,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "The12PivotalPoints",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/data/graph.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "probeHealth",
+          "startLine": 10,
+          "endLine": 18,
+          "params": []
+        },
+        {
+          "name": "loadGraphJson",
+          "startLine": 21,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "liveNeighborhood",
+          "startLine": 33,
+          "endLine": 46,
+          "params": [
+            "id",
+            "depth"
+          ]
+        },
+        {
+          "name": "mapBridgeNode",
+          "startLine": 55,
+          "endLine": 68,
+          "params": [
+            "n"
+          ]
+        },
+        {
+          "name": "graphStats",
+          "startLine": 79,
+          "endLine": 90,
+          "params": [
+            "graph"
+          ]
+        },
+        {
+          "name": "detectSource",
+          "startLine": 93,
+          "endLine": 98,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "probeHealth",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "loadGraphJson",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "liveNeighborhood",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "graphStats",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "detectSource",
+          "line": 93,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "probeHealth",
+          "callee": "fetch",
+          "lineNumber": 12
+        },
+        {
+          "caller": "probeHealth",
+          "callee": "r.json",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadGraphJson",
+          "callee": "fetch",
+          "lineNumber": 23
+        },
+        {
+          "caller": "loadGraphJson",
+          "callee": "r.json",
+          "lineNumber": 25
+        },
+        {
+          "caller": "liveNeighborhood",
+          "callee": "fetch",
+          "lineNumber": 35
+        },
+        {
+          "caller": "liveNeighborhood",
+          "callee": "encodeURIComponent",
+          "lineNumber": 36
+        },
+        {
+          "caller": "liveNeighborhood",
+          "callee": "r.json",
+          "lineNumber": 40
+        },
+        {
+          "caller": "liveNeighborhood",
+          "callee": "(j.nodes ?? []).map",
+          "lineNumber": 41
+        },
+        {
+          "caller": "mapBridgeNode",
+          "callee": "String",
+          "lineNumber": 62
+        },
+        {
+          "caller": "mapBridgeNode",
+          "callee": "Array.isArray",
+          "lineNumber": 65
+        },
+        {
+          "caller": "mapBridgeNode",
+          "callee": "ev.map",
+          "lineNumber": 65
+        },
+        {
+          "caller": "mapBridgeNode",
+          "callee": "String",
+          "lineNumber": 66
+        },
+        {
+          "caller": "graphStats",
+          "callee": "graph.nodes\n    .map((n) => /^ADR-0*(\\d+)$/.exec(n.id))\n    .filter((m): m is RegExpExecArray => m !== null)\n    .map",
+          "lineNumber": 81
+        },
+        {
+          "caller": "graphStats",
+          "callee": "graph.nodes\n    .map((n) => /^ADR-0*(\\d+)$/.exec(n.id))\n    .filter",
+          "lineNumber": 81
+        },
+        {
+          "caller": "graphStats",
+          "callee": "graph.nodes\n    .map",
+          "lineNumber": 81
+        },
+        {
+          "caller": "graphStats",
+          "callee": "/^ADR-0*(\\d+)$/.exec",
+          "lineNumber": 82
+        },
+        {
+          "caller": "graphStats",
+          "callee": "Number",
+          "lineNumber": 84
+        },
+        {
+          "caller": "pad",
+          "callee": "String(x).padStart",
+          "lineNumber": 85
+        },
+        {
+          "caller": "pad",
+          "callee": "String",
+          "lineNumber": 85
+        },
+        {
+          "caller": "graphStats",
+          "callee": "pad",
+          "lineNumber": 87
+        },
+        {
+          "caller": "graphStats",
+          "callee": "Math.min",
+          "lineNumber": 87
+        },
+        {
+          "caller": "graphStats",
+          "callee": "pad",
+          "lineNumber": 87
+        },
+        {
+          "caller": "graphStats",
+          "callee": "Math.max",
+          "lineNumber": 87
+        },
+        {
+          "caller": "detectSource",
+          "callee": "Promise.all",
+          "lineNumber": 94
+        },
+        {
+          "caller": "detectSource",
+          "callee": "probeHealth",
+          "lineNumber": 94
+        },
+        {
+          "caller": "detectSource",
+          "callee": "loadGraphJson",
+          "lineNumber": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hud/src/pages/OpsDeck.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "OpsDeck",
+          "startLine": 16,
+          "endLine": 31,
+          "params": [
+            "{ corpus, onQuery, stats }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "OpsDeck",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

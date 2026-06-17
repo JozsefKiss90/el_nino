@@ -1,0 +1,1219 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 20,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".mcp.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 62,
+      "nonEmptyLines": 62,
+      "sections": [
+        {
+          "heading": "mcpServers",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "ADR-011_drafting_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 57,
+      "nonEmptyLines": 35,
+      "sections": [
+        {
+          "heading": "Claude Code prompt — draft ADR-011 (Execution / Portfolio Layer Planning)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Step 0 — read governance and ground yourself before writing",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Step 1 — author `decisions/ADR - Execution Layer Planning.md` (ADR-011)",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Step 2 — writeback (governance-only slice)",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "ADR-011_promote_and_plan_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 61,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "Claude Code prompt — promote ADR-011 to active + author the implementation plan",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Step 0 — read governance first",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Task A — promote ADR-011 to active",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Task B — author the implementation plan (STEP-0 brief, not nodes/code)",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 14,
+      "nonEmptyLines": 11,
+      "sections": [
+        {
+          "heading": "el_nino — root memory",
+          "level": 1,
+          "line": 3
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 155,
+      "nonEmptyLines": 119,
+      "sections": [
+        {
+          "heading": "Epoch (b) — Real-Corpus Accumulation Runbook",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Architecture (where things live)",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "2. The corpus — two immutable, content-id-keyed sinks",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "3. Automated daily run (the scheduled task)",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "4. Manual operation",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "5. Verify a snapshot flows through the el_nino Layer-3 chain",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "6. Point-in-time & data-quality notes",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "7. Troubleshooting",
+          "level": 2,
+          "line": 135
+        },
+        {
+          "heading": "8. Provenance — corpus as of 2026-06-11",
+          "level": 2,
+          "line": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 215,
+      "nonEmptyLines": 137,
+      "sections": [
+        {
+          "heading": "EXECUTION_LAYER_IMPLEMENTATION_PLAN",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Objective",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "2. Gate-closing design (ADR-011 §7 a–f)",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Gate (a) — Execution interface / port  →  closes when the INT-011 contract is drafted",
+          "level": 3,
+          "line": 25
+        },
+        {
+          "heading": "Gate (b) — Fill-simulation model (`fill_model_version`)  →  closes when the fill model + version are pinned",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Gate (c) — Guard-wiring (GATE-001 + PRED-001..005)  →  closes when the wiring is drawn",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Gate (d) — Execution-determinism replay requirement  →  closes when the key + benchmark are finalized",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Gate (e) — Portfolio / position state model (SCHEMA-015)  →  closes when the state model is agreed",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Gate (f) — Alpaca-adapter boundary (deferrable)  →  closes when the boundary is drawn",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Design decisions settled at the CONTRACT CHECKPOINT",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "D1. `instrument_price` sourcing — deterministic re-derivation, NOT a schema field",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "D2. CAP-005 v0 sizing scope — sizing is deferred; v0 uses a fixed configured size",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "3. Contract-first authoring order (candidate ids — none reserved/created here)",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "4. Capability decision — re-ground CAP-005 in place; realize the existing CAP-007 (no new capability)",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "5. Code slices (per [[ADR - Implementation Substrate]], ADR-003)",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "6. Tests + benchmark",
+          "level": 2,
+          "line": 160
+        },
+        {
+          "heading": "7. Writeback per code slice (CLAUDE.md End-of-Coding-Session Checklist)",
+          "level": 2,
+          "line": 170
+        },
+        {
+          "heading": "8. Sequencing, dependencies & checkpoints",
+          "level": 2,
+          "line": 176
+        },
+        {
+          "heading": "9. Risks & mitigations (carried from ADR-011 §Consequences)",
+          "level": 2,
+          "line": 197
+        },
+        {
+          "heading": "10. Canonical-id re-derivation (from `index.md`, 2026-06-16)",
+          "level": 2,
+          "line": 207
+        },
+        {
+          "heading": "11. Deferred (ADR-011 Non-Goals — not authored)",
+          "level": 2,
+          "line": 213
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 85,
+      "nonEmptyLines": 53,
+      "sections": [
+        {
+          "heading": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Objective",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "2. Affected modules",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "3. Affected schemas",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "4. Ontology impact",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "5. Replay impact",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "6. Benchmark impact",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "7. Migration risk",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "8. Governance impact",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "9. Verification summary",
+          "level": 2,
+          "line": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 143,
+      "nonEmptyLines": 102,
+      "sections": [
+        {
+          "heading": "GOLD_DECISIONPACKET_V0_BRIEF",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Objective",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "2. Affected modules",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "3. Affected schemas",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "4. Ontology impact",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "5. Replay impact",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "6. Benchmark impact",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "7. Migration risk",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "8. Governance impact",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "9. Verification summary",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Design decision settled here — the regime → direction mapping",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Canonical-id re-derivation (at authoring, per ADR-006 §7)",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Execution order (strict contract-first) + checkpoint",
+          "level": 2,
+          "line": 131
+        },
+        {
+          "heading": "Deferred (ADR-006 Non-Goals — not authored)",
+          "level": 2,
+          "line": 141
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 263,
+      "nonEmptyLines": 186,
+      "sections": [
+        {
+          "heading": "Gold DecisionPacket v0 Final Audit",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Executive Summary",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Per-Dimension Results",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Replay Determinism",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Ontology Compliance (dev_graph/CLAUDE.md)",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "ADR Compliance (ADR-006 / ADR-008)",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Treasury/Gold Separation (ADR-004)",
+          "level": 2,
+          "line": 106
+        },
+        {
+          "heading": "Schema Correctness",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Graph Integrity",
+          "level": 2,
+          "line": 138
+        },
+        {
+          "heading": "Gold-Layer Readiness",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Critical Issues",
+          "level": 2,
+          "line": 172
+        },
+        {
+          "heading": "Warnings",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "Technical Debt",
+          "level": 2,
+          "line": 189
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 199
+        },
+        {
+          "heading": "Engineering Digital Twin Maturity Impact",
+          "level": 2,
+          "line": 209
+        },
+        {
+          "heading": "Gold Layer Readiness Assessment",
+          "level": 2,
+          "line": 221
+        },
+        {
+          "heading": "Final Verdict",
+          "level": 2,
+          "line": 233
+        },
+        {
+          "heading": "Post-Audit Remediation (2026-06-08)",
+          "level": 2,
+          "line": 255
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 266,
+      "nonEmptyLines": 185,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 238,
+      "nonEmptyLines": 193,
+      "sections": [
+        {
+          "heading": "PAPER-TRADING RUNTIME — FINAL AUDIT (epoch baseline)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Method",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "2. Lead independent re-verification (pinned facts)",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "3. Per-dimension scorecard",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "4. Per-dimension findings",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "D1 — Stateful replay determinism (keystone) · PASS 98",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "D2 — Ledger integrity & self-description · PASS 100",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "D3 — Idempotency / dedup semantics · PASS 98",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "D4 — Wrap boundary & packet purity · PASS 99",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "D5 — ADR-009 compliance (rule-for-rule) · PASS 98",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "D6 — Bounded-context separation · PASS 100",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "D7 — Ontology & graph integrity · PASS 100",
+          "level": 3,
+          "line": 135
+        },
+        {
+          "heading": "D8 — Honesty / no-overclaim · PASS 92",
+          "level": 3,
+          "line": 144
+        },
+        {
+          "heading": "5. Adversarial verification outcome",
+          "level": 2,
+          "line": 154
+        },
+        {
+          "heading": "6. Warnings (minor; no verdict impact)",
+          "level": 2,
+          "line": 166
+        },
+        {
+          "heading": "7. Technical debt (tracked, not blocking)",
+          "level": 2,
+          "line": 182
+        },
+        {
+          "heading": "8. Honesty assessment (synthesis)",
+          "level": 2,
+          "line": 198
+        },
+        {
+          "heading": "9. Remaining work for a fully-validated runtime (FUTURE epochs — not gaps in this baseline)",
+          "level": 2,
+          "line": 210
+        },
+        {
+          "heading": "10. Conclusion",
+          "level": 2,
+          "line": 232
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 62,
+      "nonEmptyLines": 39,
+      "sections": [
+        {
+          "heading": "REGIME_IMPLEMENTATION_BRIEF",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Objective",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "2. Affected modules",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "3. Affected schemas",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "4. Ontology impact",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "5. Replay impact",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "6. Benchmark impact",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "7. Migration risk",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "8. Governance impact",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "9. Verification summary",
+          "level": 2,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 271,
+      "nonEmptyLines": 189,
+      "sections": [
+        {
+          "heading": "Regime Taxonomy Final Audit",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Executive Summary",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Per-Dimension Results",
+          "level": 2,
+          "line": 20
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Replay Determinism",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Ontology Compliance",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Population Strategy Compliance",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "ADR Compliance",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Feature Grounding",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Schema Correctness",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Graph Integrity",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Gold Layer Readiness",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Benchmark Integration (BENCH-001)",
+          "level": 2,
+          "line": 163
+        },
+        {
+          "heading": "Paper Trading Compatibility",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "Critical Issues",
+          "level": 2,
+          "line": 194
+        },
+        {
+          "heading": "Warnings",
+          "level": 2,
+          "line": 200
+        },
+        {
+          "heading": "Technical Debt",
+          "level": 2,
+          "line": 210
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 219
+        },
+        {
+          "heading": "Engineering Digital Twin Maturity Impact",
+          "level": 2,
+          "line": 229
+        },
+        {
+          "heading": "Gold Layer Readiness Assessment",
+          "level": 2,
+          "line": 241
+        },
+        {
+          "heading": "Final Verdict",
+          "level": 2,
+          "line": 252
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "STEP4_BENCH004_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 45,
+      "nonEmptyLines": 32,
+      "sections": [
+        {
+          "heading": "Claude Code prompt — STEP 4: BENCH-004 (execution-layer byte-identical replay benchmark)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Step 0 — read governance + precedents; verify the precondition",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Step 1 — author the benchmark + the in-sync test",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "Step 2 — writeback (per the CLAUDE.md checklist)",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "audit_plan.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 744,
+      "nonEmptyLines": 620,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "audit_plan_addendum.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 750,
+      "nonEmptyLines": 519,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 96,
+      "nonEmptyLines": 62,
+      "sections": [
+        {
+          "heading": "Dev Graph — Next Development Step Recommendation",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "BLUF",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "The decisive finding: gate (e) is open, not \"materially advanced\"",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Recommendation — Gold DecisionPacket v0, as a 3-slice arc",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Slice 1 — Governance & structure (contract-first, no Gold schema yet)",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Slice 2 — Freeze the contract (no code)",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Slice 3 — Build (code + tests + benchmark + writeback)",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "The one open design question",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Explicitly deferred (matches ADR-006 Non-Goals — not in this arc)",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Alternatives considered and rejected",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Verification trail",
+          "level": 2,
+          "line": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "dev_graph_stabilization_audit_2026-06-07.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 221,
+      "nonEmptyLines": 141,
+      "sections": [
+        {
+          "heading": "Architecture / Ontology Stabilization Audit — dev_graph",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Executive Verdict (BLUF)",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Stability Index Scoreboard",
+          "level": 3,
+          "line": 19
+        },
+        {
+          "heading": "Part 1 — Ontology Integrity → 82/100",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Part 2 — ADR Consistency → 88/100",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Part 3 — Layering Validation → 88/100",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Part 4 — Traceability Audit → 82/100",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Part 5 — Contract Audit → 88/100",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Part 6 — Replay Determinism Audit → 88/100",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Part 7 — Feature Layer Audit → 96/100 ✅ (cleanest part)",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "Part 8 — Decision Layer Audit → 96/100 ✅",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Part 9 — Population Strategy Compliance → 94/100 · Compliance: 96.1% (13.45/14 weighted rules)",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Part 10 — Graph-RAG Readiness → 82/100",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Part 11 — Engineering Digital Twin Readiness → 82/100 · Maturity Level 4/5 (Managed/Integrated)",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Part 12 — Technical Debt Register (18 items · 0 epoch-blocking)",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Part 13 — Future Evolution Readiness",
+          "level": 2,
+          "line": 180
+        },
+        {
+          "heading": "Part 14 & 15 — Stability Index & Executive Verdict",
+          "level": 2,
+          "line": 194
+        },
+        {
+          "heading": "→ STABLE WITH MINOR DEBT",
+          "level": 3,
+          "line": 198
+        },
+        {
+          "heading": "Single highest-value next slice → Author the Regime Taxonomy",
+          "level": 3,
+          "line": 202
+        },
+        {
+          "heading": "Appendix — Adversarial Verification Ledger",
+          "level": 2,
+          "line": 214
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "final_strategic_review.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1098,
+      "nonEmptyLines": 737,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "llm-wiki.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "LLM Wiki",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "The core idea",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Operations",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Indexing and logging",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Optional: CLI tools",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Tips and tricks",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Why this works",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Note",
+          "level": 2,
+          "line": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    }
+  ]
+}

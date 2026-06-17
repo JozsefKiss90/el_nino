@@ -1,0 +1,91 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": "dev_graph/schemas/Decision Packet Schema.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Execution Record Schema.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Feature Vector Schema.md",
+      "language": "markdown",
+      "sizeLines": 101,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "language": "markdown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "language": "markdown",
+      "sizeLines": 121,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Portfolio State Schema.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Regime Classification Schema.md",
+      "language": "markdown",
+      "sizeLines": 116,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Runtime Decision Record Schema.md",
+      "language": "markdown",
+      "sizeLines": 124,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Runtime Ledger Schema.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Trade Validation Decision Schema.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/schemas/Trade Validation Request Schema.md",
+      "language": "markdown",
+      "sizeLines": 76,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "dev_graph/schemas/Decision Packet Schema.md": [],
+    "dev_graph/schemas/Evaluation Scorecard Schema.md": [],
+    "dev_graph/schemas/Execution Record Schema.md": [],
+    "dev_graph/schemas/Feature Vector Schema.md": [],
+    "dev_graph/schemas/Gold DecisionPacket v0 Schema.md": [],
+    "dev_graph/schemas/Layer 2 Snapshot Schema.md": [],
+    "dev_graph/schemas/Portfolio State Schema.md": [],
+    "dev_graph/schemas/Regime Classification Schema.md": [],
+    "dev_graph/schemas/Runtime Decision Record Schema.md": [],
+    "dev_graph/schemas/Runtime Ledger Schema.md": [],
+    "dev_graph/schemas/Trade Validation Decision Schema.md": [],
+    "dev_graph/schemas/Trade Validation Request Schema.md": []
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "src/supervisor/decision_engine/__init__.py", "language": "python", "sizeLines": 27, "fileCategory": "code"},
+    {"path": "src/supervisor/decision_engine/decision_engine.py", "language": "python", "sizeLines": 88, "fileCategory": "code"},
+    {"path": "src/supervisor/decision_engine/models.py", "language": "python", "sizeLines": 93, "fileCategory": "code"},
+    {"path": "src/supervisor/decision_engine/scoring.py", "language": "python", "sizeLines": 53, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/supervisor/decision_engine/__init__.py": [
+      "src/supervisor/decision_engine/decision_engine.py",
+      "src/supervisor/decision_engine/models.py"
+    ],
+    "src/supervisor/decision_engine/decision_engine.py": [
+      "src/supervisor/decision_engine/models.py",
+      "src/supervisor/decision_engine/scoring.py"
+    ],
+    "src/supervisor/decision_engine/models.py": [],
+    "src/supervisor/decision_engine/scoring.py": [
+      "src/supervisor/decision_engine/models.py"
+    ]
+  },
+  "neighborMap": {}
+}

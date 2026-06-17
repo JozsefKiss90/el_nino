@@ -1,0 +1,693 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/systems/Architecture Overview.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 160,
+      "nonEmptyLines": 128,
+      "sections": [
+        {
+          "heading": "Architecture Overview",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "System Map",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Core Subsystems",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Design Principles",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Architectural Layers",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Layer 1: Data Ingestion",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Layer 2: Analysis & Strategy",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Layer 3: Execution",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Layer 4: Memory & Learning",
+          "level": 3,
+          "line": 113
+        },
+        {
+          "heading": "Layer 5: Orchestration",
+          "level": 3,
+          "line": 118
+        },
+        {
+          "heading": "Layer 6: Risk & Governance",
+          "level": 3,
+          "line": 123
+        },
+        {
+          "heading": "Variant Architectures",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "Claude Code Routines Architecture",
+          "level": 3,
+          "line": 130
+        },
+        {
+          "heading": "TradingView-Claude-Exchange Pipeline",
+          "level": 3,
+          "line": 133
+        },
+        {
+          "heading": "Claude Co-work Agent Architecture",
+          "level": 3,
+          "line": 136
+        },
+        {
+          "heading": "Syndicate Squad Supervisor Architecture",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Claude Desktop + Alpaca Beginner Architecture",
+          "level": 3,
+          "line": 142
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 145
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "wiki/systems/Claude-Assisted Trading Stack.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 220,
+      "nonEmptyLines": 170,
+      "sections": [
+        {
+          "heading": "Claude-Assisted Trading Stack",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Stack Diagram",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Component Registry",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "AI Runtime",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Brokerage / Exchange",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Data & Research",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Deployment",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Notifications",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "MCP Layer",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Institutional Stack (Claude for Financial Services)",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 152
+        },
+        {
+          "heading": "Environment Variables",
+          "level": 3,
+          "line": 154
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 168
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 174
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 190
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 199
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 205
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 213
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "wiki/systems/LLM Failure Modes in Trading.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 219,
+      "nonEmptyLines": 158,
+      "sections": [
+        {
+          "heading": "LLM Failure Modes in Trading",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Failure Mode Catalog",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "1. Hallucinated Signals",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "2. Overfitting",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "3. Stale Context",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "4. Context Overflow / Budget Exhaustion",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "5. Delayed Execution",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "6. Invalid Assumptions",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "7. Eager Agent Syndrome",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "8. Memory Corruption",
+          "level": 3,
+          "line": 118
+        },
+        {
+          "heading": "9. API Key Exposure",
+          "level": 3,
+          "line": 130
+        },
+        {
+          "heading": "10. Strategy Drift",
+          "level": 3,
+          "line": 146
+        },
+        {
+          "heading": "11. Context Window Rot",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "12. Benchmark Misinterpretation",
+          "level": 3,
+          "line": 172
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 185
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 200
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 206
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 214
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "wiki/systems/Syndicate Squad Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 144,
+      "nonEmptyLines": 110,
+      "sections": [
+        {
+          "heading": "Syndicate Squad Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "System Diagram",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Core Components",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Agent Desks",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Upgrade Lifecycle",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Promotion Logic",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Integration Layer",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "What Is Real vs. Simulated",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "Real",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Simulated",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Anti-Theater Layer",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 141
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/systems/Three-Layer Trading System.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 140,
+      "nonEmptyLines": 107,
+      "sections": [
+        {
+          "heading": "Three-Layer Trading System",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Layer Architecture",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Layer 1: Stock Screener",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Layer 2: Strategy Engine",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Layer 3: Execution Engine",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Performance Evidence",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Codebase",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 116
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 138
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "wiki/systems/Trading Engine Pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 184,
+      "nonEmptyLines": 130,
+      "sections": [
+        {
+          "heading": "Trading Engine Pipeline",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Pipeline Stages",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Stage 1: Research",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Stage 2: Signal Generation",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Stage 3: Validation",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Stage 4: Execution",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Stage 5: Journaling",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Stage 6: Evaluation",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Stage 7: Refinement",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Variant: Syndicate Squad Paper Trading Pipeline",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 135
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 143
+        },
+        {
+          "heading": "Operational Constraints",
+          "level": 2,
+          "line": 152
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 166
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 172
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    }
+  ]
+}

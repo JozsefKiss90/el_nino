@@ -1,0 +1,2120 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/features/feature_builder/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/features/feature_builder/feature_builder.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 81,
+      "functions": [
+        {
+          "name": "_level",
+          "startLine": 39,
+          "endLine": 41,
+          "params": [
+            "name",
+            "series_id"
+          ]
+        },
+        {
+          "name": "_spread",
+          "startLine": 44,
+          "endLine": 50,
+          "params": [
+            "name",
+            "minuend",
+            "subtrahend"
+          ]
+        },
+        {
+          "name": "build_features",
+          "startLine": 73,
+          "endLine": 104,
+          "params": [
+            "snapshot"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FeatureSpec",
+          "startLine": 27,
+          "endLine": 36,
+          "methods": [],
+          "properties": [
+            "name",
+            "inputs",
+            "fn"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FeatureSpec",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "_level",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "_spread",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "build_features",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_level",
+          "callee": "FeatureSpec",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_spread",
+          "callee": "FeatureSpec",
+          "lineNumber": 46
+        },
+        {
+          "caller": "build_features",
+          "callee": "sorted",
+          "lineNumber": 87
+        },
+        {
+          "caller": "build_features",
+          "callee": "any",
+          "lineNumber": 88
+        },
+        {
+          "caller": "build_features",
+          "callee": "unavailable.append",
+          "lineNumber": 89
+        },
+        {
+          "caller": "build_features",
+          "callee": "Feature",
+          "lineNumber": 91
+        },
+        {
+          "caller": "build_features",
+          "callee": "spec.fn",
+          "lineNumber": 93
+        },
+        {
+          "caller": "build_features",
+          "callee": "max",
+          "lineNumber": 95
+        },
+        {
+          "caller": "build_features",
+          "callee": "any",
+          "lineNumber": 96
+        },
+        {
+          "caller": "build_features",
+          "callee": "FeatureVector",
+          "lineNumber": 99
+        },
+        {
+          "caller": "build_features",
+          "callee": "tuple",
+          "lineNumber": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/features/feature_builder/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 38,
+      "classes": [
+        {
+          "name": "Feature",
+          "startLine": 20,
+          "endLine": 27,
+          "methods": [],
+          "properties": [
+            "name",
+            "value",
+            "inputs",
+            "max_staleness_days",
+            "revision_risk"
+          ]
+        },
+        {
+          "name": "FeatureVector",
+          "startLine": 31,
+          "endLine": 51,
+          "methods": [
+            "names",
+            "value"
+          ],
+          "properties": [
+            "snapshot_id",
+            "schema_version",
+            "features",
+            "unavailable_features"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Feature",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureVector",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "names",
+          "callee": "tuple",
+          "lineNumber": 47
+        },
+        {
+          "caller": "names",
+          "callee": "self.features.keys",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 179,
+      "functions": [
+        {
+          "name": "load_config",
+          "startLine": 185,
+          "endLine": 196,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RegimeConfigError",
+          "startLine": 30,
+          "endLine": 31,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "RegimeConfig",
+          "startLine": 65,
+          "endLine": 182,
+          "methods": [
+            "__post_init__",
+            "decision_fingerprint",
+            "from_mapping"
+          ],
+          "properties": [
+            "vix_calm",
+            "vix_elevated",
+            "vix_crisis",
+            "vix_liquidity_gate",
+            "move_stress",
+            "real_yield_restrictive",
+            "real_yield_easy",
+            "be5y5y_reflation",
+            "be5y5y_disinflation",
+            "curve_inversion",
+            "usd_strong",
+            "scale_liquidity_stress",
+            "scale_risk_off",
+            "scale_volatile",
+            "scale_restrictive_rates",
+            "scale_reflation",
+            "scale_disinflation",
+            "scale_curve_inversion",
+            "scale_strong_usd",
+            "scale_risk_on",
+            "scale_low_vol",
+            "near_band",
+            "required_features",
+            "taxonomy_version",
+            "classifier_version",
+            "classification_trace_version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RegimeConfigError",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "RegimeConfig",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "load_config",
+          "line": 185,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "any",
+          "lineNumber": 128
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 131
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 133
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 135
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 137
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "getattr",
+          "lineNumber": 139
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 140
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "sorted",
+          "lineNumber": 150
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "getattr",
+          "lineNumber": 151
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "isinstance",
+          "lineNumber": 152
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "list",
+          "lineNumber": 153
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "items.append",
+          "lineNumber": 154
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 155
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 156
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 156
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 156
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 161
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 162
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 163
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 164
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 166
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 166
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 168
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 170
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "all",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 176
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "tuple",
+          "lineNumber": 177
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 180
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 182
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 182
+        },
+        {
+          "caller": "load_config",
+          "callee": "Path",
+          "lineNumber": 187
+        },
+        {
+          "caller": "load_config",
+          "callee": "p.read_text",
+          "lineNumber": 189
+        },
+        {
+          "caller": "load_config",
+          "callee": "RegimeConfigError",
+          "lineNumber": 191
+        },
+        {
+          "caller": "load_config",
+          "callee": "json.loads",
+          "lineNumber": 193
+        },
+        {
+          "caller": "load_config",
+          "callee": "RegimeConfigError",
+          "lineNumber": 195
+        },
+        {
+          "caller": "load_config",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 196
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 177,
+      "nonEmptyLines": 152,
+      "classes": [
+        {
+          "name": "Regime",
+          "startLine": 40,
+          "endLine": 59,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "FeatureProvenance",
+          "startLine": 70,
+          "endLine": 86,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "name",
+            "value",
+            "inputs",
+            "max_staleness_days",
+            "revision_risk"
+          ]
+        },
+        {
+          "name": "RegimeClassification",
+          "startLine": 90,
+          "endLine": 177,
+          "methods": [
+            "__post_init__",
+            "to_dict"
+          ],
+          "properties": [
+            "matched_rule_id",
+            "regime",
+            "rule_priority",
+            "rule_margin",
+            "rule_threshold",
+            "rule_scale",
+            "trigger_features",
+            "snapshot_id",
+            "feature_schema_version",
+            "provenance",
+            "taxonomy_version",
+            "classifier_version",
+            "classification_trace_version",
+            "evaluated_rule_ids",
+            "skipped_rule_ids",
+            "failed_required_features",
+            "secondary_matching_rules",
+            "near_matching_rules",
+            "as_of",
+            "indeterminate_reason"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Regime",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureProvenance",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "RegimeClassification",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 81
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 126
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 131
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 136
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 139
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 141
+        },
+        {
+          "caller": "to_dict",
+          "callee": "p.to_dict",
+          "lineNumber": 153
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 157
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 166
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 167
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 168
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 169
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 170
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 172
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/regime_classifier.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "_provenance",
+          "startLine": 30,
+          "endLine": 35,
+          "params": [
+            "fv",
+            "feature_names"
+          ]
+        },
+        {
+          "name": "classify",
+          "startLine": 38,
+          "endLine": 136,
+          "params": [
+            "fv",
+            "config",
+            "as_of"
+          ]
+        },
+        {
+          "name": "_secondary_margin",
+          "startLine": 139,
+          "endLine": 142,
+          "params": [
+            "fv",
+            "c",
+            "rule"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_provenance",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "classify",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "_secondary_margin",
+          "line": 139,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_provenance",
+          "callee": "tuple",
+          "lineNumber": 32
+        },
+        {
+          "caller": "_provenance",
+          "callee": "FeatureProvenance",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_provenance",
+          "callee": "sorted",
+          "lineNumber": 34
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 47
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 49
+        },
+        {
+          "caller": "classify",
+          "callee": "sorted",
+          "lineNumber": 49
+        },
+        {
+          "caller": "classify",
+          "callee": "RegimeClassification",
+          "lineNumber": 50
+        },
+        {
+          "caller": "classify",
+          "callee": "\", \".join",
+          "lineNumber": 66
+        },
+        {
+          "caller": "classify",
+          "callee": "set",
+          "lineNumber": 72
+        },
+        {
+          "caller": "classify",
+          "callee": "skipped.append",
+          "lineNumber": 79
+        },
+        {
+          "caller": "classify",
+          "callee": "failed_feats.update",
+          "lineNumber": 80
+        },
+        {
+          "caller": "classify",
+          "callee": "evaluated.append",
+          "lineNumber": 82
+        },
+        {
+          "caller": "classify",
+          "callee": "rule.predicate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "classify",
+          "callee": "matched.append",
+          "lineNumber": 84
+        },
+        {
+          "caller": "classify",
+          "callee": "near_proximity",
+          "lineNumber": 86
+        },
+        {
+          "caller": "classify",
+          "callee": "near.append",
+          "lineNumber": 88
+        },
+        {
+          "caller": "classify",
+          "callee": "AssertionError",
+          "lineNumber": 92
+        },
+        {
+          "caller": "classify",
+          "callee": "winner.margin.threshold",
+          "lineNumber": 96
+        },
+        {
+          "caller": "classify",
+          "callee": "winner.margin.scale",
+          "lineNumber": 97
+        },
+        {
+          "caller": "classify",
+          "callee": "margin_value",
+          "lineNumber": 98
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 99
+        },
+        {
+          "caller": "classify",
+          "callee": "sorted",
+          "lineNumber": 99
+        },
+        {
+          "caller": "classify",
+          "callee": "secondaries.sort",
+          "lineNumber": 109
+        },
+        {
+          "caller": "classify",
+          "callee": "_secondary_margin",
+          "lineNumber": 109
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 110
+        },
+        {
+          "caller": "classify",
+          "callee": "near.sort",
+          "lineNumber": 113
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 114
+        },
+        {
+          "caller": "classify",
+          "callee": "RegimeClassification",
+          "lineNumber": 116
+        },
+        {
+          "caller": "classify",
+          "callee": "_provenance",
+          "lineNumber": 126
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 130
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 131
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 132
+        },
+        {
+          "caller": "classify",
+          "callee": "sorted",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_secondary_margin",
+          "callee": "margin_value",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/taxonomy.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "clamp01",
+          "startLine": 54,
+          "endLine": 56,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "margin_value",
+          "startLine": 59,
+          "endLine": 66,
+          "params": [
+            "fv",
+            "c",
+            "spec"
+          ]
+        },
+        {
+          "name": "near_proximity",
+          "startLine": 69,
+          "endLine": 80,
+          "params": [
+            "fv",
+            "c",
+            "spec"
+          ]
+        },
+        {
+          "name": "_p_liquidity_stress",
+          "startLine": 94,
+          "endLine": 95,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_risk_off",
+          "startLine": 98,
+          "endLine": 99,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_volatile",
+          "startLine": 102,
+          "endLine": 103,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_restrictive_rates",
+          "startLine": 106,
+          "endLine": 107,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_reflation",
+          "startLine": 110,
+          "endLine": 114,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_disinflation",
+          "startLine": 117,
+          "endLine": 118,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_curve_inversion",
+          "startLine": 121,
+          "endLine": 122,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_strong_usd",
+          "startLine": 125,
+          "endLine": 126,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_risk_on",
+          "startLine": 129,
+          "endLine": 130,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_low_vol",
+          "startLine": 133,
+          "endLine": 134,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_neutral",
+          "startLine": 137,
+          "endLine": 138,
+          "params": [
+            "fv",
+            "c"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MarginSpec",
+          "startLine": 27,
+          "endLine": 38,
+          "methods": [],
+          "properties": [
+            "feature",
+            "threshold",
+            "scale",
+            "direction"
+          ]
+        },
+        {
+          "name": "RegimeRule",
+          "startLine": 42,
+          "endLine": 51,
+          "methods": [],
+          "properties": [
+            "rule_id",
+            "regime",
+            "priority",
+            "required_features",
+            "trigger_features",
+            "predicate",
+            "margin"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MarginSpec",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "RegimeRule",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "clamp01",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "margin_value",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "near_proximity",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "_p_liquidity_stress",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "_p_risk_off",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "_p_volatile",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "_p_restrictive_rates",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "_p_reflation",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "_p_disinflation",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "_p_curve_inversion",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "_p_strong_usd",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "_p_risk_on",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "_p_low_vol",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "_p_neutral",
+          "line": 137,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "clamp01",
+          "callee": "max",
+          "lineNumber": 56
+        },
+        {
+          "caller": "clamp01",
+          "callee": "min",
+          "lineNumber": 56
+        },
+        {
+          "caller": "margin_value",
+          "callee": "fv.value",
+          "lineNumber": 65
+        },
+        {
+          "caller": "margin_value",
+          "callee": "clamp01",
+          "lineNumber": 66
+        },
+        {
+          "caller": "margin_value",
+          "callee": "spec.threshold",
+          "lineNumber": 66
+        },
+        {
+          "caller": "margin_value",
+          "callee": "spec.scale",
+          "lineNumber": 66
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "fv.value",
+          "lineNumber": 76
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "spec.threshold",
+          "lineNumber": 77
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "spec.scale",
+          "lineNumber": 77
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "clamp01",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_p_liquidity_stress",
+          "callee": "fv.value",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_p_liquidity_stress",
+          "callee": "fv.value",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_p_risk_off",
+          "callee": "fv.value",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_p_volatile",
+          "callee": "fv.value",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_p_restrictive_rates",
+          "callee": "fv.value",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_p_reflation",
+          "callee": "fv.value",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_p_reflation",
+          "callee": "fv.value",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_p_disinflation",
+          "callee": "fv.value",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_p_curve_inversion",
+          "callee": "fv.value",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_p_strong_usd",
+          "callee": "fv.value",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_p_risk_on",
+          "callee": "fv.value",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_p_risk_on",
+          "callee": "fv.value",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_p_low_vol",
+          "callee": "fv.value",
+          "lineNumber": 134
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 16,
+        "functionCount": 14,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/consumer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "load_snapshot",
+          "startLine": 26,
+          "endLine": 39,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "is_consumable",
+          "startLine": 42,
+          "endLine": 56,
+          "params": [
+            "snapshot"
+          ]
+        },
+        {
+          "name": "consume",
+          "startLine": 59,
+          "endLine": 72,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_snapshot",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "is_consumable",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "consume",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_snapshot",
+          "callee": "Path",
+          "lineNumber": 35
+        },
+        {
+          "caller": "load_snapshot",
+          "callee": "p.exists",
+          "lineNumber": 36
+        },
+        {
+          "caller": "load_snapshot",
+          "callee": "json.loads",
+          "lineNumber": 38
+        },
+        {
+          "caller": "load_snapshot",
+          "callee": "p.read_text",
+          "lineNumber": 38
+        },
+        {
+          "caller": "load_snapshot",
+          "callee": "Snapshot.from_dict",
+          "lineNumber": 39
+        },
+        {
+          "caller": "consume",
+          "callee": "load_snapshot",
+          "lineNumber": 67
+        },
+        {
+          "caller": "consume",
+          "callee": "is_consumable",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 242,
+      "nonEmptyLines": 206,
+      "functions": [
+        {
+          "name": "_require",
+          "startLine": 34,
+          "endLine": 37,
+          "params": [
+            "payload",
+            "key"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SnapshotContractError",
+          "startLine": 24,
+          "endLine": 31,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "SeriesValue",
+          "startLine": 41,
+          "endLine": 90,
+          "methods": [
+            "from_grouped_entry",
+            "_id_line"
+          ],
+          "properties": [
+            "series_id",
+            "tier",
+            "group",
+            "obs_ts",
+            "value",
+            "staleness_days",
+            "source",
+            "as_of_ts",
+            "revision_seq",
+            "revision_risk"
+          ]
+        },
+        {
+          "name": "Guards",
+          "startLine": 94,
+          "endLine": 131,
+          "methods": [
+            "from_dict"
+          ],
+          "properties": [
+            "snapshot_ok",
+            "data_ok",
+            "freshness_ok",
+            "missing_tier1",
+            "forced",
+            "revision_risk_present",
+            "idempotent_ok",
+            "reason_code",
+            "cooldown_ok",
+            "risk_ok",
+            "supervisor_veto"
+          ]
+        },
+        {
+          "name": "QualitySummary",
+          "startLine": 135,
+          "endLine": 158,
+          "methods": [
+            "from_dict"
+          ],
+          "properties": [
+            "tier1_total",
+            "tier1_pass",
+            "tier1_fail",
+            "tier2_total",
+            "tier2_warn",
+            "revision_risk_series_count",
+            "revision_risk_series"
+          ]
+        },
+        {
+          "name": "Snapshot",
+          "startLine": 162,
+          "endLine": 242,
+          "methods": [
+            "from_dict",
+            "recompute_id",
+            "id_matches"
+          ],
+          "properties": [
+            "snapshot_id",
+            "engine_version",
+            "config_version",
+            "clock_ts",
+            "clock_date",
+            "verdict",
+            "forced",
+            "dry_run",
+            "guards",
+            "quality_summary",
+            "missing_series",
+            "series_count",
+            "values"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SnapshotContractError",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "_require",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "SeriesValue",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "Guards",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "QualitySummary",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "Snapshot",
+          "line": 161,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_require",
+          "callee": "SnapshotContractError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "cls",
+          "lineNumber": 64
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "str",
+          "lineNumber": 65
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 65
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "int",
+          "lineNumber": 66
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 66
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "str",
+          "lineNumber": 67
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 67
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "str",
+          "lineNumber": 68
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 68
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "float",
+          "lineNumber": 69
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 69
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "int",
+          "lineNumber": 70
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 70
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "str",
+          "lineNumber": 71
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "_require",
+          "lineNumber": 71
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "entry.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "entry.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "int",
+          "lineNumber": 73
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "entry.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "bool",
+          "lineNumber": 74
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "entry.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "isinstance",
+          "lineNumber": 77
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "SnapshotContractError",
+          "lineNumber": 79
+        },
+        {
+          "caller": "from_grouped_entry",
+          "callee": "entry.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_id_line",
+          "callee": "float",
+          "lineNumber": 90
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 117
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SnapshotContractError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 119
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 120
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 120
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 121
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 122
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 123
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 124
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 124
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 125
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 126
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 127
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 127
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 128
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 128
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 129
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 129
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 130
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 130
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 148
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SnapshotContractError",
+          "lineNumber": 149
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 150
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 151
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 151
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 152
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 153
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 153
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 154
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 154
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 155
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 155
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 156
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 156
+        },
+        {
+          "caller": "from_dict",
+          "callee": "tuple",
+          "lineNumber": 157
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 157
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 157
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 185
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SnapshotContractError",
+          "lineNumber": 186
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 188
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 189
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SnapshotContractError",
+          "lineNumber": 190
+        },
+        {
+          "caller": "from_dict",
+          "callee": "grouped.items",
+          "lineNumber": 193
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 194
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SnapshotContractError",
+          "lineNumber": 195
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SeriesValue.from_grouped_entry",
+          "lineNumber": 199
+        },
+        {
+          "caller": "from_dict",
+          "callee": "SnapshotContractError",
+          "lineNumber": 201
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 206
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 207
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 207
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 208
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 208
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 209
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 209
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 210
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 210
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 211
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 211
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 212
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 212
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 213
+        },
+        {
+          "caller": "from_dict",
+          "callee": "payload.get",
+          "lineNumber": 213
+        },
+        {
+          "caller": "from_dict",
+          "callee": "bool",
+          "lineNumber": 214
+        },
+        {
+          "caller": "from_dict",
+          "callee": "payload.get",
+          "lineNumber": 214
+        },
+        {
+          "caller": "from_dict",
+          "callee": "Guards.from_dict",
+          "lineNumber": 215
+        },
+        {
+          "caller": "from_dict",
+          "callee": "_require",
+          "lineNumber": 215
+        },
+        {
+          "caller": "from_dict",
+          "callee": "QualitySummary.from_dict",
+          "lineNumber": 216
+        },
+        {
+          "caller": "from_dict",
+          "callee": "payload.get",
+          "lineNumber": 216
+        },
+        {
+          "caller": "from_dict",
+          "callee": "tuple",
+          "lineNumber": 217
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 217
+        },
+        {
+          "caller": "from_dict",
+          "callee": "payload.get",
+          "lineNumber": 217
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 218
+        },
+        {
+          "caller": "from_dict",
+          "callee": "payload.get",
+          "lineNumber": 218
+        },
+        {
+          "caller": "from_dict",
+          "callee": "len",
+          "lineNumber": 218
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "sorted",
+          "lineNumber": 234
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "self.values.values",
+          "lineNumber": 234
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "lines.append",
+          "lineNumber": 235
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "sv._id_line",
+          "lineNumber": 235
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "\"\\n\".join",
+          "lineNumber": 236
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 237
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "hashlib.sha256",
+          "lineNumber": 237
+        },
+        {
+          "caller": "recompute_id",
+          "callee": "payload.encode",
+          "lineNumber": 237
+        },
+        {
+          "caller": "id_matches",
+          "callee": "self.recompute_id",
+          "lineNumber": 242
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 1,
+        "classCount": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "jarvis/hud/src/components/ops/Architecture.tsx", "language": "typescript", "sizeLines": 21, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/AuditDriftStatus.tsx", "language": "typescript", "sizeLines": 21, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/EpochRoadmap.tsx", "language": "typescript", "sizeLines": 18, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/LivePipelineResult.tsx", "language": "typescript", "sizeLines": 15, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/MetricCards.tsx", "language": "typescript", "sizeLines": 12, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/NextActions.tsx", "language": "typescript", "sizeLines": 17, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/PipelineStatus.tsx", "language": "typescript", "sizeLines": 22, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/components/ops/The12PivotalPoints.tsx", "language": "typescript", "sizeLines": 30, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/data/graph.ts", "language": "typescript", "sizeLines": 98, "fileCategory": "code"},
+    {"path": "jarvis/hud/src/pages/OpsDeck.tsx", "language": "typescript", "sizeLines": 31, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "jarvis/hud/src/components/ops/Architecture.tsx": [
+      "jarvis/hud/src/data/graph.ts"
+    ],
+    "jarvis/hud/src/components/ops/AuditDriftStatus.tsx": [],
+    "jarvis/hud/src/components/ops/EpochRoadmap.tsx": [],
+    "jarvis/hud/src/components/ops/LivePipelineResult.tsx": [],
+    "jarvis/hud/src/components/ops/MetricCards.tsx": [],
+    "jarvis/hud/src/components/ops/NextActions.tsx": [],
+    "jarvis/hud/src/components/ops/PipelineStatus.tsx": [],
+    "jarvis/hud/src/components/ops/The12PivotalPoints.tsx": [],
+    "jarvis/hud/src/data/graph.ts": [
+      "jarvis/hud/src/data/api.ts",
+      "jarvis/hud/src/data/types.ts"
+    ],
+    "jarvis/hud/src/pages/OpsDeck.tsx": [
+      "jarvis/hud/src/components/ops/Architecture.tsx",
+      "jarvis/hud/src/components/ops/AuditDriftStatus.tsx",
+      "jarvis/hud/src/components/ops/EpochRoadmap.tsx",
+      "jarvis/hud/src/components/ops/LivePipelineResult.tsx",
+      "jarvis/hud/src/components/ops/MetricCards.tsx",
+      "jarvis/hud/src/components/ops/NextActions.tsx",
+      "jarvis/hud/src/components/ops/PipelineStatus.tsx",
+      "jarvis/hud/src/components/ops/The12PivotalPoints.tsx",
+      "jarvis/hud/src/data/graph.ts"
+    ]
+  },
+  "neighborMap": {
+    "jarvis/hud/src/data/graph.ts": [
+      {
+        "path": "jarvis/hud/src/data/api.ts",
+        "batchIndex": 1,
+        "symbols": ["API_BASE", "GRAPH_JSON_URL"]
+      },
+      {
+        "path": "jarvis/hud/src/data/types.ts",
+        "batchIndex": 1,
+        "symbols": []
+      },
+      {
+        "path": "jarvis/hud/src/App.tsx",
+        "batchIndex": 2,
+        "symbols": ["App"]
+      },
+      {
+        "path": "jarvis/hud/src/hooks/useGraph.ts",
+        "batchIndex": 1,
+        "symbols": ["useGraph"]
+      }
+    ],
+    "jarvis/hud/src/pages/OpsDeck.tsx": [
+      {
+        "path": "jarvis/hud/src/App.tsx",
+        "batchIndex": 2,
+        "symbols": ["App"]
+      }
+    ]
+  }
+}

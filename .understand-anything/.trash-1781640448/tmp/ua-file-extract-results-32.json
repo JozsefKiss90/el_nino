@@ -1,0 +1,536 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 1373,
+      "nonEmptyLines": 1289,
+      "metrics": {}
+    },
+    {
+      "path": "jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 331,
+      "nonEmptyLines": 251,
+      "sections": [
+        {
+          "heading": "OPUS CONTEXT DUMP — Mr. Ripley / El Niño Project",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Teljes projekt-kontextus dashboard generáláshoz",
+          "level": 2,
+          "line": 2
+        },
+        {
+          "heading": "1. A RENDSZER — MI EZ?",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "Mr. Ripley",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "2. ARCHITEKTÚRA — RÉTEGMODELL",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "3. AKTUÁLIS ÁLLAPOT (2026-06-11)",
+          "level": 1,
+          "line": 53
+        },
+        {
+          "heading": "Mi van kész",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Corpus státusz",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Valós pipeline eredmény",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "4. EPOCH ROADMAP",
+          "level": 1,
+          "line": 79
+        },
+        {
+          "heading": "Szekvencia",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "5. AZ EL NIÑO REPÓ STRUKTÚRÁJA",
+          "level": 1,
+          "line": 110
+        },
+        {
+          "heading": "6. A 12 SARKALLATOS PONT (egyeztetett kérdések, visszatérésre vár)",
+          "level": 1,
+          "line": 137
+        },
+        {
+          "heading": "La Niña / Monitor",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Backtest és paper trading",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Adatgyűjtés és tanulás",
+          "level": 2,
+          "line": 164
+        },
+        {
+          "heading": "Look-ahead bias",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "7. LA NIÑA ARCHITEKTÚRA (specifikáció, nem build order)",
+          "level": 1,
+          "line": 185
+        },
+        {
+          "heading": "Mi ez",
+          "level": 2,
+          "line": 187
+        },
+        {
+          "heading": "3 réteg",
+          "level": 2,
+          "line": 190
+        },
+        {
+          "heading": "Governance",
+          "level": 2,
+          "line": 212
+        },
+        {
+          "heading": "8. SCORECARD SÉMA (E2b-ben kell megépíteni)",
+          "level": 1,
+          "line": 224
+        },
+        {
+          "heading": "9. HUMAN-APPROVED POLICY EVOLUTION (E5)",
+          "level": 1,
+          "line": 249
+        },
+        {
+          "heading": "Policy Proposal kötelező tartalma",
+          "level": 2,
+          "line": 251
+        },
+        {
+          "heading": "Háromállapotú kapu",
+          "level": 2,
+          "line": 259
+        },
+        {
+          "heading": "10. VONATKOZÓ FÁJLOK",
+          "level": 1,
+          "line": 266
+        },
+        {
+          "heading": "11. A DASHBOARD FELADAT",
+          "level": 1,
+          "line": 279
+        },
+        {
+          "heading": "Mit kell elkészíteni",
+          "level": 2,
+          "line": 281
+        },
+        {
+          "heading": "Referencia stílus",
+          "level": 2,
+          "line": 284
+        },
+        {
+          "heading": "Kötelező panelek / szekciók",
+          "level": 2,
+          "line": 287
+        },
+        {
+          "heading": "Stílus irányelvek",
+          "level": 2,
+          "line": 322
+        },
+        {
+          "heading": "Output",
+          "level": 2,
+          "line": 330
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 32
+      }
+    },
+    {
+      "path": "jarvis/sources/el_nino_jarvis_interface (6).html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 1298,
+      "nonEmptyLines": 1217,
+      "metrics": {}
+    },
+    {
+      "path": "jarvis/sources/el_nino_project_plan_v1.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 596,
+      "nonEmptyLines": 426,
+      "sections": [
+        {
+          "heading": "El Niño Project — Master Planning Document",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Mr. Ripley Layer 3 Decision Engine",
+          "level": 2,
+          "line": 2
+        },
+        {
+          "heading": "Part 0 — Jelenlegi Állapot (2026-06-11)",
+          "level": 1,
+          "line": 11
+        },
+        {
+          "heading": "Mit épített meg a barát (el_nino repó)",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Megépített modulok",
+          "level": 3,
+          "line": 17
+        },
+        {
+          "heading": "Governance struktúra",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Corpus státusz",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Hol tartunk az Epoch-terven",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Part 1 — Slice 2 Fit Assessment",
+          "level": 1,
+          "line": 59
+        },
+        {
+          "heading": "Where Slice 2 Sits in the Layer Model",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Where Slice 2 Precisely Confirms the Plan",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "What Slice 2 is NOT — Honestly Stated",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "One-Line Summary",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Part 2 — Recommendations (R1–R8)",
+          "level": 1,
+          "line": 101
+        },
+        {
+          "heading": "Part 3 — Six-Epoch Roadmap",
+          "level": 1,
+          "line": 129
+        },
+        {
+          "heading": "Epoch Overview",
+          "level": 2,
+          "line": 131
+        },
+        {
+          "heading": "Epoch Detail",
+          "level": 2,
+          "line": 143
+        },
+        {
+          "heading": "E1 — DEBT-01 Fix ✅ KÉSZ (2026-06-11)",
+          "level": 3,
+          "line": 145
+        },
+        {
+          "heading": "E2a — Paper Runtime (Admission Gate) ✅ KÉSZ (2026-06-09, audit 97/100)",
+          "level": 3,
+          "line": 151
+        },
+        {
+          "heading": "E2b — Execution Adapter (Dual Backend)",
+          "level": 3,
+          "line": 157
+        },
+        {
+          "heading": "E3 — Empirical Calibration",
+          "level": 3,
+          "line": 182
+        },
+        {
+          "heading": "E4 — Supervisor Engine (El Niño LLM Layer)",
+          "level": 3,
+          "line": 195
+        },
+        {
+          "heading": "E5 — Policy Evolution (Human-Approved Learning)",
+          "level": 3,
+          "line": 207
+        },
+        {
+          "heading": "E6 — La Niña (Conditional on E3 Gap Measurement)",
+          "level": 3,
+          "line": 226
+        },
+        {
+          "heading": "Sequenced Roadmap Diagram",
+          "level": 2,
+          "line": 256
+        },
+        {
+          "heading": "Part 4 — La Niña Architecture",
+          "level": 1,
+          "line": 289
+        },
+        {
+          "heading": "The 19-Point Problem Inventory",
+          "level": 2,
+          "line": 291
+        },
+        {
+          "heading": "Group A — Cadence Gap (the core problem)",
+          "level": 3,
+          "line": 293
+        },
+        {
+          "heading": "Group B — Inviolable Architecture Constraints",
+          "level": 3,
+          "line": 301
+        },
+        {
+          "heading": "Group C — Statistics and Learning",
+          "level": 3,
+          "line": 309
+        },
+        {
+          "heading": "Group D — Contract, Graph, Process",
+          "level": 3,
+          "line": 316
+        },
+        {
+          "heading": "The Key Architectural Insight",
+          "level": 2,
+          "line": 324
+        },
+        {
+          "heading": "Three-Step Architecture",
+          "level": 2,
+          "line": 328
+        },
+        {
+          "heading": "Step 1 — Dual-Level Truth: Macro Snapshot + IMS",
+          "level": 3,
+          "line": 330
+        },
+        {
+          "heading": "Step 2 — Standing Orders: Pre-Authorized Contingency Table",
+          "level": 3,
+          "line": 345
+        },
+        {
+          "heading": "Step 3 — Asymmetric One-Way Valve",
+          "level": 3,
+          "line": 365
+        },
+        {
+          "heading": "Full Architecture Diagram",
+          "level": 2,
+          "line": 375
+        },
+        {
+          "heading": "Governance: Formal v0.1 Amendment",
+          "level": 2,
+          "line": 400
+        },
+        {
+          "heading": "What La Niña Does NOT Solve — Honestly",
+          "level": 2,
+          "line": 407
+        },
+        {
+          "heading": "A Name, as a Gift",
+          "level": 2,
+          "line": 413
+        },
+        {
+          "heading": "Part 5 — Backtesting, Paper Trading, and Learning Data Collection",
+          "level": 1,
+          "line": 419
+        },
+        {
+          "heading": "5.1 Collecting vs. Automatic Learning — A Critical Distinction",
+          "level": 2,
+          "line": 421
+        },
+        {
+          "heading": "5.2 The Unified Scorecard — Foundation of All Future Evidence",
+          "level": 2,
+          "line": 432
+        },
+        {
+          "heading": "5.3 Backtesting — Point-in-Time Discipline and Look-Ahead Bias",
+          "level": 2,
+          "line": 461
+        },
+        {
+          "heading": "Obvious failure: decision date ≠ knowledge date",
+          "level": 3,
+          "line": 467
+        },
+        {
+          "heading": "Subtle failure 1: publication date vs. reference date",
+          "level": 3,
+          "line": 471
+        },
+        {
+          "heading": "Subtle failure 2: revised vs. vintage data",
+          "level": 3,
+          "line": 480
+        },
+        {
+          "heading": "5.4 Extracting the Essence — Joint Manual Work",
+          "level": 2,
+          "line": 492
+        },
+        {
+          "heading": "5.5 Human-Approved Policy Evolution",
+          "level": 2,
+          "line": 505
+        },
+        {
+          "heading": "Policy Proposal Required Content",
+          "level": 3,
+          "line": 511
+        },
+        {
+          "heading": "Three-State Approval Gate",
+          "level": 3,
+          "line": 522
+        },
+        {
+          "heading": "What This Is Not",
+          "level": 3,
+          "line": 532
+        },
+        {
+          "heading": "5.6 Now vs. Later Split",
+          "level": 2,
+          "line": 536
+        },
+        {
+          "heading": "5.7 On Zapier — Honest Assessment",
+          "level": 2,
+          "line": 550
+        },
+        {
+          "heading": "5.8 Summary",
+          "level": 2,
+          "line": 567
+        },
+        {
+          "heading": "Appendix — Key Terminology",
+          "level": 1,
+          "line": 575
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 56
+      }
+    },
+    {
+      "path": "jarvis/sources/sarkallatos_pontok.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 68,
+      "nonEmptyLines": 44,
+      "sections": [
+        {
+          "heading": "Sarkallatos Pontok — El Niño / La Niña Egyeztetés",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "La Niña / Monitor",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Backtest és paper trading",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Adatgyűjtés és tanulás",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Look-ahead bias",
+          "level": 2,
+          "line": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    }
+  ]
+}

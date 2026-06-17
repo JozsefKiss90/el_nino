@@ -1,0 +1,185 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/tests/test_consumer.md",
+      "type": "document",
+      "name": "test_consumer.md",
+      "filePath": "dev_graph/tests/test_consumer.md",
+      "summary": "Dev graph test node documenting the test_consumer test, which validates the Kafka/stream consumer module responsible for ingesting Layer-2 signals into the trading engine pipeline.",
+      "tags": ["documentation", "test", "dev-graph", "consumer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_decision_builder.md",
+      "type": "document",
+      "name": "test_decision_builder.md",
+      "filePath": "dev_graph/tests/test_decision_builder.md",
+      "summary": "Dev graph test node documenting the test_decision_builder test, which validates the decision builder module responsible for constructing structured trade decision objects from classifier and regime signals.",
+      "tags": ["documentation", "test", "dev-graph", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_decision_engine.md",
+      "type": "document",
+      "name": "test_decision_engine.md",
+      "filePath": "dev_graph/tests/test_decision_engine.md",
+      "summary": "Dev graph test node documenting the test_decision_engine test, which validates the core decision engine that orchestrates trade signal evaluation and routing through the trading pipeline.",
+      "tags": ["documentation", "test", "dev-graph", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_e2e_pipeline.md",
+      "type": "document",
+      "name": "test_e2e_pipeline.md",
+      "filePath": "dev_graph/tests/test_e2e_pipeline.md",
+      "summary": "Dev graph test node documenting the end-to-end pipeline integration test, which validates the complete signal-to-execution flow across all trading engine subsystems.",
+      "tags": ["documentation", "test", "dev-graph", "integration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_bench.md",
+      "type": "document",
+      "name": "test_execution_bench.md",
+      "filePath": "dev_graph/tests/test_execution_bench.md",
+      "summary": "Dev graph test node documenting the execution benchmark test, which measures throughput and latency of the order execution engine under simulated paper-trading load.",
+      "tags": ["documentation", "test", "dev-graph", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_determinism.md",
+      "type": "document",
+      "name": "test_execution_determinism.md",
+      "filePath": "dev_graph/tests/test_execution_determinism.md",
+      "summary": "Dev graph test node documenting the execution determinism test, which ensures the order execution engine produces identical results across repeated runs given the same input sequence.",
+      "tags": ["documentation", "test", "dev-graph", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_engine.md",
+      "type": "document",
+      "name": "test_execution_engine.md",
+      "filePath": "dev_graph/tests/test_execution_engine.md",
+      "summary": "Dev graph test node documenting the execution engine test suite, which validates order matching, fill logic, and position tracking in the paper-trading execution engine.",
+      "tags": ["documentation", "test", "dev-graph", "execution-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_guards.md",
+      "type": "document",
+      "name": "test_execution_guards.md",
+      "filePath": "dev_graph/tests/test_execution_guards.md",
+      "summary": "Dev graph test node documenting the execution guards test, which validates pre-trade guardrail checks that block invalid or risk-violating orders before they reach the execution engine.",
+      "tags": ["documentation", "test", "dev-graph", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_feature_builder.md",
+      "type": "document",
+      "name": "test_feature_builder.md",
+      "filePath": "dev_graph/tests/test_feature_builder.md",
+      "summary": "Dev graph test node documenting the feature builder test, which validates the feature engineering module that assembles technical indicators and derived signals from raw market data.",
+      "tags": ["documentation", "test", "dev-graph", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_gold_bench.md",
+      "type": "document",
+      "name": "test_gold_bench.md",
+      "filePath": "dev_graph/tests/test_gold_bench.md",
+      "summary": "Dev graph test node documenting the gold benchmark test, which validates the system against a known-good reference dataset to detect regressions in trading signal quality.",
+      "tags": ["documentation", "test", "dev-graph", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_guardrail_engine.md",
+      "type": "document",
+      "name": "test_guardrail_engine.md",
+      "filePath": "dev_graph/tests/test_guardrail_engine.md",
+      "summary": "Dev graph test node documenting the guardrail engine test, which validates the risk management engine that enforces position limits, drawdown constraints, and circuit breakers at runtime.",
+      "tags": ["documentation", "test", "dev-graph", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_models (snapshot).md",
+      "type": "document",
+      "name": "test_models (snapshot).md",
+      "filePath": "dev_graph/tests/test_models (snapshot).md",
+      "summary": "Dev graph test node documenting the snapshot model test, which validates Pydantic data model serialization and deserialization fidelity against persisted snapshot fixtures.",
+      "tags": ["documentation", "test", "dev-graph", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_bench.md",
+      "type": "document",
+      "name": "test_paper_runtime_bench.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_bench.md",
+      "summary": "Dev graph test node documenting the paper runtime benchmark test, which measures end-to-end throughput of the paper-trading runtime loop under sustained simulated market event load.",
+      "tags": ["documentation", "test", "dev-graph", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_determinism.md",
+      "type": "document",
+      "name": "test_paper_runtime_determinism.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_determinism.md",
+      "summary": "Dev graph test node documenting the paper runtime determinism test, which verifies that the paper-trading runtime produces identical portfolio outcomes across replayed event sequences.",
+      "tags": ["documentation", "test", "dev-graph", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_engine.md",
+      "type": "document",
+      "name": "test_paper_runtime_engine.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_engine.md",
+      "summary": "Dev graph test node documenting the paper runtime engine test, which validates the main paper-trading event loop including order lifecycle, position management, and P&L accounting.",
+      "tags": ["documentation", "test", "dev-graph", "execution-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_guards.md",
+      "type": "document",
+      "name": "test_paper_runtime_guards.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_guards.md",
+      "summary": "Dev graph test node documenting the paper runtime guards test, which validates guardrail enforcement within the paper-trading runtime context, including halt conditions and risk overrides.",
+      "tags": ["documentation", "test", "dev-graph", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "type": "document",
+      "name": "test_paper_runtime_ledger.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_ledger.md",
+      "summary": "Dev graph test node documenting the paper runtime ledger test, which validates the in-memory trade ledger for accurate position tracking, fill accounting, and cash balance updates.",
+      "tags": ["documentation", "test", "dev-graph", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_predicates.md",
+      "type": "document",
+      "name": "test_predicates.md",
+      "filePath": "dev_graph/tests/test_predicates.md",
+      "summary": "Dev graph test node documenting the predicates test, which validates the boolean predicate functions used as guards and invariant checks throughout the trading engine pipeline.",
+      "tags": ["documentation", "test", "dev-graph", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_regime_bench.md",
+      "type": "document",
+      "name": "test_regime_bench.md",
+      "filePath": "dev_graph/tests/test_regime_bench.md",
+      "summary": "Dev graph test node documenting the regime benchmark test, which measures the throughput and classification latency of the market regime classifier under large historical data sets.",
+      "tags": ["documentation", "test", "dev-graph", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_regime_classifier.md",
+      "type": "document",
+      "name": "test_regime_classifier.md",
+      "filePath": "dev_graph/tests/test_regime_classifier.md",
+      "summary": "Dev graph test node documenting the regime classifier test suite, which validates market regime detection accuracy, label stability, and transition logic across synthetic and historical scenarios.",
+      "tags": ["documentation", "test", "dev-graph", "classification"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

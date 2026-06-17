@@ -1,0 +1,14 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "tests/snapshot/fixtures/latest_snapshot_pass.json", "language": "json", "sizeLines": 711, "fileCategory": "config"},
+    {"path": "tests/snapshot/fixtures/snapshot_fail.json", "language": "json", "sizeLines": 711, "fileCategory": "config"},
+    {"path": "tests/snapshot/fixtures/snapshot_forced.json", "language": "json", "sizeLines": 711, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    "tests/snapshot/fixtures/latest_snapshot_pass.json": [],
+    "tests/snapshot/fixtures/snapshot_fail.json": [],
+    "tests/snapshot/fixtures/snapshot_forced.json": []
+  },
+  "neighborMap": {}
+}

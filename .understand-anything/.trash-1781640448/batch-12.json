@@ -1,0 +1,67 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/architecture/Context Map.md",
+      "type": "document",
+      "name": "Context Map.md",
+      "filePath": "dev_graph/architecture/Context Map.md",
+      "summary": "Root structural artifact of the dev_graph defining 6 bounded contexts (Data Pipeline, Trading Engine, Risk Control, Agent Runtime, Evaluation Loop, Supervisor Office) and the 8 cross-system interfaces that connect them, with a Mermaid flowchart and system boundary table.",
+      "tags": ["documentation", "architecture", "infrastructure", "schema-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph node of type 'architecture' (canonical_id: ARCH-001, architecture_type: context_map). Serves as the entry point for all engineering sessions — every system node references this map."
+    },
+    {
+      "id": "document:dev_graph/architecture/Infrastructure Diagram.md",
+      "type": "document",
+      "name": "Infrastructure Diagram.md",
+      "filePath": "dev_graph/architecture/Infrastructure Diagram.md",
+      "summary": "Full-stack infrastructure topology diagram showing all substrates (raw/, wiki/, dev_graph/), MCP servers (mcpvault, smart-connections, context7, neo4j, postgres), databases (Neo4j, PostgreSQL), Obsidian plugins, and Claude Code session components, with annotated data-flow arrows rendered in Mermaid.",
+      "tags": ["documentation", "infrastructure", "architecture", "deployment"],
+      "complexity": "complex",
+      "languageNotes": "Dev_graph node of type 'architecture' (canonical_id: ARCH-004, architecture_type: context_map). Supersedes earlier root-level infrastructure diagram. Provides onboarding reference for new Claude Code sessions."
+    },
+    {
+      "id": "document:dev_graph/architecture/Layer Model.md",
+      "type": "document",
+      "name": "Layer Model.md",
+      "filePath": "dev_graph/architecture/Layer Model.md",
+      "summary": "Formal definition of the three-layer trading pipeline architecture (L1 Data Ingestion, L2 Analysis/Strategy, L3 Execution) with per-layer responsibilities, data contracts, failure modes, and a system-to-layer mapping table; identifies the Layer 2 Snapshot Schema as the critical inter-layer data contract.",
+      "tags": ["documentation", "architecture", "data-pipeline", "schema-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph node of type 'architecture' (canonical_id: ARCH-003, architecture_type: layer_model). Vertical decomposition complement to the horizontal bounded-context decomposition in Context Map."
+    },
+    {
+      "id": "document:dev_graph/architecture/Runtime Topology.md",
+      "type": "document",
+      "name": "Runtime Topology.md",
+      "filePath": "dev_graph/architecture/Runtime Topology.md",
+      "summary": "Dynamic component-interaction model showing how all 6 systems communicate at runtime via 12 named events (SnapshotCreated through UpgradeDecided), expressed as a Mermaid sequence diagram, an event-flow summary table, and a runtime scheduling table by time-of-day.",
+      "tags": ["documentation", "architecture", "infrastructure", "monitoring"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph node of type 'architecture' (canonical_id: ARCH-002, architecture_type: runtime_topology). Complements Context Map's static structure with dynamic event-driven runtime behavior; event nodes will be created in Phase 7."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/architecture/Infrastructure Diagram.md",
+      "target": "document:dev_graph/architecture/Context Map.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/architecture/Layer Model.md",
+      "target": "document:dev_graph/architecture/Context Map.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/architecture/Runtime Topology.md",
+      "target": "document:dev_graph/architecture/Context Map.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

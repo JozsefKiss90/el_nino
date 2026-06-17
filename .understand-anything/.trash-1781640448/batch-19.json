@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/gates/Gold Decision Gate.md",
+      "type": "document",
+      "name": "Gold Decision Gate.md",
+      "filePath": "dev_graph/gates/Gold Decision Gate.md",
+      "summary": "Dev graph gate node (GATE-002) defining the advisory Layer-3 checkpoint that composes six guard outcomes (data_ok, freshness_ok, supervisor_ok, cooldown_ok, duplicate_ok, operational_ok) cited in a Gold DecisionPacket's guard_refs; remains non-blocking in v0 while the paper-trading runtime is deferred.",
+      "tags": ["documentation", "gate", "verification", "infrastructure", "configuration"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology node of type 'gate' in the dev_graph engineering digital twin; blocking: false in v0, promoted to blocking when the stateful runtime exists."
+    },
+    {
+      "id": "document:dev_graph/gates/Runtime Admission Gate.md",
+      "type": "document",
+      "name": "Runtime Admission Gate.md",
+      "filePath": "dev_graph/gates/Runtime Admission Gate.md",
+      "summary": "Dev graph gate node (GATE-003) defining the blocking Layer-3 runtime admission checkpoint that composes the evaluated six-guard block into a fail-closed ADMIT/HOLD/REJECT verdict over the runtime decision record, implemented in src/gold/paper_runtime/engine.py.",
+      "tags": ["documentation", "gate", "verification", "infrastructure", "configuration"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology node of type 'gate'; blocking: true with required guards in canonical _GUARD_NAMES order; distinct from the advisory Gold Decision Gate (GATE-002) which targets the pure packet."
+    },
+    {
+      "id": "document:dev_graph/gates/Trade Validation Gate.md",
+      "type": "document",
+      "name": "Trade Validation Gate.md",
+      "filePath": "dev_graph/gates/Trade Validation Gate.md",
+      "summary": "Dev graph gate node (GATE-001) defining the blocking Risk Control trade-validation boundary that requires all five hard-limit predicates to pass before any proposed trade reaches the broker, enforced via GuardrailEngine.validate() as a short-circuit conjunction.",
+      "tags": ["documentation", "gate", "verification", "security", "infrastructure"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology node of type 'gate'; blocking: true, fail-closed; as of 2026-06-16 wired to the Execution module (MOD-008) per ADR-011, implementation_status advanced to implemented."
+    }
+  ],
+  "edges": []
+}

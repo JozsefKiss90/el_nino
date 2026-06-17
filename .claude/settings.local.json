@@ -149,7 +149,27 @@
       "Bash(sed -n '1,80p' pyproject.toml)",
       "Bash(MYPYPATH=src python -m mypy --strict --explicit-package-bases benchmarks/execution/run_execution_bench.py tests/execution/test_execution_bench.py)",
       "Bash(MYPYPATH=src python -m mypy --strict --explicit-package-bases --follow-imports=silent benchmarks/execution/run_execution_bench.py tests/execution/test_execution_bench.py)",
-      "PowerShell(powershell -ExecutionPolicy Bypass -File C:\\\\Code\\\\el_nino\\\\jarvis\\\\resync-devgraph.ps1)"
+      "PowerShell(powershell -ExecutionPolicy Bypass -File C:\\\\Code\\\\el_nino\\\\jarvis\\\\resync-devgraph.ps1)",
+      "Bash(git config *)",
+      "Bash(ssh -T -o BatchMode=yes -o ConnectTimeout=8 git@github.com)",
+      "Bash(git ls-remote *)",
+      "Bash(pwd -P)",
+      "Bash([ -f \"$PR/package.json\" ])",
+      "Bash([ -f \"$PR/pnpm-workspace.yaml\" ])",
+      "Bash([ -f \"$SK/extract-domain-context.py\" ])",
+      "Bash([ -f \"$PR/agents/domain-analyzer.md\" ])",
+      "Read(//c/Users/jozse/.claude/plugins/cache/understand-anything/understand-anything/2.8.0/skills/understand-domain/**)",
+      "Bash(echo \"=== EXIT: $? ===\")",
+      "Bash(pnpm --version)",
+      "Bash(corepack --version)",
+      "Bash(corepack enable *)",
+      "Bash(corepack pnpm@latest --version)",
+      "Bash(exit 1)",
+      "Bash(exit 0)",
+      "Bash(exit 2)",
+      "Read(//c/Users/jozse/.claude/plugins/**)",
+      "Read(//c/Users/jozse/.claude/**)",
+      "Bash(awk '{print $5, \"bytes\"}')"
     ]
   }
 }

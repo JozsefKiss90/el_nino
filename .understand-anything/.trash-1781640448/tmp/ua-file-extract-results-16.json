@@ -1,0 +1,1368 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 115,
+      "nonEmptyLines": 87,
+      "sections": [
+        {
+          "heading": "ADR - Decision Layer Re-grounding",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Gold DecisionPacket Design Constraints (invariant of record)",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Future Work",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Constrains",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 145,
+      "nonEmptyLines": 105,
+      "sections": [
+        {
+          "heading": "ADR - Deterministic Regime Taxonomy",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Motivation",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Replay guarantees",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Determinism guarantees",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "No adaptive learning rationale",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "No hidden state rationale",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Regime stability principles",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Gold Layer dependency",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Paper Trading dependency",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Canonical-id note (SCHEMA-010)",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 116
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 124
+        },
+        {
+          "heading": "Constrains",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 131
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 135
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 140
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 143
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 116,
+      "nonEmptyLines": 82,
+      "sections": [
+        {
+          "heading": "ADR - Dev Graph Bootstrap",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Alternative 1: Extend wiki/ with implementation types",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Alternative 2: Use only external tools (Neo4j/Postgres)",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Alternative 3: Flat file tracking (no graph)",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Alternative 4: Single merged vault",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Negative",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 114
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 360,
+      "nonEmptyLines": 310,
+      "sections": [
+        {
+          "heading": "ADR - Execution Layer Planning",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "1. Scope & epoch boundary",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "2. The determinism boundary is the load-bearing invariant (port/adapter split)",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "3. `paper_only` / virtual-money safety posture",
+          "level": 3,
+          "line": 137
+        },
+        {
+          "heading": "4. Re-grounding the live path (ADR-004 as precedent)",
+          "level": 3,
+          "line": 148
+        },
+        {
+          "heading": "5. Decouple from DEBT-01 and epoch (b) calibration",
+          "level": 3,
+          "line": 165
+        },
+        {
+          "heading": "6. No schema freeze — candidate objects named, none reserved or created",
+          "level": 3,
+          "line": 179
+        },
+        {
+          "heading": "7. Creation Gates",
+          "level": 3,
+          "line": 200
+        },
+        {
+          "heading": "Illustrative Field Sketch (non-normative)",
+          "level": 2,
+          "line": 233
+        },
+        {
+          "heading": "Non-Goals (explicitly deferred)",
+          "level": 2,
+          "line": 251
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 271
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 295
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 297
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 308
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 316
+        },
+        {
+          "heading": "Future Work",
+          "level": 2,
+          "line": 327
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 338
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 340
+        },
+        {
+          "heading": "Constrains",
+          "level": 3,
+          "line": 345
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 348
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 353
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 357
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 105,
+      "nonEmptyLines": 80,
+      "sections": [
+        {
+          "heading": "ADR - Feature Layer Contract",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "1. Deterministic feature eligibility",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "2. Forbidden feature classes (hard)",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "3. Provenance requirements",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "4. Replay / counterfactual determinism rule",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "5. Input boundary",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "6. Relationship to ADR-004",
+          "level": 3,
+          "line": 66
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Constrains",
+          "level": 3,
+          "line": 90
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 138,
+      "nonEmptyLines": 99,
+      "sections": [
+        {
+          "heading": "ADR - Gold Decision Confidence Semantics",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Confidence model (illustrative, non-normative)",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Sanity check (evidence — the one real snapshot)",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 121
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 133
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 137
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 198,
+      "nonEmptyLines": 147,
+      "sections": [
+        {
+          "heading": "ADR - Gold DecisionPacket v0 Planning",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "1. Bounded context & permanent separation",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "2. Dependency rules / input boundary",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "3. Determinism / replay invariants",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "4. Provenance requirements",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "5. Feature grounding",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "6. Guard separation",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "7. No schema freeze",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "8. Creation Gates",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Illustrative Field Sketch (non-normative)",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Non-Goals (explicitly deferred)",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 166
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 170
+        },
+        {
+          "heading": "Future Work",
+          "level": 2,
+          "line": 173
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 183
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 185
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 190
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 194
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 197
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Implementation Substrate.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 92,
+      "nonEmptyLines": 72,
+      "sections": [
+        {
+          "heading": "ADR - Implementation Substrate",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Alternative 1: pydantic models from the start",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Alternative 2: flat layout (no `src/`)",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Alternative 3: poetry as dependency manager",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Negative",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 192,
+      "nonEmptyLines": 154,
+      "sections": [
+        {
+          "heading": "ADR - JARVIS GraphRAG Integration",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "1. JARVIS is a READ-ONLY consumer of the dev_graph",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "2. The bridge is the EXISTING FastAPI app, extended — not a new server",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "3. Every graph-grounded answer cites canonical_ids and carries the evidence-class",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "4. Offline `graph.json` and live Neo4j are interchangeable sources behind one typed layer",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "5. Governance habit — re-sync on dev_graph change",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Non-Goals (explicitly deferred)",
+          "level": 2,
+          "line": 117
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 146
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 148
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 164
+        },
+        {
+          "heading": "Future Work",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 183
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 187
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 191
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Ontology Redesign.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 130,
+      "nonEmptyLines": 92,
+      "sections": [
+        {
+          "heading": "ADR - Ontology Redesign",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Alternative 1: Incremental type additions without hierarchy",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Alternative 2: Full Engineering Digital Twin with runtime instances",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Alternative 3: Fewer types (merge knowledge_asset into reference, merge pattern into governance)",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Negative",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 123
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 125
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 23
+      }
+    },
+    {
+      "path": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 270,
+      "nonEmptyLines": 224,
+      "sections": [
+        {
+          "heading": "ADR - Paper-Trading Runtime Planning",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Decision",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "1. Bounded context & permanent separation",
+          "level": 3,
+          "line": 72
+        },
+        {
+          "heading": "2. Wrap, never enrich-in-place (the packet stays pure)",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "3. Input boundary",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "4. Stateful determinism / replay invariant (reconciling ADR-004 §3 and ADR-006 §3)",
+          "level": 3,
+          "line": 113
+        },
+        {
+          "heading": "5. Self-describing, append-only ledger",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "6. Guard separation & scope",
+          "level": 3,
+          "line": 134
+        },
+        {
+          "heading": "7. No schema freeze (this slice)",
+          "level": 3,
+          "line": 142
+        },
+        {
+          "heading": "8. Policy fingerprinting & fail-closed verdict",
+          "level": 3,
+          "line": 149
+        },
+        {
+          "heading": "9. Creation Gates",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Illustrative Field Sketch (non-normative)",
+          "level": 2,
+          "line": 176
+        },
+        {
+          "heading": "Non-Goals (explicitly deferred)",
+          "level": 2,
+          "line": 189
+        },
+        {
+          "heading": "Alternatives Considered",
+          "level": 2,
+          "line": 203
+        },
+        {
+          "heading": "Consequences",
+          "level": 2,
+          "line": 217
+        },
+        {
+          "heading": "Positive",
+          "level": 3,
+          "line": 219
+        },
+        {
+          "heading": "Negative / Trade-offs",
+          "level": 3,
+          "line": 226
+        },
+        {
+          "heading": "Risks",
+          "level": 3,
+          "line": 232
+        },
+        {
+          "heading": "Future Work",
+          "level": 2,
+          "line": 238
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 248
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 250
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 255
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 259
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 262
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 26
+      }
+    }
+  ]
+}

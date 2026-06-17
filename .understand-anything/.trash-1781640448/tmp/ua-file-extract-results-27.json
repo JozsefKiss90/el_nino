@@ -1,0 +1,558 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/systems/Agent Runtime.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 97,
+      "nonEmptyLines": 75,
+      "sections": [
+        {
+          "heading": "Agent Runtime",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Bounded Context Scope",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Key Interfaces",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 78
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 95
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/systems/Data Pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 100,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "Data Pipeline",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Bounded Context Scope",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "External Dependencies",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Key Interfaces",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 97
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "dev_graph/systems/Evaluation Loop.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 94,
+      "nonEmptyLines": 72,
+      "sections": [
+        {
+          "heading": "Evaluation Loop",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Bounded Context Scope",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Key Interfaces",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/systems/Risk Control.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 90,
+      "nonEmptyLines": 68,
+      "sections": [
+        {
+          "heading": "Risk Control",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Bounded Context Scope",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Key Interfaces",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 78
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/systems/Supervisor Office.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 108,
+      "nonEmptyLines": 86,
+      "sections": [
+        {
+          "heading": "Supervisor Office",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Bounded Context Scope",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Key Interfaces",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 106
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/systems/Trading Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 113,
+      "nonEmptyLines": 91,
+      "sections": [
+        {
+          "heading": "Trading Engine",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Bounded Context Scope",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Key Interfaces",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 110
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

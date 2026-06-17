@@ -1,0 +1,198 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/capabilities/Context Assembly.md",
+      "type": "document",
+      "name": "Context Assembly.md",
+      "filePath": "dev_graph/capabilities/Context Assembly.md",
+      "summary": "Dev-graph capability node defining the Context Assembly capability: assembles typed context packs for Claude Code sessions by retrieving, filtering, and grounding dev_graph nodes before any coding task.",
+      "tags": ["documentation", "capability", "infrastructure", "context-assembly"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed Markdown node following the dev_graph universal schema with 14 structured sections including Definition, Purpose, Architecture Role, Inputs, Outputs, Constraints, and Relationships."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Decision Making.md",
+      "type": "document",
+      "name": "Decision Making.md",
+      "filePath": "dev_graph/capabilities/Decision Making.md",
+      "summary": "Dev-graph capability node defining the Decision Making capability: encodes the policy and logic by which the trading system chooses whether to enter, hold, or exit positions based on signals, regime, and guardrails.",
+      "tags": ["documentation", "capability", "trading-logic", "decision-making"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed Markdown node with 14 structured sections covering both the trading decision policy and its architecture role within the el_nino system hierarchy."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Exposure Tracking.md",
+      "type": "document",
+      "name": "Exposure Tracking.md",
+      "filePath": "dev_graph/capabilities/Exposure Tracking.md",
+      "summary": "Dev-graph capability node defining Exposure Tracking: monitors aggregate market exposure (gross, net, per-symbol) across all open paper-trade positions to enforce risk limits.",
+      "tags": ["documentation", "capability", "risk-management", "exposure-tracking"],
+      "complexity": "simple",
+      "languageNotes": "Compact capability node (63 lines) with 12 sections; slightly shorter than peers, reflecting a focused single-responsibility capability without open-question deferred contracts."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Feature Engineering.md",
+      "type": "document",
+      "name": "Feature Engineering.md",
+      "filePath": "dev_graph/capabilities/Feature Engineering.md",
+      "summary": "Dev-graph capability node defining Feature Engineering: transforms raw market data into normalized feature vectors consumed by signal generators and regime classifiers.",
+      "tags": ["documentation", "capability", "feature-engineering", "data-pipeline"],
+      "complexity": "moderate",
+      "languageNotes": "One of the more connected capability nodes with 15 sections including Validated By and Constrained By subsections, reflecting ML-pipeline governance requirements."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Gold Decision Generation.md",
+      "type": "document",
+      "name": "Gold Decision Generation.md",
+      "filePath": "dev_graph/capabilities/Gold Decision Generation.md",
+      "summary": "Dev-graph capability node defining Gold Decision Generation: produces the historically optimal (gold-label) trading decisions used as ground-truth for benchmarking and model validation, including an Open Questions section for unresolved deferred contracts.",
+      "tags": ["documentation", "capability", "benchmarking", "gold-labels"],
+      "complexity": "moderate",
+      "languageNotes": "The most section-rich capability node in this batch (21 sections, 109 lines) including a Supersedes subsection, reflecting its role as an evolved replacement for an older generation approach."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Guardrail Enforcement.md",
+      "type": "document",
+      "name": "Guardrail Enforcement.md",
+      "filePath": "dev_graph/capabilities/Guardrail Enforcement.md",
+      "summary": "Dev-graph capability node defining Guardrail Enforcement: applies hard pre-trade and post-trade constraints (position size, exposure, drawdown) to prevent dangerous trading behavior.",
+      "tags": ["documentation", "capability", "guardrails", "risk-management"],
+      "complexity": "moderate",
+      "languageNotes": "Capability node with an expanded Contains subsection (lines 62-70) listing multiple guard types, reflecting the composite nature of this safety-critical capability."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Market Regime Classification.md",
+      "type": "document",
+      "name": "Market Regime Classification.md",
+      "filePath": "dev_graph/capabilities/Market Regime Classification.md",
+      "summary": "Dev-graph capability node defining Market Regime Classification: labels the current market environment (trending, ranging, volatile, etc.) to gate signal generation and adjust position sizing.",
+      "tags": ["documentation", "capability", "regime-classification", "market-analysis"],
+      "complexity": "moderate",
+      "languageNotes": "Includes a dedicated 'Related Schemas / Tests / Decisions' section (line 58) in addition to the standard Relationships block, giving extra traceability to validation artifacts."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Market Scanning.md",
+      "type": "document",
+      "name": "Market Scanning.md",
+      "filePath": "dev_graph/capabilities/Market Scanning.md",
+      "summary": "Dev-graph capability node defining Market Scanning: continuously screens the universe of tradable symbols against liquidity, volatility, and regime filters to produce a ranked candidate list for downstream signal generation.",
+      "tags": ["documentation", "capability", "market-scanning", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Order Management.md",
+      "type": "document",
+      "name": "Order Management.md",
+      "filePath": "dev_graph/capabilities/Order Management.md",
+      "summary": "Dev-graph capability node defining Order Management: the execution layer that translates approved trade decisions into paper-order lifecycle events (fill, partial-fill, cancel, expire) per ADR-011 re-grounding.",
+      "tags": ["documentation", "capability", "order-management", "execution-layer"],
+      "complexity": "complex",
+      "languageNotes": "Largest capability node in this batch (139 lines, 18 sections) with a dedicated 'Scope (Execution Layer Re-grounding, ADR-011)' section, reflecting a major architectural re-alignment."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Paper-Trade Admission.md",
+      "type": "document",
+      "name": "Paper-Trade Admission.md",
+      "filePath": "dev_graph/capabilities/Paper-Trade Admission.md",
+      "summary": "Dev-graph capability node defining Paper-Trade Admission: the gateway capability that validates incoming trade signals against all guardrails and exposure limits before committing them as live paper positions.",
+      "tags": ["documentation", "capability", "admission-control", "guardrails"],
+      "complexity": "moderate",
+      "languageNotes": "One of the more detailed capability nodes (116 lines, 19 sections) with an Open Questions section, reflecting active architectural uncertainty around admission sequencing."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Performance Scoring.md",
+      "type": "document",
+      "name": "Performance Scoring.md",
+      "filePath": "dev_graph/capabilities/Performance Scoring.md",
+      "summary": "Dev-graph capability node defining Performance Scoring: computes per-strategy and per-agent performance metrics (Sharpe, win rate, drawdown) used for promotion decisions and benchmarking.",
+      "tags": ["documentation", "capability", "performance-scoring", "benchmarking"],
+      "complexity": "moderate",
+      "languageNotes": "Includes a dedicated 'Key Metrics' section (line 51) enumerating the quantitative measures tracked, supplementing the standard capability template."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Position Tracking.md",
+      "type": "document",
+      "name": "Position Tracking.md",
+      "filePath": "dev_graph/capabilities/Position Tracking.md",
+      "summary": "Dev-graph capability node defining Position Tracking: maintains the live ledger of open and closed paper-trade positions, reconciling fills with order events to produce accurate P&L state.",
+      "tags": ["documentation", "capability", "position-tracking", "ledger"],
+      "complexity": "moderate",
+      "languageNotes": "Rich relationship section (17 subsections) with both Consumes/Produces and Implemented By/Validated By subsections, reflecting tight coupling to the execution and persistence layers."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Promotion Validation.md",
+      "type": "document",
+      "name": "Promotion Validation.md",
+      "filePath": "dev_graph/capabilities/Promotion Validation.md",
+      "summary": "Dev-graph capability node defining Promotion Validation: evaluates whether a paper-trading strategy has met the Syndicate Squad promotion criteria to advance to a higher-confidence trading tier.",
+      "tags": ["documentation", "capability", "promotion", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "Contains a domain-specific 'Promotion Criteria (Syndicate Squad)' section (line 51), making this the primary reference for squad promotion thresholds within the ontology."
+    },
+    {
+      "id": "document:dev_graph/capabilities/Signal Generation.md",
+      "type": "document",
+      "name": "Signal Generation.md",
+      "filePath": "dev_graph/capabilities/Signal Generation.md",
+      "summary": "Dev-graph capability node defining Signal Generation: produces directional trade signals (long/short/hold) from feature vectors and regime labels, acting as the core alpha-generation capability.",
+      "tags": ["documentation", "capability", "signal-generation", "alpha-generation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Snapshot Assembly.md",
+      "type": "document",
+      "name": "Snapshot Assembly.md",
+      "filePath": "dev_graph/capabilities/Snapshot Assembly.md",
+      "summary": "Dev-graph capability node defining Snapshot Assembly: aggregates multi-source market data into a consistent, timestamped snapshot packet consumed by feature engineering and regime classification.",
+      "tags": ["documentation", "capability", "snapshot-assembly", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/State Persistence.md",
+      "type": "document",
+      "name": "State Persistence.md",
+      "filePath": "dev_graph/capabilities/State Persistence.md",
+      "summary": "Dev-graph capability node defining State Persistence: durably stores all trading engine state (positions, orders, scores) to a backing store, enabling crash recovery and audit trail.",
+      "tags": ["documentation", "capability", "persistence", "storage"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Stop-Loss Management.md",
+      "type": "document",
+      "name": "Stop-Loss Management.md",
+      "filePath": "dev_graph/capabilities/Stop-Loss Management.md",
+      "summary": "Dev-graph capability node defining Stop-Loss Management: monitors open positions against configurable stop-loss thresholds and emits close signals when breach conditions are met.",
+      "tags": ["documentation", "capability", "stop-loss", "risk-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Team Orchestration.md",
+      "type": "document",
+      "name": "Team Orchestration.md",
+      "filePath": "dev_graph/capabilities/Team Orchestration.md",
+      "summary": "Dev-graph capability node defining Team Orchestration: coordinates the multi-agent squad lifecycle — spawning, scheduling, retiring, and promoting agent teams within the trading engine.",
+      "tags": ["documentation", "capability", "orchestration", "multi-agent"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Trade Logging.md",
+      "type": "document",
+      "name": "Trade Logging.md",
+      "filePath": "dev_graph/capabilities/Trade Logging.md",
+      "summary": "Dev-graph capability node defining Trade Logging: records every trade event (entry, exit, partial fill, cancel) with full audit context to the append-only trade log.",
+      "tags": ["documentation", "capability", "trade-logging", "audit-trail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Treasury Management.md",
+      "type": "document",
+      "name": "Treasury Management.md",
+      "filePath": "dev_graph/capabilities/Treasury Management.md",
+      "summary": "Dev-graph capability node defining Treasury Management: governs capital allocation across squads and strategies, enforcing policy gates on drawdown, allocation limits, and rebalancing triggers.",
+      "tags": ["documentation", "capability", "treasury", "capital-management"],
+      "complexity": "moderate",
+      "languageNotes": "Contains dedicated 'Treasury Model' and 'Policy Gates' sections (lines 52-68), making this the authoritative reference for the capital allocation policy within the ontology."
+    }
+  ],
+  "edges": []
+}

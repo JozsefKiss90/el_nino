@@ -1,0 +1,435 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/supervisor/decision_engine/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 24,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/supervisor/decision_engine/decision_engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 88,
+      "nonEmptyLines": 76,
+      "classes": [
+        {
+          "name": "DecisionEngine",
+          "startLine": 22,
+          "endLine": 88,
+          "methods": [
+            "__init__",
+            "decide"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "DecisionEngine",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "DecisionConfig",
+          "lineNumber": 26
+        },
+        {
+          "caller": "decide",
+          "callee": "frozenset",
+          "lineNumber": 35
+        },
+        {
+          "caller": "decide",
+          "callee": "DecisionPacket",
+          "lineNumber": 42
+        },
+        {
+          "caller": "decide",
+          "callee": "score_option",
+          "lineNumber": 52
+        },
+        {
+          "caller": "decide",
+          "callee": "scored.append",
+          "lineNumber": 54
+        },
+        {
+          "caller": "decide",
+          "callee": "RankedOption",
+          "lineNumber": 55
+        },
+        {
+          "caller": "decide",
+          "callee": "scored.append",
+          "lineNumber": 58
+        },
+        {
+          "caller": "decide",
+          "callee": "RankedOption",
+          "lineNumber": 59
+        },
+        {
+          "caller": "decide",
+          "callee": "scored.append",
+          "lineNumber": 67
+        },
+        {
+          "caller": "decide",
+          "callee": "RankedOption",
+          "lineNumber": 67
+        },
+        {
+          "caller": "decide",
+          "callee": "tuple",
+          "lineNumber": 70
+        },
+        {
+          "caller": "decide",
+          "callee": "sorted",
+          "lineNumber": 70
+        },
+        {
+          "caller": "decide",
+          "callee": "DecisionPacket",
+          "lineNumber": 74
+        },
+        {
+          "caller": "decide",
+          "callee": "next",
+          "lineNumber": 82
+        },
+        {
+          "caller": "decide",
+          "callee": "DecisionPacket",
+          "lineNumber": 83
+        },
+        {
+          "caller": "decide",
+          "callee": "treasury.after_spend",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/supervisor/decision_engine/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 93,
+      "nonEmptyLines": 66,
+      "classes": [
+        {
+          "name": "EvaluationScorecard",
+          "startLine": 16,
+          "endLine": 22,
+          "methods": [],
+          "properties": [
+            "realized_pnl",
+            "calibration",
+            "drawdown",
+            "disagreement"
+          ]
+        },
+        {
+          "name": "UpgradeOption",
+          "startLine": 26,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "upgrade_id",
+            "cost",
+            "target_dimension",
+            "expected_improvement"
+          ]
+        },
+        {
+          "name": "TreasuryState",
+          "startLine": 36,
+          "endLine": 47,
+          "methods": [
+            "available",
+            "after_spend"
+          ],
+          "properties": [
+            "budget",
+            "deployed"
+          ]
+        },
+        {
+          "name": "RankedOption",
+          "startLine": 51,
+          "endLine": 66,
+          "methods": [
+            "__post_init__"
+          ],
+          "properties": [
+            "upgrade_id",
+            "score",
+            "allowed",
+            "blocked_reason"
+          ]
+        },
+        {
+          "name": "DecisionPacket",
+          "startLine": 70,
+          "endLine": 85,
+          "methods": [
+            "__post_init__"
+          ],
+          "properties": [
+            "selected_upgrade_id",
+            "ranked_options",
+            "rationale",
+            "treasury_state_after"
+          ]
+        },
+        {
+          "name": "DecisionConfig",
+          "startLine": 89,
+          "endLine": 93,
+          "methods": [],
+          "properties": [
+            "promotable_pnl_threshold",
+            "promotable_calibration_threshold"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "EvaluationScorecard",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "UpgradeOption",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "TreasuryState",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "RankedOption",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "DecisionPacket",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "DecisionConfig",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "after_spend",
+          "callee": "TreasuryState",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 0,
+        "classCount": 6
+      }
+    },
+    {
+      "path": "src/supervisor/decision_engine/scoring.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "_clamp",
+          "startLine": 14,
+          "endLine": 15,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_calibration_weakness",
+          "startLine": 18,
+          "endLine": 19,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "_pnl_weakness",
+          "startLine": 22,
+          "endLine": 23,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "_drawdown_weakness",
+          "startLine": 26,
+          "endLine": 27,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "_disagreement_weakness",
+          "startLine": 30,
+          "endLine": 31,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "weakness_severity",
+          "startLine": 42,
+          "endLine": 45,
+          "params": [
+            "dimension",
+            "scorecard"
+          ]
+        },
+        {
+          "name": "score_option",
+          "startLine": 48,
+          "endLine": 53,
+          "params": [
+            "option",
+            "scorecard"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_clamp",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "_calibration_weakness",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "_pnl_weakness",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "_drawdown_weakness",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "_disagreement_weakness",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "weakness_severity",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "score_option",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_clamp",
+          "callee": "max",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_clamp",
+          "callee": "min",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_calibration_weakness",
+          "callee": "_clamp",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_drawdown_weakness",
+          "callee": "_clamp",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_disagreement_weakness",
+          "callee": "_clamp",
+          "lineNumber": 31
+        },
+        {
+          "caller": "weakness_severity",
+          "callee": "WEAKNESS_DIMENSIONS.get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "weakness_severity",
+          "callee": "fn",
+          "lineNumber": 45
+        },
+        {
+          "caller": "score_option",
+          "callee": "ValueError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "score_option",
+          "callee": "weakness_severity",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    }
+  ]
+}

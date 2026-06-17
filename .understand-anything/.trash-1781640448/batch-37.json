@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/backtesting/Backtesting Methodology.md",
+      "type": "document",
+      "name": "Backtesting Methodology.md",
+      "filePath": "wiki/backtesting/Backtesting Methodology.md",
+      "summary": "Comprehensive wiki article defining the standard backtesting protocol used in el_nino, covering key performance metrics (Sharpe ratio, drawdown, win rate), inputs/outputs, failure modes, and related quantitative trading concepts.",
+      "tags": ["documentation", "backtesting", "methodology", "quantitative-finance", "testing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/backtesting/Overfitting Detection.md",
+      "type": "document",
+      "name": "Overfitting Detection.md",
+      "filePath": "wiki/backtesting/Overfitting Detection.md",
+      "summary": "Wiki article describing detection signals and a mitigation pipeline for strategy overfitting in backtesting, including key validation metrics, failure modes, and dependency relationships within the backtesting knowledge corpus.",
+      "tags": ["documentation", "overfitting", "backtesting", "validation", "quantitative-finance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "type": "document",
+      "name": "Walk-Forward Optimization.md",
+      "filePath": "wiki/backtesting/Walk-Forward Optimization.md",
+      "summary": "Detailed wiki article explaining walk-forward optimization methodology for trading strategy validation, covering rolling window mechanics, key evidence patterns, tradeoffs, open questions, and future extension paths.",
+      "tags": ["documentation", "walk-forward", "optimization", "backtesting", "quantitative-finance"],
+      "complexity": "moderate",
+      "languageNotes": "The most detailed of the three backtesting wiki articles at 121 lines with 15 sections, including dedicated Tradeoffs, Open Questions, and Future Extensions sections indicating active research content."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/backtesting/Backtesting Methodology.md",
+      "target": "document:wiki/backtesting/Overfitting Detection.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Backtesting Methodology.md",
+      "target": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Overfitting Detection.md",
+      "target": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

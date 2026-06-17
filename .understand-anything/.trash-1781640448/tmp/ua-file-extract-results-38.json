@@ -1,0 +1,406 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/concepts/EMA Crossover.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 95,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "EMA Crossover",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Standard Configuration",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Signal Logic",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "As Trend Confirmation",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Calculation",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "wiki/concepts/Options Trading.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 158,
+      "nonEmptyLines": 104,
+      "sections": [
+        {
+          "heading": "Options Trading",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Core Concepts",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Call Option",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Put Option",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Premium",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Strike Price",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Expiration",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Selling Options (Income Generation)",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Insurance Analogy",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 138
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 142
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 149
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 156
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "wiki/concepts/Relative Volume Filter.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 79,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "Relative Volume Filter",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Signal Logic",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "wiki/concepts/VWAP.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 99,
+      "nonEmptyLines": 68,
+      "sections": [
+        {
+          "heading": "VWAP",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Calculation",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Usage in System",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "As Trend Filter",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "As Entry Signal (VWAP Crossover)",
+          "level": 3,
+          "line": 43
+        },
+        {
+          "heading": "As Safety Gate",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    }
+  ]
+}

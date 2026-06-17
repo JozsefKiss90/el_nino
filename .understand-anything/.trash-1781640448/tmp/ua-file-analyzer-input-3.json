@@ -1,0 +1,111 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {
+      "path": "src/features/feature_builder/__init__.py",
+      "language": "python",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/features/feature_builder/feature_builder.py",
+      "language": "python",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/features/feature_builder/models.py",
+      "language": "python",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/__init__.py",
+      "language": "python",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/config.py",
+      "language": "python",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/models.py",
+      "language": "python",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/regime_classifier.py",
+      "language": "python",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/regime/regime_classifier/taxonomy.py",
+      "language": "python",
+      "sizeLines": 209,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/__init__.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/consumer.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/snapshot/snapshot_consumer/models.py",
+      "language": "python",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "src/features/feature_builder/__init__.py": [
+      "src/features/feature_builder/feature_builder.py",
+      "src/features/feature_builder/models.py"
+    ],
+    "src/features/feature_builder/feature_builder.py": [
+      "src/features/feature_builder/models.py",
+      "src/snapshot/snapshot_consumer/models.py"
+    ],
+    "src/features/feature_builder/models.py": [],
+    "src/regime/regime_classifier/__init__.py": [
+      "src/regime/regime_classifier/config.py",
+      "src/regime/regime_classifier/models.py",
+      "src/regime/regime_classifier/regime_classifier.py",
+      "src/regime/regime_classifier/taxonomy.py"
+    ],
+    "src/regime/regime_classifier/config.py": [
+      "src/regime/regime_classifier/models.py"
+    ],
+    "src/regime/regime_classifier/models.py": [],
+    "src/regime/regime_classifier/regime_classifier.py": [
+      "src/features/feature_builder/models.py",
+      "src/regime/regime_classifier/config.py",
+      "src/regime/regime_classifier/models.py",
+      "src/regime/regime_classifier/taxonomy.py"
+    ],
+    "src/regime/regime_classifier/taxonomy.py": [
+      "src/features/feature_builder/models.py",
+      "src/regime/regime_classifier/config.py",
+      "src/regime/regime_classifier/models.py"
+    ],
+    "src/snapshot/snapshot_consumer/__init__.py": [
+      "src/snapshot/snapshot_consumer/consumer.py",
+      "src/snapshot/snapshot_consumer/models.py"
+    ],
+    "src/snapshot/snapshot_consumer/consumer.py": [
+      "src/snapshot/snapshot_consumer/models.py"
+    ],
+    "src/snapshot/snapshot_consumer/models.py": []
+  }
+}

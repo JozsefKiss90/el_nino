@@ -1,0 +1,32 @@
+
+Your graph is permanent — only the viewer stops
+
+The data is on disk and survives everything:
+- C:\Code\el_nino\.understand-anything\knowledge-graph.json (architecture)
+- C:\Code\el_nino\.understand-anything\domain-graph.json (domain flows)
+
+Closing the session or the 127.0.0.1:5173 tab just stops the local web server. Nothing is lost, and the slow one-time setup (pnpm install + build) is already done — so it relaunches in a few seconds.
+
+To view it again: run the launcher I just created
+
+C:\Code\el_nino\understand-dashboard.ps1
+
+Three ways to run it:
+- Right-click → "Run with PowerShell", or
+- In a terminal: powershell -ExecutionPolicy Bypass -File .\understand-dashboard.ps1, or
+- Inside Claude Code: ! powershell -ExecutionPolicy Bypass -File .\understand-dashboard.ps1
+
+It always serves at the same URL (I pinned the token), auto-opens your browser, and you stop it with Ctrl+C:
+
+http://127.0.0.1:5173/?token=elnino5f3a9c2b1e8d4a769b0c4d2e1f6a8b30
+
+The script auto-finds the newest installed plugin version, so it keeps working across plugin updates (and prints a clear message if a future update ever needs a rebuild).
+
+Notes
+
+- You don't need to do anything right now — the current server is still running. The launcher is for next time.
+- The fixed token is fine: the server binds to 127.0.0.1 only (your machine, not the network).
+- /understand later for updates: when your code changes, re-running it is fast — the fingerprints.json baseline means it only re-analyzes changed files (incremental), not all 429 again.
+- The launcher is a local convenience file; delete it or add understand-dashboard.ps1 to .gitignore if you don't want it tracked.
+
+Want me to verify the launcher by starting it on an alternate port now (leaving your current server untouched), or add it to .gitignore?doe

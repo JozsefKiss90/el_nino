@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/systems/Architecture Overview.md",
+      "type": "document",
+      "name": "Architecture Overview.md",
+      "filePath": "wiki/systems/Architecture Overview.md",
+      "summary": "Top-level architectural overview of the Claude-assisted trading system, describing a six-layer architecture (data ingestion through risk and governance) plus five variant architectures including Syndicate Squad and TradingView pipelines.",
+      "tags": ["documentation", "architecture", "overview", "trading-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/systems/Claude-Assisted Trading Stack.md",
+      "type": "document",
+      "name": "Claude-Assisted Trading Stack.md",
+      "filePath": "wiki/systems/Claude-Assisted Trading Stack.md",
+      "summary": "Comprehensive reference for the full Claude-assisted trading technology stack, cataloguing components across AI runtime, brokerage, data research, deployment, notifications, and MCP layers with configuration, failure modes, and tradeoffs.",
+      "tags": ["documentation", "architecture", "trading-system", "configuration", "llm-integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/systems/LLM Failure Modes in Trading.md",
+      "type": "document",
+      "name": "LLM Failure Modes in Trading.md",
+      "filePath": "wiki/systems/LLM Failure Modes in Trading.md",
+      "summary": "Catalog of twelve distinct LLM failure modes in trading contexts (hallucinated signals, overfitting, stale context, context overflow, delayed execution, invalid assumptions, eager agent syndrome, memory corruption, API key exposure, strategy drift, context window rot, benchmark misinterpretation) with mitigations.",
+      "tags": ["documentation", "risk", "llm-integration", "failure-modes", "trading-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/systems/Syndicate Squad Architecture.md",
+      "type": "document",
+      "name": "Syndicate Squad Architecture.md",
+      "filePath": "wiki/systems/Syndicate Squad Architecture.md",
+      "summary": "Describes the Syndicate Squad multi-agent architecture: a supervisor-coordinated ensemble of agent desks with upgrade lifecycle, promotion logic, anti-theater layer, and distinction between real and simulated trading components.",
+      "tags": ["documentation", "architecture", "multi-agent", "trading-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/systems/Three-Layer Trading System.md",
+      "type": "document",
+      "name": "Three-Layer Trading System.md",
+      "filePath": "wiki/systems/Three-Layer Trading System.md",
+      "summary": "Documents the three-layer trading system comprising a stock screener (Layer 1), strategy engine (Layer 2), and execution engine (Layer 3), with performance evidence, codebase references, failure modes, and tradeoffs.",
+      "tags": ["documentation", "architecture", "trading-system", "three-layer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/systems/Trading Engine Pipeline.md",
+      "type": "document",
+      "name": "Trading Engine Pipeline.md",
+      "filePath": "wiki/systems/Trading Engine Pipeline.md",
+      "summary": "Defines the seven-stage trading engine pipeline (research, signal generation, validation, execution, journaling, evaluation, refinement) with a Syndicate Squad paper trading variant, failure modes, tradeoffs, and operational constraints.",
+      "tags": ["documentation", "pipeline", "trading-system", "workflow"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/systems/Architecture Overview.md",
+      "target": "document:wiki/systems/Claude-Assisted Trading Stack.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/systems/Architecture Overview.md",
+      "target": "document:wiki/systems/Three-Layer Trading System.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/systems/Architecture Overview.md",
+      "target": "document:wiki/systems/Syndicate Squad Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/systems/Architecture Overview.md",
+      "target": "document:wiki/systems/Trading Engine Pipeline.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/systems/Claude-Assisted Trading Stack.md",
+      "target": "document:wiki/systems/LLM Failure Modes in Trading.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/systems/Three-Layer Trading System.md",
+      "target": "document:wiki/systems/Trading Engine Pipeline.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/systems/Syndicate Squad Architecture.md",
+      "target": "document:wiki/systems/Trading Engine Pipeline.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

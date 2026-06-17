@@ -1,0 +1,375 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "raw/Claude for Financial Services.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 86,
+      "nonEmptyLines": 57,
+      "sections": [
+        {
+          "heading": "The AI ecosystem for financial services",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Accelerating enterprise adoption",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Use cases",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Getting started",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Footnotes",
+          "level": 4,
+          "line": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "raw/build-spec.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 78,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "The Syndicate Squad Build Spec",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Goal",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "What We Are Building",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "MVP Screens",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Demo Flow",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Frontend",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Domain Model",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "Integration",
+          "level": 3,
+          "line": 66
+        },
+        {
+          "heading": "Winning Story",
+          "level": 2,
+          "line": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "raw/calude_alpaca_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "raw/claude_cowork_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 108,
+      "nonEmptyLines": 108,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "raw/claude_opus_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "raw/claude_stock_trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "raw/claude_tradingview.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "raw/ows-dev-squad.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 558,
+      "nonEmptyLines": 389,
+      "sections": [
+        {
+          "heading": "Architecture",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "One Sentence",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "System Diagram",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Core Idea",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Main Components",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "1. Dashboard",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "2. Domain Model",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "3. Scenario Layer",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "4. Action Orchestrator",
+          "level": 3,
+          "line": 144
+        },
+        {
+          "heading": "5. Supervisor Decision Engine",
+          "level": 3,
+          "line": 170
+        },
+        {
+          "heading": "6. Upgrade Simulator",
+          "level": 3,
+          "line": 201
+        },
+        {
+          "heading": "7. Multi-Round Evolution Engine",
+          "level": 3,
+          "line": 221
+        },
+        {
+          "heading": "8. Paper Trading Engine",
+          "level": 3,
+          "line": 239
+        },
+        {
+          "heading": "9. Replay Proof Harness",
+          "level": 3,
+          "line": 258
+        },
+        {
+          "heading": "10. Session / Persistence Layer",
+          "level": 3,
+          "line": 276
+        },
+        {
+          "heading": "11. Integration Adapters",
+          "level": 3,
+          "line": 294
+        },
+        {
+          "heading": "12. x402 Payment Integration",
+          "level": 3,
+          "line": 311
+        },
+        {
+          "heading": "13. MoonPay Integration",
+          "level": 3,
+          "line": 326
+        },
+        {
+          "heading": "Office Action Loop",
+          "level": 2,
+          "line": 344
+        },
+        {
+          "heading": "Paper Trading Work Cycle",
+          "level": 2,
+          "line": 358
+        },
+        {
+          "heading": "Data Flow",
+          "level": 2,
+          "line": 374
+        },
+        {
+          "heading": "Demo Loop",
+          "level": 3,
+          "line": 376
+        },
+        {
+          "heading": "Paper Trading Loop",
+          "level": 3,
+          "line": 386
+        },
+        {
+          "heading": "Replay Proof",
+          "level": 3,
+          "line": 396
+        },
+        {
+          "heading": "OWS Integration",
+          "level": 2,
+          "line": 404
+        },
+        {
+          "heading": "XMTP Integration",
+          "level": 2,
+          "line": 442
+        },
+        {
+          "heading": "x402 Integration",
+          "level": 2,
+          "line": 458
+        },
+        {
+          "heading": "MoonPay Integration",
+          "level": 2,
+          "line": 474
+        },
+        {
+          "heading": "What Is Real vs Simulated",
+          "level": 2,
+          "line": 489
+        },
+        {
+          "heading": "Real",
+          "level": 3,
+          "line": 491
+        },
+        {
+          "heading": "Simulated",
+          "level": 3,
+          "line": 506
+        },
+        {
+          "heading": "Live-Or-Fallback",
+          "level": 3,
+          "line": 514
+        },
+        {
+          "heading": "Proof Surface",
+          "level": 2,
+          "line": 521
+        },
+        {
+          "heading": "Current Gaps",
+          "level": 2,
+          "line": 543
+        },
+        {
+          "heading": "Why This Architecture Matters",
+          "level": 2,
+          "line": 552
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 35
+      }
+    }
+  ]
+}

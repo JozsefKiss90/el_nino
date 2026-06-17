@@ -1,0 +1,926 @@
+{
+  "nodes": [
+    {
+      "id": "config:benchmarks/execution/artifacts/execution_bench.json",
+      "type": "config",
+      "name": "execution_bench.json",
+      "filePath": "benchmarks/execution/artifacts/execution_bench.json",
+      "summary": "Persisted benchmark artifact capturing execution policy replay results, byte-identity checks, fill-model fingerprints, and guard-block attribution for both real and synthetic sequences.",
+      "tags": ["configuration", "benchmark", "data-pipeline", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/execution/run_execution_bench.py",
+      "type": "file",
+      "name": "run_execution_bench.py",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "summary": "Execution-layer benchmark runner that replays real and synthetic trading sequences through the guard/decision/fill chain, verifying byte-identical replay and producing a JSON artifact with coverage metrics.",
+      "tags": ["benchmark", "entry-point", "execution", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:_replay_block",
+      "type": "function",
+      "name": "_replay_block",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [133, 151],
+      "summary": "Runs two independent replay passes of a sequence through the execution chain, compares serialized outputs for byte-identity, and returns per-step comparison results.",
+      "tags": ["validation", "benchmark", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:_build_chain",
+      "type": "function",
+      "name": "_build_chain",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [157, 177],
+      "summary": "Constructs the full feature-extraction/classification/guard/decision/operational pipeline from a snapshot path, returning all component instances needed for replay.",
+      "tags": ["factory", "execution", "pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:run_real",
+      "type": "function",
+      "name": "run_real",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [180, 221],
+      "summary": "Iterates real snapshot data through the execution chain, collecting admitted feature values and running replay blocks to verify determinism against real market data.",
+      "tags": ["benchmark", "execution", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:run_synthetic",
+      "type": "function",
+      "name": "run_synthetic",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [248, 274],
+      "summary": "Runs synthetic admit-decision sequences through execution replay, covering directional boundary combinations to verify guard-block attribution across controlled inputs.",
+      "tags": ["benchmark", "synthetic-data", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:build_report",
+      "type": "function",
+      "name": "build_report",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [286, 315],
+      "summary": "Assembles the full benchmark report dictionary by invoking real and synthetic runs, stamping policy fingerprints and schema versions, and computing aggregate metrics.",
+      "tags": ["benchmark", "reporting", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [318, 337],
+      "summary": "Entry point that calls build_report, writes the JSON artifact to disk, and prints a summary of byte-identity and replay metrics.",
+      "tags": ["entry-point", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:benchmarks/gold/artifacts/gold_bench.json",
+      "type": "config",
+      "name": "gold_bench.json",
+      "filePath": "benchmarks/gold/artifacts/gold_bench.json",
+      "summary": "Gold-layer benchmark artifact recording decision-policy determinism checks and synthetic confidence/uncertainty sweep results against real packet data.",
+      "tags": ["configuration", "benchmark", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "type": "config",
+      "name": "paper_runtime_bench.json",
+      "filePath": "benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "summary": "Paper-trading runtime benchmark artifact capturing ledger schema, real-sequence replay results, and synthetic packet round-trip determinism for the runtime policy.",
+      "tags": ["configuration", "benchmark", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/gold/run_gold_bench.py",
+      "type": "file",
+      "name": "run_gold_bench.py",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "summary": "Gold-layer benchmark runner that verifies decision-policy determinism against real snapshot data and sweeps a Cartesian grid of synthetic feature vectors to characterise confidence/uncertainty coverage.",
+      "tags": ["benchmark", "entry-point", "validation", "determinism"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/gold/run_gold_bench.py:run_determinism",
+      "type": "function",
+      "name": "run_determinism",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "lineRange": [93, 128],
+      "summary": "Consumes real snapshot data twice, builds feature vectors, classifies regimes, and verifies that two independent build_decision calls produce byte-identical JSON for every input.",
+      "tags": ["validation", "determinism", "benchmark"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_gold_bench.py:run_synthetic_sweep",
+      "type": "function",
+      "name": "run_synthetic_sweep",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "lineRange": [139, 179],
+      "summary": "Sweeps a Cartesian product of feature-axis values over a predefined grid, computing decision confidence/uncertainty statistics and boundary coverage for the gold decision policy.",
+      "tags": ["benchmark", "synthetic-data", "analysis"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/gold/run_gold_bench.py:build_report",
+      "type": "function",
+      "name": "build_report",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "lineRange": [182, 191],
+      "summary": "Assembles the gold benchmark report dictionary with policy fingerprint and the results from determinism and synthetic sweep runs.",
+      "tags": ["benchmark", "reporting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "type": "file",
+      "name": "run_paper_runtime_bench.py",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "summary": "Paper-trading runtime benchmark that replays real GoldDecisionPacket sequences through the ledger, verifies deterministic round-trips, and sweeps synthetic packet combinations for byte-identity validation.",
+      "tags": ["benchmark", "entry-point", "validation", "determinism"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:_replay_block",
+      "type": "function",
+      "name": "_replay_block",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [66, 91],
+      "summary": "Executes two independent runtime-sequence replays, serialises ledger state, and verifies byte-identical output for each packet pair.",
+      "tags": ["validation", "determinism", "benchmark"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:_build_real_item",
+      "type": "function",
+      "name": "_build_real_item",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [97, 117],
+      "summary": "Constructs a GoldDecisionPacket and its operational input from a real snapshot path by consuming snapshot data, extracting features, classifying regime, and computing a decision.",
+      "tags": ["factory", "benchmark", "pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:run_real",
+      "type": "function",
+      "name": "run_real",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [120, 138],
+      "summary": "Builds real-data packet pairs from snapshot directories and runs deterministic replay blocks to validate ledger byte-identity on actual market data.",
+      "tags": ["benchmark", "execution", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:_synthetic_packet",
+      "type": "function",
+      "name": "_synthetic_packet",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [144, 174],
+      "summary": "Builds a synthetic GoldDecisionPacket with controlled snapshot guards and confidence inputs for a given direction and regime, enabling parametric replay testing.",
+      "tags": ["factory", "benchmark", "synthetic-data"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:run_synthetic",
+      "type": "function",
+      "name": "run_synthetic",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [177, 194],
+      "summary": "Generates synthetic packet sets for all direction/regime boundary combinations and verifies replay byte-identity across the full synthetic parameter space.",
+      "tags": ["benchmark", "synthetic-data", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:build_report",
+      "type": "function",
+      "name": "build_report",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [197, 207],
+      "summary": "Assembles the paper-runtime benchmark report with policy fingerprint and real/synthetic run results.",
+      "tags": ["benchmark", "reporting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:benchmarks/regime/artifacts/regime_bench.json",
+      "type": "config",
+      "name": "regime_bench.json",
+      "filePath": "benchmarks/regime/artifacts/regime_bench.json",
+      "summary": "Regime-classifier benchmark artifact recording determinism results, entropy metrics across a synthetic feature grid, and decision fingerprints for all classifier versions.",
+      "tags": ["configuration", "benchmark", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/regime/run_regime_bench.py",
+      "type": "file",
+      "name": "run_regime_bench.py",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "summary": "Regime-classifier benchmark runner that verifies classification determinism on real snapshots and sweeps a synthetic feature grid, computing entropy and coverage statistics.",
+      "tags": ["benchmark", "entry-point", "validation", "determinism"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/regime/run_regime_bench.py:run_determinism",
+      "type": "function",
+      "name": "run_determinism",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "lineRange": [100, 132],
+      "summary": "Consumes real snapshot data twice, builds feature vectors, and verifies that two independent classify calls produce byte-identical JSON for every input.",
+      "tags": ["validation", "determinism", "benchmark"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/regime/run_regime_bench.py:run_synthetic_sweep",
+      "type": "function",
+      "name": "run_synthetic_sweep",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "lineRange": [135, 195],
+      "summary": "Sweeps a full Cartesian product of regime feature-axis values, computing per-class confidence, boundary coverage, entropy and mutual-information metrics for the classifier.",
+      "tags": ["benchmark", "synthetic-data", "analysis"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:benchmarks/regime/run_regime_bench.py:build_report",
+      "type": "function",
+      "name": "build_report",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "lineRange": [198, 209],
+      "summary": "Assembles the regime benchmark report with decision fingerprint and results from determinism and synthetic sweep runs.",
+      "tags": ["benchmark", "reporting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/api_docs/Alpaca API Docs.md",
+      "type": "document",
+      "name": "Alpaca API Docs.md",
+      "filePath": "dev_graph/api_docs/Alpaca API Docs.md",
+      "summary": "Dev-graph api_doc_source node specifying the scope, retrieval method, authentication requirements, and usage constraints for the Alpaca trading API reference within the el_nino session context.",
+      "tags": ["documentation", "api-schema", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/api_docs/Anthropic API Docs.md",
+      "type": "document",
+      "name": "Anthropic API Docs.md",
+      "filePath": "dev_graph/api_docs/Anthropic API Docs.md",
+      "summary": "Dev-graph api_doc_source node specifying the scope, retrieval method, and usage constraints for the Anthropic Claude API reference used by JARVIS backend Claude integration.",
+      "tags": ["documentation", "api-schema", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Upgrade Evaluation.md",
+      "type": "document",
+      "name": "Upgrade Evaluation.md",
+      "filePath": "dev_graph/capabilities/Upgrade Evaluation.md",
+      "summary": "Dev-graph capability node describing the Upgrade Evaluation capability: evaluating model/library upgrades against benchmark regressions before adoption, with its inputs, outputs, and architectural constraints.",
+      "tags": ["documentation", "infrastructure", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/context_packs/Context Pack Template.md",
+      "type": "document",
+      "name": "Context Pack Template.md",
+      "filePath": "dev_graph/context_packs/Context Pack Template.md",
+      "summary": "Canonical template for assembling typed context packs used in Claude coding sessions, defining sections for canonical nodes, required files, tests, constraints, API docs, decisions, admissibility checks, and implementation/validation/writeback plans.",
+      "tags": ["documentation", "configuration", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "type": "document",
+      "name": "Phase 5 Bootstrap Context.md",
+      "filePath": "dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "summary": "Instantiated context pack for Phase 5 bootstrap work: assembles canonical nodes, required files, constraints, API docs, and an implementation plan for bootstrapping the dev_graph substrate and producing ADR-003.",
+      "tags": ["documentation", "configuration", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/observability/Dev Graph Dashboard.md",
+      "type": "document",
+      "name": "Dev Graph Dashboard.md",
+      "filePath": "dev_graph/observability/Dev Graph Dashboard.md",
+      "summary": "Consolidated Obsidian Dataview dashboard providing live queries for node inventory, type/status distributions, orphan detection, stale-node alerts, constraint/test coverage gaps, benchmark inventory, and population-debt tracking across the dev_graph.",
+      "tags": ["documentation", "monitoring", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/tests/test_scoring.md",
+      "type": "document",
+      "name": "test_scoring.md",
+      "filePath": "dev_graph/tests/test_scoring.md",
+      "summary": "Dev-graph test node documenting the test_scoring test file: its definition, purpose, constraints, and dependency relationships within the scoring module verification chain.",
+      "tags": ["documentation", "test", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/workflows/System Lifecycle.md",
+      "type": "document",
+      "name": "System Lifecycle.md",
+      "filePath": "dev_graph/workflows/System Lifecycle.md",
+      "summary": "Dev-graph workflow node defining the system lifecycle state machine (planned → active → deprecated) with transition guards, state definitions, and relationships to the constraints and knowledge assets that govern system evolution.",
+      "tags": ["documentation", "infrastructure", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/backend/app.py",
+      "type": "file",
+      "name": "app.py",
+      "filePath": "jarvis/backend/app.py",
+      "summary": "FastAPI backend for JARVIS providing read-only Neo4j graph exploration endpoints (health, meta, node, neighbors, search, shortest_path, subgraph), a GraphRAG /ask endpoint powered by Claude, and voice STT/TTS endpoints via Whisper and Piper.",
+      "tags": ["api-handler", "service", "middleware", "entry-point"],
+      "complexity": "complex",
+      "languageNotes": "Uses FastAPI dependency-free lifespan for Neo4j driver lifecycle; all Cypher is read-only enforced at driver level and via a keyword guard function."
+    },
+    {
+      "id": "function:jarvis/backend/app.py:run_read",
+      "type": "function",
+      "name": "run_read",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [64, 77],
+      "summary": "Thin Neo4j session wrapper that passes Cypher through the guard, opens a read session, executes the query, and returns rows as a list of dicts.",
+      "tags": ["middleware", "service", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_graph",
+      "type": "function",
+      "name": "_graph",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [128, 166],
+      "summary": "Converts raw Neo4j record lists into a deduplicated graph response dict with nodes and edges, accepting flexible column naming for node keys and path keys.",
+      "tags": ["utility", "serialization", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:neighbors",
+      "type": "function",
+      "name": "neighbors",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [223, 242],
+      "summary": "API endpoint that returns the neighborhood graph for a node at a given depth and direction, falling back to the node itself when no neighbors are found.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:search",
+      "type": "function",
+      "name": "search",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [246, 260],
+      "summary": "Full-text search endpoint querying node canonical_id, name, and summary fields by case-insensitive substring match with optional label filtering.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:shortest_path",
+      "type": "function",
+      "name": "shortest_path",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [264, 278],
+      "summary": "API endpoint computing the shortest path between two nodes via Cypher shortestPath, returning the path as a subgraph.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_score",
+      "type": "function",
+      "name": "_score",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [336, 357],
+      "summary": "Relevance scorer for the GraphRAG ask pipeline that computes token-overlap and ID-prefix scores against a query normalised string.",
+      "tags": ["utility", "service", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_neighborhood",
+      "type": "function",
+      "name": "_neighborhood",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [375, 397],
+      "summary": "Expands a seed node to its 1-hop neighborhood from both live Neo4j and the static graph.json, merging unique nodes for the GraphRAG context block.",
+      "tags": ["middleware", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_claude_answer",
+      "type": "function",
+      "name": "_claude_answer",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [438, 458],
+      "summary": "Calls the Anthropic Messages API with a graph-derived context block to generate a grounded answer, returning the text response or raising an HTTPException on API failure.",
+      "tags": ["api-handler", "service", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:ask",
+      "type": "function",
+      "name": "ask",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [466, 498],
+      "summary": "GraphRAG question-answering endpoint that matches a question to seed nodes, expands their neighborhood, builds a context block, and returns a Claude-generated answer with cited canonical IDs.",
+      "tags": ["api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:voice_stt",
+      "type": "function",
+      "name": "voice_stt",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [548, 570],
+      "summary": "Speech-to-text endpoint that accepts an audio upload, transcribes it using faster-whisper, and returns the transcript text.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:voice_tts",
+      "type": "function",
+      "name": "voice_tts",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [578, 604],
+      "summary": "Text-to-speech endpoint that pipes input text through the Piper TTS binary, writes WAV output to a temp file, and returns the audio bytes as a response.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:jarvis/backend/app.py:Health",
+      "type": "class",
+      "name": "Health",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [171, 176],
+      "summary": "Pydantic response model for the /health endpoint capturing Neo4j connectivity, node/edge counts, and an optional error detail string.",
+      "tags": ["data-model", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:jarvis/backend/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "jarvis/backend/requirements.txt",
+      "summary": "Python dependency manifest for the JARVIS FastAPI backend listing runtime packages: FastAPI, uvicorn, neo4j driver, anthropic SDK, faster-whisper, and related libraries.",
+      "tags": ["configuration", "documentation", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/export_graph_json.py",
+      "type": "file",
+      "name": "export_graph_json.py",
+      "filePath": "jarvis/export_graph_json.py",
+      "summary": "CLI tool that scans the dev_graph markdown, extracts node properties and relationship edges via sync_to_neo4j helpers, and writes a graph.json projection consumed by the JARVIS HUD and backend /ask corpus.",
+      "tags": ["entry-point", "data-pipeline", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/export_graph_json.py:first_sentence_of_definition",
+      "type": "function",
+      "name": "first_sentence_of_definition",
+      "filePath": "jarvis/export_graph_json.py",
+      "lineRange": [64, 83],
+      "summary": "Extracts the first sentence of the Definition section from a markdown node's body, stripping wikilinks and collapsing whitespace, with a fallback string for nodes lacking a definition.",
+      "tags": ["utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/export_graph_json.py:build_graph",
+      "type": "function",
+      "name": "build_graph",
+      "filePath": "jarvis/export_graph_json.py",
+      "lineRange": [86, 139],
+      "summary": "Scans the dev_graph, parses each node's frontmatter and relationships, resolves wikilink targets to canonical IDs, and returns sorted node/edge lists plus a skip log for unresolvable references.",
+      "tags": ["data-pipeline", "utility", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/export_graph_json.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "jarvis/export_graph_json.py",
+      "lineRange": [142, 173],
+      "summary": "CLI entry point that parses output-path arguments, invokes build_graph, serialises the result as JSON, and writes to stdout or the specified file paths (both frontend and hud paths).",
+      "tags": ["entry-point", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hooks/install.sh",
+      "type": "file",
+      "name": "install.sh",
+      "filePath": "jarvis/hooks/install.sh",
+      "summary": "Shell installer script that copies the pre-commit hook into the .git/hooks directory and makes it executable.",
+      "tags": ["script", "infrastructure", "deployment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hooks/pre-commit",
+      "type": "file",
+      "name": "pre-commit",
+      "filePath": "jarvis/hooks/pre-commit",
+      "summary": "Git pre-commit hook that blocks commits when staged dev_graph markdown changes leave either graph.json projection stale, by regenerating the projection in-process and comparing it against the staged blob.",
+      "tags": ["script", "infrastructure", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:jarvis/hud/public/graph.json",
+      "type": "config",
+      "name": "graph.json",
+      "filePath": "jarvis/hud/public/graph.json",
+      "summary": "Static server-less graph projection (nodes + edges) derived from dev_graph markdown, consumed by the JARVIS React HUD for offline and live graph exploration and by the backend /ask corpus seed matcher.",
+      "tags": ["configuration", "data-pipeline", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:jarvis/hud/src/theme.css",
+      "type": "file",
+      "name": "theme.css",
+      "filePath": "jarvis/hud/src/theme.css",
+      "summary": "Global CSS design-token and theming file for the JARVIS HUD React application, defining color palette custom properties, typography, component variants, and layout primitives.",
+      "tags": ["component", "utility", "markup"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:jarvis/hud/src/vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "jarvis/hud/src/vite-env.d.ts",
+      "summary": "Vite client type declaration file that provides TypeScript ambient type definitions for Vite's import.meta.env and other client-side globals.",
+      "tags": ["type-definition", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "jarvis/hud/vite.config.ts",
+      "summary": "Vite build configuration for the JARVIS HUD React application, setting up the React plugin and defining the dev-server proxy to the FastAPI backend.",
+      "tags": ["configuration", "build-system", "infrastructure"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "function:benchmarks/execution/run_execution_bench.py:_replay_block",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "function:benchmarks/execution/run_execution_bench.py:_build_chain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "function:benchmarks/execution/run_execution_bench.py:run_real",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "function:benchmarks/execution/run_execution_bench.py:run_synthetic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "function:benchmarks/execution/run_execution_bench.py:build_report",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "function:benchmarks/execution/run_execution_bench.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_gold_bench.py",
+      "target": "function:benchmarks/gold/run_gold_bench.py:run_determinism",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_gold_bench.py",
+      "target": "function:benchmarks/gold/run_gold_bench.py:run_synthetic_sweep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_gold_bench.py",
+      "target": "function:benchmarks/gold/run_gold_bench.py:build_report",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "function:benchmarks/gold/run_paper_runtime_bench.py:_replay_block",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "function:benchmarks/gold/run_paper_runtime_bench.py:_build_real_item",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "function:benchmarks/gold/run_paper_runtime_bench.py:run_real",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "function:benchmarks/gold/run_paper_runtime_bench.py:_synthetic_packet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "function:benchmarks/gold/run_paper_runtime_bench.py:run_synthetic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "function:benchmarks/gold/run_paper_runtime_bench.py:build_report",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/regime/run_regime_bench.py",
+      "target": "function:benchmarks/regime/run_regime_bench.py:run_determinism",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/regime/run_regime_bench.py",
+      "target": "function:benchmarks/regime/run_regime_bench.py:run_synthetic_sweep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:benchmarks/regime/run_regime_bench.py",
+      "target": "function:benchmarks/regime/run_regime_bench.py:build_report",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:run_read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:_graph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:neighbors",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:search",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:shortest_path",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:_score",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:_neighborhood",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:_claude_answer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:ask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:voice_stt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "function:jarvis/backend/app.py:voice_tts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "class:jarvis/backend/app.py:Health",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:jarvis/export_graph_json.py:first_sentence_of_definition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:jarvis/export_graph_json.py:build_graph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:jarvis/export_graph_json.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "file:sync_to_neo4j.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:sync_to_neo4j.py:scan_dev_graph",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:sync_to_neo4j.py:build_name_index",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:sync_to_neo4j.py:parse_frontmatter",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "function:sync_to_neo4j.py:resolve_target",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/hooks/pre-commit",
+      "target": "file:jarvis/export_graph_json.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/hooks/pre-commit",
+      "target": "config:jarvis/hud/public/graph.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:jarvis/hooks/install.sh",
+      "target": "file:jarvis/hooks/pre-commit",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/backend/app.py",
+      "target": "config:jarvis/hud/public/graph.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/export_graph_json.py",
+      "target": "config:jarvis/hud/public/graph.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:jarvis/hud/vite.config.ts",
+      "target": "file:jarvis/backend/app.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:benchmarks/execution/run_execution_bench.py",
+      "target": "config:benchmarks/execution/artifacts/execution_bench.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:benchmarks/gold/run_gold_bench.py",
+      "target": "config:benchmarks/gold/artifacts/gold_bench.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "target": "config:benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:benchmarks/regime/run_regime_bench.py",
+      "target": "config:benchmarks/regime/artifacts/regime_bench.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Upgrade Evaluation.md",
+      "target": "config:benchmarks/execution/artifacts/execution_bench.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Upgrade Evaluation.md",
+      "target": "config:benchmarks/gold/artifacts/gold_bench.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/api_docs/Anthropic API Docs.md",
+      "target": "file:jarvis/backend/app.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/backend/requirements.txt",
+      "target": "file:jarvis/backend/app.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

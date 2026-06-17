@@ -1,0 +1,22 @@
+# .understandignore — el_nino FULL scope (code + all documentation/knowledge corpora)
+# Syntax: gitignore-style. Built-in defaults already exclude node_modules/, .git/,
+# dist/, build/, __pycache__/, *.lock, images, *.min.js, *.map, etc.
+#
+# INCLUDED: all code (src/, jarvis/, tests/, benchmarks/, snapshot_sources/) AND
+#           all docs/knowledge (dev_graph/, wiki/, raw/, root *.md planning docs).
+# EXCLUDED: only machine-generated tool state — NOT documentation.
+
+# --- Smart Connections embeddings cache (389 .ajson vector blobs — machine data, not docs) ---
+.smart-env/
+*.ajson
+
+# --- Editor / tooling internal state (config, not project content) ---
+.obsidian/
+.serena/
+.claude/
+
+# --- Secrets / environment files ---
+*.env
+
+# --- This tool's own output ---
+.understand-anything/

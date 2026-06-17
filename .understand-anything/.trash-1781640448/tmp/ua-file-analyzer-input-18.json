@@ -1,0 +1,26 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/files/policy.py.md", "language": "markdown", "sizeLines": 47, "fileCategory": "docs"},
+    {"path": "dev_graph/files/predicates.py (paper_runtime).md", "language": "markdown", "sizeLines": 53, "fileCategory": "docs"},
+    {"path": "dev_graph/files/predicates.py.md", "language": "markdown", "sizeLines": 66, "fileCategory": "docs"},
+    {"path": "dev_graph/files/regime_classifier.py.md", "language": "markdown", "sizeLines": 75, "fileCategory": "docs"},
+    {"path": "dev_graph/files/run_execution_bench.py.md", "language": "markdown", "sizeLines": 69, "fileCategory": "docs"},
+    {"path": "dev_graph/files/runtime.py (execution).md", "language": "markdown", "sizeLines": 60, "fileCategory": "docs"},
+    {"path": "dev_graph/files/runtime.py.md", "language": "markdown", "sizeLines": 55, "fileCategory": "docs"},
+    {"path": "dev_graph/files/scoring.py.md", "language": "markdown", "sizeLines": 62, "fileCategory": "docs"},
+    {"path": "dev_graph/files/taxonomy.py.md", "language": "markdown", "sizeLines": 68, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/files/policy.py.md": [],
+    "dev_graph/files/predicates.py (paper_runtime).md": [],
+    "dev_graph/files/predicates.py.md": [],
+    "dev_graph/files/regime_classifier.py.md": [],
+    "dev_graph/files/run_execution_bench.py.md": [],
+    "dev_graph/files/runtime.py (execution).md": [],
+    "dev_graph/files/runtime.py.md": [],
+    "dev_graph/files/scoring.py.md": [],
+    "dev_graph/files/taxonomy.py.md": []
+  },
+  "neighborMap": {}
+}

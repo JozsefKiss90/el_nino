@@ -1,0 +1,183 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/governance/API Documentation Policy.md",
+      "type": "document",
+      "name": "API Documentation Policy.md",
+      "filePath": "dev_graph/governance/API Documentation Policy.md",
+      "summary": "Defines the governance policy for how API documentation may be retrieved and used within dev_graph sessions, specifying admissibility rules, freshness requirements, and approved retrieval methods (Context7, web fetch, manual). Serves as the authoritative gate controlling which external documentation sources are permitted in context packs.",
+      "tags": ["documentation", "governance", "configuration", "security", "api-schema"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed dev_graph node with 22 structured sections including relationship sub-sections for Neo4j export readiness."
+    },
+    {
+      "id": "document:dev_graph/governance/Admissibility Checks.md",
+      "type": "document",
+      "name": "Admissibility Checks.md",
+      "filePath": "dev_graph/governance/Admissibility Checks.md",
+      "summary": "Specifies the nine mandatory checks that every dev_graph node must pass before being included in a coding context pack, covering canonical flag, status, implementation status, type enum validity, frontmatter completeness, source path existence, contradiction absence, non-supersession, and test/gate identification. Acts as the quality gate for Graph-RAG context assembly.",
+      "tags": ["documentation", "governance", "configuration", "security"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology node with 25 sections detailing each of the nine admissibility checks with pass/fail criteria and bulk handling rules."
+    },
+    {
+      "id": "document:dev_graph/governance/Context Pack Assembly Rules.md",
+      "type": "document",
+      "name": "Context Pack Assembly Rules.md",
+      "filePath": "dev_graph/governance/Context Pack Assembly Rules.md",
+      "summary": "Defines the eight-step assembly sequence for constructing context packs used by Claude coding sessions, covering task parsing, semantic retrieval, Dataview filtering, graph expansion, codebase grounding, docs retrieval, admissibility checks, and pack assembly with token budget management and writeback rules.",
+      "tags": ["documentation", "governance", "data-pipeline", "configuration"],
+      "complexity": "moderate",
+      "languageNotes": "Procedural governance document with 26 sections; operationalizes the Graph-RAG retrieval pipeline that grounds autonomous Claude sessions."
+    },
+    {
+      "id": "document:dev_graph/governance/Database MCP Mapping.md",
+      "type": "document",
+      "name": "Database MCP Mapping.md",
+      "filePath": "dev_graph/governance/Database MCP Mapping.md",
+      "summary": "Specifies the PostgreSQL table schema (dev_nodes, dev_relationships, dev_benchmarks, dev_context_packs) used for the relational mirror of the dev_graph, including column definitions, relationship type enums, canonical query patterns, and sync procedure for keeping the relational store current with Obsidian vault state.",
+      "tags": ["documentation", "database", "schema-definition", "governance"],
+      "complexity": "complex",
+      "languageNotes": "Contains four full table definitions with column specs and four canonical Cypher/SQL query patterns, making it the most structurally dense file in this batch."
+    },
+    {
+      "id": "document:dev_graph/governance/Dev Graph Governance.md",
+      "type": "document",
+      "name": "Dev Graph Governance.md",
+      "filePath": "dev_graph/governance/Dev Graph Governance.md",
+      "summary": "Establishes the top-level governance principles for the dev_graph Engineering Digital Twin, documenting which wiki governance rules are inherited and which are overridden, defining the node lifecycle (draft → active → deprecated) and relationship formation rules that all dev_graph sessions must follow.",
+      "tags": ["documentation", "governance", "configuration", "security"],
+      "complexity": "moderate",
+      "languageNotes": "Hub governance node with 18 sections; its principles cascade to all other governance files in this directory."
+    },
+    {
+      "id": "document:dev_graph/governance/MCP Tooling Policy.md",
+      "type": "document",
+      "name": "MCP Tooling Policy.md",
+      "filePath": "dev_graph/governance/MCP Tooling Policy.md",
+      "summary": "Classifies all MCP server operations into four automation tiers (safe-automated, constrained-automated, human-review-required, prohibited) for both dev_graph and wiki contexts, enumerating the configured MCP servers and defining automation boundaries to prevent accidental writes to canonical sources.",
+      "tags": ["documentation", "governance", "security", "configuration"],
+      "complexity": "moderate",
+      "languageNotes": "Policy document with explicit operation-classification tables for five MCP servers; the prohibited operations section enforces the No Wiki Mutation constraint."
+    },
+    {
+      "id": "document:dev_graph/governance/Neo4j Export Mapping.md",
+      "type": "document",
+      "name": "Neo4j Export Mapping.md",
+      "filePath": "dev_graph/governance/Neo4j Export Mapping.md",
+      "summary": "Defines the complete node-label mapping and edge-mapping procedure for exporting dev_graph markdown nodes into Neo4j, covering how frontmatter arrays and wikilink relationship sections are translated into Cypher CREATE statements and specifying the sync cadence and export procedure.",
+      "tags": ["documentation", "database", "schema-definition", "governance", "data-pipeline"],
+      "complexity": "complex",
+      "languageNotes": "Contains example Cypher queries with 21 sections; bridges Obsidian vault ontology to Neo4j property graph representation used by the JARVIS intelligence layer."
+    },
+    {
+      "id": "document:dev_graph/governance/REF - Wiki CLAUDE.md",
+      "type": "document",
+      "name": "REF - Wiki CLAUDE.md",
+      "filePath": "dev_graph/governance/REF - Wiki CLAUDE.md",
+      "summary": "Reference node that acts as a pointer from the dev_graph governance layer to the wiki CLAUDE.md operations manual, documenting which sections are inherited by dev_graph and establishing the governance inheritance relationship between the two knowledge corpora.",
+      "tags": ["documentation", "governance", "configuration"],
+      "complexity": "simple",
+      "languageNotes": "REF-prefixed reference node per dev_graph naming convention; lightweight proxy that enables wikilink cross-referencing without duplicating wiki content."
+    },
+    {
+      "id": "document:dev_graph/governance/REF - Wiki Graph Health Dashboard.md",
+      "type": "document",
+      "name": "REF - Wiki Graph Health Dashboard.md",
+      "filePath": "dev_graph/governance/REF - Wiki Graph Health Dashboard.md",
+      "summary": "Reference node pointing to the wiki Graph Health Dashboard page, documenting which monitoring patterns and Dataview queries from that dashboard are reused within the dev_graph observability layer.",
+      "tags": ["documentation", "governance", "monitoring"],
+      "complexity": "simple",
+      "languageNotes": "REF-prefixed reference node; enables traceability between dev_graph observability nodes and the wiki health monitoring framework without content duplication."
+    },
+    {
+      "id": "document:dev_graph/governance/REF - Wiki Metadata Migration Plan.md",
+      "type": "document",
+      "name": "REF - Wiki Metadata Migration Plan.md",
+      "filePath": "dev_graph/governance/REF - Wiki Metadata Migration Plan.md",
+      "summary": "Reference node pointing to the wiki Metadata Migration Plan page, documenting which migration patterns and procedures from the wiki are applicable to dev_graph schema evolution and node migration workflows.",
+      "tags": ["documentation", "governance", "migration"],
+      "complexity": "simple",
+      "languageNotes": "REF-prefixed reference node following dev_graph naming conventions; tracks applicable wiki migration patterns without duplicating their content."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/governance/Dev Graph Governance.md",
+      "target": "document:dev_graph/governance/Admissibility Checks.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/Dev Graph Governance.md",
+      "target": "document:dev_graph/governance/MCP Tooling Policy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/Dev Graph Governance.md",
+      "target": "document:dev_graph/governance/API Documentation Policy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/Dev Graph Governance.md",
+      "target": "document:dev_graph/governance/REF - Wiki CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/Context Pack Assembly Rules.md",
+      "target": "document:dev_graph/governance/Admissibility Checks.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/Context Pack Assembly Rules.md",
+      "target": "document:dev_graph/governance/API Documentation Policy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/Neo4j Export Mapping.md",
+      "target": "document:dev_graph/governance/Database MCP Mapping.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/MCP Tooling Policy.md",
+      "target": "document:dev_graph/governance/API Documentation Policy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/REF - Wiki CLAUDE.md",
+      "target": "document:dev_graph/governance/Dev Graph Governance.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/REF - Wiki Graph Health Dashboard.md",
+      "target": "document:dev_graph/governance/Database MCP Mapping.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/governance/REF - Wiki Metadata Migration Plan.md",
+      "target": "document:dev_graph/governance/Dev Graph Governance.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

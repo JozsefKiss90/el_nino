@@ -1,0 +1,1307 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 907,
+      "nonEmptyLines": 738,
+      "sections": [
+        {
+          "heading": "Dev Graph Operations Manual",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Vault Structure",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Object Hierarchy",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Naming Conventions",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Canonical Ownership Rules",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Node Template",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Frontmatter Governance",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Universal Schema (All Content Nodes)",
+          "level": 3,
+          "line": 153
+        },
+        {
+          "heading": "Canonical ID Prefixes",
+          "level": 3,
+          "line": 178
+        },
+        {
+          "heading": "Allowed Enums",
+          "level": 3,
+          "line": 207
+        },
+        {
+          "heading": "Domain-Specific Extensions",
+          "level": 3,
+          "line": 224
+        },
+        {
+          "heading": "Schema Validation Rules",
+          "level": 3,
+          "line": 379
+        },
+        {
+          "heading": "Anti-Entropy Rules",
+          "level": 3,
+          "line": 393
+        },
+        {
+          "heading": "Relationship Model",
+          "level": 2,
+          "line": 402
+        },
+        {
+          "heading": "Structural Relationships",
+          "level": 3,
+          "line": 406
+        },
+        {
+          "heading": "Existing Relationships (from v1.0.0)",
+          "level": 3,
+          "line": 413
+        },
+        {
+          "heading": "Behavioral Relationships",
+          "level": 3,
+          "line": 426
+        },
+        {
+          "heading": "Traceability Relationships",
+          "level": 3,
+          "line": 434
+        },
+        {
+          "heading": "Composition Relationship",
+          "level": 3,
+          "line": 442
+        },
+        {
+          "heading": "Cross-Linking Protocol",
+          "level": 2,
+          "line": 450
+        },
+        {
+          "heading": "Context Pack Assembly Protocol",
+          "level": 2,
+          "line": 467
+        },
+        {
+          "heading": "Intent-Aware Routing Table",
+          "level": 3,
+          "line": 482
+        },
+        {
+          "heading": "Admissibility Rules",
+          "level": 2,
+          "line": 502
+        },
+        {
+          "heading": "Retrieval Pipeline",
+          "level": 2,
+          "line": 520
+        },
+        {
+          "heading": "MCP Operations",
+          "level": 2,
+          "line": 539
+        },
+        {
+          "heading": "Proactive Graph Queries (neo4j MCP)",
+          "level": 3,
+          "line": 549
+        },
+        {
+          "heading": "Dataview Governance",
+          "level": 2,
+          "line": 580
+        },
+        {
+          "heading": "Lint Workflow",
+          "level": 2,
+          "line": 592
+        },
+        {
+          "heading": "Check 1: Missing Frontmatter",
+          "level": 3,
+          "line": 596
+        },
+        {
+          "heading": "Check 2: Invalid Enum Values",
+          "level": 3,
+          "line": 603
+        },
+        {
+          "heading": "Check 3: Orphan Node Detection",
+          "level": 3,
+          "line": 607
+        },
+        {
+          "heading": "Check 4: Stale Node Detection (Type-Aware Thresholds)",
+          "level": 3,
+          "line": 611
+        },
+        {
+          "heading": "Check 5: Broken Wikilinks",
+          "level": 3,
+          "line": 626
+        },
+        {
+          "heading": "Check 6: Constraint Coverage",
+          "level": 3,
+          "line": 630
+        },
+        {
+          "heading": "Check 7: Test Coverage",
+          "level": 3,
+          "line": 634
+        },
+        {
+          "heading": "Check 8: Type-Content Alignment",
+          "level": 3,
+          "line": 638
+        },
+        {
+          "heading": "Check 9: Deprecated Reference Detection",
+          "level": 3,
+          "line": 642
+        },
+        {
+          "heading": "Check 10: Canonical ID Uniqueness",
+          "level": 3,
+          "line": 646
+        },
+        {
+          "heading": "Check 11: Evidence-Confidence Coherence",
+          "level": 3,
+          "line": 650
+        },
+        {
+          "heading": "Maintenance Cadences",
+          "level": 2,
+          "line": 656
+        },
+        {
+          "heading": "Schema Evolution",
+          "level": 2,
+          "line": 666
+        },
+        {
+          "heading": "Enum Append Procedure",
+          "level": 3,
+          "line": 676
+        },
+        {
+          "heading": "Field Addition Procedure",
+          "level": 3,
+          "line": 682
+        },
+        {
+          "heading": "Migration Runbook Template",
+          "level": 3,
+          "line": 689
+        },
+        {
+          "heading": "Ontology Evolution Procedures",
+          "level": 2,
+          "line": 708
+        },
+        {
+          "heading": "Merge Procedure",
+          "level": 3,
+          "line": 710
+        },
+        {
+          "heading": "Split Procedure",
+          "level": 3,
+          "line": 719
+        },
+        {
+          "heading": "Deprecation Procedure",
+          "level": 3,
+          "line": 728
+        },
+        {
+          "heading": "Confidence Lifecycle",
+          "level": 2,
+          "line": 737
+        },
+        {
+          "heading": "Relationship to Wiki",
+          "level": 2,
+          "line": 756
+        },
+        {
+          "heading": "Structural Files",
+          "level": 2,
+          "line": 769
+        },
+        {
+          "heading": "Phase 5: Implementation Node Authoring",
+          "level": 2,
+          "line": 779
+        },
+        {
+          "heading": "Module Node Template",
+          "level": 3,
+          "line": 787
+        },
+        {
+          "heading": "File Node Template",
+          "level": 3,
+          "line": 820
+        },
+        {
+          "heading": "Test Node Template",
+          "level": 3,
+          "line": 853
+        },
+        {
+          "heading": "End-of-Coding-Session Writeback Checklist (executable)",
+          "level": 3,
+          "line": 883
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 56
+      }
+    },
+    {
+      "path": "dev_graph/Infrastructure Diagram.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 194,
+      "nonEmptyLines": 166,
+      "sections": [
+        {
+          "heading": "Infrastructure Diagram (DEPRECATED)",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Diagram",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Key Architecture Summary",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "Critical Constraint",
+          "level": 2,
+          "line": 173
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 177
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 179
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 183
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 187
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 192
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 79,
+      "nonEmptyLines": 64,
+      "sections": [
+        {
+          "heading": "Dev Graph",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "What Is This?",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "How Does It Relate to ./wiki/?",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Quick Start",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "MCP Access",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Directory Structure",
+          "level": 2,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/index.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 338,
+      "nonEmptyLines": 286,
+      "sections": [
+        {
+          "heading": "Dev Graph Index",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Systems",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Knowledge Assets",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Patterns",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Interfaces",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Events",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Governance",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Observability",
+          "level": 2,
+          "line": 117
+        },
+        {
+          "heading": "Context Packs",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Decisions",
+          "level": 2,
+          "line": 130
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 146
+        },
+        {
+          "heading": "API Documentation Sources",
+          "level": 2,
+          "line": 154
+        },
+        {
+          "heading": "Modules",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "Files",
+          "level": 2,
+          "line": 174
+        },
+        {
+          "heading": "Tests",
+          "level": 2,
+          "line": 208
+        },
+        {
+          "heading": "Gates",
+          "level": 2,
+          "line": 234
+        },
+        {
+          "heading": "Predicates",
+          "level": 2,
+          "line": 242
+        },
+        {
+          "heading": "Schemas",
+          "level": 2,
+          "line": 254
+        },
+        {
+          "heading": "Workflows",
+          "level": 2,
+          "line": 273
+        },
+        {
+          "heading": "Agents",
+          "level": 2,
+          "line": 279
+        },
+        {
+          "heading": "Skills",
+          "level": 2,
+          "line": 283
+        },
+        {
+          "heading": "Benchmarks",
+          "level": 2,
+          "line": 287
+        },
+        {
+          "heading": "Statistics",
+          "level": 2,
+          "line": 298
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "dev_graph/log.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1283,
+      "nonEmptyLines": 917,
+      "sections": [
+        {
+          "heading": "Dev Graph Log",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "[2026-05-25] init | Dev graph bootstrap",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Created",
+          "level": 3,
+          "line": 9
+        },
+        {
+          "heading": "Architecture Decisions",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Bootstrap Metrics",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "[2026-06-06] schema | Phase 0: Ontology Redesign — Governance Foundation",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Schema Changes (v1.0.0 → v2.2.0)",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "New Directories (7)",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Nodes Created (1)",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Nodes Updated (19)",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Governance Updates",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "Phase 0 Metrics",
+          "level": 3,
+          "line": 135
+        },
+        {
+          "heading": "Design Documents (frozen, not part of dev_graph)",
+          "level": 3,
+          "line": 147
+        },
+        {
+          "heading": "[2026-06-06] populate | Phase 1: Architecture Skeleton + Knowledge Foundations",
+          "level": 2,
+          "line": 156
+        },
+        {
+          "heading": "Nodes Created (14)",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Nodes Deprecated (1)",
+          "level": 3,
+          "line": 178
+        },
+        {
+          "heading": "Source Wiki Pages Referenced",
+          "level": 3,
+          "line": 182
+        },
+        {
+          "heading": "Phase 1 Metrics",
+          "level": 3,
+          "line": 186
+        },
+        {
+          "heading": "[2026-06-06] populate | Phase 2: System Boundaries",
+          "level": 2,
+          "line": 201
+        },
+        {
+          "heading": "Nodes Created (7)",
+          "level": 3,
+          "line": 203
+        },
+        {
+          "heading": "Relationship Summary",
+          "level": 3,
+          "line": 216
+        },
+        {
+          "heading": "Phase 2 Metrics",
+          "level": 3,
+          "line": 231
+        },
+        {
+          "heading": "[2026-06-06] populate | Phase 3: Capabilities + Patterns",
+          "level": 2,
+          "line": 244
+        },
+        {
+          "heading": "Nodes Created (28)",
+          "level": 3,
+          "line": 246
+        },
+        {
+          "heading": "Edge Summary",
+          "level": 3,
+          "line": 292
+        },
+        {
+          "heading": "Phase 3 Metrics",
+          "level": 3,
+          "line": 300
+        },
+        {
+          "heading": "[2026-06-06] populate | Phase 4.5 Contracts + Phase 5 Implementation-Readiness",
+          "level": 2,
+          "line": 314
+        },
+        {
+          "heading": "Nodes Created (8)",
+          "level": 3,
+          "line": 323
+        },
+        {
+          "heading": "Changes",
+          "level": 3,
+          "line": 341
+        },
+        {
+          "heading": "Reserved (NOT created — out of first slice / acceptable debt)",
+          "level": 3,
+          "line": 349
+        },
+        {
+          "heading": "Phase 4.5 + 5 Metrics",
+          "level": 3,
+          "line": 356
+        },
+        {
+          "heading": "[2026-06-06] session | Phase 5 first coding session — Guardrail Engine vertical slice",
+          "level": 2,
+          "line": 370
+        },
+        {
+          "heading": "Decision records (1)",
+          "level": 3,
+          "line": 376
+        },
+        {
+          "heading": "Application code created (not dev_graph nodes)",
+          "level": 3,
+          "line": 382
+        },
+        {
+          "heading": "Writeback — dev_graph nodes created (5)",
+          "level": 3,
+          "line": 388
+        },
+        {
+          "heading": "Writeback — nodes updated (5)",
+          "level": 3,
+          "line": 396
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 407
+        },
+        {
+          "heading": "Deferred (next)",
+          "level": 3,
+          "line": 416
+        },
+        {
+          "heading": "[2026-06-06] populate | Phase 6 #1 — Trade Validation Gate + predicates",
+          "level": 2,
+          "line": 424
+        },
+        {
+          "heading": "Nodes Created (6)",
+          "level": 3,
+          "line": 430
+        },
+        {
+          "heading": "Changes",
+          "level": 3,
+          "line": 442
+        },
+        {
+          "heading": "Edges",
+          "level": 3,
+          "line": 447
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 452
+        },
+        {
+          "heading": "[2026-06-06] session | Phase 5 second coding session — Decision Engine vertical slice",
+          "level": 2,
+          "line": 462
+        },
+        {
+          "heading": "Contract created (1)",
+          "level": 3,
+          "line": 469
+        },
+        {
+          "heading": "Application code created",
+          "level": 3,
+          "line": 475
+        },
+        {
+          "heading": "Writeback — dev_graph nodes created (5)",
+          "level": 3,
+          "line": 480
+        },
+        {
+          "heading": "Writeback — nodes updated (5)",
+          "level": 3,
+          "line": 489
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 499
+        },
+        {
+          "heading": "2026-06-07 writeback | Layer 2 Snapshot contract (SCHEMA-001 / INT-001) + Snapshot Consumer vertical slice",
+          "level": 2,
+          "line": 507
+        },
+        {
+          "heading": "Nodes Created (6)",
+          "level": 3,
+          "line": 517
+        },
+        {
+          "heading": "Code shipped",
+          "level": 3,
+          "line": 530
+        },
+        {
+          "heading": "Changes to existing nodes",
+          "level": 3,
+          "line": 541
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 546
+        },
+        {
+          "heading": "Deferred / open",
+          "level": 3,
+          "line": 555
+        },
+        {
+          "heading": "2026-06-07 governance | Decision Layer Re-grounding (ADR-004) + clarify-in-place of treasury decision branch",
+          "level": 2,
+          "line": 562
+        },
+        {
+          "heading": "Nodes Created (1)",
+          "level": 3,
+          "line": 570
+        },
+        {
+          "heading": "Clarify-in-place (4 nodes — canonical_ids unchanged, no renames, no splits)",
+          "level": 3,
+          "line": 579
+        },
+        {
+          "heading": "Changes to existing nodes",
+          "level": 3,
+          "line": 585
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 589
+        },
+        {
+          "heading": "Deferred / open (blueprint for next session)",
+          "level": 3,
+          "line": 595
+        },
+        {
+          "heading": "2026-06-07 writeback | MOD-004 Feature Builder vertical slice (ADR-005 + SCHEMA-009)",
+          "level": 2,
+          "line": 605
+        },
+        {
+          "heading": "Nodes Created (6)",
+          "level": 3,
+          "line": 612
+        },
+        {
+          "heading": "Code shipped",
+          "level": 3,
+          "line": 627
+        },
+        {
+          "heading": "Changes to existing nodes",
+          "level": 3,
+          "line": 640
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 644
+        },
+        {
+          "heading": "Deferred / open",
+          "level": 3,
+          "line": 653
+        },
+        {
+          "heading": "2026-06-07 governance | ADR-006 Gold DecisionPacket v0 Planning",
+          "level": 2,
+          "line": 661
+        },
+        {
+          "heading": "Nodes Created (1)",
+          "level": 3,
+          "line": 670
+        },
+        {
+          "heading": "Changes to existing nodes",
+          "level": 3,
+          "line": 687
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 696
+        },
+        {
+          "heading": "Deferred / open",
+          "level": 3,
+          "line": 704
+        },
+        {
+          "heading": "2026-06-08 session | Deterministic Regime Taxonomy slice (MOD-005 / SCHEMA-010 / ADR-007)",
+          "level": 2,
+          "line": 715
+        },
+        {
+          "heading": "Nodes Created (14)",
+          "level": 3,
+          "line": 735
+        },
+        {
+          "heading": "Code shipped",
+          "level": 3,
+          "line": 748
+        },
+        {
+          "heading": "Changes to existing nodes (5)",
+          "level": 3,
+          "line": 760
+        },
+        {
+          "heading": "Canonical-id reassignments (both non-binding reservations, assigned at authoring per ADR-004/006 precedent)",
+          "level": 3,
+          "line": 773
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 780
+        },
+        {
+          "heading": "Lint (11 checks, touched nodes)",
+          "level": 3,
+          "line": 790
+        },
+        {
+          "heading": "Deferred / open",
+          "level": 3,
+          "line": 797
+        },
+        {
+          "heading": "2026-06-08 governance | ADR-008 Gold Decision Confidence Semantics — closes ADR-006 §8(e); promotes ADR-006 draft→active",
+          "level": 2,
+          "line": 808
+        },
+        {
+          "heading": "Nodes Created (1)",
+          "level": 3,
+          "line": 812
+        },
+        {
+          "heading": "Changes to existing nodes (2)",
+          "level": 3,
+          "line": 816
+        },
+        {
+          "heading": "Decision content folded in (per the STEP-0 brief, user-resolved)",
+          "level": 3,
+          "line": 821
+        },
+        {
+          "heading": "Verification (governance slice — no pytest)",
+          "level": 3,
+          "line": 825
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 832
+        },
+        {
+          "heading": "Deferred / open (Slice 2 — now unblocked)",
+          "level": 3,
+          "line": 838
+        },
+        {
+          "heading": "2026-06-08 contract | Gold DecisionPacket v0 — Slice 2 STEP 1-2 (contract layer + capability + CAP-004 deprecation)",
+          "level": 2,
+          "line": 846
+        },
+        {
+          "heading": "Nodes Created (3)",
+          "level": 3,
+          "line": 850
+        },
+        {
+          "heading": "CAP-004 deprecate-and-supersede (executed per ADR-008 §10)",
+          "level": 3,
+          "line": 856
+        },
+        {
+          "heading": "Design decision settled (regime → direction)",
+          "level": 3,
+          "line": 864
+        },
+        {
+          "heading": "Changes to existing nodes (5)",
+          "level": 3,
+          "line": 868
+        },
+        {
+          "heading": "Verification (contract checkpoint — no code yet)",
+          "level": 3,
+          "line": 873
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 879
+        },
+        {
+          "heading": "Deferred / next (STEP 3-6, post-checkpoint)",
+          "level": 3,
+          "line": 885
+        },
+        {
+          "heading": "2026-06-08 session | Gold DecisionPacket v0 — Slice 2 STEP 0/3-6 (builder, guards, tests, benchmark, writeback)",
+          "level": 2,
+          "line": 892
+        },
+        {
+          "heading": "STEP 0 — contract fix (packet_id)",
+          "level": 3,
+          "line": 896
+        },
+        {
+          "heading": "Code shipped (MOD-006, `src/gold/decision_builder/`)",
+          "level": 3,
+          "line": 900
+        },
+        {
+          "heading": "Confidence model + direction policy (pinned as `decision_policy_version` 0.1.0)",
+          "level": 3,
+          "line": 908
+        },
+        {
+          "heading": "L3 guard nodes (STEP 4 — contracts; runtime deferred)",
+          "level": 3,
+          "line": 913
+        },
+        {
+          "heading": "Tests + benchmark (STEP 5)",
+          "level": 3,
+          "line": 918
+        },
+        {
+          "heading": "Writeback — nodes created (11)",
+          "level": 3,
+          "line": 923
+        },
+        {
+          "heading": "Writeback — nodes updated",
+          "level": 3,
+          "line": 927
+        },
+        {
+          "heading": "Verification",
+          "level": 3,
+          "line": 933
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 940
+        },
+        {
+          "heading": "Deferred / open (unchanged — ADR-006 Non-Goals)",
+          "level": 3,
+          "line": 945
+        },
+        {
+          "heading": "2026-06-08 finalize | Gold direction table v0 finalized — DISINFLATION AVOID→FLAT (`decision_policy_version` stays 0.1.0 — finalizing the provisional v0, nothing consumed; new `decision_policy_fingerprint be7e3192…a8a5`; real packet_id rehashes → `gold-v0:5653d07a0b3949d5`; `gold_bench.json` regenerated + 2 pinned tests + MOD-006/BENCH-002 nodes re-pinned; 4-way enum kept — AVOID is informational headwind, not SHORT, on long-only GLD; `LIQUIDITY_STRESS→LONG` dash-for-cash caveat recorded on MOD-006 Open Questions).",
+          "level": 2,
+          "line": 951
+        },
+        {
+          "heading": "2026-06-08 harden | Gold v0 epoch hardening — Stage 2 (hygiene + first trusted Neo4j export) + Stage 3 (full-chain E2E)",
+          "level": 2,
+          "line": 953
+        },
+        {
+          "heading": "Stage 2 — hygiene + export",
+          "level": 3,
+          "line": 955
+        },
+        {
+          "heading": "Stage 3 — full-chain E2E",
+          "level": 3,
+          "line": 965
+        },
+        {
+          "heading": "Writeback / verification",
+          "level": 3,
+          "line": 969
+        },
+        {
+          "heading": "2026-06-08 audit | Gold v0 final audit (Stage 4) + post-audit remediation",
+          "level": 2,
+          "line": 975
+        },
+        {
+          "heading": "2026-06-09 decision | ADR-009 Paper-Trading Runtime Planning — epoch (a) planning slice (Slice 1)",
+          "level": 2,
+          "line": 982
+        },
+        {
+          "heading": "Decision (9 constraints)",
+          "level": 3,
+          "line": 986
+        },
+        {
+          "heading": "Writeback — nodes created (1)",
+          "level": 3,
+          "line": 996
+        },
+        {
+          "heading": "Writeback — nodes updated",
+          "level": 3,
+          "line": 1000
+        },
+        {
+          "heading": "Lint (11 checks, touched nodes)",
+          "level": 3,
+          "line": 1005
+        },
+        {
+          "heading": "Note for the checkpoint review",
+          "level": 3,
+          "line": 1009
+        },
+        {
+          "heading": "Deferred (Slice 2 — gated on this ADR's review)",
+          "level": 3,
+          "line": 1013
+        },
+        {
+          "heading": "2026-06-09 session | Paper-Trading Runtime — contract-first build (Slice 2, ADR-009)",
+          "level": 2,
+          "line": 1019
+        },
+        {
+          "heading": "Step 0 — SCHEMA-011 additive `snapshot_guards` + `as_of` threading (post-audit)",
+          "level": 3,
+          "line": 1023
+        },
+        {
+          "heading": "Implementation — `src/gold/paper_runtime/` (under the existing `src/gold` wheel; no pyproject change)",
+          "level": 3,
+          "line": 1028
+        },
+        {
+          "heading": "Tests + benchmark (`tests/gold/`, `benchmarks/gold/`)",
+          "level": 3,
+          "line": 1036
+        },
+        {
+          "heading": "Writeback — nodes created (17)",
+          "level": 3,
+          "line": 1041
+        },
+        {
+          "heading": "Writeback — nodes updated",
+          "level": 3,
+          "line": 1045
+        },
+        {
+          "heading": "Verification",
+          "level": 3,
+          "line": 1053
+        },
+        {
+          "heading": "Deferred (ADR-009 Non-Goals — unchanged)",
+          "level": 3,
+          "line": 1059
+        },
+        {
+          "heading": "2026-06-09 audit | Paper-Trading Runtime final audit (epoch baseline) + TD-1 fix",
+          "level": 2,
+          "line": 1063
+        },
+        {
+          "heading": "2026-06-11 epoch | Epoch (b) operationalized — real-corpus accumulation started (producer fixed, DB refreshed, first forward snapshot banked, daily job scheduled)",
+          "level": 2,
+          "line": 1069
+        },
+        {
+          "heading": "DEBT-01 reconciliation (resolves the 957 vs 1061/1067 inconsistency)",
+          "level": 3,
+          "line": 1073
+        },
+        {
+          "heading": "Step 1 — producer-readiness diagnosis (7-agent parallel trace, read-only)",
+          "level": 3,
+          "line": 1079
+        },
+        {
+          "heading": "Step 2 — close the gap to one clean run",
+          "level": 3,
+          "line": 1084
+        },
+        {
+          "heading": "Step 3 — operationalize daily accumulation (producer-native corpus)",
+          "level": 3,
+          "line": 1091
+        },
+        {
+          "heading": "Cross-repo note + scope discipline",
+          "level": 3,
+          "line": 1098
+        },
+        {
+          "heading": "[2026-06-14] writeback | ADR-010 JARVIS GraphRAG Integration (governance boundary)",
+          "level": 2,
+          "line": 1103
+        },
+        {
+          "heading": "[2026-06-14] writeback | JARVIS GraphRAG integration — Stages 1–5 (app code, no node changes)",
+          "level": 2,
+          "line": 1115
+        },
+        {
+          "heading": "[2026-06-14] addendum | adversarial review fixes (Stages 1-5)",
+          "level": 3,
+          "line": 1128
+        },
+        {
+          "heading": "[2026-06-15] writeback | Neo4j host port 7687 -> 7688 (coexist with kg-dev-neo4j-1)",
+          "level": 2,
+          "line": 1139
+        },
+        {
+          "heading": "Changes",
+          "level": 3,
+          "line": 1141
+        },
+        {
+          "heading": "Nodes Changed",
+          "level": 3,
+          "line": 1152
+        },
+        {
+          "heading": "Metrics",
+          "level": 3,
+          "line": 1156
+        },
+        {
+          "heading": "[2026-06-16] decision | ADR-011 Execution Layer Planning",
+          "level": 2,
+          "line": 1162
+        },
+        {
+          "heading": "[2026-06-16] decision | ADR-011 promoted draft→active (Accepted)",
+          "level": 2,
+          "line": 1181
+        },
+        {
+          "heading": "[2026-06-16] contract | Execution layer — STEP 1 (contract nodes: INT-011, SCHEMA-014, SCHEMA-015; CAP-005 re-grounded, CAP-007 realized)",
+          "level": 2,
+          "line": 1199
+        },
+        {
+          "heading": "[2026-06-16] writeback | Execution layer — STEP 2 (simulator core: MOD-008 + src/execution + tests; GATE-001 wired)",
+          "level": 2,
+          "line": 1222
+        },
+        {
+          "heading": "[2026-06-16] fix | INT-011 contract-doc reconciliation (port seam = fill(), not execute())",
+          "level": 2,
+          "line": 1251
+        },
+        {
+          "heading": "[2026-06-16] bench | Execution layer — STEP 4 (BENCH-004 byte-identical replay; ADR-011 gate (d) closed)",
+          "level": 2,
+          "line": 1259
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 147
+      }
+    }
+  ]
+}

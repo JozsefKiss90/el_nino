@@ -1,0 +1,277 @@
+{
+  "nodes": [
+    {
+      "id": "config:.mcp.json",
+      "type": "config",
+      "name": ".mcp.json",
+      "filePath": ".mcp.json",
+      "summary": "MCP server configuration file listing available MCP tool servers (neo4j, postgres, serena, smart-connections, context7, mcpvault, etc.) used by Claude Code sessions for this project.",
+      "tags": ["configuration", "mcp", "tooling", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ADR-011_drafting_prompt.md",
+      "type": "document",
+      "name": "ADR-011_drafting_prompt.md",
+      "filePath": "ADR-011_drafting_prompt.md",
+      "summary": "Claude Code prompt script guiding the authoring of ADR-011 (Execution/Portfolio Layer Planning), covering governance reading, ADR file authoring, and governance-only writeback steps.",
+      "tags": ["documentation", "adr", "prompt-script", "governance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ADR-011_promote_and_plan_prompt.md",
+      "type": "document",
+      "name": "ADR-011_promote_and_plan_prompt.md",
+      "filePath": "ADR-011_promote_and_plan_prompt.md",
+      "summary": "Claude Code prompt script for promoting ADR-011 to active status and authoring the corresponding execution-layer implementation plan, with explicit constraints on scope.",
+      "tags": ["documentation", "adr", "prompt-script", "governance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Root-level CLAUDE.md memory file for the el_nino project, importing dev_graph/CLAUDE.md as the authoritative operations manual and providing brief orientation notes for Claude Code sessions.",
+      "tags": ["documentation", "configuration", "entry-point", "governance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:EPOCH_B_CORPUS_RUNBOOK.md",
+      "type": "document",
+      "name": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "filePath": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "summary": "Operational runbook for the Epoch B real-corpus accumulation pipeline, covering architecture, automated scheduling, manual operation, snapshot verification, and troubleshooting for the Layer-2/Layer-3 data flow.",
+      "tags": ["documentation", "data-pipeline", "operations", "runbook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "type": "document",
+      "name": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "filePath": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "summary": "Detailed implementation plan for the execution and portfolio layer (ADR-011), specifying six design gates, contract-first authoring order, code slices, tests/benchmarks, sequencing, and risk mitigations.",
+      "tags": ["documentation", "implementation-plan", "architecture", "governance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "type": "document",
+      "name": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "filePath": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "summary": "Implementation brief detailing the scope, affected modules/schemas, ontology impact, replay/benchmark effects, migration risk, and verification summary for adding confidence scoring to the Gold DecisionPacket.",
+      "tags": ["documentation", "implementation-plan", "gold-layer", "trading-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "document",
+      "name": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "filePath": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "summary": "Comprehensive implementation brief for the Gold DecisionPacket v0 feature, covering affected modules/schemas, ontology impact, regime-to-direction mapping design decisions, canonical-id derivation, and strict contract-first execution order.",
+      "tags": ["documentation", "implementation-plan", "gold-layer", "trading-engine"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "type": "document",
+      "name": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "filePath": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "summary": "Final audit report for Gold DecisionPacket v0 covering architecture correctness, replay determinism, ontology/ADR compliance, treasury/gold separation, schema correctness, and graph integrity across 19 dimensions with post-audit remediation notes.",
+      "tags": ["documentation", "audit", "gold-layer", "quality-assurance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "type": "document",
+      "name": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "filePath": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "summary": "Integration and refactor roadmap describing how the JARVIS graph-intelligence UI connects to the el_nino trading engine backend, including API design, data flow, and phased refactor milestones.",
+      "tags": ["documentation", "roadmap", "architecture", "jarvis"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "type": "document",
+      "name": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "filePath": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "summary": "Final audit of the paper-trading runtime covering ten scoring dimensions (stateful replay determinism, ledger integrity, idempotency, wrap boundary, ADR-009 compliance, bounded-context separation, ontology integrity, honesty) with adversarial verification outcomes.",
+      "tags": ["documentation", "audit", "paper-trading", "quality-assurance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:REGIME_IMPLEMENTATION_BRIEF.md",
+      "type": "document",
+      "name": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "filePath": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "summary": "Implementation brief for the regime taxonomy feature, listing affected modules, schemas, ontology/replay/benchmark impacts, migration risk, governance impact, and verification summary.",
+      "tags": ["documentation", "implementation-plan", "regime-detection", "trading-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "type": "document",
+      "name": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "filePath": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "summary": "Final audit of the regime taxonomy implementation covering 21 dimensions including architecture, replay determinism, ontology/ADR/population-strategy compliance, feature grounding, schema correctness, gold-layer readiness, and benchmark integration.",
+      "tags": ["documentation", "audit", "regime-detection", "quality-assurance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:STEP4_BENCH004_prompt.md",
+      "type": "document",
+      "name": "STEP4_BENCH004_prompt.md",
+      "filePath": "STEP4_BENCH004_prompt.md",
+      "summary": "Claude Code prompt script for Step 4 of the execution-layer build: authoring BENCH-004 (byte-identical replay benchmark) and the corresponding in-sync test, followed by writeback per CLAUDE.md checklist.",
+      "tags": ["documentation", "prompt-script", "benchmark", "testing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:audit_plan.md",
+      "type": "document",
+      "name": "audit_plan.md",
+      "filePath": "audit_plan.md",
+      "summary": "Comprehensive audit plan document spanning the full el_nino codebase and dev_graph, defining multi-phase audit methodology, checklists, and success criteria across approximately 740 lines.",
+      "tags": ["documentation", "audit", "quality-assurance", "governance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:audit_plan_addendum.md",
+      "type": "document",
+      "name": "audit_plan_addendum.md",
+      "filePath": "audit_plan_addendum.md",
+      "summary": "Addendum to the primary audit plan, extending coverage with additional audit dimensions, edge cases, and supplementary verification procedures across approximately 750 lines.",
+      "tags": ["documentation", "audit", "quality-assurance", "governance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph_next_step_recommendation_2026-06-08.md",
+      "type": "document",
+      "name": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "filePath": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "summary": "Dated recommendation document identifying the single highest-value next engineering step (Gold DecisionPacket v0 as a 3-slice arc) and documenting the decisive finding that gate (e) was still open, with alternatives considered.",
+      "tags": ["documentation", "planning", "governance", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph_stabilization_audit_2026-06-07.md",
+      "type": "document",
+      "name": "dev_graph_stabilization_audit_2026-06-07.md",
+      "filePath": "dev_graph_stabilization_audit_2026-06-07.md",
+      "summary": "Dated stabilization audit of the dev_graph ontology across 15 parts (ontology integrity, ADR consistency, layering, traceability, contract, replay determinism, feature layer, decision layer, population strategy, graph-RAG readiness, digital-twin maturity) scoring the overall state and identifying the highest-value next slice.",
+      "tags": ["documentation", "audit", "dev-graph", "governance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:final_strategic_review.md",
+      "type": "document",
+      "name": "final_strategic_review.md",
+      "filePath": "final_strategic_review.md",
+      "summary": "Comprehensive strategic review document (~1100 lines) synthesizing the full el_nino project state, architectural decisions, engineering digital-twin maturity, and forward-looking strategic recommendations.",
+      "tags": ["documentation", "strategy", "architecture", "planning"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:llm-wiki.md",
+      "type": "document",
+      "name": "llm-wiki.md",
+      "filePath": "llm-wiki.md",
+      "summary": "Introductory guide to the LLM Wiki (Karpathy-pattern knowledge base), explaining the core idea, architecture, operations, indexing, CLI tools, and rationale for using a flat-file wiki as an LLM context source.",
+      "tags": ["documentation", "knowledge-base", "llm", "operations"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:CLAUDE.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:ADR-011_drafting_prompt.md",
+      "target": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:ADR-011_promote_and_plan_prompt.md",
+      "target": "document:EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "target": "document:ADR-011_drafting_prompt.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "target": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "target": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "target": "document:REGIME_IMPLEMENTATION_BRIEF.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "target": "document:audit_plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:audit_plan_addendum.md",
+      "target": "document:audit_plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph_next_step_recommendation_2026-06-08.md",
+      "target": "document:dev_graph_stabilization_audit_2026-06-07.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph_next_step_recommendation_2026-06-08.md",
+      "target": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:STEP4_BENCH004_prompt.md",
+      "target": "document:EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:final_strategic_review.md",
+      "target": "document:audit_plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

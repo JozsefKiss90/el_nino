@@ -1,0 +1,114 @@
+{
+  "nodes": [
+    {
+      "id": "document:population_strategy.md",
+      "type": "document",
+      "name": "population_strategy.md",
+      "filePath": "population_strategy.md",
+      "summary": "Comprehensive operational guide defining how to populate the dev_graph ontology: creation principles, trigger conditions, phased population roadmap, module/file/test node templates, and an end-of-session writeback checklist for all engineering sessions.",
+      "tags": ["documentation", "governance", "ontology", "dev-graph", "operational-guide"],
+      "complexity": "complex",
+      "languageNotes": "At 1162 lines, this is the primary governance manual for dev_graph population — covering all 24 node types, 11 lint checks, and a full phase-by-phase creation sequence. It supersedes earlier population strategy drafts."
+    },
+    {
+      "id": "document:project_structure.md",
+      "type": "document",
+      "name": "project_structure.md",
+      "filePath": "project_structure.md",
+      "summary": "Directory listing and structural snapshot of the layer_3_wiki repository (an Obsidian vault), documenting the wiki, raw, and .claude directories with their file contents at a point in time.",
+      "tags": ["documentation", "project-structure", "reference", "obsidian-vault"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Python project configuration for the layer3-trading-engine package, declaring Hatchling as the build backend, packaging the seven src/ sub-packages (risk, supervisor, snapshot, features, regime, gold, execution), and configuring pytest, mypy strict mode, and ruff linting.",
+      "tags": ["configuration", "build-system", "python", "packaging", "tooling"],
+      "complexity": "simple",
+      "languageNotes": "Uses PEP 517/518 [build-system] table with Hatchling; strict mypy is enabled over src/ with python_version 3.10. Optional dev dependencies include pytest>=8, mypy>=1.8, and ruff>=0.6."
+    },
+    {
+      "id": "document:slice2 fit assessment and roadmap.md",
+      "type": "document",
+      "name": "slice2 fit assessment and roadmap.md",
+      "filePath": "slice2 fit assessment and roadmap.md",
+      "summary": "Post-audit assessment of Slice 2 (the paper-trading admission layer) against the evolutionary plan, covering fit validation across 6 plan points, a prioritized forward roadmap (R1–R5), the La Niña intraday gold design, and a backtesting/evidence-collection framework.",
+      "tags": ["documentation", "architecture-review", "roadmap", "assessment", "trading-engine"],
+      "complexity": "complex",
+      "languageNotes": "26 sections dated 2026-06-10, based on PAPER_TRADING_RUNTIME_FINAL_AUDIT.md (97/100 score). Identifies DEBT-01 (snapshot publisher NameError) as the critical-path blocker for corpus accumulation."
+    },
+    {
+      "id": "document:the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "type": "document",
+      "name": "the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "filePath": "the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "summary": "Implementation plan (Epoch a) for the paper-trading runtime stateful admission layer: defines the RuntimeDecisionRecord wrapping pattern, pure-core evaluate() function contract, two-slice delivery (ADR-009 governance then code freeze), guard taxonomy, ledger design, and Alpaca paper-trading integration.",
+      "tags": ["documentation", "implementation-plan", "trading-engine", "architecture", "decision-packet"],
+      "complexity": "complex",
+      "languageNotes": "8 sections covering ADR-first governance, offline simulator vs Alpaca paper backend duality, gold→GLD instrument mapping, EOD cadence alignment, and strategy isolation via separate paper accounts."
+    },
+    {
+      "id": "document:ultimateplan.md",
+      "type": "document",
+      "name": "ultimateplan.md",
+      "filePath": "ultimateplan.md",
+      "summary": "Comprehensive evolutionary architecture plan for the El Nino / Alpaca paper-trading system, written in Hungarian, covering the full Alpaca integration design: layer model placement, gold-to-GLD instrument mapping, paper-only configuration constraints, DecisionPacket-to-order mapping, dual execution backend design, and the learning feedback loop.",
+      "tags": ["documentation", "architecture", "trading-engine", "alpaca-integration", "evolutionary-plan"],
+      "complexity": "complex",
+      "languageNotes": "Document body is written in Hungarian, describing the Alpaca integration layer (Layer 4 Execution Infrastructure). Covers hard gates (LIVE_ENABLED=false), paper base URL enforcement, dual backend (offline sim + Alpaca paper), and strategy isolation via separate paper accounts."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:population_strategy.md",
+      "target": "config:pyproject.toml",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:slice2 fit assessment and roadmap.md",
+      "target": "document:the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:ultimateplan.md",
+      "target": "document:the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:slice2 fit assessment and roadmap.md",
+      "target": "document:ultimateplan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:pyproject.toml",
+      "target": "file:src/risk/__init__.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:pyproject.toml",
+      "target": "file:src/gold/__init__.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:pyproject.toml",
+      "target": "file:src/execution/__init__.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

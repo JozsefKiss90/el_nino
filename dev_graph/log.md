@@ -1281,3 +1281,223 @@ Ran a 30-agent adversarial review of the JARVIS integration; 23 findings confirm
 **Metrics:** dev_graph content nodes 172 → 175 (+BENCH-004, +FILE-029, +TEST-021); benchmark_result 3→4, file 28→29, test 20→21; coverage 175/175; total files 176→179. No new ontology type/enum; no `sync_to_neo4j.py` change. Re-sync Neo4j (`python dev_graph/sync_to_neo4j.py --clear`) — counts recorded after sync.
 
 **Deferred / open (STEP 5):** the Alpaca-paper adapter (gate f, ADR-011 §5 — off the replay/benchmark path); full chain-orchestrator `run_once` integration; a LONG real-corpus snapshot (when epoch-(b) calibration shifts the regime→direction table) would let the real sequence exercise a fill. **Paused for operator review before STEP 5.**
+
+---
+
+## [2026-06-17] epoch | Epoch (b) calibration — empirical-readiness assessment + governance (ADR-012); ALL THREE TARGETS DEFER (no bump)
+
+**Slice.** The calibration-governance step of epoch (b): decide whether the real snapshot corpus
+(accumulating since 2026-06-11 per the 2026-06-11 operationalization entry) is large/diverse enough to
+convert the provisional, domain-anchored regime thresholds, confidence weights, and regime→direction
+table into empirically-grounded values. **Methodology + readiness gate only — NO `src/` change, NO
+`*_version` bump, NO threshold/weight/direction value change, NO benchmark re-pin, NO new ontology
+object beyond the governing ADR.** A config-version amendment was *not* performed because the corpus
+fails the readiness gate. Paused-for-review boundary honored: nothing that changes a replay key was
+touched.
+
+### Step 1 — corpus sufficiency assessment (READ-ONLY; ran the real chain over every banked snapshot)
+
+Enumerated both content-id-keyed sinks and ran `consume → build_features → classify → build_decision`
+over every honestly-banked PIT snapshot (scratch harness; written nothing; reproduction recipe + the
+verbatim verdict live in `EPOCH_B_CALIBRATION_RUNBOOK.md` §3).
+
+- **N = 5** PASS-banked PIT snapshots in `Mr-Ripley/layer2_truth.db` (`engine gold-v3.3.0 / cfg 1.1.0`):
+  `952cc83a` (2026-05-01, backfill anchor) · `05c8369d` (06-11) · `7d39aa8f` (06-13) · `e0e44caf`
+  (06-14) · `c1fe5a02` (06-15). **1** is a committed el_nino consumable (the `latest_snapshot_pass.json`
+  fixture); **4** are producer-only (Mr-Ripley truth DB + `runtime/snapshots/*.json` archives). Forward
+  corpus = **4 trading days** (06-12 and 06-16 fail-closed no-bank days; 06-17 not yet run).
+- **Regime distribution `{RESTRICTIVE_RATES: 5}` — 1/12 regimes.** Never observed: LIQUIDITY_STRESS,
+  RISK_OFF, VOLATILE, REFLATION, DISINFLATION, CURVE_INVERSION, STRONG_USD, RISK_ON, LOW_VOL, NEUTRAL,
+  INDETERMINATE. **Direction distribution `{AVOID: 5}` — 1/4 directions** (LONG/FLAT/WATCH never seen; a
+  fill/LONG has never occurred). **Confidence** 0.397–0.571 (mean 0.520), all from `R04_restrictive_rates`;
+  only competitor ever near is `R08_strong_usd`; **zero** staleness/revision/coverage penalty variation.
+- The corpus is **monochromatic** (one regime, one direction, one deciding rule, no penalty variation) —
+  the explicit do-not-calibrate condition. KA-010 already flags 5-day samples as not statistically
+  significant; we have ~4 forward days.
+
+### Step 2 — governance authored (always valid regardless of N)
+
+- **ADR-012 [[ADR - Empirical Calibration Methodology]]** (decision_record, **draft** / not-started;
+  `evidence [design, ADR, code, layer2]`; `confidence confirmed`). Records: **version-axis mapping**
+  (regime thresholds → `taxonomy_version` per ADR-007; confidence weights + regime→direction table →
+  `decision_policy_version` per ADR-008 §7 + the gold-config docstring; **never crossed**; a bump is a
+  config amendment, never a `canonical_id` change/rebuild); the **empirical-readiness gate** (G0: N≥60
+  forward PASS snapshots; G1 thresholds: both-sided boundary obs + ≥3 regimes + walk-forward holdout;
+  G2 weights: real variation in every penalty dimension + ordinal-monotonicity holdout, no PnL/outcome
+  fit, no SCHEMA-005 bleed; G3 direction table: per-cell regime observed + a forward gold-return
+  evaluation harness beating the provisional cell out-of-sample per KA-010); the **method** (deterministic
+  rule-based derivation + walk-forward, no ML/learned/online/history-dependent logic — ADR-005/007);
+  **determinism/PIT preservation** (old versions stay byte-reproducible; re-pin affected goldens under
+  the new version retaining the old; calibrate only on honestly-banked forward snapshots, never
+  back-fabricate); and **Non-Goals** (no learned models, no live money, no schema/id change, no
+  recalibration of a gate-failing target). Mirrors the ADR-006/009 governance-boundary idiom.
+- **`EPOCH_B_CALIBRATION_RUNBOOK.md`** (repo root, non-dev_graph; corpus-runbook idiom) — operational
+  companion: current pinned baseline + fingerprints, the §3 read-only assessment + reproduction harness,
+  the §4 readiness gate, and the §5 recalibrate→validate→re-pin procedure (HARD PAUSE before any bump).
+
+### Step 3 — calibration: DEFERRED (no gate passes)
+
+| Target | Version axis | Gate | Verdict |
+|---|---|---|---|
+| Regime thresholds | `taxonomy_version` | G0 + G1 | **DEFER** — N=5 (<60); 1/12 regimes; cannot move a boundary never observed both sides of |
+| Confidence weights | `decision_policy_version` | G0 + G2 | **DEFER** — zero staleness/revision/coverage variation to fit; ordinal score, not outcome-fittable |
+| Regime→direction table | `decision_policy_version` | G0 + G3 | **DEFER** — 11/12 cells unexercised; no forward gold-return evaluation harness exists |
+
+No value or version changed. `taxonomy_version` stays `1.0.0` (regime `decision_fingerprint`
+`8ab0be8d…`); `decision_policy_version` stays `0.1.0` (gold `decision_policy_fingerprint` `be7e3192…`,
+matching the BENCH-002 pin — no drift). BENCH-001/002 goldens untouched. FILE-013/FILE-016 config
+nodes untouched (no `updated` bump).
+
+### Changes to existing nodes (2 — inbound links only, no value/version change)
+
+- **ADR-007 [[ADR - Deterministic Regime Taxonomy]]** + **ADR-008 [[ADR - Gold Decision Confidence
+  Semantics]]**: each `related_decisions += [[ADR - Empirical Calibration Methodology]]` (forward link to
+  the calibration methodology each ADR anticipated as the "expected v1 amendment" / "recalibration … is a
+  governed bump"); `updated → 2026-06-17`. Frontmatter-only; no `decision_status`/`canonical_id`/body-value
+  change; gives ADR-012 its inbound links.
+
+### Lint (11 checks, touched nodes: ADR-012, ADR-007, ADR-008, index.md)
+
+1 frontmatter complete (ADR-012 has `decision_id`/`decision_date`/`decision_status`; universal fields
+present) ✓ · 2 enums valid (`decision_record`/`draft`/`not-started`/`confirmed`/`evidence
+[design,ADR,code,layer2]`/`decision_status active`) ✓ · 3 no orphans — ADR-012 ← ADR-007 + ADR-008
+`related_decisions` + index; ≥1 outbound (Justified By / Depends On / Constrains / Originates From /
+Constrained By) ✓ · 4 fresh (2026-06-17) ✓ · 5 wikilinks resolve — all targets exist (config.py
+regime/gold FILE-013/016, policy.py FILE-017, BENCH-001/002, KA-010/011, CON-001/003, ADR-005/006/007/008/009);
+non-node runbook refs de-wikilinked to backticks ✓ · 6 n/a (ADR, not module) · 7 n/a · 8 type-content
+aligned (ADR has Status/Context/Decision/Consequences) ✓ · 9 no deprecated refs in typed sections ✓ ·
+10 canonical_id uniqueness — ADR-012 used once (next free after ADR-011) ✓ · 11 evidence-confidence
+coherence (`confirmed` + non-empty evidence) ✓.
+
+### Metrics
+
+dev_graph content nodes 175 → 176 (+ADR-012); decision_record 11 → 12; total files 179 → 180; Originates
+From edges 19 → 21 (ADR-012 → KA-010, KA-011); coverage 176/176. No new ontology type/enum; no schema
+version change. Re-sync Neo4j (`python dev_graph/sync_to_neo4j.py --clear`) — counts recorded after sync.
+
+### Deferred / next
+
+Re-run the §3 assessment as the corpus grows (watch the regime distribution diversify away from
+RESTRICTIVE_RATES). G0 (N≥60) is the first gate likely to come into reach (≈ a calendar quarter of
+forward days); G1/G2/G3 additionally need regime/penalty diversity the macro tape must actually supply,
+and G3 needs a forward gold-return evaluation harness to be built. **Stopped for operator review — no
+`*_version` bump or value change was made, per the HARD PAUSE boundary.**
+
+---
+
+## [2026-06-17] session | Epoch (b) gate-G3 prerequisite — Gold Forward-Return Labeler (measurement only; G3 stays deferred)
+
+**Slice.** Built the **forward-return labeling harness** ADR-012 gate G3 names as its prerequisite —
+the deterministic tool that labels each banked gold decision with the gold return realized *after* it,
+producing the per-regime outcome data G3 will eventually consume. The highest-leverage thing buildable
+today (tractable independent of corpus size). **Measurement only: no decision-path edit, no config
+change, no `*_version` bump, no direction-table change. G3 itself stays deferred** — the corpus is
+still monochromatic. This is application code + a calibration-tool node set under ADR-012 (no new ADR).
+
+### The non-negotiable — look-ahead containment (held, and adversarially verified)
+
+Forward returns are computed from snapshots banked *after* a decision — legitimate for an outcome
+label, poison on the decision path. The wall held: the harness lives under `benchmarks/` (not `src/`),
+imports the chain **read-only** (the chain never imports it), calls `build_decision(fv, rc)` with **no**
+future data, and never writes a return/label back into a snapshot/feature/regime/decision. A static
+guard test (`test_decision_chain_does_not_import_the_labeler`) enforces it as a regression. An
+independent adversarial review (general-purpose agent, 21 tool-uses) tried to break containment +
+return-math + determinism + dedup and returned **CONTAINMENT: PASS / CORRECTNESS: PASS (0 issues)** —
+it even monkeypatched the external corpus dir to prove the committed golden does not depend on the
+Mr-Ripley repo. One fair hardening point it raised (unguarded non-positive entry price) was fixed
+fail-closed (→ `no_price`), matching the ADR-003 posture.
+
+### Node placement decision (NOT CAP-013)
+
+Placed as a **standalone calibration tool governed by ADR-012**, not a realization of
+[[Performance Scoring]] (CAP-013). CAP-013 is trade-log-driven *strategy* scoring feeding the
+Supervisor/promotion (treasury) branch and its SCHEMA-005 scorecards — a bounded context ADR-004/ADR-008
+keep **permanently separate** from the gold-decision branch. The labeler consumes the corpus (not trade
+logs), produces no fills/scorecards, and serves the gold `decision_policy_version`/G3 calibration.
+Folding it into CAP-013 would conflate the two contexts (CON-003). **CAP-013 stays `not-started`.**
+
+### Code (application; benchmark idiom; no `src/` change)
+
+- `benchmarks/calibration/run_forward_return_labels.py` — pure label/return-math core
+  (`forward_return`, `select_exit`, `label_point`, `aggregate_by_regime_horizon`, `direction_correct`,
+  `directional_pnl`, `_median`) + read-only corpus driver (`decision_points_from_corpus`, dedups by
+  `snapshot_id`) + committed golden writer. Horizons 5/20/60 td-equiv (`CAL_PER_TD=1.4`); exit =
+  nearest banked snapshot at-or-after `clock_ts + H` within `ceil(0.25·offset)` gap tolerance;
+  statuses **realized / pending / no_exit_in_tolerance / no_price**. Per-label: forward return,
+  `direction_correct` (LONG↔up, AVOID↔down, FLAT↔flat-band, WATCH→None), `directional_pnl`
+  (LONG +r, AVOID −r, FLAT 0, WATCH None), `move_sign`.
+- `benchmarks/calibration/artifacts/forward_return_labels.json` — committed golden (committed scope =
+  el_nino consumables only, reproducible in CI; `--include-external` adds a stdout-only full-corpus
+  diagnostic with the Mr-Ripley archives, never committed).
+- `tests/calibration/test_forward_return_labels.py` — 19 tests.
+
+### Results / evidence
+
+- **Determinism + golden:** `build_report()` byte-identical; committed artifact in sync.
+- **Synthetic validation** (the monochromatic real corpus can't exercise it): 6 regimes, all 4
+  directions, all 3 statuses, **9 realized** labels with hand-verified returns/correctness
+  (LONG-right/-wrong, AVOID-right/-wrong, FLAT-flat, WATCH-None; gap → no_exit_in_tolerance; long
+  horizons → pending).
+- **Real corpus today (honest, sparse):** committed scope dedups three JSONs (all id `952cc83a`) to
+  **1** snapshot → all horizons **pending**, 0 realized. Full corpus (5 snapshots, `--include-external`)
+  = all RESTRICTIVE_RATES/AVOID, all **pending** or **no_exit_in_tolerance** (the 2026-05-01 anchor's
+  short horizons), **0 realized** — the four forward days cluster within 4 days, so no H≥5 forward
+  return is realizable yet. The harness is ready to accumulate labels as the corpus grows.
+- **Quality gates:** 19 new tests pass; **full suite 906 pass** (was 905; no regressions);
+  `mypy --strict` + `ruff` clean on the new files (the 2 repo-wide mypy errors remain pre-existing in
+  the untouched `src/features/feature_builder/feature_builder.py`).
+
+### Nodes Created (4)
+
+- **MOD-009 [[Gold Forward-Return Labeler]]** (module, active/tested; `evidence [code, design, ADR]`;
+  `module_path benchmarks/calibration`) — `### Depends On` [[Gold Decision Builder]] / [[Market Regime
+  Classifier]] / [[Feature Builder]] / [[Snapshot Consumer]] (read-only, downstream); `### Produces`
+  [[Gold Forward-Return Label Set]]; `### Contains` [[run_forward_return_labels.py]]; `### Validated By`
+  [[test_forward_return_labels]] + [[Gold Forward-Return Label Set]]; `### Justified By`
+  [[ADR - Empirical Calibration Methodology]]. Body records containment + the NOT-CAP-013 separation.
+- **FILE-030 [[run_forward_return_labels.py]]** (file; `module: [[Gold Forward-Return Labeler]]`).
+- **TEST-022 [[test_forward_return_labels]]** (test, `test_type: benchmark`; `covers: [[Gold
+  Forward-Return Labeler]], [[Gold Forward-Return Label Set]]`).
+- **BENCH-005 [[Gold Forward-Return Label Set]]** (benchmark_result, active/implemented; `evidence
+  [code, benchmark]`; `measures [forward_return, directional_pnl, hit_rate, regime_direction_correctness,
+  horizon_coverage, realized_pending_status]`) — pins the committed golden; `### Justified By`
+  [[ADR - Empirical Calibration Methodology]].
+
+### Changes to existing nodes (1)
+
+- **ADR-012 [[ADR - Empirical Calibration Methodology]]**: added §7 "G3 prerequisite — forward-return
+  labeling harness (built 2026-06-17)" (the harness exists; G3 still deferred until per-regime coverage
+  accrues; NOT CAP-013); G3 gate clause "the forward-return harness does not yet exist" reconciled to
+  "the labeling harness now exists … the coverage it needs does not"; `### Constrains +=`
+  [[Gold Forward-Return Labeler]], [[Gold Forward-Return Label Set]]. Body-only; `status` stays `draft`,
+  `decision_status`/`canonical_id` unchanged; `updated` already 2026-06-17. (`EPOCH_B_CALIBRATION_RUNBOOK.md`
+  §4 G3 / §7 status refreshed to point at the new harness — non-dev_graph doc.)
+
+### Lint (11 checks, touched nodes: MOD-009, FILE-030, TEST-022, BENCH-005, ADR-012, index.md)
+
+1 frontmatter complete (MOD-009 module ext; FILE-030 file_path/language/module; TEST-022 test_path/
+test_type/covers; BENCH-005 measures) ✓ · 2 enums valid (module active/tested; file implemented; test
+benchmark/tested; benchmark_result active/implemented; evidence subsets of the closed set) ✓ · 3 no
+orphans — MOD-009 ← FILE-030/TEST-022/BENCH-005 + ADR-012 Constrains + index; FILE-030 ← MOD-009; TEST-022
+← MOD-009/BENCH-005; BENCH-005 ← MOD-009/TEST-022/ADR-012; each ≥1 outbound ✓ · 4 fresh (2026-06-17) ✓ ·
+5 wikilinks resolve — chain modules (MOD-003..006), config/benchmark/ADR/constraint targets all exist;
+disambiguated file name `run_forward_return_labels.py` ✓ · 6 module `related_constraints` (MOD-009 →
+Canonical Ownership) ✓ · 7 module `related_tests` (MOD-009 → test_forward_return_labels) ✓ · 8 type-content
+aligned (module has Implementation Notes; file concise; test has covers + Used By; benchmark has measures
++ results) ✓ · 9 no deprecated refs in typed sections ✓ · 10 canonical_id uniqueness — MOD-009/FILE-030/
+TEST-022/BENCH-005 each next-free, used once ✓ · 11 evidence-confidence coherence (confirmed + non-empty
+evidence) ✓.
+
+### Metrics
+
+dev_graph content nodes 176 → 180 (+MOD-009, +FILE-030, +TEST-022, +BENCH-005); module 8→9, file 29→30,
+test 21→22, benchmark_result 4→5; coverage 180/180; total files 180→184. No new ontology type/enum; no
+schema version change; no `*_version` bump. Re-sync Neo4j (`python sync_to_neo4j.py --clear`) — counts
+recorded after sync.
+
+### Deferred / next
+
+The labeler accumulates labels as the corpus grows; G3 stays deferred until per-regime coverage + a
+walk-forward out-of-sample slice accrue (ADR-012 §3). When real ADMIT/LONG snapshots appear (a
+diversifying tape), the real section will begin producing realized labels. **Stopped for operator
+review — measurement tool only; no decision logic, config, or `*_version` changed.**

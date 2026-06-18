@@ -1,7 +1,7 @@
 {
   "meta": {
-    "node_count": 175,
-    "edge_count": 1294,
+    "node_count": 180,
+    "edge_count": 1347,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -146,6 +146,20 @@
       "status": "active"
     },
     {
+      "id": "ADR-012",
+      "label": "DecisionRecord",
+      "name": "ADR - Empirical Calibration Methodology",
+      "summary": "ADR - Empirical Calibration Methodology",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code",
+        "layer2"
+      ],
+      "status": "draft"
+    },
+    {
       "id": "API-001",
       "label": "ApiDocSource",
       "name": "Alpaca API Docs",
@@ -255,6 +269,18 @@
       "label": "BenchmarkResult",
       "name": "Execution Layer Benchmark",
       "summary": "The deterministic byte-identical sequence-replay benchmark + harness for the execution layer (Execution MOD-008).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BENCH-005",
+      "label": "BenchmarkResult",
+      "name": "Gold Forward-Return Label Set",
+      "summary": "The committed golden artifact `benchmarks/calibration/artifacts/forward_return_labels.json` produced by the Gold Forward-Return Labeler (MOD-009): per (gold-decision × holding-horizon) labels of the realized forward gold return, plus the per regime × horizon aggregate that ADR - Empirical Calibration Methodology (ADR-012) gate G3 will consume.",
       "confidence": "confirmed",
       "evidence": [
         "code",
@@ -901,6 +927,17 @@
       "status": "implemented"
     },
     {
+      "id": "FILE-030",
+      "label": "File",
+      "name": "run_forward_return_labels.py",
+      "summary": "The single harness file for the Gold Forward-Return Labeler (MOD-009): pure label/return-math functions + a read-only corpus driver + the committed golden writer, mirroring the `run_*_bench.py` idiom.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
       "id": "GATE-001",
       "label": "Gate",
       "name": "Trade Validation Gate",
@@ -1337,6 +1374,19 @@
         "design",
         "ADR",
         "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "MOD-009",
+      "label": "Module",
+      "name": "Gold Forward-Return Labeler",
+      "summary": "A deterministic, **strictly-downstream, read-only** measurement module that labels each already-produced Gold DecisionPacket v0 Schema decision with the **gold return realized after its timestamp**, and aggregates the labels per regime × holding horizon.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "design",
+        "ADR"
       ],
       "status": "active"
     },
@@ -2084,6 +2134,17 @@
       "status": "implemented"
     },
     {
+      "id": "TEST-022",
+      "label": "Test",
+      "name": "test_forward_return_labels",
+      "summary": "The test suite for the Gold Forward-Return Labeler (MOD-009) and its committed golden Gold Forward-Return Label Set (BENCH-005).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
       "id": "WF-001",
       "label": "Workflow",
       "name": "System Lifecycle",
@@ -2349,6 +2410,11 @@
     },
     {
       "source": "ADR-007",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "ADR-007",
       "type": "DEPENDS_ON",
       "target": "MOD-004"
     },
@@ -2411,6 +2477,11 @@
       "source": "ADR-008",
       "type": "DECIDED_BY",
       "target": "ADR-011"
+    },
+    {
+      "source": "ADR-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
     },
     {
       "source": "ADR-008",
@@ -2611,6 +2682,81 @@
       "source": "ADR-011",
       "type": "ORIGINATES_FROM",
       "target": "KA-010"
+    },
+    {
+      "source": "ADR-012",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-012",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-005"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DEPENDS_ON",
+      "target": "FILE-013"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DEPENDS_ON",
+      "target": "FILE-016"
+    },
+    {
+      "source": "ADR-012",
+      "type": "DEPENDS_ON",
+      "target": "FILE-017"
+    },
+    {
+      "source": "ADR-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-006"
+    },
+    {
+      "source": "ADR-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-007"
+    },
+    {
+      "source": "ADR-012",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-008"
+    },
+    {
+      "source": "ADR-012",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "ADR-012",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-011"
     },
     {
       "source": "API-001",
@@ -2836,6 +2982,51 @@
       "source": "BENCH-004",
       "type": "VALIDATED_BY",
       "target": "TEST-021"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "DEPENDS_ON",
+      "target": "MOD-009"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-030"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-022"
+    },
+    {
+      "source": "BENCH-005",
+      "type": "VALIDATED_BY",
+      "target": "TEST-022"
     },
     {
       "source": "CAP-001",
@@ -4773,6 +4964,36 @@
       "target": "TEST-021"
     },
     {
+      "source": "FILE-030",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-030",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "FILE-030",
+      "type": "DEPENDS_ON",
+      "target": "MOD-009"
+    },
+    {
+      "source": "FILE-030",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "FILE-030",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-022"
+    },
+    {
+      "source": "FILE-030",
+      "type": "VALIDATED_BY",
+      "target": "TEST-022"
+    },
+    {
       "source": "GATE-001",
       "type": "CONSUMES",
       "target": "SCHEMA-007"
@@ -6481,6 +6702,71 @@
       "source": "MOD-008",
       "type": "VALIDATED_BY",
       "target": "TEST-021"
+    },
+    {
+      "source": "MOD-009",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "MOD-009",
+      "type": "CONTAINS",
+      "target": "FILE-030"
+    },
+    {
+      "source": "MOD-009",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "MOD-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "MOD-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "MOD-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "MOD-009",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "MOD-009",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "MOD-009",
+      "type": "PRODUCES",
+      "target": "BENCH-005"
+    },
+    {
+      "source": "MOD-009",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-030"
+    },
+    {
+      "source": "MOD-009",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-022"
+    },
+    {
+      "source": "MOD-009",
+      "type": "VALIDATED_BY",
+      "target": "BENCH-005"
+    },
+    {
+      "source": "MOD-009",
+      "type": "VALIDATED_BY",
+      "target": "TEST-022"
     },
     {
       "source": "OBS-001",
@@ -8536,6 +8822,46 @@
       "source": "TEST-021",
       "type": "USED_BY",
       "target": "MOD-008"
+    },
+    {
+      "source": "TEST-022",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "TEST-022",
+      "type": "COVERS",
+      "target": "BENCH-005"
+    },
+    {
+      "source": "TEST-022",
+      "type": "COVERS",
+      "target": "MOD-009"
+    },
+    {
+      "source": "TEST-022",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "TEST-022",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "TEST-022",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-030"
+    },
+    {
+      "source": "TEST-022",
+      "type": "USED_BY",
+      "target": "BENCH-005"
+    },
+    {
+      "source": "TEST-022",
+      "type": "USED_BY",
+      "target": "MOD-009"
     },
     {
       "source": "WF-001",

@@ -169,7 +169,22 @@
       "Bash(exit 2)",
       "Read(//c/Users/jozse/.claude/plugins/**)",
       "Read(//c/Users/jozse/.claude/**)",
-      "Bash(awk '{print $5, \"bytes\"}')"
+      "Bash(awk '{print $5, \"bytes\"}')",
+      "Bash(py -3.10 -m neo4j_mcp_server --help)",
+      "PowerShell(Write-Output \"=== port 7688 test ===\"; \\(Test-NetConnection -ComputerName localhost -Port 7688 -WarningAction SilentlyContinue\\).TcpTestSucceeded; Write-Output \"=== ALL containers ===\"; docker ps -a --format \"{{.Names}} | {{.Image}} | {{.Status}} | {{.Ports}}\")",
+      "PowerShell(py *)",
+      "PowerShell(docker exec elnino-neo4j *)",
+      "Read(//c/Code/el_nino/.venv/Scripts/**)",
+      "Read(//c/Code/Mr-Ripley/runtime/snapshots//**)",
+      "Bash(PYTHONPATH=/c/Code/el_nino/src .venv/Scripts/python.exe *)",
+      "Read(//c/Code/el_nino/benchmarks/regime/artifacts//**)",
+      "Read(//c/Code/el_nino/dev_graph/**)",
+      "Bash(export NEO4J_URI=\"bolt://127.0.0.1:7688\")",
+      "Bash(export NEO4J_USERNAME=\"neo4j\")",
+      "Bash(export NEO4J_PASSWORD=\"elnino_dev\")",
+      "Bash(export NEO4J_DATABASE=\"neo4j\")",
+      "Bash(MYPYPATH=src .venv/Scripts/python.exe -m mypy --strict benchmarks/calibration/run_forward_return_labels.py)",
+      "Bash(export NEO4J_URI=\"bolt://127.0.0.1:7688\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" NEO4J_DATABASE=\"neo4j\")"
     ]
   }
 }

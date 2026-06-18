@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-17
 confidence: confirmed
 evidence:
   - design
@@ -24,6 +24,7 @@ related_decisions:
   - "[[ADR - Feature Layer Contract]]"
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Gold DecisionPacket v0 Planning]]"
+  - "[[ADR - Empirical Calibration Methodology]]"
 decision_id: "ADR-007"
 decision_date: 2026-06-08
 supersedes: []

@@ -1,0 +1,1159 @@
+{
+  "artifact_schema": "forward_return_labels/v0",
+  "committed_real": {
+    "aggregate_by_regime_horizon": {
+      "RESTRICTIVE_RATES": {
+        "20": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        },
+        "5": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        },
+        "60": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      }
+    },
+    "corpus_source": "el_nino-committed consumables (dedup by snapshot_id)",
+    "coverage": {
+      "directions": [
+        "AVOID"
+      ],
+      "label_count": 3,
+      "realized_count": 0,
+      "regimes": [
+        "RESTRICTIVE_RATES"
+      ],
+      "statuses": [
+        "pending"
+      ]
+    },
+    "distinct_snapshots": 1,
+    "labels": [
+      {
+        "actual_offset_days": null,
+        "direction": "AVOID",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2026-05-01T22:00:00+00:00",
+        "entry_price": 4624.5,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": null,
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "status": "pending",
+        "target_clock_ts": "2026-05-08T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "AVOID",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2026-05-01T22:00:00+00:00",
+        "entry_price": 4624.5,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": null,
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "status": "pending",
+        "target_clock_ts": "2026-05-29T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "AVOID",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2026-05-01T22:00:00+00:00",
+        "entry_price": 4624.5,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "status": "pending",
+        "target_clock_ts": "2026-07-24T22:00:00+00:00",
+        "target_offset_days": 84
+      }
+    ],
+    "snapshots": [
+      {
+        "clock_ts": "2026-05-01T22:00:00+00:00",
+        "direction": "AVOID",
+        "entry_price": 4624.5,
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
+      }
+    ]
+  },
+  "decision_versions": {
+    "classifier_version": "0.1.0",
+    "decision_policy_version": "0.1.0",
+    "feature_schema_version": "0.1.0",
+    "taxonomy_version": "1.0.0"
+  },
+  "horizons_td": [
+    5,
+    20,
+    60
+  ],
+  "params": {
+    "cal_per_td": 1.4,
+    "flat_band": 0.0,
+    "max_gap_fraction": 0.25,
+    "price_feature": "gold_price",
+    "price_series": "gold_price_proxy",
+    "round": 6
+  },
+  "purpose": "ADR-012 gate G3 prerequisite: label each banked gold decision with the realized forward gold return, per regime x horizon. Measurement only \u2014 never calibrates the regime->direction table; G3 stays deferred (corpus monochromatic).",
+  "synthetic": {
+    "aggregate_by_regime_horizon": {
+      "CURVE_INVERSION": {
+        "20": {
+          "by_direction": {
+            "WATCH": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 1,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        },
+        "5": {
+          "by_direction": {
+            "WATCH": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": 0.060606,
+              "realized": 1,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": 0.060606,
+          "median_forward_return": 0.060606,
+          "scored_count": 0
+        },
+        "60": {
+          "by_direction": {
+            "WATCH": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      },
+      "LOW_VOL": {
+        "20": {
+          "by_direction": {
+            "FLAT": {
+              "correct": 0,
+              "count": 2,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 1,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 2,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        },
+        "5": {
+          "by_direction": {
+            "FLAT": {
+              "correct": 1,
+              "count": 2,
+              "mean_forward_return": 0.0,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 1,
+          "count_total": 2,
+          "hit_count": 1,
+          "hit_rate": 1.0,
+          "mean_directional_pnl": 0.0,
+          "mean_forward_return": 0.0,
+          "median_forward_return": 0.0,
+          "scored_count": 1
+        },
+        "60": {
+          "by_direction": {
+            "FLAT": {
+              "correct": 0,
+              "count": 2,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 2,
+          "count_realized": 0,
+          "count_total": 2,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      },
+      "REFLATION": {
+        "20": {
+          "by_direction": {
+            "LONG": {
+              "correct": 0,
+              "count": 2,
+              "mean_forward_return": -0.01,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 1,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 2,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_directional_pnl": -0.01,
+          "mean_forward_return": -0.01,
+          "median_forward_return": -0.01,
+          "scored_count": 1
+        },
+        "5": {
+          "by_direction": {
+            "LONG": {
+              "correct": 1,
+              "count": 2,
+              "mean_forward_return": 0.1,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 1,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 2,
+          "hit_count": 1,
+          "hit_rate": 1.0,
+          "mean_directional_pnl": 0.1,
+          "mean_forward_return": 0.1,
+          "median_forward_return": 0.1,
+          "scored_count": 1
+        },
+        "60": {
+          "by_direction": {
+            "LONG": {
+              "correct": 0,
+              "count": 2,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 2,
+          "count_realized": 0,
+          "count_total": 2,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      },
+      "RESTRICTIVE_RATES": {
+        "20": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 1,
+              "count": 1,
+              "mean_forward_return": -0.1,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 1,
+          "hit_count": 1,
+          "hit_rate": 1.0,
+          "mean_directional_pnl": 0.1,
+          "mean_forward_return": -0.1,
+          "median_forward_return": -0.1,
+          "scored_count": 1
+        },
+        "5": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 1,
+              "count": 1,
+              "mean_forward_return": -0.1,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 1,
+          "hit_count": 1,
+          "hit_rate": 1.0,
+          "mean_directional_pnl": 0.1,
+          "mean_forward_return": -0.1,
+          "median_forward_return": -0.1,
+          "scored_count": 1
+        },
+        "60": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      },
+      "RISK_OFF": {
+        "20": {
+          "by_direction": {
+            "LONG": {
+              "correct": 1,
+              "count": 1,
+              "mean_forward_return": 0.060606,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 1,
+          "hit_count": 1,
+          "hit_rate": 1.0,
+          "mean_directional_pnl": 0.060606,
+          "mean_forward_return": 0.060606,
+          "median_forward_return": 0.060606,
+          "scored_count": 1
+        },
+        "5": {
+          "by_direction": {
+            "LONG": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": -0.090909,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_directional_pnl": -0.090909,
+          "mean_forward_return": -0.090909,
+          "median_forward_return": -0.090909,
+          "scored_count": 1
+        },
+        "60": {
+          "by_direction": {
+            "LONG": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      },
+      "STRONG_USD": {
+        "20": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 1,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        },
+        "5": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": 0.1,
+              "realized": 1,
+              "scored": 1
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 0,
+          "count_realized": 1,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_directional_pnl": -0.1,
+          "mean_forward_return": 0.1,
+          "median_forward_return": 0.1,
+          "scored_count": 1
+        },
+        "60": {
+          "by_direction": {
+            "AVOID": {
+              "correct": 0,
+              "count": 1,
+              "mean_forward_return": null,
+              "realized": 0,
+              "scored": 0
+            }
+          },
+          "count_no_exit_in_tolerance": 0,
+          "count_no_price": 0,
+          "count_pending": 1,
+          "count_realized": 0,
+          "count_total": 1,
+          "hit_count": 0,
+          "hit_rate": null,
+          "mean_directional_pnl": null,
+          "mean_forward_return": null,
+          "median_forward_return": null,
+          "scored_count": 0
+        }
+      }
+    },
+    "corpus_source": "synthetic validation set (clearly synthetic; proves the label/gap/horizon math)",
+    "coverage": {
+      "directions": [
+        "AVOID",
+        "FLAT",
+        "LONG",
+        "WATCH"
+      ],
+      "label_count": 24,
+      "realized_count": 9,
+      "regimes": [
+        "CURVE_INVERSION",
+        "LOW_VOL",
+        "REFLATION",
+        "RESTRICTIVE_RATES",
+        "RISK_OFF",
+        "STRONG_USD"
+      ],
+      "statuses": [
+        "no_exit_in_tolerance",
+        "pending",
+        "realized"
+      ]
+    },
+    "distinct_snapshots": 8,
+    "labels": [
+      {
+        "actual_offset_days": 7,
+        "direction": "LONG",
+        "direction_correct": true,
+        "directional_pnl": 0.1,
+        "entry_clock_ts": "2030-01-01T22:00:00+00:00",
+        "entry_price": 100.0,
+        "exit_clock_ts": "2030-01-08T22:00:00+00:00",
+        "exit_price": 110.0,
+        "exit_snapshot_id": "SYN_2030-01-08",
+        "forward_return": 0.1,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": "up",
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-01-01",
+        "status": "realized",
+        "target_clock_ts": "2030-01-08T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": 28,
+        "direction": "LONG",
+        "direction_correct": false,
+        "directional_pnl": -0.01,
+        "entry_clock_ts": "2030-01-01T22:00:00+00:00",
+        "entry_price": 100.0,
+        "exit_clock_ts": "2030-01-29T22:00:00+00:00",
+        "exit_price": 99.0,
+        "exit_snapshot_id": "SYN_2030-01-29",
+        "forward_return": -0.01,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": "down",
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-01-01",
+        "status": "realized",
+        "target_clock_ts": "2030-01-29T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "LONG",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-01T22:00:00+00:00",
+        "entry_price": 100.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-01-01",
+        "status": "pending",
+        "target_clock_ts": "2030-03-26T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": 7,
+        "direction": "AVOID",
+        "direction_correct": true,
+        "directional_pnl": 0.1,
+        "entry_clock_ts": "2030-01-08T22:00:00+00:00",
+        "entry_price": 110.0,
+        "exit_clock_ts": "2030-01-15T22:00:00+00:00",
+        "exit_price": 99.0,
+        "exit_snapshot_id": "SYN_2030-01-15",
+        "forward_return": -0.1,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": "down",
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "SYN_2030-01-08",
+        "status": "realized",
+        "target_clock_ts": "2030-01-15T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": 28,
+        "direction": "AVOID",
+        "direction_correct": true,
+        "directional_pnl": 0.1,
+        "entry_clock_ts": "2030-01-08T22:00:00+00:00",
+        "entry_price": 110.0,
+        "exit_clock_ts": "2030-02-05T22:00:00+00:00",
+        "exit_price": 99.0,
+        "exit_snapshot_id": "SYN_2030-02-05",
+        "forward_return": -0.1,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": "down",
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "SYN_2030-01-08",
+        "status": "realized",
+        "target_clock_ts": "2030-02-05T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "AVOID",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-08T22:00:00+00:00",
+        "entry_price": 110.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "SYN_2030-01-08",
+        "status": "pending",
+        "target_clock_ts": "2030-04-02T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": 7,
+        "direction": "LONG",
+        "direction_correct": false,
+        "directional_pnl": -0.090909,
+        "entry_clock_ts": "2030-01-15T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": "2030-01-22T22:00:00+00:00",
+        "exit_price": 90.0,
+        "exit_snapshot_id": "SYN_2030-01-22",
+        "forward_return": -0.090909,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": "down",
+        "regime": "RISK_OFF",
+        "source_snapshot_id": "SYN_2030-01-15",
+        "status": "realized",
+        "target_clock_ts": "2030-01-22T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": 28,
+        "direction": "LONG",
+        "direction_correct": true,
+        "directional_pnl": 0.060606,
+        "entry_clock_ts": "2030-01-15T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": "2030-02-12T22:00:00+00:00",
+        "exit_price": 105.0,
+        "exit_snapshot_id": "SYN_2030-02-12",
+        "forward_return": 0.060606,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": "up",
+        "regime": "RISK_OFF",
+        "source_snapshot_id": "SYN_2030-01-15",
+        "status": "realized",
+        "target_clock_ts": "2030-02-12T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "LONG",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-15T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "RISK_OFF",
+        "source_snapshot_id": "SYN_2030-01-15",
+        "status": "pending",
+        "target_clock_ts": "2030-04-09T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": 7,
+        "direction": "AVOID",
+        "direction_correct": false,
+        "directional_pnl": -0.1,
+        "entry_clock_ts": "2030-01-22T22:00:00+00:00",
+        "entry_price": 90.0,
+        "exit_clock_ts": "2030-01-29T22:00:00+00:00",
+        "exit_price": 99.0,
+        "exit_snapshot_id": "SYN_2030-01-29",
+        "forward_return": 0.1,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": "up",
+        "regime": "STRONG_USD",
+        "source_snapshot_id": "SYN_2030-01-22",
+        "status": "realized",
+        "target_clock_ts": "2030-01-29T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "AVOID",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-22T22:00:00+00:00",
+        "entry_price": 90.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": null,
+        "regime": "STRONG_USD",
+        "source_snapshot_id": "SYN_2030-01-22",
+        "status": "no_exit_in_tolerance",
+        "target_clock_ts": "2030-02-19T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "AVOID",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-22T22:00:00+00:00",
+        "entry_price": 90.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "STRONG_USD",
+        "source_snapshot_id": "SYN_2030-01-22",
+        "status": "pending",
+        "target_clock_ts": "2030-04-16T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": 7,
+        "direction": "FLAT",
+        "direction_correct": true,
+        "directional_pnl": 0.0,
+        "entry_clock_ts": "2030-01-29T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": "2030-02-05T22:00:00+00:00",
+        "exit_price": 99.0,
+        "exit_snapshot_id": "SYN_2030-02-05",
+        "forward_return": 0.0,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": "flat",
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-01-29",
+        "status": "realized",
+        "target_clock_ts": "2030-02-05T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "FLAT",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-29T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": null,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-01-29",
+        "status": "no_exit_in_tolerance",
+        "target_clock_ts": "2030-02-26T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "FLAT",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-01-29T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-01-29",
+        "status": "pending",
+        "target_clock_ts": "2030-04-23T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": 7,
+        "direction": "WATCH",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-02-05T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": "2030-02-12T22:00:00+00:00",
+        "exit_price": 105.0,
+        "exit_snapshot_id": "SYN_2030-02-12",
+        "forward_return": 0.060606,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": "up",
+        "regime": "CURVE_INVERSION",
+        "source_snapshot_id": "SYN_2030-02-05",
+        "status": "realized",
+        "target_clock_ts": "2030-02-12T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "WATCH",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-02-05T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": null,
+        "regime": "CURVE_INVERSION",
+        "source_snapshot_id": "SYN_2030-02-05",
+        "status": "no_exit_in_tolerance",
+        "target_clock_ts": "2030-03-05T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "WATCH",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-02-05T22:00:00+00:00",
+        "entry_price": 99.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "CURVE_INVERSION",
+        "source_snapshot_id": "SYN_2030-02-05",
+        "status": "pending",
+        "target_clock_ts": "2030-04-30T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "LONG",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-02-12T22:00:00+00:00",
+        "entry_price": 105.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": null,
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-02-12",
+        "status": "no_exit_in_tolerance",
+        "target_clock_ts": "2030-02-19T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "LONG",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-02-12T22:00:00+00:00",
+        "entry_price": 105.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": null,
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-02-12",
+        "status": "no_exit_in_tolerance",
+        "target_clock_ts": "2030-03-12T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "LONG",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-02-12T22:00:00+00:00",
+        "entry_price": 105.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-02-12",
+        "status": "pending",
+        "target_clock_ts": "2030-05-07T22:00:00+00:00",
+        "target_offset_days": 84
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "FLAT",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-03-20T22:00:00+00:00",
+        "entry_price": 120.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 5,
+        "max_gap_days": 2,
+        "move_sign": null,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-03-20",
+        "status": "pending",
+        "target_clock_ts": "2030-03-27T22:00:00+00:00",
+        "target_offset_days": 7
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "FLAT",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-03-20T22:00:00+00:00",
+        "entry_price": 120.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 20,
+        "max_gap_days": 7,
+        "move_sign": null,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-03-20",
+        "status": "pending",
+        "target_clock_ts": "2030-04-17T22:00:00+00:00",
+        "target_offset_days": 28
+      },
+      {
+        "actual_offset_days": null,
+        "direction": "FLAT",
+        "direction_correct": null,
+        "directional_pnl": null,
+        "entry_clock_ts": "2030-03-20T22:00:00+00:00",
+        "entry_price": 120.0,
+        "exit_clock_ts": null,
+        "exit_price": null,
+        "exit_snapshot_id": null,
+        "forward_return": null,
+        "horizon_td": 60,
+        "max_gap_days": 21,
+        "move_sign": null,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-03-20",
+        "status": "pending",
+        "target_clock_ts": "2030-06-12T22:00:00+00:00",
+        "target_offset_days": 84
+      }
+    ],
+    "snapshots": [
+      {
+        "clock_ts": "2030-01-01T22:00:00+00:00",
+        "direction": "LONG",
+        "entry_price": 100.0,
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-01-01"
+      },
+      {
+        "clock_ts": "2030-01-08T22:00:00+00:00",
+        "direction": "AVOID",
+        "entry_price": 110.0,
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "SYN_2030-01-08"
+      },
+      {
+        "clock_ts": "2030-01-15T22:00:00+00:00",
+        "direction": "LONG",
+        "entry_price": 99.0,
+        "regime": "RISK_OFF",
+        "source_snapshot_id": "SYN_2030-01-15"
+      },
+      {
+        "clock_ts": "2030-01-22T22:00:00+00:00",
+        "direction": "AVOID",
+        "entry_price": 90.0,
+        "regime": "STRONG_USD",
+        "source_snapshot_id": "SYN_2030-01-22"
+      },
+      {
+        "clock_ts": "2030-01-29T22:00:00+00:00",
+        "direction": "FLAT",
+        "entry_price": 99.0,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-01-29"
+      },
+      {
+        "clock_ts": "2030-02-05T22:00:00+00:00",
+        "direction": "WATCH",
+        "entry_price": 99.0,
+        "regime": "CURVE_INVERSION",
+        "source_snapshot_id": "SYN_2030-02-05"
+      },
+      {
+        "clock_ts": "2030-02-12T22:00:00+00:00",
+        "direction": "LONG",
+        "entry_price": 105.0,
+        "regime": "REFLATION",
+        "source_snapshot_id": "SYN_2030-02-12"
+      },
+      {
+        "clock_ts": "2030-03-20T22:00:00+00:00",
+        "direction": "FLAT",
+        "entry_price": 120.0,
+        "regime": "LOW_VOL",
+        "source_snapshot_id": "SYN_2030-03-20"
+      }
+    ]
+  },
+  "tool": "MOD-009 Gold Forward-Return Labeler"
+}

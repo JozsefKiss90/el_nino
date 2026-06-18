@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-08
-updated: 2026-06-16
+updated: 2026-06-17
 confidence: confirmed
 evidence:
   - design
@@ -25,6 +25,7 @@ related_decisions:
   - "[[ADR - Decision Layer Re-grounding]]"
   - "[[ADR - Feature Layer Contract]]"
   - "[[ADR - Execution Layer Planning]]"
+  - "[[ADR - Empirical Calibration Methodology]]"
 decision_id: "ADR-008"
 decision_date: 2026-06-08
 supersedes: []

@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-identical replay benchmark + FILE-029 + TEST-021; ADR-011 §7 gate (d) closed, gates (a)–(e) reconciled Closed)
+Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forward-Return Labeler + FILE-030 + TEST-022 + BENCH-005 (committed golden forward_return_labels.json); deterministic, downstream, read-only measurement governed by ADR-012; NO decision-path/config/`*_version` change; G3 stays deferred (corpus monochromatic). Prior 2026-06-17 slice: ADR-012 Empirical Calibration Methodology authored (draft), all 3 targets DEFER)
 
 ## Architecture
 
@@ -142,6 +142,7 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 | [[ADR - Paper-Trading Runtime Planning]] | ADR-009 | decision_record | Planning ADR for epoch (a) — stateful paper-trading runtime; wrap-not-enrich (packet stays pure), self-describing ledger, computes L3 duplicate_ok/operational_ok; Creation Gates all pass |
 | [[ADR - JARVIS GraphRAG Integration]] | ADR-010 | decision_record | Governance boundary for wiring the JARVIS console to the dev_graph — read-only consumer; bridge extended (not a new server); answers cite canonical_ids + evidence-class; offline graph.json / live Neo4j duality; non-normative |
 | [[ADR - Execution Layer Planning]] | ADR-011 | decision_record | Governance boundary for the execution/portfolio epoch — port/adapter determinism split (deterministic offline fill-simulator core vs non-replayable Alpaca paper adapter); paper_only / virtual-money; re-grounds the live path CAP-020 → MOD-007 ADMIT → execution + wires GATE-001 / PRED-001..005; decoupled from DEBT-01 & epoch (b); **accepted 2026-06-16**, Creation Gates remain open; non-normative |
+| [[ADR - Empirical Calibration Methodology]] | ADR-012 | decision_record | Epoch (b) calibration governance — version-axis mapping (regime thresholds → taxonomy_version; confidence weights + regime→direction table → decision_policy_version; never crossed); empirical-readiness gate (G0 N≥60 + per-target G1/G2/G3 coverage + walk-forward holdout); replay/PIT preservation; rule-based only. Corpus N=5 monochromatic → all 3 targets DEFER, no bump; **draft** |
 
 ## Constraints
 
@@ -170,6 +171,7 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 | [[Gold Decision Builder]] | MOD-006 | module | FeatureVector + RegimeClassification → deterministic paper-only Gold DecisionPacket (SCHEMA-011) |
 | [[Paper-Trading Runtime]] | MOD-007 | module | Stateful L3 admission — wraps the pure packet, computes duplicate_ok/operational_ok, append-only ledger |
 | [[Execution]] | MOD-008 | module | Paper execution — ADMIT → (paper) fill + portfolio state; deterministic simulated-broker core behind INT-011; wires GATE-001; realizes CAP-005, produces CAP-007 state |
+| [[Gold Forward-Return Labeler]] | MOD-009 | module | Downstream, read-only labeler of banked gold decisions with realized forward gold returns (ADR-012 gate G3 measurement prerequisite); measurement only, no decision-path/config change; NOT CAP-013 |
 
 ## Files
 
@@ -204,6 +206,7 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 | [[engine.py (execution)]] | FILE-027 | file | pure execute() — fail-closed fill decision + portfolio transition + record (no IO/risk) |
 | [[runtime.py (execution)]] | FILE-028 | file | IO shell + GATE-001 guard-wiring orchestrator (run_once / pure run_sequence) — the only src/risk importer |
 | [[run_execution_bench.py]] | FILE-029 | file | BENCH-004 harness — deterministic real + synthetic replay over execution run_sequence; emits the committed golden artifact |
+| [[run_forward_return_labels.py]] | FILE-030 | file | MOD-009 harness — pure forward-return label/aggregate math + read-only corpus driver; emits the committed golden forward_return_labels.json (ADR-012 G3 input) |
 
 ## Tests
 
@@ -230,6 +233,7 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 | [[test_execution_determinism]] | TEST-019 | test | BENCH-004 core — byte-identical replay, persist/load round-trip, idempotent sequence (5 tests) |
 | [[test_execution_guards]] | TEST-020 | test | GATE-001 guard-wiring — APPROVE/BLOCK mapping, no-fill on block, env-independent captured config (5 tests) |
 | [[test_execution_bench]] | TEST-021 | test | BENCH-004 determinism, real-corpus grounding, fill/idempotency/guard-block attribution, artifact-in-sync (15 tests) |
+| [[test_forward_return_labels]] | TEST-022 | test | MOD-009/BENCH-005 — synthetic correctness (all 4 directions, 6 regimes, 3 statuses), dedup, artifact-in-sync, + static look-ahead containment guard (19 tests) |
 
 ## Gates
 
@@ -292,14 +296,15 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 | [[Gold Decision Distribution Benchmark]] | BENCH-002 | benchmark_result | Gold packet replay determinism + direction/confidence distribution |
 | [[Paper-Trading Runtime Benchmark]] | BENCH-003 | benchmark_result | Runtime replay determinism + idempotency + verdict distribution (real + synthetic) |
 | [[Execution Layer Benchmark]] | BENCH-004 | benchmark_result | Execution byte-identical sequence-replay determinism + idempotency + fill/guard-block distribution (real + synthetic); closes ADR-011 gate (d) |
+| [[Gold Forward-Return Label Set]] | BENCH-005 | benchmark_result | Per (gold-decision × horizon) realized forward gold-return labels + per regime×horizon aggregate (the ADR-012 gate G3 input); committed golden forward_return_labels.json; measurement only |
 
 ---
 
 ## Statistics
 
-- **Total content nodes**: 175 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 8, file: 29, test: 21, gate: 3, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 11, constraint: 3, api_doc_source: 2, benchmark_result: 4)
+- **Total content nodes**: 180 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 9, file: 30, test: 22, gate: 3, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 12, constraint: 3, api_doc_source: 2, benchmark_result: 5)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 179
+- **Total files**: 184
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
@@ -310,7 +315,7 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 - **Relationship types**: 17
 - **Realizes edges**: 31 (25 capabilities + 4 modules + 2 files → patterns)
 - **Composes edges**: 3 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval; Regime Classification → Pipeline)
-- **Originates From edges**: 19 (capabilities/systems/modules/schemas/decisions → knowledge assets)
+- **Originates From edges**: 21 (capabilities/systems/modules/schemas/decisions → knowledge assets)
 - **Status enum**: 7 values
 - **Implementation status enum**: 7 values
 - **Confidence enum**: 5 values
@@ -336,3 +341,5 @@ Last updated: 2026-06-16 (Execution Layer epoch — STEP 4: BENCH-004 byte-ident
 - **Execution layer contract — STEP 1 (INT-011 / SCHEMA-014 / SCHEMA-015; CAP-005 re-grounded, CAP-007 realized) date**: 2026-06-16
 - **Execution layer simulator core — STEP 2 (MOD-008 Execution + FILE-024..028 + TEST-018..020; INT-011/SCHEMA-014/015 → implemented; GATE-001 wired in-progress→implemented; src/execution + 19 tests) date**: 2026-06-16
 - **Execution layer replay benchmark — STEP 4 (BENCH-004 Execution Layer Benchmark + FILE-029 run_execution_bench.py + TEST-021 test_execution_bench; committed golden execution_bench.json; ADR-011 §7 gate (d) Closed, gates (a)–(e) reconciled Closed, (f) deferred; full suite 887 green) date**: 2026-06-16
+- **Epoch (b) empirical-calibration governance (ADR-012 Empirical Calibration Methodology, draft; EPOCH_B_CALIBRATION_RUNBOOK.md) date**: 2026-06-17 — corpus assessment N=5 (1 committed el_nino fixture + 4 Mr-Ripley forward archives), monochromatic RESTRICTIVE_RATES/AVOID (regimes 1/12, directions 1/4); empirical-readiness gate G0+G1/G2/G3 all FAIL; all three targets (taxonomy_version thresholds; decision_policy_version weights + regime→direction table) DEFER; **NO `*_version` bump, NO value change, NO benchmark re-pin**; ADR-007/008 cross-linked forward to ADR-012
+- **Epoch (b) gate-G3 prerequisite — Gold Forward-Return Labeler (MOD-009 + FILE-030 run_forward_return_labels.py + TEST-022 + BENCH-005 Gold Forward-Return Label Set; committed golden benchmarks/calibration/artifacts/forward_return_labels.json) date**: 2026-06-17 — deterministic, strictly-downstream, read-only labeling of banked gold decisions with realized forward gold returns per regime×horizon (the G3 input); look-ahead containment enforced by a static import guard + adversarially verified; horizons 5/20/60 td-equiv, nearest-at-or-after exit + gap tolerance, realized/pending/no_exit_in_tolerance statuses; **measurement only — NO decision-path/config/`*_version` change; G3 stays deferred** (corpus monochromatic: committed 1 snapshot all-pending, full corpus 5 snapshots all RESTRICTIVE_RATES/AVOID pending/no-exit, 0 realized; synthetic set proves the math: 4 directions, 6 regimes, 3 statuses, 9 realized); NOT a CAP-013 realization (treasury bounded-context separation); full suite 906 green

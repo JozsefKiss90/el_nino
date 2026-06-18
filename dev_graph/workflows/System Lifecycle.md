@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-06
-updated: 2026-06-06
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -69,6 +69,12 @@ stateDiagram-v2
 | Emergency | Hard limit breach or system failure. All trading halted. | Agent Runtime (logging only) |
 | Archived | Strategy retired. System preserved for audit trail. | None (read-only) |
 
+> **Executable PaperTrading run.** The end-to-end run of the **PaperTrading** state is operationalized by
+> [[Chain Orchestrator]] (MOD-010): one deterministic, replay-safe `consume → build_features → classify →
+> build_decision → evaluate → [GATE-001 guard] → execute → persist` pass over a banked snapshot
+> (`paper_only` / virtual-money). Live order execution stays gated to Candidate/Production; the orchestrator
+> is the paper-stage runtime, not a live-trading path.
+
 ## Transition Guards
 
 | Transition | Guard Condition |
@@ -101,6 +107,7 @@ stateDiagram-v2
 ### Used By
 - [[Evaluation Loop]]
 - [[Supervisor Office]]
+- [[Chain Orchestrator]]
 - All system nodes (lifecycle state determines active capabilities)
 
 ### Originates From

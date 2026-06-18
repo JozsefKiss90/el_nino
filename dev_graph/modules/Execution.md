@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -107,9 +107,12 @@ Validation]] (KA-010). Governed by [[ADR - Execution Layer Planning]] (ADR-011).
 
 ## Open Questions
 
-- The Alpaca-paper adapter (gate f / STEP 5) and full chain-orchestrator integration (re-deriving
-  `instrument_price`/`direction` from the in-hand lineage at a live `run_once` boundary) are deferred
-  (ADR-011 §5). BENCH-004 grounds replay in the offline simulator core only.
+- The Alpaca-paper adapter (gate f / STEP 5) is deferred (ADR-011 §5); BENCH-004 grounds replay in the
+  offline simulator core only.
+- Full chain-orchestrator integration (forwarding `instrument_price`/`direction` from the in-hand
+  FeatureVector through the whole chain) is now **implemented** by [[Chain Orchestrator]] (MOD-010) and
+  proven end-to-end by [[Chain Orchestrator Benchmark]] (BENCH-006). MOD-008 stays the execution-only
+  layer; the orchestrator threads it.
 
 ## Relationships
 
@@ -139,6 +142,9 @@ Validation]] (KA-010). Governed by [[ADR - Execution Layer Planning]] (ADR-011).
 
 ### Depends On
 - [[Paper-Trading Runtime]]
+
+### Used By
+- [[Chain Orchestrator]]
 
 ### Realizes
 - [[Pipeline Pattern]]

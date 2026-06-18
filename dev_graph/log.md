@@ -1501,3 +1501,284 @@ The labeler accumulates labels as the corpus grows; G3 stays deferred until per-
 walk-forward out-of-sample slice accrue (ADR-012 §3). When real ADMIT/LONG snapshots appear (a
 diversifying tape), the real section will begin producing realized labels. **Stopped for operator
 review — measurement tool only; no decision logic, config, or `*_version` changed.**
+
+---
+
+## [2026-06-18] writeback | Chain Orchestrator — end-to-end Layer-3 composition root (MOD-010)
+
+Built the **full chain-orchestrator integration** the STEP-4 execution writeback explicitly deferred
+(log 2026-06-16: *"full chain-orchestrator integration (re-deriving price/direction from the in-hand
+FeatureVector)"*). A new `src/orchestration` module threads a banked snapshot through every
+already-governed Layer-3 stage in one deterministic call — `consume → build_features → classify →
+build_decision → evaluate → [GATE-001 guard] → execute → persist` — forwarding `packet.direction` and the
+in-hand `FeatureVector.value("gold_price")` straight into `execute` (the ADR-011 **D1 in-hand path**) and
+running the GATE-001 guard **in the orchestrator** before `execute` (ADR-009 §3 / ADR-011 gate c — the
+orchestrator is the only cross-context importer, incl. `src/risk`). **Pure composition: no layer's logic,
+no contract, and no `*_version` changed.** Governed by [[ADR - Paper-Trading Runtime Planning]] (ADR-009)
++ [[ADR - Execution Layer Planning]] (ADR-011); authors no new ADR / interface / schema.
+
+### Application code created (not dev_graph nodes)
+
+- `src/orchestration/`: `__init__.py`, `models.py` (`ChainResult` + `to_dict` + `ChainContractError`),
+  `config.py` (captured `DEFAULT_OPERATIONAL_INPUT` + `DEFAULT_GUARD_CONFIG`), `engine.py` (pure
+  `run_chain`), `runtime.py` (IO shell `run_once` + pure `run_sequence` + `find_latest_snapshot` + the
+  `python -m orchestration.runtime` CLI).
+- `benchmarks/orchestration/run_chain_bench.py` + committed golden `artifacts/chain_bench.json`.
+- `tests/orchestration/`: `test_chain_engine.py` (12), `test_chain_determinism.py` (7),
+  `test_chain_bench.py` (8) — **27 new tests**.
+- `pyproject.toml` (+`src/orchestration` wheel package); `.gitignore` (+`runtime/` for CLI state);
+  `CHAIN_ORCHESTRATOR_RUNBOOK.md` (the integration brief — data flow, full replay key, determinism
+  guarantees, invocation, EOD hook documented-not-wired, follow-ups).
+
+### Nodes Created (10)
+
+**Module (1)** — `MOD-010` [[Chain Orchestrator]] (`module_path src/orchestration`; status active /
+implementation_status tested; Depends On MOD-003..008 + MOD-001; Realizes [[Pipeline Pattern]]; Justified
+By ADR-009 + ADR-011; Originates From [[Paper Trading Validation]]).
+
+**File (5)** — all `module: [[Chain Orchestrator]]`, evidence [code]:
+- `FILE-031` [[models.py (orchestration)]], `FILE-032` [[config.py (orchestration)]],
+  `FILE-033` [[engine.py (orchestration)]], `FILE-034` [[runtime.py (orchestration)]],
+  `FILE-035` [[run_chain_bench.py]] (the BENCH-006 harness; in `related_files`, not `Contains`).
+
+**Test (3)** — evidence [code], implementation_status tested:
+- `TEST-023` [[test_chain_engine]] (e2e), `TEST-024` [[test_chain_determinism]] (e2e),
+  `TEST-025` [[test_chain_bench]] (benchmark) — each `covers [[Chain Orchestrator]]`.
+
+**Benchmark (1)** — `BENCH-006` [[Chain Orchestrator Benchmark]] (measures = the full replay key + the
+proof dimensions; committed golden `chain_bench.json`).
+
+### Changes (existing nodes updated — 3)
+
+- **MOD-008 [[Execution]]**: Open Question "full chain-orchestrator integration … deferred" → **closed**
+  (now implemented by [[Chain Orchestrator]] / BENCH-006); `### Used By += [[Chain Orchestrator]]`;
+  `updated 2026-06-18`. No logic/contract change.
+- **PAT-004 [[Pipeline Pattern]]**: `realized_by_modules += [[Chain Orchestrator]]`; `### Realized By +=`;
+  `updated 2026-06-18` (the orchestrator is the end-to-end pipeline).
+- **WF-001 [[System Lifecycle]]**: prose note — the PaperTrading-state end-to-end run is operationalized
+  by [[Chain Orchestrator]]; `### Used By += [[Chain Orchestrator]]`; `updated 2026-06-18`.
+- **index.md**: Modules / Files / Tests / Benchmarks tables + header + Statistics.
+
+### Full replay key (the union folded into BENCH-006 `measures`)
+
+`source_snapshot_id` + `feature_schema_version` + `taxonomy_version`/`classifier_version`/
+`classification_trace_version` + `decision_policy_version` (+fp) + `runtime_policy_version` (+fp) +
+`execution_policy_version` (+fp) + `fill_model_version` (+fp) + **`guard_config_fingerprint`** +
+**`operational_input_fingerprint`** + prior `RuntimeLedger`/`PortfolioState` `state_hash` ⇒ identical 5
+records + new ledger + portfolio.
+
+### Benchmark result (BENCH-006)
+
+`all_replays_byte_identical = true`. Real sequence (the consumable corpus `952cc83a…` across 3 paths + 1
+re-presentation): `verdict_distribution {ADMIT 1, REJECT 3}`, `fill_distribution {filled 0, no_fill 4}`.
+First presentation ADMITs (`RESTRICTIVE_RATES → AVOID`, `packet_id gold-v0:5653d07a0b3949d5`, in-hand
+`gold_price 4624.5`) — AVOID is non-LONG ⇒ deterministic **no-fill**; every re-presentation REJECTs on
+`duplicate_ok` (no second admit, no double-fill). `pinned_ledger_state_hash fff4dcc3…`,
+`pinned_portfolio_state_hash 2d19b9b5…` (empty portfolio). **Honest caveat (carried from BENCH-004):** the
+monochromatic AVOID corpus proves end-to-end replay determinism + admission idempotency, **not** a real
+fill — the fill path stays BENCH-004's synthetic execution sweep.
+
+### Lint (11 checks, touched nodes: MOD-010, FILE-031..035, TEST-023..025, BENCH-006, MOD-008, PAT-004, WF-001, index.md)
+
+1 frontmatter complete (MOD-010 module ext; FILE-031..035 file_path/language/module; TEST-023..025
+test_path/test_type/covers; BENCH-006 measures) ✓ · 2 enums valid (module active/tested; files
+implemented; tests e2e+benchmark/tested; benchmark_result active/implemented; evidence ⊆ closed set) ✓ ·
+3 no orphans — MOD-010 ← FILE-031..035 (module) + TEST-023..025 (covers) + BENCH-006 + MOD-008 Used By +
+PAT-004 Realized By + WF-001 Used By + index; each new node ≥1 outbound ✓ · 4 fresh (2026-06-18) ✓ ·
+5 wikilinks resolve — composed modules (MOD-001, MOD-003..008), schemas, PAT-004, KA-010, WF-001, ADRs,
+constraint all exist; disambiguated file names `(orchestration)` avoid Obsidian basename collisions ✓ ·
+6 module `related_constraints` (MOD-010 → Canonical Ownership) ✓ · 7 module `related_tests` (MOD-010 →
+test_chain_engine/determinism/bench) ✓ · 8 type-content aligned (module has Implementation Notes; files
+concise w/ Depends On parent + Validated By; tests have covers + Used By; benchmark has measures +
+Results + caveat) ✓ · 9 no deprecated refs in typed sections (CAP-004 referenced nowhere new) ✓ ·
+10 canonical_id uniqueness — MOD-010 / FILE-031..035 / TEST-023..025 / BENCH-006 each next-free, used
+once ✓ · 11 evidence-confidence coherence (confirmed + non-empty evidence on every new node) ✓.
+
+### Metrics
+
+dev_graph content nodes 180 → **190** (+MOD-010, +FILE-031..035, +TEST-023..025, +BENCH-006); module
+9→10, file 30→35, test 22→25, benchmark_result 5→6; coverage 190/190; total files 184→194. Realizes
+edges 36→37 (+MOD-010 → Pipeline Pattern); the index `Realizes edges` statistic, which had drifted from
+the materialized graph (it read 31), is **corrected** to the true 37 (24 capability + 10 module + 3 file),
+verified via the `sync_to_neo4j.py --dry-run` edge projection. No new ontology type/enum; no schema version change; **no
+`*_version` bump; no contract / decision-path change**. Application: full suite **933 green** (906 prior
++ 27 new); `ruff` clean (src/tests/benchmarks); `mypy --strict` clean on `src/orchestration` (the only
+2 mypy errors are pre-existing lambda-inference warnings in MOD-004 `feature_builder.py`, confirmed on
+clean HEAD, unrelated to this slice). Re-sync Neo4j (`python dev_graph/sync_to_neo4j.py --clear`).
+
+### Deferred / next (named follow-ups — NOT built here)
+
+- **Live operational-status feed** behind the explicit `OperationalInput` seam (v0 is a configured
+  captured default; ADR-009 Non-Goal).
+- **Computed cooldown guard** (MOD-007's echoed `cooldown_ok` → computed from the ledger; its own slice —
+  it changes an admission guard's semantics).
+- **Scheduling** the daily run after the EOD snapshot (operator action; documented in
+  `CHAIN_ORCHESTRATOR_RUNBOOK.md`, not wired).
+- STEP-5 Alpaca paper adapter; the G1/G2/G3 calibration bumps (data-gated, ADR-012); the pre-existing
+  MOD-004 `mypy` lambda annotations (a tiny, separate, behavior-neutral fix).
+
+**Stopped for operator review — pure composition; no layer logic, contract, or `*_version` changed.
+Scheduling is an operator action, not wired here.**
+
+---
+
+## [2026-06-18] schema+writeback | Computed Cooldown — runtime_policy_version 0.1.0 → 0.2.0 (MOD-007)
+
+Lifted ADR-009's deferred **"computed cooldown guard (v0 echoes)"**: the L3 `cooldown_ok` is now
+**computed from runtime state** (the gap, by the snapshot `as_of`, since the last ADMIT of a *different*
+snapshot) instead of echoing the L2 snapshot flag. This **changes the accepted MOD-007 admission
+baseline's behavior**, so it is a governed, **versioned** Config-Evolution change: `runtime_policy_version`
+**0.1.0 → 0.2.0**, the affected goldens re-pinned, and old-version replay preserved (the version is in the
+replay key). **Governance choice:** an **ADR-009 amendment** (not a new ADR) — it lifts that ADR's own
+deferred Non-Goal within the same component/epoch, draws no new boundary. Deterministic only (sole time
+source = the snapshot `as_of`; **never** wall-clock); fail-closed.
+
+### Design (resolved + justified)
+
+- **Replace, not additional** — the six-guard taxonomy has exactly one `cooldown_ok` slot; ADR-009 §6 framed
+  the echo as a v0 placeholder for the future computed cooldown. The L2 snapshot `cooldown_ok` stays as
+  forwarded `snapshot_guards` **provenance** (its §3 role), no longer echoed into the L3 outcome.
+- **No SCHEMA-013 change** — the ledger already records each entry's `as_of`; only an additive read-accessor
+  `RuntimeLedger.last_admit_as_of(exclude_self)` is added.
+- **`duplicate_ok` evaluated FIRST** among required guards — an exact re-presentation attributes to
+  idempotency (PRED-006), not cooldown (PRED-008); preserves every prior triggered-guard attribution.
+- **Default `cooldown_window_hours = 20.0`** (sub-daily, so the ~24h snapshot cadence never self-blocks),
+  `require_cooldown = True`. Fail-closed on missing/unparseable/negative-gap timing.
+
+### Application code (not dev_graph nodes) — scoped to `src/gold/paper_runtime/`
+
+- `config.py` — `+require_cooldown`, `+cooldown_window_hours`; `_RUNTIME_FIELDS` += both; version 0.1.0→0.2.0;
+  fingerprint `ab798cae… → 47ca2649…`. `models.py` — `+RuntimeLedger.last_admit_as_of`. `predicates.py` —
+  `cooldown_ok(packet, prior_ledger, config)` computed (`+_parse_as_of`), replacing the echo. `engine.py` —
+  `_required_guards` duplicate-first + `require_cooldown`; calls `cooldown_ok` with ledger+config.
+- Tests: `test_paper_runtime_guards` — echo tests split (data/freshness only) + **7 new computed-cooldown
+  units** (no-prior / within-window / elapsed / exclude-self / only-admits / fail-closed-missing /
+  out-of-order). `test_paper_runtime_determinism` — `_DEFAULT_FINGERPRINT` re-pinned to `47ca2649…`.
+- Goldens re-pinned (all thread `evaluate`): **BENCH-003** (record_ids + version/fingerprint),
+  **BENCH-004** execution (real ADMIT `record_id` → `execution_id` cascade), **BENCH-006** chain
+  (replay_key `runtime_policy_version` + fingerprint). **Verdict distributions + triggered-guard
+  attributions unchanged on every existing corpus** (all distinct-admit gaps ≥24h > the 20h window) —
+  identity-only re-pins. Full suite **940 green** (933 + 7); `ruff` clean; `mypy --strict` clean on
+  `src/gold/paper_runtime`.
+
+### Nodes Created (1)
+
+- `PRED-008` [[Cooldown OK]] — the computed-cooldown predicate (implemented_in `predicates.py`, validated_by
+  `test_paper_runtime_guards`; Guards [[Gold Decision Gate]] + [[Runtime Admission Gate]]; Justified By ADR-009).
+
+### Changes (existing nodes updated)
+
+- **ADR-009** — `## Amendment — Computed Cooldown (v0.2.0)` section (the design, the bump, replay
+  preservation, the no-new-ADR rationale); `updated 2026-06-18`.
+- **MOD-007** — Definition (three computed guards now), config/predicates/engine Implementation Notes
+  (v0.2.0, fingerprint, duplicate-first), Open Question (computed cooldown done; live feed still deferred);
+  `updated 2026-06-18`.
+- **GATE-003** Runtime Admission Gate — composes PRED-008; `Depends On += [[Cooldown OK]]`; "required guards"
+  corrected (cooldown now required, duplicate-first); `updated`. **GATE-002** Gold Decision Gate —
+  `Depends On += [[Cooldown OK]]`; `updated`.
+- **FILE-019/020/021/022** (models/config/predicates/engine paper_runtime) — Implementation Notes + `updated`.
+- **BENCH-003/004/006** nodes — Results re-pin notes (v0.2.0 version/fingerprint; distributions unchanged).
+- **index.md** — Predicates table (+PRED-008) + Statistics (predicate 7→8; content nodes 190→191; files 194→195).
+
+### Lint (11 checks, touched nodes: PRED-008, ADR-009, MOD-007, GATE-002/003, FILE-019..022, BENCH-003/004/006, index)
+
+1 frontmatter complete (PRED-008 predicate ext; all enums) ✓ · 2 enums valid ✓ · 3 no orphans — PRED-008 ←
+GATE-002/003 `Depends On` + MOD-007/ADR-009 body; ≥1 outbound (Guards → both gates) ✓ · 4 fresh
+(2026-06-18) ✓ · 5 wikilinks resolve ([[Cooldown OK]], gates, ADR, test, constraint all exist) ✓ · 6/7
+module constraint/test coverage unchanged (MOD-007 already populated) ✓ · 8 type-content aligned
+(PRED-008 predicate scope + implemented_in; stale version strings corrected in MOD-007/GATE-003/BENCH
+nodes) ✓ · 9 no deprecated refs ✓ · 10 canonical_id uniqueness — PRED-008 next-free, used once ✓ · 11
+evidence-confidence coherence ✓.
+
+### Metrics + version evolution
+
+`runtime_policy_version 0.1.0 → 0.2.0`; `runtime_policy_fingerprint ab798cae…6f32 → 47ca2649…98cc8`
+(`_RUNTIME_FIELDS` += cooldown_window_hours, require_cooldown). No schema/enum/ontology change; SCHEMA-012/013
+unchanged; only MOD-007's `*_version` bumped (its own governed baseline). dev_graph content nodes 190 → **191**
+(+PRED-008); predicate 7→8; total files 194→195; coverage 191/191. Re-sync Neo4j (`sync_to_neo4j.py --clear`).
+
+### HARD PAUSE (per the follow-up prompt)
+
+**Stopped for operator review BEFORE committing the `runtime_policy_version` bump** — it changes the
+accepted baseline's record identities (verdicts/attributions unchanged). v0.1.0 echo behavior remains
+reproducible at its version. Nothing committed.
+
+---
+
+## [2026-06-18] writeback | Live Operational-Status Feed — additive IO adapter (MOD-010 seam)
+
+Lifted ADR-009's deferred **"live operational-status feed"**: a new `OperationalFeed` port +
+deterministic `MarketCalendarFeed` produces a real `OperationalInput` for the live `run_once` path, behind
+the explicit `OperationalInput` seam MOD-010 already left ready. **Purely additive IO — no pure-core
+change, no `OperationalInput` schema change, no `*_version` bump.** Governed by ADR-009 (the guard + model)
++ ADR-011 §2 / gate f (the non-replayable-adapter quarantine).
+
+### The non-negotiable: replay-path quarantine
+
+The feed is read **only** on the live `run_once` path; the produced `OperationalInput` is **captured**
+(persisted as a JSON artifact in the existing `load_operational` format), so any `run_sequence` replay
+threads the captured value and **never** re-reads the feed (`run_sequence` has no feed parameter). No
+clock/network on the replay path — exactly the ADR-011 §2 / gate-f boundary (live runs logged, not
+replayed). The capture mechanism makes even a *non*-deterministic feed (the future Alpaca plug) replayable.
+
+### Source choice (justified)
+
+v0 = a **deterministic** US-equity trading-calendar feed for the GLD venue (`MarketCalendarFeed`): a
+trading day is a non-holiday weekday ⇒ tradeable/venue_open; weekend / listed holiday / unparseable
+`as_of` ⇒ `OperationalInput.closed()` (**fail-closed**). No network, no wall-clock, **no credentials** —
+itself replay-safe. The holiday set is a deterministic v0 approximation, **not** a full NYSE calendar (the
+live **Alpaca clock/calendar** plug's job — env-only creds per KA-008, never in repo/memory/node;
+**deferred**, the seam is ready).
+
+### Application code (not dev_graph nodes)
+
+- `src/orchestration/operational_feed.py` (NEW) — `OperationalFeed` Protocol + `MarketCalendarFeed` +
+  `persist_operational` (temp + `os.replace`) + `read_and_capture` (read once → capture → return).
+- `src/orchestration/runtime.py` — `run_once` += `operational_feed` + `operational_capture_path` (IO-path
+  read + capture); CLI += `--operational-feed` / `--operational-capture`. `run_sequence` **unchanged**
+  (feed-free — the quarantine). `__init__.py` exports the feed.
+- `tests/orchestration/test_operational_feed.py` (NEW, **10 tests**) — calendar open/closed/weekday-holiday
+  (2026-12-25 Friday)/fail-closed; capture round-trip via `load_operational`; **capture freezes value
+  independent of a later feed**; **`run_sequence` replay never reads the feed** (stub call-count stays 1);
+  `run_once` live integration on the real (Friday/trading-day) fixture. Full suite **950 green** (940 + 10);
+  `ruff` clean; `mypy --strict` clean on `src/orchestration`.
+
+### Nodes Created (2)
+
+- `FILE-036` [[operational_feed.py]] (module [[Chain Orchestrator]]); `TEST-026` [[test_operational_feed]]
+  (covers MOD-010 + FILE-036).
+
+### Changes (existing nodes updated)
+
+- **ADR-009** — second amendment section `## Amendment — Live Operational Feed (additive IO adapter)` (the
+  quarantine invariant, the source choice, KA-008 credential isolation for the deferred Alpaca plug,
+  no-schema-change rationale).
+- **MOD-010** — `related_files += operational_feed.py`, `related_tests += test_operational_feed`, `Contains`
+  + `Validated By` updated, Open Question (live feed now implemented; Alpaca plug deferred).
+- **MOD-007** — Open Question (live operational feed now implemented behind the seam).
+- **FILE-034** runtime.py (orchestration) — Implementation Notes (the feed params + CLI flag + the
+  quarantine).
+- **index.md** — Files (+FILE-036) + Tests (+TEST-026) tables + Statistics (file 35→36, test 25→26, content
+  nodes 191→193, total files 195→197) + header.
+
+### Lint (11 checks, touched: FILE-036, TEST-026, ADR-009, MOD-010, MOD-007, FILE-034, index)
+
+1 frontmatter complete (FILE-036 file ext; TEST-026 test ext) ✓ · 2 enums valid (file implemented; test
+integration/tested) ✓ · 3 no orphans — FILE-036 ← MOD-010 (related_files + Contains) + TEST-026 + ADR-009
+body; TEST-026 ← MOD-010 (related_tests) + FILE-036; each ≥1 outbound ✓ · 4 fresh (2026-06-18) ✓ · 5
+wikilinks resolve ([[operational_feed.py]], [[test_operational_feed]], [[Chain Orchestrator]], ADRs, KA-008
+all exist) ✓ · 6/7 MOD-010 constraint/test coverage already populated ✓ · 8 type-content aligned (file has
+Implementation Notes + Constraints; test has covers + Used By) ✓ · 9 no deprecated refs ✓ · 10 canonical_id
+uniqueness — FILE-036 / TEST-026 next-free, used once ✓ · 11 evidence-confidence coherence ✓.
+
+### Metrics
+
+dev_graph content nodes 191 → **193** (+FILE-036, +TEST-026); file 35→36, test 25→26; total files 195→197;
+coverage 193/193. **No** schema/enum/ontology change; **no** `*_version` bump; **no** `OperationalInput`
+contract change (purely additive IO). Re-sync Neo4j (`sync_to_neo4j.py --clear`).
+
+### Stopped for operator review
+
+**Built; nothing committed.** The live feed read is IO-path-only and captured for replay; the deterministic
+calendar feed needs no credentials (the Alpaca live plug + its env/`.secrets` credential isolation is the
+named deferred follow-up).

@@ -5,7 +5,7 @@ status: planned
 implementation_status: not-started
 canonical: true
 created: 2026-06-08
-updated: 2026-06-09
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -62,6 +62,7 @@ Guards [[Gold Decision Generation]] (CAP-020). Composes [[Duplicate OK]] + [[Ope
 ### Depends On
 - [[Duplicate OK]]
 - [[Operational OK]]
+- [[Cooldown OK]]
 
 ### Consumes
 - [[Gold DecisionPacket v0 Schema]]

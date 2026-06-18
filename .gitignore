@@ -17,3 +17,6 @@ htmlcov/
 .venv/
 venv/
 env/
+
+# Chain orchestrator runtime state (MOD-010 CLI — operator-written ledger/portfolio)
+runtime/

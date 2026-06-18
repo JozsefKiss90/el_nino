@@ -13,7 +13,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/risk", "src/supervisor", "src/snapshot", "src/features", "src/regime", "src/gold", "src/execution"]
+packages = ["src/risk", "src/supervisor", "src/snapshot", "src/features", "src/regime", "src/gold", "src/execution", "src/orchestration"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

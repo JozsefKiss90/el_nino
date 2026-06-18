@@ -1,6 +1,6 @@
 # Dev Graph Index
 
-Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forward-Return Labeler + FILE-030 + TEST-022 + BENCH-005 (committed golden forward_return_labels.json); deterministic, downstream, read-only measurement governed by ADR-012; NO decision-path/config/`*_version` change; G3 stays deferred (corpus monochromatic). Prior 2026-06-17 slice: ADR-012 Empirical Calibration Methodology authored (draft), all 3 targets DEFER)
+Last updated: 2026-06-18 (Two ADR-009 amendments + the Chain Orchestrator. **(A) Computed Cooldown** — PRED-008 [[Cooldown OK]]; MOD-007 `runtime_policy_version 0.1.0 → 0.2.0` (computed L3 cooldown replaces the v0 echo; duplicate-first); goldens BENCH-003/004/006 re-pinned (identity-only). **(B) Live Operational Feed** — FILE-036 [[operational_feed.py]] + TEST-026 under MOD-010 (deterministic MarketCalendarFeed behind the OperationalInput seam, captured for replay / quarantined off the replay path; additive — no contract/`*_version` change). Both **HARD-PAUSED for operator review, nothing committed**. **The Chain Orchestrator** — MOD-010 + FILE-031..035 + TEST-023..025 + BENCH-006 (committed golden chain_bench.json): the end-to-end Layer-3 composition root (consume→…→[GATE-001]→execute→persist, in-hand direction/gold_price ADR-011 D1); pure composition; realizes PAT-004, operationalizes WF-001. Full suite **950 green**.)
 
 ## Architecture
 
@@ -172,6 +172,7 @@ Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forwar
 | [[Paper-Trading Runtime]] | MOD-007 | module | Stateful L3 admission — wraps the pure packet, computes duplicate_ok/operational_ok, append-only ledger |
 | [[Execution]] | MOD-008 | module | Paper execution — ADMIT → (paper) fill + portfolio state; deterministic simulated-broker core behind INT-011; wires GATE-001; realizes CAP-005, produces CAP-007 state |
 | [[Gold Forward-Return Labeler]] | MOD-009 | module | Downstream, read-only labeler of banked gold decisions with realized forward gold returns (ADR-012 gate G3 measurement prerequisite); measurement only, no decision-path/config change; NOT CAP-013 |
+| [[Chain Orchestrator]] | MOD-010 | module | End-to-end Layer-3 composition root — threads consume→…→execute→persist, forwards in-hand direction/gold_price (ADR-011 D1), runs GATE-001 in the orchestrator; pure composition, no contract/`*_version` change |
 
 ## Files
 
@@ -207,6 +208,12 @@ Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forwar
 | [[runtime.py (execution)]] | FILE-028 | file | IO shell + GATE-001 guard-wiring orchestrator (run_once / pure run_sequence) — the only src/risk importer |
 | [[run_execution_bench.py]] | FILE-029 | file | BENCH-004 harness — deterministic real + synthetic replay over execution run_sequence; emits the committed golden artifact |
 | [[run_forward_return_labels.py]] | FILE-030 | file | MOD-009 harness — pure forward-return label/aggregate math + read-only corpus driver; emits the committed golden forward_return_labels.json (ADR-012 G3 input) |
+| [[models.py (orchestration)]] | FILE-031 | file | ChainResult (frozen aggregate of the 5 records + 2 state artifacts) + deterministic to_dict + ChainContractError (MOD-010) |
+| [[config.py (orchestration)]] | FILE-032 | file | Captured DEFAULT_OPERATIONAL_INPUT + DEFAULT_GUARD_CONFIG — the explicit operational/guard seams (never read live on the replay path) |
+| [[engine.py (orchestration)]] | FILE-033 | file | pure run_chain() — the full-chain core (features→regime→decision→evaluate→[GATE-001]→execute); in-hand path, wrap-not-enrich, fail-closed |
+| [[runtime.py (orchestration)]] | FILE-034 | file | IO shell — run_once (persist portfolio-then-ledger, atomic) + pure run_sequence replay driver + find_latest_snapshot + CLI |
+| [[run_chain_bench.py]] | FILE-035 | file | BENCH-006 harness — real-corpus end-to-end replay over run_sequence; emits the committed golden chain_bench.json (full replay key) |
+| [[operational_feed.py]] | FILE-036 | file | Live operational-status feed adapter (MOD-010 seam) — OperationalFeed port + deterministic MarketCalendarFeed + capture (read on IO path only, captured for replay; ADR-009 amendment) |
 
 ## Tests
 
@@ -234,6 +241,10 @@ Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forwar
 | [[test_execution_guards]] | TEST-020 | test | GATE-001 guard-wiring — APPROVE/BLOCK mapping, no-fill on block, env-independent captured config (5 tests) |
 | [[test_execution_bench]] | TEST-021 | test | BENCH-004 determinism, real-corpus grounding, fill/idempotency/guard-block attribution, artifact-in-sync (15 tests) |
 | [[test_forward_return_labels]] | TEST-022 | test | MOD-009/BENCH-005 — synthetic correctness (all 4 directions, 6 regimes, 3 statuses), dedup, artifact-in-sync, + static look-ahead containment guard (19 tests) |
+| [[test_chain_engine]] | TEST-023 | test | MOD-010 core — ADMIT/no-fill, in-hand price/direction forwarding, wrap-not-enrich, forwarded provenance, guard-block attribution, idempotency, fail-closed, bounded-context hygiene (12 tests) |
+| [[test_chain_determinism]] | TEST-024 | test | MOD-010 — byte-identical end-to-end replay, admission idempotency, env-independent captured config, run_once persist/reload round-trip + non-consumable→None (7 tests) |
+| [[test_chain_bench]] | TEST-025 | test | BENCH-006 — end-to-end replay determinism + idempotency, real-corpus grounding, full replay key complete, artifact-in-sync (8 tests) |
+| [[test_operational_feed]] | TEST-026 | test | MOD-010 live operational feed (FILE-036) — calendar open/closed/fail-closed, capture round-trip, replay-path quarantine (capture freezes value; run_sequence never reads the feed) (10 tests) |
 
 ## Gates
 
@@ -254,6 +265,7 @@ Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forwar
 | [[Withdrawal Disabled]] | PRED-005 | predicate | withdrawals must be disabled |
 | [[Duplicate OK]] | PRED-006 | predicate | L3 idempotency guard — snapshot not already ADMITted (implemented in MOD-007) |
 | [[Operational OK]] | PRED-007 | predicate | L3 operational guard — venue tradeable / preconditions hold (implemented in MOD-007) |
+| [[Cooldown OK]] | PRED-008 | predicate | L3 **computed** cooldown guard (v0.2.0) — min gap since the last ADMIT of a different snapshot (from the ledger's `as_of`); replaces the v0.1.0 echo |
 
 ## Schemas
 
@@ -297,23 +309,24 @@ Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forwar
 | [[Paper-Trading Runtime Benchmark]] | BENCH-003 | benchmark_result | Runtime replay determinism + idempotency + verdict distribution (real + synthetic) |
 | [[Execution Layer Benchmark]] | BENCH-004 | benchmark_result | Execution byte-identical sequence-replay determinism + idempotency + fill/guard-block distribution (real + synthetic); closes ADR-011 gate (d) |
 | [[Gold Forward-Return Label Set]] | BENCH-005 | benchmark_result | Per (gold-decision × horizon) realized forward gold-return labels + per regime×horizon aggregate (the ADR-012 gate G3 input); committed golden forward_return_labels.json; measurement only |
+| [[Chain Orchestrator Benchmark]] | BENCH-006 | benchmark_result | End-to-end byte-identical sequence-replay over MOD-010 run_sequence + admission idempotency on the real corpus; committed golden chain_bench.json; carries the full replay key (every layer version + captured fingerprints) |
 
 ---
 
 ## Statistics
 
-- **Total content nodes**: 180 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 9, file: 30, test: 22, gate: 3, predicate: 7, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 12, constraint: 3, api_doc_source: 2, benchmark_result: 5)
+- **Total content nodes**: 193 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 10, file: 36, test: 26, gate: 3, predicate: 8, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 1, context_pack: 2, decision_record: 12, constraint: 3, api_doc_source: 2, benchmark_result: 6)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 184
+- **Total files**: 197
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 175/175 content nodes (100%)
-- **Canonical ID coverage**: 175/175 content nodes (100%)
+- **Frontmatter coverage**: 193/193 content nodes (100%)
+- **Canonical ID coverage**: 193/193 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17
-- **Realizes edges**: 31 (25 capabilities + 4 modules + 2 files → patterns)
+- **Realizes edges**: 37 (24 capabilities + 10 modules + 3 files → patterns) — recounted from the materialized graph (prior hand-maintained statistic had drifted)
 - **Composes edges**: 3 (Supervisor Pattern → Multi-Agent Coordination, Treasury Approval; Regime Classification → Pipeline)
 - **Originates From edges**: 21 (capabilities/systems/modules/schemas/decisions → knowledge assets)
 - **Status enum**: 7 values
@@ -342,4 +355,5 @@ Last updated: 2026-06-17 (Epoch (b) gate-G3 prerequisite — MOD-009 Gold Forwar
 - **Execution layer simulator core — STEP 2 (MOD-008 Execution + FILE-024..028 + TEST-018..020; INT-011/SCHEMA-014/015 → implemented; GATE-001 wired in-progress→implemented; src/execution + 19 tests) date**: 2026-06-16
 - **Execution layer replay benchmark — STEP 4 (BENCH-004 Execution Layer Benchmark + FILE-029 run_execution_bench.py + TEST-021 test_execution_bench; committed golden execution_bench.json; ADR-011 §7 gate (d) Closed, gates (a)–(e) reconciled Closed, (f) deferred; full suite 887 green) date**: 2026-06-16
 - **Epoch (b) empirical-calibration governance (ADR-012 Empirical Calibration Methodology, draft; EPOCH_B_CALIBRATION_RUNBOOK.md) date**: 2026-06-17 — corpus assessment N=5 (1 committed el_nino fixture + 4 Mr-Ripley forward archives), monochromatic RESTRICTIVE_RATES/AVOID (regimes 1/12, directions 1/4); empirical-readiness gate G0+G1/G2/G3 all FAIL; all three targets (taxonomy_version thresholds; decision_policy_version weights + regime→direction table) DEFER; **NO `*_version` bump, NO value change, NO benchmark re-pin**; ADR-007/008 cross-linked forward to ADR-012
+- **Chain Orchestrator — MOD-010 + FILE-031..035 + TEST-023..025 + BENCH-006 (committed golden benchmarks/orchestration/artifacts/chain_bench.json) date**: 2026-06-18 — the end-to-end Layer-3 composition root threading consume→build_features→classify→build_decision→evaluate→[GATE-001]→execute→persist; forwards the in-hand FeatureVector direction/gold_price (ADR-011 D1); GATE-001 run in the orchestrator (only cross-context importer); **pure composition — NO layer-logic / contract / `*_version` change**; realizes PAT-004, operationalizes WF-001 PaperTrading, closes MOD-008's chain-orchestrator Open Question; end-to-end byte-identical replay + admission idempotency proven (real corpus monochromatic RESTRICTIVE_RATES→AVOID, deterministic ADMIT+no-fill; fill path stays BENCH-004's synthetic sweep); operational status an explicit captured input (live feed deferred), cooldown stays MOD-007's echo, scheduling an operator action — all named follow-ups; full suite 933 green
 - **Epoch (b) gate-G3 prerequisite — Gold Forward-Return Labeler (MOD-009 + FILE-030 run_forward_return_labels.py + TEST-022 + BENCH-005 Gold Forward-Return Label Set; committed golden benchmarks/calibration/artifacts/forward_return_labels.json) date**: 2026-06-17 — deterministic, strictly-downstream, read-only labeling of banked gold decisions with realized forward gold returns per regime×horizon (the G3 input); look-ahead containment enforced by a static import guard + adversarially verified; horizons 5/20/60 td-equiv, nearest-at-or-after exit + gap tolerance, realized/pending/no_exit_in_tolerance statuses; **measurement only — NO decision-path/config/`*_version` change; G3 stays deferred** (corpus monochromatic: committed 1 snapshot all-pending, full corpus 5 snapshots all RESTRICTIVE_RATES/AVOID pending/no-exit, 0 realized; synthetic set proves the math: 4 directions, 6 regimes, 3 statuses, 9 realized); NOT a CAP-013 realization (treasury bounded-context separation); full suite 906 green

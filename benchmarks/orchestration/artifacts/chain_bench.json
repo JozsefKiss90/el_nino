@@ -1,0 +1,134 @@
+{
+  "all_replays_byte_identical": true,
+  "benchmark_id": "BENCH-006",
+  "measures": [
+    "end_to_end_replay_determinism",
+    "admission_idempotency",
+    "verdict_distribution",
+    "fill_distribution",
+    "ledger_state_hash",
+    "portfolio_state_hash",
+    "full_replay_key"
+  ],
+  "pinned_ledger_state_hash": "fff4dcc3c9ad0abee80bac8035d604de7425975714586ee0232e89abc67b0506",
+  "pinned_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+  "real_sequence": {
+    "all_replays_byte_identical": true,
+    "consumable_inputs": [
+      {
+        "label": "latest_snapshot_pass",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "verdict": "ADMIT"
+      },
+      {
+        "label": "src_latest_snapshot",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "verdict": "REJECT"
+      },
+      {
+        "label": "src_snapshot",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "verdict": "REJECT"
+      },
+      {
+        "label": "latest_snapshot_pass__re_presented",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "verdict": "REJECT"
+      }
+    ],
+    "ending_ledger_state_hash": "fff4dcc3c9ad0abee80bac8035d604de7425975714586ee0232e89abc67b0506",
+    "ending_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+    "fill_distribution": {
+      "filled": 0,
+      "no_fill": 4
+    },
+    "idempotency": {
+      "re_presented_execution_filled": false,
+      "re_presented_triggered_guard": "duplicate_ok",
+      "re_presented_verdict": "REJECT"
+    },
+    "real_admit_count": 1,
+    "real_corpus_note": "The real corpus is monochromatic RESTRICTIVE_RATES \u2192 AVOID (non-LONG): the end-to-end path is a deterministic ADMIT + no-fill, and the re-presentation REJECTs on duplicate_ok (no second admit, no double-fill). This proves end-to-end replay determinism + admission idempotency, not a real fill \u2014 the fill path is covered by BENCH-004's synthetic sweep.",
+    "results": [
+      {
+        "direction": "AVOID",
+        "execution_filled": false,
+        "execution_reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
+        "label": "latest_snapshot_pass",
+        "ledger_state_hash": "fe7e8609650e7d8d23850b684f0b72d4433ece3b31c8867503039e6c7462418d",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
+        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "triggered_guard": null,
+        "verdict": "ADMIT"
+      },
+      {
+        "direction": "AVOID",
+        "execution_filled": false,
+        "execution_reason": null,
+        "label": "src_latest_snapshot",
+        "ledger_state_hash": "03a80bf1e7bd5be3b37c7d44810aa3b6bb8f9929ca2065388c76f8a961856794",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
+        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "triggered_guard": "duplicate_ok",
+        "verdict": "REJECT"
+      },
+      {
+        "direction": "AVOID",
+        "execution_filled": false,
+        "execution_reason": null,
+        "label": "src_snapshot",
+        "ledger_state_hash": "cd5930b53456b8648c1992f08ef3878a2eecb841704f287ab02917f5fd9dc8fd",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
+        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "triggered_guard": "duplicate_ok",
+        "verdict": "REJECT"
+      },
+      {
+        "direction": "AVOID",
+        "execution_filled": false,
+        "execution_reason": null,
+        "label": "latest_snapshot_pass__re_presented",
+        "ledger_state_hash": "fff4dcc3c9ad0abee80bac8035d604de7425975714586ee0232e89abc67b0506",
+        "packet_id": "gold-v0:5653d07a0b3949d5",
+        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "regime": "RESTRICTIVE_RATES",
+        "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
+        "triggered_guard": "duplicate_ok",
+        "verdict": "REJECT"
+      }
+    ],
+    "sequence_length": 4,
+    "verdict_distribution": {
+      "ADMIT": 1,
+      "HOLD": 0,
+      "REJECT": 3
+    }
+  },
+  "replay_key": {
+    "classification_trace_version": "0.1.0",
+    "classifier_version": "0.1.0",
+    "decision_policy_fingerprint": "be7e3192889ebe5deb100a9510fe2adc0fb676eb2eca199de3ffa1df9369a8a5",
+    "decision_policy_version": "0.1.0",
+    "execution_policy_fingerprint": "2c11b5b1c7460f0bd93af6b83b85662ffbfd6bd9045aec63f2ed5e3381ed1a37",
+    "execution_policy_version": "0.1.0",
+    "execution_schema_version": "0.1.0",
+    "feature_schema_version": "0.1.0",
+    "fill_model_fingerprint": "b8428da1ec418acc46349ea68d2501282896e79e84dad694d0b214eb359aea0b",
+    "fill_model_version": "0.1.0",
+    "guard_config_fingerprint": "7f9033e3b321752ebb2afa82871025555ffaedf9459086bb0e742fcf2106c92e",
+    "ledger_schema_version": "0.1.0",
+    "operational_input_fingerprint": "c70b42019298dcf6506c1ccc15cd168a32b2f2e0f31ffe608e9c99d37c649bc1",
+    "packet_schema_version": "0.2.0",
+    "portfolio_schema_version": "0.1.0",
+    "record_schema_version": "0.1.0",
+    "runtime_policy_fingerprint": "47ca2649dd70a2d4ffae81561cc76c538e75b3558b06daa4dbc33a11d5a98cc8",
+    "runtime_policy_version": "0.2.0",
+    "taxonomy_version": "1.0.0"
+  }
+}

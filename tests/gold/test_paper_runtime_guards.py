@@ -19,6 +19,7 @@ from gold.paper_runtime import (
     LedgerEntry,
     OperationalInput,
     RuntimeLedger,
+    RuntimePolicyConfig,
     Verdict,
     cooldown_ok,
     data_ok,
@@ -29,6 +30,9 @@ from gold.paper_runtime import (
 
 _SG_TRUE = SnapshotGuards(data_ok=True, freshness_ok=True, cooldown_ok=True)
 _OP_OPEN = OperationalInput("GLD", tradeable=True, venue_open=True, halt=False, degraded=False)
+# Computed-cooldown (PRED-008) configs: default 20h window, plus a wide 48h window for the unit tests.
+_CFG = RuntimePolicyConfig()
+_CFG48 = RuntimePolicyConfig(cooldown_window_hours=48.0)
 
 
 def _packet(
@@ -37,6 +41,7 @@ def _packet(
     sg: SnapshotGuards | None = _SG_TRUE,
     regime: str = "RESTRICTIVE_RATES",
     instrument: str = "GLD",
+    as_of: str | None = "2026-05-01T00:00:00+00:00",
 ) -> GoldDecisionPacket:
     return GoldDecisionPacket(
         packet_id=f"gold-v0:{snapshot_id}",
@@ -60,13 +65,18 @@ def _packet(
         guard_refs=GuardRefs(),
         non_execution_notice="n",
         constraints=(),
-        as_of="2026-05-01T00:00:00+00:00",
+        as_of=as_of,
         snapshot_guards=sg,
     )
 
 
 def _entry(snapshot_id: str, verdict: str, triggered: str | None, seq: int = 0) -> LedgerEntry:
     return LedgerEntry(snapshot_id, f"gold-v0:{snapshot_id}", "t", verdict, triggered, "d", "f", seq)
+
+
+def _admit_entry(snapshot_id: str, as_of: str, seq: int = 0) -> LedgerEntry:
+    """An ADMIT ledger entry with a real ``as_of`` — the time source for the cooldown guard."""
+    return LedgerEntry(snapshot_id, f"gold-v0:{snapshot_id}", as_of, Verdict.ADMIT.value, None, "d", "f", seq)
 
 
 def _ledger(*entries: LedgerEntry) -> RuntimeLedger:
@@ -134,25 +144,70 @@ def test_operational_ok_default_closed_state_fails() -> None:
     assert operational_ok(_packet(), OperationalInput.closed())[0] is False
 
 
-# --- snapshot echoes (data / freshness / cooldown) --------------------------------------------
+# --- snapshot echoes (data / freshness) -------------------------------------------------------
 
 def test_echoes_true_from_snapshot_provenance() -> None:
     pkt = _packet(sg=SnapshotGuards(data_ok=True, freshness_ok=True, cooldown_ok=True))
     assert data_ok(pkt)[0] is True
     assert freshness_ok(pkt)[0] is True
-    assert cooldown_ok(pkt)[0] is True
 
 
 def test_echoes_false_from_snapshot_provenance() -> None:
     pkt = _packet(sg=SnapshotGuards(data_ok=False, freshness_ok=False, cooldown_ok=False))
     assert data_ok(pkt)[0] is False
     assert freshness_ok(pkt)[0] is False
-    assert cooldown_ok(pkt)[0] is False
 
 
 def test_echoes_default_closed_when_provenance_absent() -> None:
     pkt = _packet(sg=None)
-    for guard in (data_ok, freshness_ok, cooldown_ok):
+    for guard in (data_ok, freshness_ok):
         passed, reason = guard(pkt)
         assert passed is False
         assert "absent" in reason
+
+
+# --- cooldown_ok (PRED-008): COMPUTED L3 cooldown (v0.2.0, no longer an echo) ------------------
+
+def test_cooldown_ok_pass_when_no_prior_admit() -> None:
+    # nothing to pace against ⇒ pass (the L2 snapshot cooldown flag is no longer echoed here)
+    assert cooldown_ok(_packet("S1"), RuntimeLedger.empty(), _CFG)[0] is True
+
+
+def test_cooldown_ok_fail_within_window() -> None:
+    # a prior ADMIT of a DIFFERENT snapshot 24h ago; 48h window ⇒ still cooling down
+    led = _ledger(_admit_entry("S0", "2026-05-01T00:00:00+00:00"))
+    passed, reason = cooldown_ok(_packet("S1", as_of="2026-05-02T00:00:00+00:00"), led, _CFG48)
+    assert passed is False
+    assert "cooldown active" in reason
+
+
+def test_cooldown_ok_pass_when_window_elapsed() -> None:
+    led = _ledger(_admit_entry("S0", "2026-05-01T00:00:00+00:00"))  # 72h gap > 48h window
+    passed, reason = cooldown_ok(_packet("S1", as_of="2026-05-04T00:00:00+00:00"), led, _CFG48)
+    assert passed is True
+    assert "cooldown elapsed" in reason
+
+
+def test_cooldown_ok_excludes_self_re_presentation() -> None:
+    # an exact re-presentation does NOT cool down against its own prior ADMIT (that is duplicate_ok's job)
+    led = _ledger(_admit_entry("S1", "2026-05-01T00:00:00+00:00"))
+    assert cooldown_ok(_packet("S1", as_of="2026-05-01T00:00:00+00:00"), led, _CFG48)[0] is True
+
+
+def test_cooldown_ok_only_counts_admits() -> None:
+    # a prior REJECT (not ADMIT) of another snapshot does not start a cooldown
+    led = _ledger(_entry("S0", Verdict.REJECT.value, "operational_ok"))
+    assert cooldown_ok(_packet("S1"), led, _CFG48)[0] is True
+
+
+def test_cooldown_ok_fail_closed_on_missing_as_of() -> None:
+    led = _ledger(_admit_entry("S0", "2026-05-01T00:00:00+00:00"))
+    passed, reason = cooldown_ok(_packet("S1", as_of=None), led, _CFG48)
+    assert passed is False
+    assert "timing unavailable" in reason
+
+
+def test_cooldown_ok_fail_closed_on_out_of_order() -> None:
+    # presenting an OLDER snapshot after a newer ADMIT ⇒ negative gap ⇒ fail-closed (block)
+    led = _ledger(_admit_entry("S0", "2026-05-05T00:00:00+00:00"))
+    assert cooldown_ok(_packet("S1", as_of="2026-05-01T00:00:00+00:00"), led, _CFG48)[0] is False

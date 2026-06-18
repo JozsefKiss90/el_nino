@@ -5,7 +5,7 @@ status: implemented
 implementation_status: implemented
 canonical: true
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - code
@@ -28,9 +28,10 @@ used_by: []
 
 ## Definition
 
-`RuntimePolicyConfig` (the `require_operational` / `require_snapshot_guards` admission flags) +
-`runtime_policy_version` + `runtime_policy_fingerprint()` + `DEFAULT_RUNTIME_POLICY_CONFIG` +
-fail-closed `from_mapping`/`load_config` (`RuntimePolicyConfigError`).
+`RuntimePolicyConfig` (the `require_operational` / `require_snapshot_guards` admission flags, plus the
+**v0.2.0** `require_cooldown` + `cooldown_window_hours`) + `runtime_policy_version` +
+`runtime_policy_fingerprint()` + `DEFAULT_RUNTIME_POLICY_CONFIG` + fail-closed `from_mapping`/`load_config`
+(`RuntimePolicyConfigError`).
 
 ## Purpose
 
@@ -40,8 +41,9 @@ a CI coherence test (ADR-009 §7).
 ## Implementation Notes
 
 Copies the gold `decision_policy_fingerprint` idiom verbatim: SHA-256 over the sorted policy fields
-(`json.dumps(..., sort_keys=True, separators=(",",":"))`), the version excluded. Default fingerprint
-`ab798cae915c1617f26c2a2793d425280d495099e593579a2ba99e74e9e56f32`. IO at the boundary only.
+(`json.dumps(..., sort_keys=True, separators=(",",":"))`), the version excluded. **v0.2.0** default
+fingerprint `47ca2649dd70a2d4ffae81561cc76c538e75b3558b06daa4dbc33a11d5a98cc8`
+(`runtime_policy_version 0.2.0`; the cooldown fields fold into the digest). IO at the boundary only.
 
 ## Relationships
 

@@ -5,7 +5,7 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-09
-updated: 2026-06-16
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -244,6 +244,79 @@ and adds the determinism/idempotency tests + a sequence-replay benchmark. The ru
 governed by a new blocking gate; [[Gold Decision Gate]] (GATE-002) stays **advisory** over the still-pure
 packet (promoting it would be blocking over an all-`None` packet). Later epochs may add a computed
 cooldown and a live operational-status feed under their own amendments.
+
+## Amendment — Computed Cooldown (v0.2.0), 2026-06-18
+
+This amendment lifts the §6 / Non-Goals **"computed cooldown guard (v0 echoes the snapshot's
+`cooldown_ok`)"** deferral. It is recorded as an **amendment to this ADR** (not a new ADR): it touches no
+architectural boundary, creates no new bounded context, and only changes *how one already-named guard in
+this ADR's own six-guard taxonomy is computed* — exactly the kind of in-epoch evolution the §Future Work
+line anticipated ("Later epochs may add a computed cooldown … under their own amendments"). It is a
+governed, **versioned** change logged per the Config Evolution procedure.
+
+**Decision.** The L3 `cooldown_ok` guard is now **computed from runtime state** instead of echoing the L2
+snapshot flag. The taxonomy has exactly one `cooldown_ok` slot, so this is a **replace**, not a new guard:
+
+- `cooldown_ok = (current snapshot `as_of` − the last ADMIT's `as_of`) ≥ `cooldown_window_hours`, where the
+  last ADMIT is of a **different** snapshot (`RuntimeLedger.last_admit_as_of(exclude_snapshot_id=…)`).
+- **Deterministic** — the sole time source is the snapshot `as_of` (read from the snapshot JSON), **never**
+  wall-clock; mirrors the `duplicate_ok`/`operational_ok` computed-from-ledger idiom (§6).
+- **Fail-closed** — missing / unparseable / out-of-order (negative-gap) timing ⇒ `False` (block); no prior
+  ADMIT to pace against ⇒ `True`.
+- **`duplicate_ok` is evaluated FIRST** among the required guards, so an exact re-presentation always
+  attributes to idempotency (PRED-006), not cooldown (PRED-008). This preserves every prior triggered-guard
+  attribution.
+- The L2 snapshot's `cooldown_ok` stays as forwarded `snapshot_guards` **provenance** (its existing §3
+  role); it is no longer echoed into the L3 guard outcome.
+
+**No SCHEMA-013 change.** The ledger already records each entry's `as_of` (§5 self-describing entries), so
+the computed cooldown reads existing state — only an additive read-accessor (`last_admit_as_of`) is added.
+
+**Versioning & replay preservation.** `RuntimePolicyConfig` gains `require_cooldown` (default `True`) +
+`cooldown_window_hours` (default `20.0`, sub-daily so the daily snapshot cadence is never self-blocked);
+both fold into `runtime_policy_fingerprint`. `runtime_policy_version` bumps **0.1.0 → 0.2.0** (the fingerprint
+becomes `47ca2649…`). Because the version is in the replay key (§4), the **prior v0.1.0 echo behavior remains
+reproducible at its version**; the v0.2.0 goldens (BENCH-003, the downstream BENCH-004 execution + BENCH-006
+chain — all thread `evaluate`) are re-pinned. Verdict distributions and triggered-guard attributions are
+**unchanged** on the existing corpora (all existing distinct-admit gaps are ≥24h > the 20h window); only the
+version-keyed record identities change. The cooldown-block / cooldown-elapsed / fail-closed paths are
+exercised by **new synthetic** ledger sequences (the real corpus is sparse/AVOID and cannot).
+
+**Normative node:** [[Cooldown OK]] (PRED-008) is the canonical computed-cooldown guard node.
+
+## Amendment — Live Operational Feed (additive IO adapter), 2026-06-18
+
+This amendment lifts the §Non-Goals **"live operational-status feed"** deferral. It is **purely additive
+IO**: no pure-core change, **no `OperationalInput` schema change, no `*_version` bump** — it only fills the
+explicit `OperationalInput` seam the chain orchestrator ([[Chain Orchestrator]] MOD-010) already left
+ready. It is governed by this ADR (the `operational_ok` guard / `OperationalInput` model) + [[ADR -
+Execution Layer Planning]] (ADR-011 §2 / gate f, the non-replayable-adapter quarantine), so it is recorded
+as an amendment, not a new ADR.
+
+**Decision (the load-bearing invariant — replay-path quarantine).** A new `OperationalFeed` port
+(`src/orchestration/operational_feed.py`) **reads** venue readiness and **produces** an `OperationalInput`
+on the live `run_once` path **only**. The produced value is **captured** (persisted as a JSON artifact in
+the existing `load_operational` format), so any `run_sequence` replay threads the captured value (via
+`load_operational`) and **never** re-reads the feed — mirroring ADR-011 §2 / gate f (live runs logged, not
+replayed; no clock/network on the replay path). `run_sequence` has **no feed parameter**.
+
+- **v0 source:** a **deterministic** US-equity trading-calendar feed for the GLD venue
+  (`MarketCalendarFeed` — a trading day is a non-holiday weekday; no network, no wall-clock, no
+  credentials), itself replay-safe. **Fail-closed:** weekend / listed holiday / unparseable `as_of` ⇒ not
+  tradeable (no admission). The holiday set is a deterministic v0 approximation, not a full exchange
+  calendar.
+- **Pluggable:** the live **Alpaca clock/calendar** feed is the non-replayable plug behind the same port;
+  its credentials live in **env / git-ignored `.secrets` only** ([[Agent Safety Principles]] KA-008), never
+  in the repo, a memory file, or a dev_graph node. It is **deferred** (not built here) — the capture
+  mechanism makes even that non-deterministic feed replayable.
+
+**No SCHEMA change.** The captured `OperationalInput` is a sidecar artifact (the existing
+`load_operational` format); the ledger's per-entry `operational_fingerprint` already lets a replay *verify*
+the operational decision, and the captured artifact lets it *reconstruct* the exact `OperationalInput` —
+so no additive capture into SCHEMA-012/013 is required.
+
+**Normative nodes:** [[operational_feed.py]] (FILE-036) + [[test_operational_feed]] (TEST-026), under
+[[Chain Orchestrator]] (MOD-010).
 
 ## Relationships
 

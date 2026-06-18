@@ -28,9 +28,10 @@ from gold.paper_runtime import (
 _SG_TRUE = SnapshotGuards(data_ok=True, freshness_ok=True, cooldown_ok=True)
 _OP_OPEN = OperationalInput("GLD", tradeable=True, venue_open=True, halt=False, degraded=False)
 
-# Pins the v0 runtime policy set (require_operational + require_snapshot_guards). An un-versioned
-# edit to either flag changes this digest and fails CI (ADR-009 §7).
-_DEFAULT_FINGERPRINT = "ab798cae915c1617f26c2a2793d425280d495099e593579a2ba99e74e9e56f32"
+# Pins the v0.2.0 runtime policy set (require_operational + require_snapshot_guards + require_cooldown
+# + cooldown_window_hours). An un-versioned edit to any policy field changes this digest and fails CI
+# (ADR-009 §7 / the 2026-06-18 computed-cooldown amendment).
+_DEFAULT_FINGERPRINT = "47ca2649dd70a2d4ffae81561cc76c538e75b3558b06daa4dbc33a11d5a98cc8"
 
 
 def _packet(snapshot_id: str = "S1", direction: Direction = Direction.LONG) -> GoldDecisionPacket:

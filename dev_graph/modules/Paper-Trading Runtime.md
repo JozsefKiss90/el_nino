@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -46,8 +46,9 @@ provides:
 The first **stateful** Layer-3 component: it consumes a pure [[Gold DecisionPacket v0 Schema]]
 (SCHEMA-011) plus explicit runtime state (a self-describing [[Runtime Ledger Schema]] + a versioned
 operational input) and emits a [[Runtime Decision Record Schema]] (SCHEMA-012) + a new ledger. It
-computes the two stateful L3 guards — [[Duplicate OK]] (PRED-006) and [[Operational OK]] (PRED-007) —
-and echoes the snapshot-derived guards. Realizes [[Paper-Trade Admission]] (CAP-021).
+computes the three stateful L3 guards — [[Duplicate OK]] (PRED-006), [[Operational OK]] (PRED-007), and
+(as of **v0.2.0**) the computed [[Cooldown OK]] (PRED-008) — and echoes the snapshot-derived data/freshness
+guards. Realizes [[Paper-Trade Admission]] (CAP-021).
 
 ## Purpose
 
@@ -94,22 +95,29 @@ Runtime Planning]] (ADR-009); the record is gated by [[Runtime Admission Gate]] 
 - `models.py` — SCHEMA-012 `RuntimeDecisionRecord` + `Verdict`/`GuardOutcome`; SCHEMA-013
   `RuntimeLedger`/`LedgerEntry`; `OperationalInput`; `compute_record_id`; `digest_snapshot_guards`.
   Reuses `_GUARD_NAMES` from the gold packet module (single guard ordering).
-- `config.py` — `RuntimePolicyConfig` (`require_operational`, `require_snapshot_guards`) +
-  `runtime_policy_fingerprint()` (same idiom as `decision_policy_fingerprint`; fingerprint
-  `ab798cae…6f32`) + fail-closed `from_mapping`/`load_config`.
-- `predicates.py` — `duplicate_ok` (once-ever on a prior ADMIT), `operational_ok`, echo
-  `data_ok`/`freshness_ok`/`cooldown_ok` from `packet.snapshot_guards`; `supervisor_ok` is a `None`
-  stub. `(passed, reason)` shape mirrors the risk predicates (pattern only — never imported).
+- `config.py` — `RuntimePolicyConfig` (`require_operational`, `require_snapshot_guards`, **v0.2.0**
+  `require_cooldown` + `cooldown_window_hours`) + `runtime_policy_fingerprint()` (same idiom as
+  `decision_policy_fingerprint`; **v0.2.0** fingerprint `47ca2649…98cc8`) + fail-closed
+  `from_mapping`/`load_config`. `runtime_policy_version 0.1.0 → 0.2.0`.
+- `predicates.py` — `duplicate_ok` (once-ever on a prior ADMIT), `operational_ok`, the **computed**
+  `cooldown_ok` (PRED-008, v0.2.0 — gap since the last ADMIT of a different snapshot, from the ledger's
+  recorded `as_of`; fail-closed; replaces the v0.1.0 echo), echo `data_ok`/`freshness_ok` from
+  `packet.snapshot_guards`; `supervisor_ok` is a `None` stub. `(passed, reason)` shape mirrors the risk
+  predicates (pattern only — never imported).
 - `engine.py` — pure `evaluate()`: full six-guard block + short-circuit conjunction over the required
-  guards (first failure names it) → fail-closed verdict → one ledger append.
+  guards (**`duplicate_ok` first**, so an exact re-presentation attributes to idempotency, then the rest in
+  canonical order; first failure names it) → fail-closed verdict → one ledger append.
 - `runtime.py` — IO shell `run_once` + the pure `run_sequence` replay driver.
 - 50 runtime tests (TEST-013..017) + BENCH-003 (real determinism + a synthetic verdict sweep:
   ADMIT 3 / HOLD 1 / REJECT 3). Full suite green; `mypy --strict`/`ruff` clean on `src/gold/paper_runtime`.
 
 ## Open Questions
 
-- A computed cooldown guard, a live operational feed, and a downstream paper-execution/evaluation layer
-  are deferred (ADR-009 Non-Goals).
+- The **computed cooldown guard** is now **implemented** ([[Cooldown OK]] PRED-008, v0.2.0 — the 2026-06-18
+  ADR-009 amendment). The **live operational feed** is now **implemented** behind the explicit
+  `OperationalInput` seam ([[operational_feed.py]] FILE-036 under [[Chain Orchestrator]] MOD-010 — the
+  deterministic `MarketCalendarFeed`, captured for replay; the live Alpaca plug is the remaining deferred
+  one). A downstream paper-execution/evaluation layer is implemented ([[Execution]] MOD-008, MOD-010).
 - `supervisor_ok` stays a `None` stub until a supervisor exists (then it flips to computed).
 
 ## Relationships

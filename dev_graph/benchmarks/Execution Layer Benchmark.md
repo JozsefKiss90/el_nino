@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - code
@@ -69,6 +69,10 @@ randomness.
   position_size_ok}` under a restrictive captured guard config.
 - `pinned_portfolio_state_hash = 847f714a…` (the synthetic-approve ending portfolio, one GLD position);
   `execution_policy_version 0.1.0` / `fill_model_version 0.1.0`; fingerprints pinned.
+- **v0.2.0 runtime re-pin (2026-06-18):** the real sequence threads MOD-007 `evaluate`, so the
+  computed-cooldown `runtime_policy_version 0.1.0 → 0.2.0` cascaded the real ADMIT `record_id` →
+  `execution_id` (golden `execution_id` re-pinned). The fill behavior, distributions, guard-block
+  attribution, and `pinned_portfolio_state_hash` are **unchanged** (identity-only re-pin).
 
 ## Relationships
 

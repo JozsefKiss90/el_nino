@@ -211,6 +211,19 @@ class RuntimeLedger:
             for e in self.entries
         )
 
+    def last_admit_as_of(self, exclude_snapshot_id: str | None = None) -> str | None:
+        """The ``as_of`` of the most recent ADMIT entry (by append order), excluding one snapshot_id.
+
+        Reads only existing entry fields (no schema change) — the time source for the computed
+        cooldown guard (PRED-008). ``exclude_snapshot_id`` is the current snapshot, so an exact
+        re-presentation does not cool down against its own prior ADMIT (that is ``duplicate_ok``'s
+        job). Returns ``None`` when there is no qualifying prior ADMIT.
+        """
+        for entry in reversed(self.entries):
+            if entry.verdict == Verdict.ADMIT.value and entry.source_snapshot_id != exclude_snapshot_id:
+                return entry.as_of
+        return None
+
     def next_seq(self) -> int:
         """Length-derived insertion index — stable across load/persist/reload cycles."""
         return len(self.entries)

@@ -5,7 +5,7 @@ status: implemented
 implementation_status: implemented
 canonical: true
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - code
@@ -43,7 +43,9 @@ Define the wrapping record + the self-describing append-only ledger, keyed for r
 
 Reuses `_GUARD_NAMES` imported from `gold.decision_builder.models` (single guard ordering — no parallel
 list). `RuntimeDecisionRecord.__post_init__` enforces ADMIT ⇔ no triggered guard + the paper-only
-invariant. `RuntimeLedger.has_admit` counts only prior ADMITs (PRED-006 once-ever). `OperationalInput`
+invariant. `RuntimeLedger.has_admit` counts only prior ADMITs (PRED-006 once-ever); **v0.2.0**
+`RuntimeLedger.last_admit_as_of(exclude_self)` returns the most recent ADMIT's recorded `as_of` (the
+computed-cooldown time source, PRED-008 — no schema change, reads existing entry fields). `OperationalInput`
 is default-closed and fingerprinted. Fail-closed `from_dict`/`from_mapping` (`RuntimeContractError`).
 
 ## Relationships

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "node_count": 180,
-    "edge_count": 1347,
+    "node_count": 193,
+    "edge_count": 1477,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -281,6 +281,18 @@
       "label": "BenchmarkResult",
       "name": "Gold Forward-Return Label Set",
       "summary": "The committed golden artifact `benchmarks/calibration/artifacts/forward_return_labels.json` produced by the Gold Forward-Return Labeler (MOD-009): per (gold-decision × holding-horizon) labels of the realized forward gold return, plus the per regime × horizon aggregate that ADR - Empirical Calibration Methodology (ADR-012) gate G3 will consume.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "benchmark"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BENCH-006",
+      "label": "BenchmarkResult",
+      "name": "Chain Orchestrator Benchmark",
+      "summary": "The deterministic byte-identical **end-to-end** sequence-replay benchmark + harness for the chain orchestrator (Chain Orchestrator MOD-010).",
       "confidence": "confirmed",
       "evidence": [
         "code",
@@ -820,7 +832,7 @@
       "id": "FILE-020",
       "label": "File",
       "name": "config.py (paper_runtime)",
-      "summary": "`RuntimePolicyConfig` (the `require_operational` / `require_snapshot_guards` admission flags) + `runtime_policy_version` + `runtime_policy_fingerprint()` + `DEFAULT_RUNTIME_POLICY_CONFIG` + fail-closed `from_mapping`/`load_config` (`RuntimePolicyConfigError`).",
+      "summary": "`RuntimePolicyConfig` (the `require_operational` / `require_snapshot_guards` admission flags, plus the **v0.2.0** `require_cooldown` + `cooldown_window_hours`) + `runtime_policy_version` + `runtime_policy_fingerprint()` + `DEFAULT_RUNTIME_POLICY_CONFIG` + fail-closed `from_mapping`/`load_config` (`RuntimePolicyConfigError`).",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -831,7 +843,7 @@
       "id": "FILE-021",
       "label": "File",
       "name": "predicates.py (paper_runtime)",
-      "summary": "The L3 guard predicates: `duplicate_ok` (PRED-006), `operational_ok` (PRED-007), and the snapshot echoes `data_ok`/`freshness_ok`/`cooldown_ok`.",
+      "summary": "The L3 guard predicates: `duplicate_ok` (PRED-006), `operational_ok` (PRED-007), the **computed** `cooldown_ok` (PRED-008, v0.2.0), and the snapshot echoes `data_ok`/`freshness_ok`.",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -931,6 +943,72 @@
       "label": "File",
       "name": "run_forward_return_labels.py",
       "summary": "The single harness file for the Gold Forward-Return Labeler (MOD-009): pure label/return-math functions + a read-only corpus driver + the committed golden writer, mirroring the `run_*_bench.py` idiom.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-031",
+      "label": "File",
+      "name": "models.py (orchestration)",
+      "summary": "The chain orchestrator's output model (MOD-010): `ChainResult` (a frozen aggregate of the five typed records one end-to-end run produces + the two new state artifacts) and `ChainContractError`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-032",
+      "label": "File",
+      "name": "config.py (orchestration)",
+      "summary": "The captured cross-cutting inputs the chain orchestrator (MOD-010) forwards into the chain: `DEFAULT_OPERATIONAL_INPUT` (the v0 configured operational-readiness artifact, PRED-007) and `DEFAULT_GUARD_CONFIG` (the v0 captured GATE-001 hard-limit config, gate c.4).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-033",
+      "label": "File",
+      "name": "engine.py (orchestration)",
+      "summary": "The pure full-chain core (MOD-010): `run_chain(snapshot, prior_ledger, prior_portfolio, …) -> ChainResult`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-034",
+      "label": "File",
+      "name": "runtime.py (orchestration)",
+      "summary": "The IO shell + replay driver + CLI for the chain orchestrator (MOD-010): the only IO in the layer.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-035",
+      "label": "File",
+      "name": "run_chain_bench.py",
+      "summary": "The BENCH-006 harness: the deterministic, IO-light benchmark that threads the real consumable snapshots through the orchestrator `run_sequence` **twice** and emits the committed golden artifact `benchmarks/orchestration/artifacts/chain_bench.json`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-036",
+      "label": "File",
+      "name": "operational_feed.py",
+      "summary": "The live operational-status feed adapter (MOD-010 seam): the `OperationalFeed` Protocol port, the deterministic `MarketCalendarFeed` (the v0 source), and the capture mechanism (`persist_operational` + `read_and_capture`).",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -1391,6 +1469,19 @@
       "status": "active"
     },
     {
+      "id": "MOD-010",
+      "label": "Module",
+      "name": "Chain Orchestrator",
+      "summary": "The **end-to-end composition root** for Layer-3: it threads a banked Layer 2 Snapshot Schema (SCHEMA-001) through every already-governed stage in one deterministic call — `consume → build_features → classify → build_decision → evaluate → [GATE-001 guard] → execute → persist` — producing the full record set (Feature Vector Schema, Regime Classification Schema, Gold DecisionPacket v0 Schema, Runtime Decision Record Schema, Execution Record Schema) plus a new Runtime Ledger Schema + Portfolio State Schema.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
       "id": "OBS-001",
       "label": "Observability",
       "name": "Dev Graph Dashboard",
@@ -1616,6 +1707,19 @@
       "label": "Predicate",
       "name": "Operational OK",
       "summary": "Boolean L3 guard: `operational_ok` passes when operational preconditions for acting on a gold decision hold — e.g.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "PRED-008",
+      "label": "Predicate",
+      "name": "Cooldown OK",
+      "summary": "Boolean L3 guard: `cooldown_ok` passes when at least `cooldown_window_hours` has elapsed — measured by the snapshot `as_of` (never wall-clock) — since the last **ADMIT** of a **different** snapshot.",
       "confidence": "confirmed",
       "evidence": [
         "design",
@@ -2138,6 +2242,50 @@
       "label": "Test",
       "name": "test_forward_return_labels",
       "summary": "The test suite for the Gold Forward-Return Labeler (MOD-009) and its committed golden Gold Forward-Return Label Set (BENCH-005).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-023",
+      "label": "Test",
+      "name": "test_chain_engine",
+      "summary": "The chain orchestrator core (MOD-010) behavioral test over the real consumable fixture: ADMIT + no-fill on the monochromatic AVOID corpus; the in-hand price/direction forwarding (ADR-011 D1); wrap-not-enrich (the packet stays pure, ADR-009 §2); forwarded snapshot provenance + `as_of`; the GATE-001 guard-wiring with block attribution; the non-ADMIT → no-execute branch; end-to-end idempotency; the fail-closed ADMIT-without-price guard; and bounded-context hygiene (only the orchestrator imports `src/risk`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-024",
+      "label": "Test",
+      "name": "test_chain_determinism",
+      "summary": "The chain orchestrator determinism + IO round-trip test (MOD-010): byte-identical end-to-end replay through `run_sequence` (all five record types + ending ledger + portfolio state), end-to-end admission idempotency, the captured-input replay invariant (the replay path never reads `os.environ`), and the `run_once` IO shell — persist (portfolio-then-ledger) + reload round-trip, the non-consumable → `None` fail-closed branch, and on-disk idempotency.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-025",
+      "label": "Test",
+      "name": "test_chain_bench",
+      "summary": "The Chain Orchestrator Benchmark (BENCH-006) in-sync + determinism test (the BENCH-004 `test_execution_bench` idiom): the harness is deterministic, the real sequence replays byte-identically across all five record types, the real ADMIT is grounded in the consumable corpus (`952cc83a…`, `packet_id gold-v0:5653d07a0b3949d5`, never invented), the monochromatic-AVOID corpus is an ADMIT-then-idempotent-REJECT no-fill, the full replay key is complete, and the committed golden artifact stays in sync (drift ⇒ red).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-026",
+      "label": "Test",
+      "name": "test_operational_feed",
+      "summary": "The live operational-status feed adapter test (MOD-010 seam, FILE-036): the deterministic `MarketCalendarFeed` (open on a trading day; fail-closed on weekend / weekday-holiday / unparseable / absent), the capture round-trip (the produced `OperationalInput` reloads via `load_operational`), and — the non-negotiable — the **replay-path quarantine**: capture freezes the value at read time and a `run_sequence` replay threads it without ever re-reading the feed (a stub feed's call-count stays at 1).",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -3027,6 +3175,56 @@
       "source": "BENCH-005",
       "type": "VALIDATED_BY",
       "target": "TEST-022"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-013"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "DEPENDS_ON",
+      "target": "SCHEMA-015"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-035"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-025"
+    },
+    {
+      "source": "BENCH-006",
+      "type": "VALIDATED_BY",
+      "target": "TEST-025"
     },
     {
       "source": "CAP-001",
@@ -4994,6 +5192,196 @@
       "target": "TEST-022"
     },
     {
+      "source": "FILE-031",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-031",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-031",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-031",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-023"
+    },
+    {
+      "source": "FILE-031",
+      "type": "VALIDATED_BY",
+      "target": "TEST-023"
+    },
+    {
+      "source": "FILE-032",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-032",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-032",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-032",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-032",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-023"
+    },
+    {
+      "source": "FILE-032",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-024"
+    },
+    {
+      "source": "FILE-032",
+      "type": "VALIDATED_BY",
+      "target": "TEST-023"
+    },
+    {
+      "source": "FILE-032",
+      "type": "VALIDATED_BY",
+      "target": "TEST-024"
+    },
+    {
+      "source": "FILE-033",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-033",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-033",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-033",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-033",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-023"
+    },
+    {
+      "source": "FILE-033",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-024"
+    },
+    {
+      "source": "FILE-033",
+      "type": "VALIDATED_BY",
+      "target": "TEST-023"
+    },
+    {
+      "source": "FILE-033",
+      "type": "VALIDATED_BY",
+      "target": "TEST-024"
+    },
+    {
+      "source": "FILE-034",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-034",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-034",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-034",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-034",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-024"
+    },
+    {
+      "source": "FILE-034",
+      "type": "VALIDATED_BY",
+      "target": "TEST-024"
+    },
+    {
+      "source": "FILE-035",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-035",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-035",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-035",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-025"
+    },
+    {
+      "source": "FILE-035",
+      "type": "VALIDATED_BY",
+      "target": "TEST-025"
+    },
+    {
+      "source": "FILE-036",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-036",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-036",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-036",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-036",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-026"
+    },
+    {
+      "source": "FILE-036",
+      "type": "VALIDATED_BY",
+      "target": "TEST-026"
+    },
+    {
       "source": "GATE-001",
       "type": "CONSUMES",
       "target": "SCHEMA-007"
@@ -5095,6 +5483,11 @@
     },
     {
       "source": "GATE-002",
+      "type": "DEPENDS_ON",
+      "target": "PRED-008"
+    },
+    {
+      "source": "GATE-002",
       "type": "GUARDS",
       "target": "CAP-020"
     },
@@ -5132,6 +5525,11 @@
       "source": "GATE-003",
       "type": "DEPENDS_ON",
       "target": "PRED-007"
+    },
+    {
+      "source": "GATE-003",
+      "type": "DEPENDS_ON",
+      "target": "PRED-008"
     },
     {
       "source": "GATE-003",
@@ -6680,6 +7078,11 @@
     },
     {
       "source": "MOD-008",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
+      "source": "MOD-008",
       "type": "VALIDATED_BY",
       "target": "BENCH-004"
     },
@@ -6767,6 +7170,176 @@
       "source": "MOD-009",
       "type": "VALIDATED_BY",
       "target": "TEST-022"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONTAINS",
+      "target": "FILE-031"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONTAINS",
+      "target": "FILE-032"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONTAINS",
+      "target": "FILE-033"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONTAINS",
+      "target": "FILE-034"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONTAINS",
+      "target": "FILE-036"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-001"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-003"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-004"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-005"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-006"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "MOD-010",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "MOD-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "MOD-010",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "MOD-010",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "MOD-010",
+      "type": "REALIZES",
+      "target": "PAT-004"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-031"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-032"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-033"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-034"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-035"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-036"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-023"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-024"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-025"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-026"
+    },
+    {
+      "source": "MOD-010",
+      "type": "VALIDATED_BY",
+      "target": "BENCH-006"
+    },
+    {
+      "source": "MOD-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-023"
+    },
+    {
+      "source": "MOD-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-024"
+    },
+    {
+      "source": "MOD-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-025"
+    },
+    {
+      "source": "MOD-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-026"
     },
     {
       "source": "OBS-001",
@@ -7195,6 +7768,46 @@
     },
     {
       "source": "PRED-007",
+      "type": "VALIDATED_BY",
+      "target": "TEST-013"
+    },
+    {
+      "source": "PRED-008",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "PRED-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "PRED-008",
+      "type": "GUARDS",
+      "target": "GATE-002"
+    },
+    {
+      "source": "PRED-008",
+      "type": "GUARDS",
+      "target": "GATE-003"
+    },
+    {
+      "source": "PRED-008",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "PRED-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-021"
+    },
+    {
+      "source": "PRED-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-013"
+    },
+    {
+      "source": "PRED-008",
       "type": "VALIDATED_BY",
       "target": "TEST-013"
     },
@@ -8864,6 +9477,186 @@
       "target": "MOD-009"
     },
     {
+      "source": "TEST-023",
+      "type": "COVERS",
+      "target": "FILE-033"
+    },
+    {
+      "source": "TEST-023",
+      "type": "COVERS",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-023",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-023",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-023",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-023",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-023",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-033"
+    },
+    {
+      "source": "TEST-023",
+      "type": "USED_BY",
+      "target": "FILE-033"
+    },
+    {
+      "source": "TEST-023",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-024",
+      "type": "COVERS",
+      "target": "FILE-034"
+    },
+    {
+      "source": "TEST-024",
+      "type": "COVERS",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-024",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-024",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-024",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-024",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-024",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-034"
+    },
+    {
+      "source": "TEST-024",
+      "type": "USED_BY",
+      "target": "FILE-034"
+    },
+    {
+      "source": "TEST-024",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-025",
+      "type": "COVERS",
+      "target": "BENCH-006"
+    },
+    {
+      "source": "TEST-025",
+      "type": "COVERS",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-025",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-025",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-025",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-025",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-025",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-035"
+    },
+    {
+      "source": "TEST-025",
+      "type": "USED_BY",
+      "target": "BENCH-006"
+    },
+    {
+      "source": "TEST-025",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-026",
+      "type": "COVERS",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-026",
+      "type": "COVERS",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-026",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-026",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-026",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-026",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-026",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-026",
+      "type": "USED_BY",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-026",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
       "source": "WF-001",
       "type": "DECIDED_BY",
       "target": "ADR-002"
@@ -8882,6 +9675,11 @@
       "source": "WF-001",
       "type": "ORIGINATES_FROM",
       "target": "KA-010"
+    },
+    {
+      "source": "WF-001",
+      "type": "USED_BY",
+      "target": "MOD-010"
     },
     {
       "source": "WF-001",

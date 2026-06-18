@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -47,16 +47,19 @@ operational, or data); ADMIT must not.
 ## Architecture Role
 
 Guards [[Paper-Trade Admission]] (CAP-021). Composes [[Duplicate OK]] (PRED-006) + [[Operational OK]]
-(PRED-007) + the snapshot echoes (`data_ok`/`freshness_ok`/`cooldown_ok`); `supervisor_ok` is a `None`
-stub (not gating in v0). Consumes/produces the [[Runtime Decision Record Schema]] (SCHEMA-012).
+(PRED-007) + (as of v0.2.0) the computed [[Cooldown OK]] (PRED-008) + the snapshot echoes
+(`data_ok`/`freshness_ok`); `supervisor_ok` is a `None` stub (not gating in v0). Consumes/produces the
+[[Runtime Decision Record Schema]] (SCHEMA-012).
 
 ## Constraints
 
 - `blocking: true` — a required-but-failed guard yields REJECT; a WATCH/INDETERMINATE packet yields
   HOLD; only an all-required-pass actionable packet ADMITs. The fail-closed invariant is enforced at
   record construction.
-- **Required guards** (config-governed, in canonical `_GUARD_NAMES` order): `data_ok`, `duplicate_ok`,
-  `freshness_ok`, `operational_ok`. `cooldown_ok` (echo) and `supervisor_ok` (stub) are informational.
+- **Required guards** (config-governed): `duplicate_ok` (evaluated FIRST — idempotency precedence), then
+  `cooldown_ok` (computed, **v0.2.0**), `data_ok`, `freshness_ok`, `operational_ok` in canonical
+  `_GUARD_NAMES` order. `supervisor_ok` (stub) is informational. (Pre-v0.2.0, `cooldown_ok` was an echo and
+  informational.)
 - Deterministic aggregation only; no clock/IO in the verdict logic (state arrives as an explicit
   ledger; operational state as an explicit versioned input).
 
@@ -74,6 +77,7 @@ Implemented in `src/gold/paper_runtime/engine.py` (`evaluate`) + `models.py`
 ### Depends On
 - [[Duplicate OK]]
 - [[Operational OK]]
+- [[Cooldown OK]]
 
 ### Consumes
 - [[Runtime Decision Record Schema]]

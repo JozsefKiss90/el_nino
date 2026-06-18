@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - code
@@ -51,8 +51,12 @@ sync. Also evidences **no enrich-back** (every packet's `guard_refs` stays uneva
   / `duplicate_ok`.
 - Synthetic sequence: `all_replays_byte_identical = true`; verdict distribution `ADMIT 3 / HOLD 1 /
   REJECT 3` (operational / data / duplicate reject attribution pinned).
-- `runtime_policy_version 0.1.0`; `runtime_policy_fingerprint ab798cae…6f32`; record/ledger schema
-  versions `0.1.0`.
+- **v0.2.0 re-pin (2026-06-18, computed-cooldown amendment):** `runtime_policy_version 0.1.0 → 0.2.0`;
+  `runtime_policy_fingerprint ab798cae…6f32 → 47ca2649…98cc8`; record/ledger schema versions `0.1.0`
+  (unchanged). The verdict distributions + triggered-guard attributions above are **unchanged** (every
+  existing distinct-admit gap is ≥24h > the 20h default cooldown window, so the computed cooldown blocks
+  nothing here); only the version-keyed `record_id`s were re-pinned. The cooldown block/elapsed/fail-closed
+  paths are exercised by new synthetic unit tests ([[Cooldown OK]] PRED-008), not this corpus.
 
 ## Relationships
 

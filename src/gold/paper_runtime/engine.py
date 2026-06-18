@@ -53,13 +53,18 @@ _CONSTRAINTS: tuple[str, ...] = (
 
 
 def _required_guards(config: RuntimePolicyConfig) -> tuple[str, ...]:
-    """The guards that gate ADMIT, in canonical ``_GUARD_NAMES`` order (duplicate always required)."""
+    """The guards that gate ADMIT. ``duplicate_ok`` (idempotency) is always required and evaluated
+    FIRST, so an exact re-presentation attributes to duplicate_ok rather than the computed cooldown
+    (PRED-008); the remaining required guards follow in canonical ``_GUARD_NAMES`` order."""
     required = {"duplicate_ok"}
     if config.require_operational:
         required.add("operational_ok")
     if config.require_snapshot_guards:
         required.update(("data_ok", "freshness_ok"))
-    return tuple(name for name in _GUARD_NAMES if name in required)
+    if config.require_cooldown:
+        required.add("cooldown_ok")
+    rest = tuple(name for name in _GUARD_NAMES if name in required and name != "duplicate_ok")
+    return ("duplicate_ok", *rest)
 
 
 def evaluate(
@@ -75,7 +80,7 @@ def evaluate(
         "operational_ok": operational_ok(packet, operational_input),
         "data_ok": data_ok(packet),
         "freshness_ok": freshness_ok(packet),
-        "cooldown_ok": cooldown_ok(packet),
+        "cooldown_ok": cooldown_ok(packet, prior_ledger, config),
         "supervisor_ok": (None, _SUPERVISOR_STUB_REASON),
     }
     guard_outcomes = tuple(

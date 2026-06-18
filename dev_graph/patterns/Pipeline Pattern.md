@@ -4,7 +4,7 @@ canonical_id: PAT-004
 status: active
 canonical: true
 created: 2026-06-06
-updated: 2026-06-08
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -28,7 +28,8 @@ realized_by_capabilities:
   - "[[Feature Engineering]]"
   - "[[Gold Decision Generation]]"
   - "[[Order Management]]"
-realized_by_modules: []
+realized_by_modules:
+  - "[[Chain Orchestrator]]"
 related_knowledge:
   - "[[Event Sourcing]]"
 ---
@@ -61,6 +62,7 @@ Apply for any multi-step data transformation or processing flow: market data →
 - [[Feature Engineering]]
 - [[Gold Decision Generation]]
 - [[Order Management]]
+- [[Chain Orchestrator]]
 
 ### Originates From
 - [[Event Sourcing]]

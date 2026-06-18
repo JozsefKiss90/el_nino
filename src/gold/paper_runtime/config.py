@@ -6,8 +6,13 @@ the hash and fails a CI coherence test (TEST-015), exactly mirroring ``decision_
 Loaders are fail-closed (``RuntimePolicyConfigError``); IO lives at the boundary so ``evaluate``
 stays a pure function of (packet, ledger, operational input, config).
 
-v0 carries no thresholds beyond the two require-flags: ``duplicate_ok`` is always required
-(once-ever idempotency), and computed cooldown / dedup windows are deferred (ADR-009 §6 / Non-Goals).
+v0.2.0 (ADR-009 amendment, 2026-06-18) lifts the deferred **computed cooldown**: the L3 ``cooldown_ok``
+guard is now *computed* from runtime state — the gap between the current snapshot's ``as_of`` and the
+last ADMIT's recorded ``as_of`` must be ``>= cooldown_window_hours`` — instead of echoing the snapshot's
+``cooldown_ok`` flag. The sole time source is the snapshot ``as_of`` (never wall-clock). ``duplicate_ok``
+is still always required (once-ever idempotency) and is evaluated FIRST, so an exact re-presentation
+always attributes to idempotency, not cooldown. The prior ``v0.1.0`` (echo) behavior is preserved at its
+version — this is a replay-key axis change, hence the ``runtime_policy_version`` bump.
 """
 
 from __future__ import annotations
@@ -18,16 +23,19 @@ from dataclasses import dataclass, fields
 from pathlib import Path
 from typing import Any, Mapping
 
-RUNTIME_POLICY_VERSION = "0.1.0"
+RUNTIME_POLICY_VERSION = "0.2.0"
 
 
 class RuntimePolicyConfigError(ValueError):
     """Raised when a runtime policy config is missing or invalid (fail closed)."""
 
 
-# Fields that define the admission policy (require-flags). The version is excluded by construction;
-# a change to any of these alters which packets ADMIT, so it MUST be accompanied by a version bump.
+# Fields that define the admission policy (require-flags + the cooldown window). The version is
+# excluded by construction; a change to any of these alters which packets ADMIT, so it MUST be
+# accompanied by a version bump.
 _RUNTIME_FIELDS: tuple[str, ...] = (
+    "cooldown_window_hours",
+    "require_cooldown",
     "require_operational",
     "require_snapshot_guards",
 )
@@ -35,15 +43,19 @@ _RUNTIME_FIELDS: tuple[str, ...] = (
 
 @dataclass(frozen=True)
 class RuntimePolicyConfig:
-    """v0 admission policy: which guards gate ADMIT, plus the governed version."""
+    """v0.2.0 admission policy: which guards gate ADMIT (incl. the computed cooldown), plus the version."""
 
     require_operational: bool = True       # operational_ok must pass to ADMIT
     require_snapshot_guards: bool = True    # data_ok and freshness_ok must pass to ADMIT
+    require_cooldown: bool = True           # the computed cooldown_ok must pass to ADMIT (v0.2.0)
+    cooldown_window_hours: float = 20.0     # min gap (hours) since the last ADMIT of a DIFFERENT snapshot
     runtime_policy_version: str = RUNTIME_POLICY_VERSION
 
     def __post_init__(self) -> None:
         if not self.runtime_policy_version:
             raise RuntimePolicyConfigError("runtime_policy_version must be a non-empty string")
+        if self.cooldown_window_hours < 0:
+            raise RuntimePolicyConfigError("cooldown_window_hours must be >= 0")
 
     def runtime_policy_fingerprint(self) -> str:
         """SHA-256 over the policy-defining fields (version excluded) — same idiom as the gold config."""

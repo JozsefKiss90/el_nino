@@ -8,14 +8,19 @@ conjunction in the canonical ``_GUARD_NAMES`` order to attribute a verdict.
 
 - ``duplicate_ok`` (PRED-006): once-ever idempotency — fails iff this snapshot already ADMITted.
 - ``operational_ok`` (PRED-007): right instrument, venue tradeable + open, not halted/degraded.
-- ``data_ok`` / ``freshness_ok`` / ``cooldown_ok``: echo the packet's forwarded ``snapshot_guards``.
+- ``cooldown_ok`` (PRED-008, v0.2.0): **computed** — fails iff less than ``cooldown_window_hours`` has
+  elapsed (by the snapshot ``as_of``, never wall-clock) since the last ADMIT of a DIFFERENT snapshot.
+- ``data_ok`` / ``freshness_ok``: echo the packet's forwarded ``snapshot_guards``.
 - ``supervisor_ok``: an explicit ``None`` stub (no supervisor) — added by the engine, not here.
 """
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from gold.decision_builder.models import GoldDecisionPacket
 
+from .config import RuntimePolicyConfig
 from .models import OperationalInput, RuntimeLedger
 
 GuardResult = tuple[bool | None, str]
@@ -61,6 +66,40 @@ def freshness_ok(packet: GoldDecisionPacket) -> GuardResult:
     return _echo(packet, "freshness_ok", "freshness_ok")
 
 
-def cooldown_ok(packet: GoldDecisionPacket) -> GuardResult:
-    """Echo the snapshot's cooldown flag (computed cooldown deferred — ADR-009 §6)."""
-    return _echo(packet, "cooldown_ok", "cooldown_ok")
+def _parse_as_of(value: str | None) -> datetime | None:
+    """Deterministic ISO-8601 parse of a snapshot ``as_of`` (never wall-clock). ``None`` if unparseable."""
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def cooldown_ok(
+    packet: GoldDecisionPacket,
+    prior_ledger: RuntimeLedger,
+    config: RuntimePolicyConfig,
+) -> GuardResult:
+    """PRED-008 (v0.2.0): computed L3 cooldown — pass iff ``>= cooldown_window_hours`` has elapsed since
+    the last ADMIT of a DIFFERENT snapshot.
+
+    Deterministic: the only time source is the snapshot ``as_of`` (the packet's + the ledger entry's),
+    never the wall-clock. Mirrors ``duplicate_ok``'s computed-from-ledger idiom. **Fail-closed:** missing
+    / unparseable / out-of-order (negative gap) timing ⇒ ``False`` (block). No prior ADMIT to pace against
+    ⇒ ``True``.
+    """
+    last = prior_ledger.last_admit_as_of(exclude_snapshot_id=packet.source_snapshot_id)
+    if last is None:
+        return True, "no prior admit to cool down from"
+    now = _parse_as_of(packet.as_of)
+    prev = _parse_as_of(last)
+    if now is None or prev is None:
+        return False, f"cooldown timing unavailable (as_of={packet.as_of!r}, last_admit={last!r})"
+    try:
+        gap_hours = (now - prev).total_seconds() / 3600.0
+    except TypeError:  # naive/aware mismatch — fail closed rather than guess
+        return False, "cooldown timing not comparable (naive/aware as_of mismatch)"
+    if gap_hours >= config.cooldown_window_hours:
+        return True, f"cooldown elapsed ({gap_hours:.4f}h >= {config.cooldown_window_hours}h)"
+    return False, f"cooldown active ({gap_hours:.4f}h < {config.cooldown_window_hours}h since last admit)"

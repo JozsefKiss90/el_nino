@@ -184,7 +184,15 @@
       "Bash(export NEO4J_PASSWORD=\"elnino_dev\")",
       "Bash(export NEO4J_DATABASE=\"neo4j\")",
       "Bash(MYPYPATH=src .venv/Scripts/python.exe -m mypy --strict benchmarks/calibration/run_forward_return_labels.py)",
-      "Bash(export NEO4J_URI=\"bolt://127.0.0.1:7688\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" NEO4J_DATABASE=\"neo4j\")"
+      "Bash(export NEO4J_URI=\"bolt://127.0.0.1:7688\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" NEO4J_DATABASE=\"neo4j\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File jarvis/resync-devgraph.ps1)",
+      "Bash(git commit *)",
+      "Bash(./.venv/Scripts/python.exe -m pytest -q)",
+      "Bash(./.venv/Scripts/python.exe *)",
+      "Bash(PYTHONPATH=src ./.venv/Scripts/python.exe *)",
+      "Bash(git stash *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(PYTHONPATH=src .venv/Scripts/python.exe *)"
     ]
   }
 }

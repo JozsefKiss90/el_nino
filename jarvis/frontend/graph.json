@@ -1,7 +1,7 @@
 {
   "meta": {
-    "node_count": 210,
-    "edge_count": 1675,
+    "node_count": 211,
+    "edge_count": 1698,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -172,6 +172,19 @@
         "code"
       ],
       "status": "active"
+    },
+    {
+      "id": "ADR-014",
+      "label": "DecisionRecord",
+      "name": "ADR-014 - Operable Alpaca Paper Execution Adapter v1",
+      "summary": "ADR-014 - Operable Alpaca Paper Execution Adapter v1",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "draft"
     },
     {
       "id": "API-001",
@@ -3274,6 +3287,121 @@
       "source": "ADR-013",
       "type": "RELATES_TO_TEST",
       "target": "TEST-033"
+    },
+    {
+      "source": "ADR-014",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-014",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-004"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DEPENDS_ON",
+      "target": "MOD-009"
+    },
+    {
+      "source": "ADR-014",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "ADR-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "ADR-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "ADR-014",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "ADR-014",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "ADR-014",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-008"
+    },
+    {
+      "source": "ADR-014",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-026"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-037"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "SCHEMA-014"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "SCHEMA-015"
     },
     {
       "source": "API-001",

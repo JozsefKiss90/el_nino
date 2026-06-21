@@ -1,0 +1,654 @@
+{
+  "nodes": [
+    {
+      "id": "config:benchmarks/calibration/artifacts/forward_return_labels.json",
+      "type": "config",
+      "name": "forward_return_labels.json",
+      "filePath": "benchmarks/calibration/artifacts/forward_return_labels.json",
+      "summary": "Committed benchmark artifact holding forward-return labels aggregated by regime and horizon for both real corpus and synthetic decision points, plus coverage and tool provenance.",
+      "tags": ["benchmark", "calibration", "data-artifact", "labels"],
+      "complexity": "complex",
+      "languageNotes": "Large pinned artifact (1159 lines) reproduced byte-identically by run_forward_return_labels.py."
+    },
+    {
+      "id": "file:benchmarks/calibration/run_forward_return_labels.py",
+      "type": "file",
+      "name": "run_forward_return_labels.py",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "summary": "Calibration benchmark that derives forward-return labels (direction correctness, directional PnL) for decision points across horizons and aggregates them by regime, writing the forward_return_labels.json artifact.",
+      "tags": ["benchmark", "calibration", "labeling", "entry-point"],
+      "complexity": "complex",
+      "languageNotes": "Deterministic label builder consuming the layer-2 corpus and emitting a pinned JSON artifact."
+    },
+    {
+      "id": "config:benchmarks/execution/artifacts/execution_bench.json",
+      "type": "config",
+      "name": "execution_bench.json",
+      "filePath": "benchmarks/execution/artifacts/execution_bench.json",
+      "summary": "Pinned execution benchmark artifact recording byte-identical replay results, policy and fill-model fingerprints, portfolio state hashes, and guard-block attribution.",
+      "tags": ["benchmark", "execution", "data-artifact", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/execution/run_execution_bench.py",
+      "type": "file",
+      "name": "run_execution_bench.py",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "summary": "Execution benchmark that replays real and synthetic order sequences twice to assert byte-identical fills and portfolio state hashes, attributing guard blocks and fingerprinting the execution policy.",
+      "tags": ["benchmark", "execution", "determinism", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:benchmarks/gold/artifacts/gold_bench.json",
+      "type": "config",
+      "name": "gold_bench.json",
+      "filePath": "benchmarks/gold/artifacts/gold_bench.json",
+      "summary": "Gold decision benchmark artifact pinning the decision-policy fingerprint, determinism results, and a synthetic confidence/uncertainty sweep over the decision grid.",
+      "tags": ["benchmark", "gold", "data-artifact", "decision-policy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "type": "config",
+      "name": "paper_runtime_bench.json",
+      "filePath": "benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "summary": "Pinned paper-trading runtime benchmark artifact recording real and synthetic ledger replay sequences, runtime-policy fingerprint, and ledger state hashes.",
+      "tags": ["benchmark", "paper-trading", "data-artifact", "runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/gold/run_gold_bench.py",
+      "type": "file",
+      "name": "run_gold_bench.py",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "summary": "Gold benchmark that checks decision determinism on repeated classification and runs a synthetic confidence/uncertainty sweep across a feature grid, emitting gold_bench.json.",
+      "tags": ["benchmark", "gold", "decision-policy", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:benchmarks/gold/run_paper_runtime_bench.py",
+      "type": "file",
+      "name": "run_paper_runtime_bench.py",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "summary": "Paper-trading runtime benchmark that replays real and synthetic gold decision packets through the ledger twice to verify byte-identical records and state hashes, writing paper_runtime_bench.json.",
+      "tags": ["benchmark", "paper-trading", "runtime", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:benchmarks/orchestration/artifacts/chain_bench.json",
+      "type": "config",
+      "name": "chain_bench.json",
+      "filePath": "benchmarks/orchestration/artifacts/chain_bench.json",
+      "summary": "Pinned end-to-end chain orchestration benchmark artifact recording byte-identical replay of the full decision-to-execution chain with ledger/portfolio state hashes and the composite replay key.",
+      "tags": ["benchmark", "orchestration", "data-artifact", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/orchestration/run_chain_bench.py",
+      "type": "file",
+      "name": "run_chain_bench.py",
+      "filePath": "benchmarks/orchestration/run_chain_bench.py",
+      "summary": "Orchestration benchmark that runs the full real decision chain twice to assert byte-identical ledger and portfolio outputs, composing a replay key from all stage fingerprints into chain_bench.json.",
+      "tags": ["benchmark", "orchestration", "determinism", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:benchmarks/regime/artifacts/regime_bench.json",
+      "type": "config",
+      "name": "regime_bench.json",
+      "filePath": "benchmarks/regime/artifacts/regime_bench.json",
+      "summary": "Pinned regime-classifier benchmark artifact recording determinism of classification, classifier/taxonomy versions, decision fingerprint, and a synthetic feature sweep.",
+      "tags": ["benchmark", "regime", "data-artifact", "classifier"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchmarks/regime/run_regime_bench.py",
+      "type": "file",
+      "name": "run_regime_bench.py",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "summary": "Regime benchmark that verifies the classifier is deterministic on repeated runs and sweeps a synthetic feature grid to characterize regime stability and entropy, emitting regime_bench.json.",
+      "tags": ["benchmark", "regime", "classifier", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/api_docs/Alpaca API Docs.md",
+      "type": "document",
+      "name": "Alpaca API Docs.md",
+      "filePath": "dev_graph/api_docs/Alpaca API Docs.md",
+      "summary": "Permitted API documentation reference node scoping Alpaca trading/market-data API usage, retrieval method, authentication, and version notes for the dev_graph.",
+      "tags": ["documentation", "api-doc", "alpaca", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/api_docs/Anthropic API Docs.md",
+      "type": "document",
+      "name": "Anthropic API Docs.md",
+      "filePath": "dev_graph/api_docs/Anthropic API Docs.md",
+      "summary": "Permitted API documentation reference node scoping Anthropic (Claude) API usage, retrieval method, authentication, and version notes for the dev_graph.",
+      "tags": ["documentation", "api-doc", "anthropic", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Upgrade Evaluation.md",
+      "type": "document",
+      "name": "Upgrade Evaluation.md",
+      "filePath": "dev_graph/capabilities/Upgrade Evaluation.md",
+      "summary": "Capability node defining the upgrade-evaluation behavior — comparing candidate policy/model versions against pinned benchmarks to gate promotion decisions.",
+      "tags": ["documentation", "capability", "evaluation", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/context_packs/Context Pack Template.md",
+      "type": "document",
+      "name": "Context Pack Template.md",
+      "filePath": "dev_graph/context_packs/Context Pack Template.md",
+      "summary": "Reusable context-pack template defining the canonical sections (task, retrieved nodes, required files/tests/constraints, admissibility, implementation/validation/writeback plans) for assembling Claude coding context.",
+      "tags": ["documentation", "context-pack", "template", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "type": "document",
+      "name": "Phase 5 Bootstrap Context.md",
+      "filePath": "dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "summary": "Concrete Phase 5 context pack instantiating the template to drive substrate decision work (ADR-003), listing required nodes, files, tests, constraints, and an implementation/validation plan.",
+      "tags": ["documentation", "context-pack", "bootstrap", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/observability/Dev Graph Dashboard.md",
+      "type": "document",
+      "name": "Dev Graph Dashboard.md",
+      "filePath": "dev_graph/observability/Dev Graph Dashboard.md",
+      "summary": "Consolidated observability dashboard with 22 Dataview-driven sections covering node inventory, type/status distribution, orphan/stale detection, coverage gaps, and benchmark inventory for the dev_graph.",
+      "tags": ["documentation", "observability", "dashboard", "dataview"],
+      "complexity": "complex",
+      "languageNotes": "Dataview-query-heavy Obsidian dashboard; queries are scoped FROM \"dev_graph\" per governance."
+    },
+    {
+      "id": "document:dev_graph/observability/Operations Control Plane Console.md",
+      "type": "document",
+      "name": "Operations Control Plane Console.md",
+      "filePath": "dev_graph/observability/Operations Control Plane Console.md",
+      "summary": "Observability node describing the Operations Control Plane console — its inputs, the operational signals and gated actions it surfaces, and the constraints governing operator interaction.",
+      "tags": ["documentation", "observability", "operations", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/workflows/System Lifecycle.md",
+      "type": "document",
+      "name": "System Lifecycle.md",
+      "filePath": "dev_graph/workflows/System Lifecycle.md",
+      "summary": "Workflow node specifying the system lifecycle state machine — its states, transitions, and transition guards governing how a system moves from planned through validated to deprecated.",
+      "tags": ["documentation", "workflow", "state-machine", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/backend/app.py",
+      "type": "file",
+      "name": "app.py",
+      "filePath": "jarvis/backend/app.py",
+      "summary": "FastAPI read-only backend for the JARVIS graph explorer and GraphRAG console: exposes Neo4j-bridged graph endpoints (node, neighbors, search, shortest-path, subgraph), a fail-closed /ask GraphRAG route over graph.json, and optional Whisper/Piper voice STT/TTS.",
+      "tags": ["api-handler", "fastapi", "graphrag", "entry-point", "service"],
+      "complexity": "complex",
+      "languageNotes": "Read-only by design: sessions open in READ mode and _guard() rejects mutating Cypher; /ask is fail-closed (no seed match -> no LLM call)."
+    },
+    {
+      "id": "document:jarvis/backend/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "jarvis/backend/requirements.txt",
+      "summary": "Python dependency pin list for the JARVIS backend (FastAPI/uvicorn, neo4j driver, anthropic, and optional voice deps).",
+      "tags": ["documentation", "dependencies", "requirements", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/export_graph_json.py",
+      "type": "file",
+      "name": "export_graph_json.py",
+      "filePath": "jarvis/export_graph_json.py",
+      "summary": "Projection script that scans the dev_graph markdown via sync_to_neo4j helpers and emits the canonical graph.json (nodes + resolved relationship edges) consumed by the frontend explorer and backend /ask corpus.",
+      "tags": ["script", "projection", "graph-export", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hooks/install.sh",
+      "type": "file",
+      "name": "install.sh",
+      "filePath": "jarvis/hooks/install.sh",
+      "summary": "POSIX shell installer that copies the repo's pre-commit hook into the local clone's .git/hooks and marks it executable, since git does not version .git/hooks.",
+      "tags": ["script", "shell", "git-hook", "installer"],
+      "complexity": "simple",
+      "languageNotes": "Linear shell script with no defined functions; uses git rev-parse to locate the repo root."
+    },
+    {
+      "id": "file:jarvis/hooks/pre-commit",
+      "type": "file",
+      "name": "pre-commit",
+      "filePath": "jarvis/hooks/pre-commit",
+      "summary": "DB-free git pre-commit hook that, when staged dev_graph markdown changes, regenerates graph.json via export_graph_json.py and blocks the commit if the staged graph.json projections are stale.",
+      "tags": ["script", "shell", "git-hook", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "POSIX shell hook; never contacts Neo4j and compares against staged blobs via git show + cmp."
+    },
+
+    {
+      "id": "class:benchmarks/calibration/run_forward_return_labels.py:DecisionPoint",
+      "type": "class",
+      "name": "DecisionPoint",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [78, 92],
+      "summary": "Frozen dataclass describing a labeled decision point (snapshot id, clock timestamp, entry price, regime, direction) used as the input unit for forward-return labeling.",
+      "tags": ["data-model", "dataclass", "calibration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:benchmarks/calibration/run_forward_return_labels.py:direction_correct",
+      "type": "function",
+      "name": "direction_correct",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [111, 125],
+      "summary": "Determines whether a predicted direction matched the realized forward return given a flat band, returning correctness for directional accuracy scoring.",
+      "tags": ["calibration", "scoring", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:benchmarks/calibration/run_forward_return_labels.py:select_exit",
+      "type": "function",
+      "name": "select_exit",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [152, 174],
+      "summary": "Selects the exit price point for a labeled entry at a given trading-day horizon, respecting a maximum gap-day tolerance.",
+      "tags": ["calibration", "labeling", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/calibration/run_forward_return_labels.py:label_point",
+      "type": "function",
+      "name": "label_point",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [177, 225],
+      "summary": "Produces the full label record for one decision point at one horizon, computing forward return, directional PnL, move sign, and direction correctness.",
+      "tags": ["calibration", "labeling", "core"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/calibration/run_forward_return_labels.py:_aggregate_cell",
+      "type": "function",
+      "name": "_aggregate_cell",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [252, 290],
+      "summary": "Aggregates a group of label rows into a regime/horizon cell of mean/median return, directional accuracy, and hit-rate statistics by direction.",
+      "tags": ["calibration", "aggregation", "statistics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/calibration/run_forward_return_labels.py:decision_points_from_corpus",
+      "type": "function",
+      "name": "decision_points_from_corpus",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [320, 349],
+      "summary": "Consumes layer-2 corpus snapshots, builds features and classifies/decides each, and yields deduplicated DecisionPoint records for labeling.",
+      "tags": ["calibration", "corpus", "pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/calibration/run_forward_return_labels.py:build_report",
+      "type": "function",
+      "name": "build_report",
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "lineRange": [407, 450],
+      "summary": "Assembles the full calibration artifact report combining synthetic and (optionally) external-corpus labeled sections with parameters and provenance.",
+      "tags": ["calibration", "report", "artifact"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:_replay_block",
+      "type": "function",
+      "name": "_replay_block",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [133, 151],
+      "summary": "Runs an execution sequence twice and asserts byte-identical fill records and portfolio state hashes, summarizing determinism and guard-config fingerprint for a labeled block.",
+      "tags": ["execution", "determinism", "replay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:_build_chain",
+      "type": "function",
+      "name": "_build_chain",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [157, 177],
+      "summary": "Builds the decision-to-execution chain input from a corpus snapshot path: consumes, builds features, classifies, and constructs the operational input with snapshot guards.",
+      "tags": ["execution", "chain", "pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:run_real",
+      "type": "function",
+      "name": "run_real",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [180, 221],
+      "summary": "Evaluates real corpus snapshots into admitted execution items and replays them to verify deterministic real-sequence execution.",
+      "tags": ["execution", "benchmark", "replay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:run_synthetic",
+      "type": "function",
+      "name": "run_synthetic",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [248, 274],
+      "summary": "Constructs admitted synthetic decision records and replays them to exercise guard-block attribution and deterministic synthetic execution.",
+      "tags": ["execution", "synthetic", "replay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/execution/run_execution_bench.py:build_report",
+      "type": "function",
+      "name": "build_report",
+      "filePath": "benchmarks/execution/run_execution_bench.py",
+      "lineRange": [286, 315],
+      "summary": "Assembles the execution benchmark report combining real and synthetic results with policy/fill-model fingerprints and guard-block attribution.",
+      "tags": ["execution", "report", "artifact"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "function:benchmarks/gold/run_gold_bench.py:run_determinism",
+      "type": "function",
+      "name": "run_determinism",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "lineRange": [93, 128],
+      "summary": "Builds features and classifies corpus inputs twice, asserting that the gold decision serialization is byte-identical across repeated runs.",
+      "tags": ["gold", "determinism", "decision-policy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_gold_bench.py:run_synthetic_sweep",
+      "type": "function",
+      "name": "run_synthetic_sweep",
+      "filePath": "benchmarks/gold/run_gold_bench.py",
+      "lineRange": [139, 179],
+      "summary": "Sweeps a synthetic feature grid through the decision policy to characterize confidence and uncertainty statistics across the input space.",
+      "tags": ["gold", "synthetic", "sweep"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:_replay_block",
+      "type": "function",
+      "name": "_replay_block",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [66, 91],
+      "summary": "Replays a sequence of gold decision packets through the runtime ledger twice and asserts byte-identical records and ledger state hashes.",
+      "tags": ["paper-trading", "determinism", "replay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:_synthetic_packet",
+      "type": "function",
+      "name": "_synthetic_packet",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [144, 174],
+      "summary": "Constructs a synthetic GoldDecisionPacket with confidence inputs and guard refs for a given snapshot id, direction, guards, and regime.",
+      "tags": ["paper-trading", "synthetic", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/gold/run_paper_runtime_bench.py:run_synthetic",
+      "type": "function",
+      "name": "run_synthetic",
+      "filePath": "benchmarks/gold/run_paper_runtime_bench.py",
+      "lineRange": [177, 194],
+      "summary": "Builds a fan of synthetic decision packets across directions and guard states and replays them through the runtime ledger to verify determinism.",
+      "tags": ["paper-trading", "synthetic", "replay"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "function:benchmarks/orchestration/run_chain_bench.py:_replay_key",
+      "type": "function",
+      "name": "_replay_key",
+      "filePath": "benchmarks/orchestration/run_chain_bench.py",
+      "lineRange": [82, 104],
+      "summary": "Composes the end-to-end replay key by combining decision-policy, execution-policy, fill-model, guard-config, operational-input, and runtime-policy fingerprints.",
+      "tags": ["orchestration", "fingerprint", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/orchestration/run_chain_bench.py:run_real",
+      "type": "function",
+      "name": "run_real",
+      "filePath": "benchmarks/orchestration/run_chain_bench.py",
+      "lineRange": [141, 186],
+      "summary": "Runs the full real decision-to-execution chain twice over loaded corpus snapshots and asserts byte-identical ledger and portfolio outputs and state hashes.",
+      "tags": ["orchestration", "chain", "replay"],
+      "complexity": "complex"
+    },
+
+    {
+      "id": "function:benchmarks/regime/run_regime_bench.py:run_determinism",
+      "type": "function",
+      "name": "run_determinism",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "lineRange": [100, 132],
+      "summary": "Classifies corpus feature vectors twice and asserts the regime classification trace is byte-identical, validating classifier determinism.",
+      "tags": ["regime", "determinism", "classifier"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:benchmarks/regime/run_regime_bench.py:run_synthetic_sweep",
+      "type": "function",
+      "name": "run_synthetic_sweep",
+      "filePath": "benchmarks/regime/run_regime_bench.py",
+      "lineRange": [135, 195],
+      "summary": "Sweeps a synthetic feature grid through the regime classifier and computes label distribution, rule utilization, and entropy to characterize classifier behavior.",
+      "tags": ["regime", "synthetic", "sweep"],
+      "complexity": "complex"
+    },
+
+    {
+      "id": "function:jarvis/backend/app.py:run_read",
+      "type": "function",
+      "name": "run_read",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [64, 77],
+      "summary": "Executes a read-only Cypher query against Neo4j inside a READ-mode session after the mutation guard, returning records as dicts.",
+      "tags": ["service", "neo4j", "query"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_graph",
+      "type": "function",
+      "name": "_graph",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [128, 166],
+      "summary": "Flattens Neo4j records (nodes, relationships, and path keys) into a deduplicated node/edge graph payload for the explorer endpoints.",
+      "tags": ["service", "graph", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:neighbors",
+      "type": "function",
+      "name": "neighbors",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [223, 242],
+      "summary": "FastAPI endpoint returning the neighborhood subgraph of a canonical node up to a bounded depth and direction via parameterized Cypher.",
+      "tags": ["api-handler", "graph", "endpoint"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:subgraph",
+      "type": "function",
+      "name": "subgraph",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [282, 302],
+      "summary": "FastAPI endpoint returning a label-scoped subgraph of nodes and edges, validating the label name with isalnum before embedding it in Cypher.",
+      "tags": ["api-handler", "graph", "endpoint"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_score",
+      "type": "function",
+      "name": "_score",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [336, 357],
+      "summary": "Scores a graph.json node against a normalized query by token and substring overlap to rank seed matches for the GraphRAG /ask flow.",
+      "tags": ["graphrag", "scoring", "search"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_neighborhood",
+      "type": "function",
+      "name": "_neighborhood",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [375, 397],
+      "summary": "Expands a seed node into its graph.json neighborhood (using the live neighbors endpoint plus offline edges) to assemble GraphRAG retrieval context.",
+      "tags": ["graphrag", "retrieval", "graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_context_block",
+      "type": "function",
+      "name": "_context_block",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [409, 422],
+      "summary": "Renders a retrieved subgraph into a textual context block of node summaries for inclusion in the Claude prompt.",
+      "tags": ["graphrag", "prompt", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:_claude_answer",
+      "type": "function",
+      "name": "_claude_answer",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [438, 458],
+      "summary": "Calls the Anthropic Claude API with the assembled graph context to answer the user's question, failing closed when the API key is missing.",
+      "tags": ["graphrag", "anthropic", "llm"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:ask",
+      "type": "function",
+      "name": "ask",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [466, 498],
+      "summary": "Fail-closed GraphRAG /ask endpoint: matches a seed node, expands its neighborhood, builds context, calls Claude, and extracts cited canonical ids — returning a not-in-graph message when no seed matches.",
+      "tags": ["api-handler", "graphrag", "endpoint"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:voice_stt",
+      "type": "function",
+      "name": "voice_stt",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [548, 570],
+      "summary": "Voice speech-to-text endpoint that transcribes uploaded audio via a lazily-loaded Whisper model and returns the recognized text.",
+      "tags": ["api-handler", "voice", "stt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/backend/app.py:voice_tts",
+      "type": "function",
+      "name": "voice_tts",
+      "filePath": "jarvis/backend/app.py",
+      "lineRange": [578, 604],
+      "summary": "Voice text-to-speech endpoint that synthesizes audio from text via the Piper binary subprocess and streams the resulting WAV bytes.",
+      "tags": ["api-handler", "voice", "tts"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "function:jarvis/export_graph_json.py:first_sentence_of_definition",
+      "type": "function",
+      "name": "first_sentence_of_definition",
+      "filePath": "jarvis/export_graph_json.py",
+      "lineRange": [64, 83],
+      "summary": "Extracts the first sentence of a dev_graph node's Definition section, stripping wikilinks, to use as the node summary in the exported graph.json.",
+      "tags": ["projection", "parsing", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/export_graph_json.py:build_graph",
+      "type": "function",
+      "name": "build_graph",
+      "filePath": "jarvis/export_graph_json.py",
+      "lineRange": [86, 139],
+      "summary": "Scans the dev_graph markdown, parses frontmatter and relationship sections via sync_to_neo4j helpers, resolves edge targets, and builds the sorted node/edge graph.json payload.",
+      "tags": ["projection", "graph-export", "core"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:jarvis/export_graph_json.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "jarvis/export_graph_json.py",
+      "lineRange": [142, 173],
+      "summary": "CLI entry point that builds the graph and either prints pure JSON to stdout or writes graph.json to the configured projection paths.",
+      "tags": ["projection", "cli", "entry-point"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {"source": "file:jarvis/export_graph_json.py", "target": "file:sync_to_neo4j.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "class:benchmarks/calibration/run_forward_return_labels.py:DecisionPoint", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "function:benchmarks/calibration/run_forward_return_labels.py:direction_correct", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "function:benchmarks/calibration/run_forward_return_labels.py:select_exit", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "function:benchmarks/calibration/run_forward_return_labels.py:label_point", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "function:benchmarks/calibration/run_forward_return_labels.py:_aggregate_cell", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "function:benchmarks/calibration/run_forward_return_labels.py:decision_points_from_corpus", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "function:benchmarks/calibration/run_forward_return_labels.py:build_report", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "class:benchmarks/calibration/run_forward_return_labels.py:DecisionPoint", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:benchmarks/calibration/run_forward_return_labels.py", "target": "config:benchmarks/calibration/artifacts/forward_return_labels.json", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:benchmarks/execution/run_execution_bench.py", "target": "function:benchmarks/execution/run_execution_bench.py:_replay_block", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/execution/run_execution_bench.py", "target": "function:benchmarks/execution/run_execution_bench.py:_build_chain", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/execution/run_execution_bench.py", "target": "function:benchmarks/execution/run_execution_bench.py:run_real", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/execution/run_execution_bench.py", "target": "function:benchmarks/execution/run_execution_bench.py:run_synthetic", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/execution/run_execution_bench.py", "target": "function:benchmarks/execution/run_execution_bench.py:build_report", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/execution/run_execution_bench.py", "target": "config:benchmarks/execution/artifacts/execution_bench.json", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:benchmarks/gold/run_gold_bench.py", "target": "function:benchmarks/gold/run_gold_bench.py:run_determinism", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/gold/run_gold_bench.py", "target": "function:benchmarks/gold/run_gold_bench.py:run_synthetic_sweep", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/gold/run_gold_bench.py", "target": "config:benchmarks/gold/artifacts/gold_bench.json", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:benchmarks/gold/run_paper_runtime_bench.py", "target": "function:benchmarks/gold/run_paper_runtime_bench.py:_replay_block", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/gold/run_paper_runtime_bench.py", "target": "function:benchmarks/gold/run_paper_runtime_bench.py:_synthetic_packet", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/gold/run_paper_runtime_bench.py", "target": "function:benchmarks/gold/run_paper_runtime_bench.py:run_synthetic", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/gold/run_paper_runtime_bench.py", "target": "config:benchmarks/gold/artifacts/paper_runtime_bench.json", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:benchmarks/orchestration/run_chain_bench.py", "target": "function:benchmarks/orchestration/run_chain_bench.py:_replay_key", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/orchestration/run_chain_bench.py", "target": "function:benchmarks/orchestration/run_chain_bench.py:run_real", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/orchestration/run_chain_bench.py", "target": "config:benchmarks/orchestration/artifacts/chain_bench.json", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:benchmarks/regime/run_regime_bench.py", "target": "function:benchmarks/regime/run_regime_bench.py:run_determinism", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/regime/run_regime_bench.py", "target": "function:benchmarks/regime/run_regime_bench.py:run_synthetic_sweep", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:benchmarks/regime/run_regime_bench.py", "target": "config:benchmarks/regime/artifacts/regime_bench.json", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:run_read", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:_graph", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:neighbors", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:subgraph", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:_score", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:_neighborhood", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:_context_block", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:_claude_answer", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:ask", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:voice_stt", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/backend/app.py", "target": "function:jarvis/backend/app.py:voice_tts", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:jarvis/export_graph_json.py", "target": "function:jarvis/export_graph_json.py:first_sentence_of_definition", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/export_graph_json.py", "target": "function:jarvis/export_graph_json.py:build_graph", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/export_graph_json.py", "target": "function:jarvis/export_graph_json.py:main", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/export_graph_json.py", "target": "function:jarvis/export_graph_json.py:build_graph", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:jarvis/hooks/install.sh", "target": "file:jarvis/hooks/pre-commit", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:jarvis/hooks/pre-commit", "target": "file:jarvis/export_graph_json.py", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "document:jarvis/backend/requirements.txt", "target": "file:jarvis/backend/app.py", "type": "configures", "direction": "forward", "weight": 0.6},
+
+    {"source": "document:dev_graph/observability/Dev Graph Dashboard.md", "target": "config:benchmarks/calibration/artifacts/forward_return_labels.json", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

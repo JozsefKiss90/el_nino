@@ -151,34 +151,71 @@ it forever.)
 
 ---
 
-## 6. How it would be hooked after the daily EOD snapshot (documented — NOT scheduled here)
+## 6. Scheduling the daily run (scripts built 2026-06-18 — registration is an operator action)
 
-Scheduling is an **operator action**; this slice wires nothing. The intended hook, once an operator
-chooses to enable it:
+The two el_nino scripts now exist (`scripts/`, all changes stay in el_nino; Mr-Ripley untouched). The
+daily-run script has been **validated by a single manual invocation**; **registering the recurring task
+remains an explicit operator HARD-PAUSE action** — it is not run by the build.
 
-1. The Mr-Ripley `MrRipley-Layer2-DailyEOD` task banks one immutable consumable snapshot per day
-   (EPOCH_B_CORPUS_RUNBOOK.md §3) and archives it under
-   `C:\Code\Mr-Ripley\runtime\snapshots\snapshot_<clock_date>__<id8>.json`.
-2. A **separate, later** el_nino scheduled task would run **after** the EOD job, e.g.
-   `python -m orchestration.runtime --snapshot-dir C:\Code\Mr-Ripley\runtime\snapshots
-   --guard-from-env`, threading that day's snapshot through the chain and appending to the el_nino
-   runtime ledger + portfolio. Because `consume()` fail-closes and the chain is idempotent on
-   `source_snapshot_id`, a missed/duplicate run is safe (no double-admit / double-fill).
-3. The banked decision + execution records are what the **MOD-009 Gold Forward-Return Labeler**
-   consumes downstream for the ADR-012 G3 calibration measurement.
+**The flow.** The Mr-Ripley `MrRipley-Layer2-DailyEOD` task (23:00) banks one immutable consumable
+snapshot per day under `C:\Code\Mr-Ripley\runtime\snapshots\snapshot_<clock_date>__<id8>.json`
+(EPOCH_B_CORPUS_RUNBOOK.md §3). The el_nino task runs **after** it (default **23:45** — Mr-Ripley's
+30-min limit completes by ~23:30), threading that day's snapshot through `run_once` and appending to the
+el_nino ledger + portfolio. Idempotent on `source_snapshot_id` (a missed/duplicate run is safe). The
+banked decision + execution records feed the **MOD-009 Gold Forward-Return Labeler** downstream (ADR-012
+G3 measurement).
 
-Do not register the task as part of this slice. When an operator wants it, register it in the idiom of
-`register_daily_task.ps1`, sequenced after the EOD job, and verify with `Get-ScheduledTaskInfo`.
+**`scripts/daily_chain_run.ps1`** — one run per invocation. Execution core: the **deterministic
+`SimulatedBrokerAdapter`** (the default port — **never** the live Alpaca broker). Operational status: the
+operational feed, captured for replay; `-FeedSource calendar` (default) is the deterministic,
+credential-free `MarketCalendarFeed`; `-FeedSource alpaca` is the live paper clock/calendar plug
+(default-OFF; env creds; fail-closed) — use only after operator opt-in. Params: `-RepoRoot`, `-Python`,
+`-SnapshotDir`, `-Ledger`, `-Portfolio`, `-OperationalCapture`, `-FeedSource {calendar,alpaca}`,
+`-GuardFromEnv`.
+
+```powershell
+# Validate (one run; point at scratch state to avoid perturbing canonical ledger/portfolio):
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\daily_chain_run.ps1 `
+    -Ledger runtime\chain\_validation\runtime_ledger.json `
+    -Portfolio runtime\chain\_validation\portfolio_state.json `
+    -OperationalCapture runtime\chain\_validation\operational_capture.json
+# Validated 2026-06-18: latest banked snapshot c1fe5a02 (2026-06-15) -> RESTRICTIVE_RATES/AVOID ->
+# ADMIT + no-fill (simulator), exit 0.
+```
+
+**`scripts/register_daily_chain_task.ps1`** — registers the recurring task (mirrors Mr-Ripley's
+`register_daily_task.ps1`). **HARD PAUSE: do not run until the operator throws the switch.**
+
+```powershell
+# Register (OPERATOR ACTION):
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\register_daily_chain_task.ps1
+# Inspect / disable / remove:
+Get-ScheduledTaskInfo  -TaskName 'ElNino-Chain-DailyRun'
+Disable-ScheduledTask  -TaskName 'ElNino-Chain-DailyRun'
+Unregister-ScheduledTask -TaskName 'ElNino-Chain-DailyRun' -Confirm:$false
+```
+
+The scheduled task runs the **simulator** path with the deterministic calendar feed. Switching it to the
+live Alpaca calendar feed (`-FeedSource alpaca`) or ever enabling the live Alpaca **execution** adapter is
+a **further, separate operator opt-in** (env creds; paper-only). Recommend adding `-GuardFromEnv` for any
+real (non-demonstration) recurring run.
 
 ---
 
-## 7. Out of scope (named follow-ups — not built here)
+## 7. Out of scope (named follow-ups)
 
-- **Live operational-status feed** — the IO adapter behind the explicit `OperationalInput` seam (§4).
+- **Live operational-status feed** — **built** 2026-06-18: the deterministic `MarketCalendarFeed`
+  (FILE-036) + the live `AlpacaClockFeed` (FILE-037, default-OFF, closes the holiday-calendar gap) behind
+  the `OperationalFeed` seam (§4).
 - **Computed cooldown guard** — MOD-007's echoed `cooldown_ok` → computed from the ledger; its own
-  slice (it changes an admission guard's semantics).
-- **Scheduling the daily run** — operator action (§6).
-- **STEP-5 Alpaca paper adapter**; the **G1/G2/G3 calibration bumps** (data-gated, ADR-012).
+  slice (it changes an admission guard's semantics). Still a follow-up.
+- **Scheduling the daily run** — scripts **built + validated** (§6); registering the recurring task is an
+  operator HARD-PAUSE action.
+- **STEP-5 Alpaca paper adapter** — **built** 2026-06-18 (FILE-038, `AlpacaPaperAdapter`, default-OFF,
+  non-replayable, built-but-dormant; ADR-011 gate f closed). *Enabling* the live execution path is an
+  operator HARD-PAUSE action.
+- **G1/G2/G3 calibration bumps** — data-gated (ADR-012); re-checked 2026-06-18 → still DEFER (corpus N=5
+  monochromatic).
 
 ---
 

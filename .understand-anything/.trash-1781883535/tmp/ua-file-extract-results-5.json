@@ -1,0 +1,6225 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "ops/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "ops/actions.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 158,
+      "nonEmptyLines": 135,
+      "functions": [
+        {
+          "name": "_finish",
+          "startLine": 50,
+          "endLine": 64,
+          "params": [
+            "paths",
+            "action",
+            "args_summary",
+            "ok",
+            "summary",
+            "detail",
+            "clock"
+          ]
+        },
+        {
+          "name": "run_chain_now",
+          "startLine": 67,
+          "endLine": 106,
+          "params": [
+            "paths",
+            "clock"
+          ]
+        },
+        {
+          "name": "rerun_calibration_readiness",
+          "startLine": 109,
+          "endLine": 131,
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ]
+        },
+        {
+          "name": "resync_neo4j",
+          "startLine": 134,
+          "endLine": 150,
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ActionResult",
+          "startLine": 42,
+          "endLine": 47,
+          "methods": [],
+          "properties": [
+            "action",
+            "ok",
+            "summary",
+            "detail",
+            "audit"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ActionResult",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "_finish",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "run_chain_now",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "rerun_calibration_readiness",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "resync_neo4j",
+          "line": 134,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_finish",
+          "callee": "redact",
+          "lineNumber": 56
+        },
+        {
+          "caller": "_finish",
+          "callee": "redact",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_finish",
+          "callee": "redact",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_finish",
+          "callee": "audit.make_entry",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_finish",
+          "callee": "audit.write_entry",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_finish",
+          "callee": "ActionResult",
+          "lineNumber": 64
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "core.resolve_run_snapshot",
+          "lineNumber": 75
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "_finish",
+          "lineNumber": 81
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "run_once",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "MarketCalendarFeed",
+          "lineNumber": 85
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "_finish",
+          "lineNumber": 89
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "str",
+          "lineNumber": 89
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "_finish",
+          "lineNumber": 91
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "result.ledger.state_hash",
+          "lineNumber": 103
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "result.portfolio.state_hash",
+          "lineNumber": 104
+        },
+        {
+          "caller": "run_chain_now",
+          "callee": "_finish",
+          "lineNumber": 106
+        },
+        {
+          "caller": "rerun_calibration_readiness",
+          "callee": "run",
+          "lineNumber": 121
+        },
+        {
+          "caller": "rerun_calibration_readiness",
+          "callee": "str",
+          "lineNumber": 121
+        },
+        {
+          "caller": "rerun_calibration_readiness",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 123
+        },
+        {
+          "caller": "rerun_calibration_readiness",
+          "callee": "tail",
+          "lineNumber": 130
+        },
+        {
+          "caller": "rerun_calibration_readiness",
+          "callee": "_finish",
+          "lineNumber": 131
+        },
+        {
+          "caller": "resync_neo4j",
+          "callee": "run",
+          "lineNumber": 146
+        },
+        {
+          "caller": "resync_neo4j",
+          "callee": "str",
+          "lineNumber": 146
+        },
+        {
+          "caller": "resync_neo4j",
+          "callee": "tail",
+          "lineNumber": 149
+        },
+        {
+          "caller": "resync_neo4j",
+          "callee": "_finish",
+          "lineNumber": 150
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "ops/app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 488,
+      "nonEmptyLines": 422,
+      "functions": [
+        {
+          "name": "_exists",
+          "startLine": 443,
+          "endLine": 446,
+          "params": [
+            "exists",
+            "error"
+          ]
+        },
+        {
+          "name": "_short",
+          "startLine": 449,
+          "endLine": 450,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_print_once",
+          "startLine": 453,
+          "endLine": 466,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 469,
+          "endLine": 484,
+          "params": [
+            "argv"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ConfirmModal",
+          "startLine": 57,
+          "endLine": 89,
+          "methods": [
+            "__init__",
+            "compose",
+            "on_button_pressed",
+            "action_confirm",
+            "action_cancel"
+          ],
+          "properties": []
+        },
+        {
+          "name": "OpsConsole",
+          "startLine": 101,
+          "endLine": 440,
+          "methods": [
+            "__init__",
+            "compose",
+            "on_mount",
+            "action_refresh",
+            "action_run_chain",
+            "action_calibration",
+            "action_resync_neo4j",
+            "_begin_action",
+            "_run_action",
+            "_on_action_failed",
+            "_on_action_done",
+            "action_alpaca_run",
+            "action_reg_sched",
+            "action_unreg_sched",
+            "action_calib_bump",
+            "_confirm_gated",
+            "_begin_gated",
+            "_run_gated",
+            "_on_gated_failed",
+            "_on_gated_done",
+            "refresh_dashboard",
+            "_render_statusbar",
+            "_render_overview",
+            "_render_gates",
+            "_render_calibration",
+            "_render_artefacts",
+            "_render_processes",
+            "_render_plugs",
+            "_render_log",
+            "_verdict_style"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConfirmModal",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "OpsConsole",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "_exists",
+          "line": 443,
+          "isDefault": false
+        },
+        {
+          "name": "_short",
+          "line": 449,
+          "isDefault": false
+        },
+        {
+          "name": "_print_once",
+          "line": 453,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 469,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 67
+        },
+        {
+          "caller": "compose",
+          "callee": "Container",
+          "lineNumber": 73
+        },
+        {
+          "caller": "compose",
+          "callee": "Label",
+          "lineNumber": 74
+        },
+        {
+          "caller": "compose",
+          "callee": "Label",
+          "lineNumber": 75
+        },
+        {
+          "caller": "compose",
+          "callee": "Label",
+          "lineNumber": 76
+        },
+        {
+          "caller": "compose",
+          "callee": "Label",
+          "lineNumber": 77
+        },
+        {
+          "caller": "compose",
+          "callee": "Horizontal",
+          "lineNumber": 78
+        },
+        {
+          "caller": "compose",
+          "callee": "Button",
+          "lineNumber": 79
+        },
+        {
+          "caller": "compose",
+          "callee": "Button",
+          "lineNumber": 80
+        },
+        {
+          "caller": "on_button_pressed",
+          "callee": "self.dismiss",
+          "lineNumber": 83
+        },
+        {
+          "caller": "action_confirm",
+          "callee": "self.dismiss",
+          "lineNumber": 86
+        },
+        {
+          "caller": "action_cancel",
+          "callee": "self.dismiss",
+          "lineNumber": 89
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 132
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 132
+        },
+        {
+          "caller": "__init__",
+          "callee": "OpsPaths.default",
+          "lineNumber": 133
+        },
+        {
+          "caller": "compose",
+          "callee": "Header",
+          "lineNumber": 136
+        },
+        {
+          "caller": "compose",
+          "callee": "Static",
+          "lineNumber": 137
+        },
+        {
+          "caller": "compose",
+          "callee": "TabbedContent",
+          "lineNumber": 138
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 139
+        },
+        {
+          "caller": "compose",
+          "callee": "VerticalScroll",
+          "lineNumber": 140
+        },
+        {
+          "caller": "compose",
+          "callee": "Static",
+          "lineNumber": 141
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 142
+        },
+        {
+          "caller": "compose",
+          "callee": "VerticalScroll",
+          "lineNumber": 143
+        },
+        {
+          "caller": "compose",
+          "callee": "Static",
+          "lineNumber": 144
+        },
+        {
+          "caller": "compose",
+          "callee": "DataTable",
+          "lineNumber": 145
+        },
+        {
+          "caller": "compose",
+          "callee": "Static",
+          "lineNumber": 146
+        },
+        {
+          "caller": "compose",
+          "callee": "DataTable",
+          "lineNumber": 147
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 148
+        },
+        {
+          "caller": "compose",
+          "callee": "VerticalScroll",
+          "lineNumber": 149
+        },
+        {
+          "caller": "compose",
+          "callee": "Static",
+          "lineNumber": 150
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 151
+        },
+        {
+          "caller": "compose",
+          "callee": "VerticalScroll",
+          "lineNumber": 152
+        },
+        {
+          "caller": "compose",
+          "callee": "DataTable",
+          "lineNumber": 153
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 154
+        },
+        {
+          "caller": "compose",
+          "callee": "VerticalScroll",
+          "lineNumber": 155
+        },
+        {
+          "caller": "compose",
+          "callee": "DataTable",
+          "lineNumber": 156
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 157
+        },
+        {
+          "caller": "compose",
+          "callee": "VerticalScroll",
+          "lineNumber": 158
+        },
+        {
+          "caller": "compose",
+          "callee": "DataTable",
+          "lineNumber": 159
+        },
+        {
+          "caller": "compose",
+          "callee": "TabPane",
+          "lineNumber": 160
+        },
+        {
+          "caller": "compose",
+          "callee": "RichLog",
+          "lineNumber": 161
+        },
+        {
+          "caller": "compose",
+          "callee": "Footer",
+          "lineNumber": 162
+        },
+        {
+          "caller": "on_mount",
+          "callee": "self.query_one(table_id, DataTable).add_columns",
+          "lineNumber": 172
+        },
+        {
+          "caller": "on_mount",
+          "callee": "self.query_one",
+          "lineNumber": 172
+        },
+        {
+          "caller": "on_mount",
+          "callee": "self.refresh_dashboard",
+          "lineNumber": 174
+        },
+        {
+          "caller": "on_mount",
+          "callee": "self.set_interval",
+          "lineNumber": 175
+        },
+        {
+          "caller": "action_refresh",
+          "callee": "self.refresh_dashboard",
+          "lineNumber": 179
+        },
+        {
+          "caller": "action_run_chain",
+          "callee": "self._begin_action",
+          "lineNumber": 183
+        },
+        {
+          "caller": "action_calibration",
+          "callee": "self._begin_action",
+          "lineNumber": 186
+        },
+        {
+          "caller": "action_resync_neo4j",
+          "callee": "self._begin_action",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_begin_action",
+          "callee": "self.query_one",
+          "lineNumber": 193
+        },
+        {
+          "caller": "_begin_action",
+          "callee": "self.query_one(\"#logpane\", RichLog).write",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_begin_action",
+          "callee": "self.query_one",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_begin_action",
+          "callee": "self._run_action",
+          "lineNumber": 195
+        },
+        {
+          "caller": "_run_action",
+          "callee": "self.call_from_thread",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_run_action",
+          "callee": "self.call_from_thread",
+          "lineNumber": 210
+        },
+        {
+          "caller": "_on_action_failed",
+          "callee": "self.query_one(\"#logpane\", RichLog).write",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_on_action_failed",
+          "callee": "self.query_one",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_on_action_failed",
+          "callee": "self.refresh_dashboard",
+          "lineNumber": 214
+        },
+        {
+          "caller": "_on_action_done",
+          "callee": "self.query_one",
+          "lineNumber": 217
+        },
+        {
+          "caller": "_on_action_done",
+          "callee": "log.write",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_on_action_done",
+          "callee": "log.write",
+          "lineNumber": 221
+        },
+        {
+          "caller": "_on_action_done",
+          "callee": "self.refresh_dashboard",
+          "lineNumber": 224
+        },
+        {
+          "caller": "action_alpaca_run",
+          "callee": "self._confirm_gated",
+          "lineNumber": 228
+        },
+        {
+          "caller": "action_reg_sched",
+          "callee": "self._confirm_gated",
+          "lineNumber": 234
+        },
+        {
+          "caller": "action_unreg_sched",
+          "callee": "self._confirm_gated",
+          "lineNumber": 239
+        },
+        {
+          "caller": "action_calib_bump",
+          "callee": "self._confirm_gated",
+          "lineNumber": 244
+        },
+        {
+          "caller": "_confirm_gated",
+          "callee": "gated.precondition_line",
+          "lineNumber": 250
+        },
+        {
+          "caller": "on_result",
+          "callee": "self._begin_gated",
+          "lineNumber": 254
+        },
+        {
+          "caller": "on_result",
+          "callee": "self.query_one(\"#logpane\", RichLog).write",
+          "lineNumber": 256
+        },
+        {
+          "caller": "on_result",
+          "callee": "self.query_one",
+          "lineNumber": 256
+        },
+        {
+          "caller": "_confirm_gated",
+          "callee": "self.push_screen",
+          "lineNumber": 258
+        },
+        {
+          "caller": "_confirm_gated",
+          "callee": "ConfirmModal",
+          "lineNumber": 258
+        },
+        {
+          "caller": "_begin_gated",
+          "callee": "self.query_one",
+          "lineNumber": 261
+        },
+        {
+          "caller": "_begin_gated",
+          "callee": "self.query_one(\"#logpane\", RichLog).write",
+          "lineNumber": 262
+        },
+        {
+          "caller": "_begin_gated",
+          "callee": "self.query_one",
+          "lineNumber": 262
+        },
+        {
+          "caller": "_begin_gated",
+          "callee": "self._run_gated",
+          "lineNumber": 263
+        },
+        {
+          "caller": "_run_gated",
+          "callee": "self.call_from_thread",
+          "lineNumber": 271
+        },
+        {
+          "caller": "_run_gated",
+          "callee": "self.call_from_thread",
+          "lineNumber": 273
+        },
+        {
+          "caller": "_on_gated_failed",
+          "callee": "self.query_one(\"#logpane\", RichLog).write",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_on_gated_failed",
+          "callee": "self.query_one",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_on_gated_failed",
+          "callee": "self.refresh_dashboard",
+          "lineNumber": 277
+        },
+        {
+          "caller": "_on_gated_done",
+          "callee": "self.query_one",
+          "lineNumber": 280
+        },
+        {
+          "caller": "_on_gated_done",
+          "callee": "log.write",
+          "lineNumber": 283
+        },
+        {
+          "caller": "_on_gated_done",
+          "callee": "log.write",
+          "lineNumber": 285
+        },
+        {
+          "caller": "_on_gated_done",
+          "callee": "self.refresh_dashboard",
+          "lineNumber": 286
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "assemble_dashboard",
+          "lineNumber": 291
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self.query_one(\"#statusbar\", Static).update",
+          "lineNumber": 293
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self.query_one",
+          "lineNumber": 293
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "Text",
+          "lineNumber": 293
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_statusbar",
+          "lineNumber": 295
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_overview",
+          "lineNumber": 296
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_gates",
+          "lineNumber": 297
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_calibration",
+          "lineNumber": 298
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_artefacts",
+          "lineNumber": 299
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_processes",
+          "lineNumber": 300
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_plugs",
+          "lineNumber": 301
+        },
+        {
+          "caller": "refresh_dashboard",
+          "callee": "self._render_log",
+          "lineNumber": 302
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "Text",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 308
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 310
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "_HEALTH_STYLE.get",
+          "lineNumber": 310
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 311
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 313
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 314
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "bar.append",
+          "lineNumber": 316
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "len",
+          "lineNumber": 316
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "self.query_one(\"#statusbar\", Static).update",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_render_statusbar",
+          "callee": "self.query_one",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "Text",
+          "lineNumber": 321
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 322
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 323
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 325
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 326
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 327
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 329
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 331
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 332
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 333
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "self._verdict_style",
+          "lineNumber": 333
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 334
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 335
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 340
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "body.append",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "self.query_one(\"#overview-body\", Static).update",
+          "lineNumber": 348
+        },
+        {
+          "caller": "_render_overview",
+          "callee": "self.query_one",
+          "lineNumber": 348
+        },
+        {
+          "caller": "_render_gates",
+          "callee": "self.query_one",
+          "lineNumber": 351
+        },
+        {
+          "caller": "_render_gates",
+          "callee": "t11.clear",
+          "lineNumber": 352
+        },
+        {
+          "caller": "_render_gates",
+          "callee": "t11.add_row",
+          "lineNumber": 354
+        },
+        {
+          "caller": "_render_gates",
+          "callee": "self.query_one",
+          "lineNumber": 355
+        },
+        {
+          "caller": "_render_gates",
+          "callee": "t12.clear",
+          "lineNumber": 356
+        },
+        {
+          "caller": "_render_gates",
+          "callee": "t12.add_row",
+          "lineNumber": 358
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "Text",
+          "lineNumber": 362
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 363
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 365
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "list",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "list",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 367
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 370
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 373
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 374
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 375
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 376
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "body.append",
+          "lineNumber": 378
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "self.query_one(\"#calibration-body\", Static).update",
+          "lineNumber": 379
+        },
+        {
+          "caller": "_render_calibration",
+          "callee": "self.query_one",
+          "lineNumber": 379
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "self.query_one",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "table.clear",
+          "lineNumber": 383
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "table.add_row",
+          "lineNumber": 385
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "_exists",
+          "lineNumber": 386
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "_short",
+          "lineNumber": 387
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "table.add_row",
+          "lineNumber": 390
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "_exists",
+          "lineNumber": 391
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "_short",
+          "lineNumber": 393
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "table.add_row",
+          "lineNumber": 396
+        },
+        {
+          "caller": "_render_artefacts",
+          "callee": "table.add_row",
+          "lineNumber": 402
+        },
+        {
+          "caller": "_render_processes",
+          "callee": "self.query_one",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_render_processes",
+          "callee": "table.clear",
+          "lineNumber": 409
+        },
+        {
+          "caller": "_render_processes",
+          "callee": "table.add_row",
+          "lineNumber": 411
+        },
+        {
+          "caller": "_render_plugs",
+          "callee": "self.query_one",
+          "lineNumber": 414
+        },
+        {
+          "caller": "_render_plugs",
+          "callee": "table.clear",
+          "lineNumber": 415
+        },
+        {
+          "caller": "_render_plugs",
+          "callee": "table.add_row",
+          "lineNumber": 417
+        },
+        {
+          "caller": "_render_log",
+          "callee": "self.query_one",
+          "lineNumber": 420
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.clear",
+          "lineNumber": 421
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 422
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 425
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 427
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 428
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 429
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 432
+        },
+        {
+          "caller": "_render_log",
+          "callee": "log.write",
+          "lineNumber": 434
+        },
+        {
+          "caller": "_verdict_style",
+          "callee": "{\"ADMIT\": \"bold green\", \"HOLD\": \"bold yellow\", \"REJECT\": \"bold red\"}.get",
+          "lineNumber": 438
+        },
+        {
+          "caller": "_print_once",
+          "callee": "sys.stdout.reconfigure",
+          "lineNumber": 456
+        },
+        {
+          "caller": "_print_once",
+          "callee": "assemble_dashboard",
+          "lineNumber": 460
+        },
+        {
+          "caller": "_print_once",
+          "callee": "render_text_dashboard",
+          "lineNumber": 461
+        },
+        {
+          "caller": "_print_once",
+          "callee": "print",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_print_once",
+          "callee": "print",
+          "lineNumber": 466
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 470
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 474
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 478
+        },
+        {
+          "caller": "main",
+          "callee": "OpsPaths.default",
+          "lineNumber": 479
+        },
+        {
+          "caller": "main",
+          "callee": "_print_once",
+          "lineNumber": 481
+        },
+        {
+          "caller": "main",
+          "callee": "OpsConsole(paths).run",
+          "lineNumber": 483
+        },
+        {
+          "caller": "main",
+          "callee": "OpsConsole",
+          "lineNumber": 483
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 4,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "ops/audit.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "_utc_now",
+          "startLine": 25,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "make_entry",
+          "startLine": 51,
+          "endLine": 62,
+          "params": [
+            "action",
+            "args_summary",
+            "result",
+            "ok",
+            "clock"
+          ]
+        },
+        {
+          "name": "write_entry",
+          "startLine": 65,
+          "endLine": 70,
+          "params": [
+            "audit_path",
+            "entry"
+          ]
+        },
+        {
+          "name": "append_audit",
+          "startLine": 73,
+          "endLine": 85,
+          "params": [
+            "audit_path",
+            "action",
+            "args_summary",
+            "result",
+            "ok",
+            "clock"
+          ]
+        },
+        {
+          "name": "read_audit",
+          "startLine": 88,
+          "endLine": 114,
+          "params": [
+            "audit_path",
+            "limit"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "AuditEntry",
+          "startLine": 30,
+          "endLine": 48,
+          "methods": [
+            "to_dict",
+            "line"
+          ],
+          "properties": [
+            "timestamp",
+            "action",
+            "args_summary",
+            "result",
+            "ok"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_utc_now",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "AuditEntry",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "make_entry",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "write_entry",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "append_audit",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "read_audit",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_utc_now",
+          "callee": "datetime.now",
+          "lineNumber": 26
+        },
+        {
+          "caller": "make_entry",
+          "callee": "AuditEntry",
+          "lineNumber": 56
+        },
+        {
+          "caller": "make_entry",
+          "callee": "now.strftime",
+          "lineNumber": 57
+        },
+        {
+          "caller": "write_entry",
+          "callee": "audit_path.parent.mkdir",
+          "lineNumber": 68
+        },
+        {
+          "caller": "write_entry",
+          "callee": "audit_path.open",
+          "lineNumber": 69
+        },
+        {
+          "caller": "write_entry",
+          "callee": "handle.write",
+          "lineNumber": 70
+        },
+        {
+          "caller": "write_entry",
+          "callee": "json.dumps",
+          "lineNumber": 70
+        },
+        {
+          "caller": "write_entry",
+          "callee": "entry.to_dict",
+          "lineNumber": 70
+        },
+        {
+          "caller": "append_audit",
+          "callee": "make_entry",
+          "lineNumber": 83
+        },
+        {
+          "caller": "append_audit",
+          "callee": "write_entry",
+          "lineNumber": 84
+        },
+        {
+          "caller": "read_audit",
+          "callee": "audit_path.exists",
+          "lineNumber": 90
+        },
+        {
+          "caller": "read_audit",
+          "callee": "audit_path.read_text(encoding=\"utf-8\").splitlines",
+          "lineNumber": 93
+        },
+        {
+          "caller": "read_audit",
+          "callee": "audit_path.read_text",
+          "lineNumber": 93
+        },
+        {
+          "caller": "read_audit",
+          "callee": "raw.strip",
+          "lineNumber": 98
+        },
+        {
+          "caller": "read_audit",
+          "callee": "json.loads",
+          "lineNumber": 102
+        },
+        {
+          "caller": "read_audit",
+          "callee": "isinstance",
+          "lineNumber": 105
+        },
+        {
+          "caller": "read_audit",
+          "callee": "out.append",
+          "lineNumber": 107
+        },
+        {
+          "caller": "read_audit",
+          "callee": "AuditEntry",
+          "lineNumber": 107
+        },
+        {
+          "caller": "read_audit",
+          "callee": "str",
+          "lineNumber": 108
+        },
+        {
+          "caller": "read_audit",
+          "callee": "data.get",
+          "lineNumber": 108
+        },
+        {
+          "caller": "read_audit",
+          "callee": "str",
+          "lineNumber": 109
+        },
+        {
+          "caller": "read_audit",
+          "callee": "data.get",
+          "lineNumber": 109
+        },
+        {
+          "caller": "read_audit",
+          "callee": "str",
+          "lineNumber": 110
+        },
+        {
+          "caller": "read_audit",
+          "callee": "data.get",
+          "lineNumber": 110
+        },
+        {
+          "caller": "read_audit",
+          "callee": "str",
+          "lineNumber": 111
+        },
+        {
+          "caller": "read_audit",
+          "callee": "data.get",
+          "lineNumber": 111
+        },
+        {
+          "caller": "read_audit",
+          "callee": "bool",
+          "lineNumber": 112
+        },
+        {
+          "caller": "read_audit",
+          "callee": "data.get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "read_audit",
+          "callee": "tuple",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "ops/core.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 773,
+      "nonEmptyLines": 676,
+      "functions": [
+        {
+          "name": "ledger_view",
+          "startLine": 278,
+          "endLine": 300,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "portfolio_view",
+          "startLine": 303,
+          "endLine": 324,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "operational_view",
+          "startLine": 327,
+          "endLine": 347,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "resolve_run_snapshot",
+          "startLine": 350,
+          "endLine": 370,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "_empty_preview",
+          "startLine": 373,
+          "endLine": 390,
+          "params": [
+            "available",
+            "source",
+            "note",
+            "error"
+          ]
+        },
+        {
+          "name": "decision_preview",
+          "startLine": 393,
+          "endLine": 431,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "_fill_label",
+          "startLine": 434,
+          "endLine": 440,
+          "params": [
+            "result"
+          ]
+        },
+        {
+          "name": "gate_board",
+          "startLine": 455,
+          "endLine": 462,
+          "params": [
+            "calibration"
+          ]
+        },
+        {
+          "name": "calibration_readiness",
+          "startLine": 465,
+          "endLine": 519,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "_pf",
+          "startLine": 522,
+          "endLine": 523,
+          "params": [
+            "passed"
+          ]
+        },
+        {
+          "name": "plug_statuses",
+          "startLine": 526,
+          "endLine": 547,
+          "params": []
+        },
+        {
+          "name": "query_scheduled_task",
+          "startLine": 550,
+          "endLine": 573,
+          "params": [
+            "task_name"
+          ]
+        },
+        {
+          "name": "process_infos",
+          "startLine": 576,
+          "endLine": 634,
+          "params": [
+            "paths",
+            "task_fetcher"
+          ]
+        },
+        {
+          "name": "_safe_mtime",
+          "startLine": 637,
+          "endLine": 641,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "_iso_utc",
+          "startLine": 644,
+          "endLine": 647,
+          "params": [
+            "epoch"
+          ]
+        },
+        {
+          "name": "policy_versions",
+          "startLine": 650,
+          "endLine": 662,
+          "params": []
+        },
+        {
+          "name": "recent_events",
+          "startLine": 665,
+          "endLine": 677,
+          "params": [
+            "paths",
+            "limit"
+          ]
+        },
+        {
+          "name": "pipeline_status",
+          "startLine": 680,
+          "endLine": 709,
+          "params": [
+            "ledger",
+            "portfolio",
+            "operational"
+          ]
+        },
+        {
+          "name": "assemble_dashboard",
+          "startLine": 712,
+          "endLine": 742,
+          "params": [
+            "paths",
+            "task_fetcher",
+            "event_limit"
+          ]
+        },
+        {
+          "name": "render_text_dashboard",
+          "startLine": 745,
+          "endLine": 773,
+          "params": [
+            "dash"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "OpsPaths",
+          "startLine": 68,
+          "endLine": 101,
+          "methods": [
+            "default"
+          ],
+          "properties": [
+            "repo_root",
+            "ledger_path",
+            "portfolio_path",
+            "operational_capture_path",
+            "el_nino_snapshot",
+            "producer_snapshot_dir",
+            "calibration_artifact",
+            "daily_log_dir",
+            "audit_log_path"
+          ]
+        },
+        {
+          "name": "LedgerView",
+          "startLine": 108,
+          "endLine": 117,
+          "methods": [],
+          "properties": [
+            "exists",
+            "entry_count",
+            "latest_verdict",
+            "latest_triggered_guard",
+            "latest_snapshot_id",
+            "latest_as_of",
+            "verdict_counts",
+            "state_hash",
+            "error"
+          ]
+        },
+        {
+          "name": "PositionView",
+          "startLine": 121,
+          "endLine": 126,
+          "methods": [],
+          "properties": [
+            "instrument",
+            "quantity",
+            "avg_cost",
+            "realized_pnl",
+            "unrealized_pnl"
+          ]
+        },
+        {
+          "name": "PortfolioView",
+          "startLine": 130,
+          "endLine": 138,
+          "methods": [],
+          "properties": [
+            "exists",
+            "position_count",
+            "open_position_count",
+            "realized_pnl",
+            "execution_count",
+            "state_hash",
+            "positions",
+            "error"
+          ]
+        },
+        {
+          "name": "OperationalView",
+          "startLine": 142,
+          "endLine": 150,
+          "methods": [],
+          "properties": [
+            "source",
+            "instrument",
+            "tradeable",
+            "venue_open",
+            "halt",
+            "degraded",
+            "as_of",
+            "error"
+          ]
+        },
+        {
+          "name": "GuardOutcomeView",
+          "startLine": 154,
+          "endLine": 157,
+          "methods": [],
+          "properties": [
+            "name",
+            "passed",
+            "reason"
+          ]
+        },
+        {
+          "name": "DecisionPreview",
+          "startLine": 161,
+          "endLine": 180,
+          "methods": [],
+          "properties": [
+            "available",
+            "snapshot_source",
+            "snapshot_id",
+            "consumable",
+            "regime",
+            "direction",
+            "verdict",
+            "triggered_guard",
+            "guards",
+            "fill",
+            "note",
+            "error"
+          ]
+        },
+        {
+          "name": "GateRow",
+          "startLine": 184,
+          "endLine": 188,
+          "methods": [],
+          "properties": [
+            "gate_id",
+            "title",
+            "status",
+            "detail"
+          ]
+        },
+        {
+          "name": "GateBoard",
+          "startLine": 192,
+          "endLine": 195,
+          "methods": [],
+          "properties": [
+            "adr011",
+            "adr012",
+            "source"
+          ]
+        },
+        {
+          "name": "CalibrationReadiness",
+          "startLine": 199,
+          "endLine": 212,
+          "methods": [],
+          "properties": [
+            "available",
+            "n_committed",
+            "g0_floor",
+            "regimes",
+            "directions",
+            "label_count",
+            "realized_count",
+            "decision_versions",
+            "per_gate",
+            "eligible",
+            "overall",
+            "note",
+            "error"
+          ]
+        },
+        {
+          "name": "PlugStatus",
+          "startLine": 216,
+          "endLine": 219,
+          "methods": [],
+          "properties": [
+            "name",
+            "status",
+            "detail"
+          ]
+        },
+        {
+          "name": "ProcessInfo",
+          "startLine": 223,
+          "endLine": 226,
+          "methods": [],
+          "properties": [
+            "name",
+            "status",
+            "detail"
+          ]
+        },
+        {
+          "name": "PolicyVersions",
+          "startLine": 230,
+          "endLine": 236,
+          "methods": [],
+          "properties": [
+            "runtime_policy_version",
+            "runtime_policy_fingerprint",
+            "execution_policy_version",
+            "execution_policy_fingerprint",
+            "fill_model_version",
+            "fill_model_fingerprint"
+          ]
+        },
+        {
+          "name": "PipelineStatus",
+          "startLine": 240,
+          "endLine": 247,
+          "methods": [],
+          "properties": [
+            "paper_only",
+            "health",
+            "headline",
+            "ledger_entries",
+            "open_positions",
+            "latest_verdict",
+            "errors"
+          ]
+        },
+        {
+          "name": "Dashboard",
+          "startLine": 251,
+          "endLine": 267,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "pipeline",
+            "ledger",
+            "portfolio",
+            "operational",
+            "preview",
+            "gates",
+            "calibration",
+            "plugs",
+            "processes",
+            "policy",
+            "events",
+            "audit_tail"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "OpsPaths",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "LedgerView",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "PositionView",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "PortfolioView",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "OperationalView",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "GuardOutcomeView",
+          "line": 153,
+          "isDefault": false
+        },
+        {
+          "name": "DecisionPreview",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "GateRow",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "GateBoard",
+          "line": 191,
+          "isDefault": false
+        },
+        {
+          "name": "CalibrationReadiness",
+          "line": 198,
+          "isDefault": false
+        },
+        {
+          "name": "PlugStatus",
+          "line": 215,
+          "isDefault": false
+        },
+        {
+          "name": "ProcessInfo",
+          "line": 222,
+          "isDefault": false
+        },
+        {
+          "name": "PolicyVersions",
+          "line": 229,
+          "isDefault": false
+        },
+        {
+          "name": "PipelineStatus",
+          "line": 239,
+          "isDefault": false
+        },
+        {
+          "name": "Dashboard",
+          "line": 250,
+          "isDefault": false
+        },
+        {
+          "name": "ledger_view",
+          "line": 278,
+          "isDefault": false
+        },
+        {
+          "name": "portfolio_view",
+          "line": 303,
+          "isDefault": false
+        },
+        {
+          "name": "operational_view",
+          "line": 327,
+          "isDefault": false
+        },
+        {
+          "name": "resolve_run_snapshot",
+          "line": 350,
+          "isDefault": false
+        },
+        {
+          "name": "_empty_preview",
+          "line": 373,
+          "isDefault": false
+        },
+        {
+          "name": "decision_preview",
+          "line": 393,
+          "isDefault": false
+        },
+        {
+          "name": "_fill_label",
+          "line": 434,
+          "isDefault": false
+        },
+        {
+          "name": "gate_board",
+          "line": 455,
+          "isDefault": false
+        },
+        {
+          "name": "calibration_readiness",
+          "line": 465,
+          "isDefault": false
+        },
+        {
+          "name": "_pf",
+          "line": 522,
+          "isDefault": false
+        },
+        {
+          "name": "plug_statuses",
+          "line": 526,
+          "isDefault": false
+        },
+        {
+          "name": "query_scheduled_task",
+          "line": 550,
+          "isDefault": false
+        },
+        {
+          "name": "process_infos",
+          "line": 576,
+          "isDefault": false
+        },
+        {
+          "name": "_safe_mtime",
+          "line": 637,
+          "isDefault": false
+        },
+        {
+          "name": "_iso_utc",
+          "line": 644,
+          "isDefault": false
+        },
+        {
+          "name": "policy_versions",
+          "line": 650,
+          "isDefault": false
+        },
+        {
+          "name": "recent_events",
+          "line": 665,
+          "isDefault": false
+        },
+        {
+          "name": "pipeline_status",
+          "line": 680,
+          "isDefault": false
+        },
+        {
+          "name": "assemble_dashboard",
+          "line": 712,
+          "isDefault": false
+        },
+        {
+          "name": "render_text_dashboard",
+          "line": 745,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "default",
+          "callee": "Path(__file__).resolve",
+          "lineNumber": 87
+        },
+        {
+          "caller": "default",
+          "callee": "Path",
+          "lineNumber": 87
+        },
+        {
+          "caller": "default",
+          "callee": "cls",
+          "lineNumber": 89
+        },
+        {
+          "caller": "to_dict",
+          "callee": "dataclasses.asdict",
+          "lineNumber": 267
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 280
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "LedgerView",
+          "lineNumber": 281
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "load_ledger",
+          "lineNumber": 283
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "LedgerView",
+          "lineNumber": 285
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "str",
+          "lineNumber": 285
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "counts.get",
+          "lineNumber": 288
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "LedgerView",
+          "lineNumber": 290
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "len",
+          "lineNumber": 292
+        },
+        {
+          "caller": "ledger_view",
+          "callee": "ledger.state_hash",
+          "lineNumber": 298
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "paths.portfolio_path.exists",
+          "lineNumber": 305
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "PortfolioView",
+          "lineNumber": 306
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "load_portfolio",
+          "lineNumber": 308
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "PortfolioView",
+          "lineNumber": 310
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "str",
+          "lineNumber": 310
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "tuple",
+          "lineNumber": 311
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "PositionView",
+          "lineNumber": 312
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "sorted",
+          "lineNumber": 313
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "PortfolioView",
+          "lineNumber": 315
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "len",
+          "lineNumber": 317
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "sum",
+          "lineNumber": 318
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "round",
+          "lineNumber": 319
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "sum",
+          "lineNumber": 319
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "pf.next_seq",
+          "lineNumber": 320
+        },
+        {
+          "caller": "portfolio_view",
+          "callee": "pf.state_hash",
+          "lineNumber": 321
+        },
+        {
+          "caller": "operational_view",
+          "callee": "paths.operational_capture_path.exists",
+          "lineNumber": 329
+        },
+        {
+          "caller": "operational_view",
+          "callee": "load_operational",
+          "lineNumber": 331
+        },
+        {
+          "caller": "operational_view",
+          "callee": "OperationalView",
+          "lineNumber": 333
+        },
+        {
+          "caller": "operational_view",
+          "callee": "str",
+          "lineNumber": 335
+        },
+        {
+          "caller": "operational_view",
+          "callee": "OperationalView",
+          "lineNumber": 338
+        },
+        {
+          "caller": "resolve_run_snapshot",
+          "callee": "paths.producer_snapshot_dir.exists",
+          "lineNumber": 359
+        },
+        {
+          "caller": "resolve_run_snapshot",
+          "callee": "find_latest_snapshot",
+          "lineNumber": 360
+        },
+        {
+          "caller": "resolve_run_snapshot",
+          "callee": "paths.el_nino_snapshot.exists",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_empty_preview",
+          "callee": "DecisionPreview",
+          "lineNumber": 377
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "resolve_run_snapshot",
+          "lineNumber": 399
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "_empty_preview",
+          "lineNumber": 401
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "consume",
+          "lineNumber": 403
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "_empty_preview",
+          "lineNumber": 405
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "load_ledger",
+          "lineNumber": 408
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "load_portfolio",
+          "lineNumber": 409
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "run_sequence",
+          "lineNumber": 410
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "_empty_preview",
+          "lineNumber": 415
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "str",
+          "lineNumber": 415
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "tuple",
+          "lineNumber": 417
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "GuardOutcomeView",
+          "lineNumber": 417
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "DecisionPreview",
+          "lineNumber": 418
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "str",
+          "lineNumber": 423
+        },
+        {
+          "caller": "decision_preview",
+          "callee": "_fill_label",
+          "lineNumber": 428
+        },
+        {
+          "caller": "gate_board",
+          "callee": "tuple",
+          "lineNumber": 457
+        },
+        {
+          "caller": "gate_board",
+          "callee": "GateRow",
+          "lineNumber": 457
+        },
+        {
+          "caller": "gate_board",
+          "callee": "GateBoard",
+          "lineNumber": 458
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "paths.calibration_artifact.exists",
+          "lineNumber": 472
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "CalibrationReadiness",
+          "lineNumber": 473
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "json.loads",
+          "lineNumber": 478
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "paths.calibration_artifact.read_text",
+          "lineNumber": 478
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "CalibrationReadiness",
+          "lineNumber": 480
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "str",
+          "lineNumber": 481
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "data.get",
+          "lineNumber": 483
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "isinstance",
+          "lineNumber": 483
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "committed.get",
+          "lineNumber": 484
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "isinstance",
+          "lineNumber": 484
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "tuple",
+          "lineNumber": 485
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "str",
+          "lineNumber": 485
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "cov.get",
+          "lineNumber": 485
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "tuple",
+          "lineNumber": 486
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "str",
+          "lineNumber": 486
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "cov.get",
+          "lineNumber": 486
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "int",
+          "lineNumber": 487
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "cov.get",
+          "lineNumber": 487
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "int",
+          "lineNumber": 488
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "cov.get",
+          "lineNumber": 488
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "int",
+          "lineNumber": 489
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "committed.get",
+          "lineNumber": 489
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "str",
+          "lineNumber": 491
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "str",
+          "lineNumber": 491
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "(data.get(\"decision_versions\", {}) or {}).items",
+          "lineNumber": 491
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "data.get",
+          "lineNumber": 491
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "len",
+          "lineNumber": 494
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "len",
+          "lineNumber": 495
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "GateRow",
+          "lineNumber": 498
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "_pf",
+          "lineNumber": 498
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "GateRow",
+          "lineNumber": 499
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "_pf",
+          "lineNumber": 499
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "len",
+          "lineNumber": 499
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "list",
+          "lineNumber": 499
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "GateRow",
+          "lineNumber": 500
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "_pf",
+          "lineNumber": 500
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "len",
+          "lineNumber": 500
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "list",
+          "lineNumber": 500
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "GateRow",
+          "lineNumber": 501
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "_pf",
+          "lineNumber": 501
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "all",
+          "lineNumber": 503
+        },
+        {
+          "caller": "calibration_readiness",
+          "callee": "CalibrationReadiness",
+          "lineNumber": 505
+        },
+        {
+          "caller": "plug_statuses",
+          "callee": "paper_adapter_from_env",
+          "lineNumber": 533
+        },
+        {
+          "caller": "plug_statuses",
+          "callee": "clock_feed_from_env",
+          "lineNumber": 534
+        },
+        {
+          "caller": "plug_statuses",
+          "callee": "PlugStatus",
+          "lineNumber": 537
+        },
+        {
+          "caller": "plug_statuses",
+          "callee": "PlugStatus",
+          "lineNumber": 542
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "task_name.replace(\"-\", \"\").replace(\"_\", \"\").isalnum",
+          "lineNumber": 557
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "task_name.replace(\"-\", \"\").replace",
+          "lineNumber": 557
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "task_name.replace",
+          "lineNumber": 557
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "subprocess.run",
+          "lineNumber": 564
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "out.stdout.strip",
+          "lineNumber": 567
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "json.loads",
+          "lineNumber": 570
+        },
+        {
+          "caller": "query_scheduled_task",
+          "callee": "isinstance",
+          "lineNumber": 573
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 582
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 582
+        },
+        {
+          "caller": "process_infos",
+          "callee": "task_fetcher",
+          "lineNumber": 587
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 589
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 589
+        },
+        {
+          "caller": "process_infos",
+          "callee": "info.get",
+          "lineNumber": 594
+        },
+        {
+          "caller": "process_infos",
+          "callee": "info.get",
+          "lineNumber": 595
+        },
+        {
+          "caller": "process_infos",
+          "callee": "info.get",
+          "lineNumber": 596
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 597
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 597
+        },
+        {
+          "caller": "process_infos",
+          "callee": "paths.producer_snapshot_dir.exists",
+          "lineNumber": 603
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 604
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 604
+        },
+        {
+          "caller": "process_infos",
+          "callee": "find_latest_snapshot",
+          "lineNumber": 612
+        },
+        {
+          "caller": "process_infos",
+          "callee": "str",
+          "lineNumber": 614
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 616
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 616
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 620
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 620
+        },
+        {
+          "caller": "process_infos",
+          "callee": "_safe_mtime",
+          "lineNumber": 622
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 623
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 623
+        },
+        {
+          "caller": "process_infos",
+          "callee": "infos.append",
+          "lineNumber": 629
+        },
+        {
+          "caller": "process_infos",
+          "callee": "ProcessInfo",
+          "lineNumber": 629
+        },
+        {
+          "caller": "process_infos",
+          "callee": "sync_script.exists",
+          "lineNumber": 631
+        },
+        {
+          "caller": "process_infos",
+          "callee": "tuple",
+          "lineNumber": 634
+        },
+        {
+          "caller": "_safe_mtime",
+          "callee": "_iso_utc",
+          "lineNumber": 639
+        },
+        {
+          "caller": "_safe_mtime",
+          "callee": "path.stat",
+          "lineNumber": 639
+        },
+        {
+          "caller": "_iso_utc",
+          "callee": "datetime.fromtimestamp(epoch, tz=timezone.utc).strftime",
+          "lineNumber": 647
+        },
+        {
+          "caller": "_iso_utc",
+          "callee": "datetime.fromtimestamp",
+          "lineNumber": 647
+        },
+        {
+          "caller": "policy_versions",
+          "callee": "PolicyVersions",
+          "lineNumber": 655
+        },
+        {
+          "caller": "policy_versions",
+          "callee": "rc.runtime_policy_fingerprint",
+          "lineNumber": 657
+        },
+        {
+          "caller": "policy_versions",
+          "callee": "ec.fingerprint",
+          "lineNumber": 659
+        },
+        {
+          "caller": "policy_versions",
+          "callee": "fm.fingerprint",
+          "lineNumber": 661
+        },
+        {
+          "caller": "recent_events",
+          "callee": "paths.daily_log_dir.exists",
+          "lineNumber": 667
+        },
+        {
+          "caller": "recent_events",
+          "callee": "sorted",
+          "lineNumber": 669
+        },
+        {
+          "caller": "recent_events",
+          "callee": "paths.daily_log_dir.glob",
+          "lineNumber": 669
+        },
+        {
+          "caller": "recent_events",
+          "callee": "logs[-1].read_text(encoding=\"utf-8\", errors=\"replace\").splitlines",
+          "lineNumber": 673
+        },
+        {
+          "caller": "recent_events",
+          "callee": "logs[-1].read_text",
+          "lineNumber": 673
+        },
+        {
+          "caller": "recent_events",
+          "callee": "min",
+          "lineNumber": 676
+        },
+        {
+          "caller": "recent_events",
+          "callee": "len",
+          "lineNumber": 676
+        },
+        {
+          "caller": "recent_events",
+          "callee": "len",
+          "lineNumber": 676
+        },
+        {
+          "caller": "recent_events",
+          "callee": "tuple",
+          "lineNumber": 677
+        },
+        {
+          "caller": "recent_events",
+          "callee": "line.rstrip",
+          "lineNumber": 677
+        },
+        {
+          "caller": "pipeline_status",
+          "callee": "tuple",
+          "lineNumber": 686
+        },
+        {
+          "caller": "pipeline_status",
+          "callee": "PipelineStatus",
+          "lineNumber": 701
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "OpsPaths.default",
+          "lineNumber": 724
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "ledger_view",
+          "lineNumber": 725
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "portfolio_view",
+          "lineNumber": 726
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "operational_view",
+          "lineNumber": 727
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "calibration_readiness",
+          "lineNumber": 728
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "Dashboard",
+          "lineNumber": 729
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "pipeline_status",
+          "lineNumber": 730
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "decision_preview",
+          "lineNumber": 734
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "gate_board",
+          "lineNumber": 735
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "plug_statuses",
+          "lineNumber": 737
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "process_infos",
+          "lineNumber": 738
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "policy_versions",
+          "lineNumber": 739
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "recent_events",
+          "lineNumber": 740
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "tuple",
+          "lineNumber": 741
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "e.line",
+          "lineNumber": 741
+        },
+        {
+          "caller": "assemble_dashboard",
+          "callee": "read_audit",
+          "lineNumber": 741
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 751
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 753
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "' | '.join",
+          "lineNumber": 753
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 754
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 755
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 760
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 761
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 762
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 764
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 765
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 766
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 768
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 769
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 770
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "lines.append",
+          "lineNumber": 772
+        },
+        {
+          "caller": "render_text_dashboard",
+          "callee": "tuple",
+          "lineNumber": 773
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 35,
+        "functionCount": 20,
+        "classCount": 15
+      }
+    },
+    {
+      "path": "ops/gated.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 240,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "_finish",
+          "startLine": 51,
+          "endLine": 65,
+          "params": [
+            "paths",
+            "action",
+            "args_summary",
+            "ok",
+            "executed",
+            "summary",
+            "detail",
+            "clock"
+          ]
+        },
+        {
+          "name": "run_chain_now_alpaca_paper",
+          "startLine": 69,
+          "endLine": 127,
+          "params": [
+            "paths",
+            "adapter_factory",
+            "clock"
+          ]
+        },
+        {
+          "name": "register_daily_schedule",
+          "startLine": 131,
+          "endLine": 157,
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ]
+        },
+        {
+          "name": "unregister_daily_schedule",
+          "startLine": 160,
+          "endLine": 180,
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ]
+        },
+        {
+          "name": "commit_calibration_bump",
+          "startLine": 184,
+          "endLine": 212,
+          "params": [
+            "paths",
+            "clock"
+          ]
+        },
+        {
+          "name": "precondition_line",
+          "startLine": 225,
+          "endLine": 240,
+          "params": [
+            "paths",
+            "name"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "GatedResult",
+          "startLine": 42,
+          "endLine": 48,
+          "methods": [],
+          "properties": [
+            "action",
+            "ok",
+            "executed",
+            "summary",
+            "detail",
+            "audit"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "GatedResult",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "_finish",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "run_chain_now_alpaca_paper",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "register_daily_schedule",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "unregister_daily_schedule",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "commit_calibration_bump",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "precondition_line",
+          "line": 225,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_finish",
+          "callee": "redact",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_finish",
+          "callee": "redact",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_finish",
+          "callee": "redact",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_finish",
+          "callee": "audit.make_entry",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_finish",
+          "callee": "audit.write_entry",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_finish",
+          "callee": "GatedResult",
+          "lineNumber": 65
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "adapter_factory",
+          "lineNumber": 82
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "_finish",
+          "lineNumber": 85
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "core.resolve_run_snapshot",
+          "lineNumber": 91
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "_finish",
+          "lineNumber": 94
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "run_once",
+          "lineNumber": 98
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "MarketCalendarFeed",
+          "lineNumber": 100
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "_finish",
+          "lineNumber": 105
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "str",
+          "lineNumber": 105
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "_finish",
+          "lineNumber": 107
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "str",
+          "lineNumber": 108
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "_finish",
+          "lineNumber": 111
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "result.ledger.state_hash",
+          "lineNumber": 124
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "result.portfolio.state_hash",
+          "lineNumber": 125
+        },
+        {
+          "caller": "run_chain_now_alpaca_paper",
+          "callee": "_finish",
+          "lineNumber": 127
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "script.exists",
+          "lineNumber": 140
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "_finish",
+          "lineNumber": 141
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "run",
+          "lineNumber": 145
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "str",
+          "lineNumber": 147
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "_finish",
+          "lineNumber": 151
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "str",
+          "lineNumber": 152
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "tail",
+          "lineNumber": 156
+        },
+        {
+          "caller": "register_daily_schedule",
+          "callee": "_finish",
+          "lineNumber": 157
+        },
+        {
+          "caller": "unregister_daily_schedule",
+          "callee": "run",
+          "lineNumber": 168
+        },
+        {
+          "caller": "unregister_daily_schedule",
+          "callee": "_finish",
+          "lineNumber": 174
+        },
+        {
+          "caller": "unregister_daily_schedule",
+          "callee": "str",
+          "lineNumber": 175
+        },
+        {
+          "caller": "unregister_daily_schedule",
+          "callee": "tail",
+          "lineNumber": 179
+        },
+        {
+          "caller": "unregister_daily_schedule",
+          "callee": "_finish",
+          "lineNumber": 180
+        },
+        {
+          "caller": "commit_calibration_bump",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 194
+        },
+        {
+          "caller": "commit_calibration_bump",
+          "callee": "_finish",
+          "lineNumber": 203
+        },
+        {
+          "caller": "commit_calibration_bump",
+          "callee": "_finish",
+          "lineNumber": 208
+        },
+        {
+          "caller": "commit_calibration_bump",
+          "callee": "_finish",
+          "lineNumber": 210
+        },
+        {
+          "caller": "commit_calibration_bump",
+          "callee": "str",
+          "lineNumber": 211
+        },
+        {
+          "caller": "precondition_line",
+          "callee": "next",
+          "lineNumber": 228
+        },
+        {
+          "caller": "precondition_line",
+          "callee": "core.plug_statuses",
+          "lineNumber": 228
+        },
+        {
+          "caller": "precondition_line",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 238
+        },
+        {
+          "caller": "precondition_line",
+          "callee": "cal.overall.startswith",
+          "lineNumber": 239
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 7,
+        "functionCount": 6,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "ops/proc.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "default_runner",
+          "startLine": 33,
+          "endLine": 41,
+          "params": [
+            "cmd",
+            "paths"
+          ]
+        },
+        {
+          "name": "tail",
+          "startLine": 44,
+          "endLine": 45,
+          "params": [
+            "text",
+            "limit"
+          ]
+        },
+        {
+          "name": "redact",
+          "startLine": 48,
+          "endLine": 63,
+          "params": [
+            "lines"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ProcResult",
+          "startLine": 24,
+          "endLine": 27,
+          "methods": [],
+          "properties": [
+            "returncode",
+            "stdout",
+            "stderr"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProcResult",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "default_runner",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "tail",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "redact",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "default_runner",
+          "callee": "subprocess.run",
+          "lineNumber": 36
+        },
+        {
+          "caller": "default_runner",
+          "callee": "list",
+          "lineNumber": 37
+        },
+        {
+          "caller": "default_runner",
+          "callee": "str",
+          "lineNumber": 37
+        },
+        {
+          "caller": "default_runner",
+          "callee": "ProcResult",
+          "lineNumber": 40
+        },
+        {
+          "caller": "default_runner",
+          "callee": "str",
+          "lineNumber": 40
+        },
+        {
+          "caller": "default_runner",
+          "callee": "ProcResult",
+          "lineNumber": 41
+        },
+        {
+          "caller": "tail",
+          "callee": "tuple",
+          "lineNumber": 45
+        },
+        {
+          "caller": "tail",
+          "callee": "ln.rstrip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "tail",
+          "callee": "text.splitlines",
+          "lineNumber": 45
+        },
+        {
+          "caller": "tail",
+          "callee": "ln.strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "redact",
+          "callee": "os.environ.get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "redact",
+          "callee": "secrets.append",
+          "lineNumber": 54
+        },
+        {
+          "caller": "redact",
+          "callee": "scrubbed.replace",
+          "lineNumber": 61
+        },
+        {
+          "caller": "redact",
+          "callee": "out.append",
+          "lineNumber": 62
+        },
+        {
+          "caller": "redact",
+          "callee": "tuple",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/ops/test_actions.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 170,
+      "nonEmptyLines": 131,
+      "functions": [
+        {
+          "name": "_fixed_clock",
+          "startLine": 35,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "make_paths",
+          "startLine": 39,
+          "endLine": 52,
+          "params": [
+            "tmp"
+          ]
+        },
+        {
+          "name": "runner_ok",
+          "startLine": 55,
+          "endLine": 56,
+          "params": [
+            "_cmd",
+            "_paths"
+          ]
+        },
+        {
+          "name": "runner_fail",
+          "startLine": 59,
+          "endLine": 60,
+          "params": [
+            "_cmd",
+            "_paths"
+          ]
+        },
+        {
+          "name": "test_run_chain_now_persists_and_audits",
+          "startLine": 64,
+          "endLine": 74,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "startLine": 77,
+          "endLine": 83,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_run_chain_now_idempotent_audits_each_call",
+          "startLine": 86,
+          "endLine": 91,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_rerun_calibration_ok",
+          "startLine": 95,
+          "endLine": 103,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_rerun_calibration_failure_is_caught_and_audited",
+          "startLine": 106,
+          "endLine": 112,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_resync_neo4j_ok",
+          "startLine": 116,
+          "endLine": 120,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_resync_neo4j_failure_is_caught_and_audited",
+          "startLine": 123,
+          "endLine": 127,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_no_credential_value_in_audit",
+          "startLine": 131,
+          "endLine": 140,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_action_never_raises_when_audit_write_fails",
+          "startLine": 144,
+          "endLine": 151,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_subprocess_output_secret_is_redacted",
+          "startLine": 155,
+          "endLine": 165,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_safe_actions_registry",
+          "startLine": 169,
+          "endLine": 170,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_fixed_clock",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "make_paths",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "runner_ok",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "runner_fail",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "test_run_chain_now_persists_and_audits",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "test_run_chain_now_idempotent_audits_each_call",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "test_rerun_calibration_ok",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "test_rerun_calibration_failure_is_caught_and_audited",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "test_resync_neo4j_ok",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "test_resync_neo4j_failure_is_caught_and_audited",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "test_no_credential_value_in_audit",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "test_action_never_raises_when_audit_write_fails",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "test_subprocess_output_secret_is_redacted",
+          "line": 155,
+          "isDefault": false
+        },
+        {
+          "name": "test_safe_actions_registry",
+          "line": 169,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_fixed_clock",
+          "callee": "datetime",
+          "lineNumber": 36
+        },
+        {
+          "caller": "make_paths",
+          "callee": "base.update",
+          "lineNumber": 51
+        },
+        {
+          "caller": "make_paths",
+          "callee": "OpsPaths",
+          "lineNumber": 52
+        },
+        {
+          "caller": "runner_ok",
+          "callee": "actions.ProcResult",
+          "lineNumber": 56
+        },
+        {
+          "caller": "runner_fail",
+          "callee": "actions.ProcResult",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_run_chain_now_persists_and_audits",
+          "callee": "make_paths",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_run_chain_now_persists_and_audits",
+          "callee": "actions.run_chain_now",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_run_chain_now_persists_and_audits",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_run_chain_now_persists_and_audits",
+          "callee": "paths.portfolio_path.exists",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_run_chain_now_persists_and_audits",
+          "callee": "audit.read_audit",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_run_chain_now_persists_and_audits",
+          "callee": "len",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "callee": "make_paths",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "callee": "actions.run_chain_now",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "callee": "len",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "callee": "audit.read_audit",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_run_chain_now_idempotent_audits_each_call",
+          "callee": "make_paths",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_run_chain_now_idempotent_audits_each_call",
+          "callee": "actions.run_chain_now",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_run_chain_now_idempotent_audits_each_call",
+          "callee": "actions.run_chain_now",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_run_chain_now_idempotent_audits_each_call",
+          "callee": "len",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_run_chain_now_idempotent_audits_each_call",
+          "callee": "audit.read_audit",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_rerun_calibration_ok",
+          "callee": "cal_path.write_text",
+          "lineNumber": 97
+        },
+        {
+          "caller": "test_rerun_calibration_ok",
+          "callee": "json.dumps",
+          "lineNumber": 97
+        },
+        {
+          "caller": "test_rerun_calibration_ok",
+          "callee": "make_paths",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_rerun_calibration_ok",
+          "callee": "actions.rerun_calibration_readiness",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_rerun_calibration_ok",
+          "callee": "audit.read_audit",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_rerun_calibration_ok",
+          "callee": "len",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_rerun_calibration_failure_is_caught_and_audited",
+          "callee": "make_paths",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_rerun_calibration_failure_is_caught_and_audited",
+          "callee": "actions.rerun_calibration_readiness",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_rerun_calibration_failure_is_caught_and_audited",
+          "callee": "audit.read_audit",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_rerun_calibration_failure_is_caught_and_audited",
+          "callee": "len",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_resync_neo4j_ok",
+          "callee": "make_paths",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_resync_neo4j_ok",
+          "callee": "actions.resync_neo4j",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_resync_neo4j_ok",
+          "callee": "audit.read_audit",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_resync_neo4j_failure_is_caught_and_audited",
+          "callee": "make_paths",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_resync_neo4j_failure_is_caught_and_audited",
+          "callee": "actions.resync_neo4j",
+          "lineNumber": 125
+        },
+        {
+          "caller": "test_resync_neo4j_failure_is_caught_and_audited",
+          "callee": "audit.read_audit",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 133
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "make_paths",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "actions.run_chain_now",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "actions.resync_neo4j",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "paths.audit_log_path.read_text",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "\"\".join",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_no_credential_value_in_audit",
+          "callee": "\"\".join",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_action_never_raises_when_audit_write_fails",
+          "callee": "blocker.write_text",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_action_never_raises_when_audit_write_fails",
+          "callee": "make_paths",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_action_never_raises_when_audit_write_fails",
+          "callee": "actions.resync_neo4j",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_action_never_raises_when_audit_write_fails",
+          "callee": "any",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_subprocess_output_secret_is_redacted",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 156
+        },
+        {
+          "caller": "leaky_runner",
+          "callee": "actions.ProcResult",
+          "lineNumber": 159
+        },
+        {
+          "caller": "test_subprocess_output_secret_is_redacted",
+          "callee": "make_paths",
+          "lineNumber": 161
+        },
+        {
+          "caller": "test_subprocess_output_secret_is_redacted",
+          "callee": "actions.resync_neo4j",
+          "lineNumber": 162
+        },
+        {
+          "caller": "test_subprocess_output_secret_is_redacted",
+          "callee": "\"\".join",
+          "lineNumber": 163
+        },
+        {
+          "caller": "test_safe_actions_registry",
+          "callee": "set",
+          "lineNumber": 170
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/ops/test_app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "_paths",
+          "startLine": 22,
+          "endLine": 33,
+          "params": [
+            "tmp"
+          ]
+        },
+        {
+          "name": "test_app_survives_a_raising_action",
+          "startLine": 36,
+          "endLine": 51,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_app_runs_a_safe_action_and_audits",
+          "startLine": 54,
+          "endLine": 80,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "_clear_alpaca_env",
+          "startLine": 83,
+          "endLine": 85,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_gated_action_confirm_runs_and_audits",
+          "startLine": 88,
+          "endLine": 107,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_gated_action_cancel_does_nothing",
+          "startLine": 110,
+          "endLine": 126,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_paths",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "test_app_survives_a_raising_action",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "test_app_runs_a_safe_action_and_audits",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "_clear_alpaca_env",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "test_gated_action_confirm_runs_and_audits",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "test_gated_action_cancel_does_nothing",
+          "line": 110,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_paths",
+          "callee": "OpsPaths",
+          "lineNumber": 23
+        },
+        {
+          "caller": "boom",
+          "callee": "RuntimeError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_app_survives_a_raising_action",
+          "callee": "monkeypatch.setitem",
+          "lineNumber": 40
+        },
+        {
+          "caller": "go",
+          "callee": "OpsConsole",
+          "lineNumber": 43
+        },
+        {
+          "caller": "go",
+          "callee": "_paths",
+          "lineNumber": 43
+        },
+        {
+          "caller": "go",
+          "callee": "app.run_test",
+          "lineNumber": 44
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 45
+        },
+        {
+          "caller": "go",
+          "callee": "app.action_run_chain",
+          "lineNumber": 46
+        },
+        {
+          "caller": "go",
+          "callee": "app.workers.wait_for_complete",
+          "lineNumber": 47
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_app_survives_a_raising_action",
+          "callee": "asyncio.run",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_app_survives_a_raising_action",
+          "callee": "go",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_app_runs_a_safe_action_and_audits",
+          "callee": "OpsPaths",
+          "lineNumber": 56
+        },
+        {
+          "caller": "go",
+          "callee": "OpsConsole",
+          "lineNumber": 69
+        },
+        {
+          "caller": "go",
+          "callee": "app.run_test",
+          "lineNumber": 70
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 71
+        },
+        {
+          "caller": "go",
+          "callee": "app.action_run_chain",
+          "lineNumber": 72
+        },
+        {
+          "caller": "go",
+          "callee": "app.workers.wait_for_complete",
+          "lineNumber": 73
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_app_runs_a_safe_action_and_audits",
+          "callee": "asyncio.run",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_app_runs_a_safe_action_and_audits",
+          "callee": "go",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_app_runs_a_safe_action_and_audits",
+          "callee": "read_audit",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_app_runs_a_safe_action_and_audits",
+          "callee": "len",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_clear_alpaca_env",
+          "callee": "monkeypatch.delenv",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_gated_action_confirm_runs_and_audits",
+          "callee": "_clear_alpaca_env",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_gated_action_confirm_runs_and_audits",
+          "callee": "_paths",
+          "lineNumber": 90
+        },
+        {
+          "caller": "go",
+          "callee": "OpsConsole",
+          "lineNumber": 93
+        },
+        {
+          "caller": "go",
+          "callee": "app.run_test",
+          "lineNumber": 94
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 95
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.press",
+          "lineNumber": 96
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 97
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.press",
+          "lineNumber": 98
+        },
+        {
+          "caller": "go",
+          "callee": "app.workers.wait_for_complete",
+          "lineNumber": 99
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_gated_action_confirm_runs_and_audits",
+          "callee": "asyncio.run",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_gated_action_confirm_runs_and_audits",
+          "callee": "go",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_gated_action_confirm_runs_and_audits",
+          "callee": "read_audit",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_gated_action_confirm_runs_and_audits",
+          "callee": "len",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_gated_action_cancel_does_nothing",
+          "callee": "_clear_alpaca_env",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_gated_action_cancel_does_nothing",
+          "callee": "_paths",
+          "lineNumber": 112
+        },
+        {
+          "caller": "go",
+          "callee": "OpsConsole",
+          "lineNumber": 115
+        },
+        {
+          "caller": "go",
+          "callee": "app.run_test",
+          "lineNumber": 116
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 117
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.press",
+          "lineNumber": 118
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 119
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.press",
+          "lineNumber": 120
+        },
+        {
+          "caller": "go",
+          "callee": "pilot.pause",
+          "lineNumber": 121
+        },
+        {
+          "caller": "test_gated_action_cancel_does_nothing",
+          "callee": "asyncio.run",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_gated_action_cancel_does_nothing",
+          "callee": "go",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_gated_action_cancel_does_nothing",
+          "callee": "read_audit",
+          "lineNumber": 126
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/ops/test_audit.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 47,
+      "functions": [
+        {
+          "name": "_fixed_clock",
+          "startLine": 11,
+          "endLine": 12,
+          "params": []
+        },
+        {
+          "name": "test_append_then_read_roundtrip",
+          "startLine": 15,
+          "endLine": 23,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_append_only_never_truncates",
+          "startLine": 26,
+          "endLine": 30,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_read_limit_tails",
+          "startLine": 33,
+          "endLine": 38,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_file_is_ascii_even_with_unicode_result",
+          "startLine": 41,
+          "endLine": 46,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_read_absent_returns_empty",
+          "startLine": 49,
+          "endLine": 50,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_read_skips_malformed_lines",
+          "startLine": 53,
+          "endLine": 60,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_line_format",
+          "startLine": 63,
+          "endLine": 66,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_fixed_clock",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "test_append_then_read_roundtrip",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "test_append_only_never_truncates",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "test_read_limit_tails",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "test_file_is_ascii_even_with_unicode_result",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "test_read_absent_returns_empty",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "test_read_skips_malformed_lines",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "test_line_format",
+          "line": 63,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_fixed_clock",
+          "callee": "datetime",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_append_then_read_roundtrip",
+          "callee": "audit.append_audit",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_append_then_read_roundtrip",
+          "callee": "audit.append_audit",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_append_then_read_roundtrip",
+          "callee": "audit.read_audit",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_append_then_read_roundtrip",
+          "callee": "len",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_append_only_never_truncates",
+          "callee": "range",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_append_only_never_truncates",
+          "callee": "audit.append_audit",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_append_only_never_truncates",
+          "callee": "len",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_append_only_never_truncates",
+          "callee": "audit.read_audit",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_read_limit_tails",
+          "callee": "range",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_read_limit_tails",
+          "callee": "audit.append_audit",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_read_limit_tails",
+          "callee": "audit.read_audit",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_file_is_ascii_even_with_unicode_result",
+          "callee": "audit.append_audit",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_file_is_ascii_even_with_unicode_result",
+          "callee": "log.read_bytes",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_file_is_ascii_even_with_unicode_result",
+          "callee": "all",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_read_absent_returns_empty",
+          "callee": "audit.read_audit",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_read_skips_malformed_lines",
+          "callee": "audit.append_audit",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_read_skips_malformed_lines",
+          "callee": "log.open",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_read_skips_malformed_lines",
+          "callee": "fh.write",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_read_skips_malformed_lines",
+          "callee": "fh.write",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_read_skips_malformed_lines",
+          "callee": "audit.read_audit",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_read_skips_malformed_lines",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_line_format",
+          "callee": "audit.AuditEntry",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_line_format",
+          "callee": "e.line",
+          "lineNumber": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/ops/test_core.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 362,
+      "nonEmptyLines": 286,
+      "functions": [
+        {
+          "name": "_write",
+          "startLine": 81,
+          "endLine": 84,
+          "params": [
+            "path",
+            "payload"
+          ]
+        },
+        {
+          "name": "make_paths",
+          "startLine": 87,
+          "endLine": 100,
+          "params": [
+            "tmp"
+          ]
+        },
+        {
+          "name": "test_ledger_view_absent",
+          "startLine": 104,
+          "endLine": 108,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_ledger_view_populated",
+          "startLine": 111,
+          "endLine": 119,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_ledger_view_malformed_surfaces_error",
+          "startLine": 122,
+          "endLine": 127,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_portfolio_view_absent",
+          "startLine": 131,
+          "endLine": 133,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_portfolio_view_populated",
+          "startLine": 136,
+          "endLine": 141,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_portfolio_view_malformed_surfaces_error",
+          "startLine": 144,
+          "endLine": 147,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_operational_view_absent_is_default_closed",
+          "startLine": 151,
+          "endLine": 154,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_operational_view_captured_file",
+          "startLine": 157,
+          "endLine": 160,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_decision_preview_is_pure_no_persistence",
+          "startLine": 164,
+          "endLine": 173,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_decision_preview_non_consumable",
+          "startLine": 176,
+          "endLine": 180,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_decision_preview_no_snapshot",
+          "startLine": 183,
+          "endLine": 185,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "_raise_oserror",
+          "startLine": 188,
+          "endLine": 189,
+          "params": []
+        },
+        {
+          "name": "test_decision_preview_survives_producer_oserror",
+          "startLine": 192,
+          "endLine": 201,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_process_infos_survives_producer_oserror",
+          "startLine": 204,
+          "endLine": 213,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_calibration_readiness_defer",
+          "startLine": 217,
+          "endLine": 223,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_calibration_readiness_eligible_branch",
+          "startLine": 226,
+          "endLine": 230,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_calibration_eligible_flag_matches_overall",
+          "startLine": 233,
+          "endLine": 240,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_calibration_readiness_absent_defers",
+          "startLine": 243,
+          "endLine": 245,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_gate_board_adr011_all_closed",
+          "startLine": 248,
+          "endLine": 253,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_plugs_dormant_without_creds",
+          "startLine": 257,
+          "endLine": 261,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_plugs_creds_present_with_paper_host",
+          "startLine": 264,
+          "endLine": 269,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_plugs_dormant_on_non_paper_host",
+          "startLine": 272,
+          "endLine": 277,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_no_credential_value_in_any_output",
+          "startLine": 281,
+          "endLine": 300,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_process_infos_not_queried_without_fetcher",
+          "startLine": 304,
+          "endLine": 307,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_process_infos_registered_with_fetcher",
+          "startLine": 310,
+          "endLine": 317,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_process_infos_not_registered_when_fetcher_returns_none",
+          "startLine": 320,
+          "endLine": 322,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_process_infos_producer_freshness",
+          "startLine": 325,
+          "endLine": 333,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_policy_versions",
+          "startLine": 337,
+          "endLine": 342,
+          "params": []
+        },
+        {
+          "name": "test_assemble_dashboard_paper_only_and_serializable",
+          "startLine": 345,
+          "endLine": 353,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_assemble_dashboard_never_persists",
+          "startLine": 356,
+          "endLine": 362,
+          "params": [
+            "tmp_path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_write",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "make_paths",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "test_ledger_view_absent",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "test_ledger_view_populated",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "test_ledger_view_malformed_surfaces_error",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "test_portfolio_view_absent",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "test_portfolio_view_populated",
+          "line": 136,
+          "isDefault": false
+        },
+        {
+          "name": "test_portfolio_view_malformed_surfaces_error",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "test_operational_view_absent_is_default_closed",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "test_operational_view_captured_file",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "test_decision_preview_is_pure_no_persistence",
+          "line": 164,
+          "isDefault": false
+        },
+        {
+          "name": "test_decision_preview_non_consumable",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "test_decision_preview_no_snapshot",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "_raise_oserror",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "test_decision_preview_survives_producer_oserror",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "test_process_infos_survives_producer_oserror",
+          "line": 204,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_readiness_defer",
+          "line": 217,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_readiness_eligible_branch",
+          "line": 226,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_eligible_flag_matches_overall",
+          "line": 233,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_readiness_absent_defers",
+          "line": 243,
+          "isDefault": false
+        },
+        {
+          "name": "test_gate_board_adr011_all_closed",
+          "line": 248,
+          "isDefault": false
+        },
+        {
+          "name": "test_plugs_dormant_without_creds",
+          "line": 257,
+          "isDefault": false
+        },
+        {
+          "name": "test_plugs_creds_present_with_paper_host",
+          "line": 264,
+          "isDefault": false
+        },
+        {
+          "name": "test_plugs_dormant_on_non_paper_host",
+          "line": 272,
+          "isDefault": false
+        },
+        {
+          "name": "test_no_credential_value_in_any_output",
+          "line": 281,
+          "isDefault": false
+        },
+        {
+          "name": "test_process_infos_not_queried_without_fetcher",
+          "line": 304,
+          "isDefault": false
+        },
+        {
+          "name": "test_process_infos_registered_with_fetcher",
+          "line": 310,
+          "isDefault": false
+        },
+        {
+          "name": "test_process_infos_not_registered_when_fetcher_returns_none",
+          "line": 320,
+          "isDefault": false
+        },
+        {
+          "name": "test_process_infos_producer_freshness",
+          "line": 325,
+          "isDefault": false
+        },
+        {
+          "name": "test_policy_versions",
+          "line": 337,
+          "isDefault": false
+        },
+        {
+          "name": "test_assemble_dashboard_paper_only_and_serializable",
+          "line": 345,
+          "isDefault": false
+        },
+        {
+          "name": "test_assemble_dashboard_never_persists",
+          "line": 356,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_write",
+          "callee": "path.parent.mkdir",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_write",
+          "callee": "path.write_text",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_write",
+          "callee": "json.dumps",
+          "lineNumber": 83
+        },
+        {
+          "caller": "make_paths",
+          "callee": "base.update",
+          "lineNumber": 99
+        },
+        {
+          "caller": "make_paths",
+          "callee": "OpsPaths",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_ledger_view_absent",
+          "callee": "core.ledger_view",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_ledger_view_absent",
+          "callee": "make_paths",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_ledger_view_populated",
+          "callee": "make_paths",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_ledger_view_populated",
+          "callee": "_write",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_ledger_view_populated",
+          "callee": "core.ledger_view",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_ledger_view_malformed_surfaces_error",
+          "callee": "bad.write_text",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_ledger_view_malformed_surfaces_error",
+          "callee": "core.ledger_view",
+          "lineNumber": 125
+        },
+        {
+          "caller": "test_ledger_view_malformed_surfaces_error",
+          "callee": "make_paths",
+          "lineNumber": 125
+        },
+        {
+          "caller": "test_portfolio_view_absent",
+          "callee": "core.portfolio_view",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_portfolio_view_absent",
+          "callee": "make_paths",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_portfolio_view_populated",
+          "callee": "make_paths",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_portfolio_view_populated",
+          "callee": "_write",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_portfolio_view_populated",
+          "callee": "core.portfolio_view",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_portfolio_view_malformed_surfaces_error",
+          "callee": "_write",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_portfolio_view_malformed_surfaces_error",
+          "callee": "core.portfolio_view",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_portfolio_view_malformed_surfaces_error",
+          "callee": "make_paths",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_operational_view_absent_is_default_closed",
+          "callee": "core.operational_view",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_operational_view_absent_is_default_closed",
+          "callee": "make_paths",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_operational_view_captured_file",
+          "callee": "make_paths",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_operational_view_captured_file",
+          "callee": "_write",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_operational_view_captured_file",
+          "callee": "core.operational_view",
+          "lineNumber": 159
+        },
+        {
+          "caller": "test_decision_preview_is_pure_no_persistence",
+          "callee": "make_paths",
+          "lineNumber": 165
+        },
+        {
+          "caller": "test_decision_preview_is_pure_no_persistence",
+          "callee": "core.decision_preview",
+          "lineNumber": 166
+        },
+        {
+          "caller": "test_decision_preview_is_pure_no_persistence",
+          "callee": "len",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_decision_preview_is_pure_no_persistence",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 172
+        },
+        {
+          "caller": "test_decision_preview_is_pure_no_persistence",
+          "callee": "paths.portfolio_path.exists",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_decision_preview_non_consumable",
+          "callee": "make_paths",
+          "lineNumber": 177
+        },
+        {
+          "caller": "test_decision_preview_non_consumable",
+          "callee": "core.decision_preview",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_decision_preview_no_snapshot",
+          "callee": "core.decision_preview",
+          "lineNumber": 184
+        },
+        {
+          "caller": "test_decision_preview_no_snapshot",
+          "callee": "make_paths",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_raise_oserror",
+          "callee": "OSError",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_decision_preview_survives_producer_oserror",
+          "callee": "producer.mkdir",
+          "lineNumber": 197
+        },
+        {
+          "caller": "test_decision_preview_survives_producer_oserror",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 198
+        },
+        {
+          "caller": "test_decision_preview_survives_producer_oserror",
+          "callee": "make_paths",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_decision_preview_survives_producer_oserror",
+          "callee": "core.decision_preview",
+          "lineNumber": 200
+        },
+        {
+          "caller": "test_process_infos_survives_producer_oserror",
+          "callee": "producer.mkdir",
+          "lineNumber": 208
+        },
+        {
+          "caller": "test_process_infos_survives_producer_oserror",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 209
+        },
+        {
+          "caller": "test_process_infos_survives_producer_oserror",
+          "callee": "core.process_infos",
+          "lineNumber": 210
+        },
+        {
+          "caller": "test_process_infos_survives_producer_oserror",
+          "callee": "make_paths",
+          "lineNumber": 211
+        },
+        {
+          "caller": "test_calibration_readiness_defer",
+          "callee": "make_paths",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_calibration_readiness_defer",
+          "callee": "_write",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_calibration_readiness_defer",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 219
+        },
+        {
+          "caller": "test_calibration_readiness_defer",
+          "callee": "all",
+          "lineNumber": 222
+        },
+        {
+          "caller": "test_calibration_readiness_eligible_branch",
+          "callee": "make_paths",
+          "lineNumber": 227
+        },
+        {
+          "caller": "test_calibration_readiness_eligible_branch",
+          "callee": "_write",
+          "lineNumber": 227
+        },
+        {
+          "caller": "test_calibration_readiness_eligible_branch",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_calibration_readiness_eligible_branch",
+          "callee": "cal.overall.startswith",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_calibration_readiness_eligible_branch",
+          "callee": "all",
+          "lineNumber": 230
+        },
+        {
+          "caller": "test_calibration_eligible_flag_matches_overall",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 236
+        },
+        {
+          "caller": "test_calibration_eligible_flag_matches_overall",
+          "callee": "make_paths",
+          "lineNumber": 237
+        },
+        {
+          "caller": "test_calibration_eligible_flag_matches_overall",
+          "callee": "_write",
+          "lineNumber": 237
+        },
+        {
+          "caller": "test_calibration_eligible_flag_matches_overall",
+          "callee": "cal.overall.startswith",
+          "lineNumber": 240
+        },
+        {
+          "caller": "test_calibration_readiness_absent_defers",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 244
+        },
+        {
+          "caller": "test_calibration_readiness_absent_defers",
+          "callee": "make_paths",
+          "lineNumber": 244
+        },
+        {
+          "caller": "test_gate_board_adr011_all_closed",
+          "callee": "core.calibration_readiness",
+          "lineNumber": 249
+        },
+        {
+          "caller": "test_gate_board_adr011_all_closed",
+          "callee": "make_paths",
+          "lineNumber": 249
+        },
+        {
+          "caller": "test_gate_board_adr011_all_closed",
+          "callee": "core.gate_board",
+          "lineNumber": 250
+        },
+        {
+          "caller": "test_gate_board_adr011_all_closed",
+          "callee": "all",
+          "lineNumber": 252
+        },
+        {
+          "caller": "test_plugs_dormant_without_creds",
+          "callee": "monkeypatch.delenv",
+          "lineNumber": 259
+        },
+        {
+          "caller": "test_plugs_dormant_without_creds",
+          "callee": "core.plug_statuses",
+          "lineNumber": 260
+        },
+        {
+          "caller": "test_plugs_creds_present_with_paper_host",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 265
+        },
+        {
+          "caller": "test_plugs_creds_present_with_paper_host",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 266
+        },
+        {
+          "caller": "test_plugs_creds_present_with_paper_host",
+          "callee": "monkeypatch.delenv",
+          "lineNumber": 267
+        },
+        {
+          "caller": "test_plugs_creds_present_with_paper_host",
+          "callee": "core.plug_statuses",
+          "lineNumber": 268
+        },
+        {
+          "caller": "test_plugs_dormant_on_non_paper_host",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 273
+        },
+        {
+          "caller": "test_plugs_dormant_on_non_paper_host",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 274
+        },
+        {
+          "caller": "test_plugs_dormant_on_non_paper_host",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 275
+        },
+        {
+          "caller": "test_plugs_dormant_on_non_paper_host",
+          "callee": "core.plug_statuses",
+          "lineNumber": 276
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 284
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "monkeypatch.delenv",
+          "lineNumber": 286
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "make_paths",
+          "lineNumber": 287
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "_write",
+          "lineNumber": 290
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "_write",
+          "lineNumber": 291
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "_write",
+          "lineNumber": 292
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "core.assemble_dashboard",
+          "lineNumber": 294
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "json.dumps",
+          "lineNumber": 298
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "dash.to_dict",
+          "lineNumber": 298
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "\"\\n\".join",
+          "lineNumber": 298
+        },
+        {
+          "caller": "test_no_credential_value_in_any_output",
+          "callee": "core.render_text_dashboard",
+          "lineNumber": 298
+        },
+        {
+          "caller": "test_process_infos_not_queried_without_fetcher",
+          "callee": "core.process_infos",
+          "lineNumber": 305
+        },
+        {
+          "caller": "test_process_infos_not_queried_without_fetcher",
+          "callee": "make_paths",
+          "lineNumber": 305
+        },
+        {
+          "caller": "test_process_infos_registered_with_fetcher",
+          "callee": "core.process_infos",
+          "lineNumber": 315
+        },
+        {
+          "caller": "test_process_infos_registered_with_fetcher",
+          "callee": "make_paths",
+          "lineNumber": 315
+        },
+        {
+          "caller": "test_process_infos_not_registered_when_fetcher_returns_none",
+          "callee": "core.process_infos",
+          "lineNumber": 321
+        },
+        {
+          "caller": "test_process_infos_not_registered_when_fetcher_returns_none",
+          "callee": "make_paths",
+          "lineNumber": 321
+        },
+        {
+          "caller": "test_process_infos_producer_freshness",
+          "callee": "producer.mkdir",
+          "lineNumber": 327
+        },
+        {
+          "caller": "test_process_infos_producer_freshness",
+          "callee": "_write",
+          "lineNumber": 328
+        },
+        {
+          "caller": "test_process_infos_producer_freshness",
+          "callee": "core.process_infos",
+          "lineNumber": 329
+        },
+        {
+          "caller": "test_process_infos_producer_freshness",
+          "callee": "make_paths",
+          "lineNumber": 330
+        },
+        {
+          "caller": "test_policy_versions",
+          "callee": "core.policy_versions",
+          "lineNumber": 338
+        },
+        {
+          "caller": "test_policy_versions",
+          "callee": "len",
+          "lineNumber": 342
+        },
+        {
+          "caller": "test_assemble_dashboard_paper_only_and_serializable",
+          "callee": "make_paths",
+          "lineNumber": 346
+        },
+        {
+          "caller": "test_assemble_dashboard_paper_only_and_serializable",
+          "callee": "_write",
+          "lineNumber": 348
+        },
+        {
+          "caller": "test_assemble_dashboard_paper_only_and_serializable",
+          "callee": "core.assemble_dashboard",
+          "lineNumber": 350
+        },
+        {
+          "caller": "test_assemble_dashboard_paper_only_and_serializable",
+          "callee": "json.dumps",
+          "lineNumber": 352
+        },
+        {
+          "caller": "test_assemble_dashboard_paper_only_and_serializable",
+          "callee": "dash.to_dict",
+          "lineNumber": 352
+        },
+        {
+          "caller": "test_assemble_dashboard_paper_only_and_serializable",
+          "callee": "core.render_text_dashboard",
+          "lineNumber": 353
+        },
+        {
+          "caller": "test_assemble_dashboard_never_persists",
+          "callee": "make_paths",
+          "lineNumber": 357
+        },
+        {
+          "caller": "test_assemble_dashboard_never_persists",
+          "callee": "core.assemble_dashboard",
+          "lineNumber": 358
+        },
+        {
+          "caller": "test_assemble_dashboard_never_persists",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 360
+        },
+        {
+          "caller": "test_assemble_dashboard_never_persists",
+          "callee": "paths.portfolio_path.exists",
+          "lineNumber": 361
+        },
+        {
+          "caller": "test_assemble_dashboard_never_persists",
+          "callee": "paths.operational_capture_path.exists",
+          "lineNumber": 362
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 32,
+        "functionCount": 32,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/ops/test_gated.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 204,
+      "nonEmptyLines": 154,
+      "functions": [
+        {
+          "name": "_clock",
+          "startLine": 41,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "make_paths",
+          "startLine": 45,
+          "endLine": 58,
+          "params": [
+            "tmp"
+          ]
+        },
+        {
+          "name": "_dormant_factory",
+          "startLine": 72,
+          "endLine": 73,
+          "params": []
+        },
+        {
+          "name": "test_alpaca_run_refuses_when_dormant",
+          "startLine": 77,
+          "endLine": 84,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_alpaca_run_threads_live_port_without_network",
+          "startLine": 87,
+          "endLine": 100,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "runner_ok",
+          "startLine": 104,
+          "endLine": 105,
+          "params": [
+            "_cmd",
+            "_paths"
+          ]
+        },
+        {
+          "name": "runner_fail",
+          "startLine": 108,
+          "endLine": 109,
+          "params": [
+            "_cmd",
+            "_paths"
+          ]
+        },
+        {
+          "name": "test_register_schedule_ok",
+          "startLine": 112,
+          "endLine": 116,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_register_schedule_refuses_when_script_missing",
+          "startLine": 119,
+          "endLine": 122,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_unregister_schedule_ok",
+          "startLine": 125,
+          "endLine": 128,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_unregister_schedule_failure_audited",
+          "startLine": 131,
+          "endLine": 135,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_calibration_bump_defers_and_never_mutates",
+          "startLine": 139,
+          "endLine": 147,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_calibration_bump_eligible_still_does_not_bump",
+          "startLine": 150,
+          "endLine": 158,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_no_credential_value_in_gated_audit",
+          "startLine": 162,
+          "endLine": 169,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_alpaca_run_never_raises_on_factory_error",
+          "startLine": 172,
+          "endLine": 181,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_gated_action_never_raises_on_audit_write_failure",
+          "startLine": 184,
+          "endLine": 189,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_gated_registry",
+          "startLine": 193,
+          "endLine": 197,
+          "params": []
+        },
+        {
+          "name": "test_precondition_line_alpaca_dormant",
+          "startLine": 200,
+          "endLine": 204,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "_StubBroker",
+          "startLine": 61,
+          "endLine": 69,
+          "methods": [
+            "__init__",
+            "submit_market_buy"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_clock",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "make_paths",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "_StubBroker",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "_dormant_factory",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "test_alpaca_run_refuses_when_dormant",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "test_alpaca_run_threads_live_port_without_network",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "runner_ok",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "runner_fail",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "test_register_schedule_ok",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "test_register_schedule_refuses_when_script_missing",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "test_unregister_schedule_ok",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "test_unregister_schedule_failure_audited",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_bump_defers_and_never_mutates",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "test_calibration_bump_eligible_still_does_not_bump",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "test_no_credential_value_in_gated_audit",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "test_alpaca_run_never_raises_on_factory_error",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "test_gated_action_never_raises_on_audit_write_failure",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "test_gated_registry",
+          "line": 193,
+          "isDefault": false
+        },
+        {
+          "name": "test_precondition_line_alpaca_dormant",
+          "line": 200,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_clock",
+          "callee": "datetime",
+          "lineNumber": 42
+        },
+        {
+          "caller": "make_paths",
+          "callee": "base.update",
+          "lineNumber": 57
+        },
+        {
+          "caller": "make_paths",
+          "callee": "OpsPaths",
+          "lineNumber": 58
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "AssertionError",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_dormant_factory",
+          "callee": "AlpacaPaperAdapter",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_alpaca_run_refuses_when_dormant",
+          "callee": "make_paths",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_alpaca_run_refuses_when_dormant",
+          "callee": "gated.run_chain_now_alpaca_paper",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_alpaca_run_refuses_when_dormant",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_alpaca_run_refuses_when_dormant",
+          "callee": "audit.read_audit",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_alpaca_run_refuses_when_dormant",
+          "callee": "len",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_alpaca_run_threads_live_port_without_network",
+          "callee": "_StubBroker",
+          "lineNumber": 88
+        },
+        {
+          "caller": "factory",
+          "callee": "AlpacaPaperAdapter",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_alpaca_run_threads_live_port_without_network",
+          "callee": "make_paths",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_alpaca_run_threads_live_port_without_network",
+          "callee": "gated.run_chain_now_alpaca_paper",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_alpaca_run_threads_live_port_without_network",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_alpaca_run_threads_live_port_without_network",
+          "callee": "audit.read_audit",
+          "lineNumber": 100
+        },
+        {
+          "caller": "runner_ok",
+          "callee": "ProcResult",
+          "lineNumber": 105
+        },
+        {
+          "caller": "runner_fail",
+          "callee": "ProcResult",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_register_schedule_ok",
+          "callee": "make_paths",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_register_schedule_ok",
+          "callee": "gated.register_daily_schedule",
+          "lineNumber": 114
+        },
+        {
+          "caller": "test_register_schedule_ok",
+          "callee": "audit.read_audit",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_register_schedule_refuses_when_script_missing",
+          "callee": "make_paths",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_register_schedule_refuses_when_script_missing",
+          "callee": "gated.register_daily_schedule",
+          "lineNumber": 121
+        },
+        {
+          "caller": "test_unregister_schedule_ok",
+          "callee": "make_paths",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_unregister_schedule_ok",
+          "callee": "gated.unregister_daily_schedule",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_unregister_schedule_failure_audited",
+          "callee": "make_paths",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_unregister_schedule_failure_audited",
+          "callee": "gated.unregister_daily_schedule",
+          "lineNumber": 133
+        },
+        {
+          "caller": "test_unregister_schedule_failure_audited",
+          "callee": "audit.read_audit",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "cal_path.write_text",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "json.dumps",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "cal_path.read_bytes",
+          "lineNumber": 142
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "make_paths",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "gated.commit_calibration_bump",
+          "lineNumber": 144
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "result.summary.startswith",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_calibration_bump_defers_and_never_mutates",
+          "callee": "cal_path.read_bytes",
+          "lineNumber": 147
+        },
+        {
+          "caller": "test_calibration_bump_eligible_still_does_not_bump",
+          "callee": "cal_path.write_text",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_calibration_bump_eligible_still_does_not_bump",
+          "callee": "json.dumps",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_calibration_bump_eligible_still_does_not_bump",
+          "callee": "cal_path.read_bytes",
+          "lineNumber": 153
+        },
+        {
+          "caller": "test_calibration_bump_eligible_still_does_not_bump",
+          "callee": "make_paths",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_calibration_bump_eligible_still_does_not_bump",
+          "callee": "gated.commit_calibration_bump",
+          "lineNumber": 155
+        },
+        {
+          "caller": "test_calibration_bump_eligible_still_does_not_bump",
+          "callee": "cal_path.read_bytes",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_no_credential_value_in_gated_audit",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_no_credential_value_in_gated_audit",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 165
+        },
+        {
+          "caller": "test_no_credential_value_in_gated_audit",
+          "callee": "make_paths",
+          "lineNumber": 166
+        },
+        {
+          "caller": "test_no_credential_value_in_gated_audit",
+          "callee": "gated.run_chain_now_alpaca_paper",
+          "lineNumber": 167
+        },
+        {
+          "caller": "test_no_credential_value_in_gated_audit",
+          "callee": "gated.unregister_daily_schedule",
+          "lineNumber": 168
+        },
+        {
+          "caller": "test_no_credential_value_in_gated_audit",
+          "callee": "paths.audit_log_path.read_text",
+          "lineNumber": 169
+        },
+        {
+          "caller": "boom_factory",
+          "callee": "RuntimeError",
+          "lineNumber": 174
+        },
+        {
+          "caller": "test_alpaca_run_never_raises_on_factory_error",
+          "callee": "make_paths",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_alpaca_run_never_raises_on_factory_error",
+          "callee": "gated.run_chain_now_alpaca_paper",
+          "lineNumber": 177
+        },
+        {
+          "caller": "test_alpaca_run_never_raises_on_factory_error",
+          "callee": "paths.ledger_path.exists",
+          "lineNumber": 180
+        },
+        {
+          "caller": "test_alpaca_run_never_raises_on_factory_error",
+          "callee": "audit.read_audit",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_gated_action_never_raises_on_audit_write_failure",
+          "callee": "blocker.write_text",
+          "lineNumber": 186
+        },
+        {
+          "caller": "test_gated_action_never_raises_on_audit_write_failure",
+          "callee": "make_paths",
+          "lineNumber": 187
+        },
+        {
+          "caller": "test_gated_action_never_raises_on_audit_write_failure",
+          "callee": "gated.commit_calibration_bump",
+          "lineNumber": 188
+        },
+        {
+          "caller": "test_gated_action_never_raises_on_audit_write_failure",
+          "callee": "any",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_gated_registry",
+          "callee": "set",
+          "lineNumber": 194
+        },
+        {
+          "caller": "test_precondition_line_alpaca_dormant",
+          "callee": "monkeypatch.delenv",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_precondition_line_alpaca_dormant",
+          "callee": "gated.precondition_line",
+          "lineNumber": 203
+        },
+        {
+          "caller": "test_precondition_line_alpaca_dormant",
+          "callee": "make_paths",
+          "lineNumber": 203
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 19,
+        "functionCount": 18,
+        "classCount": 1
+      }
+    }
+  ]
+}

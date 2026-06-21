@@ -1,0 +1,255 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/backtesting/Backtesting Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 85,
+      "nonEmptyLines": 61,
+      "sections": [
+        {
+          "heading": "Backtesting Methodology",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Standard Backtesting Protocol",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Metrics",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "wiki/backtesting/Overfitting Detection.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 96,
+      "nonEmptyLines": 69,
+      "sections": [
+        {
+          "heading": "Overfitting Detection",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Detection Signals",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Mitigation Pipeline",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Key Metrics After Validation",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "wiki/backtesting/Walk-Forward Optimization.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 121,
+      "nonEmptyLines": 87,
+      "sections": [
+        {
+          "heading": "Walk-Forward Optimization",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Methodology",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Evidence",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 106
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

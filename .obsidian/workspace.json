@@ -106,7 +106,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "neo4",
+                "query": "context map",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -259,8 +259,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "6e355511c4142154",
+  "active": "1a203f309fbb4986",
   "lastOpenFiles": [
+    "ADR-014 - Operable Alpaca Paper Execution Adapter v1.md",
+    "ADR-014 - Operable Alpaca Paper Execution Adapter v1.md.tmp.405884.e9f4457f719b",
+    "E2b_ROADMAP_alignment_review.md",
+    "E2b_ROADMAP_alignment_review.md.tmp.411256.20461efcb497",
     "jarvis/start.ps1.tmp.251968.f9ba3fe1e230",
     "jarvis/docker-compose.yml.tmp.225148.8f7fecefa086",
     "dev_graph/architecture/Context Map.md.tmp.225148.5cd30161a3aa",
@@ -269,11 +273,8 @@
     "JARVIS_el_nino_integration_and_refactor_roadmap.md.tmp.225148.c5c5651ca542",
     "dev_graph/architecture/Context Map.md.tmp.225148.76c9eff541f0",
     "jarvis/sources/EL NINO JARVIS Cyberpunk.html.tmp.225148.52642eb55fa8",
-    "jarvis/sources/el_nino_jarvis_interface (6).html.tmp.225148.dacbdb8e77a4",
     "dev_graph/index.md",
     "wiki/systems/Claude-Assisted Trading Stack.md",
-    "benchmarks/regime/__pycache__/run_regime_bench.cpython-310.pyc",
-    "tests/regime/__pycache__/test_regime_bench.cpython-310-pytest-9.0.2.pyc",
     "dev_graph/benchmarks/Regime Distribution Benchmark.md",
     "dev_graph/tests/test_regime_bench.md",
     "dev_graph/tests/test_regime_classifier.md",
@@ -296,7 +297,6 @@
     "dev_graph/files/models.py (supervisor).md",
     "dev_graph/files/scoring.py.md",
     "dev_graph/files/decision_engine.py.md",
-    "dev_graph/schemas/Evaluation Scorecard Schema.md",
     "Untitled.canvas"
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/governance/Metadata Migration Plan.md",
+      "type": "document",
+      "name": "Metadata Migration Plan.md",
+      "filePath": "wiki/governance/Metadata Migration Plan.md",
+      "summary": "Authoritative governance specification for the wiki's frontmatter schema, defining metadata classification, universal and domain-specific field schemas, a six-part phased rollout plan, Dataview integration, MCP readiness, and anti-entropy lint workflows.",
+      "tags": ["documentation", "governance", "schema-definition", "configuration", "data-pipeline"],
+      "complexity": "complex",
+      "languageNotes": "Long-form governance doc organized into 6 numbered parts with 87 headings; defines closed enums and Dataview/MCP contracts that other wiki tooling depends on."
+    },
+    {
+      "id": "document:wiki/governance/Trade Logging.md",
+      "type": "document",
+      "name": "Trade Logging.md",
+      "filePath": "wiki/governance/Trade Logging.md",
+      "summary": "Governance page defining the mandatory practice of logging every trade action (executed, blocked, or failed) with full metadata for accounting compliance, performance evaluation, and strategy refinement.",
+      "tags": ["documentation", "governance", "observability", "compliance", "trade-logging"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/governance/Treasury Policy System.md",
+      "type": "document",
+      "name": "Treasury Policy System.md",
+      "filePath": "wiki/governance/Treasury Policy System.md",
+      "summary": "Governance page describing the budget and policy framework that constrains agent-upgrade spending in the Syndicate Squad Architecture, including the treasury model and policy-gated approval flow.",
+      "tags": ["documentation", "governance", "budget", "policy", "constraint"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

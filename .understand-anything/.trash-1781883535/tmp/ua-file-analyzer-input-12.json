@@ -1,0 +1,17 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/CLAUDE.md", "language": "markdown", "sizeLines": 907, "fileCategory": "docs"},
+    {"path": "dev_graph/Infrastructure Diagram.md", "language": "markdown", "sizeLines": 194, "fileCategory": "docs"},
+    {"path": "dev_graph/README.md", "language": "markdown", "sizeLines": 79, "fileCategory": "docs"},
+    {"path": "dev_graph/index.md", "language": "markdown", "sizeLines": 377, "fileCategory": "docs"},
+    {"path": "dev_graph/log.md", "language": "markdown", "sizeLines": 1999, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/CLAUDE.md": [],
+    "dev_graph/Infrastructure Diagram.md": [],
+    "dev_graph/README.md": [],
+    "dev_graph/index.md": [],
+    "dev_graph/log.md": []
+  }
+}

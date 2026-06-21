@@ -1,0 +1,48 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "wiki/CLAUDE.md",
+      "summary": "Authoritative maintenance schema and operations manual for the wiki knowledge-graph vault, defining vault structure, naming conventions, frontmatter governance, lint workflows, MCP operational rules, ontology/schema evolution procedures, and semantic confidence lifecycle across 94 sections.",
+      "tags": ["documentation", "governance", "schema-definition", "ontology", "knowledge-graph"],
+      "complexity": "complex",
+      "languageNotes": "Large governance document (642 non-empty lines, 94 headings) organized as a closed-enum metadata schema with append-only evolution rules and Dataview/MCP operational policies."
+    },
+    {
+      "id": "document:wiki/index.md",
+      "type": "document",
+      "name": "index.md",
+      "filePath": "wiki/index.md",
+      "summary": "Master index of the wiki knowledge-graph vault, cataloguing pages grouped by domain (systems, concepts, strategies, execution, memory, risk, backtesting, agents, infrastructure, integrations, security, governance, workflows, research, sources) with vault statistics.",
+      "tags": ["documentation", "entry-point", "index", "knowledge-graph", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/log.md",
+      "type": "document",
+      "name": "log.md",
+      "filePath": "wiki/log.md",
+      "summary": "Chronological operations log for the wiki vault, recording ingestion batches, metadata migration phases, governance extensions, and validation metrics for each maintenance session.",
+      "tags": ["documentation", "changelog", "audit-log", "knowledge-graph", "governance"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/index.md",
+      "target": "document:wiki/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/log.md",
+      "target": "document:wiki/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

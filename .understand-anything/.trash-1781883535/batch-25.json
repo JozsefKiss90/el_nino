@@ -1,0 +1,127 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/modules/Chain Orchestrator.md",
+      "type": "document",
+      "name": "Chain Orchestrator.md",
+      "filePath": "dev_graph/modules/Chain Orchestrator.md",
+      "summary": "Dev-graph module node (MOD-010) documenting the end-to-end Layer-3 composition root that threads a banked snapshot through consume to execute to persist as one deterministic call. Records its dependencies on every chain stage, its files under src/orchestration, and its governing ADRs.",
+      "tags": ["documentation", "module-spec", "orchestration", "knowledge-graph", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed markdown node with YAML frontmatter (canonical_id, depends_on, related_files) and a required Relationships section for Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/modules/Decision Engine.md",
+      "type": "document",
+      "name": "Decision Engine.md",
+      "filePath": "dev_graph/modules/Decision Engine.md",
+      "summary": "Dev-graph module node (MOD-002) documenting the Supervisor Office treasury-upgrade Decision Engine that scores candidate upgrades under budget constraints and emits a deterministic decision packet. Explicitly scoped separate from the gold trading decision branch.",
+      "tags": ["documentation", "module-spec", "decision-engine", "supervisor", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Execution.md",
+      "type": "document",
+      "name": "Execution.md",
+      "filePath": "dev_graph/modules/Execution.md",
+      "summary": "Dev-graph module node (MOD-008) documenting the first money-shaped Layer-3 module that turns an ADMIT decision plus portfolio state into a paper fill and new portfolio state, wiring GATE-001. Records the deterministic simulated-broker core and the default-off Alpaca adapter.",
+      "tags": ["documentation", "module-spec", "execution", "paper-trading", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Feature Builder.md",
+      "type": "document",
+      "name": "Feature Builder.md",
+      "filePath": "dev_graph/modules/Feature Builder.md",
+      "summary": "Dev-graph module node (MOD-004) documenting the deterministic, snapshot-local transform under src/features that turns a validated Layer-2 snapshot into a provenance-tagged feature vector with no historical state.",
+      "tags": ["documentation", "module-spec", "feature-engineering", "data-pipeline", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Gold Decision Builder.md",
+      "type": "document",
+      "name": "Gold Decision Builder.md",
+      "filePath": "dev_graph/modules/Gold Decision Builder.md",
+      "summary": "Dev-graph module node (MOD-006) documenting the deterministic builder under src/gold that turns a feature vector plus regime classification into a frozen, paper-only gold decision packet with confidence and uncertainty scoring.",
+      "tags": ["documentation", "module-spec", "decision-builder", "gold-trading", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Gold Forward-Return Labeler.md",
+      "type": "document",
+      "name": "Gold Forward-Return Labeler.md",
+      "filePath": "dev_graph/modules/Gold Forward-Return Labeler.md",
+      "summary": "Dev-graph module node (MOD-009) documenting the strictly-downstream, read-only calibration module under benchmarks/calibration that labels banked gold decisions with realized forward gold returns, the ADR-012 gate G3 measurement prerequisite.",
+      "tags": ["documentation", "module-spec", "calibration", "benchmark", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Guardrail Engine.md",
+      "type": "document",
+      "name": "Guardrail Engine.md",
+      "filePath": "dev_graph/modules/Guardrail Engine.md",
+      "summary": "Dev-graph module node (MOD-001) documenting the risk-control Guardrail Engine under src/risk that evaluates a conjunction of hard-limit trade-validation predicates and returns an approve/block decision at the trading-to-broker boundary.",
+      "tags": ["documentation", "module-spec", "guardrail", "risk-control", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Market Regime Classifier.md",
+      "type": "document",
+      "name": "Market Regime Classifier.md",
+      "filePath": "dev_graph/modules/Market Regime Classifier.md",
+      "summary": "Dev-graph module node (MOD-005) documenting the deterministic rule-selection engine under src/regime that classifies a feature vector into exactly one of twelve market regimes via priority-ordered first-match selection.",
+      "tags": ["documentation", "module-spec", "regime-classification", "rules-engine", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Operations Control Plane.md",
+      "type": "document",
+      "name": "Operations Control Plane.md",
+      "filePath": "dev_graph/modules/Operations Control Plane.md",
+      "summary": "Dev-graph module node (MOD-011) documenting the ops/ package, a local terminal operator console (governed read-model plus Textual TUI) over the Layer-3 runtime, exposing three action tiers behind confirm, audit, and precondition gates.",
+      "tags": ["documentation", "module-spec", "operations", "tui", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "document",
+      "name": "Paper-Trading Runtime.md",
+      "filePath": "dev_graph/modules/Paper-Trading Runtime.md",
+      "summary": "Dev-graph module node (MOD-007) documenting the first stateful Layer-3 component under src/gold/paper_runtime that admits a pure gold decision packet against explicit ledger state and computes the stateful L3 admission guards (duplicate, operational, cooldown).",
+      "tags": ["documentation", "module-spec", "paper-trading", "admission", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/modules/Snapshot Consumer.md",
+      "type": "document",
+      "name": "Snapshot Consumer.md",
+      "filePath": "dev_graph/modules/Snapshot Consumer.md",
+      "summary": "Dev-graph module node (MOD-003) documenting the Layer-3 ingestion boundary under src/snapshot that reads the Layer-2 truth snapshot via the Snapshot API and fail-closed gates whether Layer 3 may act on it.",
+      "tags": ["documentation", "module-spec", "ingestion", "fail-closed", "dev-graph"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Snapshot Consumer.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Feature Builder.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Market Regime Classifier.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Gold Decision Builder.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Paper-Trading Runtime.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Execution.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Chain Orchestrator.md", "target": "document:dev_graph/modules/Guardrail Engine.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Execution.md", "target": "document:dev_graph/modules/Paper-Trading Runtime.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Feature Builder.md", "target": "document:dev_graph/modules/Snapshot Consumer.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Gold Decision Builder.md", "target": "document:dev_graph/modules/Feature Builder.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Gold Decision Builder.md", "target": "document:dev_graph/modules/Market Regime Classifier.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Gold Forward-Return Labeler.md", "target": "document:dev_graph/modules/Gold Decision Builder.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Gold Forward-Return Labeler.md", "target": "document:dev_graph/modules/Market Regime Classifier.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Gold Forward-Return Labeler.md", "target": "document:dev_graph/modules/Feature Builder.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Gold Forward-Return Labeler.md", "target": "document:dev_graph/modules/Snapshot Consumer.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Market Regime Classifier.md", "target": "document:dev_graph/modules/Feature Builder.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Operations Control Plane.md", "target": "document:dev_graph/modules/Chain Orchestrator.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Operations Control Plane.md", "target": "document:dev_graph/modules/Paper-Trading Runtime.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Operations Control Plane.md", "target": "document:dev_graph/modules/Execution.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Operations Control Plane.md", "target": "document:dev_graph/modules/Gold Forward-Return Labeler.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/modules/Paper-Trading Runtime.md", "target": "document:dev_graph/modules/Gold Decision Builder.md", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

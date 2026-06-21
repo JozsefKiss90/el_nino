@@ -7,23 +7,29 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "mypy>=1.8", "ruff>=0.6"]
+# Operations Control Plane (ADR-013) — the local terminal operator console ONLY. These are NOT runtime
+# deps of the trading engine: `src/` keeps `dependencies = []` (ADR-003 zero-runtime-deps). The console
+# lives in the top-level `ops/` package and is never imported by `src/`. Install with `pip install -e ".[ops]"`.
+ops = ["textual>=0.60", "rich>=13"]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/risk", "src/supervisor", "src/snapshot", "src/features", "src/regime", "src/gold", "src/execution", "src/orchestration"]
+packages = ["src/risk", "src/supervisor", "src/snapshot", "src/features", "src/regime", "src/gold", "src/execution", "src/orchestration", "ops"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+# "." puts the repo root on sys.path so the top-level `ops/` package is importable in tests (ADR-013 §9).
+pythonpath = ["src", "."]
 testpaths = ["tests"]
 
 [tool.mypy]
 python_version = "3.10"
 strict = true
-files = ["src"]
+files = ["src", "ops"]
+mypy_path = ["src"]
 
 [tool.ruff]
 line-length = 100
-src = ["src", "tests"]
+src = ["src", "tests", "ops"]

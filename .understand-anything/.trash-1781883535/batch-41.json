@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/concepts/EMA Crossover.md",
+      "type": "document",
+      "name": "EMA Crossover.md",
+      "filePath": "wiki/concepts/EMA Crossover.md",
+      "summary": "Wiki concept page defining the Exponential Moving Average crossover indicator, its 9/21 standard configuration, signal logic, and role as a momentum/trend-confirmation signal in the trading engine.",
+      "tags": ["documentation", "concept", "trading-indicator", "signal", "technical-analysis"],
+      "complexity": "moderate",
+      "languageNotes": "Follows the wiki concept template (Definition, Purpose, Architecture Role, Inputs, Outputs, Failure Modes, Tradeoffs, Related Concepts, Source References)."
+    },
+    {
+      "id": "document:wiki/concepts/Options Trading.md",
+      "type": "document",
+      "name": "Options Trading.md",
+      "filePath": "wiki/concepts/Options Trading.md",
+      "summary": "Wiki concept page covering options trading fundamentals (calls, puts, premium, strike, expiration) and the selling-side income-generation strategies used within the Wheel Strategy framework.",
+      "tags": ["documentation", "concept", "options", "strategy", "income-generation"],
+      "complexity": "complex",
+      "languageNotes": "Largest page in the batch (22 sections); includes Implementation Notes, Open Questions, and Future Extensions beyond the standard template."
+    },
+    {
+      "id": "document:wiki/concepts/Relative Volume Filter.md",
+      "type": "document",
+      "name": "Relative Volume Filter.md",
+      "filePath": "wiki/concepts/Relative Volume Filter.md",
+      "summary": "Wiki concept page describing the relative-volume entry filter that only admits trades when current volume exceeds a multiple of average volume, screening out low-conviction setups.",
+      "tags": ["documentation", "concept", "trading-indicator", "filter", "volume"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/concepts/VWAP.md",
+      "type": "document",
+      "name": "VWAP.md",
+      "filePath": "wiki/concepts/VWAP.md",
+      "summary": "Wiki concept page defining the Volume-Weighted Average Price indicator, its calculation, and its three system roles: trend filter, entry signal (crossover), and safety gate.",
+      "tags": ["documentation", "concept", "trading-indicator", "signal", "vwap"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/concepts/EMA Crossover.md",
+      "target": "document:wiki/concepts/VWAP.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/concepts/EMA Crossover.md",
+      "target": "document:wiki/concepts/Relative Volume Filter.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/concepts/Relative Volume Filter.md",
+      "target": "document:wiki/concepts/VWAP.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/concepts/Relative Volume Filter.md",
+      "target": "document:wiki/concepts/EMA Crossover.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/concepts/VWAP.md",
+      "target": "document:wiki/concepts/EMA Crossover.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/concepts/VWAP.md",
+      "target": "document:wiki/concepts/Relative Volume Filter.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

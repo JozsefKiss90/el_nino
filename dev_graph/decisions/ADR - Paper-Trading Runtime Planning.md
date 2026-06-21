@@ -13,8 +13,10 @@ evidence:
   - code
 source_paths:
   - "ultimateplan.md"
-related_files: []
-related_tests: []
+related_files:
+  - "[[alpaca_clock_feed.py]]"
+related_tests:
+  - "[[test_alpaca_clock_feed]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
@@ -307,15 +309,26 @@ replayed; no clock/network on the replay path). `run_sequence` has **no feed par
   calendar.
 - **Pluggable:** the live **Alpaca clock/calendar** feed is the non-replayable plug behind the same port;
   its credentials live in **env / git-ignored `.secrets` only** ([[Agent Safety Principles]] KA-008), never
-  in the repo, a memory file, or a dev_graph node. It is **deferred** (not built here) — the capture
-  mechanism makes even that non-deterministic feed replayable.
+  in the repo, a memory file, or a dev_graph node. The capture mechanism makes even that non-deterministic
+  feed replayable.
+
+  **Update (2026-06-18): the live `AlpacaClockFeed` is now built** ([[alpaca_clock_feed.py]] FILE-037)
+  behind the same `OperationalFeed` port — **default-OFF** (opt-in via `--operational-feed-source alpaca`;
+  not re-exported, so the default import graph stays network-free). It reads Alpaca's `/v2/calendar`
+  (**paper base URL only**) to **close the v0 holiday-calendar gap** — movable feasts (Good Friday) and
+  observed-date shifts the fixed-date `MarketCalendarFeed` cannot model. **Fail-closed:** missing/non-paper
+  creds, an API/auth error, or an ambiguous/unparseable `as_of` ⇒ `OperationalInput.closed()`; the
+  `clock_feed_from_env` factory refuses any non-paper host. It is read only on the live path and **captured
+  + quarantined exactly as above** (never re-read on replay). Validated by [[test_alpaca_clock_feed]]
+  (TEST-027). The deterministic `MarketCalendarFeed` remains the canonical, credential-free source.
 
 **No SCHEMA change.** The captured `OperationalInput` is a sidecar artifact (the existing
 `load_operational` format); the ledger's per-entry `operational_fingerprint` already lets a replay *verify*
 the operational decision, and the captured artifact lets it *reconstruct* the exact `OperationalInput` —
 so no additive capture into SCHEMA-012/013 is required.
 
-**Normative nodes:** [[operational_feed.py]] (FILE-036) + [[test_operational_feed]] (TEST-026), under
+**Normative nodes:** [[operational_feed.py]] (FILE-036) + [[test_operational_feed]] (TEST-026), and the
+live plug [[alpaca_clock_feed.py]] (FILE-037) + [[test_alpaca_clock_feed]] (TEST-027), under
 [[Chain Orchestrator]] (MOD-010).
 
 ## Relationships

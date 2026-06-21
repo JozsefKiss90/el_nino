@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/files/runtime.py.md",
+      "type": "document",
+      "name": "runtime.py.md",
+      "filePath": "dev_graph/files/runtime.py.md",
+      "summary": "Dev_graph file node (FILE-023) documenting src/gold/paper_runtime/runtime.py, the IO-boundary shell and replay driver (load_ledger/persist_ledger/run_once/run_sequence) of the Paper-Trading Runtime that keeps evaluate() pure and enables byte-identical deterministic replay.",
+      "tags": ["documentation", "dev-graph", "file-node", "paper-runtime", "traceability"],
+      "complexity": "simple",
+      "languageNotes": "Ontology-governed dev_graph node with typed frontmatter (canonical_id FILE-023) and a Relationships section that drives Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/files/scoring.py.md",
+      "type": "document",
+      "name": "scoring.py.md",
+      "filePath": "dev_graph/files/scoring.py.md",
+      "summary": "Dev_graph file node (FILE-005) documenting src/supervisor/decision_engine/scoring.py, the deterministic weakness-scoring source of the Decision Engine that scores upgrade options by severity * expected_improvement / cost and realizes the Supervisor Pattern.",
+      "tags": ["documentation", "dev-graph", "file-node", "decision-engine", "scoring"],
+      "complexity": "simple",
+      "languageNotes": "Ontology-governed dev_graph node (canonical_id FILE-005) describing pure, deterministic scoring functions; owns weakness_severity, score_option, WEAKNESS_DIMENSIONS."
+    },
+    {
+      "id": "document:dev_graph/files/taxonomy.py.md",
+      "type": "document",
+      "name": "taxonomy.py.md",
+      "filePath": "dev_graph/files/taxonomy.py.md",
+      "summary": "Dev_graph file node (FILE-012) documenting src/regime/regime_classifier/taxonomy.py, the declarative priority-ordered RULE_TABLE of RegimeRules (pure predicate + MarginSpec) plus margin_value/near_proximity helpers that encode the regime taxonomy as data per ADR-007.",
+      "tags": ["documentation", "dev-graph", "file-node", "regime-classifier", "taxonomy"],
+      "complexity": "simple",
+      "languageNotes": "Ontology-governed dev_graph node (canonical_id FILE-012); documents a data-driven, first-match-wins rule table (R01..R11 + NEUTRAL) reading thresholds from RegimeConfig."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/files/runtime.py.md",
+      "target": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/runtime.py.md",
+      "target": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/runtime.py.md",
+      "target": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/runtime.py.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/scoring.py.md",
+      "target": "document:dev_graph/modules/Decision Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/scoring.py.md",
+      "target": "document:dev_graph/files/models.py (supervisor).md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/scoring.py.md",
+      "target": "document:dev_graph/patterns/Supervisor Pattern.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/scoring.py.md",
+      "target": "document:dev_graph/tests/test_scoring.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/scoring.py.md",
+      "target": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/taxonomy.py.md",
+      "target": "document:dev_graph/modules/Market Regime Classifier.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/taxonomy.py.md",
+      "target": "document:dev_graph/files/config.py (regime).md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/taxonomy.py.md",
+      "target": "document:dev_graph/files/models.py (regime).md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/taxonomy.py.md",
+      "target": "document:dev_graph/schemas/Feature Vector Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/taxonomy.py.md",
+      "target": "document:dev_graph/tests/test_regime_classifier.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/taxonomy.py.md",
+      "target": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

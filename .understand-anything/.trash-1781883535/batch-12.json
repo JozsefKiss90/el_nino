@@ -1,0 +1,96 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "dev_graph/CLAUDE.md",
+      "summary": "Authoritative operations manual (schema_version 2.2.0) for the dev_graph engineering digital twin, defining its 24-type ontology, frontmatter governance, 17 relationship types, 11-check lint workflow, and the end-of-session writeback checklist that every dev_graph Claude session must follow.",
+      "tags": ["documentation", "governance", "schema-definition", "operations-manual", "ontology"],
+      "complexity": "complex",
+      "languageNotes": "Governance contract written as prose with embedded YAML frontmatter templates and Dataview/Cypher snippets; 56 sections spanning vault structure, object hierarchy, and maintenance cadences."
+    },
+    {
+      "id": "document:dev_graph/Infrastructure Diagram.md",
+      "type": "document",
+      "name": "Infrastructure Diagram.md",
+      "filePath": "dev_graph/Infrastructure Diagram.md",
+      "summary": "Deprecated reference node (REF-004) holding a Mermaid topology of the raw/wiki/dev_graph layered architecture and MCP wiring; migrated to architecture/Infrastructure Diagram.md (ARCH-004) during the Phase 1 ontology redesign.",
+      "tags": ["documentation", "architecture", "deprecated", "infrastructure", "diagram"],
+      "complexity": "moderate",
+      "languageNotes": "Frontmatter marks status:deprecated; body opens with a migration banner pointing at the ARCH-004 successor."
+    },
+    {
+      "id": "document:dev_graph/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "dev_graph/README.md",
+      "summary": "Human-readable orientation for the dev_graph, explaining what the typed implementation graph is, how it relates to the raw/wiki layers, the MCP-driven context-pack architecture, and a quick-start reading order through the governance files.",
+      "tags": ["documentation", "entry-point", "overview", "orientation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/index.md",
+      "type": "document",
+      "name": "index.md",
+      "filePath": "dev_graph/index.md",
+      "summary": "Master index cataloging every dev_graph node grouped by ontology type (architecture, systems, capabilities, modules, files, tests, gates, schemas, decisions, etc.) with a closing statistics section tracking node counts.",
+      "tags": ["documentation", "index", "catalog", "barrel", "node-registry"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/log.md",
+      "type": "document",
+      "name": "log.md",
+      "filePath": "dev_graph/log.md",
+      "summary": "Chronological operations log recording every dev_graph session from the 2026-05-25 bootstrap through Alpaca live plugs and chain scheduling, capturing ADR decisions, nodes created/updated, code shipped, lint results, and metrics for each writeback.",
+      "tags": ["documentation", "changelog", "audit-log", "operations-history", "writeback-record"],
+      "complexity": "complex",
+      "languageNotes": "Append-only journal of 213 dated H2/H3 sections; newest entries at the top, each tagged by activity type (ADR | writeback | schema | populate | session | audit | bench)."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/README.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/README.md",
+      "target": "document:dev_graph/index.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/index.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/log.md",
+      "target": "document:dev_graph/index.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/log.md",
+      "target": "document:dev_graph/CLAUDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/CLAUDE.md",
+      "target": "document:dev_graph/Infrastructure Diagram.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

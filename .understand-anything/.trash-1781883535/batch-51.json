@@ -1,0 +1,208 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/glossary/Glossary.md",
+      "type": "document",
+      "name": "Glossary.md",
+      "filePath": "wiki/glossary/Glossary.md",
+      "summary": "Central glossary defining the project's trading, AI-agent, and infrastructure terminology, with each term linking out to its canonical wiki concept page.",
+      "tags": ["documentation", "glossary", "reference", "terminology", "wiki"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/memory/Agent Memory Architecture.md",
+      "type": "document",
+      "name": "Agent Memory Architecture.md",
+      "filePath": "wiki/memory/Agent Memory Architecture.md",
+      "summary": "Describes how the autonomous trading agent persists state across stateless runs through structural, operational, and derived memory files committed to git.",
+      "tags": ["documentation", "agent-memory", "architecture", "persistence", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/memory/Context Budget Engineering.md",
+      "type": "document",
+      "name": "Context Budget Engineering.md",
+      "filePath": "wiki/memory/Context Budget Engineering.md",
+      "summary": "Explains strategies for managing the LLM context window as a finite budget, covering selective reading, memory windowing, context resets, and tiered file architecture.",
+      "tags": ["documentation", "context-budget", "llm", "optimization", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/observability/Graph Health Dashboard.md",
+      "type": "document",
+      "name": "Graph Health Dashboard.md",
+      "filePath": "wiki/observability/Graph Health Dashboard.md",
+      "summary": "Dataview-driven observability dashboard tracking wiki knowledge-graph health metrics: metadata coverage, orphan and stale pages, confidence distribution, and contradictions.",
+      "tags": ["documentation", "observability", "dashboard", "monitoring", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/research/Research Ingestion Workflow.md",
+      "type": "document",
+      "name": "Research Ingestion Workflow.md",
+      "filePath": "wiki/research/Research Ingestion Workflow.md",
+      "summary": "Defines the multi-step workflow for ingesting external research and market sources into the wiki knowledge graph, including pre-market routines and source quality criteria.",
+      "tags": ["documentation", "research", "workflow", "ingestion", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "type": "document",
+      "name": "Autonomous Trading Risk Model.md",
+      "filePath": "wiki/risk/Autonomous Trading Risk Model.md",
+      "summary": "Comprehensive risk taxonomy for autonomous AI-driven trading, spanning market, execution, system, AI-specific, and governance risks with parameters and phased mitigation.",
+      "tags": ["documentation", "risk-management", "trading", "governance", "wiki"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/risk/Guardrail Architecture.md",
+      "type": "document",
+      "name": "Guardrail Architecture.md",
+      "filePath": "wiki/risk/Guardrail Architecture.md",
+      "summary": "Specifies the layered guardrail system of hard limits, soft limits, and behavioral rules that constrain the trading agent, enforced via environment variables, strategy files, and CLAUDE.md.",
+      "tags": ["documentation", "guardrails", "risk-management", "safety", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/security/API Credential Isolation.md",
+      "type": "document",
+      "name": "API Credential Isolation.md",
+      "filePath": "wiki/security/API Credential Isolation.md",
+      "summary": "Security guidance for isolating exchange and API credentials, covering isolation rules, the exchange permission model, and incident evidence motivating the controls.",
+      "tags": ["documentation", "security", "credentials", "isolation", "wiki"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/security/Environment Variable Management.md",
+      "type": "document",
+      "name": "Environment Variable Management.md",
+      "filePath": "wiki/security/Environment Variable Management.md",
+      "summary": "Documents storage locations, required variables, naming precision, and critical rules for managing secrets and configuration through environment variables.",
+      "tags": ["documentation", "security", "configuration", "environment-variables", "wiki"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/workflows/Office Action Loop.md",
+      "type": "document",
+      "name": "Office Action Loop.md",
+      "filePath": "wiki/workflows/Office Action Loop.md",
+      "summary": "Describes the supervisor-driven office action state machine and action execution flow used to coordinate multi-agent development work.",
+      "tags": ["documentation", "workflow", "state-machine", "orchestration", "wiki"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/glossary/Glossary.md",
+      "target": "document:wiki/memory/Context Budget Engineering.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/glossary/Glossary.md",
+      "target": "document:wiki/risk/Guardrail Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/memory/Agent Memory Architecture.md",
+      "target": "document:wiki/memory/Context Budget Engineering.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/memory/Context Budget Engineering.md",
+      "target": "document:wiki/memory/Agent Memory Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/research/Research Ingestion Workflow.md",
+      "target": "document:wiki/memory/Agent Memory Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/research/Research Ingestion Workflow.md",
+      "target": "document:wiki/memory/Context Budget Engineering.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "target": "document:wiki/security/API Credential Isolation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "target": "document:wiki/risk/Guardrail Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "target": "document:wiki/memory/Context Budget Engineering.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Guardrail Architecture.md",
+      "target": "document:wiki/memory/Agent Memory Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Guardrail Architecture.md",
+      "target": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/risk/Guardrail Architecture.md",
+      "target": "document:wiki/security/Environment Variable Management.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/security/API Credential Isolation.md",
+      "target": "document:wiki/risk/Autonomous Trading Risk Model.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/security/API Credential Isolation.md",
+      "target": "document:wiki/security/Environment Variable Management.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/security/API Credential Isolation.md",
+      "target": "document:wiki/risk/Guardrail Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/security/Environment Variable Management.md",
+      "target": "document:wiki/security/API Credential Isolation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

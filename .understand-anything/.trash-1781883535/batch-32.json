@@ -1,0 +1,254 @@
+{
+  "nodes": [
+    {
+      "id": "config:jarvis/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "jarvis/.env.example",
+      "summary": "Template environment file listing the Neo4j connection variables (URI, username, password, database) the JARVIS backend reads to reach the graph store.",
+      "tags": ["configuration", "environment", "database", "security", "neo4j"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:jarvis/CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "jarvis/CLAUDE.md",
+      "summary": "Operations manual governing the read-only JARVIS front end, documenting the four-projection chain from dev_graph markdown to Neo4j and graph.json, the component contract, and backend safety invariants.",
+      "tags": ["documentation", "operations-manual", "governance", "projection-chain", "read-only"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:jarvis/JARVIS_INTEGRATION_ROADMAP.md",
+      "type": "document",
+      "name": "JARVIS_INTEGRATION_ROADMAP.md",
+      "filePath": "jarvis/JARVIS_INTEGRATION_ROADMAP.md",
+      "summary": "Staged integration and refactor roadmap (Stages 0-5) covering ADR-010 governance, the graph.json exporter, the graph-driven console, the React refactor, the GraphRAG /ask uplink, and the voice bridge.",
+      "tags": ["documentation", "roadmap", "architecture", "graphrag", "planning"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:jarvis/PROJECTION_SYNC_PLAN.md",
+      "type": "document",
+      "name": "PROJECTION_SYNC_PLAN.md",
+      "filePath": "jarvis/PROJECTION_SYNC_PLAN.md",
+      "summary": "Hardening plan to keep JARVIS projections consistent, recommending a single graph.json source, a unified resync script, an optional pre-commit hook, and a clear dashboard-chrome data contract.",
+      "tags": ["documentation", "planning", "consistency", "projection-sync", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:jarvis/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "jarvis/README.md",
+      "summary": "Getting-started guide for the JARVIS dev_graph stack covering prerequisites, the offline explorer quick start, the containerized docker-compose stack, the GraphRAG console, and the React HUD.",
+      "tags": ["documentation", "entry-point", "getting-started", "deployment", "overview"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "service:jarvis/docker-compose.yml",
+      "type": "service",
+      "name": "docker-compose.yml",
+      "filePath": "jarvis/docker-compose.yml",
+      "summary": "Offline-first orchestration of the JARVIS stack defining a Neo4j 5 graph store with APOC, a read-only FastAPI traversal API, and an nginx static graph-explorer frontend wired by health-checked dependencies.",
+      "tags": ["orchestration", "infrastructure", "containerization", "neo4j", "deployment"],
+      "complexity": "moderate",
+      "languageNotes": "Uses external pre-existing volumes so the populated graph DB is adopted rather than recreated; host ports are remapped off Neo4j defaults to coexist with another stack."
+    },
+    {
+      "id": "service:jarvis/docker-compose.yml:neo4j",
+      "type": "service",
+      "name": "neo4j",
+      "filePath": "jarvis/docker-compose.yml",
+      "summary": "Neo4j 5 community graph store with the APOC plugin, the canonical query store populated by sync_to_neo4j.py and consumed by the backend bridge and neo4j MCP.",
+      "tags": ["service", "neo4j", "database", "graph-store", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "service:jarvis/docker-compose.yml:api",
+      "type": "service",
+      "name": "api",
+      "filePath": "jarvis/docker-compose.yml",
+      "summary": "Read-only FastAPI traversal service built from ./backend that issues READ-mode Cypher against the Neo4j service for the graph-explorer and /ask endpoints.",
+      "tags": ["service", "api", "fastapi", "read-only", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "service:jarvis/docker-compose.yml:frontend",
+      "type": "service",
+      "name": "frontend",
+      "filePath": "jarvis/docker-compose.yml",
+      "summary": "Static graph-explorer UI served by nginx from the ./frontend directory, depending on the api service for live traversal data.",
+      "tags": ["service", "frontend", "nginx", "static-site", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/resync-devgraph.ps1",
+      "type": "file",
+      "name": "resync-devgraph.ps1",
+      "filePath": "jarvis/resync-devgraph.ps1",
+      "summary": "Fail-fast re-projection script that atomically rebuilds every downstream consumer of the canonical dev_graph markdown by running sync_to_neo4j.py dry-run, then --clear, then export_graph_json.py for both graph.json copies.",
+      "tags": ["script", "powershell", "data-pipeline", "projection-sync", "automation"],
+      "complexity": "moderate",
+      "languageNotes": "Keys success off the '--- Summary ---' stdout marker because sync_to_neo4j.py returns exit 1 whenever any edge is skipped, making its exit code unreliable; stderr is left unredirected to dodge the PS 5.1 native-stderr ErrorRecord quirk."
+    },
+    {
+      "id": "function:jarvis/resync-devgraph.ps1:Invoke-SyncStep",
+      "type": "function",
+      "name": "Invoke-SyncStep",
+      "filePath": "jarvis/resync-devgraph.ps1",
+      "lineRange": [38, 47],
+      "summary": "Runs one sync_to_neo4j.py step, captures stdout, and throws unless the '--- Summary ---' marker is present, then echoes only the summary tail on success.",
+      "tags": ["function", "powershell", "validation", "subprocess", "error-handling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/resync-devgraph.ps1:Invoke-ExportStep",
+      "type": "function",
+      "name": "Invoke-ExportStep",
+      "filePath": "jarvis/resync-devgraph.ps1",
+      "lineRange": [50, 54],
+      "summary": "Runs export_graph_json.py and throws on any nonzero exit code, relying on the exporter's reliable exit status to detect crashes.",
+      "tags": ["function", "powershell", "subprocess", "error-handling", "export"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/start.ps1",
+      "type": "file",
+      "name": "start.ps1",
+      "filePath": "jarvis/start.ps1",
+      "summary": "Idempotent launcher that ensures the Neo4j container is up, builds the React HUD once if missing, then starts the read-only FastAPI bridge (serving the HUD) on 127.0.0.1:8000 in the foreground.",
+      "tags": ["script", "powershell", "entry-point", "deployment", "automation"],
+      "complexity": "simple",
+      "languageNotes": "Falls back from `docker start` to `docker compose up -d neo4j` if the named container does not exist; serves the built HUD dist via uvicorn against backend/app.py."
+    }
+  ],
+  "edges": [
+    {
+      "source": "service:jarvis/docker-compose.yml",
+      "target": "service:jarvis/docker-compose.yml:neo4j",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "service:jarvis/docker-compose.yml",
+      "target": "service:jarvis/docker-compose.yml:api",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "service:jarvis/docker-compose.yml",
+      "target": "service:jarvis/docker-compose.yml:frontend",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "service:jarvis/docker-compose.yml:api",
+      "target": "service:jarvis/docker-compose.yml:neo4j",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "service:jarvis/docker-compose.yml:frontend",
+      "target": "service:jarvis/docker-compose.yml:api",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:jarvis/.env.example",
+      "target": "service:jarvis/docker-compose.yml:api",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:jarvis/.env.example",
+      "target": "service:jarvis/docker-compose.yml:neo4j",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/resync-devgraph.ps1",
+      "target": "function:jarvis/resync-devgraph.ps1:Invoke-SyncStep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/resync-devgraph.ps1",
+      "target": "function:jarvis/resync-devgraph.ps1:Invoke-ExportStep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "document:jarvis/README.md",
+      "target": "service:jarvis/docker-compose.yml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/README.md",
+      "target": "file:jarvis/start.ps1",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/CLAUDE.md",
+      "target": "file:jarvis/resync-devgraph.ps1",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/CLAUDE.md",
+      "target": "document:jarvis/JARVIS_INTEGRATION_ROADMAP.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/CLAUDE.md",
+      "target": "document:jarvis/PROJECTION_SYNC_PLAN.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/PROJECTION_SYNC_PLAN.md",
+      "target": "file:jarvis/resync-devgraph.ps1",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/JARVIS_INTEGRATION_ROADMAP.md",
+      "target": "document:jarvis/PROJECTION_SYNC_PLAN.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:jarvis/start.ps1",
+      "target": "service:jarvis/docker-compose.yml:neo4j",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:jarvis/resync-devgraph.ps1",
+      "target": "document:jarvis/PROJECTION_SYNC_PLAN.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

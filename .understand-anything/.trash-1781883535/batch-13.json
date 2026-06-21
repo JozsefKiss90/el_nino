@@ -1,0 +1,67 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/architecture/Context Map.md",
+      "type": "document",
+      "name": "Context Map.md",
+      "filePath": "dev_graph/architecture/Context Map.md",
+      "summary": "Root architecture node defining the 6 bounded contexts of the autonomous trading engine (Data Pipeline, Trading Engine, Risk Control, Agent Runtime, Evaluation Loop, Supervisor Office) and the 8 cross-system interface contracts between them.",
+      "tags": ["documentation", "architecture", "context-map", "bounded-context", "entry-point"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph architecture node (ARCH-001, type: architecture, architecture_type: context_map) with a Mermaid flowchart of system boundaries; the canonical structural root every engineering session starts from."
+    },
+    {
+      "id": "document:dev_graph/architecture/Infrastructure Diagram.md",
+      "type": "document",
+      "name": "Infrastructure Diagram.md",
+      "filePath": "dev_graph/architecture/Infrastructure Diagram.md",
+      "summary": "Full infrastructure topology diagram covering all substrates, MCP servers, databases (Neo4j, SQLite), and data flows between raw sources, the wiki, and the dev_graph; documents the read-only Neo4j projection and sync pipeline.",
+      "tags": ["documentation", "architecture", "infrastructure", "deployment", "mcp"],
+      "complexity": "complex",
+      "languageNotes": "Dev_graph architecture node (ARCH-004, architecture_type: context_map, implementation_status: implemented) with a large Mermaid graph; references .mcp.json, neo4j.env, and dev_graph/sync_to_neo4j.py via related_files frontmatter."
+    },
+    {
+      "id": "document:dev_graph/architecture/Layer Model.md",
+      "type": "document",
+      "name": "Layer Model.md",
+      "filePath": "dev_graph/architecture/Layer Model.md",
+      "summary": "Defines the three-layer vertical decomposition of the trading pipeline — L1 Data Ingestion, L2 Analysis & Strategy (the Snapshot layer / single source of truth), and L3 Execution — with each layer's inputs, outputs, capabilities, and failure modes.",
+      "tags": ["documentation", "architecture", "layer-model", "data-contract", "trading-pipeline"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph architecture node (ARCH-003, architecture_type: layer_model); centers on the Layer 2 Snapshot Schema (SCHEMA-001) as the foundational breaking-change-sensitive data contract."
+    },
+    {
+      "id": "document:dev_graph/architecture/Runtime Topology.md",
+      "type": "document",
+      "name": "Runtime Topology.md",
+      "filePath": "dev_graph/architecture/Runtime Topology.md",
+      "summary": "Runtime component interaction model showing how the 6 systems communicate at execution time through events, interfaces, and data flows, including an event flow table and the daily runtime scheduling routines.",
+      "tags": ["documentation", "architecture", "runtime-topology", "event-driven", "sequence-diagram"],
+      "complexity": "moderate",
+      "languageNotes": "Dev_graph architecture node (ARCH-002, architecture_type: runtime_topology) with a Mermaid sequenceDiagram of the signal-to-execution flow; defines target event-driven behavior ahead of Phase 7 event-node implementation."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/architecture/Layer Model.md",
+      "target": "document:dev_graph/architecture/Context Map.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/architecture/Runtime Topology.md",
+      "target": "document:dev_graph/architecture/Context Map.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/architecture/Infrastructure Diagram.md",
+      "target": "document:dev_graph/architecture/Context Map.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

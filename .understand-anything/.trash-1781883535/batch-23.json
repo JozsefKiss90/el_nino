@@ -1,0 +1,153 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/interfaces/Decision API.md",
+      "type": "document",
+      "name": "Decision API.md",
+      "filePath": "dev_graph/interfaces/Decision API.md",
+      "summary": "Dev-graph interface contract (INT-006) specifying the Supervisor Office treasury-upgrade decision seam: the deterministic decide(state) -> decision_packet operation, its scorecard input and decision-packet output, and its error/no-op modes.",
+      "tags": ["documentation", "api-schema", "interface-contract", "decision-layer", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed dev_graph interface node with typed frontmatter (canonical_id, parent_capability, input/output schema) and a structured Relationships section."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Execution API.md",
+      "type": "document",
+      "name": "Execution API.md",
+      "filePath": "dev_graph/interfaces/Execution API.md",
+      "summary": "Dev-graph interface contract (INT-011) for the execution layer's two seams: the pure execute() entry point consuming an ADMIT RuntimeDecisionRecord, and the hexagonal ExecutionPort.fill() broker port implemented by the deterministic SimulatedBrokerAdapter and the default-OFF AlpacaPaperAdapter.",
+      "tags": ["documentation", "api-schema", "interface-contract", "execution-layer", "hexagonal-port"],
+      "complexity": "complex",
+      "languageNotes": "Documents a hexagonal port/adapter split with a replayable deterministic core and a quarantined, fail-closed live-broker adapter."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Gold Decision API.md",
+      "type": "document",
+      "name": "Gold Decision API.md",
+      "filePath": "dev_graph/interfaces/Gold Decision API.md",
+      "summary": "Dev-graph interface contract (INT-009) defining the deterministic build_decision(fv, rc, ...) -> GoldDecisionPacket seam that turns a regime classification plus feature vector into a paper-only gold trading decision with ordinal confidence and full provenance.",
+      "tags": ["documentation", "api-schema", "interface-contract", "decision-layer", "gold-trading"],
+      "complexity": "complex",
+      "languageNotes": "Specifies a pure, deterministic rule-based decision contract with versioned config, total regime-to-direction mapping, and fail-closed INDETERMINATE handling."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "type": "document",
+      "name": "Paper Runtime API.md",
+      "filePath": "dev_graph/interfaces/Paper Runtime API.md",
+      "summary": "Dev-graph interface contract (INT-010) for the paper-trade admission seam: the pure evaluate(packet, prior_ledger, operational_input, config) core plus run_once/run_sequence IO shells that admit a gold packet against explicit runtime state and emit a RuntimeDecisionRecord.",
+      "tags": ["documentation", "api-schema", "interface-contract", "paper-trading", "admission"],
+      "complexity": "moderate",
+      "languageNotes": "Pure-core-with-IO-shell design: evaluate() is deterministic and IO-free; run_once/run_sequence wrap loading and atomic persistence around it."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Regime Classification API.md",
+      "type": "document",
+      "name": "Regime Classification API.md",
+      "filePath": "dev_graph/interfaces/Regime Classification API.md",
+      "summary": "Dev-graph interface contract (INT-007) for the deterministic classify(fv, config, as_of) -> RegimeClassification seam that maps a feature vector to one of the taxonomy regimes (or INDETERMINATE) with versioned provenance, consumed by the Gold Decision Builder.",
+      "tags": ["documentation", "api-schema", "interface-contract", "regime-classification", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Total, deterministic classifier contract with NEUTRAL catch-all and fail-closed INDETERMINATE on missing required features."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Risk Check API.md",
+      "type": "document",
+      "name": "Risk Check API.md",
+      "filePath": "dev_graph/interfaces/Risk Check API.md",
+      "summary": "Dev-graph interface contract (INT-003) for the synchronous validate(request) -> decision guardrail seam by which the Trading Engine submits a proposed trade to Risk Control and receives a deterministic, fail-closed approve/block decision.",
+      "tags": ["documentation", "api-schema", "interface-contract", "risk-control", "guardrail"],
+      "complexity": "moderate",
+      "languageNotes": "Synchronous request/response guardrail contract with fail-closed BLOCK semantics on missing config or malformed requests."
+    },
+    {
+      "id": "document:dev_graph/interfaces/Snapshot API.md",
+      "type": "document",
+      "name": "Snapshot API.md",
+      "filePath": "dev_graph/interfaces/Snapshot API.md",
+      "summary": "Dev-graph interface contract (INT-001) for the read-only Layer-2 to Layer-3 snapshot boundary: the only sanctioned way Layer 3 obtains market-truth snapshots, with latest-file and by-id access modes and strict consumability gating.",
+      "tags": ["documentation", "api-schema", "interface-contract", "data-pipeline", "layer-boundary"],
+      "complexity": "moderate",
+      "languageNotes": "Read/pull contract (null input schema) enforcing fail-closed consumability rules: snapshot must PASS the quality gate and not be forced/dry-run."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/interfaces/Execution API.md",
+      "target": "file:src/execution/engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Execution API.md",
+      "target": "file:src/execution/runtime.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Execution API.md",
+      "target": "file:src/execution/alpaca_adapter.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Execution API.md",
+      "target": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Gold Decision API.md",
+      "target": "file:src/gold/decision_builder/builder.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Gold Decision API.md",
+      "target": "document:dev_graph/interfaces/Regime Classification API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Gold Decision API.md",
+      "target": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "target": "file:src/gold/paper_runtime/engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "target": "file:src/gold/paper_runtime/runtime.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "target": "document:dev_graph/interfaces/Gold Decision API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/interfaces/Regime Classification API.md",
+      "target": "file:src/regime/regime_classifier/regime_classifier.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

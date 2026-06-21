@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "service:jarvis/backend/Dockerfile",
+      "type": "service",
+      "name": "Dockerfile",
+      "filePath": "jarvis/backend/Dockerfile",
+      "summary": "Single-stage Docker build packaging the JARVIS Graph API: a read-only FastAPI service served by uvicorn on port 8000 over the dev_graph in Neo4j. Installs Python deps from requirements.txt, copies app.py, and runs the ASGI app with NEO4J_* injected at runtime.",
+      "tags": ["containerization", "infrastructure", "deployment", "fastapi", "backend"],
+      "complexity": "simple",
+      "languageNotes": "Slim python:3.12 base with --no-cache-dir pip install to minimize image size; requirements are copied before app.py to leverage Docker layer caching. NEO4J_* env vars are supplied by docker-compose or the host environment rather than baked into the image."
+    },
+    {
+      "id": "service:jarvis/backend/Dockerfile:python",
+      "type": "service",
+      "name": "python",
+      "filePath": "jarvis/backend/Dockerfile",
+      "summary": "Runtime container stage built from python:3.12-slim that exposes port 8000 and launches uvicorn serving app:app, hosting the JARVIS read-only Graph API.",
+      "tags": ["containerization", "service", "fastapi", "uvicorn"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "service:jarvis/backend/Dockerfile",
+      "target": "service:jarvis/backend/Dockerfile:python",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "service:jarvis/backend/Dockerfile",
+      "target": "file:jarvis/backend/app.py",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

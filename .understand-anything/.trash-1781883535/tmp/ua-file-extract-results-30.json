@@ -1,0 +1,1037 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 20,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/tests/test_alpaca_adapter.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 62,
+      "nonEmptyLines": 52,
+      "sections": [
+        {
+          "heading": "test_alpaca_adapter",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_alpaca_clock_feed.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 64,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "test_alpaca_clock_feed",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_chain_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 59,
+      "nonEmptyLines": 49,
+      "sections": [
+        {
+          "heading": "test_chain_bench",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_chain_determinism.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 58,
+      "nonEmptyLines": 48,
+      "sections": [
+        {
+          "heading": "test_chain_determinism",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_chain_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 58,
+      "nonEmptyLines": 48,
+      "sections": [
+        {
+          "heading": "test_chain_engine",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_consumer.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 56,
+      "nonEmptyLines": 43,
+      "sections": [
+        {
+          "heading": "test_consumer",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_decision_builder.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 43,
+      "nonEmptyLines": 35,
+      "sections": [
+        {
+          "heading": "test_decision_builder",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_decision_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 49,
+      "nonEmptyLines": 38,
+      "sections": [
+        {
+          "heading": "test_decision_engine",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_e2e_pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 48,
+      "nonEmptyLines": 40,
+      "sections": [
+        {
+          "heading": "test_e2e_pipeline",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_execution_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 56,
+      "nonEmptyLines": 46,
+      "sections": [
+        {
+          "heading": "test_execution_bench",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_execution_determinism.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 49,
+      "nonEmptyLines": 41,
+      "sections": [
+        {
+          "heading": "test_execution_determinism",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_execution_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 50,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "test_execution_engine",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 49
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_execution_guards.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 49,
+      "nonEmptyLines": 41,
+      "sections": [
+        {
+          "heading": "test_execution_guards",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_feature_builder.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 57,
+      "nonEmptyLines": 45,
+      "sections": [
+        {
+          "heading": "test_feature_builder",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_forward_return_labels.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 71,
+      "nonEmptyLines": 58,
+      "sections": [
+        {
+          "heading": "test_forward_return_labels",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_gold_bench.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 45,
+      "nonEmptyLines": 37,
+      "sections": [
+        {
+          "heading": "test_gold_bench",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_guardrail_engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 49,
+      "nonEmptyLines": 38,
+      "sections": [
+        {
+          "heading": "test_guardrail_engine",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_models (snapshot).md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 56,
+      "nonEmptyLines": 43,
+      "sections": [
+        {
+          "heading": "test_models (snapshot)",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_operational_feed.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 60,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "test_operational_feed",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "dev_graph/tests/test_ops_actions.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 56,
+      "nonEmptyLines": 44,
+      "sections": [
+        {
+          "heading": "test_ops_actions",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    }
+  ]
+}

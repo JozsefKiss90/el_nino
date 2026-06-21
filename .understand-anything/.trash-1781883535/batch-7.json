@@ -1,0 +1,311 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/supervisor/decision_engine/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/supervisor/decision_engine/__init__.py",
+      "summary": "Package barrel for the Supervisor Office Decision Engine, re-exporting the DecisionEngine class and its data models as the module's public API.",
+      "tags": ["entry-point", "barrel", "decision-engine", "supervisor"],
+      "complexity": "simple",
+      "languageNotes": "Python package __init__ acting as a re-export barrel for the decision_engine module."
+    },
+    {
+      "id": "file:src/supervisor/decision_engine/decision_engine.py",
+      "type": "file",
+      "name": "decision_engine.py",
+      "filePath": "src/supervisor/decision_engine/decision_engine.py",
+      "summary": "Implements the deterministic DecisionEngine (MOD-002) that scores candidate upgrades against an EvaluationScorecard under treasury and institutional-memory constraints and emits a DecisionPacket.",
+      "tags": ["decision-engine", "service", "supervisor", "deterministic", "api-handler"],
+      "complexity": "moderate",
+      "languageNotes": "Deterministic ranking via stable sort key (-score, upgrade_id) ensures identical inputs yield identical packets."
+    },
+    {
+      "id": "file:src/supervisor/decision_engine/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "summary": "Frozen-dataclass value objects for the Decision Engine, realizing the EvaluationScorecard input contract (SCHEMA-005) and DecisionPacket/RankedOption output contract (SCHEMA-004) plus internal treasury and config types.",
+      "tags": ["data-model", "type-definition", "decision-engine", "validation", "supervisor"],
+      "complexity": "moderate",
+      "languageNotes": "Dependency-free frozen dataclasses enforce invariants via __post_init__ guards (e.g., blocked options must carry a reason)."
+    },
+    {
+      "id": "file:src/supervisor/decision_engine/scoring.py",
+      "type": "file",
+      "name": "scoring.py",
+      "filePath": "src/supervisor/decision_engine/scoring.py",
+      "summary": "Pure deterministic scoring functions that rate an upgrade option by the severity of the office's weakness in the targeted dimension, weighted by expected improvement and cost efficiency.",
+      "tags": ["scoring", "utility", "decision-engine", "deterministic", "supervisor"],
+      "complexity": "simple",
+      "languageNotes": "Dimension-to-weakness function dispatch via a module-level dict registry (WEAKNESS_DIMENSIONS)."
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/decision_engine.py:DecisionEngine",
+      "type": "class",
+      "name": "DecisionEngine",
+      "filePath": "src/supervisor/decision_engine/decision_engine.py",
+      "lineRange": [22, 88],
+      "summary": "Core engine that scores every upgrade in the catalog, applies exclusion and budget filters, deterministically ranks the options, and selects the best allowed upgrade or signals a no-op.",
+      "tags": ["decision-engine", "service", "deterministic", "supervisor"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/models.py:EvaluationScorecard",
+      "type": "class",
+      "name": "EvaluationScorecard",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "lineRange": [16, 22],
+      "summary": "Frozen dataclass realizing SCHEMA-005, carrying realized PnL, calibration, drawdown, and disagreement as the performance evidence consumed by the Decision API.",
+      "tags": ["data-model", "type-definition", "schema", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/models.py:UpgradeOption",
+      "type": "class",
+      "name": "UpgradeOption",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "lineRange": [26, 32],
+      "summary": "Frozen dataclass describing a candidate upgrade in the catalog with its id, cost, target weakness dimension, and expected improvement.",
+      "tags": ["data-model", "type-definition", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/models.py:TreasuryState",
+      "type": "class",
+      "name": "TreasuryState",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "lineRange": [36, 47],
+      "summary": "Immutable treasury snapshot exposing available funds (budget minus deployed) and an after_spend method that returns a new state with the amount deployed.",
+      "tags": ["data-model", "value-object", "decision-engine", "immutable"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/models.py:RankedOption",
+      "type": "class",
+      "name": "RankedOption",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "lineRange": [51, 66],
+      "summary": "One scored option within a decision packet, enforcing the invariant that blocked options carry a reason and allowed options do not via __post_init__ validation.",
+      "tags": ["data-model", "validation", "decision-engine", "schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/models.py:DecisionPacket",
+      "type": "class",
+      "name": "DecisionPacket",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "lineRange": [70, 85],
+      "summary": "Frozen dataclass realizing SCHEMA-004, the deterministic decision output, validating that any non-null selected upgrade id references an allowed ranked option.",
+      "tags": ["data-model", "validation", "decision-engine", "schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/supervisor/decision_engine/models.py:DecisionConfig",
+      "type": "class",
+      "name": "DecisionConfig",
+      "filePath": "src/supervisor/decision_engine/models.py",
+      "lineRange": [89, 93],
+      "summary": "Configuration holding the early-exit thresholds (promotable PnL and calibration) that let the engine skip upgrades when the office is already performing well.",
+      "tags": ["config", "data-model", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/supervisor/decision_engine/scoring.py:weakness_severity",
+      "type": "function",
+      "name": "weakness_severity",
+      "filePath": "src/supervisor/decision_engine/scoring.py",
+      "lineRange": [42, 45],
+      "summary": "Returns the [0, 1] severity of the office's weakness in a given dimension by dispatching to the registered weakness function, or 0 for unknown dimensions.",
+      "tags": ["scoring", "utility", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/supervisor/decision_engine/scoring.py:score_option",
+      "type": "function",
+      "name": "score_option",
+      "filePath": "src/supervisor/decision_engine/scoring.py",
+      "lineRange": [48, 53],
+      "summary": "Computes the cost-efficiency-weighted score of an upgrade option as weakness severity times expected improvement divided by cost, rejecting non-positive costs.",
+      "tags": ["scoring", "utility", "decision-engine", "validation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/supervisor/decision_engine/__init__.py",
+      "target": "file:src/supervisor/decision_engine/decision_engine.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/__init__.py",
+      "target": "file:src/supervisor/decision_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/decision_engine.py",
+      "target": "file:src/supervisor/decision_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/decision_engine.py",
+      "target": "file:src/supervisor/decision_engine/scoring.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/scoring.py",
+      "target": "file:src/supervisor/decision_engine/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/decision_engine.py",
+      "target": "class:src/supervisor/decision_engine/decision_engine.py:DecisionEngine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/decision_engine.py",
+      "target": "class:src/supervisor/decision_engine/decision_engine.py:DecisionEngine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:EvaluationScorecard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:EvaluationScorecard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:UpgradeOption",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:UpgradeOption",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:TreasuryState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:TreasuryState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:RankedOption",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:RankedOption",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:DecisionPacket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:DecisionPacket",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:DecisionConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/models.py",
+      "target": "class:src/supervisor/decision_engine/models.py:DecisionConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/scoring.py",
+      "target": "function:src/supervisor/decision_engine/scoring.py:weakness_severity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/scoring.py",
+      "target": "function:src/supervisor/decision_engine/scoring.py:weakness_severity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/scoring.py",
+      "target": "function:src/supervisor/decision_engine/scoring.py:score_option",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/supervisor/decision_engine/scoring.py",
+      "target": "function:src/supervisor/decision_engine/scoring.py:score_option",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/supervisor/decision_engine/scoring.py:score_option",
+      "target": "function:src/supervisor/decision_engine/scoring.py:weakness_severity",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:src/supervisor/decision_engine/decision_engine.py:DecisionEngine",
+      "target": "function:src/supervisor/decision_engine/scoring.py:score_option",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

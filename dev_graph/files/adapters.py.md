@@ -5,13 +5,14 @@ status: implemented
 implementation_status: implemented
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - code
 source_paths:
   - "src/execution/adapters.py"
-related_files: []
+related_files:
+  - "[[alpaca_adapter.py]]"
 related_tests:
   - "[[test_execution_engine]]"
   - "[[test_execution_determinism]]"
@@ -30,8 +31,9 @@ used_by: []
 ## Definition
 
 The `ExecutionPort` Protocol (the broker boundary — the one `fill()` method that differs between brokers)
-and `SimulatedBrokerAdapter` (the deterministic, replay-safe core path). The `AlpacaPaperAdapter`
-(non-replayable, gate f) is deferred — not built here.
+and `SimulatedBrokerAdapter` (the deterministic, replay-safe core path — the hard-wired default port).
+The non-replayable `AlpacaPaperAdapter` (gate f) now lives in the sibling [[alpaca_adapter.py]] (FILE-038),
+**default-OFF** — built behind this same port but never the default, keeping `adapters.py` network-free.
 
 ## Purpose
 

@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/backtesting/Backtesting Methodology.md",
+      "type": "document",
+      "name": "Backtesting Methodology.md",
+      "filePath": "wiki/backtesting/Backtesting Methodology.md",
+      "summary": "Wiki knowledge node defining the standard backtesting protocol, key performance metrics, inputs/outputs, and failure modes for validating trading strategies against historical data.",
+      "tags": ["documentation", "backtesting", "methodology", "validation", "trading-engine"],
+      "complexity": "moderate",
+      "languageNotes": "Follows the wiki page template (Definition, Purpose, Architecture Role, Inputs, Outputs, Dependencies, Failure Modes, Related Concepts, Source References) with [[wikilink]] cross-references."
+    },
+    {
+      "id": "document:wiki/backtesting/Overfitting Detection.md",
+      "type": "document",
+      "name": "Overfitting Detection.md",
+      "filePath": "wiki/backtesting/Overfitting Detection.md",
+      "summary": "Wiki knowledge node describing detection signals and a mitigation pipeline for identifying and reducing strategy overfitting during backtesting and validation.",
+      "tags": ["documentation", "backtesting", "overfitting", "validation", "risk"],
+      "complexity": "moderate",
+      "languageNotes": "Structured per the wiki template with a Detection Signals / Mitigation Pipeline focus and post-validation key metrics."
+    },
+    {
+      "id": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "type": "document",
+      "name": "Walk-Forward Optimization.md",
+      "filePath": "wiki/backtesting/Walk-Forward Optimization.md",
+      "summary": "Wiki knowledge node detailing the walk-forward optimization methodology, its evidence base, tradeoffs, and open questions for robust out-of-sample strategy parameter tuning.",
+      "tags": ["documentation", "backtesting", "walk-forward", "optimization", "methodology"],
+      "complexity": "moderate",
+      "languageNotes": "Most detailed of the three pages; adds Tradeoffs, Open Questions, and Future Extensions sections to the standard wiki template."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/backtesting/Backtesting Methodology.md",
+      "target": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Backtesting Methodology.md",
+      "target": "document:wiki/backtesting/Overfitting Detection.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Overfitting Detection.md",
+      "target": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Overfitting Detection.md",
+      "target": "document:wiki/backtesting/Backtesting Methodology.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "target": "document:wiki/backtesting/Overfitting Detection.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/backtesting/Walk-Forward Optimization.md",
+      "target": "document:wiki/backtesting/Backtesting Methodology.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

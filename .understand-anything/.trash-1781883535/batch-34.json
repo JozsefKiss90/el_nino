@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "document:jarvis/hud/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "jarvis/hud/README.md",
+      "summary": "Documents the Stage-3 React/TypeScript JARVIS HUD: a read-only consumer of the dev_graph that explains the src layout (typed data layer, pure question to answer router, hooks, components), the npm run/test/build commands, and the offline graph.json vs live Neo4j bridge sourcing model.",
+      "tags": ["documentation", "entry-point", "frontend", "graph-rag", "overview"],
+      "complexity": "simple",
+      "languageNotes": "Emphasizes the projection chain (graph.json is generated, never hand-edited) and ADR-010's read-only consumer constraint."
+    },
+    {
+      "id": "file:jarvis/hud/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "jarvis/hud/index.html",
+      "summary": "Vite HTML entry point for the JARVIS HUD; sets the jarvis data-theme, preloads Google display fonts, and mounts the React app from /src/main.tsx into the #root div.",
+      "tags": ["entry-point", "markup", "frontend", "vite", "html"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:jarvis/hud/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "jarvis/hud/package.json",
+      "summary": "npm manifest for the el-nino-jarvis-hud React app declaring dev/build/preview/test scripts (Vite + tsc + Vitest) and dependencies on react, react-dom, and cytoscape for graph rendering.",
+      "tags": ["configuration", "build-system", "npm", "frontend", "dependencies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:jarvis/hud/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "jarvis/hud/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the HUD: ES2021/ESNext modules with bundler resolution, react-jsx, strict mode plus noUnused checks, and noEmit (Vite handles emission).",
+      "tags": ["configuration", "typescript", "build-system", "strict-mode", "frontend"],
+      "complexity": "simple",
+      "languageNotes": "Uses moduleResolution: bundler with allowImportingTsExtensions and noEmit, the standard Vite type-check-only setup."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:jarvis/hud/README.md",
+      "target": "file:jarvis/hud/index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/hud/README.md",
+      "target": "config:jarvis/hud/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:jarvis/hud/package.json",
+      "target": "file:jarvis/hud/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:jarvis/hud/tsconfig.json",
+      "target": "file:jarvis/hud/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

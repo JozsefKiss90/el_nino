@@ -1,0 +1,146 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview & Bounded Contexts",
+    "description": "There is no root README, so start here for orientation. The dev_graph README explains that this repository is an autonomous Layer-3 trading engine documented by a typed engineering knowledge graph, while the Context Map names the six bounded contexts that make up the system: Data Pipeline, Trading Engine, Risk Control, Agent Runtime, Evaluation Loop, and Supervisor Office. Together they give you the project's purpose and the vocabulary used in every later step.",
+    "nodeIds": [
+      "document:dev_graph/README.md",
+      "document:dev_graph/architecture/Context Map.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "The Three-Layer Architecture",
+    "description": "Building on the bounded contexts, the Layer Model document explains the vertical decomposition the whole codebase is organized around: L1 Data Ingestion, L2 Analysis & Strategy (the snapshot layer, the single source of market truth), and L3 Execution (this repository). Understanding that this engine consumes an upstream L2 snapshot and mediates orders to an L4 broker is the key mental model for reading the pipeline that follows.",
+    "nodeIds": [
+      "document:dev_graph/architecture/Layer Model.md"
+    ]
+  },
+  {
+    "order": 3,
+    "title": "The Chain Orchestrator Entry Point",
+    "description": "This is the runtime heart of the engine and the top of the dependency graph. runtime.py is the CLI entry point that locates a snapshot, loads ledger and portfolio state, drives the pipeline via run_chain, and persists results; engine.py wires the six deterministic stages together in order. Every core module the rest of the tour visits is reached by following imports outward from these two files.",
+    "nodeIds": [
+      "file:src/orchestration/runtime.py",
+      "file:src/orchestration/engine.py",
+      "file:src/orchestration/models.py"
+    ],
+    "languageLesson": "The orchestrator separates an impure IO shell (runtime.py: reads snapshots, writes ledgers) from a pure wiring core (engine.py). This functional-core/imperative-shell split is what makes the chain replayable and deterministic — the same inputs always produce the same ChainResult."
+  },
+  {
+    "order": 4,
+    "title": "Stage 1 - Snapshot Ingestion",
+    "description": "The pipeline's first stage is the Layer-3 side of the Snapshot API, the boundary where upstream market truth enters the engine. The consumer is a fail-closed gate: it loads and validates a Layer-2 snapshot and only yields it when the snapshot's quality gate passed and it is not forced or dry-run, otherwise returning None. This fail-closed posture is the first of many guardrails you will see throughout the engine.",
+    "nodeIds": [
+      "file:src/snapshot/snapshot_consumer/consumer.py",
+      "file:src/snapshot/snapshot_consumer/__init__.py"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Stage 2 - Feature Building",
+    "description": "Once a snapshot is admitted, the feature builder turns it into a deterministic feature vector by applying declarative FeatureSpec transforms (price levels and spreads) while tracking provenance and staleness. This is the engine's transition from raw market data to the structured signals every downstream decision relies on. The declarative-spec approach keeps the transform list auditable and the output reproducible.",
+    "nodeIds": [
+      "file:src/features/feature_builder/feature_builder.py",
+      "file:src/features/feature_builder/models.py"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Stage 3 - Regime Classification",
+    "description": "The feature vector from Step 5 is fed into the regime classifier, which evaluates a prioritized taxonomy of rules to label the current market regime, recording matched, secondary, and near-miss rules with their margins. The taxonomy module defines those per-regime predicate functions and margin-scoring helpers. This deterministic rule-based classification (rather than a black-box model) is a deliberate design choice captured in the regime ADR.",
+    "nodeIds": [
+      "file:src/regime/regime_classifier/regime_classifier.py",
+      "file:src/regime/regime_classifier/taxonomy.py"
+    ]
+  },
+  {
+    "order": 7,
+    "title": "Stage 4 - Gold Decision Packet",
+    "description": "With features and a regime in hand, the decision builder assembles the GoldDecisionPacket: it computes a trust score, resolves a trade direction, attaches a rationale and guard references, and stamps a content-addressed packet id. The policy module holds the scoring policy that derives that trust score and confidence inputs. This packet is the engine's central decision artifact and the highest-fan-in model in the entire codebase, so it is worth studying closely.",
+    "nodeIds": [
+      "file:src/gold/decision_builder/builder.py",
+      "file:src/gold/decision_builder/policy.py",
+      "file:src/gold/decision_builder/models.py"
+    ],
+    "languageLesson": "The packet id is content-addressed — derived by hashing the decision's inputs — so identical inputs yield an identical id. This is the same idea behind Git commit hashes and lets the system deduplicate and verify decisions without a database."
+  },
+  {
+    "order": 8,
+    "title": "Stage 5 - Paper-Trading Runtime Admission",
+    "description": "Before a decision can trade, the paper-trading runtime decides whether to admit it. The pure evaluate() core runs stateful and snapshot-derived L3 guards (cooldowns, duplicates, operational state) over the Gold packet, produces a RuntimeDecisionRecord, and appends a deterministic entry to an append-only ledger without mutating its inputs. The runtime module is the IO boundary that loads and persists that ledger around the pure core.",
+    "nodeIds": [
+      "file:src/gold/paper_runtime/engine.py",
+      "file:src/gold/paper_runtime/runtime.py",
+      "file:src/gold/paper_runtime/predicates.py"
+    ],
+    "languageLesson": "The append-only ledger is an event-sourcing pattern: state is never overwritten, only appended. Replaying the ledger from the start reconstructs exact historical state, which makes the paper-trading record fully auditable and the runtime testable for determinism."
+  },
+  {
+    "order": 9,
+    "title": "Stage 6 - Execution & The Alpaca Adapter",
+    "description": "The final stage applies admitted decisions to the portfolio. The pure execution engine turns guard-approved buys into deterministic ExecutionRecords and updates portfolio state, while runtime.py persists that state. Orders leave through the ExecutionPort protocol: the SimulatedBrokerAdapter produces replayable fills for offline paper trading, and the Alpaca adapter submits real market buys to Alpaca's paper API with strict paper-only base-URL guards.",
+    "nodeIds": [
+      "file:src/execution/engine.py",
+      "file:src/execution/runtime.py",
+      "file:src/execution/adapters.py",
+      "file:src/execution/alpaca_adapter.py"
+    ],
+    "languageLesson": "ExecutionPort is a Python Protocol (structural typing): any class with the right method shape satisfies it, no inheritance required. This ports-and-adapters design lets the simulated and Alpaca brokers be swapped without touching the engine, which is why the same pipeline runs both offline and against live paper trading."
+  },
+  {
+    "order": 10,
+    "title": "Risk Guardrails & Supervisor",
+    "description": "Cross-cutting the pipeline is the risk-control layer. The guardrail engine loads config from the environment and evaluates an ordered chain of trade-validation predicates, returning the first blocking decision or an approval — the safety net the orchestrator consults before any execution. The supervisor decision engine sits above this, scoring candidate strategy upgrades against an evaluation scorecard under treasury and institutional-memory constraints. The dev_graph gates and predicates document the formal contracts these enforce.",
+    "nodeIds": [
+      "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "file:src/supervisor/decision_engine/decision_engine.py",
+      "document:dev_graph/gates/Gold Decision Gate.md",
+      "document:dev_graph/gates/Runtime Admission Gate.md"
+    ]
+  },
+  {
+    "order": 11,
+    "title": "Operations Control Plane Console",
+    "description": "The ops console is the human operator's entry point and a tightly coupled cluster in its own right. app.py renders a Textual/Rich multi-tab TUI; core.py is a headless governed read-model that assembles the dashboard purely from src/ functions without reimplementing safety logic; and actions.py and gated.py split operator commands into safe versus confirmation-gated, side-effecting actions such as running the chain against the live Alpaca paper adapter. This layer is how the deterministic engine from Steps 3-10 is actually driven and supervised.",
+    "nodeIds": [
+      "file:ops/app.py",
+      "file:ops/core.py",
+      "file:ops/actions.py",
+      "file:ops/gated.py",
+      "document:ops/README.md"
+    ],
+    "languageLesson": "core.py never reimplements trading logic — it only re-reads governed functions from src/. This read-model separation (a CQRS-style split between querying state for display and commanding state changes) keeps the TUI from ever becoming a second, divergent source of safety rules."
+  },
+  {
+    "order": 12,
+    "title": "JARVIS HUD & GraphRAG Backend",
+    "description": "JARVIS is the project's visual operator surface. The React/Vite MainHud page composes every panel and wires the speech, voice-bridge, Claude-uplink, and graph hooks together, all sharing the central TypeScript type definitions for graph nodes and edges. Behind it, a read-only FastAPI backend bridges Neo4j to expose graph traversal endpoints and a fail-closed GraphRAG /ask route, turning the engineering knowledge graph into an interactive, queryable console.",
+    "nodeIds": [
+      "file:jarvis/hud/src/pages/MainHud.tsx",
+      "file:jarvis/hud/src/data/types.ts",
+      "file:jarvis/backend/app.py"
+    ],
+    "languageLesson": "types.ts is a shared contract imported by components, hooks, and the data router alike — the single highest fan-in TypeScript module. Centralizing type definitions like this means a change to the graph node shape surfaces as compile errors everywhere it is consumed, rather than as silent runtime bugs."
+  },
+  {
+    "order": 13,
+    "title": "Containerization & Deployment",
+    "description": "The JARVIS backend ships as a container. The Dockerfile builds a single-stage image that installs Python dependencies, copies app.py, and serves the read-only FastAPI graph API with uvicorn on port 8000 over the dev_graph in Neo4j. The compose file orchestrates the full offline-first stack — a Neo4j 5 graph store with APOC, the FastAPI traversal API, and an nginx static frontend — wired together by health-checked dependencies.",
+    "nodeIds": [
+      "service:jarvis/backend/Dockerfile",
+      "service:jarvis/docker-compose.yml"
+    ],
+    "languageLesson": "docker-compose uses depends_on with health checks so the API only starts once Neo4j reports healthy, and named volumes persist the graph store across restarts. Network isolation between the Neo4j, API, and frontend services keeps the database unreachable from outside the compose network."
+  },
+  {
+    "order": 14,
+    "title": "The Dev Graph Engineering Twin",
+    "description": "The tour ends where it began — the dev_graph that documents everything you have read. The Layer Model and Context Map you started with are part of an ontology-governed digital twin of ADRs, systems, capabilities, module/file/test nodes, interfaces, and benchmarks that trace every implementation decision back to its rationale. Revisiting it now, with the pipeline understood, shows how the project keeps its code, decisions, and knowledge in lockstep.",
+    "nodeIds": [
+      "document:dev_graph/architecture/Runtime Topology.md",
+      "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "document:dev_graph/modules/Chain Orchestrator.md"
+    ]
+  }
+]

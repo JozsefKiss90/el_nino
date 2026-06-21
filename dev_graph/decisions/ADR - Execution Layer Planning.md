@@ -5,15 +5,20 @@ status: active
 implementation_status: not-started
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
   - ADR
+  - code
 source_paths:
   - "ultimateplan.md"
-related_files: []
-related_tests: []
+related_files:
+  - "[[alpaca_adapter.py]]"
+  - "[[alpaca_clock_feed.py]]"
+related_tests:
+  - "[[test_alpaca_adapter]]"
+  - "[[test_alpaca_clock_feed]]"
 related_constraints:
   - "[[Canonical Ownership]]"
   - "[[No Wiki Mutation]]"
@@ -44,7 +49,9 @@ event, file, test, or code, and **freezes nothing**.
 gates govern the *downstream authoring of normative execution contract nodes*, not the acceptance of this
 ADR — they remained **Open** at acceptance and are closed by the contract-first design + implementation
 slices described in the STEP-0 brief `EXECUTION_LAYER_IMPLEMENTATION_PLAN.md`, not by this promotion.
-Acceptance ≠ gate closure. **Current state (2026-06-16): gates (a)–(e) are Closed, (f) deferred — see §7.**
+Acceptance ≠ gate closure. **Current state (2026-06-18): gates (a)–(f) are ALL Closed — see §7.** (Gate
+(f), the Alpaca-adapter boundary, was closed 2026-06-18 by the default-OFF live plugs; (a)–(e) closed
+2026-06-16.)
 
 It opens the **execution / portfolio layer** epoch — the sanctioned next epoch named in the 2026-06-09
 Paper-Trading Runtime audit baseline (dev_graph log, 2026-06-09: *"Paper-Trading Runtime epoch is accepted
@@ -200,9 +207,9 @@ deprecated id, and none reuses a reserved id (INT-002/004/005/008; SCHEMA-002/00
 ### 7. Creation Gates
 A normative execution **schema / module / interface** node may be authored **only after ALL** of the
 following hold. They opened the epoch at its start; the contract-first design + implementation slices then
-closed them. **Gate-board reconciliation (2026-06-16):** gates **(a)–(e) are CLOSED** (their closing
-artifacts authored at STEP 1/2/4 below); **(f) remains deferred** per §5 (the Alpaca adapter is not yet
-built — STEP 5). Each gate's current state + closing artifact:
+closed them. **Gate-board reconciliation (2026-06-18):** gates **(a)–(f) are ALL CLOSED** — (a)–(e) at
+STEP 1/2/4 (2026-06-16); **(f) closed 2026-06-18** by the default-OFF, non-replayable live plugs (STEP 5).
+Each gate's current state + closing artifact:
 
 - **a. Execution interface contract defined** — the port (`INT-011`) is specified: what an
   ADMIT-consuming execution call takes and returns, both fill-simulator and live-adapter implementing it.
@@ -227,8 +234,17 @@ built — STEP 5). Each gate's current state + closing artifact:
   model (STEP 1/2).
 - **f. Alpaca-adapter boundary specified** — credential/auth isolation per KA-008 (keys in env only,
   withdrawals disabled, no secret in agent-readable memory) and the non-replayable IO quarantine (live
-  runs logged, never replayed, never in benchmarks) are specified. **Deferred** (per §5) — closes when the
-  adapter boundary is drawn at STEP 5; it does **not** block (a)–(e) or the simulator slice.
+  runs logged, never replayed, never in benchmarks) are specified. **Closed (2026-06-18)** — closing
+  artifacts: [[alpaca_adapter.py]] (FILE-038, `AlpacaPaperAdapter` behind the INT-011 `ExecutionPort`,
+  `mode=alpaca_paper` / `replayable=False`) + [[alpaca_clock_feed.py]] (FILE-037, `AlpacaClockFeed` behind
+  the `OperationalFeed` port — the live-calendar plug that also closes ADR-009's holiday-calendar gap),
+  both **default-OFF** (explicit operator opt-in only; not re-exported, not the default port/feed) and
+  **fail-closed** — `*_from_env` factories refuse any non-paper base URL and fail-closed on missing creds
+  (keys in env / git-ignored `.secrets` only; PRED-005 [[Withdrawal Disabled]] enforced). Validated by
+  [[test_alpaca_adapter]] (TEST-028) + [[test_alpaca_clock_feed]] (TEST-027) — STEP 5. **Built-but-dormant
+  per §5:** `execute()` calls `fill()` only for an approved LONG, which the provisional decision logic
+  does not yet emit, so the adapter ships behind the port unused until calibration (ADR-012) lands. The
+  recurring scheduled run + any *enabling* of the live execution path remain operator HARD-PAUSE actions.
 
 ## Illustrative Field Sketch (non-normative)
 

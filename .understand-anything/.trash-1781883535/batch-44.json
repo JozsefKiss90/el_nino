@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/integrations/Alpaca API.md",
+      "type": "document",
+      "name": "Alpaca API.md",
+      "filePath": "wiki/integrations/Alpaca API.md",
+      "summary": "Wiki integration page documenting the Alpaca commission-free brokerage API, covering authentication, credential-file persistence, paper vs. live trading, and how the trading system places and manages orders through it.",
+      "tags": ["documentation", "integration", "brokerage-api", "trading", "wiki"],
+      "complexity": "moderate",
+      "languageNotes": "Follows the wiki node template (Definition/Purpose/Architecture Role/Inputs/Outputs/Failure Modes/Related Concepts/Source References)."
+    },
+    {
+      "id": "document:wiki/integrations/Capital Trades Integration.md",
+      "type": "document",
+      "name": "Capital Trades Integration.md",
+      "filePath": "wiki/integrations/Capital Trades Integration.md",
+      "summary": "Wiki integration page describing the Capital Trades smart-money data integration, covering its connection method, the institutional-flow signals it provides, latency considerations, and copy-trading tradeoffs.",
+      "tags": ["documentation", "integration", "smart-money", "data-source", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/Exchange API Integration.md",
+      "type": "document",
+      "name": "Exchange API Integration.md",
+      "filePath": "wiki/integrations/Exchange API Integration.md",
+      "summary": "Wiki integration page describing the crypto exchange API integration, covering supported exchanges, the authentication and configuration pattern, spot vs. futures operations, and example trade commands.",
+      "tags": ["documentation", "integration", "exchange-api", "crypto", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/MCP Architecture.md",
+      "type": "document",
+      "name": "MCP Architecture.md",
+      "filePath": "wiki/integrations/MCP Architecture.md",
+      "summary": "Wiki integration page explaining how Model Context Protocol (MCP) servers connect the trading stack to Alpaca, TradingView, and institutional data providers, and the role of MCP connectors in the architecture.",
+      "tags": ["documentation", "integration", "mcp", "architecture", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/Perplexity API.md",
+      "type": "document",
+      "name": "Perplexity API.md",
+      "filePath": "wiki/integrations/Perplexity API.md",
+      "summary": "Wiki integration page documenting use of the Perplexity API as a research/search data source for the trading stack, covering usage, configuration, and tradeoffs.",
+      "tags": ["documentation", "integration", "research-api", "data-source", "wiki"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/integrations/TradingView Integration.md",
+      "type": "document",
+      "name": "TradingView Integration.md",
+      "filePath": "wiki/integrations/TradingView Integration.md",
+      "summary": "Wiki integration page describing TradingView integration patterns (direct MCP connection, webhook bridge with Claude in the middle, and co-work computer use), plus webhook configuration and strategy development.",
+      "tags": ["documentation", "integration", "tradingview", "webhook", "wiki"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/integrations/Webhook Architecture.md",
+      "type": "document",
+      "name": "Webhook Architecture.md",
+      "filePath": "wiki/integrations/Webhook Architecture.md",
+      "summary": "Wiki integration page describing the inbound webhook architecture that receives external alerts (e.g., TradingView) and routes them through the trading pipeline, covering the end-to-end flow, configuration, and failure modes.",
+      "tags": ["documentation", "integration", "webhook", "architecture", "wiki"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/integrations/Alpaca API.md",
+      "target": "document:wiki/integrations/Exchange API Integration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Alpaca API.md",
+      "target": "document:wiki/integrations/MCP Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Capital Trades Integration.md",
+      "target": "document:wiki/integrations/MCP Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Capital Trades Integration.md",
+      "target": "document:wiki/integrations/Alpaca API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Capital Trades Integration.md",
+      "target": "document:wiki/integrations/Perplexity API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Exchange API Integration.md",
+      "target": "document:wiki/integrations/Alpaca API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/MCP Architecture.md",
+      "target": "document:wiki/integrations/TradingView Integration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/MCP Architecture.md",
+      "target": "document:wiki/integrations/Alpaca API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/TradingView Integration.md",
+      "target": "document:wiki/integrations/Webhook Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/TradingView Integration.md",
+      "target": "document:wiki/integrations/MCP Architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/TradingView Integration.md",
+      "target": "document:wiki/integrations/Exchange API Integration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Webhook Architecture.md",
+      "target": "document:wiki/integrations/TradingView Integration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/integrations/Webhook Architecture.md",
+      "target": "document:wiki/integrations/Exchange API Integration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

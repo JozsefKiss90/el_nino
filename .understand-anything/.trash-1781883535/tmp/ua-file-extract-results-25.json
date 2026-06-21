@@ -1,0 +1,1193 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/modules/Chain Orchestrator.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 202,
+      "nonEmptyLines": 177,
+      "sections": [
+        {
+          "heading": "Chain Orchestrator",
+          "level": 1,
+          "line": 49
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 111
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 164
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 166
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 175
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 183
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 191
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 194
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 197
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 201
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "dev_graph/modules/Decision Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 120,
+      "nonEmptyLines": 91,
+      "sections": [
+        {
+          "heading": "Decision Engine",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Scope",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 113
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 116
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "dev_graph/modules/Execution.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 172,
+      "nonEmptyLines": 143,
+      "sections": [
+        {
+          "heading": "Execution",
+          "level": 1,
+          "line": 44
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 116
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 129
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 132
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 135
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 147
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 155
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 165
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 168
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 171
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "dev_graph/modules/Feature Builder.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 106,
+      "nonEmptyLines": 79,
+      "sections": [
+        {
+          "heading": "Feature Builder",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "dev_graph/modules/Gold Decision Builder.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 124,
+      "nonEmptyLines": 96,
+      "sections": [
+        {
+          "heading": "Gold Decision Builder",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 113
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 116
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "dev_graph/modules/Gold Forward-Return Labeler.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 147,
+      "nonEmptyLines": 123,
+      "sections": [
+        {
+          "heading": "Gold Forward-Return Labeler",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Inputs (Dependencies)",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Outputs (Provides)",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 133
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 136
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 146
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "dev_graph/modules/Guardrail Engine.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 115,
+      "nonEmptyLines": 87,
+      "sections": [
+        {
+          "heading": "Guardrail Engine",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 90
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 93
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "dev_graph/modules/Market Regime Classifier.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 113,
+      "nonEmptyLines": 85,
+      "sections": [
+        {
+          "heading": "Market Regime Classifier",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 90
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "dev_graph/modules/Operations Control Plane.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 151,
+      "nonEmptyLines": 126,
+      "sections": [
+        {
+          "heading": "Operations Control Plane",
+          "level": 1,
+          "line": 50
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Inputs (Dependencies)",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Outputs (Provides)",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 94
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 116
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 121
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 123
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 129
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 132
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 146
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 149
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "dev_graph/modules/Paper-Trading Runtime.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 163,
+      "nonEmptyLines": 135,
+      "sections": [
+        {
+          "heading": "Paper-Trading Runtime",
+          "level": 1,
+          "line": 42
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Inputs (or Dependencies)",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Outputs (or Provides)",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Implements",
+          "level": 3,
+          "line": 125
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 132
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 136
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 150
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 153
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 156
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 159
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 162
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "dev_graph/modules/Snapshot Consumer.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 93,
+      "nonEmptyLines": 70,
+      "sections": [
+        {
+          "heading": "Snapshot Consumer",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

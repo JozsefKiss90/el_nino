@@ -1,0 +1,326 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/tests/test_alpaca_adapter.md",
+      "type": "document",
+      "name": "test_alpaca_adapter.md",
+      "filePath": "dev_graph/tests/test_alpaca_adapter.md",
+      "summary": "Dev-graph test node (TEST-028) documenting the unit test for the live Alpaca paper ExecutionPort adapter, asserting paper-only credential boundaries, fail-closed error paths, and non-replayable quarantine.",
+      "tags": ["documentation", "test", "execution", "alpaca", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_alpaca_clock_feed.md",
+      "type": "document",
+      "name": "test_alpaca_clock_feed.md",
+      "filePath": "dev_graph/tests/test_alpaca_clock_feed.md",
+      "summary": "Dev-graph test node documenting the integration test for the Alpaca market-clock feed used by the chain orchestrator to gate session-aware runs.",
+      "tags": ["documentation", "test", "orchestration", "alpaca", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_chain_bench.md",
+      "type": "document",
+      "name": "test_chain_bench.md",
+      "filePath": "dev_graph/tests/test_chain_bench.md",
+      "summary": "Dev-graph test node documenting the benchmark suite that measures end-to-end chain-orchestrator performance against the Chain Orchestrator Benchmark.",
+      "tags": ["documentation", "test", "benchmark", "orchestration", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_chain_determinism.md",
+      "type": "document",
+      "name": "test_chain_determinism.md",
+      "filePath": "dev_graph/tests/test_chain_determinism.md",
+      "summary": "Dev-graph test node documenting the end-to-end determinism regression for the chain orchestrator runtime, asserting byte-identical replays across runs.",
+      "tags": ["documentation", "test", "determinism", "orchestration", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_chain_engine.md",
+      "type": "document",
+      "name": "test_chain_engine.md",
+      "filePath": "dev_graph/tests/test_chain_engine.md",
+      "summary": "Dev-graph test node documenting the end-to-end test of the chain orchestration engine that wires the full snapshot-to-execution pipeline.",
+      "tags": ["documentation", "test", "orchestration", "e2e", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_consumer.md",
+      "type": "document",
+      "name": "test_consumer.md",
+      "filePath": "dev_graph/tests/test_consumer.md",
+      "summary": "Dev-graph test node documenting the unit test for the Layer-2 snapshot consumer that validates ingestion against the Snapshot API.",
+      "tags": ["documentation", "test", "snapshot", "consumer", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_decision_builder.md",
+      "type": "document",
+      "name": "test_decision_builder.md",
+      "filePath": "dev_graph/tests/test_decision_builder.md",
+      "summary": "Dev-graph test node documenting the unit test for the Gold Decision Builder that assembles trading decisions in the gold pipeline.",
+      "tags": ["documentation", "test", "gold", "decision", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_decision_engine.md",
+      "type": "document",
+      "name": "test_decision_engine.md",
+      "filePath": "dev_graph/tests/test_decision_engine.md",
+      "summary": "Dev-graph test node documenting the unit test for the supervisor Decision Engine that drives the trading decision logic.",
+      "tags": ["documentation", "test", "supervisor", "decision", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_e2e_pipeline.md",
+      "type": "document",
+      "name": "test_e2e_pipeline.md",
+      "filePath": "dev_graph/tests/test_e2e_pipeline.md",
+      "summary": "Dev-graph test node documenting the end-to-end gold-pipeline test spanning the snapshot consumer, feature builder, regime classifier, and decision builder.",
+      "tags": ["documentation", "test", "e2e", "gold", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_bench.md",
+      "type": "document",
+      "name": "test_execution_bench.md",
+      "filePath": "dev_graph/tests/test_execution_bench.md",
+      "summary": "Dev-graph test node documenting the benchmark suite measuring execution-layer performance against the Execution Layer Benchmark.",
+      "tags": ["documentation", "test", "benchmark", "execution", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_determinism.md",
+      "type": "document",
+      "name": "test_execution_determinism.md",
+      "filePath": "dev_graph/tests/test_execution_determinism.md",
+      "summary": "Dev-graph test node documenting the regression that proves the execution layer is deterministic and replayable via the Execution API.",
+      "tags": ["documentation", "test", "determinism", "execution", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_engine.md",
+      "type": "document",
+      "name": "test_execution_engine.md",
+      "filePath": "dev_graph/tests/test_execution_engine.md",
+      "summary": "Dev-graph test node documenting the unit test for the pure execution engine that maps approved decisions to fills through the Execution API.",
+      "tags": ["documentation", "test", "execution", "engine", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_execution_guards.md",
+      "type": "document",
+      "name": "test_execution_guards.md",
+      "filePath": "dev_graph/tests/test_execution_guards.md",
+      "summary": "Dev-graph test node documenting the unit test for execution-layer guardrails that fail-close on disallowed orders via the Execution API.",
+      "tags": ["documentation", "test", "execution", "guards", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_feature_builder.md",
+      "type": "document",
+      "name": "test_feature_builder.md",
+      "filePath": "dev_graph/tests/test_feature_builder.md",
+      "summary": "Dev-graph test node documenting the unit test for the feature builder that derives the feature vector conforming to the Feature Vector Schema.",
+      "tags": ["documentation", "test", "features", "schema", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_forward_return_labels.md",
+      "type": "document",
+      "name": "test_forward_return_labels.md",
+      "filePath": "dev_graph/tests/test_forward_return_labels.md",
+      "summary": "Dev-graph test node documenting the calibration benchmark for the Gold Forward-Return Labeler that produces the forward-return label set.",
+      "tags": ["documentation", "test", "calibration", "labeling", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_gold_bench.md",
+      "type": "document",
+      "name": "test_gold_bench.md",
+      "filePath": "dev_graph/tests/test_gold_bench.md",
+      "summary": "Dev-graph test node documenting the benchmark validating the gold decision distribution produced by the Gold Decision Builder.",
+      "tags": ["documentation", "test", "benchmark", "gold", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_guardrail_engine.md",
+      "type": "document",
+      "name": "test_guardrail_engine.md",
+      "filePath": "dev_graph/tests/test_guardrail_engine.md",
+      "summary": "Dev-graph test node documenting the unit test for the risk Guardrail Engine that enforces position and risk limits.",
+      "tags": ["documentation", "test", "risk", "guardrail", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_models (snapshot).md",
+      "type": "document",
+      "name": "test_models (snapshot).md",
+      "filePath": "dev_graph/tests/test_models (snapshot).md",
+      "summary": "Dev-graph test node documenting the unit test for the snapshot data models validating conformance to the Layer 2 Snapshot Schema.",
+      "tags": ["documentation", "test", "snapshot", "schema", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_operational_feed.md",
+      "type": "document",
+      "name": "test_operational_feed.md",
+      "filePath": "dev_graph/tests/test_operational_feed.md",
+      "summary": "Dev-graph test node documenting the integration test for the operational feed consumed by the chain orchestrator at runtime.",
+      "tags": ["documentation", "test", "orchestration", "feed", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/tests/test_ops_actions.md",
+      "type": "document",
+      "name": "test_ops_actions.md",
+      "filePath": "dev_graph/tests/test_ops_actions.md",
+      "summary": "Dev-graph test node documenting the unit test for the operations control-plane actions module that exposes gated operator commands.",
+      "tags": ["documentation", "test", "ops", "actions", "dev-graph"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/tests/test_alpaca_adapter.md",
+      "target": "file:tests/execution/test_alpaca_adapter.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_alpaca_clock_feed.md",
+      "target": "file:tests/orchestration/test_alpaca_clock_feed.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_chain_bench.md",
+      "target": "file:tests/orchestration/test_chain_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_chain_determinism.md",
+      "target": "file:tests/orchestration/test_chain_determinism.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_chain_engine.md",
+      "target": "file:tests/orchestration/test_chain_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_consumer.md",
+      "target": "file:tests/snapshot/test_consumer.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_decision_builder.md",
+      "target": "file:tests/gold/test_decision_builder.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_decision_engine.md",
+      "target": "file:tests/supervisor/test_decision_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_e2e_pipeline.md",
+      "target": "file:tests/gold/test_e2e_pipeline.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_execution_bench.md",
+      "target": "file:tests/execution/test_execution_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_execution_determinism.md",
+      "target": "file:tests/execution/test_execution_determinism.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_execution_engine.md",
+      "target": "file:tests/execution/test_execution_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_execution_guards.md",
+      "target": "file:tests/execution/test_execution_guards.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_feature_builder.md",
+      "target": "file:tests/features/test_feature_builder.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_forward_return_labels.md",
+      "target": "file:tests/calibration/test_forward_return_labels.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_gold_bench.md",
+      "target": "file:tests/gold/test_gold_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_guardrail_engine.md",
+      "target": "file:tests/risk/test_guardrail_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_models (snapshot).md",
+      "target": "file:tests/snapshot/test_models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_operational_feed.md",
+      "target": "file:tests/orchestration/test_operational_feed.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_actions.md",
+      "target": "file:tests/ops/test_actions.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

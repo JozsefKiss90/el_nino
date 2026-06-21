@@ -1,0 +1,332 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/gold/paper_runtime/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/gold/paper_runtime/__init__.py",
+      "summary": "Package barrel for the Paper-Trading Runtime (MOD-007) that re-exports the public API — evaluate, run_once/run_sequence, runtime models, config, and guard predicates — into a single import surface.",
+      "tags": ["entry-point", "barrel", "exports", "paper-trading", "runtime"],
+      "complexity": "simple",
+      "languageNotes": "Python package barrel using explicit re-exports and an __all__ allowlist to define the public API."
+    },
+    {
+      "id": "file:src/gold/paper_runtime/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/gold/paper_runtime/config.py",
+      "summary": "Defines the immutable RuntimePolicyConfig dataclass and its deterministic fingerprint, controlling which L3 admission guards (operational, snapshot, cooldown) are required and the cooldown window.",
+      "tags": ["config", "validation", "data-model", "runtime", "paper-trading"],
+      "complexity": "moderate",
+      "languageNotes": "Frozen dataclass with __post_init__ validation and a sha256 policy fingerprint for reproducible runtime-policy versioning."
+    },
+    {
+      "id": "file:src/gold/paper_runtime/engine.py",
+      "type": "file",
+      "name": "engine.py",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "summary": "Pure runtime admission core: evaluate() runs the stateful and snapshot-derived L3 guards over a Gold DecisionPacket, produces a RuntimeDecisionRecord, and appends a deterministic entry to the runtime ledger without mutating inputs.",
+      "tags": ["service", "runtime", "validation", "paper-trading", "decision-engine"],
+      "complexity": "moderate",
+      "languageNotes": "Side-effect-free evaluation function — all IO is delegated to runtime.py, keeping the core deterministically testable."
+    },
+    {
+      "id": "file:src/gold/paper_runtime/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "summary": "Core data contracts for the paper-trading runtime: Verdict enum, GuardOutcome, OperationalInput, the append-only RuntimeLedger with LedgerEntry, and the RuntimeDecisionRecord, plus deterministic hashing helpers for record IDs and snapshot-guard digests.",
+      "tags": ["data-model", "serialization", "type-definition", "runtime", "paper-trading"],
+      "complexity": "complex",
+      "languageNotes": "Frozen dataclasses with strict from_dict/from_mapping contract validation and sha256-based state hashing for ledger integrity and replay safety."
+    },
+    {
+      "id": "file:src/gold/paper_runtime/predicates.py",
+      "type": "file",
+      "name": "predicates.py",
+      "filePath": "src/gold/paper_runtime/predicates.py",
+      "summary": "Boolean guard predicates for runtime admission — duplicate_ok, operational_ok, data_ok, freshness_ok, and cooldown_ok — that decide whether a decision packet may be admitted given prior ledger state and operational input.",
+      "tags": ["validation", "predicate", "runtime", "paper-trading", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/gold/paper_runtime/runtime.py",
+      "type": "file",
+      "name": "runtime.py",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "summary": "IO boundary for the paper-trading runtime: loads/persists the append-only ledger and operational input from disk and drives run_once/run_sequence over the pure evaluate() core.",
+      "tags": ["service", "serialization", "runtime", "paper-trading", "io"],
+      "complexity": "moderate",
+      "languageNotes": "Uses atomic write-then-os.replace for crash-safe ledger persistence."
+    },
+    {
+      "id": "file:src/orchestration/alpaca_clock_feed.py",
+      "type": "file",
+      "name": "alpaca_clock_feed.py",
+      "filePath": "src/orchestration/alpaca_clock_feed.py",
+      "summary": "Operational feed adapter that derives a venue-open/closed OperationalInput from the Alpaca trading-calendar API, with an env-driven factory that enforces paper-trading base URLs.",
+      "tags": ["service", "adapter", "operational-feed", "alpaca", "integration"],
+      "complexity": "moderate",
+      "languageNotes": "Protocol-based AlpacaCalendarClient seam allows injecting a fake calendar in tests while the REST client uses urllib directly."
+    },
+    {
+      "id": "class:src/gold/paper_runtime/config.py:RuntimePolicyConfig",
+      "type": "class",
+      "name": "RuntimePolicyConfig",
+      "filePath": "src/gold/paper_runtime/config.py",
+      "lineRange": [45, 81],
+      "summary": "Immutable runtime-policy configuration toggling required admission guards and the cooldown window, with validation and a deterministic sha256 fingerprint for policy versioning.",
+      "tags": ["config", "data-model", "validation", "runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/gold/paper_runtime/config.py",
+      "lineRange": [84, 95],
+      "summary": "Loads and validates a RuntimePolicyConfig from a JSON file, raising RuntimePolicyConfigError on missing files or malformed JSON.",
+      "tags": ["config", "io", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/engine.py:evaluate",
+      "type": "function",
+      "name": "evaluate",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [70, 150],
+      "summary": "Pure admission core that evaluates all L3 guards against a decision packet, operational input, and prior ledger, then emits a RuntimeDecisionRecord and an appended ledger reflecting the verdict.",
+      "tags": ["service", "decision-engine", "validation", "runtime"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/engine.py:_required_guards",
+      "type": "function",
+      "name": "_required_guards",
+      "filePath": "src/gold/paper_runtime/engine.py",
+      "lineRange": [55, 67],
+      "summary": "Computes the set of guard names that must pass given the runtime policy configuration's required-guard toggles.",
+      "tags": ["utility", "runtime", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:OperationalInput",
+      "type": "class",
+      "name": "OperationalInput",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [70, 135],
+      "summary": "Versioned operational-state contract (tradeable, venue_open, halt, degraded) with a deterministic fingerprint, a closed() factory, and strict from_mapping validation.",
+      "tags": ["data-model", "serialization", "runtime", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:LedgerEntry",
+      "type": "class",
+      "name": "LedgerEntry",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [142, 189],
+      "summary": "Single append-only runtime ledger record capturing the verdict, triggered guard, and provenance digests for one decision packet, with to_dict/from_dict serialization.",
+      "tags": ["data-model", "serialization", "runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:RuntimeLedger",
+      "type": "class",
+      "name": "RuntimeLedger",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [193, 257],
+      "summary": "Self-describing append-only ledger of admission decisions providing admit-history queries (has_admit, last_admit_as_of), sequencing, immutable append, and a sha256 state hash for chaining.",
+      "tags": ["data-model", "serialization", "runtime", "state"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:RuntimeDecisionRecord",
+      "type": "class",
+      "name": "RuntimeDecisionRecord",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [300, 350],
+      "summary": "Emitted SCHEMA-012 decision record summarizing a runtime admission outcome — verdict, triggered guard, guard outcomes, ledger state hashes, and non-execution notice — with post-init contract validation.",
+      "tags": ["data-model", "serialization", "runtime", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/models.py:GuardOutcome",
+      "type": "class",
+      "name": "GuardOutcome",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [51, 63],
+      "summary": "Immutable result of a single admission guard recording its name, pass/fail status, and reason, with dict serialization.",
+      "tags": ["data-model", "serialization", "runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/models.py:compute_record_id",
+      "type": "function",
+      "name": "compute_record_id",
+      "filePath": "src/gold/paper_runtime/models.py",
+      "lineRange": [272, 296],
+      "summary": "Derives a deterministic sha256 record ID from the source packet, runtime-policy fingerprint, operational fingerprint, snapshot-guard digest, and prior ledger state hash for replay-safe identity.",
+      "tags": ["utility", "serialization", "hashing", "runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/gold/paper_runtime/predicates.py:_placeholder",
+      "type": "function",
+      "name": "cooldown_ok",
+      "filePath": "src/gold/paper_runtime/predicates.py",
+      "lineRange": [79, 105],
+      "summary": "Cooldown guard that admits a packet only if enough hours have elapsed since the last admitted decision, parsing ledger and packet timestamps and respecting the configured cooldown window.",
+      "tags": ["validation", "predicate", "runtime", "cooldown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/predicates.py:operational_ok",
+      "type": "function",
+      "name": "operational_ok",
+      "filePath": "src/gold/paper_runtime/predicates.py",
+      "lineRange": [38, 48],
+      "summary": "Operational guard that fails admission when the venue is closed, halted, or degraded for the packet's instrument based on the operational input.",
+      "tags": ["validation", "predicate", "runtime", "operational-feed"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:run_once",
+      "type": "function",
+      "name": "run_once",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [75, 86],
+      "summary": "Drives a single admission cycle: loads the ledger and operational input from disk, runs evaluate(), and persists the resulting ledger atomically.",
+      "tags": ["service", "io", "runtime", "orchestration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:run_sequence",
+      "type": "function",
+      "name": "run_sequence",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [89, 105],
+      "summary": "Replays a sequence of packet/operational pairs through evaluate() against an in-memory ledger, returning the accumulated decision records.",
+      "tags": ["service", "runtime", "orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:load_ledger",
+      "type": "function",
+      "name": "load_ledger",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [32, 46],
+      "summary": "Loads a RuntimeLedger from a JSON file, returning an empty ledger when the file is absent and raising RuntimeContractError on malformed content.",
+      "tags": ["io", "serialization", "runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/paper_runtime/runtime.py:load_operational",
+      "type": "function",
+      "name": "load_operational",
+      "filePath": "src/gold/paper_runtime/runtime.py",
+      "lineRange": [59, 72],
+      "summary": "Loads an OperationalInput from disk for the given instrument, defaulting to a closed-venue input when the file is missing.",
+      "tags": ["io", "serialization", "runtime", "operational-feed"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/orchestration/alpaca_clock_feed.py:AlpacaClockFeed",
+      "type": "class",
+      "name": "AlpacaClockFeed",
+      "filePath": "src/orchestration/alpaca_clock_feed.py",
+      "lineRange": [76, 109],
+      "summary": "Operational feed that queries an injected Alpaca calendar client to produce an OperationalInput reflecting whether the trading venue is open for the target instrument on a given date.",
+      "tags": ["service", "adapter", "operational-feed", "alpaca"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/orchestration/alpaca_clock_feed.py:_AlpacaRestCalendarClient",
+      "type": "class",
+      "name": "_AlpacaRestCalendarClient",
+      "filePath": "src/orchestration/alpaca_clock_feed.py",
+      "lineRange": [112, 132],
+      "summary": "Concrete Alpaca calendar client that fetches trading days from the Alpaca REST calendar endpoint over urllib and returns them as a tuple of date strings.",
+      "tags": ["adapter", "integration", "alpaca", "http-client"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/orchestration/alpaca_clock_feed.py:clock_feed_from_env",
+      "type": "function",
+      "name": "clock_feed_from_env",
+      "filePath": "src/orchestration/alpaca_clock_feed.py",
+      "lineRange": [135, 153],
+      "summary": "Factory that builds an AlpacaClockFeed from environment-provided Alpaca credentials and base URL, enforcing a paper-trading base URL guard.",
+      "tags": ["factory", "config", "alpaca", "operational-feed"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {"source": "file:src/gold/paper_runtime/__init__.py", "target": "file:src/gold/paper_runtime/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/__init__.py", "target": "file:src/gold/paper_runtime/engine.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/__init__.py", "target": "file:src/gold/paper_runtime/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/__init__.py", "target": "file:src/gold/paper_runtime/predicates.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/__init__.py", "target": "file:src/gold/paper_runtime/runtime.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "file:src/gold/paper_runtime/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "file:src/gold/paper_runtime/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "file:src/gold/paper_runtime/predicates.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "file:src/gold/paper_runtime/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "file:src/gold/paper_runtime/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "file:src/gold/paper_runtime/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "file:src/gold/paper_runtime/engine.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "file:src/gold/paper_runtime/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/orchestration/alpaca_clock_feed.py", "target": "file:src/gold/paper_runtime/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/gold/paper_runtime/config.py", "target": "class:src/gold/paper_runtime/config.py:RuntimePolicyConfig", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/config.py", "target": "function:src/gold/paper_runtime/config.py:load_config", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/config.py", "target": "class:src/gold/paper_runtime/config.py:RuntimePolicyConfig", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/paper_runtime/config.py", "target": "function:src/gold/paper_runtime/config.py:load_config", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "function:src/gold/paper_runtime/engine.py:evaluate", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "function:src/gold/paper_runtime/engine.py:_required_guards", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/engine.py", "target": "function:src/gold/paper_runtime/engine.py:evaluate", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:OperationalInput", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:LedgerEntry", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:RuntimeLedger", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:RuntimeDecisionRecord", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:GuardOutcome", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "function:src/gold/paper_runtime/models.py:compute_record_id", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:OperationalInput", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:RuntimeLedger", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "class:src/gold/paper_runtime/models.py:RuntimeDecisionRecord", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/paper_runtime/models.py", "target": "function:src/gold/paper_runtime/models.py:compute_record_id", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "class:src/gold/paper_runtime/predicates.py:_placeholder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "function:src/gold/paper_runtime/predicates.py:operational_ok", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "class:src/gold/paper_runtime/predicates.py:_placeholder", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/paper_runtime/predicates.py", "target": "function:src/gold/paper_runtime/predicates.py:operational_ok", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "function:src/gold/paper_runtime/runtime.py:run_once", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "function:src/gold/paper_runtime/runtime.py:run_sequence", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "function:src/gold/paper_runtime/runtime.py:load_ledger", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "function:src/gold/paper_runtime/runtime.py:load_operational", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "function:src/gold/paper_runtime/runtime.py:run_once", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/paper_runtime/runtime.py", "target": "function:src/gold/paper_runtime/runtime.py:run_sequence", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/orchestration/alpaca_clock_feed.py", "target": "class:src/orchestration/alpaca_clock_feed.py:AlpacaClockFeed", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/orchestration/alpaca_clock_feed.py", "target": "class:src/orchestration/alpaca_clock_feed.py:_AlpacaRestCalendarClient", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/orchestration/alpaca_clock_feed.py", "target": "function:src/orchestration/alpaca_clock_feed.py:clock_feed_from_env", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/orchestration/alpaca_clock_feed.py", "target": "class:src/orchestration/alpaca_clock_feed.py:AlpacaClockFeed", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/orchestration/alpaca_clock_feed.py", "target": "function:src/orchestration/alpaca_clock_feed.py:clock_feed_from_env", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:src/gold/paper_runtime/engine.py:evaluate", "target": "function:src/gold/paper_runtime/models.py:compute_record_id", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/gold/paper_runtime/engine.py:evaluate", "target": "function:src/gold/paper_runtime/predicates.py:operational_ok", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/gold/paper_runtime/runtime.py:run_once", "target": "function:src/gold/paper_runtime/engine.py:evaluate", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/gold/paper_runtime/runtime.py:run_sequence", "target": "function:src/gold/paper_runtime/engine.py:evaluate", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "class:src/orchestration/alpaca_clock_feed.py:AlpacaClockFeed", "target": "class:src/gold/paper_runtime/models.py:OperationalInput", "type": "depends_on", "direction": "forward", "weight": 0.6}
+  ]
+}

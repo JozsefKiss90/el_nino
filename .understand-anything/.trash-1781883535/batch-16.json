@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/constraints/Canonical Ownership.md",
+      "type": "document",
+      "name": "Canonical Ownership.md",
+      "filePath": "dev_graph/constraints/Canonical Ownership.md",
+      "summary": "Dev_graph constraint node (CON-003) mandating exactly one canonical node per implementation concept to prevent semantic drift and ambiguous retrieval. Defines pre-creation search, Smart Connections duplicate detection (>85% similarity), and monthly audit as enforcement.",
+      "tags": ["documentation", "governance", "constraint", "schema-definition", "data-model"],
+      "complexity": "moderate",
+      "languageNotes": "Follows the dev_graph constraint node template: Definition, Purpose, Architecture Role, Constraint Expression (pseudo-formal), Severity, Verification, Enforcement Rules, Exceptions, and a Relationships block of [[wikilinks]] for Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/constraints/Frontmatter Required.md",
+      "type": "document",
+      "name": "Frontmatter Required.md",
+      "filePath": "dev_graph/constraints/Frontmatter Required.md",
+      "summary": "Dev_graph constraint node (CON-002) requiring every content node (excluding structural files) to carry valid YAML frontmatter with all universal fields, making nodes queryable by Dataview, filterable by MCP, and exportable to Neo4j/Postgres.",
+      "tags": ["documentation", "governance", "constraint", "schema-definition", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "Constraint Expression encodes the required-fields-and-enum invariant in pseudo-code; verification is a Dataview missing-frontmatter query plus per-session and weekly lint."
+    },
+    {
+      "id": "document:dev_graph/constraints/No Wiki Mutation.md",
+      "type": "document",
+      "name": "No Wiki Mutation.md",
+      "filePath": "dev_graph/constraints/No Wiki Mutation.md",
+      "summary": "Dev_graph constraint node (CON-001) establishing a hard boundary that dev_graph sessions MUST NOT modify wiki/** or raw/** files, preserving the integrity of the separately-governed knowledge layer in the two-graph architecture.",
+      "tags": ["documentation", "governance", "constraint", "security", "boundary"],
+      "complexity": "simple",
+      "languageNotes": "An exception-free blocking constraint; verified via git diff --name-only path checks, session-log audit, and MCP write_note/patch_note path restrictions."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/constraints/Canonical Ownership.md",
+      "target": "document:dev_graph/constraints/Frontmatter Required.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/constraints/Canonical Ownership.md",
+      "target": "document:dev_graph/constraints/No Wiki Mutation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/constraints/Frontmatter Required.md",
+      "target": "document:dev_graph/constraints/No Wiki Mutation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

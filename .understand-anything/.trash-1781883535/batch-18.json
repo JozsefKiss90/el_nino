@@ -1,0 +1,221 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/files/actions.py (ops).md",
+      "type": "document",
+      "name": "actions.py (ops).md",
+      "filePath": "dev_graph/files/actions.py (ops).md",
+      "summary": "Dev_graph file node (FILE-041) documenting ops/actions.py — the Tier-2 safe, non-destructive operator actions (run_chain_now, rerun_calibration_readiness, resync_neo4j) and the SAFE_ACTIONS registry, each audited and structurally safe.",
+      "tags": ["documentation", "dev-graph-node", "operations", "actions", "audit"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/adapters.py.md",
+      "type": "document",
+      "name": "adapters.py.md",
+      "filePath": "dev_graph/files/adapters.py.md",
+      "summary": "Dev_graph file node (FILE-026) documenting src/execution/adapters.py — the ExecutionPort Protocol and the deterministic replay-safe SimulatedBrokerAdapter that realize the hexagonal port/adapter split for the Execution layer.",
+      "tags": ["documentation", "dev-graph-node", "execution", "port-adapter", "broker"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/alpaca_adapter.py.md",
+      "type": "document",
+      "name": "alpaca_adapter.py.md",
+      "filePath": "dev_graph/files/alpaca_adapter.py.md",
+      "summary": "Dev_graph file node (FILE-038) documenting src/execution/alpaca_adapter.py — the default-OFF, non-replayable AlpacaPaperAdapter live paper execution plug behind the ExecutionPort, with fail-closed credential isolation and paper-only quarantine.",
+      "tags": ["documentation", "dev-graph-node", "execution", "alpaca", "paper-trading"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/files/alpaca_clock_feed.py.md",
+      "type": "document",
+      "name": "alpaca_clock_feed.py.md",
+      "filePath": "dev_graph/files/alpaca_clock_feed.py.md",
+      "summary": "Dev_graph file node (FILE-037) documenting src/orchestration/alpaca_clock_feed.py — the default-OFF, non-replayable AlpacaClockFeed OperationalFeed plug that closes the holiday-calendar gap via Alpaca's paper /v2/calendar endpoint.",
+      "tags": ["documentation", "dev-graph-node", "orchestration", "alpaca", "operational-feed"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/files/app.py (ops).md",
+      "type": "document",
+      "name": "app.py (ops).md",
+      "filePath": "dev_graph/files/app.py (ops).md",
+      "summary": "Dev_graph file node (FILE-040) documenting ops/app.py — the Textual TUI (OpsConsole + ConfirmModal) over ops/core.py that renders the read-model and dispatches action tiers without mutating state itself.",
+      "tags": ["documentation", "dev-graph-node", "operations", "tui", "textual"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/audit.py (ops).md",
+      "type": "document",
+      "name": "audit.py (ops).md",
+      "filePath": "dev_graph/files/audit.py (ops).md",
+      "summary": "Dev_graph file node (FILE-043) documenting ops/audit.py — the append-only, ASCII-safe JSONL audit log (make_entry/write_entry/append_audit/read_audit) recording every mutating or live console action.",
+      "tags": ["documentation", "dev-graph-node", "operations", "audit", "append-only"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/builder.py.md",
+      "type": "document",
+      "name": "builder.py.md",
+      "filePath": "dev_graph/files/builder.py.md",
+      "summary": "Dev_graph file node (FILE-018) documenting src/gold/decision_builder/builder.py — the pure, total, fail-closed build_decision driver of the Gold Decision API that assembles a paper-only GoldDecisionPacket from a FeatureVector and RegimeClassification.",
+      "tags": ["documentation", "dev-graph-node", "gold", "decision-builder", "fail-closed"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (execution).md",
+      "type": "document",
+      "name": "config.py (execution).md",
+      "filePath": "dev_graph/files/config.py (execution).md",
+      "summary": "Dev_graph file node (FILE-025) documenting src/execution/config.py — the versioned, fingerprinted ExecutionPolicyConfig and FillModelConfig whose fill_model_version folds into the execution replay key.",
+      "tags": ["documentation", "dev-graph-node", "execution", "config", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (gold).md",
+      "type": "document",
+      "name": "config.py (gold).md",
+      "filePath": "dev_graph/files/config.py (gold).md",
+      "summary": "Dev_graph file node (FILE-016) documenting src/gold/decision_builder/config.py — the versioned DecisionPolicyConfig holding confidence weights/floors and the regime-to-direction table under a single decision_policy_version with a fingerprint coherence check.",
+      "tags": ["documentation", "dev-graph-node", "gold", "config", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (orchestration).md",
+      "type": "document",
+      "name": "config.py (orchestration).md",
+      "filePath": "dev_graph/files/config.py (orchestration).md",
+      "summary": "Dev_graph file node (FILE-032) documenting src/orchestration/config.py — the captured DEFAULT_OPERATIONAL_INPUT and DEFAULT_GUARD_CONFIG seams the chain orchestrator forwards into the chain, kept off the replay path.",
+      "tags": ["documentation", "dev-graph-node", "orchestration", "config", "captured-input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (paper_runtime).md",
+      "type": "document",
+      "name": "config.py (paper_runtime).md",
+      "filePath": "dev_graph/files/config.py (paper_runtime).md",
+      "summary": "Dev_graph file node (FILE-020) documenting src/gold/paper_runtime/config.py — the versioned, fingerprinted RuntimePolicyConfig governing which admission guards (operational, snapshot, cooldown) are required to ADMIT.",
+      "tags": ["documentation", "dev-graph-node", "paper-runtime", "config", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/config.py (regime).md",
+      "type": "document",
+      "name": "config.py (regime).md",
+      "filePath": "dev_graph/files/config.py (regime).md",
+      "summary": "Dev_graph file node (FILE-013) documenting src/regime/regime_classifier/config.py — the frozen, versioned RegimeConfig holding every decision threshold, rule-margin scale, and near_band parameter with a fail-closed loader and decision fingerprint.",
+      "tags": ["documentation", "dev-graph-node", "regime", "config", "thresholds"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/consumer.py.md",
+      "type": "document",
+      "name": "consumer.py.md",
+      "filePath": "dev_graph/files/consumer.py.md",
+      "summary": "Dev_graph file node (FILE-008) documenting src/snapshot/snapshot_consumer/consumer.py — the fail-closed Layer-3 gate over the Snapshot API (load_snapshot, is_consumable, consume) that returns a snapshot only when safe to act on.",
+      "tags": ["documentation", "dev-graph-node", "snapshot", "consumer", "fail-closed"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/core.py (ops).md",
+      "type": "document",
+      "name": "core.py (ops).md",
+      "filePath": "dev_graph/files/core.py (ops).md",
+      "summary": "Dev_graph file node (FILE-039) documenting ops/core.py — the headless, governed, read-only read-model that assembles every console surface as frozen JSON-friendly view dataclasses for the TUI and tests.",
+      "tags": ["documentation", "dev-graph-node", "operations", "read-model", "headless"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/decision_engine.py.md",
+      "type": "document",
+      "name": "decision_engine.py.md",
+      "filePath": "dev_graph/files/decision_engine.py.md",
+      "summary": "Dev_graph file node (FILE-004) documenting src/supervisor/decision_engine/decision_engine.py — the DecisionEngine.decide() orchestrator implementing the Decision API with deterministic ranking, exclusion/budget filtering, and packet emission.",
+      "tags": ["documentation", "dev-graph-node", "supervisor", "decision-engine", "deterministic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/engine.py (execution).md",
+      "type": "document",
+      "name": "engine.py (execution).md",
+      "filePath": "dev_graph/files/engine.py (execution).md",
+      "summary": "Dev_graph file node (FILE-027) documenting src/execution/engine.py — the pure execute() execution core implementing the Execution API with a fail-closed fill decision, portfolio transition, and execution record.",
+      "tags": ["documentation", "dev-graph-node", "execution", "pure-core", "fail-closed"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/engine.py (orchestration).md",
+      "type": "document",
+      "name": "engine.py (orchestration).md",
+      "filePath": "dev_graph/files/engine.py (orchestration).md",
+      "summary": "Dev_graph file node (FILE-033) documenting src/orchestration/engine.py — the pure run_chain() full-chain core threading build_features through execute over one consumable snapshot, with GATE-001 guarding execution on ADMIT.",
+      "tags": ["documentation", "dev-graph-node", "orchestration", "pure-core", "pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/engine.py.md",
+      "type": "document",
+      "name": "engine.py.md",
+      "filePath": "dev_graph/files/engine.py.md",
+      "summary": "Dev_graph file node (FILE-022) documenting src/gold/paper_runtime/engine.py — the pure evaluate() runtime admission core implementing the Paper Runtime API and the Runtime Admission Gate's six-guard fail-closed verdict logic.",
+      "tags": ["documentation", "dev-graph-node", "paper-runtime", "pure-core", "admission-gate"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/feature_builder.py.md",
+      "type": "document",
+      "name": "feature_builder.py.md",
+      "filePath": "dev_graph/files/feature_builder.py.md",
+      "summary": "Dev_graph file node (FILE-010) documenting src/features/feature_builder/feature_builder.py — the deterministic build_features transform plus the fixed FEATURE_REGISTRY that turns a validated Snapshot into a provenance-tagged FeatureVector.",
+      "tags": ["documentation", "dev-graph-node", "features", "feature-builder", "deterministic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/gated.py (ops).md",
+      "type": "document",
+      "name": "gated.py (ops).md",
+      "filePath": "dev_graph/files/gated.py (ops).md",
+      "summary": "Dev_graph file node (FILE-042) documenting ops/gated.py — the Tier-3 gated-live operator actions (run_chain_now_alpaca_paper, register/unregister_daily_schedule, commit_calibration_bump) each enforcing a server-side fail-closed precondition behind a confirm modal and audit.",
+      "tags": ["documentation", "dev-graph-node", "operations", "gated-actions", "paper-only"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {"source": "document:dev_graph/files/actions.py (ops).md", "target": "file:ops/actions.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/adapters.py.md", "target": "file:src/execution/adapters.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/alpaca_adapter.py.md", "target": "file:src/execution/alpaca_adapter.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/alpaca_clock_feed.py.md", "target": "file:src/orchestration/alpaca_clock_feed.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/app.py (ops).md", "target": "file:ops/app.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/audit.py (ops).md", "target": "file:ops/audit.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/builder.py.md", "target": "file:src/gold/decision_builder/builder.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/config.py (execution).md", "target": "file:src/execution/config.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/config.py (gold).md", "target": "file:src/gold/decision_builder/config.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/config.py (orchestration).md", "target": "file:src/orchestration/config.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/config.py (paper_runtime).md", "target": "file:src/gold/paper_runtime/config.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/config.py (regime).md", "target": "file:src/regime/regime_classifier/config.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/consumer.py.md", "target": "file:src/snapshot/snapshot_consumer/consumer.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/core.py (ops).md", "target": "file:ops/core.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/decision_engine.py.md", "target": "file:src/supervisor/decision_engine/decision_engine.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py (execution).md", "target": "file:src/execution/engine.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py (orchestration).md", "target": "file:src/orchestration/engine.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py.md", "target": "file:src/gold/paper_runtime/engine.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/feature_builder.py.md", "target": "file:src/features/feature_builder/feature_builder.py", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/gated.py (ops).md", "target": "file:ops/gated.py", "type": "documents", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/files/actions.py (ops).md", "target": "document:dev_graph/files/core.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/actions.py (ops).md", "target": "document:dev_graph/files/audit.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/app.py (ops).md", "target": "document:dev_graph/files/core.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/app.py (ops).md", "target": "document:dev_graph/files/actions.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/app.py (ops).md", "target": "document:dev_graph/files/gated.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/gated.py (ops).md", "target": "document:dev_graph/files/core.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/gated.py (ops).md", "target": "document:dev_graph/files/audit.py (ops).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/gated.py (ops).md", "target": "document:dev_graph/files/alpaca_adapter.py.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/alpaca_adapter.py.md", "target": "document:dev_graph/files/adapters.py.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py (execution).md", "target": "document:dev_graph/files/adapters.py.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py (execution).md", "target": "document:dev_graph/files/config.py (execution).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py (orchestration).md", "target": "document:dev_graph/files/config.py (orchestration).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/engine.py.md", "target": "document:dev_graph/files/config.py (paper_runtime).md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/files/builder.py.md", "target": "document:dev_graph/files/config.py (gold).md", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

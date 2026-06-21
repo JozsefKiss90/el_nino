@@ -1,0 +1,453 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/features/feature_builder/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/features/feature_builder/__init__.py",
+      "summary": "Package barrel for the feature_builder module, re-exporting the feature-building entry point and the Feature/FeatureVector data models.",
+      "tags": ["entry-point", "barrel", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/feature_builder/feature_builder.py",
+      "type": "file",
+      "name": "feature_builder.py",
+      "filePath": "src/features/feature_builder/feature_builder.py",
+      "summary": "Builds a deterministic feature vector from a market snapshot by applying declarative FeatureSpec transforms (levels and spreads) with provenance and staleness tracking.",
+      "tags": ["feature-engineering", "data-pipeline", "factory", "service"],
+      "complexity": "moderate",
+      "languageNotes": "Uses a small declarative FeatureSpec registry of (name, inputs, fn) tuples to drive feature computation."
+    },
+    {
+      "id": "file:src/features/feature_builder/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/features/feature_builder/models.py",
+      "summary": "Immutable data models for a single Feature and the aggregate FeatureVector, including helpers to look up feature names and values.",
+      "tags": ["data-model", "type-definition", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/gold/decision_builder/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/gold/decision_builder/__init__.py",
+      "summary": "Package barrel for the decision_builder module, re-exporting the decision builder, policy config, scoring policy, and gold decision packet models.",
+      "tags": ["entry-point", "barrel", "decision-engine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/gold/decision_builder/builder.py",
+      "type": "file",
+      "name": "builder.py",
+      "filePath": "src/gold/decision_builder/builder.py",
+      "summary": "Assembles a GoldDecisionPacket from a feature vector and regime classification, computing trust score, direction, rationale, guard refs, and a content-addressed packet id.",
+      "tags": ["decision-engine", "factory", "service", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/gold/decision_builder/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/gold/decision_builder/config.py",
+      "summary": "Defines and validates the DecisionPolicyConfig dataclass (weights, caps, direction table) with JSON loading and a deterministic policy fingerprint.",
+      "tags": ["config", "validation", "decision-engine", "serialization"],
+      "complexity": "complex",
+      "languageNotes": "Frozen dataclass with __post_init__ validation and a sha256 fingerprint over sorted policy fields for reproducibility."
+    },
+    {
+      "id": "file:src/gold/decision_builder/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/gold/decision_builder/models.py",
+      "summary": "Core gold-layer data models: Direction/DecisionMode enums, citation and confidence inputs, guard references, and the content-addressed GoldDecisionPacket with serialization.",
+      "tags": ["data-model", "type-definition", "decision-engine", "serialization"],
+      "complexity": "complex",
+      "languageNotes": "Heavy use of frozen dataclasses with to_dict serialization and a sha256-based compute_packet_id for deterministic packet identity."
+    },
+    {
+      "id": "file:src/gold/decision_builder/policy.py",
+      "type": "file",
+      "name": "policy.py",
+      "filePath": "src/gold/decision_builder/policy.py",
+      "summary": "Scoring policy computing a trust score and confidence inputs from regime classification and feature vector, plus direction resolution against the policy config.",
+      "tags": ["decision-engine", "validation", "scoring", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/regime/regime_classifier/__init__.py",
+      "summary": "Package barrel for the regime_classifier module, re-exporting the classifier entry point, config, models, and taxonomy primitives.",
+      "tags": ["entry-point", "barrel", "regime-classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "src/regime/regime_classifier/config.py",
+      "summary": "Defines and validates the RegimeConfig dataclass of thresholds, scales, and version tags with JSON loading and a deterministic decision fingerprint.",
+      "tags": ["config", "validation", "regime-classification", "serialization"],
+      "complexity": "complex",
+      "languageNotes": "Frozen dataclass with many threshold/scale fields, __post_init__ invariants, and a sha256 fingerprint for reproducibility."
+    },
+    {
+      "id": "file:src/regime/regime_classifier/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/regime/regime_classifier/models.py",
+      "summary": "Data models for the regime classifier: the Regime enum, FeatureProvenance, and the validated RegimeClassification result with full trace serialization.",
+      "tags": ["data-model", "type-definition", "regime-classification", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/regime_classifier.py",
+      "type": "file",
+      "name": "regime_classifier.py",
+      "filePath": "src/regime/regime_classifier/regime_classifier.py",
+      "summary": "Classifies a feature vector into a market regime by evaluating prioritized taxonomy rules, tracking matched/secondary/near rules, margins, and provenance.",
+      "tags": ["regime-classification", "service", "data-pipeline", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/regime/regime_classifier/taxonomy.py",
+      "type": "file",
+      "name": "taxonomy.py",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "summary": "Defines the regime rule taxonomy: MarginSpec/RegimeRule structures, margin and near-proximity scoring helpers, and the per-regime predicate functions.",
+      "tags": ["regime-classification", "type-definition", "validation", "data-pipeline"],
+      "complexity": "complex",
+      "languageNotes": "Encodes regime decision logic as a registry of predicate functions paired with margin specifications."
+    },
+    {
+      "id": "function:src/features/feature_builder/feature_builder.py:build_features",
+      "type": "function",
+      "name": "build_features",
+      "filePath": "src/features/feature_builder/feature_builder.py",
+      "lineRange": [73, 104],
+      "summary": "Computes the full FeatureVector for a snapshot, applying each FeatureSpec when inputs are available and recording unavailable features and max staleness.",
+      "tags": ["feature-engineering", "factory", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/features/feature_builder/models.py:FeatureVector",
+      "type": "class",
+      "name": "FeatureVector",
+      "filePath": "src/features/feature_builder/models.py",
+      "lineRange": [31, 51],
+      "summary": "Immutable aggregate of computed features keyed by name, with accessors for available feature names and individual feature values.",
+      "tags": ["data-model", "feature-engineering", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/features/feature_builder/models.py:Feature",
+      "type": "class",
+      "name": "Feature",
+      "filePath": "src/features/feature_builder/models.py",
+      "lineRange": [20, 27],
+      "summary": "Immutable model of a single computed feature with its value, source inputs, max staleness, and revision risk.",
+      "tags": ["data-model", "feature-engineering", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/decision_builder/builder.py:build_decision",
+      "type": "function",
+      "name": "build_decision",
+      "filePath": "src/gold/decision_builder/builder.py",
+      "lineRange": [58, 123],
+      "summary": "Builds a GoldDecisionPacket end-to-end: validates inputs, scores trust, resolves direction, cites features, attaches guard refs, and computes a deterministic packet id.",
+      "tags": ["decision-engine", "factory", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/decision_builder/builder.py:_rationale",
+      "type": "function",
+      "name": "_rationale",
+      "filePath": "src/gold/decision_builder/builder.py",
+      "lineRange": [41, 55],
+      "summary": "Constructs a human-readable rationale string from regime classification, direction, confidence, uncertainty, and cited features.",
+      "tags": ["decision-engine", "serialization", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/config.py:DecisionPolicyConfig",
+      "type": "class",
+      "name": "DecisionPolicyConfig",
+      "filePath": "src/gold/decision_builder/config.py",
+      "lineRange": [73, 184],
+      "summary": "Frozen policy config holding scoring weights, caps, and the direction table, validating invariants and exposing direction resolution and a deterministic fingerprint.",
+      "tags": ["config", "validation", "decision-engine", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/gold/decision_builder/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/gold/decision_builder/config.py",
+      "lineRange": [187, 198],
+      "summary": "Loads and parses a JSON file into a validated DecisionPolicyConfig, raising a config error on missing files or invalid JSON.",
+      "tags": ["config", "serialization", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:GoldDecisionPacket",
+      "type": "class",
+      "name": "GoldDecisionPacket",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [144, 225],
+      "summary": "Content-addressed gold-layer decision packet capturing direction, confidence, regime lineage, cited features, and guard references with validation and serialization.",
+      "tags": ["data-model", "decision-engine", "serialization", "type-definition"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:FeatureCitation",
+      "type": "class",
+      "name": "FeatureCitation",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [46, 62],
+      "summary": "Immutable record citing a feature used in a decision, with value, inputs, staleness, and revision risk, serializable to a dict.",
+      "tags": ["data-model", "decision-engine", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:ConfidenceInputs",
+      "type": "class",
+      "name": "ConfidenceInputs",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [66, 84],
+      "summary": "Immutable container of the inputs feeding confidence scoring (anchor, secondary/near counts, staleness, revision risk) with dict serialization.",
+      "tags": ["data-model", "decision-engine", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:GuardRefs",
+      "type": "class",
+      "name": "GuardRefs",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [101, 116],
+      "summary": "Immutable set of guard outcome references (data, freshness, supervisor, cooldown, duplicate, operational) attached to a decision packet.",
+      "tags": ["data-model", "decision-engine", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/gold/decision_builder/models.py:SnapshotGuards",
+      "type": "class",
+      "name": "SnapshotGuards",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [120, 140],
+      "summary": "Immutable record of snapshot-level guard outcomes (data, freshness, cooldown) carried into the decision packet.",
+      "tags": ["data-model", "decision-engine", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/gold/decision_builder/models.py:compute_packet_id",
+      "type": "function",
+      "name": "compute_packet_id",
+      "filePath": "src/gold/decision_builder/models.py",
+      "lineRange": [228, 253],
+      "summary": "Computes a deterministic sha256 packet id over snapshot, feature schema, regime, and policy version lineage fields.",
+      "tags": ["decision-engine", "serialization", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/gold/decision_builder/policy.py:trust_score",
+      "type": "function",
+      "name": "trust_score",
+      "filePath": "src/gold/decision_builder/policy.py",
+      "lineRange": [20, 84],
+      "summary": "Computes the confidence/uncertainty trust score from regime classification and feature vector, applying ambiguity, fragility, staleness, and coverage penalties.",
+      "tags": ["decision-engine", "scoring", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/config.py:RegimeConfig",
+      "type": "class",
+      "name": "RegimeConfig",
+      "filePath": "src/regime/regime_classifier/config.py",
+      "lineRange": [65, 182],
+      "summary": "Frozen config of regime thresholds, scales, required features, and version tags, validating invariants and exposing a deterministic decision fingerprint.",
+      "tags": ["config", "validation", "regime-classification", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/config.py:load_config",
+      "type": "function",
+      "name": "load_config",
+      "filePath": "src/regime/regime_classifier/config.py",
+      "lineRange": [185, 196],
+      "summary": "Loads and parses a JSON file into a validated RegimeConfig, raising a regime config error on missing files or invalid JSON.",
+      "tags": ["config", "serialization", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/models.py:RegimeClassification",
+      "type": "class",
+      "name": "RegimeClassification",
+      "filePath": "src/regime/regime_classifier/models.py",
+      "lineRange": [90, 177],
+      "summary": "Validated result of regime classification capturing the matched rule, margins, provenance, evaluated/skipped/near rules, and version lineage with full serialization.",
+      "tags": ["data-model", "regime-classification", "serialization", "type-definition"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/models.py:FeatureProvenance",
+      "type": "class",
+      "name": "FeatureProvenance",
+      "filePath": "src/regime/regime_classifier/models.py",
+      "lineRange": [70, 86],
+      "summary": "Immutable provenance record for a feature used by the classifier, with value, inputs, staleness, and revision risk, serializable to a dict.",
+      "tags": ["data-model", "regime-classification", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/regime_classifier.py:classify",
+      "type": "function",
+      "name": "classify",
+      "filePath": "src/regime/regime_classifier/regime_classifier.py",
+      "lineRange": [38, 136],
+      "summary": "Evaluates prioritized regime rules against a feature vector, selecting the highest-priority match while tracking secondary, near, skipped, and failed-feature rules and building a full RegimeClassification.",
+      "tags": ["regime-classification", "factory", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/taxonomy.py:RegimeRule",
+      "type": "class",
+      "name": "RegimeRule",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [42, 51],
+      "summary": "Immutable taxonomy rule binding a regime, priority, required and trigger features, a predicate function, and a margin specification.",
+      "tags": ["regime-classification", "data-model", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/regime/regime_classifier/taxonomy.py:MarginSpec",
+      "type": "class",
+      "name": "MarginSpec",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [27, 38],
+      "summary": "Immutable specification of how a feature's margin is measured: target feature, threshold, scale, and direction.",
+      "tags": ["regime-classification", "data-model", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/taxonomy.py:margin_value",
+      "type": "function",
+      "name": "margin_value",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [59, 66],
+      "summary": "Computes the normalized margin of a feature against a MarginSpec threshold and scale, clamped to [0,1].",
+      "tags": ["regime-classification", "scoring", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/regime/regime_classifier/taxonomy.py:near_proximity",
+      "type": "function",
+      "name": "near_proximity",
+      "filePath": "src/regime/regime_classifier/taxonomy.py",
+      "lineRange": [69, 80],
+      "summary": "Computes how close a feature is to triggering a rule threshold from below, used to flag near-matching regimes.",
+      "tags": ["regime-classification", "scoring", "utility"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "file:src/features/feature_builder/__init__.py", "target": "file:src/features/feature_builder/feature_builder.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/features/feature_builder/__init__.py", "target": "file:src/features/feature_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/features/feature_builder/feature_builder.py", "target": "file:src/features/feature_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/features/feature_builder/feature_builder.py", "target": "file:src/snapshot/snapshot_consumer/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/__init__.py", "target": "file:src/gold/decision_builder/builder.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/__init__.py", "target": "file:src/gold/decision_builder/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/__init__.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/__init__.py", "target": "file:src/gold/decision_builder/policy.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "file:src/features/feature_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "file:src/gold/decision_builder/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "file:src/gold/decision_builder/policy.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "file:src/regime/regime_classifier/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/config.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/config.py", "target": "file:src/regime/regime_classifier/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/policy.py", "target": "file:src/features/feature_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/policy.py", "target": "file:src/gold/decision_builder/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/policy.py", "target": "file:src/gold/decision_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/gold/decision_builder/policy.py", "target": "file:src/regime/regime_classifier/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/__init__.py", "target": "file:src/regime/regime_classifier/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/__init__.py", "target": "file:src/regime/regime_classifier/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/__init__.py", "target": "file:src/regime/regime_classifier/regime_classifier.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/__init__.py", "target": "file:src/regime/regime_classifier/taxonomy.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/config.py", "target": "file:src/regime/regime_classifier/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/regime_classifier.py", "target": "file:src/features/feature_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/regime_classifier.py", "target": "file:src/regime/regime_classifier/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/regime_classifier.py", "target": "file:src/regime/regime_classifier/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/regime_classifier.py", "target": "file:src/regime/regime_classifier/taxonomy.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "file:src/features/feature_builder/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "file:src/regime/regime_classifier/config.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "file:src/regime/regime_classifier/models.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/features/feature_builder/feature_builder.py", "target": "function:src/features/feature_builder/feature_builder.py:build_features", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/features/feature_builder/feature_builder.py", "target": "function:src/features/feature_builder/feature_builder.py:build_features", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/features/feature_builder/models.py", "target": "class:src/features/feature_builder/models.py:FeatureVector", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/features/feature_builder/models.py", "target": "class:src/features/feature_builder/models.py:FeatureVector", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/features/feature_builder/models.py", "target": "class:src/features/feature_builder/models.py:Feature", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/features/feature_builder/models.py", "target": "class:src/features/feature_builder/models.py:Feature", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "function:src/gold/decision_builder/builder.py:build_decision", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "function:src/gold/decision_builder/builder.py:build_decision", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/builder.py", "target": "function:src/gold/decision_builder/builder.py:_rationale", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:src/gold/decision_builder/config.py", "target": "class:src/gold/decision_builder/config.py:DecisionPolicyConfig", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/config.py", "target": "class:src/gold/decision_builder/config.py:DecisionPolicyConfig", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/config.py", "target": "function:src/gold/decision_builder/config.py:load_config", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/config.py", "target": "function:src/gold/decision_builder/config.py:load_config", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:GoldDecisionPacket", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:GoldDecisionPacket", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:FeatureCitation", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:FeatureCitation", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:ConfidenceInputs", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:ConfidenceInputs", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:GuardRefs", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:GuardRefs", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:SnapshotGuards", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "class:src/gold/decision_builder/models.py:SnapshotGuards", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "function:src/gold/decision_builder/models.py:compute_packet_id", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/models.py", "target": "function:src/gold/decision_builder/models.py:compute_packet_id", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/gold/decision_builder/policy.py", "target": "function:src/gold/decision_builder/policy.py:trust_score", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/gold/decision_builder/policy.py", "target": "function:src/gold/decision_builder/policy.py:trust_score", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/regime/regime_classifier/config.py", "target": "class:src/regime/regime_classifier/config.py:RegimeConfig", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/config.py", "target": "class:src/regime/regime_classifier/config.py:RegimeConfig", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/regime/regime_classifier/config.py", "target": "function:src/regime/regime_classifier/config.py:load_config", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/config.py", "target": "function:src/regime/regime_classifier/config.py:load_config", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/regime/regime_classifier/models.py", "target": "class:src/regime/regime_classifier/models.py:RegimeClassification", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/models.py", "target": "class:src/regime/regime_classifier/models.py:RegimeClassification", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/regime/regime_classifier/models.py", "target": "class:src/regime/regime_classifier/models.py:FeatureProvenance", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/models.py", "target": "class:src/regime/regime_classifier/models.py:FeatureProvenance", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/regime/regime_classifier/regime_classifier.py", "target": "function:src/regime/regime_classifier/regime_classifier.py:classify", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/regime_classifier.py", "target": "function:src/regime/regime_classifier/regime_classifier.py:classify", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "class:src/regime/regime_classifier/taxonomy.py:RegimeRule", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "class:src/regime/regime_classifier/taxonomy.py:RegimeRule", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "class:src/regime/regime_classifier/taxonomy.py:MarginSpec", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "class:src/regime/regime_classifier/taxonomy.py:MarginSpec", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "function:src/regime/regime_classifier/taxonomy.py:margin_value", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "function:src/regime/regime_classifier/taxonomy.py:margin_value", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "function:src/regime/regime_classifier/taxonomy.py:near_proximity", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/regime/regime_classifier/taxonomy.py", "target": "function:src/regime/regime_classifier/taxonomy.py:near_proximity", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:src/gold/decision_builder/builder.py:build_decision", "target": "function:src/gold/decision_builder/policy.py:trust_score", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/gold/decision_builder/builder.py:build_decision", "target": "function:src/gold/decision_builder/models.py:compute_packet_id", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/gold/decision_builder/policy.py:trust_score", "target": "class:src/gold/decision_builder/models.py:ConfidenceInputs", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/regime/regime_classifier/regime_classifier.py:classify", "target": "class:src/regime/regime_classifier/models.py:RegimeClassification", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/regime/regime_classifier/regime_classifier.py:classify", "target": "function:src/regime/regime_classifier/taxonomy.py:margin_value", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/regime/regime_classifier/regime_classifier.py:classify", "target": "function:src/regime/regime_classifier/taxonomy.py:near_proximity", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/features/feature_builder/feature_builder.py:build_features", "target": "class:src/features/feature_builder/models.py:FeatureVector", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/features/feature_builder/feature_builder.py:build_features", "target": "class:src/features/feature_builder/models.py:Feature", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:src/gold/decision_builder/builder.py:build_decision", "target": "class:src/gold/decision_builder/models.py:GoldDecisionPacket", "type": "calls", "direction": "forward", "weight": 0.8}
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "nodes": [
+    {
+      "id": "document:raw/Claude for Financial Services.md",
+      "type": "document",
+      "name": "Claude for Financial Services.md",
+      "filePath": "raw/Claude for Financial Services.md",
+      "summary": "Clipped Anthropic announcement (web archive) describing the Claude Financial Analysis Solution, its data-provider ecosystem, enterprise consultancy partners, and finance use cases. Serves as background research material rather than project code.",
+      "tags": ["documentation", "research", "financial-services", "reference", "clipping"],
+      "complexity": "moderate",
+      "languageNotes": "Markdown clipping with YAML frontmatter (title/source/tags) typical of a web-capture tool; five level-2/4 sections."
+    },
+    {
+      "id": "document:raw/build-spec.md",
+      "type": "document",
+      "name": "build-spec.md",
+      "filePath": "raw/build-spec.md",
+      "summary": "Hackathon build specification for 'The Syndicate Squad' — a wallet-native supervisor that assembles, funds, evaluates, and upgrades agent teams under treasury constraints. Defines goal, MVP screens, demo flow, frontend/domain-model/integration architecture, and the winning narrative.",
+      "tags": ["documentation", "specification", "architecture", "agent-system", "hackathon"],
+      "complexity": "moderate",
+      "languageNotes": "Structured spec with a Next.js frontend section and a TypeScript-style domain model (MissionRecord, AgentIdentity, TreasuryRequest, etc.)."
+    },
+    {
+      "id": "document:raw/calude_alpaca_trader.md",
+      "type": "document",
+      "name": "calude_alpaca_trader.md",
+      "filePath": "raw/calude_alpaca_trader.md",
+      "summary": "Single-paragraph video-transcript research note on using Claude with Alpaca paper trading to copy Wall Street whales and US politicians, build a trailing-stop bot, and run the options wheel strategy. Captured as raw inspiration material.",
+      "tags": ["documentation", "research", "transcript", "trading", "alpaca"],
+      "complexity": "moderate",
+      "languageNotes": "Unstructured single-line transcript dump (no markdown headings); the project scanner reports it as one line."
+    },
+    {
+      "id": "document:raw/claude_cowork_trader.md",
+      "type": "document",
+      "name": "claude_cowork_trader.md",
+      "filePath": "raw/claude_cowork_trader.md",
+      "summary": "Video-transcript research note explaining Claude Co-work as an agentic AI for crypto trading: computer use, file access, scheduled tasks, exchange API connection (Blofin), and TradingView webhook automation. Background reference for agentic trading workflows.",
+      "tags": ["documentation", "research", "transcript", "crypto-trading", "agentic-ai"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:raw/claude_opus_trader.md",
+      "type": "document",
+      "name": "claude_opus_trader.md",
+      "filePath": "raw/claude_opus_trader.md",
+      "summary": "Raw single-line transcript dump (~42KB) capturing a Claude Opus stock-trading walkthrough. Unparsed research material kept for later distillation into the dev_graph.",
+      "tags": ["documentation", "research", "transcript", "trading", "unstructured"],
+      "complexity": "simple",
+      "languageNotes": "No line breaks or markdown headings, so the scanner reports zero lines despite substantial byte content."
+    },
+    {
+      "id": "document:raw/claude_stock_trader.md",
+      "type": "document",
+      "name": "claude_stock_trader.md",
+      "filePath": "raw/claude_stock_trader.md",
+      "summary": "Raw single-line transcript dump (~6.6KB) capturing a Claude stock-trading walkthrough. Unparsed research material kept for later distillation.",
+      "tags": ["documentation", "research", "transcript", "trading", "unstructured"],
+      "complexity": "simple",
+      "languageNotes": "Single-line content with no markdown structure; reported as zero lines by the scanner."
+    },
+    {
+      "id": "document:raw/claude_tradingview.md",
+      "type": "document",
+      "name": "claude_tradingview.md",
+      "filePath": "raw/claude_tradingview.md",
+      "summary": "Raw single-line transcript dump (~32KB) about connecting Claude to TradingView for signal-driven trade automation. Unparsed research material kept for later distillation.",
+      "tags": ["documentation", "research", "transcript", "tradingview", "unstructured"],
+      "complexity": "simple",
+      "languageNotes": "Single-line content with no markdown structure; reported as zero lines by the scanner."
+    },
+    {
+      "id": "document:raw/ows-dev-squad.md",
+      "type": "document",
+      "name": "ows-dev-squad.md",
+      "filePath": "raw/ows-dev-squad.md",
+      "summary": "Comprehensive architecture document for the OWS 'Syndicate Squad' supervisor system, detailing 13 main components (dashboard, domain model, action orchestrator, supervisor decision engine, paper trading engine, replay proof harness, OWS/XMTP/x402/MoonPay integrations) with data flows and a real-vs-simulated breakdown.",
+      "tags": ["documentation", "architecture", "agent-system", "paper-trading", "integration"],
+      "complexity": "complex",
+      "languageNotes": "Long-form architecture doc (35 sections) including a Mermaid flowchart system diagram and explicit real/simulated/live-or-fallback classification."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:raw/build-spec.md",
+      "target": "document:raw/ows-dev-squad.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:raw/ows-dev-squad.md",
+      "target": "document:raw/build-spec.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:raw/calude_alpaca_trader.md",
+      "target": "document:raw/claude_cowork_trader.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:raw/calude_alpaca_trader.md",
+      "target": "document:raw/claude_stock_trader.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:raw/claude_cowork_trader.md",
+      "target": "document:raw/claude_tradingview.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:raw/claude_opus_trader.md",
+      "target": "document:raw/claude_stock_trader.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

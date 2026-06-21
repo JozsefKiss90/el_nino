@@ -1,0 +1,29 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/knowledge_assets/Agent Safety Principles.md", "language": "markdown", "sizeLines": 73, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/CQRS.md", "language": "markdown", "sizeLines": 69, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Context Engineering.md", "language": "markdown", "sizeLines": 68, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Event Sourcing.md", "language": "markdown", "sizeLines": 70, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Guardrail Philosophy.md", "language": "markdown", "sizeLines": 70, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Layer 2 Design Principles.md", "language": "markdown", "sizeLines": 71, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Office Action Methodology.md", "language": "markdown", "sizeLines": 70, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Paper Trading Validation.md", "language": "markdown", "sizeLines": 70, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Regime Taxonomy.md", "language": "markdown", "sizeLines": 72, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Stateless Agent Architecture.md", "language": "markdown", "sizeLines": 72, "fileCategory": "docs"},
+    {"path": "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md", "language": "markdown", "sizeLines": 73, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/knowledge_assets/Agent Safety Principles.md": [],
+    "dev_graph/knowledge_assets/CQRS.md": [],
+    "dev_graph/knowledge_assets/Context Engineering.md": [],
+    "dev_graph/knowledge_assets/Event Sourcing.md": [],
+    "dev_graph/knowledge_assets/Guardrail Philosophy.md": [],
+    "dev_graph/knowledge_assets/Layer 2 Design Principles.md": [],
+    "dev_graph/knowledge_assets/Office Action Methodology.md": [],
+    "dev_graph/knowledge_assets/Paper Trading Validation.md": [],
+    "dev_graph/knowledge_assets/Regime Taxonomy.md": [],
+    "dev_graph/knowledge_assets/Stateless Agent Architecture.md": [],
+    "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md": []
+  }
+}

@@ -19,12 +19,14 @@ related_files:
   - "[[engine.py (orchestration)]]"
   - "[[runtime.py (orchestration)]]"
   - "[[operational_feed.py]]"
+  - "[[alpaca_clock_feed.py]]"
   - "[[run_chain_bench.py]]"
 related_tests:
   - "[[test_chain_engine]]"
   - "[[test_chain_determinism]]"
   - "[[test_chain_bench]]"
   - "[[test_operational_feed]]"
+  - "[[test_alpaca_clock_feed]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
@@ -116,29 +118,46 @@ originates from [[Paper Trading Validation]] (KA-010). Governed by [[ADR - Paper
   **portfolio-then-ledger** atomically, temp-file + `os.replace`, for crash-consistency) + the pure
   `run_sequence` replay driver (the BENCH-006 vehicle) + `find_latest_snapshot` + the `python -m
   orchestration.runtime` CLI. Reuses MOD-007 `load_ledger`/`persist_ledger` + MOD-008
-  `load_portfolio`/`persist_portfolio`.
+  `load_portfolio`/`persist_portfolio`. The CLI gained an **additive** `--operational-feed-source
+  {calendar,alpaca}` flag (default `calendar` — behaviour unchanged; `run_once`/`run_sequence` contracts
+  untouched) that lazily wires the live [[alpaca_clock_feed.py]] plug on opt-in.
+- `alpaca_clock_feed.py` ([[alpaca_clock_feed.py]] FILE-037) — the live Alpaca clock/calendar
+  `OperationalFeed` plug, **default-OFF**, closing the v0 holiday-calendar gap; read on the live path only
+  and captured/quarantined exactly like the deterministic feed (ADR-009 amendment 2026-06-18).
+- **Scheduling scripts** (ops tooling — no file nodes, mirroring how the Mr-Ripley scripts are handled):
+  `scripts/daily_chain_run.ps1` runs the latest banked Mr-Ripley snapshot through `run_once` on the
+  **deterministic simulator** + the operational calendar feed (captured), persisting the el_nino ledger +
+  portfolio (idempotent); `scripts/register_daily_chain_task.ps1` registers the recurring 23:45 task
+  (sequenced after the Mr-Ripley 23:00 EOD job). Validated by a single manual `daily_chain_run.ps1`
+  invocation; **registering the recurring task is an operator HARD-PAUSE action** (see
+  `CHAIN_ORCHESTRATOR_RUNBOOK.md` §6).
 - `config.py` — the captured `DEFAULT_OPERATIONAL_INPUT` (v0 configured "venue open" assumption — distinct
   from `load_operational`'s default-closed file fallback) + `DEFAULT_GUARD_CONFIG` (captured GATE-001 limits;
   the operational CLI may instead `--guard-from-env`).
 - `models.py` — `ChainResult` (frozen) + `to_dict()` (deterministic projection over all five records + the
   two ending state hashes — the byte-identical replay vehicle) + `ChainContractError`.
-- 27 orchestration tests (TEST-023..025) green; full suite **933** green; `ruff` clean; `mypy --strict`
-  clean on `src/orchestration` (the only `mypy` errors are 2 pre-existing lambda-inference warnings in
-  MOD-004 `feature_builder.py`, unrelated to this slice — a named follow-up).
+- 27 orchestration tests (TEST-023..025) + the live-feed tests (TEST-026/027) green; full suite **986**
+  green (after the Alpaca live-plug slice + the adversarial-review hardening of the paper-only host check);
+  `ruff` clean; `mypy --strict` clean on `src/orchestration` + the new plug files (the only `mypy` errors
+  remain the 2 pre-existing lambda-inference warnings in MOD-004 `feature_builder.py`, unrelated — a named
+  follow-up).
 - [[Chain Orchestrator Benchmark]] (BENCH-006) — `run_chain_bench.py` (FILE-035) + the committed golden
   `artifacts/chain_bench.json` + the in-sync [[test_chain_bench]] (TEST-025) prove end-to-end byte-identical
   replay + admission idempotency over the real corpus, carrying the full replay key.
 
 ## Open Questions
 
-- Operational status is an explicit **captured input** (v0 configured default). A **live operational-status
-  feed** behind that seam is now **implemented** ([[operational_feed.py]] FILE-036, the deterministic
-  `MarketCalendarFeed`, captured for replay — ADR-009 amendment 2026-06-18); the live **Alpaca clock/calendar**
-  plug (env-only creds, KA-008) is the remaining deferred, non-replayable plug.
+- Operational status is an explicit **captured input** (v0 configured default). The live operational feed
+  is **implemented** behind that seam: the deterministic [[operational_feed.py]] (FILE-036
+  `MarketCalendarFeed`) **and** the live [[alpaca_clock_feed.py]] (FILE-037 `AlpacaClockFeed`, **default-OFF**,
+  env-only creds KA-008) — the latter closes the v0 holiday-calendar gap and is captured/quarantined for
+  replay (ADR-009 amendment 2026-06-18). No remaining deferred feed plug.
 - `cooldown_ok` remains MOD-007's **echo** of the snapshot flag; a **computed** cooldown guard is its own
   slice (it changes an admission guard's semantics).
-- **Scheduling** the daily run after the EOD snapshot is an operator action (documented in
-  `CHAIN_ORCHESTRATOR_RUNBOOK.md`, not wired here).
+- **Scheduling** the daily run after the EOD snapshot: the scripts are now **built + validated**
+  (`scripts/daily_chain_run.ps1` ran once manually OK on the simulator path), but **registering** the
+  recurring task (`scripts/register_daily_chain_task.ps1`) is an operator **HARD-PAUSE** action — not run
+  here (documented in `CHAIN_ORCHESTRATOR_RUNBOOK.md` §6).
 - The real corpus is monochromatic `RESTRICTIVE_RATES → AVOID` ⇒ a deterministic ADMIT + no-fill; the fill
   path is covered by BENCH-004's synthetic execution sweep, not reproduced end-to-end here.
 
@@ -159,12 +178,14 @@ originates from [[Paper Trading Validation]] (KA-010). Governed by [[ADR - Paper
 - [[engine.py (orchestration)]]
 - [[runtime.py (orchestration)]]
 - [[operational_feed.py]]
+- [[alpaca_clock_feed.py]]
 
 ### Validated By
 - [[test_chain_engine]]
 - [[test_chain_determinism]]
 - [[test_chain_bench]]
 - [[test_operational_feed]]
+- [[test_alpaca_clock_feed]]
 - [[Chain Orchestrator Benchmark]]
 
 ### Realizes

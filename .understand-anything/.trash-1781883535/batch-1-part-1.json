@@ -1,0 +1,223 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/hud/src/assets/portrait.ts",
+      "type": "file",
+      "name": "portrait.ts",
+      "filePath": "jarvis/hud/src/assets/portrait.ts",
+      "summary": "Static asset module exporting the operator portrait image (likely a base64/data-URI string) used by the HUD operator panel.",
+      "tags": ["asset", "constant", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/GraphView.tsx",
+      "type": "file",
+      "name": "GraphView.tsx",
+      "filePath": "jarvis/hud/src/components/GraphView.tsx",
+      "summary": "React component that renders an interactive Cytoscape knowledge-graph visualization, coloring nodes by label and emitting node-click events to the host.",
+      "tags": ["component", "visualization", "graph", "cytoscape"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Cytoscape with a cose layout and React refs to imperatively manage the graph instance across effects."
+    },
+    {
+      "id": "function:jarvis/hud/src/components/GraphView.tsx:GraphView",
+      "type": "function",
+      "name": "GraphView",
+      "filePath": "jarvis/hud/src/components/GraphView.tsx",
+      "lineRange": [25, 93],
+      "summary": "Renders and incrementally updates a Cytoscape graph from the provided graph data, applying a force layout and dispatching node clicks.",
+      "tags": ["component", "visualization", "graph", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/GraphView.tsx:colorFor",
+      "type": "function",
+      "name": "colorFor",
+      "filePath": "jarvis/hud/src/components/GraphView.tsx",
+      "lineRange": [13, 16],
+      "summary": "Maps a node label to a display color used for graph node styling.",
+      "tags": ["utility", "styling", "graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "type": "file",
+      "name": "ConnectorArray.tsx",
+      "filePath": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "summary": "HUD panel displaying the connection status of backend data sources, voice bridge, and Claude uplink as a row of indicators.",
+      "tags": ["component", "status", "ui", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/ConnectorArray.tsx:ConnectorArray",
+      "type": "function",
+      "name": "ConnectorArray",
+      "filePath": "jarvis/hud/src/components/main/ConnectorArray.tsx",
+      "lineRange": [12, 53],
+      "summary": "Renders a grid of connector status rows reflecting source, voice bridge, and uplink availability.",
+      "tags": ["component", "status", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "type": "file",
+      "name": "ConsolePanel.tsx",
+      "filePath": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "summary": "Interactive console panel for the HUD that renders chat messages with citations and provides text input, mic control, and voice toggle.",
+      "tags": ["component", "console", "input", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/ConsolePanel.tsx:ConsolePanel",
+      "type": "function",
+      "name": "ConsolePanel",
+      "filePath": "jarvis/hud/src/components/main/ConsolePanel.tsx",
+      "lineRange": [33, 91],
+      "summary": "Manages local input state, auto-scrolls the message log, and wires submit, citation, microphone, and voice-toggle callbacks.",
+      "tags": ["component", "console", "event-handler", "input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/ContextFeed.tsx",
+      "type": "file",
+      "name": "ContextFeed.tsx",
+      "filePath": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "summary": "Side panel that renders the answer's contextual related nodes and lets the operator drill into a related entity.",
+      "tags": ["component", "context", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/ContextFeed.tsx:ContextFeed",
+      "type": "function",
+      "name": "ContextFeed",
+      "filePath": "jarvis/hud/src/components/main/ContextFeed.tsx",
+      "lineRange": [5, 34],
+      "summary": "Displays the current answer plus a clickable list of related items, invoking onRelated when one is selected.",
+      "tags": ["component", "context", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/DecisionCore.tsx",
+      "type": "file",
+      "name": "DecisionCore.tsx",
+      "filePath": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "summary": "Central reactor-core visualization rendering orbiting indicators and core readouts that respond to the reactor state and operator taps.",
+      "tags": ["component", "visualization", "ui", "reactor"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/DecisionCore.tsx:DecisionCore",
+      "type": "function",
+      "name": "DecisionCore",
+      "filePath": "jarvis/hud/src/components/main/DecisionCore.tsx",
+      "lineRange": [13, 66],
+      "summary": "Renders animated reactor orbits and core readouts driven by reactorState, forwarding taps via onReactorTap.",
+      "tags": ["component", "visualization", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/EpochTrack.tsx",
+      "type": "file",
+      "name": "EpochTrack.tsx",
+      "filePath": "jarvis/hud/src/components/main/EpochTrack.tsx",
+      "summary": "Compact HUD strip visualizing the training/trading epoch progression timeline.",
+      "tags": ["component", "ui", "timeline"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "type": "file",
+      "name": "KnowledgeGraph.tsx",
+      "filePath": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "summary": "HUD panel wrapping the GraphView visualization to show the answer's knowledge subgraph and forward query requests on node interaction.",
+      "tags": ["component", "graph", "visualization", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph",
+      "type": "function",
+      "name": "KnowledgeGraph",
+      "filePath": "jarvis/hud/src/components/main/KnowledgeGraph.tsx",
+      "lineRange": [7, 27],
+      "summary": "Renders the answer subgraph through GraphView and triggers onQuery when a graph node is selected.",
+      "tags": ["component", "graph", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "type": "file",
+      "name": "LiveMarketIntel.tsx",
+      "filePath": "jarvis/hud/src/components/main/LiveMarketIntel.tsx",
+      "summary": "HUD panel presenting live market intelligence readouts within the trading dashboard.",
+      "tags": ["component", "ui", "market-data"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "type": "file",
+      "name": "OperatorPanel.tsx",
+      "filePath": "jarvis/hud/src/components/main/OperatorPanel.tsx",
+      "summary": "HUD panel rendering the operator portrait and identity block, sourced from the portrait asset module.",
+      "tags": ["component", "ui", "operator"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "type": "file",
+      "name": "StrategyStrip.tsx",
+      "filePath": "jarvis/hud/src/components/main/StrategyStrip.tsx",
+      "summary": "HUD strip summarizing active trading strategies and their status indicators.",
+      "tags": ["component", "ui", "strategy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/SystemVitals.tsx",
+      "type": "file",
+      "name": "SystemVitals.tsx",
+      "filePath": "jarvis/hud/src/components/main/SystemVitals.tsx",
+      "summary": "HUD panel rendering system vitals gauges (resource/health metrics) sourced from the snapshot data module.",
+      "tags": ["component", "ui", "monitoring", "vitals"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "type": "file",
+      "name": "TruthCorpus.tsx",
+      "filePath": "jarvis/hud/src/components/main/TruthCorpus.tsx",
+      "summary": "HUD panel displaying truth-corpus statistics describing the ingested knowledge/data corpus.",
+      "tags": ["component", "ui", "corpus"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "file:jarvis/hud/src/components/GraphView.tsx", "target": "file:jarvis/hud/src/data/types.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/GraphView.tsx", "target": "function:jarvis/hud/src/components/GraphView.tsx:GraphView", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/GraphView.tsx", "target": "function:jarvis/hud/src/components/GraphView.tsx:GraphView", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:jarvis/hud/src/components/GraphView.tsx", "target": "function:jarvis/hud/src/components/GraphView.tsx:colorFor", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/ConnectorArray.tsx", "target": "file:jarvis/hud/src/data/types.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/ConnectorArray.tsx", "target": "function:jarvis/hud/src/components/main/ConnectorArray.tsx:ConnectorArray", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/ConnectorArray.tsx", "target": "function:jarvis/hud/src/components/main/ConnectorArray.tsx:ConnectorArray", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:jarvis/hud/src/components/main/ConsolePanel.tsx", "target": "file:jarvis/hud/src/data/types.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/ConsolePanel.tsx", "target": "function:jarvis/hud/src/components/main/ConsolePanel.tsx:ConsolePanel", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/ConsolePanel.tsx", "target": "function:jarvis/hud/src/components/main/ConsolePanel.tsx:ConsolePanel", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:jarvis/hud/src/components/main/ContextFeed.tsx", "target": "file:jarvis/hud/src/data/types.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/ContextFeed.tsx", "target": "function:jarvis/hud/src/components/main/ContextFeed.tsx:ContextFeed", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/ContextFeed.tsx", "target": "function:jarvis/hud/src/components/main/ContextFeed.tsx:ContextFeed", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:jarvis/hud/src/components/main/DecisionCore.tsx", "target": "file:jarvis/hud/src/data/snapshot.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/DecisionCore.tsx", "target": "file:jarvis/hud/src/hooks/useReactorState.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/DecisionCore.tsx", "target": "function:jarvis/hud/src/components/main/DecisionCore.tsx:DecisionCore", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/DecisionCore.tsx", "target": "function:jarvis/hud/src/components/main/DecisionCore.tsx:DecisionCore", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:jarvis/hud/src/components/main/DecisionCore.tsx", "target": "function:jarvis/hud/src/hooks/useReactorState.ts:useReactorState", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:jarvis/hud/src/components/main/EpochTrack.tsx", "target": "function:jarvis/hud/src/components/main/EpochTrack.tsx:EpochTrack", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx", "target": "file:jarvis/hud/src/components/GraphView.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx", "target": "file:jarvis/hud/src/data/types.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx", "target": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/KnowledgeGraph.tsx", "target": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "function:jarvis/hud/src/components/main/KnowledgeGraph.tsx:KnowledgeGraph", "target": "function:jarvis/hud/src/components/GraphView.tsx:GraphView", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/EpochTrack.tsx", "target": "function:jarvis/hud/src/components/main/EpochTrack.tsx:EpochTrack", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:jarvis/hud/src/components/main/LiveMarketIntel.tsx", "target": "function:jarvis/hud/src/components/main/LiveMarketIntel.tsx:LiveMarketIntel", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:jarvis/hud/src/components/main/OperatorPanel.tsx", "target": "file:jarvis/hud/src/assets/portrait.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/SystemVitals.tsx", "target": "file:jarvis/hud/src/data/snapshot.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:jarvis/hud/src/components/main/SystemVitals.tsx", "target": "function:jarvis/hud/src/components/main/SystemVitals.tsx:SystemVitals", "type": "contains", "direction": "forward", "weight": 1.0}
+  ]
+}

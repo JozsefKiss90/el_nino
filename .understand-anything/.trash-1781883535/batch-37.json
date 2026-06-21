@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "config:tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "type": "config",
+      "name": "latest_snapshot_pass.json",
+      "filePath": "tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "summary": "Snapshot test fixture representing a passing engine run (verdict PASS, not forced) with full guards, revision policy, tier1/tier2 series, quality summary, and grouped values. Used as the golden expected snapshot for the snapshot test suite.",
+      "tags": ["test", "test-fixture", "snapshot", "golden-data", "data-model"],
+      "complexity": "complex",
+      "languageNotes": "Large structured JSON snapshot of engine state (~711 lines) capturing guards, revision risk, series tiers, and value groups for deterministic snapshot comparison."
+    },
+    {
+      "id": "config:tests/snapshot/fixtures/snapshot_fail.json",
+      "type": "config",
+      "name": "snapshot_fail.json",
+      "filePath": "tests/snapshot/fixtures/snapshot_fail.json",
+      "summary": "Snapshot test fixture representing a failing engine run (verdict FAIL, not forced), exercising the snapshot suite's negative/failure path with the same schema as the passing fixture.",
+      "tags": ["test", "test-fixture", "snapshot", "failure-case", "data-model"],
+      "complexity": "complex",
+      "languageNotes": "Mirrors the pass fixture's schema but with verdict FAIL to drive the failure branch of snapshot validation."
+    },
+    {
+      "id": "config:tests/snapshot/fixtures/snapshot_forced.json",
+      "type": "config",
+      "name": "snapshot_forced.json",
+      "filePath": "tests/snapshot/fixtures/snapshot_forced.json",
+      "summary": "Snapshot test fixture representing a forced engine run (verdict PASS with forced=true), exercising the override/forced-execution path of the snapshot suite using the same schema as the other fixtures.",
+      "tags": ["test", "test-fixture", "snapshot", "forced-override", "data-model"],
+      "complexity": "complex",
+      "languageNotes": "Sets forced=true in both the top-level flag and the guards block to validate forced-snapshot behavior."
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "target": "config:tests/snapshot/fixtures/snapshot_fail.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "target": "config:tests/snapshot/fixtures/snapshot_forced.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:tests/snapshot/fixtures/snapshot_fail.json",
+      "target": "config:tests/snapshot/fixtures/snapshot_forced.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

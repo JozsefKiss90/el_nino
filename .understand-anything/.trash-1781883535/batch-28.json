@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/schemas/Decision Packet Schema.md",
+      "type": "document",
+      "name": "Decision Packet Schema.md",
+      "filePath": "dev_graph/schemas/Decision Packet Schema.md",
+      "summary": "Dev-graph artifact_schema node documenting the Decision Packet data contract produced by the supervisor decision engine, including its field shape, validation rules, and consuming modules.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "decision"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed dev_graph node with structured frontmatter (type: artifact_schema) and a required Relationships section for Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "type": "document",
+      "name": "Evaluation Scorecard Schema.md",
+      "filePath": "dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "summary": "Dev-graph artifact_schema node documenting the Evaluation Scorecard contract used by the decision engine and decision API to capture scored evaluation outcomes.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "evaluation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Execution Record Schema.md",
+      "type": "document",
+      "name": "Execution Record Schema.md",
+      "filePath": "dev_graph/schemas/Execution Record Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Execution Record contract emitted by the Execution layer; it consumes the Runtime Decision Record and feeds position tracking.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "execution"],
+      "complexity": "moderate",
+      "languageNotes": "Illustrative v0 contract marked non-normative until frozen at code; documents an upstream→downstream consume chain from runtime decisions to execution records."
+    },
+    {
+      "id": "document:dev_graph/schemas/Feature Vector Schema.md",
+      "type": "document",
+      "name": "Feature Vector Schema.md",
+      "filePath": "dev_graph/schemas/Feature Vector Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Feature Vector contract produced by the Feature Builder and consumed by the regime classifier and gold decision builder.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "feature-engineering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "type": "document",
+      "name": "Gold DecisionPacket v0 Schema.md",
+      "filePath": "dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "summary": "Dev-graph artifact_schema node specifying the deterministic GoldDecisionPacket output of the Gold Decision Builder, derived from a Feature Vector plus a Regime Classification with versioned identity and guard provenance.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "decision"],
+      "complexity": "complex",
+      "languageNotes": "Documents a deterministic, replay-safe contract with SHA-256 identity hashing over a versioned tuple; the most detailed schema in the batch, consuming two other in-batch schemas."
+    },
+    {
+      "id": "document:dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "type": "document",
+      "name": "Layer 2 Snapshot Schema.md",
+      "filePath": "dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Layer 2 Snapshot contract — the deterministic market-data snapshot that anchors all downstream feature, regime, and decision artifacts.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "snapshot"],
+      "complexity": "moderate",
+      "languageNotes": "Defines a deterministic identity (recompute_id) so the same snapshot reproduces stable downstream artifacts."
+    },
+    {
+      "id": "document:dev_graph/schemas/Portfolio State Schema.md",
+      "type": "document",
+      "name": "Portfolio State Schema.md",
+      "filePath": "dev_graph/schemas/Portfolio State Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Portfolio State contract produced and consumed by the Execution layer and read by position tracking.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "execution"],
+      "complexity": "moderate",
+      "languageNotes": "Illustrative v0 contract marked non-normative until frozen at code; originates from the Stateless Agent Architecture principle."
+    },
+    {
+      "id": "document:dev_graph/schemas/Regime Classification Schema.md",
+      "type": "document",
+      "name": "Regime Classification Schema.md",
+      "filePath": "dev_graph/schemas/Regime Classification Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Regime Classification contract produced by the Market Regime Classifier and consumed by the gold decision builder.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "regime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Runtime Decision Record Schema.md",
+      "type": "document",
+      "name": "Runtime Decision Record Schema.md",
+      "filePath": "dev_graph/schemas/Runtime Decision Record Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Runtime Decision Record contract produced by the Paper-Trading Runtime, which wraps and consumes a Gold DecisionPacket plus computed L3 guard outcomes.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "runtime"],
+      "complexity": "moderate",
+      "languageNotes": "Documents the runtime wrapper around the pure gold packet; carries the stateful guard outcomes (duplicate_ok/operational_ok) the planning packet leaves null."
+    },
+    {
+      "id": "document:dev_graph/schemas/Runtime Ledger Schema.md",
+      "type": "document",
+      "name": "Runtime Ledger Schema.md",
+      "filePath": "dev_graph/schemas/Runtime Ledger Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Runtime Ledger contract — the append-only record produced and consumed by the Paper-Trading Runtime for replay-safe paper-trade accounting.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "ledger"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/schemas/Trade Validation Decision Schema.md",
+      "type": "document",
+      "name": "Trade Validation Decision Schema.md",
+      "filePath": "dev_graph/schemas/Trade Validation Decision Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Trade Validation Decision contract returned by the Guardrail Engine / Risk Check API to approve or reject a proposed trade.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/schemas/Trade Validation Request Schema.md",
+      "type": "document",
+      "name": "Trade Validation Request Schema.md",
+      "filePath": "dev_graph/schemas/Trade Validation Request Schema.md",
+      "summary": "Dev-graph artifact_schema node defining the Trade Validation Request contract consumed by the Guardrail Engine / Risk Check API as the input to a trade risk check.",
+      "tags": ["schema-definition", "documentation", "data-model", "dev-graph", "validation"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "target": "document:dev_graph/schemas/Feature Vector Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "target": "document:dev_graph/schemas/Regime Classification Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Runtime Decision Record Schema.md",
+      "target": "document:dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/schemas/Execution Record Schema.md",
+      "target": "document:dev_graph/schemas/Runtime Decision Record Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

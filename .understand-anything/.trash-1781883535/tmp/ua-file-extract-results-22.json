@@ -1,0 +1,1142 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/governance/API Documentation Policy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 113,
+      "nonEmptyLines": 82,
+      "sections": [
+        {
+          "heading": "API Documentation Policy",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Admissibility Rules",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Freshness Requirements",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Retrieval Methods",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Context7 (preferred for library docs)",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Web Fetch (for REST APIs)",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Manual (for local/private docs)",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Permitted Documentation Sources (Initial)",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Stale Documentation Handling",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Context Pack Integration",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 113
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "dev_graph/governance/Admissibility Checks.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 142,
+      "nonEmptyLines": 111,
+      "sections": [
+        {
+          "heading": "Admissibility Checks",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "The Nine Checks",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Check 1: Canonical Flag",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Check 2: Status Not Deprecated",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Check 3: Implementation Status Not Deprecated",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Check 4: Type In Enum",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Check 5: Required Frontmatter Exists",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Check 6: Source Paths Exist or Marked External",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Check 7: No Unresolved Contradiction",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Check 8: No Superseding Decision",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Check 9: Tests or Gates Identified",
+          "level": 3,
+          "line": 93
+        },
+        {
+          "heading": "Failure Handling",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Bulk Admissibility",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 124
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 129
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 132
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 134
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 138
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 141
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "dev_graph/governance/Context Pack Assembly Rules.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 134,
+      "nonEmptyLines": 101,
+      "sections": [
+        {
+          "heading": "Context Pack Assembly Rules",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Assembly Sequence",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Step 1: Parse Task Request",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Step 2: Semantic Retrieval",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Step 3: Dataview Filtering",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "Step 4: Graph Expansion",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Step 5: Codebase Grounding",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Step 6: Docs Retrieval",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Step 7: Admissibility Check",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Step 8: Assemble Pack",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Required Reads (always include, in order)",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Optional Reads (if token budget allows)",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Token Budget Management",
+          "level": 2,
+          "line": 94
+        },
+        {
+          "heading": "Writeback Rules",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 116
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 121
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 125
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 130
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 133
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 26
+      }
+    },
+    {
+      "path": "dev_graph/governance/Database MCP Mapping.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 176,
+      "nonEmptyLines": 136,
+      "sections": [
+        {
+          "heading": "Database MCP Mapping",
+          "level": 1,
+          "line": 20
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Table Definitions",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Table: `dev_nodes`",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Table: `dev_relationships`",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Table: `dev_benchmarks`",
+          "level": 3,
+          "line": 78
+        },
+        {
+          "heading": "Table: `dev_context_packs`",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Relationship Type Enum",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Query Patterns",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Sync Procedure",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 156
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 164
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 166
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 168
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 170
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 172
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 175
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "dev_graph/governance/Dev Graph Governance.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 122,
+      "nonEmptyLines": 94,
+      "sections": [
+        {
+          "heading": "Dev Graph Governance",
+          "level": 1,
+          "line": 26
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Governance Principles",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Inherited from Wiki Governance",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Not Inherited",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Node Lifecycle",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Relationship Rules",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "dev_graph/governance/MCP Tooling Policy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 133,
+      "nonEmptyLines": 105,
+      "sections": [
+        {
+          "heading": "MCP Tooling Policy",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Configured MCP Servers",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Operation Classification — Dev Graph",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Operation Classification — Wiki (from dev_graph sessions)",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Constrained-Automated Rules",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Prohibited Operations",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Automation Boundaries",
+          "level": 2,
+          "line": 106
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 114
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 118
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 121
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 123
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 131
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 133
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "dev_graph/governance/Neo4j Export Mapping.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 173,
+      "nonEmptyLines": 139,
+      "sections": [
+        {
+          "heading": "Neo4j Export Mapping",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Node Mapping",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Label Mapping",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Edge Mapping",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Source 1: Frontmatter Arrays",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Source 2: Relationship Sections (wikilinks)",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Example Cypher",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Export Procedure",
+          "level": 2,
+          "line": 137
+        },
+        {
+          "heading": "Sync Cadence",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 155
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 163
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 165
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 167
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 169
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 172
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "dev_graph/governance/REF - Wiki CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "REF - Wiki CLAUDE",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Target",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Key Sections Referenced by Dev Graph",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Governance Inheritance",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/governance/REF - Wiki Graph Health Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 48,
+      "sections": [
+        {
+          "heading": "REF - Wiki Graph Health Dashboard",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Target",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Key Patterns Referenced",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "dev_graph/governance/REF - Wiki Metadata Migration Plan.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 65,
+      "nonEmptyLines": 47,
+      "sections": [
+        {
+          "heading": "REF - Wiki Metadata Migration Plan",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Target",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Key Patterns Referenced",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    }
+  ]
+}

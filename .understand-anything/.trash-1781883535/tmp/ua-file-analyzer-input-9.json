@@ -1,0 +1,9 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "jarvis/backend/Dockerfile", "language": "dockerfile", "sizeLines": 11, "fileCategory": "infra"}
+  ],
+  "batchImportData": {
+    "jarvis/backend/Dockerfile": []
+  }
+}

@@ -17,6 +17,7 @@ related_files:
   - "[[models.py (execution)]]"
   - "[[config.py (execution)]]"
   - "[[adapters.py]]"
+  - "[[alpaca_adapter.py]]"
   - "[[engine.py (execution)]]"
   - "[[runtime.py (execution)]]"
   - "[[run_execution_bench.py]]"
@@ -25,6 +26,7 @@ related_tests:
   - "[[test_execution_determinism]]"
   - "[[test_execution_guards]]"
   - "[[test_execution_bench]]"
+  - "[[test_alpaca_adapter]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
@@ -46,7 +48,8 @@ provides:
 The first **money-shaped** Layer-3 module (ADR-011): it consumes an **ADMIT** [[Runtime Decision Record
 Schema]] (SCHEMA-012) + explicit portfolio state and produces an [[Execution Record Schema]] (SCHEMA-014)
 + a new [[Portfolio State Schema]] (SCHEMA-015). A deterministic, replay-safe **simulated-broker** core
-behind the [[Execution API]] (INT-011) port; the Alpaca-paper adapter (non-replayable) is deferred.
+behind the [[Execution API]] (INT-011) port; the non-replayable Alpaca-paper adapter is now built
+**default-OFF / dormant** ([[alpaca_adapter.py]] FILE-038, gate f closed 2026-06-18).
 Realizes the re-grounded [[Order Management]] (CAP-005) and produces the state of [[Position Tracking]]
 (CAP-007).
 
@@ -92,8 +95,13 @@ Validation]] (KA-010). Governed by [[ADR - Execution Layer Planning]] (ADR-011).
   `RuntimeDecisionRecord`/`Verdict` from the gold lineage (never re-derived).
 - `config.py` — `ExecutionPolicyConfig` (`default_size`, `paper_equity`) + `FillModelConfig`
   (`slippage_bps`, `fill_model_version`) + `fingerprint()`s + fail-closed loaders.
-- `adapters.py` — the `ExecutionPort` Protocol + `SimulatedBrokerAdapter` (pure, deterministic fill);
-  `AlpacaPaperAdapter` deferred (gate f).
+- `adapters.py` — the `ExecutionPort` Protocol + `SimulatedBrokerAdapter` (pure, deterministic fill; the
+  hard-wired default port).
+- `alpaca_adapter.py` ([[alpaca_adapter.py]] FILE-038, **gate f**) — `AlpacaPaperAdapter` behind the same
+  port (`mode=alpaca_paper`, `replayable=False`), an injected paper-broker Protocol + stdlib REST client,
+  `AlpacaExecutionError`, and `paper_adapter_from_env` (refuses any non-paper base URL; fail-closed on
+  missing creds). **Default-OFF / built-but-dormant** — reached only by an explicit `port=` opt-in, not
+  re-exported, and `fill()` runs only for an approved LONG (none until calibration, ADR-011 §5).
 - `engine.py` — pure `execute()`: fail-closed fill decision (guard → idempotency → stance) → portfolio
   transition → record. No IO / clock / randomness / `src/risk`.
 - `runtime.py` — IO shell (`load_portfolio`/`persist_portfolio`, atomic) + guard-wiring (`run_guard`
@@ -107,8 +115,10 @@ Validation]] (KA-010). Governed by [[ADR - Execution Layer Planning]] (ADR-011).
 
 ## Open Questions
 
-- The Alpaca-paper adapter (gate f / STEP 5) is deferred (ADR-011 §5); BENCH-004 grounds replay in the
-  offline simulator core only.
+- The Alpaca-paper adapter (gate f / STEP 5) is now **built default-OFF** ([[alpaca_adapter.py]]) and
+  **dormant** — non-replayable and quarantined off the replay path, it cannot fill until calibration
+  produces a LONG (ADR-011 §5). BENCH-004 still grounds replay in the offline simulator core only.
+  *Enabling* the live execution path remains an explicit operator HARD-PAUSE action.
 - Full chain-orchestrator integration (forwarding `instrument_price`/`direction` from the in-hand
   FeatureVector through the whole chain) is now **implemented** by [[Chain Orchestrator]] (MOD-010) and
   proven end-to-end by [[Chain Orchestrator Benchmark]] (BENCH-006). MOD-008 stays the execution-only
@@ -130,6 +140,7 @@ Validation]] (KA-010). Governed by [[ADR - Execution Layer Planning]] (ADR-011).
 - [[models.py (execution)]]
 - [[config.py (execution)]]
 - [[adapters.py]]
+- [[alpaca_adapter.py]]
 - [[engine.py (execution)]]
 - [[runtime.py (execution)]]
 
@@ -138,6 +149,7 @@ Validation]] (KA-010). Governed by [[ADR - Execution Layer Planning]] (ADR-011).
 - [[test_execution_determinism]]
 - [[test_execution_guards]]
 - [[test_execution_bench]]
+- [[test_alpaca_adapter]]
 - [[Execution Layer Benchmark]]
 
 ### Depends On

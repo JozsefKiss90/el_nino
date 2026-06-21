@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-18
 confidence: confirmed
 evidence:
   - design
@@ -18,6 +18,7 @@ related_files:
   - "[[engine.py (execution)]]"
   - "[[runtime.py (execution)]]"
   - "[[adapters.py]]"
+  - "[[alpaca_adapter.py]]"
 related_tests:
   - "[[test_execution_engine]]"
   - "[[test_execution_determinism]]"
@@ -63,7 +64,8 @@ execute(
 
 **(2) Broker seam — `ExecutionPort.fill()` (what each adapter implements).** The hexagonal port (ADR-011
 §2) is the one broker-specific method `execute()` dispatches to. The deterministic `SimulatedBrokerAdapter`
-(the replay-safe core path, `replayable = True`) and the deferred, non-replayable `AlpacaPaperAdapter` each
+(the replay-safe core path, `replayable = True`) and the now-built, **default-OFF** non-replayable
+`AlpacaPaperAdapter` ([[alpaca_adapter.py]] FILE-038, `replayable = False`, gate f closed 2026-06-18) each
 implement it:
 
 ```
@@ -122,9 +124,11 @@ fill model, or multi-instrument support is authored.
 
 ## Open Questions
 
-- Implemented by [[Execution]] (MOD-008) + the `SimulatedBrokerAdapter` (STEP 2, tested). The Alpaca-paper
-  adapter, the formal BENCH-004 golden artifact, and full chain-orchestrator integration are deferred
-  (ADR-011 §5, gate f / STEP 4–5).
+- Implemented by [[Execution]] (MOD-008) + the `SimulatedBrokerAdapter` (STEP 2, tested) and now the
+  **default-OFF** `AlpacaPaperAdapter` ([[alpaca_adapter.py]], gate f closed 2026-06-18 — non-replayable,
+  fail-closed, paper-only; validated by [[test_alpaca_adapter]]). BENCH-004 and the chain-orchestrator
+  integration (MOD-010) are done. The live adapter is **built-but-dormant** (no LONG until calibration,
+  ADR-011 §5) and *enabling* the live execution path is an operator HARD-PAUSE action.
 
 ## Relationships
 

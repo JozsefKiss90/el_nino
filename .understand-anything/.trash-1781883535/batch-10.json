@@ -1,0 +1,285 @@
+{
+  "nodes": [
+    {
+      "id": "config:.mcp.json",
+      "type": "config",
+      "name": ".mcp.json",
+      "filePath": ".mcp.json",
+      "summary": "Project-level MCP server configuration registering context7, mcpvault, smart-connections, a read-only Neo4j bridge (bolt://127.0.0.1:7688), and a Postgres server for the layer-3 trading engine sessions.",
+      "tags": ["configuration", "mcp", "neo4j", "tooling"],
+      "complexity": "simple",
+      "languageNotes": "Neo4j entry pins NEO4J_READ_ONLY=true and uses 127.0.0.1 (not localhost) to avoid the IPv6 stall documented in project memory."
+    },
+    {
+      "id": "document:ADMISSION_INPUT_HARDENING_prompt.md",
+      "type": "document",
+      "name": "ADMISSION_INPUT_HARDENING_prompt.md",
+      "filePath": "ADMISSION_INPUT_HARDENING_prompt.md",
+      "summary": "Claude Code task prompt for hardening admission inputs via a deterministic computed cooldown guard and an additive live operational-status feed adapter, with combined determinism/replay and governance writeback steps.",
+      "tags": ["documentation", "prompt", "orchestration", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ADR-011_drafting_prompt.md",
+      "type": "document",
+      "name": "ADR-011_drafting_prompt.md",
+      "filePath": "ADR-011_drafting_prompt.md",
+      "summary": "Claude Code prompt directing the authoring of ADR-011 (Execution / Portfolio Layer Planning) with governance grounding and a governance-only writeback slice.",
+      "tags": ["documentation", "prompt", "adr", "execution-layer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ADR-011_promote_and_plan_prompt.md",
+      "type": "document",
+      "name": "ADR-011_promote_and_plan_prompt.md",
+      "filePath": "ADR-011_promote_and_plan_prompt.md",
+      "summary": "Claude Code prompt to promote ADR-011 to active status and author its implementation plan as a STEP-0 brief without yet producing nodes or code.",
+      "tags": ["documentation", "prompt", "adr", "planning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "type": "document",
+      "name": "CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "filePath": "CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "summary": "Operations runbook for the end-to-end chain orchestrator covering data flow, the full replay key and determinism guarantees, captured operational status, invocation, daily scheduling, and corpus provenance.",
+      "tags": ["documentation", "runbook", "orchestration", "determinism", "operations"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CHAIN_ORCHESTRATOR_prompt.md",
+      "type": "document",
+      "name": "CHAIN_ORCHESTRATOR_prompt.md",
+      "filePath": "CHAIN_ORCHESTRATOR_prompt.md",
+      "summary": "Claude Code prompt for building the end-to-end chain orchestrator integration slice, including a full-chain replay benchmark, governance writeback, and explicit out-of-scope follow-ups.",
+      "tags": ["documentation", "prompt", "orchestration", "integration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Root memory file for the el_nino project that imports dev_graph/CLAUDE.md so the dev_graph operations manual loads at session start.",
+      "tags": ["documentation", "entry-point", "memory", "governance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "type": "document",
+      "name": "EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "filePath": "EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "summary": "Empirical calibration runbook for epoch (b) defining the version axis, pinned baseline, corpus-sufficiency assessment, the empirical-readiness gate, and the recalibrate-validate-re-pin loop with PIT invariants.",
+      "tags": ["documentation", "runbook", "calibration", "epoch-b", "operations"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:EPOCH_B_CALIBRATION_prompt.md",
+      "type": "document",
+      "name": "EPOCH_B_CALIBRATION_prompt.md",
+      "filePath": "EPOCH_B_CALIBRATION_prompt.md",
+      "summary": "Claude Code prompt for epoch (b) empirical recalibration: read-only corpus sufficiency assessment, authoring calibration governance, and conditionally executing calibration only when the sufficiency gate passes.",
+      "tags": ["documentation", "prompt", "calibration", "epoch-b"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:EPOCH_B_CORPUS_RUNBOOK.md",
+      "type": "document",
+      "name": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "filePath": "EPOCH_B_CORPUS_RUNBOOK.md",
+      "summary": "Real-corpus accumulation runbook for epoch (b) describing the content-id-keyed immutable sinks, the automated daily scheduled task, manual operation, snapshot verification through the Layer-3 chain, and PIT/data-quality notes.",
+      "tags": ["documentation", "runbook", "corpus", "epoch-b", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "type": "document",
+      "name": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "filePath": "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "summary": "Detailed implementation plan for the execution layer that closes ADR-011 gates (a-f), settles contract-checkpoint design decisions, and sequences contract-first authoring, code slices, tests, and per-slice writeback.",
+      "tags": ["documentation", "planning", "execution-layer", "adr", "implementation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "type": "document",
+      "name": "FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "filePath": "FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "summary": "Two paired Claude Code follow-up prompts for the orchestrator: a computed cooldown guard and a live operational-status feed adapter constrained to the IO boundary with replay-path quarantine.",
+      "tags": ["documentation", "prompt", "orchestration", "follow-up"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:FORWARD_RETURN_HARNESS_prompt.md",
+      "type": "document",
+      "name": "FORWARD_RETURN_HARNESS_prompt.md",
+      "filePath": "FORWARD_RETURN_HARNESS_prompt.md",
+      "summary": "Claude Code prompt for building a deterministic, read-only forward-return labeling harness (ADR-012 gate G3 prerequisite) with strict look-ahead containment and synthetic correctness validation.",
+      "tags": ["documentation", "prompt", "labeling", "epoch-b", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "type": "document",
+      "name": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "filePath": "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "summary": "Implementation brief for the gold-confidence feature documenting affected modules and schemas, ontology and replay impact, benchmark and migration risk, and the verification summary.",
+      "tags": ["documentation", "brief", "gold-layer", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "document",
+      "name": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "filePath": "GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "summary": "Implementation brief for the gold DecisionPacket v0 covering affected modules/schemas, the regime-to-direction mapping design decision, canonical-id re-derivation, and a strict contract-first execution order.",
+      "tags": ["documentation", "brief", "gold-layer", "decision-packet"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "type": "document",
+      "name": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "filePath": "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "summary": "Final audit of the gold DecisionPacket v0 scoring architecture, replay determinism, ontology and ADR compliance, schema correctness, and graph integrity, with critical issues, warnings, and a readiness verdict.",
+      "tags": ["documentation", "audit", "gold-layer", "verification"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "type": "document",
+      "name": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "filePath": "JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "summary": "Integration and refactor roadmap for connecting the JARVIS console to the operational dev_graph (Neo4j + read-only neo4j MCP), replacing its keyword KB with graph-grounded answering, and refactoring the HTML monolith to React.",
+      "tags": ["documentation", "roadmap", "jarvis", "neo4j", "integration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:OPS_DASHBOARD_prompt.md",
+      "type": "document",
+      "name": "OPS_DASHBOARD_prompt.md",
+      "filePath": "OPS_DASHBOARD_prompt.md",
+      "summary": "Claude Code prompt for the El Nino operations dashboard (JARVIS control plane) defining overriding safety constraints, read-only monitoring IA, safe actions, gated-live actions behind a hard pause, and writeback.",
+      "tags": ["documentation", "prompt", "operations", "dashboard"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:OPS_TUI_prompt.md",
+      "type": "document",
+      "name": "OPS_TUI_prompt.md",
+      "filePath": "OPS_TUI_prompt.md",
+      "summary": "Claude Code prompt for the El Nino operations console terminal TUI defining a governed ops-core, a read-only TUI, safe and gated-live actions behind a hard pause, and tests plus writeback.",
+      "tags": ["documentation", "prompt", "operations", "tui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "type": "document",
+      "name": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "filePath": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
+      "summary": "Final audit of the paper-trading runtime epoch baseline with an eight-dimension scorecard covering stateful replay determinism, ledger integrity, idempotency, wrap-boundary purity, ADR-009 compliance, and honesty assessment.",
+      "tags": ["documentation", "audit", "paper-trading", "verification", "determinism"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ADR-011_promote_and_plan_prompt.md",
+      "target": "document:ADR-011_drafting_prompt.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:EXECUTION_LAYER_IMPLEMENTATION_PLAN.md",
+      "target": "document:ADR-011_promote_and_plan_prompt.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "target": "document:CHAIN_ORCHESTRATOR_prompt.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "target": "document:FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:ADMISSION_INPUT_HARDENING_prompt.md",
+      "target": "document:FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "target": "document:EPOCH_B_CALIBRATION_prompt.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "target": "document:EPOCH_B_CORPUS_RUNBOOK.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:FORWARD_RETURN_HARNESS_prompt.md",
+      "target": "document:EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md",
+      "target": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md",
+      "target": "document:GOLD_DECISIONPACKET_V0_BRIEF.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:OPS_DASHBOARD_prompt.md",
+      "target": "document:OPS_TUI_prompt.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "target": "config:.mcp.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:OPS_DASHBOARD_prompt.md",
+      "target": "document:JARVIS_el_nino_integration_and_refactor_roadmap.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "document:CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

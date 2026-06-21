@@ -1,0 +1,254 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "type": "file",
+      "name": "EL NINO JARVIS Cyberpunk.html",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "summary": "Self-contained synthwave/cyberpunk JARVIS console for the El Nino trading engine, with an embedded knowledge base, snapshot series data, a keyword router, voice I/O (Web Speech + optional local TTS/STT bridge), and a Matrix digital-rain theme.",
+      "tags": ["component", "voice-ui", "knowledge-base", "dashboard", "event-handler"],
+      "complexity": "complex",
+      "languageNotes": "Single-file HTML app: ~1280 non-empty lines mixing heavy CSS theming, embedded KB/series constants, and vanilla-JS speech synthesis/recognition with a fallback to a localhost TTS/STT bridge at 127.0.0.1:8585."
+    },
+    {
+      "id": "config:jarvis/frontend/graph.json",
+      "type": "config",
+      "name": "graph.json",
+      "filePath": "jarvis/frontend/graph.json",
+      "summary": "Offline projection of the dev_graph markdown (193 nodes, 1477 edges) exported by export_graph_json.py and consumed by the index.html explorer and the backend /ask corpus; a rebuildable artifact, never hand-edited.",
+      "tags": ["configuration", "data", "graph-projection", "knowledge-graph"],
+      "complexity": "complex",
+      "languageNotes": "Flat JSON with meta/nodes/edges sections; node_count 193, edge_count 1477. Per the JARVIS manual this is a projection of the canonical dev_graph markdown and must be regenerated rather than edited."
+    },
+    {
+      "id": "file:jarvis/frontend/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "jarvis/frontend/index.html",
+      "summary": "Offline dev_graph explorer that renders the graph with Cytoscape.js, talking to the live backend API (/health, /meta, /subgraph, /node, /search) to load, search, and expand the El Nino knowledge graph.",
+      "tags": ["component", "entry-point", "graph-visualization", "api-handler"],
+      "complexity": "moderate",
+      "languageNotes": "Vanilla-JS single page; loads Cytoscape from a vendored file with a CDN fallback, and reads the API base from localStorage('JARVIS_API') defaulting to http://localhost:8000."
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:route",
+      "type": "function",
+      "name": "route",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1070, 1089],
+      "summary": "Core query router that keyword-matches a user question against snapshot series aliases and the topic knowledge base, returning the best answer with a confidence tier, source label, and related threads; falls back to a no-match message pointing at the unwired LLM uplink.",
+      "tags": ["api-handler", "routing", "knowledge-base", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:seriesAnswer",
+      "type": "function",
+      "name": "seriesAnswer",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1006, 1011],
+      "summary": "Formats a natural-language answer for a snapshot economic series, reporting its value, staleness, source, tier (Tier-1 snapshot-blocking vs Tier-2 warn-only), and group from the embedded snapshot data.",
+      "tags": ["utility", "serialization", "knowledge-base"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:feed",
+      "type": "function",
+      "name": "feed",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1093, 1104],
+      "summary": "Renders the context feed panel for a routed answer: topic, match-confidence and source tags, and clickable related-thread chips that resubmit follow-up queries.",
+      "tags": ["component", "event-handler", "rendering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:setState",
+      "type": "function",
+      "name": "setState",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1118, 1127],
+      "summary": "Drives the reactor-core visual state machine (idle / listen / speak), toggling CSS classes and the status line to reflect whether JARVIS is listening or speaking.",
+      "tags": ["event-handler", "state-machine", "voice-ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:speakWS",
+      "type": "function",
+      "name": "speakWS",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1145, 1167],
+      "summary": "Speaks an answer via the browser Web Speech SpeechSynthesis API, building a synced caption with per-word boundary highlighting and reactor pulses, and wiring start/boundary/end handlers to the reactor state.",
+      "tags": ["voice-ui", "event-handler", "speech-synthesis"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:speakBridge",
+      "type": "function",
+      "name": "speakBridge",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1266, 1286],
+      "summary": "Speaks an answer through the optional local voice bridge by POSTing text to the bridge /tts endpoint and playing the returned audio, falling back to browser synthesis on failure.",
+      "tags": ["voice-ui", "api-handler", "speech-synthesis"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:startListenWS",
+      "type": "function",
+      "name": "startListenWS",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1180, 1186],
+      "summary": "Starts or stops browser SpeechRecognition for voice input, silencing any active speech and switching the reactor and input placeholder into listening mode.",
+      "tags": ["voice-ui", "event-handler", "speech-recognition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:startListenBridge",
+      "type": "function",
+      "name": "startListenBridge",
+      "filePath": "jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "lineRange": [1315, 1353],
+      "summary": "Records microphone audio and posts it to the local bridge /stt endpoint for transcription, managing recorder lifecycle and listening-state UI for server-side speech recognition.",
+      "tags": ["voice-ui", "api-handler", "speech-recognition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/frontend/index.html:addGraph",
+      "type": "function",
+      "name": "addGraph",
+      "filePath": "jarvis/frontend/index.html",
+      "lineRange": [94, 106],
+      "summary": "Merges a subgraph of nodes and edges into the Cytoscape instance (optionally replacing existing elements), deduplicating by id, assigning per-label colors, and re-running the cose layout.",
+      "tags": ["graph-visualization", "utility", "rendering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/frontend/index.html:boot",
+      "type": "function",
+      "name": "boot",
+      "filePath": "jarvis/frontend/index.html",
+      "lineRange": [110, 131],
+      "summary": "Bootstraps the explorer: probes the backend /health endpoint to set the live/offline status chip, loads label metadata from /meta to populate the type filter and legend, then paints the whole graph.",
+      "tags": ["entry-point", "api-handler", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/frontend/index.html:showNode",
+      "type": "function",
+      "name": "showNode",
+      "filePath": "jarvis/frontend/index.html",
+      "lineRange": [144, 153],
+      "summary": "Fetches a single node from /node/:id and renders its label, name, and all properties into the inspector panel with an inline expand-neighbors action.",
+      "tags": ["api-handler", "rendering", "graph-visualization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/frontend/index.html:doSearch",
+      "type": "function",
+      "name": "doSearch",
+      "filePath": "jarvis/frontend/index.html",
+      "lineRange": [155, 164],
+      "summary": "Runs a backend /search query for the entered term and renders clickable result rows that inspect and expand the chosen node.",
+      "tags": ["api-handler", "event-handler", "search"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:route",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:seriesAnswer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:feed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:setState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:speakWS",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:speakBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:startListenWS",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/EL NINO JARVIS Cyberpunk.html",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:startListenBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:route",
+      "target": "function:jarvis/frontend/EL NINO JARVIS Cyberpunk.html:seriesAnswer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:jarvis/frontend/index.html",
+      "target": "function:jarvis/frontend/index.html:addGraph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/index.html",
+      "target": "function:jarvis/frontend/index.html:boot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/index.html",
+      "target": "function:jarvis/frontend/index.html:showNode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:jarvis/frontend/index.html",
+      "target": "function:jarvis/frontend/index.html:doSearch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "config:jarvis/frontend/graph.json",
+      "target": "file:jarvis/frontend/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

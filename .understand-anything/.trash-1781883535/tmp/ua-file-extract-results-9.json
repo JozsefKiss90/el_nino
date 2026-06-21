@@ -1,0 +1,70 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "jarvis/backend/Dockerfile",
+      "language": "dockerfile",
+      "fileCategory": "infra",
+      "totalLines": 11,
+      "nonEmptyLines": 9,
+      "services": [
+        {
+          "name": "python",
+          "image": "python:3.12-slim",
+          "ports": [
+            8000
+          ],
+          "startLine": 2,
+          "endLine": 12
+        }
+      ],
+      "steps": [
+        {
+          "name": "FROM python:3.12-slim",
+          "startLine": 2,
+          "endLine": 2
+        },
+        {
+          "name": "WORKDIR /app",
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "COPY requirements.txt .",
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "RUN pip install --no-cache-dir -r requirements.txt",
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "COPY app.py .",
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "EXPOSE 8000",
+          "startLine": 9,
+          "endLine": 9
+        },
+        {
+          "name": "CMD [\"uvicorn\", \"app:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\"",
+          "startLine": 11,
+          "endLine": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "serviceCount": 1,
+        "stepCount": 7
+      }
+    }
+  ]
+}

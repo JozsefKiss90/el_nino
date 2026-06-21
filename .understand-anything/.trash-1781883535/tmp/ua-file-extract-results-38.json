@@ -1,0 +1,815 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 877,
+      "nonEmptyLines": 642,
+      "sections": [
+        {
+          "heading": "Wiki Maintenance Schema",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Vault Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Naming Conventions",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Canonical Ownership Rules",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Page Template",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Ingestion Workflow",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Canonicalization Rules",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Redundancy Prevention",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Cross-Linking Protocol",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Contradiction Handling",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Source Traceability",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Lint Workflow",
+          "level": 2,
+          "line": 129
+        },
+        {
+          "heading": "Update Procedures",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "Graph Maintenance",
+          "level": 2,
+          "line": 146
+        },
+        {
+          "heading": "Tags",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Frontmatter Governance",
+          "level": 2,
+          "line": 165
+        },
+        {
+          "heading": "Required Fields (All Pages)",
+          "level": 3,
+          "line": 169
+        },
+        {
+          "heading": "Allowed Enums",
+          "level": 3,
+          "line": 183
+        },
+        {
+          "heading": "Schema Validation Rules",
+          "level": 3,
+          "line": 195
+        },
+        {
+          "heading": "Optional Fields",
+          "level": 3,
+          "line": 204
+        },
+        {
+          "heading": "Metadata Lifecycle",
+          "level": 2,
+          "line": 214
+        },
+        {
+          "heading": "Creation Rules",
+          "level": 3,
+          "line": 216
+        },
+        {
+          "heading": "Update Rules",
+          "level": 3,
+          "line": 224
+        },
+        {
+          "heading": "Deprecation Rules",
+          "level": 3,
+          "line": 231
+        },
+        {
+          "heading": "Derived Metadata Rules",
+          "level": 3,
+          "line": 238
+        },
+        {
+          "heading": "Dataview Governance",
+          "level": 2,
+          "line": 246
+        },
+        {
+          "heading": "Approved Query Patterns",
+          "level": 3,
+          "line": 248
+        },
+        {
+          "heading": "Dashboard Ownership",
+          "level": 3,
+          "line": 256
+        },
+        {
+          "heading": "Observability Standards",
+          "level": 3,
+          "line": 260
+        },
+        {
+          "heading": "MCP Compatibility",
+          "level": 2,
+          "line": 275
+        },
+        {
+          "heading": "Graph Traversal Assumptions",
+          "level": 3,
+          "line": 277
+        },
+        {
+          "heading": "Semantic Tooling Assumptions",
+          "level": 3,
+          "line": 285
+        },
+        {
+          "heading": "Ontology Stability Guarantees",
+          "level": 3,
+          "line": 291
+        },
+        {
+          "heading": "Metadata Anti-Entropy Rules",
+          "level": 2,
+          "line": 301
+        },
+        {
+          "heading": "Prohibited Practices",
+          "level": 3,
+          "line": 303
+        },
+        {
+          "heading": "Prevention of Schema Drift",
+          "level": 3,
+          "line": 312
+        },
+        {
+          "heading": "Prevention of Tag Explosion",
+          "level": 3,
+          "line": 318
+        },
+        {
+          "heading": "Metadata Lint Workflow",
+          "level": 2,
+          "line": 326
+        },
+        {
+          "heading": "Step 1: Missing Frontmatter Detection",
+          "level": 3,
+          "line": 330
+        },
+        {
+          "heading": "Step 2: Invalid Enum Detection",
+          "level": 3,
+          "line": 338
+        },
+        {
+          "heading": "Step 3: Domain-Directory Consistency",
+          "level": 3,
+          "line": 344
+        },
+        {
+          "heading": "Step 4: Stale Metadata Detection",
+          "level": 3,
+          "line": 350
+        },
+        {
+          "heading": "Step 5: Orphan Frontmatter Fields",
+          "level": 3,
+          "line": 357
+        },
+        {
+          "heading": "Step 6: Source Page Schema Compliance",
+          "level": 3,
+          "line": 363
+        },
+        {
+          "heading": "Continuous Ontology Operations",
+          "level": 2,
+          "line": 371
+        },
+        {
+          "heading": "Maintenance Cadence",
+          "level": 3,
+          "line": 375
+        },
+        {
+          "heading": "Per-Session Operations",
+          "level": 3,
+          "line": 383
+        },
+        {
+          "heading": "Weekly Operations",
+          "level": 3,
+          "line": 391
+        },
+        {
+          "heading": "Monthly Operations",
+          "level": 3,
+          "line": 402
+        },
+        {
+          "heading": "Operational Thresholds",
+          "level": 3,
+          "line": 411
+        },
+        {
+          "heading": "Graph Repair Procedures",
+          "level": 3,
+          "line": 423
+        },
+        {
+          "heading": "MCP Operational Governance",
+          "level": 2,
+          "line": 432
+        },
+        {
+          "heading": "Operation Classification",
+          "level": 3,
+          "line": 436
+        },
+        {
+          "heading": "Prohibited MCP Operations",
+          "level": 3,
+          "line": 456
+        },
+        {
+          "heading": "Constrained-Automated Rules",
+          "level": 3,
+          "line": 466
+        },
+        {
+          "heading": "Canonical Ownership Protection",
+          "level": 3,
+          "line": 475
+        },
+        {
+          "heading": "MCP Session Logging",
+          "level": 3,
+          "line": 482
+        },
+        {
+          "heading": "Semantic Retrieval Governance",
+          "level": 2,
+          "line": 492
+        },
+        {
+          "heading": "Canonical Precedence Rules",
+          "level": 3,
+          "line": 496
+        },
+        {
+          "heading": "Semantic Ambiguity Handling",
+          "level": 3,
+          "line": 504
+        },
+        {
+          "heading": "Duplicate Detection via Embeddings",
+          "level": 3,
+          "line": 510
+        },
+        {
+          "heading": "False-Positive Mitigation",
+          "level": 3,
+          "line": 517
+        },
+        {
+          "heading": "Retrieval Scope Rules",
+          "level": 3,
+          "line": 524
+        },
+        {
+          "heading": "Ontology Evolution Procedures",
+          "level": 2,
+          "line": 536
+        },
+        {
+          "heading": "Change Classification",
+          "level": 3,
+          "line": 540
+        },
+        {
+          "heading": "Enum Append Procedure (Minor Change)",
+          "level": 3,
+          "line": 548
+        },
+        {
+          "heading": "Domain Split Procedure (Structural Change)",
+          "level": 3,
+          "line": 556
+        },
+        {
+          "heading": "Domain Merge Procedure (Structural Change)",
+          "level": 3,
+          "line": 566
+        },
+        {
+          "heading": "Domain Deprecation (Without Merge)",
+          "level": 3,
+          "line": 575
+        },
+        {
+          "heading": "Migration Logging Requirements",
+          "level": 3,
+          "line": 582
+        },
+        {
+          "heading": "Observability Operations",
+          "level": 2,
+          "line": 598
+        },
+        {
+          "heading": "Dashboard Review Cadence",
+          "level": 3,
+          "line": 602
+        },
+        {
+          "heading": "Per-Metric Remediation Workflows",
+          "level": 3,
+          "line": 610
+        },
+        {
+          "heading": "Escalation Logic Summary",
+          "level": 3,
+          "line": 662
+        },
+        {
+          "heading": "Dashboard Maintenance",
+          "level": 3,
+          "line": 671
+        },
+        {
+          "heading": "Semantic Confidence Lifecycle",
+          "level": 2,
+          "line": 680
+        },
+        {
+          "heading": "Confidence State Transitions",
+          "level": 3,
+          "line": 684
+        },
+        {
+          "heading": "Promotion Rules",
+          "level": 3,
+          "line": 696
+        },
+        {
+          "heading": "Demotion Rules",
+          "level": 3,
+          "line": 703
+        },
+        {
+          "heading": "Multi-Source Validation Standards",
+          "level": 3,
+          "line": 710
+        },
+        {
+          "heading": "Stale Confidence Detection",
+          "level": 3,
+          "line": 718
+        },
+        {
+          "heading": "Contradiction-Triggered Confidence Review",
+          "level": 3,
+          "line": 735
+        },
+        {
+          "heading": "Schema Evolution Procedures",
+          "level": 2,
+          "line": 745
+        },
+        {
+          "heading": "Evolution Principles",
+          "level": 3,
+          "line": 749
+        },
+        {
+          "heading": "Field Addition Procedure",
+          "level": 3,
+          "line": 757
+        },
+        {
+          "heading": "Enum Extension Procedure",
+          "level": 3,
+          "line": 769
+        },
+        {
+          "heading": "Field Deprecation Procedure",
+          "level": 3,
+          "line": 778
+        },
+        {
+          "heading": "Schema Version Introduction Conditions",
+          "level": 3,
+          "line": 787
+        },
+        {
+          "heading": "Backward Compatibility Rules",
+          "level": 3,
+          "line": 803
+        },
+        {
+          "heading": "Automated Maintenance Governance",
+          "level": 2,
+          "line": 812
+        },
+        {
+          "heading": "Operation Safety Classification",
+          "level": 3,
+          "line": 816
+        },
+        {
+          "heading": "MCP-Assisted Maintenance Workflows",
+          "level": 3,
+          "line": 832
+        },
+        {
+          "heading": "Automation Boundaries",
+          "level": 3,
+          "line": 859
+        },
+        {
+          "heading": "Automation Escalation Triggers",
+          "level": 3,
+          "line": 869
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 94
+      }
+    },
+    {
+      "path": "wiki/index.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 148,
+      "nonEmptyLines": 114,
+      "sections": [
+        {
+          "heading": "Wiki Index",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Systems",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Concepts",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Strategies",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Execution",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Memory",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Risk",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Backtesting",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Agents",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Infrastructure",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Integrations",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Security",
+          "level": 2,
+          "line": 94
+        },
+        {
+          "heading": "Governance",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Workflows",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "Research",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Sources",
+          "level": 2,
+          "line": 121
+        },
+        {
+          "heading": "Statistics",
+          "level": 2,
+          "line": 136
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/log.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 258,
+      "nonEmptyLines": 208,
+      "sections": [
+        {
+          "heading": "Wiki Log",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "[2026-05-09] init | Wiki structure created",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "[2026-05-09] init | CLAUDE.md maintenance schema created",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "[2026-05-09] ingest | Batch ingestion of 8 source documents",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Sources processed:",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "Pages created: 40",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Contradictions identified: None",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Architecture gaps identified:",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "[2026-05-15] ingest | Claude Alpaca Trader (3-level trading tutorial)",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Source processed:",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Pages created: 5",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Pages updated: 8",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Index, log, glossary updated",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Contradictions identified: 1",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Architecture gaps identified:",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "[2026-05-15] governance | Metadata Migration Plan created",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Deliverables:",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Architecture decisions:",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Phase plan:",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Pages modified: 3",
+          "level": 3,
+          "line": 113
+        },
+        {
+          "heading": "[2026-05-15] metadata | Phase 1 — Hub Page Metadata Foundation executed",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Frontmatter inserted on 5 hub pages:",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Validation results:",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Dataview dashboard expanded:",
+          "level": 3,
+          "line": 133
+        },
+        {
+          "heading": "Phase 1 status: COMPLETE",
+          "level": 3,
+          "line": 136
+        },
+        {
+          "heading": "[2026-05-15] metadata | Phase 2 — Canonical Page Expansion executed",
+          "level": 2,
+          "line": 141
+        },
+        {
+          "heading": "Rollout order (domain-by-domain):",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Validation results:",
+          "level": 3,
+          "line": 171
+        },
+        {
+          "heading": "Phase 2 status: COMPLETE",
+          "level": 3,
+          "line": 177
+        },
+        {
+          "heading": "[2026-05-15] metadata | Phase 3 — Source + Observability Layer executed",
+          "level": 2,
+          "line": 184
+        },
+        {
+          "heading": "3A: Source page frontmatter (9 pages):",
+          "level": 3,
+          "line": 186
+        },
+        {
+          "heading": "3B: Graph Health Dashboard expanded to full observability suite:",
+          "level": 3,
+          "line": 199
+        },
+        {
+          "heading": "3C: Schema lint — full vault:",
+          "level": 3,
+          "line": 209
+        },
+        {
+          "heading": "Phase 3 status: COMPLETE",
+          "level": 3,
+          "line": 220
+        },
+        {
+          "heading": "Migration complete — final metrics:",
+          "level": 3,
+          "line": 222
+        },
+        {
+          "heading": "[2026-05-15] governance | CLAUDE.md operational governance extension",
+          "level": 2,
+          "line": 230
+        },
+        {
+          "heading": "Context:",
+          "level": 3,
+          "line": 232
+        },
+        {
+          "heading": "New governance sections appended to CLAUDE.md (8 sections):",
+          "level": 3,
+          "line": 235
+        },
+        {
+          "heading": "Graph Health Dashboard updated:",
+          "level": 3,
+          "line": 246
+        },
+        {
+          "heading": "Governance scope evolution:",
+          "level": 3,
+          "line": 250
+        },
+        {
+          "heading": "Files modified: 3",
+          "level": 3,
+          "line": 254
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 41
+      }
+    }
+  ]
+}

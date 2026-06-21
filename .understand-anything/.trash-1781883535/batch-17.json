@@ -1,0 +1,319 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "document",
+      "name": "ADR - Decision Layer Re-grounding.md",
+      "filePath": "dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "summary": "Architecture Decision Record re-grounding the Decision layer on the Layer-2 snapshot schema, defining the invariant Gold DecisionPacket design constraints for the Decision Engine.",
+      "tags": ["documentation", "decision-record", "architecture", "decision-layer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "document",
+      "name": "ADR - Deterministic Regime Taxonomy.md",
+      "filePath": "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "summary": "ADR establishing a deterministic, replay-stable market-regime taxonomy with no adaptive learning or hidden state, constraining the Market Regime Classifier and its schema.",
+      "tags": ["documentation", "decision-record", "determinism", "regime-classification"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "type": "document",
+      "name": "ADR - Dev Graph Bootstrap.md",
+      "filePath": "dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "summary": "Foundational ADR establishing the dev_graph as a separate ontology-governed vault distinct from the wiki, providing the architectural basis for all dev_graph governance.",
+      "tags": ["documentation", "decision-record", "architecture", "bootstrap", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "type": "document",
+      "name": "ADR - Empirical Calibration Methodology.md",
+      "filePath": "dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "summary": "Detailed ADR defining the empirical-readiness gate and deterministic rule-based calibration method for regime and gold config versions while preserving replay determinism.",
+      "tags": ["documentation", "decision-record", "calibration", "methodology", "determinism"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "type": "document",
+      "name": "ADR - Execution Layer Planning.md",
+      "filePath": "dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "summary": "Planning ADR for the Execution layer, establishing the port/adapter determinism boundary, paper-only safety posture, and creation gates for order-management objects.",
+      "tags": ["documentation", "decision-record", "execution-layer", "port-adapter", "planning"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "type": "document",
+      "name": "ADR - Feature Layer Contract.md",
+      "filePath": "dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "summary": "ADR defining the deterministic feature-eligibility contract, forbidden feature classes, and provenance requirements binding the Feature Builder and Feature Vector Schema.",
+      "tags": ["documentation", "decision-record", "feature-layer", "contract", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "type": "document",
+      "name": "ADR - Gold Decision Confidence Semantics.md",
+      "filePath": "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "summary": "ADR defining the confidence model and semantics for gold decisions, grounding confidence on regime and feature schemas without introducing adaptive learning.",
+      "tags": ["documentation", "decision-record", "gold-layer", "confidence", "semantics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "document",
+      "name": "ADR - Gold DecisionPacket v0 Planning.md",
+      "filePath": "dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "summary": "Planning ADR for the v0 Gold DecisionPacket, defining its bounded context, dependency rules, determinism/replay invariants, provenance, and creation gates.",
+      "tags": ["documentation", "decision-record", "gold-layer", "decision-packet", "planning"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "type": "document",
+      "name": "ADR - Implementation Substrate.md",
+      "filePath": "dev_graph/decisions/ADR - Implementation Substrate.md",
+      "summary": "ADR establishing the Python implementation substrate (src/ layout, dependency tooling) used by all Phase 5+ coding sessions.",
+      "tags": ["documentation", "decision-record", "implementation", "substrate", "tooling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "type": "document",
+      "name": "ADR - JARVIS GraphRAG Integration.md",
+      "filePath": "dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "summary": "ADR defining JARVIS as a read-only GraphRAG consumer of the dev_graph via the existing FastAPI app, with canonical-id citations and interchangeable offline/Neo4j sources.",
+      "tags": ["documentation", "decision-record", "graphrag", "integration", "read-only"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Ontology Redesign.md",
+      "type": "document",
+      "name": "ADR - Ontology Redesign.md",
+      "filePath": "dev_graph/decisions/ADR - Ontology Redesign.md",
+      "summary": "ADR establishing the complete dev_graph ontology schema and engineering type hierarchy that governs all subsequent node creation and context-pack assembly.",
+      "tags": ["documentation", "decision-record", "ontology", "schema", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "type": "document",
+      "name": "ADR - Operations Control Plane.md",
+      "filePath": "dev_graph/decisions/ADR - Operations Control Plane.md",
+      "summary": "ADR defining a local-only operations control plane with three action tiers, paper-only safety, audited confirmed mutations, and gate-respecting build order over the orchestrator and runtime.",
+      "tags": ["documentation", "decision-record", "operations", "control-plane", "safety"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "document",
+      "name": "ADR - Paper-Trading Runtime Planning.md",
+      "filePath": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "summary": "Planning ADR for the paper-trading runtime that wraps Gold DecisionPackets with stateful determinism, an append-only ledger, policy fingerprinting, and additive live operational-feed amendments.",
+      "tags": ["documentation", "decision-record", "paper-trading", "runtime", "determinism"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "target": "document:dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "target": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "target": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "target": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
+      "target": "document:dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Feature Layer Contract.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "target": "document:dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Ontology Redesign.md",
+      "target": "document:dev_graph/decisions/ADR - Dev Graph Bootstrap.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "target": "document:dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "target": "document:dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "target": "document:dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "target": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

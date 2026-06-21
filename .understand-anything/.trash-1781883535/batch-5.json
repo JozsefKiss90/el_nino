@@ -1,0 +1,541 @@
+{
+  "nodes": [
+    {
+      "id": "file:ops/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "ops/__init__.py",
+      "summary": "Package marker for the Operations Control Plane (ADR-013); documents the ops console's separation from src/ (zero-runtime-deps) and exposes the package version.",
+      "tags": ["entry-point", "package-init", "ops", "documentation"],
+      "complexity": "simple",
+      "languageNotes": "Python package __init__ that defines __all__ and __version__ only; the trading engine never imports it, preserving ADR-003 zero-runtime-deps."
+    },
+    {
+      "id": "file:ops/actions.py",
+      "type": "file",
+      "name": "actions.py",
+      "filePath": "ops/actions.py",
+      "summary": "Safe (non-gated) operator actions for the ops console: run the chain now, rerun calibration readiness, and resync Neo4j, each persisting an audit entry via a finish helper.",
+      "tags": ["service", "ops", "audit", "action-handler"],
+      "complexity": "moderate",
+      "languageNotes": "Each action is wrapped so it never raises to the UI; _finish redacts secrets and writes the audit entry before returning an ActionResult."
+    },
+    {
+      "id": "file:ops/app.py",
+      "type": "file",
+      "name": "app.py",
+      "filePath": "ops/app.py",
+      "summary": "Textual TUI for the Operations Control Plane: renders the multi-tab dashboard over ops.core and dispatches safe and confirmation-gated operator actions in worker threads.",
+      "tags": ["entry-point", "component", "ops", "tui", "ui"],
+      "complexity": "complex",
+      "languageNotes": "Built on Textual App/Screen; long-running actions run via call_from_thread workers, gated actions push a ConfirmModal screen before executing."
+    },
+    {
+      "id": "file:ops/audit.py",
+      "type": "file",
+      "name": "audit.py",
+      "filePath": "ops/audit.py",
+      "summary": "Append-only JSONL audit log for the ops console: builds, writes, appends, and tail-reads AuditEntry records of every operator action.",
+      "tags": ["service", "audit", "serialization", "ops"],
+      "complexity": "moderate",
+      "languageNotes": "Writes ASCII-only JSON lines (ensure_ascii) so the log survives Windows codepage quirks; read tolerates and skips malformed lines."
+    },
+    {
+      "id": "file:ops/core.py",
+      "type": "file",
+      "name": "core.py",
+      "filePath": "ops/core.py",
+      "summary": "Headless governed read-model for the ops console: assembles the full dashboard (ledger, portfolio, operational, decision preview, gates, calibration, plugs, processes, policy, events) from src/ governed functions without reimplementing safety logic.",
+      "tags": ["data-model", "service", "ops", "read-model", "dashboard"],
+      "complexity": "complex",
+      "languageNotes": "Fifteen frozen dataclass view models plus pure builder functions; reuses src/ load_ledger/load_portfolio/run_sequence rather than duplicating gate or paper-only logic."
+    },
+    {
+      "id": "file:ops/gated.py",
+      "type": "file",
+      "name": "gated.py",
+      "filePath": "ops/gated.py",
+      "summary": "Confirmation-gated, side-effecting operator actions: run the chain against the Alpaca paper adapter, register/unregister the daily scheduled task, and commit a calibration bump, all audited.",
+      "tags": ["service", "ops", "audit", "action-handler", "gated"],
+      "complexity": "moderate",
+      "languageNotes": "Mirrors actions.py but for state-changing operations; precondition_line surfaces a human-readable gate check before the UI confirms execution."
+    },
+    {
+      "id": "file:ops/proc.py",
+      "type": "file",
+      "name": "proc.py",
+      "filePath": "ops/proc.py",
+      "summary": "Subprocess execution helpers for the ops console: a default command runner returning a ProcResult plus tail and secret-redaction utilities used before persisting subprocess output.",
+      "tags": ["utility", "ops", "subprocess", "security"],
+      "complexity": "simple",
+      "languageNotes": "redact scrubs known env-var secret values out of captured output so credentials never reach the audit log."
+    },
+    {
+      "id": "file:tests/ops/test_actions.py",
+      "type": "file",
+      "name": "test_actions.py",
+      "filePath": "tests/ops/test_actions.py",
+      "summary": "Unit tests for ops.actions: verifies chain-run persistence and auditing, idempotent re-runs, error capture, credential non-leakage, and subprocess output redaction.",
+      "tags": ["test", "ops", "audit", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/ops/test_app.py",
+      "type": "file",
+      "name": "test_app.py",
+      "filePath": "tests/ops/test_app.py",
+      "summary": "Integration tests for the OpsConsole Textual app: confirms it survives a raising action, audits safe actions, and that gated actions run on confirm and no-op on cancel.",
+      "tags": ["test", "ops", "tui", "integration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/ops/test_audit.py",
+      "type": "file",
+      "name": "test_audit.py",
+      "filePath": "tests/ops/test_audit.py",
+      "summary": "Unit tests for ops.audit: append/read roundtrip, append-only never-truncate guarantee, tail limiting, ASCII-only output, absent-file handling, and malformed-line skipping.",
+      "tags": ["test", "ops", "audit", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/ops/test_core.py",
+      "type": "file",
+      "name": "test_core.py",
+      "filePath": "tests/ops/test_core.py",
+      "summary": "Unit tests for ops.core view builders: ledger, portfolio, operational, and decision-preview views across absent, populated, malformed, and non-consumable inputs.",
+      "tags": ["test", "ops", "read-model", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/ops/test_gated.py",
+      "type": "file",
+      "name": "test_gated.py",
+      "filePath": "tests/ops/test_gated.py",
+      "summary": "Unit tests for ops.gated side-effecting actions: Alpaca paper chain run, daily-schedule register/unregister, calibration bump, and precondition-line gating.",
+      "tags": ["test", "ops", "gated", "audit"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "class:ops/actions.py:ActionResult",
+      "type": "class",
+      "name": "ActionResult",
+      "filePath": "ops/actions.py",
+      "lineRange": [42, 47],
+      "summary": "Frozen result record of a safe operator action carrying its name, success flag, summary, detail, and the audit entry written.",
+      "tags": ["data-model", "ops", "dataclass"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/actions.py:run_chain_now",
+      "type": "function",
+      "name": "run_chain_now",
+      "filePath": "ops/actions.py",
+      "lineRange": [67, 106],
+      "summary": "Resolves the run snapshot and executes one paper-only chain run, persisting ledger/portfolio state hashes and an audit entry; no-ops cleanly when no snapshot is available.",
+      "tags": ["action-handler", "ops", "audit"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/actions.py:rerun_calibration_readiness",
+      "type": "function",
+      "name": "rerun_calibration_readiness",
+      "filePath": "ops/actions.py",
+      "lineRange": [109, 131],
+      "summary": "Reruns the calibration-readiness computation via a runner and audits the outcome, catching and recording failures rather than raising.",
+      "tags": ["action-handler", "ops", "calibration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/actions.py:resync_neo4j",
+      "type": "function",
+      "name": "resync_neo4j",
+      "filePath": "ops/actions.py",
+      "lineRange": [134, 150],
+      "summary": "Invokes the Neo4j resync runner and audits the result, tailing and redacting subprocess output before persistence.",
+      "tags": ["action-handler", "ops", "neo4j"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ops/app.py:ConfirmModal",
+      "type": "class",
+      "name": "ConfirmModal",
+      "filePath": "ops/app.py",
+      "lineRange": [57, 89],
+      "summary": "Textual modal screen prompting the operator to confirm or cancel a gated action, returning the choice to the caller.",
+      "tags": ["component", "ops", "tui", "modal"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ops/app.py:OpsConsole",
+      "type": "class",
+      "name": "OpsConsole",
+      "filePath": "ops/app.py",
+      "lineRange": [101, 440],
+      "summary": "Main Textual application for the ops console: composes the tabbed dashboard, refreshes it on an interval, and dispatches safe and confirmation-gated actions to background workers.",
+      "tags": ["component", "ops", "tui", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ops/app.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "ops/app.py",
+      "lineRange": [469, 484],
+      "summary": "CLI entry point that parses args, optionally prints a one-shot text dashboard, and otherwise launches the interactive OpsConsole TUI.",
+      "tags": ["entry-point", "ops", "cli"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ops/audit.py:AuditEntry",
+      "type": "class",
+      "name": "AuditEntry",
+      "filePath": "ops/audit.py",
+      "lineRange": [30, 48],
+      "summary": "Frozen audit record (timestamp, action, args summary, result, ok) with to_dict serialization and a human-readable line renderer.",
+      "tags": ["data-model", "audit", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/audit.py:make_entry",
+      "type": "function",
+      "name": "make_entry",
+      "filePath": "ops/audit.py",
+      "lineRange": [51, 62],
+      "summary": "Builds a timestamped AuditEntry from an action name, args summary, result, and success flag using an injectable clock.",
+      "tags": ["audit", "factory", "ops"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/audit.py:append_audit",
+      "type": "function",
+      "name": "append_audit",
+      "filePath": "ops/audit.py",
+      "lineRange": [73, 85],
+      "summary": "Constructs an entry and appends it as one JSON line to the audit log, creating parent directories as needed.",
+      "tags": ["audit", "ops", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/audit.py:read_audit",
+      "type": "function",
+      "name": "read_audit",
+      "filePath": "ops/audit.py",
+      "lineRange": [88, 114],
+      "summary": "Reads the tail of the JSONL audit log into AuditEntry objects, tolerating absent files and skipping malformed lines.",
+      "tags": ["audit", "ops", "deserialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ops/core.py:OpsPaths",
+      "type": "class",
+      "name": "OpsPaths",
+      "filePath": "ops/core.py",
+      "lineRange": [68, 101],
+      "summary": "Frozen collection of all filesystem paths the ops console reads or writes (ledger, portfolio, snapshots, calibration artifact, daily logs, audit log) with a default() factory rooted at the repo.",
+      "tags": ["data-model", "ops", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ops/core.py:Dashboard",
+      "type": "class",
+      "name": "Dashboard",
+      "filePath": "ops/core.py",
+      "lineRange": [251, 267],
+      "summary": "Aggregate view model bundling every dashboard section (pipeline, ledger, portfolio, operational, preview, gates, calibration, plugs, processes, policy, events, audit tail) with to_dict serialization.",
+      "tags": ["data-model", "ops", "dashboard", "aggregate"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/core.py:ledger_view",
+      "type": "function",
+      "name": "ledger_view",
+      "filePath": "ops/core.py",
+      "lineRange": [278, 300],
+      "summary": "Loads the ledger via the governed src/ loader and projects it into a LedgerView with verdict counts and state hash, surfacing load errors instead of raising.",
+      "tags": ["read-model", "ops", "ledger"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/core.py:portfolio_view",
+      "type": "function",
+      "name": "portfolio_view",
+      "filePath": "ops/core.py",
+      "lineRange": [303, 324],
+      "summary": "Loads the portfolio and projects positions, open counts, realized PnL, execution count, and state hash into a PortfolioView, surfacing errors safely.",
+      "tags": ["read-model", "ops", "portfolio"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/core.py:decision_preview",
+      "type": "function",
+      "name": "decision_preview",
+      "filePath": "ops/core.py",
+      "lineRange": [393, 431],
+      "summary": "Resolves the latest snapshot and runs a pure, non-persisting decision sequence to preview the regime, direction, verdict, guards, and fill without mutating state.",
+      "tags": ["read-model", "ops", "decision", "pure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/core.py:calibration_readiness",
+      "type": "function",
+      "name": "calibration_readiness",
+      "filePath": "ops/core.py",
+      "lineRange": [465, 519],
+      "summary": "Reads the calibration artifact and evaluates per-gate readiness (committed count vs floor, coverage, decision versions) into a CalibrationReadiness verdict.",
+      "tags": ["read-model", "ops", "calibration", "gate"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ops/core.py:process_infos",
+      "type": "function",
+      "name": "process_infos",
+      "filePath": "ops/core.py",
+      "lineRange": [576, 634],
+      "summary": "Builds the process/health rows for the dashboard: scheduled-task status, producer snapshot freshness, and Neo4j sync availability.",
+      "tags": ["read-model", "ops", "monitoring"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ops/core.py:assemble_dashboard",
+      "type": "function",
+      "name": "assemble_dashboard",
+      "filePath": "ops/core.py",
+      "lineRange": [712, 742],
+      "summary": "Top-level builder that composes every section view into a single Dashboard object consumed by both the TUI and the one-shot text renderer.",
+      "tags": ["read-model", "ops", "dashboard", "aggregate"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/core.py:render_text_dashboard",
+      "type": "function",
+      "name": "render_text_dashboard",
+      "filePath": "ops/core.py",
+      "lineRange": [745, 773],
+      "summary": "Renders a Dashboard into a plain-text, line-oriented report for the console's one-shot non-interactive mode.",
+      "tags": ["read-model", "ops", "rendering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/core.py:query_scheduled_task",
+      "type": "function",
+      "name": "query_scheduled_task",
+      "filePath": "ops/core.py",
+      "lineRange": [550, 573],
+      "summary": "Queries the Windows scheduled task state via schtasks/PowerShell subprocess, validating the task name and parsing the JSON result.",
+      "tags": ["ops", "subprocess", "monitoring", "windows"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ops/gated.py:GatedResult",
+      "type": "class",
+      "name": "GatedResult",
+      "filePath": "ops/gated.py",
+      "lineRange": [42, 48],
+      "summary": "Frozen result of a confirmation-gated action carrying its name, ok flag, executed flag, summary, detail, and audit entry.",
+      "tags": ["data-model", "ops", "dataclass"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/gated.py:run_chain_now_alpaca_paper",
+      "type": "function",
+      "name": "run_chain_now_alpaca_paper",
+      "filePath": "ops/gated.py",
+      "lineRange": [69, 127],
+      "summary": "Gated action that runs one chain iteration against the Alpaca paper adapter, persisting state hashes and auditing, guarded by adapter availability.",
+      "tags": ["action-handler", "ops", "gated", "alpaca"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ops/gated.py:register_daily_schedule",
+      "type": "function",
+      "name": "register_daily_schedule",
+      "filePath": "ops/gated.py",
+      "lineRange": [131, 157],
+      "summary": "Gated action that registers the daily chain scheduled task via a runner script, auditing success or the surfaced failure.",
+      "tags": ["action-handler", "ops", "gated", "scheduling"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/gated.py:unregister_daily_schedule",
+      "type": "function",
+      "name": "unregister_daily_schedule",
+      "filePath": "ops/gated.py",
+      "lineRange": [160, 180],
+      "summary": "Gated action that unregisters the daily chain scheduled task and audits the outcome.",
+      "tags": ["action-handler", "ops", "gated", "scheduling"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/gated.py:commit_calibration_bump",
+      "type": "function",
+      "name": "commit_calibration_bump",
+      "filePath": "ops/gated.py",
+      "lineRange": [184, 212],
+      "summary": "Gated action that commits a calibration bump only when readiness gates pass, auditing whether the bump was executed.",
+      "tags": ["action-handler", "ops", "gated", "calibration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ops/gated.py:precondition_line",
+      "type": "function",
+      "name": "precondition_line",
+      "filePath": "ops/gated.py",
+      "lineRange": [225, 240],
+      "summary": "Produces a human-readable precondition/gate-status line for a named gated action, shown in the confirmation modal before execution.",
+      "tags": ["ops", "gated", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ops/proc.py:ProcResult",
+      "type": "class",
+      "name": "ProcResult",
+      "filePath": "ops/proc.py",
+      "lineRange": [24, 27],
+      "summary": "Frozen subprocess result holding return code, stdout, and stderr.",
+      "tags": ["data-model", "ops", "subprocess"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/proc.py:default_runner",
+      "type": "function",
+      "name": "default_runner",
+      "filePath": "ops/proc.py",
+      "lineRange": [33, 41],
+      "summary": "Default command runner that shells out via subprocess.run and wraps the outcome (or failure) in a ProcResult.",
+      "tags": ["utility", "ops", "subprocess"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ops/proc.py:redact",
+      "type": "function",
+      "name": "redact",
+      "filePath": "ops/proc.py",
+      "lineRange": [48, 63],
+      "summary": "Scrubs known secret environment-variable values out of captured output lines before they are persisted to the audit log.",
+      "tags": ["utility", "ops", "security", "redaction"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {"source": "file:ops/actions.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/actions.py", "target": "file:ops/audit.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/actions.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/actions.py", "target": "file:ops/proc.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:ops/app.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/app.py", "target": "file:ops/actions.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/app.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/app.py", "target": "file:ops/gated.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:ops/core.py", "target": "file:ops/audit.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:ops/gated.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/gated.py", "target": "file:ops/audit.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/gated.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:ops/gated.py", "target": "file:ops/proc.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:tests/ops/test_actions.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_actions.py", "target": "file:ops/actions.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_actions.py", "target": "file:ops/audit.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_actions.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:tests/ops/test_app.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_app.py", "target": "file:ops/actions.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_app.py", "target": "file:ops/app.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_app.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:tests/ops/test_audit.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_audit.py", "target": "file:ops/audit.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:tests/ops/test_core.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_core.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:tests/ops/test_gated.py", "target": "file:ops/__init__.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_gated.py", "target": "file:ops/audit.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_gated.py", "target": "file:ops/core.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_gated.py", "target": "file:ops/gated.py", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:tests/ops/test_gated.py", "target": "file:ops/proc.py", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:ops/actions.py", "target": "class:ops/actions.py:ActionResult", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/actions.py", "target": "function:ops/actions.py:run_chain_now", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/actions.py", "target": "function:ops/actions.py:rerun_calibration_readiness", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/actions.py", "target": "function:ops/actions.py:resync_neo4j", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/actions.py", "target": "class:ops/actions.py:ActionResult", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/actions.py", "target": "function:ops/actions.py:run_chain_now", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/actions.py", "target": "function:ops/actions.py:rerun_calibration_readiness", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/actions.py", "target": "function:ops/actions.py:resync_neo4j", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:ops/app.py", "target": "class:ops/app.py:ConfirmModal", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/app.py", "target": "class:ops/app.py:OpsConsole", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/app.py", "target": "function:ops/app.py:main", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/app.py", "target": "class:ops/app.py:OpsConsole", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/app.py", "target": "function:ops/app.py:main", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:ops/audit.py", "target": "class:ops/audit.py:AuditEntry", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/audit.py", "target": "function:ops/audit.py:make_entry", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/audit.py", "target": "function:ops/audit.py:append_audit", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/audit.py", "target": "function:ops/audit.py:read_audit", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/audit.py", "target": "class:ops/audit.py:AuditEntry", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/audit.py", "target": "function:ops/audit.py:append_audit", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/audit.py", "target": "function:ops/audit.py:read_audit", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:ops/core.py", "target": "class:ops/core.py:OpsPaths", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "class:ops/core.py:Dashboard", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:ledger_view", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:portfolio_view", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:decision_preview", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:calibration_readiness", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:process_infos", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:assemble_dashboard", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:render_text_dashboard", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:query_scheduled_task", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/core.py", "target": "class:ops/core.py:OpsPaths", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/core.py", "target": "class:ops/core.py:Dashboard", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/core.py", "target": "function:ops/core.py:assemble_dashboard", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:ops/gated.py", "target": "class:ops/gated.py:GatedResult", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:run_chain_now_alpaca_paper", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:register_daily_schedule", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:unregister_daily_schedule", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:commit_calibration_bump", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:precondition_line", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:run_chain_now_alpaca_paper", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:register_daily_schedule", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/gated.py", "target": "function:ops/gated.py:precondition_line", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:ops/proc.py", "target": "class:ops/proc.py:ProcResult", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/proc.py", "target": "function:ops/proc.py:default_runner", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/proc.py", "target": "function:ops/proc.py:redact", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:ops/proc.py", "target": "function:ops/proc.py:default_runner", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:ops/proc.py", "target": "function:ops/proc.py:redact", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:ops/actions.py:run_chain_now", "target": "function:ops/core.py:resolve_run_snapshot", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/actions.py:rerun_calibration_readiness", "target": "function:ops/core.py:calibration_readiness", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/actions.py:run_chain_now", "target": "function:ops/audit.py:make_entry", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/actions.py:run_chain_now", "target": "function:ops/audit.py:write_entry", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/actions.py:resync_neo4j", "target": "function:ops/proc.py:redact", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:ops/gated.py:run_chain_now_alpaca_paper", "target": "function:ops/core.py:resolve_run_snapshot", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/gated.py:commit_calibration_bump", "target": "function:ops/core.py:calibration_readiness", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/gated.py:precondition_line", "target": "function:ops/core.py:calibration_readiness", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/gated.py:run_chain_now_alpaca_paper", "target": "function:ops/audit.py:make_entry", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:ops/core.py:assemble_dashboard", "target": "function:ops/core.py:ledger_view", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/core.py:assemble_dashboard", "target": "function:ops/core.py:portfolio_view", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/core.py:assemble_dashboard", "target": "function:ops/core.py:decision_preview", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/core.py:assemble_dashboard", "target": "function:ops/core.py:calibration_readiness", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/core.py:assemble_dashboard", "target": "function:ops/core.py:process_infos", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/core.py:assemble_dashboard", "target": "function:ops/audit.py:read_audit", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/audit.py:append_audit", "target": "function:ops/audit.py:make_entry", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:ops/app.py:main", "target": "function:ops/core.py:assemble_dashboard", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:ops/app.py:main", "target": "function:ops/core.py:render_text_dashboard", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:ops/actions.py", "target": "file:tests/ops/test_actions.py", "type": "tested_by", "direction": "forward", "weight": 0.5},
+    {"source": "file:ops/app.py", "target": "file:tests/ops/test_app.py", "type": "tested_by", "direction": "forward", "weight": 0.5},
+    {"source": "file:ops/audit.py", "target": "file:tests/ops/test_audit.py", "type": "tested_by", "direction": "forward", "weight": 0.5},
+    {"source": "file:ops/core.py", "target": "file:tests/ops/test_core.py", "type": "tested_by", "direction": "forward", "weight": 0.5},
+    {"source": "file:ops/gated.py", "target": "file:tests/ops/test_gated.py", "type": "tested_by", "direction": "forward", "weight": 0.5}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "wiki/backtesting/Backtesting Methodology.md", "language": "markdown", "sizeLines": 85, "fileCategory": "docs"},
+    {"path": "wiki/backtesting/Overfitting Detection.md", "language": "markdown", "sizeLines": 96, "fileCategory": "docs"},
+    {"path": "wiki/backtesting/Walk-Forward Optimization.md", "language": "markdown", "sizeLines": 121, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "wiki/backtesting/Backtesting Methodology.md": [],
+    "wiki/backtesting/Overfitting Detection.md": [],
+    "wiki/backtesting/Walk-Forward Optimization.md": []
+  }
+}

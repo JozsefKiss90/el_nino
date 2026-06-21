@@ -1,0 +1,17 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "jarvis/sources/EL NINO JARVIS Cyberpunk.html", "language": "html", "sizeLines": 1373, "fileCategory": "markup"},
+    {"path": "jarvis/sources/OPUS_CONTEXT_DUMP.md", "language": "markdown", "sizeLines": 331, "fileCategory": "docs"},
+    {"path": "jarvis/sources/el_nino_jarvis_interface (6).html", "language": "html", "sizeLines": 1298, "fileCategory": "markup"},
+    {"path": "jarvis/sources/el_nino_project_plan_v1.md", "language": "markdown", "sizeLines": 596, "fileCategory": "docs"},
+    {"path": "jarvis/sources/sarkallatos_pontok.md", "language": "markdown", "sizeLines": 68, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "jarvis/sources/EL NINO JARVIS Cyberpunk.html": [],
+    "jarvis/sources/OPUS_CONTEXT_DUMP.md": [],
+    "jarvis/sources/el_nino_jarvis_interface (6).html": [],
+    "jarvis/sources/el_nino_project_plan_v1.md": [],
+    "jarvis/sources/sarkallatos_pontok.md": []
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path":"dev_graph/tests/test_ops_app.md","language":"markdown","sizeLines":56,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_ops_audit.md","language":"markdown","sizeLines":54,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_ops_core.md","language":"markdown","sizeLines":58,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_ops_gated.md","language":"markdown","sizeLines":61,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_paper_runtime_bench.md","language":"markdown","sizeLines":48,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_paper_runtime_determinism.md","language":"markdown","sizeLines":48,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_paper_runtime_engine.md","language":"markdown","sizeLines":48,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_paper_runtime_guards.md","language":"markdown","sizeLines":45,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_paper_runtime_ledger.md","language":"markdown","sizeLines":49,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_predicates.md","language":"markdown","sizeLines":48,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_regime_bench.md","language":"markdown","sizeLines":53,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_regime_classifier.md","language":"markdown","sizeLines":63,"fileCategory":"docs"},
+    {"path":"dev_graph/tests/test_scoring.md","language":"markdown","sizeLines":48,"fileCategory":"docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/tests/test_ops_app.md": [],
+    "dev_graph/tests/test_ops_audit.md": [],
+    "dev_graph/tests/test_ops_core.md": [],
+    "dev_graph/tests/test_ops_gated.md": [],
+    "dev_graph/tests/test_paper_runtime_bench.md": [],
+    "dev_graph/tests/test_paper_runtime_determinism.md": [],
+    "dev_graph/tests/test_paper_runtime_engine.md": [],
+    "dev_graph/tests/test_paper_runtime_guards.md": [],
+    "dev_graph/tests/test_paper_runtime_ledger.md": [],
+    "dev_graph/tests/test_predicates.md": [],
+    "dev_graph/tests/test_regime_bench.md": [],
+    "dev_graph/tests/test_regime_classifier.md": [],
+    "dev_graph/tests/test_scoring.md": []
+  }
+}

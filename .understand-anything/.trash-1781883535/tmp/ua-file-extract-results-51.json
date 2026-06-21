@@ -1,0 +1,1012 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/glossary/Glossary.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 90,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "Glossary",
+          "level": 1,
+          "line": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "wiki/memory/Agent Memory Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 191,
+      "nonEmptyLines": 137,
+      "sections": [
+        {
+          "heading": "Agent Memory Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Memory Model",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Memory File Types",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Structural Memory (read-mostly)",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Operational Memory (read-write)",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Derived Memory (generated)",
+          "level": 3,
+          "line": 72
+        },
+        {
+          "heading": "Key Design Principles",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "1. Files as Personality",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "2. Read Before Act",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "3. Write Before Exit",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "4. Git as Persistence Layer",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Context Budget Implications",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 113
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Operational Constraints",
+          "level": 2,
+          "line": 143
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 150
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Migration Pattern",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Institutional Memory (Syndicate Squad)",
+          "level": 3,
+          "line": 166
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 186
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 28
+      }
+    },
+    {
+      "path": "wiki/memory/Context Budget Engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 171,
+      "nonEmptyLines": 126,
+      "sections": [
+        {
+          "heading": "Context Budget Engineering",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Mental Model",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Budget Structure",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Budget Categories",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Optimization Strategies",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "1. Selective Reading",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "2. Memory Windowing",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "3. Context Resets",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "4. Prompt Engineering for Token Efficiency",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "5. Tiered File Architecture",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Context Window Sizes",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 155
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 168
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 23
+      }
+    },
+    {
+      "path": "wiki/observability/Graph Health Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 160,
+      "nonEmptyLines": 126,
+      "sections": [
+        {
+          "heading": "Graph Health Dashboard",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Metadata Coverage",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Pages Missing Frontmatter",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Confidence Distribution",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Orphan Pages",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Weakly Connected Pages",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Stale Pages (>30 days without update)",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Ontology Overview (Domain Distribution)",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Type Distribution",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Stub Tracking",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Source Coverage",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Source Provenance (pages citing each source)",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Contradiction Registry",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Recently Updated Notes",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Ingestion Timeline",
+          "level": 2,
+          "line": 136
+        },
+        {
+          "heading": "Stale Confidence",
+          "level": 2,
+          "line": 145
+        },
+        {
+          "heading": "Known Distinct Pairs",
+          "level": 2,
+          "line": 156
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/research/Research Ingestion Workflow.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 158,
+      "nonEmptyLines": 120,
+      "sections": [
+        {
+          "heading": "Research Ingestion Workflow",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Wiki Ingestion Workflow",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Steps",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Trading Research Ingestion",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Pre-Market Research Routine",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Source Processing Rules",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "For Wiki Sources",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "For Market Research",
+          "level": 3,
+          "line": 93
+        },
+        {
+          "heading": "Quality Criteria",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 155
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": "wiki/risk/Autonomous Trading Risk Model.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 204,
+      "nonEmptyLines": 154,
+      "sections": [
+        {
+          "heading": "Autonomous Trading Risk Model",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Risk Taxonomy",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Risk Categories",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Market Risk",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Execution Risk",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "System Risk",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "AI-Specific Risk",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Governance Risk",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "Risk Parameters",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Phased Risk Mitigation",
+          "level": 2,
+          "line": 129
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 146
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 155
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Operational Constraints",
+          "level": 2,
+          "line": 168
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 175
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 183
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 190
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 198
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "wiki/risk/Guardrail Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 148,
+      "nonEmptyLines": 107,
+      "sections": [
+        {
+          "heading": "Guardrail Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Guardrail Categories",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Hard Limits (Non-Negotiable)",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Soft Limits (Configurable)",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Behavioral Rules",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Why Guardrails Are Critical",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Implementation",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Environment Variables",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Strategy File",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "CLAUDE.md",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Contradictions",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Options Trading Constraint",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 143
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "wiki/security/API Credential Isolation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 88,
+      "nonEmptyLines": 60,
+      "sections": [
+        {
+          "heading": "API Credential Isolation",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Isolation Rules",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Incident Evidence",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Exchange API Permission Model",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "wiki/security/Environment Variable Management.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 108,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "Environment Variable Management",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Storage Locations",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Required Variables",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Critical Rules",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Naming Precision",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "wiki/workflows/Office Action Loop.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 84,
+      "nonEmptyLines": 61,
+      "sections": [
+        {
+          "heading": "Office Action Loop",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "State Machine",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Actions",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Action Execution Flow",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    }
+  ]
+}

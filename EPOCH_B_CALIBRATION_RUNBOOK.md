@@ -86,6 +86,16 @@ Truth DB (`C:\Code\Mr-Ripley\layer2_truth.db`, system of record) — **5 PASS sn
 
 **Monochromatic corpus ⇒ all three readiness gates FAIL (see §4). No target is calibrated.**
 
+**Re-check 2026-06-18 (no change).** Re-ran the MOD-009 labeler
+(`run_forward_return_labels.py --include-external`). The corpus is **unchanged** since 2026-06-17 — no new
+day banked after 2026-06-15 (06-16/17/18 not present in `runtime/snapshots`): external N=5, committed N=1,
+regimes `{RESTRICTIVE_RATES: 5}`, directions `{AVOID: 5}`, **0 realized labels** (all pending /
+no_exit_in_tolerance). The committed golden `benchmarks/calibration/artifacts/forward_return_labels.json`
+is **byte-identical** (re-run produced no diff). **Verdict stands: DEFER all three — no `*_version` bump,
+no value, no direction-table change.** (Note: the AVOID-objective + FLAT_BAND definitions remain
+unsettled in ADR-012 — a further precondition on any future G3 direction-table bump even once G3 data
+exists.)
+
 ### 3.2 Reproduce the assessment
 
 Run the read-only harness below over both sinks. It writes nothing.
@@ -219,6 +229,9 @@ change.**
 | Regime thresholds (`taxonomy_version`) | G0 + G1 | **DEFER** — N=5, 1/12 regimes. No bump. |
 | Confidence weights (`decision_policy_version`) | G0 + G2 | **DEFER** — no penalty-dimension variation. No bump. |
 | Regime→direction table (`decision_policy_version`) | G0 + G3 | **DEFER** — 11/12 cells unexercised. The forward-return labeling harness (MOD-009/BENCH-005) is **built** (2026-06-17); it emits 0 realized labels today (corpus monochromatic + clustered). No bump. |
+
+**Re-checked 2026-06-18 — unchanged (DEFER all three; committed golden byte-identical; corpus still N=5
+monochromatic, no day banked after 2026-06-15).**
 
 Re-run §3 as the corpus grows (watch the regime distribution diversify away from RESTRICTIVE_RATES).
 The first gate likely to come into reach is G0; G1/G2/G3 additionally need regime/penalty diversity the

@@ -1,0 +1,504 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/execution/test_execution_guards.py",
+      "type": "file",
+      "name": "test_execution_guards.py",
+      "filePath": "tests/execution/test_execution_guards.py",
+      "summary": "Unit tests for the execution guard layer, verifying run_guard approves clean trades and blocks on position-size and withdrawal-enabled predicates, and that captured config overrides environment.",
+      "tags": ["test", "execution", "validation", "guardrail"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/execution/test_execution_guards.py:_admit",
+      "type": "function",
+      "name": "_admit",
+      "filePath": "tests/execution/test_execution_guards.py",
+      "lineRange": [42, 59],
+      "summary": "Test helper that builds an admitting RuntimeDecisionRecord fixture used to assert that a blocked guard produces no fill record.",
+      "tags": ["test-fixture", "execution", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/features/test_feature_builder.py",
+      "type": "file",
+      "name": "test_feature_builder.py",
+      "filePath": "tests/features/test_feature_builder.py",
+      "summary": "Unit tests for the v0 feature builder, asserting exact level/spread values, snapshot/version anchoring, provenance propagation, determinism, and fail-closed behaviour on missing input series.",
+      "tags": ["test", "feature-engineering", "determinism", "provenance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_decision_builder.py",
+      "type": "file",
+      "name": "test_decision_builder.py",
+      "filePath": "tests/gold/test_decision_builder.py",
+      "summary": "Golden-path tests for the decision builder: pinned policy fingerprints, byte-identical replay, packet-id stability, fail-closed snapshot-id mismatch, guard-ref forwarding, and config validation invariants.",
+      "tags": ["test", "golden", "decision", "determinism", "config-validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/gold/test_decision_builder.py:_make_fv",
+      "type": "function",
+      "name": "_make_fv",
+      "filePath": "tests/gold/test_decision_builder.py",
+      "lineRange": [53, 67],
+      "summary": "Builds a synthetic FeatureVector with overridable and droppable feature values for exercising the decision builder under controlled inputs.",
+      "tags": ["test-fixture", "feature-vector", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/gold/test_e2e_pipeline.py",
+      "type": "file",
+      "name": "test_e2e_pipeline.py",
+      "filePath": "tests/gold/test_e2e_pipeline.py",
+      "summary": "End-to-end pipeline tests chaining snapshot consume, feature build, regime classify, and decision build, asserting byte-identical replay, a golden packet, and unchanged snapshot-id/provenance flow.",
+      "tags": ["test", "golden", "e2e", "pipeline", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/gold/test_e2e_pipeline.py:_run_pipeline",
+      "type": "function",
+      "name": "_run_pipeline",
+      "filePath": "tests/gold/test_e2e_pipeline.py",
+      "lineRange": [26, 38],
+      "summary": "Helper that runs the full consume -> build_features -> classify -> build_decision chain over a fixture path, used as the common driver for the e2e assertions.",
+      "tags": ["test-fixture", "pipeline", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/gold/test_gold_bench.py",
+      "type": "file",
+      "name": "test_gold_bench.py",
+      "filePath": "tests/gold/test_gold_bench.py",
+      "summary": "Benchmark tests for the gold decision bench, asserting report determinism, byte-identical real replay, a pinned pass packet, full direction reachability, and that the committed artifact stays in sync.",
+      "tags": ["test", "benchmark", "golden", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_bench.py",
+      "type": "file",
+      "name": "test_paper_runtime_bench.py",
+      "filePath": "tests/gold/test_paper_runtime_bench.py",
+      "summary": "Benchmark tests for the paper-runtime bench, checking deterministic reports, byte-identical sequences, idempotent duplicate rejects, full verdict coverage, reject attribution, and committed-artifact sync.",
+      "tags": ["test", "benchmark", "paper-runtime", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_determinism.py",
+      "type": "file",
+      "name": "test_paper_runtime_determinism.py",
+      "filePath": "tests/gold/test_paper_runtime_determinism.py",
+      "summary": "Determinism tests for the paper runtime evaluate path, asserting byte-identical records across runs, record-id binding to prior ledger state, pinned runtime policy fingerprint, and fingerprint threading into record ids.",
+      "tags": ["test", "paper-runtime", "determinism", "fingerprint"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_determinism.py:_packet",
+      "type": "function",
+      "name": "_packet",
+      "filePath": "tests/gold/test_paper_runtime_determinism.py",
+      "lineRange": [37, 62],
+      "summary": "Constructs a GoldDecisionPacket fixture with parameterized snapshot id and direction for driving deterministic runtime evaluation tests.",
+      "tags": ["test-fixture", "decision-packet", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_engine.py",
+      "type": "file",
+      "name": "test_paper_runtime_engine.py",
+      "filePath": "tests/gold/test_paper_runtime_engine.py",
+      "summary": "Tests for the paper runtime evaluation engine covering admit/reject/hold verdicts, canonical guard ordering, configurable guard requirements, supervisor stub behaviour, and RuntimeDecisionRecord construction invariants.",
+      "tags": ["test", "paper-runtime", "guardrail", "verdict"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_engine.py:_packet",
+      "type": "function",
+      "name": "_packet",
+      "filePath": "tests/gold/test_paper_runtime_engine.py",
+      "lineRange": [38, 68],
+      "summary": "Builds a GoldDecisionPacket fixture with snapshot id, direction, snapshot guards, and regime parameters for exercising the runtime engine verdict paths.",
+      "tags": ["test-fixture", "decision-packet", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_engine.py:_record",
+      "type": "function",
+      "name": "_record",
+      "filePath": "tests/gold/test_paper_runtime_engine.py",
+      "lineRange": [71, 88],
+      "summary": "Constructs a RuntimeDecisionRecord fixture from a verdict and triggered-guard input, used to assert the admit/non-admit guard-naming invariants.",
+      "tags": ["test-fixture", "runtime-record", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_guards.py",
+      "type": "file",
+      "name": "test_paper_runtime_guards.py",
+      "filePath": "tests/gold/test_paper_runtime_guards.py",
+      "summary": "Exhaustive tests of the individual paper-runtime guard predicates (duplicate, operational, data/freshness echo, cooldown) including fail-closed edge cases on missing or out-of-order timestamps.",
+      "tags": ["test", "paper-runtime", "guardrail", "predicate"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_guards.py:_packet",
+      "type": "function",
+      "name": "_packet",
+      "filePath": "tests/gold/test_paper_runtime_guards.py",
+      "lineRange": [38, 70],
+      "summary": "Builds a parameterized GoldDecisionPacket fixture (snapshot id, direction, guards, regime, instrument, as_of) for driving the guard predicate tests.",
+      "tags": ["test-fixture", "decision-packet", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/gold/test_paper_runtime_ledger.py",
+      "type": "file",
+      "name": "test_paper_runtime_ledger.py",
+      "filePath": "tests/gold/test_paper_runtime_ledger.py",
+      "summary": "Tests the runtime ledger semantics: immutable append, length-derived sequencing, duplicate non-admit on re-presentation, stable state hash through serialization, and seq continuity across persist/reload.",
+      "tags": ["test", "paper-runtime", "ledger", "persistence"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/gold/test_paper_runtime_ledger.py:_packet",
+      "type": "function",
+      "name": "_packet",
+      "filePath": "tests/gold/test_paper_runtime_ledger.py",
+      "lineRange": [38, 63],
+      "summary": "Constructs a GoldDecisionPacket fixture with parameterized snapshot id and direction for the ledger sequencing tests.",
+      "tags": ["test-fixture", "decision-packet", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/orchestration/test_alpaca_clock_feed.py",
+      "type": "file",
+      "name": "test_alpaca_clock_feed.py",
+      "filePath": "tests/orchestration/test_alpaca_clock_feed.py",
+      "summary": "Tests the Alpaca clock feed: open/closed determination against a stub calendar, fail-closed on client errors or missing credentials, paper-only base-url enforcement, and capture/replay round-trips.",
+      "tags": ["test", "orchestration", "market-calendar", "fail-closed"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/orchestration/test_alpaca_clock_feed.py:_StubCalendar",
+      "type": "class",
+      "name": "_StubCalendar",
+      "filePath": "tests/orchestration/test_alpaca_clock_feed.py",
+      "lineRange": [31, 41],
+      "summary": "Test double exposing a fixed set of trading days so the Alpaca clock feed can be exercised deterministically without a live client.",
+      "tags": ["test-double", "calendar", "stub"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/orchestration/test_chain_bench.py",
+      "type": "file",
+      "name": "test_chain_bench.py",
+      "filePath": "tests/orchestration/test_chain_bench.py",
+      "summary": "Benchmark tests for the chain orchestrator bench, asserting deterministic and byte-identical replays, corpus-grounded admits, idempotent reject-no-fill behaviour, complete replay keys, declared measures, and pinned hashes.",
+      "tags": ["test", "benchmark", "orchestration", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/orchestration/test_chain_determinism.py",
+      "type": "file",
+      "name": "test_chain_determinism.py",
+      "filePath": "tests/orchestration/test_chain_determinism.py",
+      "summary": "Determinism tests for the chain runtime, asserting byte-identical sequence replay, end-to-end idempotency, replay ignoring os.environ, and run_once persist/reload round-trips on disk.",
+      "tags": ["test", "orchestration", "determinism", "persistence"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/orchestration/test_chain_engine.py",
+      "type": "file",
+      "name": "test_chain_engine.py",
+      "filePath": "tests/orchestration/test_chain_engine.py",
+      "summary": "Tests the chain orchestration engine end-to-end: admit-no-fill chains, in-hand price/direction forwarding, packet purity, ledger advancement, guard-block attribution, fail-closed admits, and bounded-context import hygiene.",
+      "tags": ["test", "orchestration", "chain", "bounded-context"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/orchestration/test_operational_feed.py",
+      "type": "file",
+      "name": "test_operational_feed.py",
+      "filePath": "tests/orchestration/test_operational_feed.py",
+      "summary": "Tests the operational (market-calendar) feed: open/closed/holiday determination, fail-closed parsing, capture round-trips through load_operational, value freezing, and replay never re-reading the feed.",
+      "tags": ["test", "orchestration", "market-calendar", "capture-replay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/orchestration/test_operational_feed.py:_StubFeed",
+      "type": "class",
+      "name": "_StubFeed",
+      "filePath": "tests/orchestration/test_operational_feed.py",
+      "lineRange": [27, 41],
+      "summary": "Test double that returns a scripted sequence of operational inputs so capture/replay behaviour can be verified independent of a real calendar feed.",
+      "tags": ["test-double", "feed", "stub"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/regime/test_regime_bench.py",
+      "type": "file",
+      "name": "test_regime_bench.py",
+      "filePath": "tests/regime/test_regime_bench.py",
+      "summary": "Benchmark tests for the regime classifier bench, asserting deterministic reports, byte-identical real replay, a restrictive-rates fail-closed gate, full synthetic sweep coverage, and committed-artifact sync.",
+      "tags": ["test", "benchmark", "regime", "determinism"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/regime/test_regime_classifier.py",
+      "type": "file",
+      "name": "test_regime_classifier.py",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "summary": "Comprehensive regime-classifier suite covering every rule's firing conditions, priority ordering, threshold boundaries, indeterminate/neutral invariants, config from_mapping validation, secondary-match ordering, and provenance propagation.",
+      "tags": ["test", "regime", "classification", "config-validation", "boundary"],
+      "complexity": "complex",
+      "languageNotes": "Heavy use of pytest parametrization to sweep a rule grid and assert exactly-one-valid-label per cell."
+    },
+    {
+      "id": "function:tests/regime/test_regime_classifier.py:make_fv",
+      "type": "function",
+      "name": "make_fv",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "lineRange": [77, 94],
+      "summary": "Builds a FeatureVector fixture with overridable values, droppable features, and configurable snapshot/schema version for driving the regime classifier across its rule grid.",
+      "tags": ["test-fixture", "feature-vector", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/regime/test_regime_classifier.py:_valid_kwargs",
+      "type": "function",
+      "name": "_valid_kwargs",
+      "filePath": "tests/regime/test_regime_classifier.py",
+      "lineRange": [97, 115],
+      "summary": "Returns a baseline mapping of valid feature kwargs that individual regime tests selectively override to isolate a single rule's firing condition.",
+      "tags": ["test-fixture", "helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/risk/test_guardrail_engine.py",
+      "type": "file",
+      "name": "test_guardrail_engine.py",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "summary": "Tests the risk guardrail engine: approval when all predicates pass, blocking with named predicate on oversized/malformed requests, short-circuit on first failure, determinism, env config loading, and the blocked-without-predicate decision invariant.",
+      "tags": ["test", "risk", "guardrail", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/risk/test_guardrail_engine.py:make_config",
+      "type": "function",
+      "name": "make_config",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "lineRange": [21, 31],
+      "summary": "Builds a GuardrailConfig fixture from an overridable baseline of limits for exercising the guardrail engine.",
+      "tags": ["test-fixture", "config", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/risk/test_guardrail_engine.py:make_request",
+      "type": "function",
+      "name": "make_request",
+      "filePath": "tests/risk/test_guardrail_engine.py",
+      "lineRange": [34, 46],
+      "summary": "Builds a TradeValidationRequest fixture from an overridable baseline used across the guardrail engine assertions.",
+      "tags": ["test-fixture", "request", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/risk/test_predicates.py",
+      "type": "file",
+      "name": "test_predicates.py",
+      "filePath": "tests/risk/test_predicates.py",
+      "summary": "Unit tests for the individual risk predicates (position size, daily loss cap, max trades, max positions, withdrawal disabled), verifying pass/block boundaries and absolute-vs-percentage cap selection.",
+      "tags": ["test", "risk", "predicate", "boundary"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/risk/test_predicates.py:make_config",
+      "type": "function",
+      "name": "make_config",
+      "filePath": "tests/risk/test_predicates.py",
+      "lineRange": [20, 30],
+      "summary": "Builds a GuardrailConfig fixture from an overridable baseline of risk limits for the predicate-level tests.",
+      "tags": ["test-fixture", "config", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/risk/test_predicates.py:make_request",
+      "type": "function",
+      "name": "make_request",
+      "filePath": "tests/risk/test_predicates.py",
+      "lineRange": [33, 45],
+      "summary": "Builds a TradeValidationRequest fixture from an overridable baseline for exercising each risk predicate in isolation.",
+      "tags": ["test-fixture", "request", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/snapshot/test_consumer.py",
+      "type": "file",
+      "name": "test_consumer.py",
+      "filePath": "tests/snapshot/test_consumer.py",
+      "summary": "Tests the snapshot consumer: returns a pass snapshot, reports consumability, fail-closed rejection of forced/dry-run snapshots, no output on failed gate or absent file, and raising rather than silent None on malformed input.",
+      "tags": ["test", "snapshot", "consumer", "fail-closed"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/snapshot/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "tests/snapshot/test_models.py",
+      "summary": "Tests Snapshot.from_dict parsing of a real artifact: top-level fields, recomputed-id matches published, full-fidelity series values, guards and quality summary parsing, and raises on missing keys or non-object payloads.",
+      "tags": ["test", "snapshot", "data-model", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/supervisor/test_decision_engine.py",
+      "type": "file",
+      "name": "test_decision_engine.py",
+      "filePath": "tests/supervisor/test_decision_engine.py",
+      "summary": "Tests the supervisor decision engine: early exit when promotable, highest-scoring allowed selection with treasury burn, budget and exclusion filtering, determinism, and the selected-must-be-allowed packet invariant.",
+      "tags": ["test", "supervisor", "decision", "selection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/supervisor/test_scoring.py",
+      "type": "file",
+      "name": "test_scoring.py",
+      "filePath": "tests/supervisor/test_scoring.py",
+      "summary": "Unit tests for supervisor scoring: calibration and binary pnl weakness severity, zero for unknown dimensions, cost-efficiency-weighted option scoring, and rejection of non-positive cost.",
+      "tags": ["test", "supervisor", "scoring", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/execution/Position Sizing.md",
+      "type": "document",
+      "name": "Position Sizing.md",
+      "filePath": "wiki/execution/Position Sizing.md",
+      "summary": "Execution-domain wiki page defining position sizing: standard parameters, sizing logic, environment-based configuration, ladder/scale-in buying, inputs/outputs, dependencies, and failure modes.",
+      "tags": ["documentation", "execution", "position-sizing", "domain-knowledge"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/execution/Stop-Loss Systems.md",
+      "type": "document",
+      "name": "Stop-Loss Systems.md",
+      "filePath": "wiki/execution/Stop-Loss Systems.md",
+      "summary": "Execution-domain wiki page describing stop-loss systems: fixed, trailing (with floor-ratcheting logic), and time-based stops, per-strategy configuration, midday stop management, inputs/outputs, and failure modes.",
+      "tags": ["documentation", "execution", "stop-loss", "domain-knowledge"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:tests/execution/test_execution_guards.py",
+      "target": "function:tests/execution/test_execution_guards.py:_admit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_decision_builder.py",
+      "target": "function:tests/gold/test_decision_builder.py:_make_fv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_e2e_pipeline.py",
+      "target": "function:tests/gold/test_e2e_pipeline.py:_run_pipeline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_determinism.py",
+      "target": "function:tests/gold/test_paper_runtime_determinism.py:_packet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_engine.py",
+      "target": "function:tests/gold/test_paper_runtime_engine.py:_packet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_engine.py",
+      "target": "function:tests/gold/test_paper_runtime_engine.py:_record",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_guards.py",
+      "target": "function:tests/gold/test_paper_runtime_guards.py:_packet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/gold/test_paper_runtime_ledger.py",
+      "target": "function:tests/gold/test_paper_runtime_ledger.py:_packet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/orchestration/test_alpaca_clock_feed.py",
+      "target": "class:tests/orchestration/test_alpaca_clock_feed.py:_StubCalendar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/orchestration/test_operational_feed.py",
+      "target": "class:tests/orchestration/test_operational_feed.py:_StubFeed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:make_fv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/regime/test_regime_classifier.py",
+      "target": "function:tests/regime/test_regime_classifier.py:_valid_kwargs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:make_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_guardrail_engine.py",
+      "target": "function:tests/risk/test_guardrail_engine.py:make_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_predicates.py",
+      "target": "function:tests/risk/test_predicates.py:make_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/risk/test_predicates.py",
+      "target": "function:tests/risk/test_predicates.py:make_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ]
+}

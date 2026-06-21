@@ -1,0 +1,634 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/interfaces/Decision API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 83,
+      "nonEmptyLines": 61,
+      "sections": [
+        {
+          "heading": "Decision API",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Scope",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "dev_graph/interfaces/Execution API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 157,
+      "nonEmptyLines": 129,
+      "sections": [
+        {
+          "heading": "Execution API",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 133
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 135
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Implemented By",
+          "level": 3,
+          "line": 142
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 145
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 150
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 153
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 156
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "dev_graph/interfaces/Gold Decision API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 109,
+      "nonEmptyLines": 84,
+      "sections": [
+        {
+          "heading": "Gold Decision API",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Implemented By",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 108
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "dev_graph/interfaces/Paper Runtime API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 112,
+      "nonEmptyLines": 89,
+      "sections": [
+        {
+          "heading": "Paper Runtime API",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Implemented By",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 111
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/interfaces/Regime Classification API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 90,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Regime Classification API",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Implemented By",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/interfaces/Risk Check API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 78,
+      "nonEmptyLines": 58,
+      "sections": [
+        {
+          "heading": "Risk Check API",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/interfaces/Snapshot API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 91,
+      "nonEmptyLines": 67,
+      "sections": [
+        {
+          "heading": "Snapshot API",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Contract",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Error Modes",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Stability",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 78
+        },
+        {
+          "heading": "Implemented By",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    }
+  ]
+}

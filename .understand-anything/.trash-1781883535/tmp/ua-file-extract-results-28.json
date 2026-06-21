@@ -1,0 +1,999 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/schemas/Decision Packet Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 77,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "Decision Packet Schema",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Scope",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Evaluation Scorecard Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 77,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "Evaluation Scorecard Schema",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Scope",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Execution Record Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 119,
+      "nonEmptyLines": 97,
+      "sections": [
+        {
+          "heading": "Execution Record Schema",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Schema Definition (illustrative v0 — non-normative until the contract is frozen at code)",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Feature Vector Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 101,
+      "nonEmptyLines": 79,
+      "sections": [
+        {
+          "heading": "Feature Vector Schema",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Gold DecisionPacket v0 Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 155,
+      "nonEmptyLines": 118,
+      "sections": [
+        {
+          "heading": "Gold DecisionPacket v0 Schema",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Direction Policy (versioned config — provisional)",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 129
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 131
+        },
+        {
+          "heading": "Consumed By",
+          "level": 3,
+          "line": 134
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 137
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 140
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 147
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 151
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 154
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Layer 2 Snapshot Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 121,
+      "nonEmptyLines": 96,
+      "sections": [
+        {
+          "heading": "Layer 2 Snapshot Schema",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Identity (deterministic)",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Consumed By",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 114
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 120
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Portfolio State Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 119,
+      "nonEmptyLines": 95,
+      "sections": [
+        {
+          "heading": "Portfolio State Schema",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Schema Definition (illustrative v0 — non-normative until the contract is frozen at code)",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Consumed By",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Regime Classification Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 116,
+      "nonEmptyLines": 89,
+      "sections": [
+        {
+          "heading": "Regime Classification Schema",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 112
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Runtime Decision Record Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 124,
+      "nonEmptyLines": 101,
+      "sections": [
+        {
+          "heading": "Runtime Decision Record Schema",
+          "level": 1,
+          "line": 37
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 114
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Runtime Ledger Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 111,
+      "nonEmptyLines": 88,
+      "sections": [
+        {
+          "heading": "Runtime Ledger Schema",
+          "level": 1,
+          "line": 35
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Produced By",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Consumed By",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 110
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Trade Validation Decision Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "Trade Validation Decision Schema",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "dev_graph/schemas/Trade Validation Request Schema.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 76,
+      "nonEmptyLines": 60,
+      "sections": [
+        {
+          "heading": "Trade Validation Request Schema",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Schema Definition",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    }
+  ]
+}

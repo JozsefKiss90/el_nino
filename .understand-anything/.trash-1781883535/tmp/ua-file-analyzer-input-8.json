@@ -1,0 +1,13 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "src/snapshot/snapshot_consumer/__init__.py", "language": "python", "sizeLines": 20, "fileCategory": "code"},
+    {"path": "src/snapshot/snapshot_consumer/consumer.py", "language": "python", "sizeLines": 72, "fileCategory": "code"},
+    {"path": "src/snapshot/snapshot_consumer/models.py", "language": "python", "sizeLines": 242, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/snapshot/snapshot_consumer/__init__.py": ["src/snapshot/snapshot_consumer/consumer.py", "src/snapshot/snapshot_consumer/models.py"],
+    "src/snapshot/snapshot_consumer/consumer.py": ["src/snapshot/snapshot_consumer/models.py"],
+    "src/snapshot/snapshot_consumer/models.py": []
+  }
+}

@@ -1,0 +1,887 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 62,
+      "nonEmptyLines": 39,
+      "sections": [
+        {
+          "heading": "REGIME_IMPLEMENTATION_BRIEF",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Objective",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "2. Affected modules",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "3. Affected schemas",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "4. Ontology impact",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "5. Replay impact",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "6. Benchmark impact",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "7. Migration risk",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "8. Governance impact",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "9. Verification summary",
+          "level": 2,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 271,
+      "nonEmptyLines": 189,
+      "sections": [
+        {
+          "heading": "Regime Taxonomy Final Audit",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Executive Summary",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Per-Dimension Results",
+          "level": 2,
+          "line": 20
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Replay Determinism",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Ontology Compliance",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Population Strategy Compliance",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "ADR Compliance",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Feature Grounding",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Schema Correctness",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Graph Integrity",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Gold Layer Readiness",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Benchmark Integration (BENCH-001)",
+          "level": 2,
+          "line": 163
+        },
+        {
+          "heading": "Paper Trading Compatibility",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "Critical Issues",
+          "level": 2,
+          "line": 194
+        },
+        {
+          "heading": "Warnings",
+          "level": 2,
+          "line": 200
+        },
+        {
+          "heading": "Technical Debt",
+          "level": 2,
+          "line": 210
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 219
+        },
+        {
+          "heading": "Engineering Digital Twin Maturity Impact",
+          "level": 2,
+          "line": 229
+        },
+        {
+          "heading": "Gold Layer Readiness Assessment",
+          "level": 2,
+          "line": 241
+        },
+        {
+          "heading": "Final Verdict",
+          "level": 2,
+          "line": 252
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "REMAINING_ITEMS_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 37,
+      "sections": [
+        {
+          "heading": "Claude Code prompt — remaining list: Alpaca live plugs + daily schedule + calibration readiness re-check",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Overriding safety constraints (whole slice)",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Step 0 — read",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Part 1 — Alpaca live plugs (behind existing ports; non-replayable; default-off)",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Part 2 — schedule the daily run (simulator path)",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Part 3 — G1/G2/G3 calibration readiness re-check (no bump unless the gate passes)",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Writeback + constraints",
+          "level": 2,
+          "line": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "STEP4_BENCH004_prompt.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 45,
+      "nonEmptyLines": 32,
+      "sections": [
+        {
+          "heading": "Claude Code prompt — STEP 4: BENCH-004 (execution-layer byte-identical replay benchmark)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Step 0 — read governance + precedents; verify the precondition",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Step 1 — author the benchmark + the in-sync test",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "Step 2 — writeback (per the CLAUDE.md checklist)",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "anything.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 32,
+      "nonEmptyLines": 20,
+      "metrics": {}
+    },
+    {
+      "path": "audit_plan.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 744,
+      "nonEmptyLines": 620,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "audit_plan_addendum.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 750,
+      "nonEmptyLines": 519,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 96,
+      "nonEmptyLines": 62,
+      "sections": [
+        {
+          "heading": "Dev Graph — Next Development Step Recommendation",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "BLUF",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "The decisive finding: gate (e) is open, not \"materially advanced\"",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Recommendation — Gold DecisionPacket v0, as a 3-slice arc",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Slice 1 — Governance & structure (contract-first, no Gold schema yet)",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Slice 2 — Freeze the contract (no code)",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Slice 3 — Build (code + tests + benchmark + writeback)",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "The one open design question",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Explicitly deferred (matches ADR-006 Non-Goals — not in this arc)",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Alternatives considered and rejected",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Verification trail",
+          "level": 2,
+          "line": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "dev_graph_stabilization_audit_2026-06-07.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 221,
+      "nonEmptyLines": 141,
+      "sections": [
+        {
+          "heading": "Architecture / Ontology Stabilization Audit — dev_graph",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Executive Verdict (BLUF)",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Stability Index Scoreboard",
+          "level": 3,
+          "line": 19
+        },
+        {
+          "heading": "Part 1 — Ontology Integrity → 82/100",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Part 2 — ADR Consistency → 88/100",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Part 3 — Layering Validation → 88/100",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Part 4 — Traceability Audit → 82/100",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Part 5 — Contract Audit → 88/100",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Part 6 — Replay Determinism Audit → 88/100",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Part 7 — Feature Layer Audit → 96/100 ✅ (cleanest part)",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "Part 8 — Decision Layer Audit → 96/100 ✅",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Part 9 — Population Strategy Compliance → 94/100 · Compliance: 96.1% (13.45/14 weighted rules)",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Part 10 — Graph-RAG Readiness → 82/100",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Part 11 — Engineering Digital Twin Readiness → 82/100 · Maturity Level 4/5 (Managed/Integrated)",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Part 12 — Technical Debt Register (18 items · 0 epoch-blocking)",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Part 13 — Future Evolution Readiness",
+          "level": 2,
+          "line": 180
+        },
+        {
+          "heading": "Part 14 & 15 — Stability Index & Executive Verdict",
+          "level": 2,
+          "line": 194
+        },
+        {
+          "heading": "→ STABLE WITH MINOR DEBT",
+          "level": 3,
+          "line": 198
+        },
+        {
+          "heading": "Single highest-value next slice → Author the Regime Taxonomy",
+          "level": 3,
+          "line": 202
+        },
+        {
+          "heading": "Appendix — Adversarial Verification Ledger",
+          "level": 2,
+          "line": 214
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": "final_strategic_review.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1098,
+      "nonEmptyLines": 737,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "llm-wiki.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "LLM Wiki",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "The core idea",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Operations",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Indexing and logging",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Optional: CLI tools",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Tips and tricks",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Why this works",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Note",
+          "level": 2,
+          "line": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "population_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1162,
+      "nonEmptyLines": 829,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "project_structure.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 243,
+      "nonEmptyLines": 160,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "sections": [
+        {
+          "heading": "project",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "project.optional-dependencies",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "build-system",
+          "level": 1,
+          "line": 15
+        },
+        {
+          "heading": "tool.hatch.build.targets.wheel",
+          "level": 5,
+          "line": 19
+        },
+        {
+          "heading": "tool.pytest.ini_options",
+          "level": 3,
+          "line": 22
+        },
+        {
+          "heading": "tool.mypy",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "tool.ruff",
+          "level": 2,
+          "line": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "slice2 fit assessment and roadmap.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 337,
+      "nonEmptyLines": 215,
+      "sections": [
+        {
+          "heading": "El Niño / Ripley — Slice 2 Fit Assessment & Forward Roadmap",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Part 1 — How Well the Audited Runtime Fits the Plan",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Where it sits in the layer model",
+          "level": 3,
+          "line": 13
+        },
+        {
+          "heading": "Where it validates the plan, point by point",
+          "level": 3,
+          "line": 17
+        },
+        {
+          "heading": "What this is NOT yet — and the document honestly says so",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "What this means for the next step",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Part 2 — Recommendation",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Part 3 — The Six Future Epochs (§9) Mapped to the Evolutionary Plan",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Beyond §9 — plan components intentionally not in the epoch list",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Sequenced roadmap (one view)",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Part 4 — La Niña: Intraday Gold Decisions Without Violating Any Principle",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "4.1 The complete problem inventory",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "4.2 The design: intraday gold reaction without principle violation",
+          "level": 3,
+          "line": 154
+        },
+        {
+          "heading": "4.3 Governance: this is a formal v0.1, not a silent drift",
+          "level": 3,
+          "line": 210
+        },
+        {
+          "heading": "4.4 What this does NOT solve — honestly",
+          "level": 3,
+          "line": 214
+        },
+        {
+          "heading": "4.5 Naming",
+          "level": 3,
+          "line": 218
+        },
+        {
+          "heading": "4.6 Where La Niña sits in the roadmap (refinement of Part 3)",
+          "level": 3,
+          "line": 224
+        },
+        {
+          "heading": "Part 5 — Evidence Collection, Backtesting & Human-Approved Learning",
+          "level": 2,
+          "line": 237
+        },
+        {
+          "heading": "5.1 The governing distinction: collecting data ≠ building a learning machine",
+          "level": 3,
+          "line": 241
+        },
+        {
+          "heading": "5.2 The unified scorecard — the keystone of evidence collection",
+          "level": 3,
+          "line": 251
+        },
+        {
+          "heading": "5.3 How backtesting fits and how to run it",
+          "level": 3,
+          "line": 266
+        },
+        {
+          "heading": "5.4 Extracting the essence — joint, manual work",
+          "level": 3,
+          "line": 279
+        },
+        {
+          "heading": "5.5 Human-Approved Learning — the system argues before it learns",
+          "level": 3,
+          "line": 283
+        },
+        {
+          "heading": "5.6 What to build now vs. later",
+          "level": 3,
+          "line": 311
+        },
+        {
+          "heading": "5.7 On Zapier — the wrong tool for the core",
+          "level": 3,
+          "line": 320
+        },
+        {
+          "heading": "5.8 Summary",
+          "level": 3,
+          "line": 335
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 26
+      }
+    },
+    {
+      "path": "the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 251,
+      "nonEmptyLines": 216,
+      "sections": [
+        {
+          "heading": "Plan — Paper-Trading Runtime (Epoch a)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Recommended approach",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Slice 1 — ADR-009 (planning / governance only) → CHECKPOINT",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "Slice 2 — Contract-first implementation",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "Reuse map (do not reinvent)",
+          "level": 2,
+          "line": 209
+        },
+        {
+          "heading": "Top risks & mitigations",
+          "level": 2,
+          "line": 227
+        },
+        {
+          "heading": "Verification",
+          "level": 2,
+          "line": 241
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "ultimateplan.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 475,
+      "nonEmptyLines": 417,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "understand-dashboard.ps1",
+      "language": "powershell",
+      "fileCategory": "script",
+      "totalLines": 45,
+      "nonEmptyLines": 39,
+      "metrics": {}
+    }
+  ]
+}

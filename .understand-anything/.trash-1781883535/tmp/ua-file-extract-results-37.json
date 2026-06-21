@@ -1,0 +1,370 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "tests/snapshot/fixtures/latest_snapshot_pass.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 712,
+      "nonEmptyLines": 712,
+      "sections": [
+        {
+          "heading": "snapshot_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "engine_version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "config_version",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "clock_ts",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "clock_date",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "verdict",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "forced",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "dry_run",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "guards",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "revision_policy",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "revision_risk_summary",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "tier1_series",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "tier2_series",
+          "level": 1,
+          "line": 166
+        },
+        {
+          "heading": "missing_series",
+          "level": 1,
+          "line": 208
+        },
+        {
+          "heading": "layer1_events",
+          "level": 1,
+          "line": 209
+        },
+        {
+          "heading": "run_ts",
+          "level": 1,
+          "line": 210
+        },
+        {
+          "heading": "published_at",
+          "level": 1,
+          "line": 211
+        },
+        {
+          "heading": "series_count",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "quality_summary",
+          "level": 1,
+          "line": 213
+        },
+        {
+          "heading": "values_by_group",
+          "level": 1,
+          "line": 226
+        },
+        {
+          "heading": "values",
+          "level": 1,
+          "line": 500
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "tests/snapshot/fixtures/snapshot_fail.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 712,
+      "nonEmptyLines": 712,
+      "sections": [
+        {
+          "heading": "snapshot_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "engine_version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "config_version",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "clock_ts",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "clock_date",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "verdict",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "forced",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "dry_run",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "guards",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "revision_policy",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "revision_risk_summary",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "tier1_series",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "tier2_series",
+          "level": 1,
+          "line": 166
+        },
+        {
+          "heading": "missing_series",
+          "level": 1,
+          "line": 208
+        },
+        {
+          "heading": "layer1_events",
+          "level": 1,
+          "line": 209
+        },
+        {
+          "heading": "run_ts",
+          "level": 1,
+          "line": 210
+        },
+        {
+          "heading": "published_at",
+          "level": 1,
+          "line": 211
+        },
+        {
+          "heading": "series_count",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "quality_summary",
+          "level": 1,
+          "line": 213
+        },
+        {
+          "heading": "values_by_group",
+          "level": 1,
+          "line": 226
+        },
+        {
+          "heading": "values",
+          "level": 1,
+          "line": 500
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "tests/snapshot/fixtures/snapshot_forced.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 712,
+      "nonEmptyLines": 712,
+      "sections": [
+        {
+          "heading": "snapshot_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "engine_version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "config_version",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "clock_ts",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "clock_date",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "verdict",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "forced",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "dry_run",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "guards",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "revision_policy",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "revision_risk_summary",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "tier1_series",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "tier2_series",
+          "level": 1,
+          "line": 166
+        },
+        {
+          "heading": "missing_series",
+          "level": 1,
+          "line": 208
+        },
+        {
+          "heading": "layer1_events",
+          "level": 1,
+          "line": 209
+        },
+        {
+          "heading": "run_ts",
+          "level": 1,
+          "line": 210
+        },
+        {
+          "heading": "published_at",
+          "level": 1,
+          "line": 211
+        },
+        {
+          "heading": "series_count",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "quality_summary",
+          "level": 1,
+          "line": 213
+        },
+        {
+          "heading": "values_by_group",
+          "level": 1,
+          "line": 226
+        },
+        {
+          "heading": "values",
+          "level": 1,
+          "line": 500
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    }
+  ]
+}

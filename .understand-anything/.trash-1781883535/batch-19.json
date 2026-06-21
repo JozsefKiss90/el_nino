@@ -1,0 +1,329 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/files/guardrail_engine.py.md",
+      "type": "document",
+      "name": "guardrail_engine.py.md",
+      "filePath": "dev_graph/files/guardrail_engine.py.md",
+      "summary": "Dev-graph file node documenting src/risk/guardrail_engine/guardrail_engine.py — the Guardrail Engine orchestrator that runs short-circuit predicate conjunction, fail-closed config loading, and implements the Risk Check API.",
+      "tags": ["documentation", "dev-graph", "file-node", "risk-control", "validation"],
+      "complexity": "simple",
+      "languageNotes": "Ontology-governed dev_graph file node with typed frontmatter (canonical_id FILE-001) and a Relationships section of wikilinks."
+    },
+    {
+      "id": "document:dev_graph/files/models.py (execution).md",
+      "type": "document",
+      "name": "models.py (execution).md",
+      "filePath": "dev_graph/files/models.py (execution).md",
+      "summary": "Dev-graph file node documenting src/execution/models.py — the frozen, byte-stable execution dataclasses (ExecutionRecord, Fill, GuardResult, PortfolioState) realizing the Execution Record and Portfolio State schemas.",
+      "tags": ["documentation", "dev-graph", "file-node", "execution", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (features).md",
+      "type": "document",
+      "name": "models.py (features).md",
+      "filePath": "dev_graph/files/models.py (features).md",
+      "summary": "Dev-graph file node documenting src/features/feature_builder/models.py — the Feature Vector contract (SCHEMA-009) as stdlib frozen dataclasses with per-feature provenance.",
+      "tags": ["documentation", "dev-graph", "file-node", "features", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (gold).md",
+      "type": "document",
+      "name": "models.py (gold).md",
+      "filePath": "dev_graph/files/models.py (gold).md",
+      "summary": "Dev-graph file node documenting src/gold/decision_builder/models.py — the gold decision-layer dataclasses (GoldDecisionPacket, Direction/DecisionMode enums, SnapshotGuards) realizing the Gold DecisionPacket schema.",
+      "tags": ["documentation", "dev-graph", "file-node", "gold-decision", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (orchestration).md",
+      "type": "document",
+      "name": "models.py (orchestration).md",
+      "filePath": "dev_graph/files/models.py (orchestration).md",
+      "summary": "Dev-graph file node documenting src/orchestration/models.py — the chain orchestrator's ChainResult aggregate of the five typed records plus the two ending state hashes, with deterministic JSON projection.",
+      "tags": ["documentation", "dev-graph", "file-node", "orchestration", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (paper_runtime).md",
+      "type": "document",
+      "name": "models.py (paper_runtime).md",
+      "filePath": "dev_graph/files/models.py (paper_runtime).md",
+      "summary": "Dev-graph file node documenting src/gold/paper_runtime/models.py — the runtime decision record and append-only RuntimeLedger contracts (SCHEMA-012/013) with replay-keyed identity.",
+      "tags": ["documentation", "dev-graph", "file-node", "paper-runtime", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (regime).md",
+      "type": "document",
+      "name": "models.py (regime).md",
+      "filePath": "dev_graph/files/models.py (regime).md",
+      "summary": "Dev-graph file node documenting src/regime/regime_classifier/models.py — the SCHEMA-010 regime output models (12-value Regime enum, RegimeClassification with cross-field invariants) and version constants.",
+      "tags": ["documentation", "dev-graph", "file-node", "regime", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (snapshot).md",
+      "type": "document",
+      "name": "models.py (snapshot).md",
+      "filePath": "dev_graph/files/models.py (snapshot).md",
+      "summary": "Dev-graph file node documenting src/snapshot/snapshot_consumer/models.py — the Layer-2 Snapshot contract (SCHEMA-001) as frozen dataclasses with from_dict parsers and byte-for-byte identity recomputation.",
+      "tags": ["documentation", "dev-graph", "file-node", "snapshot", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py (supervisor).md",
+      "type": "document",
+      "name": "models.py (supervisor).md",
+      "filePath": "dev_graph/files/models.py (supervisor).md",
+      "summary": "Dev-graph file node documenting src/supervisor/decision_engine/models.py — the Decision Engine data models realizing the Evaluation Scorecard (input) and Decision Packet (output) schemas plus internal value objects.",
+      "tags": ["documentation", "dev-graph", "file-node", "supervisor", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/models.py.md",
+      "type": "document",
+      "name": "models.py.md",
+      "filePath": "dev_graph/files/models.py.md",
+      "summary": "Dev-graph file node documenting src/risk/guardrail_engine/models.py — the Guardrail Engine data models (TradeValidationRequest/Decision, GuardrailConfig) realizing the Risk Check API contract schemas.",
+      "tags": ["documentation", "dev-graph", "file-node", "risk-control", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/operational_feed.py.md",
+      "type": "document",
+      "name": "operational_feed.py.md",
+      "filePath": "dev_graph/files/operational_feed.py.md",
+      "summary": "Dev-graph file node documenting src/orchestration/operational_feed.py — the live operational-status feed adapter (OperationalFeed port, MarketCalendarFeed, capture mechanism) feeding the operational_ok guard with a replay-path quarantine.",
+      "tags": ["documentation", "dev-graph", "file-node", "orchestration", "io-adapter"],
+      "complexity": "moderate",
+      "languageNotes": "Documents a fail-closed IO adapter behind a Protocol port with a non-replayable-adapter quarantine seam."
+    },
+    {
+      "id": "document:dev_graph/files/policy.py.md",
+      "type": "document",
+      "name": "policy.py.md",
+      "filePath": "dev_graph/files/policy.py.md",
+      "summary": "Dev-graph file node documenting src/gold/decision_builder/policy.py — the pure decision-policy helpers (trust_score ordinal confidence and direction_for regime-to-direction lookup) separated from dataclasses.",
+      "tags": ["documentation", "dev-graph", "file-node", "gold-decision", "pure-function"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/predicates.py (paper_runtime).md",
+      "type": "document",
+      "name": "predicates.py (paper_runtime).md",
+      "filePath": "dev_graph/files/predicates.py (paper_runtime).md",
+      "summary": "Dev-graph file node documenting src/gold/paper_runtime/predicates.py — the L3 guard predicates (duplicate_ok, operational_ok, computed cooldown_ok, data/freshness echoes) as pure (passed, reason) functions.",
+      "tags": ["documentation", "dev-graph", "file-node", "paper-runtime", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/predicates.py.md",
+      "type": "document",
+      "name": "predicates.py.md",
+      "filePath": "dev_graph/files/predicates.py.md",
+      "summary": "Dev-graph file node documenting src/risk/guardrail_engine/predicates.py — the hard-limit guardrail predicates (position size, daily loss cap, max trades/positions, withdrawals disabled) as pure functions realizing the Guardrail Pattern.",
+      "tags": ["documentation", "dev-graph", "file-node", "risk-control", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/regime_classifier.py.md",
+      "type": "document",
+      "name": "regime_classifier.py.md",
+      "filePath": "dev_graph/files/regime_classifier.py.md",
+      "summary": "Dev-graph file node documenting src/regime/regime_classifier/regime_classifier.py — the pure, total classify() driver that turns a FeatureVector into exactly one deterministic regime with full provenance.",
+      "tags": ["documentation", "dev-graph", "file-node", "regime", "classifier"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/run_chain_bench.py.md",
+      "type": "document",
+      "name": "run_chain_bench.py.md",
+      "filePath": "dev_graph/files/run_chain_bench.py.md",
+      "summary": "Dev-graph file node documenting benchmarks/orchestration/run_chain_bench.py — the BENCH-006 harness proving end-to-end Layer-3 replay determinism and admission idempotency by threading snapshots through run_sequence twice.",
+      "tags": ["documentation", "dev-graph", "file-node", "benchmark", "determinism"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/run_execution_bench.py.md",
+      "type": "document",
+      "name": "run_execution_bench.py.md",
+      "filePath": "dev_graph/files/run_execution_bench.py.md",
+      "summary": "Dev-graph file node documenting benchmarks/execution/run_execution_bench.py — the BENCH-004 harness proving the execution-determinism invariant via byte-identical execution records and idempotent no-double-fill across replays.",
+      "tags": ["documentation", "dev-graph", "file-node", "benchmark", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/run_forward_return_labels.py.md",
+      "type": "document",
+      "name": "run_forward_return_labels.py.md",
+      "filePath": "dev_graph/files/run_forward_return_labels.py.md",
+      "summary": "Dev-graph file node documenting benchmarks/calibration/run_forward_return_labels.py — the offline, look-ahead-contained forward-return labeler (BENCH-005) producing per regime-by-horizon calibration labels.",
+      "tags": ["documentation", "dev-graph", "file-node", "calibration", "benchmark"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/files/runtime.py (execution).md",
+      "type": "document",
+      "name": "runtime.py (execution).md",
+      "filePath": "dev_graph/files/runtime.py (execution).md",
+      "summary": "Dev-graph file node documenting src/execution/runtime.py — the execution IO boundary and guard-wiring composition root (run_once/run_sequence) that runs the Trade Validation Gate before execute() and implements the Execution API.",
+      "tags": ["documentation", "dev-graph", "file-node", "execution", "io-boundary"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/files/runtime.py (orchestration).md",
+      "type": "document",
+      "name": "runtime.py (orchestration).md",
+      "filePath": "dev_graph/files/runtime.py (orchestration).md",
+      "summary": "Dev-graph file node documenting src/orchestration/runtime.py — the chain orchestrator IO shell, replay driver, and CLI (run_once/run_sequence) with crash-consistent portfolio-then-ledger persistence and the operational-feed seam.",
+      "tags": ["documentation", "dev-graph", "file-node", "orchestration", "io-boundary"],
+      "complexity": "moderate",
+      "languageNotes": "Documents a crash-consistent persistence ordering (portfolio first, then ledger) and a python -m CLI entrypoint."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/files/guardrail_engine.py.md",
+      "target": "file:src/risk/guardrail_engine/guardrail_engine.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (execution).md",
+      "target": "file:src/execution/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (features).md",
+      "target": "file:src/features/feature_builder/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (gold).md",
+      "target": "file:src/gold/decision_builder/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (orchestration).md",
+      "target": "file:src/orchestration/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (paper_runtime).md",
+      "target": "file:src/gold/paper_runtime/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (regime).md",
+      "target": "file:src/regime/regime_classifier/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (snapshot).md",
+      "target": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py (supervisor).md",
+      "target": "file:src/supervisor/decision_engine/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/models.py.md",
+      "target": "file:src/risk/guardrail_engine/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/operational_feed.py.md",
+      "target": "file:src/orchestration/operational_feed.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/policy.py.md",
+      "target": "file:src/gold/decision_builder/policy.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/predicates.py (paper_runtime).md",
+      "target": "file:src/gold/paper_runtime/predicates.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/predicates.py.md",
+      "target": "file:src/risk/guardrail_engine/predicates.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/regime_classifier.py.md",
+      "target": "file:src/regime/regime_classifier/regime_classifier.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/run_chain_bench.py.md",
+      "target": "file:benchmarks/orchestration/run_chain_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/run_execution_bench.py.md",
+      "target": "file:benchmarks/execution/run_execution_bench.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/run_forward_return_labels.py.md",
+      "target": "file:benchmarks/calibration/run_forward_return_labels.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/runtime.py (execution).md",
+      "target": "file:src/execution/runtime.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/files/runtime.py (orchestration).md",
+      "target": "file:src/orchestration/runtime.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

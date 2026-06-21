@@ -1,6 +1,6 @@
 {
-  "name": "el_nino",
-  "description": "El Niño is a Layer-3 paper-trading analysis system: an autonomous trading-engine core in Python (risk-control guardrail, regime, gold confidence, and execution slices) paired with JARVIS, a read-only React + TypeScript graph-intelligence UI that projects an ontology-governed dev_graph knowledge base via a FastAPI/Neo4j backend. Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
+  "name": "layer3-trading-engine",
+  "description": "Autonomous trading engine — Layer 3 (execution) — with a zero-runtime-dependency core in src/ (risk guardrails, supervisor, snapshot, features, regime, gold, execution, orchestration) and an optional Textual/Rich terminal operations console in ops/. The repository also carries a large markdown knowledge corpus: dev_graph/ (an ontology-governed engineering digital twin) plus wiki/ and raw/ domain knowledge, and a React/Vite jarvis/ HUD. Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
   "languages": [
     "config",
     "css",
@@ -22,9 +22,8 @@
     "Vite",
     "Vitest",
     "Cytoscape",
-    "FastAPI",
-    "Pydantic",
-    "Neo4j",
+    "Textual",
+    "Rich",
     "pytest",
     "Docker",
     "Docker Compose"
@@ -35,6 +34,12 @@
       "language": "json",
       "sizeLines": 61,
       "fileCategory": "config"
+    },
+    {
+      "path": "ADMISSION_INPUT_HARDENING_prompt.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
     },
     {
       "path": "ADR-011_drafting_prompt.md",
@@ -49,6 +54,12 @@
       "fileCategory": "docs"
     },
     {
+      "path": "anything.txt",
+      "language": "txt",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
       "path": "audit_plan_addendum.md",
       "language": "markdown",
       "sizeLines": 750,
@@ -59,6 +70,18 @@
       "language": "markdown",
       "sizeLines": 743,
       "fileCategory": "docs"
+    },
+    {
+      "path": "benchmarks/calibration/artifacts/forward_return_labels.json",
+      "language": "json",
+      "sizeLines": 1159,
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/calibration/run_forward_return_labels.py",
+      "language": "python",
+      "sizeLines": 482,
+      "fileCategory": "code"
     },
     {
       "path": "benchmarks/execution/artifacts/execution_bench.json",
@@ -97,6 +120,18 @@
       "fileCategory": "code"
     },
     {
+      "path": "benchmarks/orchestration/artifacts/chain_bench.json",
+      "language": "json",
+      "sizeLines": 134,
+      "fileCategory": "config"
+    },
+    {
+      "path": "benchmarks/orchestration/run_chain_bench.py",
+      "language": "python",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
       "path": "benchmarks/regime/artifacts/regime_bench.json",
       "language": "json",
       "sizeLines": 136,
@@ -107,6 +142,18 @@
       "language": "python",
       "sizeLines": 228,
       "fileCategory": "code"
+    },
+    {
+      "path": "CHAIN_ORCHESTRATOR_prompt.md",
+      "language": "markdown",
+      "sizeLines": 56,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "language": "markdown",
+      "sizeLines": 229,
+      "fileCategory": "docs"
     },
     {
       "path": "CLAUDE.md",
@@ -163,9 +210,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/benchmarks/Chain Orchestrator Benchmark.md",
+      "language": "markdown",
+      "sizeLines": 90,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/benchmarks/Execution Layer Benchmark.md",
       "language": "markdown",
-      "sizeLines": 84,
+      "sizeLines": 88,
       "fileCategory": "docs"
     },
     {
@@ -175,9 +228,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/benchmarks/Gold Forward-Return Label Set.md",
+      "language": "markdown",
+      "sizeLines": 87,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
       "language": "markdown",
-      "sizeLines": 66,
+      "sizeLines": 70,
       "fileCategory": "docs"
     },
     {
@@ -357,7 +416,7 @@
     {
       "path": "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
       "language": "markdown",
-      "sizeLines": 145,
+      "sizeLines": 146,
       "fileCategory": "docs"
     },
     {
@@ -367,9 +426,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "language": "markdown",
+      "sizeLines": 334,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/decisions/ADR - Execution Layer Planning.md",
       "language": "markdown",
-      "sizeLines": 360,
+      "sizeLines": 376,
       "fileCategory": "docs"
     },
     {
@@ -381,7 +446,7 @@
     {
       "path": "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
       "language": "markdown",
-      "sizeLines": 138,
+      "sizeLines": 139,
       "fileCategory": "docs"
     },
     {
@@ -409,15 +474,51 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/decisions/ADR - Operations Control Plane.md",
+      "language": "markdown",
+      "sizeLines": 383,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
       "language": "markdown",
-      "sizeLines": 270,
+      "sizeLines": 356,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/actions.py (ops).md",
+      "language": "markdown",
+      "sizeLines": 77,
       "fileCategory": "docs"
     },
     {
       "path": "dev_graph/files/adapters.py.md",
       "language": "markdown",
-      "sizeLines": 57,
+      "sizeLines": 59,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/alpaca_adapter.py.md",
+      "language": "markdown",
+      "sizeLines": 101,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/alpaca_clock_feed.py.md",
+      "language": "markdown",
+      "sizeLines": 96,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/app.py (ops).md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/audit.py (ops).md",
+      "language": "markdown",
+      "sizeLines": 73,
       "fileCategory": "docs"
     },
     {
@@ -439,9 +540,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/config.py (orchestration).md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/config.py (paper_runtime).md",
       "language": "markdown",
-      "sizeLines": 52,
+      "sizeLines": 54,
       "fileCategory": "docs"
     },
     {
@@ -457,6 +564,12 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/core.py (ops).md",
+      "language": "markdown",
+      "sizeLines": 76,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/decision_engine.py.md",
       "language": "markdown",
       "sizeLines": 63,
@@ -469,15 +582,27 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/engine.py (orchestration).md",
+      "language": "markdown",
+      "sizeLines": 71,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/engine.py.md",
       "language": "markdown",
-      "sizeLines": 56,
+      "sizeLines": 58,
       "fileCategory": "docs"
     },
     {
       "path": "dev_graph/files/feature_builder.py.md",
       "language": "markdown",
       "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/gated.py (ops).md",
+      "language": "markdown",
+      "sizeLines": 83,
       "fileCategory": "docs"
     },
     {
@@ -505,9 +630,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/models.py (orchestration).md",
+      "language": "markdown",
+      "sizeLines": 66,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/models.py (paper_runtime).md",
       "language": "markdown",
-      "sizeLines": 57,
+      "sizeLines": 59,
       "fileCategory": "docs"
     },
     {
@@ -535,6 +666,12 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/operational_feed.py.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/policy.py.md",
       "language": "markdown",
       "sizeLines": 47,
@@ -543,7 +680,7 @@
     {
       "path": "dev_graph/files/predicates.py (paper_runtime).md",
       "language": "markdown",
-      "sizeLines": 53,
+      "sizeLines": 57,
       "fileCategory": "docs"
     },
     {
@@ -559,15 +696,33 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/run_chain_bench.py.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/run_execution_bench.py.md",
       "language": "markdown",
       "sizeLines": 69,
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/files/run_forward_return_labels.py.md",
+      "language": "markdown",
+      "sizeLines": 82,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/files/runtime.py (execution).md",
       "language": "markdown",
       "sizeLines": 60,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/files/runtime.py (orchestration).md",
+      "language": "markdown",
+      "sizeLines": 75,
       "fileCategory": "docs"
     },
     {
@@ -591,13 +746,13 @@
     {
       "path": "dev_graph/gates/Gold Decision Gate.md",
       "language": "markdown",
-      "sizeLines": 74,
+      "sizeLines": 75,
       "fileCategory": "docs"
     },
     {
       "path": "dev_graph/gates/Runtime Admission Gate.md",
       "language": "markdown",
-      "sizeLines": 88,
+      "sizeLines": 92,
       "fileCategory": "docs"
     },
     {
@@ -669,7 +824,7 @@
     {
       "path": "dev_graph/index.md",
       "language": "markdown",
-      "sizeLines": 338,
+      "sizeLines": 377,
       "fileCategory": "docs"
     },
     {
@@ -687,7 +842,7 @@
     {
       "path": "dev_graph/interfaces/Execution API.md",
       "language": "markdown",
-      "sizeLines": 153,
+      "sizeLines": 157,
       "fileCategory": "docs"
     },
     {
@@ -789,7 +944,13 @@
     {
       "path": "dev_graph/log.md",
       "language": "markdown",
-      "sizeLines": 1283,
+      "sizeLines": 1999,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/modules/Chain Orchestrator.md",
+      "language": "markdown",
+      "sizeLines": 202,
       "fileCategory": "docs"
     },
     {
@@ -801,7 +962,7 @@
     {
       "path": "dev_graph/modules/Execution.md",
       "language": "markdown",
-      "sizeLines": 154,
+      "sizeLines": 172,
       "fileCategory": "docs"
     },
     {
@@ -817,6 +978,12 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/modules/Gold Forward-Return Labeler.md",
+      "language": "markdown",
+      "sizeLines": 147,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/modules/Guardrail Engine.md",
       "language": "markdown",
       "sizeLines": 115,
@@ -829,9 +996,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/modules/Operations Control Plane.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/modules/Paper-Trading Runtime.md",
       "language": "markdown",
-      "sizeLines": 155,
+      "sizeLines": 163,
       "fileCategory": "docs"
     },
     {
@@ -844,6 +1017,12 @@
       "path": "dev_graph/observability/Dev Graph Dashboard.md",
       "language": "markdown",
       "sizeLines": 273,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/observability/Operations Control Plane Console.md",
+      "language": "markdown",
+      "sizeLines": 96,
       "fileCategory": "docs"
     },
     {
@@ -885,7 +1064,7 @@
     {
       "path": "dev_graph/patterns/Pipeline Pattern.md",
       "language": "markdown",
-      "sizeLines": 66,
+      "sizeLines": 68,
       "fileCategory": "docs"
     },
     {
@@ -910,6 +1089,12 @@
       "path": "dev_graph/patterns/Treasury Approval Pattern.md",
       "language": "markdown",
       "sizeLines": 60,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/predicates/Cooldown OK.md",
+      "language": "markdown",
+      "sizeLines": 74,
       "fileCategory": "docs"
     },
     {
@@ -1069,6 +1254,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/tests/test_alpaca_adapter.md",
+      "language": "markdown",
+      "sizeLines": 62,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_alpaca_clock_feed.md",
+      "language": "markdown",
+      "sizeLines": 64,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_chain_bench.md",
+      "language": "markdown",
+      "sizeLines": 59,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_chain_determinism.md",
+      "language": "markdown",
+      "sizeLines": 58,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_chain_engine.md",
+      "language": "markdown",
+      "sizeLines": 58,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/tests/test_consumer.md",
       "language": "markdown",
       "sizeLines": 56,
@@ -1123,6 +1338,12 @@
       "fileCategory": "docs"
     },
     {
+      "path": "dev_graph/tests/test_forward_return_labels.md",
+      "language": "markdown",
+      "sizeLines": 71,
+      "fileCategory": "docs"
+    },
+    {
       "path": "dev_graph/tests/test_gold_bench.md",
       "language": "markdown",
       "sizeLines": 45,
@@ -1138,6 +1359,42 @@
       "path": "dev_graph/tests/test_models (snapshot).md",
       "language": "markdown",
       "sizeLines": 56,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_operational_feed.md",
+      "language": "markdown",
+      "sizeLines": 60,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_ops_actions.md",
+      "language": "markdown",
+      "sizeLines": 56,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_ops_app.md",
+      "language": "markdown",
+      "sizeLines": 56,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_ops_audit.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_ops_core.md",
+      "language": "markdown",
+      "sizeLines": 58,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dev_graph/tests/test_ops_gated.md",
+      "language": "markdown",
+      "sizeLines": 61,
       "fileCategory": "docs"
     },
     {
@@ -1197,7 +1454,19 @@
     {
       "path": "dev_graph/workflows/System Lifecycle.md",
       "language": "markdown",
-      "sizeLines": 109,
+      "sizeLines": 116,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "EPOCH_B_CALIBRATION_prompt.md",
+      "language": "markdown",
+      "sizeLines": 69,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "language": "markdown",
+      "sizeLines": 238,
       "fileCategory": "docs"
     },
     {
@@ -1216,6 +1485,18 @@
       "path": "final_strategic_review.md",
       "language": "markdown",
       "sizeLines": 1098,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "language": "markdown",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "FORWARD_RETURN_HARNESS_prompt.md",
+      "language": "markdown",
+      "sizeLines": 47,
       "fileCategory": "docs"
     },
     {
@@ -1293,7 +1574,7 @@
     {
       "path": "jarvis/frontend/graph.json",
       "language": "json",
-      "sizeLines": 8571,
+      "sizeLines": 9695,
       "fileCategory": "config"
     },
     {
@@ -1329,7 +1610,7 @@
     {
       "path": "jarvis/hud/public/graph.json",
       "language": "json",
-      "sizeLines": 8571,
+      "sizeLines": 9695,
       "fileCategory": "config"
     },
     {
@@ -1705,6 +1986,66 @@
       "fileCategory": "docs"
     },
     {
+      "path": "OPS_DASHBOARD_prompt.md",
+      "language": "markdown",
+      "sizeLines": 59,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "OPS_TUI_prompt.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ops/__init__.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/actions.py",
+      "language": "python",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/app.py",
+      "language": "python",
+      "sizeLines": 488,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/audit.py",
+      "language": "python",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/core.py",
+      "language": "python",
+      "sizeLines": 773,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/gated.py",
+      "language": "python",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/proc.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ops/README.md",
+      "language": "markdown",
+      "sizeLines": 288,
+      "fileCategory": "docs"
+    },
+    {
       "path": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
       "language": "markdown",
       "sizeLines": 238,
@@ -1725,7 +2066,7 @@
     {
       "path": "pyproject.toml",
       "language": "toml",
-      "sizeLines": 29,
+      "sizeLines": 35,
       "fileCategory": "config"
     },
     {
@@ -1789,6 +2130,24 @@
       "fileCategory": "docs"
     },
     {
+      "path": "REMAINING_ITEMS_prompt.md",
+      "language": "markdown",
+      "sizeLines": 53,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/daily_chain_run.ps1",
+      "language": "powershell",
+      "sizeLines": 83,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/register_daily_chain_task.ps1",
+      "language": "powershell",
+      "sizeLines": 53,
+      "fileCategory": "script"
+    },
+    {
       "path": "slice2 fit assessment and roadmap.md",
       "language": "markdown",
       "sizeLines": 336,
@@ -1834,6 +2193,12 @@
       "path": "src/execution/adapters.py",
       "language": "python",
       "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/execution/alpaca_adapter.py",
+      "language": "python",
+      "sizeLines": 170,
       "fileCategory": "code"
     },
     {
@@ -1929,31 +2294,73 @@
     {
       "path": "src/gold/paper_runtime/config.py",
       "language": "python",
-      "sizeLines": 87,
+      "sizeLines": 99,
       "fileCategory": "code"
     },
     {
       "path": "src/gold/paper_runtime/engine.py",
       "language": "python",
-      "sizeLines": 145,
+      "sizeLines": 150,
       "fileCategory": "code"
     },
     {
       "path": "src/gold/paper_runtime/models.py",
       "language": "python",
-      "sizeLines": 341,
+      "sizeLines": 354,
       "fileCategory": "code"
     },
     {
       "path": "src/gold/paper_runtime/predicates.py",
       "language": "python",
-      "sizeLines": 66,
+      "sizeLines": 105,
       "fileCategory": "code"
     },
     {
       "path": "src/gold/paper_runtime/runtime.py",
       "language": "python",
       "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/__init__.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/alpaca_clock_feed.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/config.py",
+      "language": "python",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/engine.py",
+      "language": "python",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/models.py",
+      "language": "python",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/operational_feed.py",
+      "language": "python",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/orchestration/runtime.py",
+      "language": "python",
+      "sizeLines": 237,
       "fileCategory": "code"
     },
     {
@@ -2089,6 +2496,18 @@
       "fileCategory": "code"
     },
     {
+      "path": "tests/calibration/test_forward_return_labels.py",
+      "language": "python",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/execution/test_alpaca_adapter.py",
+      "language": "python",
+      "sizeLines": 198,
+      "fileCategory": "code"
+    },
+    {
       "path": "tests/execution/test_execution_bench.py",
       "language": "python",
       "sizeLines": 128,
@@ -2145,7 +2564,7 @@
     {
       "path": "tests/gold/test_paper_runtime_determinism.py",
       "language": "python",
-      "sizeLines": 99,
+      "sizeLines": 100,
       "fileCategory": "code"
     },
     {
@@ -2157,13 +2576,73 @@
     {
       "path": "tests/gold/test_paper_runtime_guards.py",
       "language": "python",
-      "sizeLines": 158,
+      "sizeLines": 213,
       "fileCategory": "code"
     },
     {
       "path": "tests/gold/test_paper_runtime_ledger.py",
       "language": "python",
       "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/ops/test_actions.py",
+      "language": "python",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/ops/test_app.py",
+      "language": "python",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/ops/test_audit.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/ops/test_core.py",
+      "language": "python",
+      "sizeLines": 362,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/ops/test_gated.py",
+      "language": "python",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/orchestration/test_alpaca_clock_feed.py",
+      "language": "python",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/orchestration/test_chain_bench.py",
+      "language": "python",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/orchestration/test_chain_determinism.py",
+      "language": "python",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/orchestration/test_chain_engine.py",
+      "language": "python",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/orchestration/test_operational_feed.py",
+      "language": "python",
+      "sizeLines": 139,
       "fileCategory": "code"
     },
     {
@@ -2243,6 +2722,12 @@
       "language": "markdown",
       "sizeLines": 475,
       "fileCategory": "docs"
+    },
+    {
+      "path": "understand-dashboard.ps1",
+      "language": "powershell",
+      "sizeLines": 45,
+      "fileCategory": "script"
     },
     {
       "path": "wiki/agents/Agent Self-Verification.md",
@@ -2605,23 +3090,31 @@
       "fileCategory": "docs"
     }
   ],
-  "totalFiles": 429,
-  "filteredByIgnore": 410,
-  "estimatedComplexity": "large",
+  "totalFiles": 510,
+  "filteredByIgnore": 576,
+  "estimatedComplexity": "very-large",
   "importMap": {
     ".mcp.json": [],
+    "ADMISSION_INPUT_HARDENING_prompt.md": [],
     "ADR-011_drafting_prompt.md": [],
     "ADR-011_promote_and_plan_prompt.md": [],
+    "anything.txt": [],
     "audit_plan_addendum.md": [],
     "audit_plan.md": [],
+    "benchmarks/calibration/artifacts/forward_return_labels.json": [],
+    "benchmarks/calibration/run_forward_return_labels.py": [],
     "benchmarks/execution/artifacts/execution_bench.json": [],
     "benchmarks/execution/run_execution_bench.py": [],
     "benchmarks/gold/artifacts/gold_bench.json": [],
     "benchmarks/gold/artifacts/paper_runtime_bench.json": [],
     "benchmarks/gold/run_gold_bench.py": [],
     "benchmarks/gold/run_paper_runtime_bench.py": [],
+    "benchmarks/orchestration/artifacts/chain_bench.json": [],
+    "benchmarks/orchestration/run_chain_bench.py": [],
     "benchmarks/regime/artifacts/regime_bench.json": [],
     "benchmarks/regime/run_regime_bench.py": [],
+    "CHAIN_ORCHESTRATOR_prompt.md": [],
+    "CHAIN_ORCHESTRATOR_RUNBOOK.md": [],
     "CLAUDE.md": [],
     "dev_graph_next_step_recommendation_2026-06-08.md": [],
     "dev_graph_stabilization_audit_2026-06-07.md": [],
@@ -2631,8 +3124,10 @@
     "dev_graph/architecture/Infrastructure Diagram.md": [],
     "dev_graph/architecture/Layer Model.md": [],
     "dev_graph/architecture/Runtime Topology.md": [],
+    "dev_graph/benchmarks/Chain Orchestrator Benchmark.md": [],
     "dev_graph/benchmarks/Execution Layer Benchmark.md": [],
     "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md": [],
+    "dev_graph/benchmarks/Gold Forward-Return Label Set.md": [],
     "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md": [],
     "dev_graph/benchmarks/Regime Distribution Benchmark.md": [],
     "dev_graph/capabilities/Context Assembly.md": [],
@@ -2665,6 +3160,7 @@
     "dev_graph/decisions/ADR - Decision Layer Re-grounding.md": [],
     "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md": [],
     "dev_graph/decisions/ADR - Dev Graph Bootstrap.md": [],
+    "dev_graph/decisions/ADR - Empirical Calibration Methodology.md": [],
     "dev_graph/decisions/ADR - Execution Layer Planning.md": [],
     "dev_graph/decisions/ADR - Feature Layer Contract.md": [],
     "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md": [],
@@ -2672,33 +3168,48 @@
     "dev_graph/decisions/ADR - Implementation Substrate.md": [],
     "dev_graph/decisions/ADR - JARVIS GraphRAG Integration.md": [],
     "dev_graph/decisions/ADR - Ontology Redesign.md": [],
+    "dev_graph/decisions/ADR - Operations Control Plane.md": [],
     "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md": [],
+    "dev_graph/files/actions.py (ops).md": [],
     "dev_graph/files/adapters.py.md": [],
+    "dev_graph/files/alpaca_adapter.py.md": [],
+    "dev_graph/files/alpaca_clock_feed.py.md": [],
+    "dev_graph/files/app.py (ops).md": [],
+    "dev_graph/files/audit.py (ops).md": [],
     "dev_graph/files/builder.py.md": [],
     "dev_graph/files/config.py (execution).md": [],
     "dev_graph/files/config.py (gold).md": [],
+    "dev_graph/files/config.py (orchestration).md": [],
     "dev_graph/files/config.py (paper_runtime).md": [],
     "dev_graph/files/config.py (regime).md": [],
     "dev_graph/files/consumer.py.md": [],
+    "dev_graph/files/core.py (ops).md": [],
     "dev_graph/files/decision_engine.py.md": [],
     "dev_graph/files/engine.py (execution).md": [],
+    "dev_graph/files/engine.py (orchestration).md": [],
     "dev_graph/files/engine.py.md": [],
     "dev_graph/files/feature_builder.py.md": [],
+    "dev_graph/files/gated.py (ops).md": [],
     "dev_graph/files/guardrail_engine.py.md": [],
     "dev_graph/files/models.py (execution).md": [],
     "dev_graph/files/models.py (features).md": [],
     "dev_graph/files/models.py (gold).md": [],
+    "dev_graph/files/models.py (orchestration).md": [],
     "dev_graph/files/models.py (paper_runtime).md": [],
     "dev_graph/files/models.py (regime).md": [],
     "dev_graph/files/models.py (snapshot).md": [],
     "dev_graph/files/models.py (supervisor).md": [],
     "dev_graph/files/models.py.md": [],
+    "dev_graph/files/operational_feed.py.md": [],
     "dev_graph/files/policy.py.md": [],
     "dev_graph/files/predicates.py (paper_runtime).md": [],
     "dev_graph/files/predicates.py.md": [],
     "dev_graph/files/regime_classifier.py.md": [],
+    "dev_graph/files/run_chain_bench.py.md": [],
     "dev_graph/files/run_execution_bench.py.md": [],
+    "dev_graph/files/run_forward_return_labels.py.md": [],
     "dev_graph/files/runtime.py (execution).md": [],
+    "dev_graph/files/runtime.py (orchestration).md": [],
     "dev_graph/files/runtime.py.md": [],
     "dev_graph/files/scoring.py.md": [],
     "dev_graph/files/taxonomy.py.md": [],
@@ -2736,15 +3247,19 @@
     "dev_graph/knowledge_assets/Stateless Agent Architecture.md": [],
     "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md": [],
     "dev_graph/log.md": [],
+    "dev_graph/modules/Chain Orchestrator.md": [],
     "dev_graph/modules/Decision Engine.md": [],
     "dev_graph/modules/Execution.md": [],
     "dev_graph/modules/Feature Builder.md": [],
     "dev_graph/modules/Gold Decision Builder.md": [],
+    "dev_graph/modules/Gold Forward-Return Labeler.md": [],
     "dev_graph/modules/Guardrail Engine.md": [],
     "dev_graph/modules/Market Regime Classifier.md": [],
+    "dev_graph/modules/Operations Control Plane.md": [],
     "dev_graph/modules/Paper-Trading Runtime.md": [],
     "dev_graph/modules/Snapshot Consumer.md": [],
     "dev_graph/observability/Dev Graph Dashboard.md": [],
+    "dev_graph/observability/Operations Control Plane Console.md": [],
     "dev_graph/patterns/Context Assembly Pattern.md": [],
     "dev_graph/patterns/CQRS Pattern.md": [],
     "dev_graph/patterns/Evaluation Loop Pattern.md": [],
@@ -2756,6 +3271,7 @@
     "dev_graph/patterns/Regime Classification Pattern.md": [],
     "dev_graph/patterns/Supervisor Pattern.md": [],
     "dev_graph/patterns/Treasury Approval Pattern.md": [],
+    "dev_graph/predicates/Cooldown OK.md": [],
     "dev_graph/predicates/Daily Loss Cap OK.md": [],
     "dev_graph/predicates/Duplicate OK.md": [],
     "dev_graph/predicates/Max Positions OK.md": [],
@@ -2782,6 +3298,11 @@
     "dev_graph/systems/Risk Control.md": [],
     "dev_graph/systems/Supervisor Office.md": [],
     "dev_graph/systems/Trading Engine.md": [],
+    "dev_graph/tests/test_alpaca_adapter.md": [],
+    "dev_graph/tests/test_alpaca_clock_feed.md": [],
+    "dev_graph/tests/test_chain_bench.md": [],
+    "dev_graph/tests/test_chain_determinism.md": [],
+    "dev_graph/tests/test_chain_engine.md": [],
     "dev_graph/tests/test_consumer.md": [],
     "dev_graph/tests/test_decision_builder.md": [],
     "dev_graph/tests/test_decision_engine.md": [],
@@ -2791,9 +3312,16 @@
     "dev_graph/tests/test_execution_engine.md": [],
     "dev_graph/tests/test_execution_guards.md": [],
     "dev_graph/tests/test_feature_builder.md": [],
+    "dev_graph/tests/test_forward_return_labels.md": [],
     "dev_graph/tests/test_gold_bench.md": [],
     "dev_graph/tests/test_guardrail_engine.md": [],
     "dev_graph/tests/test_models (snapshot).md": [],
+    "dev_graph/tests/test_operational_feed.md": [],
+    "dev_graph/tests/test_ops_actions.md": [],
+    "dev_graph/tests/test_ops_app.md": [],
+    "dev_graph/tests/test_ops_audit.md": [],
+    "dev_graph/tests/test_ops_core.md": [],
+    "dev_graph/tests/test_ops_gated.md": [],
     "dev_graph/tests/test_paper_runtime_bench.md": [],
     "dev_graph/tests/test_paper_runtime_determinism.md": [],
     "dev_graph/tests/test_paper_runtime_engine.md": [],
@@ -2804,9 +3332,13 @@
     "dev_graph/tests/test_regime_classifier.md": [],
     "dev_graph/tests/test_scoring.md": [],
     "dev_graph/workflows/System Lifecycle.md": [],
+    "EPOCH_B_CALIBRATION_prompt.md": [],
+    "EPOCH_B_CALIBRATION_RUNBOOK.md": [],
     "EPOCH_B_CORPUS_RUNBOOK.md": [],
     "EXECUTION_LAYER_IMPLEMENTATION_PLAN.md": [],
     "final_strategic_review.md": [],
+    "FOLLOWUPS_cooldown_and_operational_feed_prompts.md": [],
+    "FORWARD_RETURN_HARNESS_prompt.md": [],
     "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md": [],
     "GOLD_DECISIONPACKET_V0_BRIEF.md": [],
     "GOLD_DECISIONPACKET_V0_FINAL_AUDIT.md": [],
@@ -2976,6 +3508,33 @@
     "jarvis/sources/sarkallatos_pontok.md": [],
     "jarvis/start.ps1": [],
     "llm-wiki.md": [],
+    "OPS_DASHBOARD_prompt.md": [],
+    "OPS_TUI_prompt.md": [],
+    "ops/__init__.py": [],
+    "ops/actions.py": [
+      "ops/__init__.py",
+      "ops/audit.py",
+      "ops/core.py",
+      "ops/proc.py"
+    ],
+    "ops/app.py": [
+      "ops/__init__.py",
+      "ops/actions.py",
+      "ops/core.py",
+      "ops/gated.py"
+    ],
+    "ops/audit.py": [],
+    "ops/core.py": [
+      "ops/audit.py"
+    ],
+    "ops/gated.py": [
+      "ops/__init__.py",
+      "ops/audit.py",
+      "ops/core.py",
+      "ops/proc.py"
+    ],
+    "ops/proc.py": [],
+    "ops/README.md": [],
     "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md": [],
     "population_strategy.md": [],
     "project_structure.md": [],
@@ -2990,6 +3549,9 @@
     "raw/ows-dev-squad.md": [],
     "REGIME_IMPLEMENTATION_BRIEF.md": [],
     "REGIME_TAXONOMY_FINAL_AUDIT.md": [],
+    "REMAINING_ITEMS_prompt.md": [],
+    "scripts/daily_chain_run.ps1": [],
+    "scripts/register_daily_chain_task.ps1": [],
     "slice2 fit assessment and roadmap.md": [],
     "snapshot_sources/latest_snapshot.json": [],
     "snapshot_sources/query_db.py": [],
@@ -3004,6 +3566,11 @@
       "src/execution/runtime.py"
     ],
     "src/execution/adapters.py": [
+      "src/execution/config.py",
+      "src/execution/models.py",
+      "src/gold/decision_builder/models.py"
+    ],
+    "src/execution/alpaca_adapter.py": [
       "src/execution/config.py",
       "src/execution/models.py",
       "src/gold/decision_builder/models.py"
@@ -3083,6 +3650,7 @@
     ],
     "src/gold/paper_runtime/predicates.py": [
       "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/config.py",
       "src/gold/paper_runtime/models.py"
     ],
     "src/gold/paper_runtime/runtime.py": [
@@ -3090,6 +3658,66 @@
       "src/gold/paper_runtime/config.py",
       "src/gold/paper_runtime/engine.py",
       "src/gold/paper_runtime/models.py"
+    ],
+    "src/orchestration/__init__.py": [
+      "src/orchestration/config.py",
+      "src/orchestration/engine.py",
+      "src/orchestration/models.py",
+      "src/orchestration/operational_feed.py",
+      "src/orchestration/runtime.py"
+    ],
+    "src/orchestration/alpaca_clock_feed.py": [
+      "src/gold/paper_runtime/models.py"
+    ],
+    "src/orchestration/config.py": [
+      "src/gold/paper_runtime/models.py",
+      "src/risk/guardrail_engine/models.py"
+    ],
+    "src/orchestration/engine.py": [
+      "src/execution/__init__.py",
+      "src/execution/adapters.py",
+      "src/execution/config.py",
+      "src/execution/models.py",
+      "src/features/feature_builder/__init__.py",
+      "src/gold/decision_builder/__init__.py",
+      "src/gold/decision_builder/config.py",
+      "src/gold/paper_runtime/__init__.py",
+      "src/gold/paper_runtime/config.py",
+      "src/gold/paper_runtime/models.py",
+      "src/orchestration/config.py",
+      "src/orchestration/models.py",
+      "src/regime/regime_classifier/__init__.py",
+      "src/regime/regime_classifier/config.py",
+      "src/risk/guardrail_engine/models.py",
+      "src/snapshot/snapshot_consumer/models.py"
+    ],
+    "src/orchestration/models.py": [
+      "src/execution/models.py",
+      "src/features/feature_builder/models.py",
+      "src/gold/decision_builder/models.py",
+      "src/gold/paper_runtime/models.py",
+      "src/regime/regime_classifier/models.py"
+    ],
+    "src/orchestration/operational_feed.py": [
+      "src/gold/paper_runtime/models.py"
+    ],
+    "src/orchestration/runtime.py": [
+      "src/execution/adapters.py",
+      "src/execution/config.py",
+      "src/execution/models.py",
+      "src/execution/runtime.py",
+      "src/gold/decision_builder/config.py",
+      "src/gold/paper_runtime/config.py",
+      "src/gold/paper_runtime/models.py",
+      "src/gold/paper_runtime/runtime.py",
+      "src/orchestration/config.py",
+      "src/orchestration/engine.py",
+      "src/orchestration/models.py",
+      "src/orchestration/operational_feed.py",
+      "src/regime/regime_classifier/config.py",
+      "src/risk/guardrail_engine/guardrail_engine.py",
+      "src/risk/guardrail_engine/models.py",
+      "src/snapshot/snapshot_consumer/__init__.py"
     ],
     "src/regime/__init__.py": [],
     "src/regime/regime_classifier/__init__.py": [
@@ -3150,6 +3778,8 @@
     ],
     "STEP4_BENCH004_prompt.md": [],
     "sync_to_neo4j.py": [],
+    "tests/calibration/test_forward_return_labels.py": [],
+    "tests/execution/test_alpaca_adapter.py": [],
     "tests/execution/test_execution_bench.py": [],
     "tests/execution/test_execution_determinism.py": [],
     "tests/execution/test_execution_engine.py": [],
@@ -3163,6 +3793,38 @@
     "tests/gold/test_paper_runtime_engine.py": [],
     "tests/gold/test_paper_runtime_guards.py": [],
     "tests/gold/test_paper_runtime_ledger.py": [],
+    "tests/ops/test_actions.py": [
+      "ops/__init__.py",
+      "ops/actions.py",
+      "ops/audit.py",
+      "ops/core.py"
+    ],
+    "tests/ops/test_app.py": [
+      "ops/__init__.py",
+      "ops/actions.py",
+      "ops/app.py",
+      "ops/core.py"
+    ],
+    "tests/ops/test_audit.py": [
+      "ops/__init__.py",
+      "ops/audit.py"
+    ],
+    "tests/ops/test_core.py": [
+      "ops/__init__.py",
+      "ops/core.py"
+    ],
+    "tests/ops/test_gated.py": [
+      "ops/__init__.py",
+      "ops/audit.py",
+      "ops/core.py",
+      "ops/gated.py",
+      "ops/proc.py"
+    ],
+    "tests/orchestration/test_alpaca_clock_feed.py": [],
+    "tests/orchestration/test_chain_bench.py": [],
+    "tests/orchestration/test_chain_determinism.py": [],
+    "tests/orchestration/test_chain_engine.py": [],
+    "tests/orchestration/test_operational_feed.py": [],
     "tests/regime/test_regime_bench.py": [],
     "tests/regime/test_regime_classifier.py": [],
     "tests/risk/test_guardrail_engine.py": [],
@@ -3176,6 +3838,7 @@
     "tests/supervisor/test_scoring.py": [],
     "the-gold-decisionpacket-v0-glowing-meerkat.md": [],
     "ultimateplan.md": [],
+    "understand-dashboard.ps1": [],
     "wiki/agents/Agent Self-Verification.md": [],
     "wiki/agents/Multi-Agent Orchestration.md": [],
     "wiki/agents/Stateless Agent Recovery.md": [],

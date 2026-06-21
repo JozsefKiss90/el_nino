@@ -1,0 +1,19 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/systems/Agent Runtime.md", "language": "markdown", "sizeLines": 97, "fileCategory": "docs"},
+    {"path": "dev_graph/systems/Data Pipeline.md", "language": "markdown", "sizeLines": 100, "fileCategory": "docs"},
+    {"path": "dev_graph/systems/Evaluation Loop.md", "language": "markdown", "sizeLines": 94, "fileCategory": "docs"},
+    {"path": "dev_graph/systems/Risk Control.md", "language": "markdown", "sizeLines": 90, "fileCategory": "docs"},
+    {"path": "dev_graph/systems/Supervisor Office.md", "language": "markdown", "sizeLines": 108, "fileCategory": "docs"},
+    {"path": "dev_graph/systems/Trading Engine.md", "language": "markdown", "sizeLines": 113, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/systems/Agent Runtime.md": [],
+    "dev_graph/systems/Data Pipeline.md": [],
+    "dev_graph/systems/Evaluation Loop.md": [],
+    "dev_graph/systems/Risk Control.md": [],
+    "dev_graph/systems/Supervisor Office.md": [],
+    "dev_graph/systems/Trading Engine.md": []
+  }
+}

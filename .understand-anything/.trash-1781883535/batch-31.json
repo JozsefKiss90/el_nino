@@ -1,0 +1,419 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/tests/test_ops_app.md",
+      "type": "document",
+      "name": "test_ops_app.md",
+      "filePath": "dev_graph/tests/test_ops_app.md",
+      "summary": "Dev-graph test node (TEST-033) documenting the integration tests for the Operations Control Plane Textual TUI (app.py), exercised via Textual's headless run_test driver to lock dispatch, crash-proof worker, and gated confirm-modal invariants.",
+      "tags": ["documentation", "test", "dev-graph", "tui", "operations"],
+      "complexity": "simple",
+      "languageNotes": "Ontology-governed dev_graph test node with typed frontmatter (canonical_id, covers, justified_by)."
+    },
+    {
+      "id": "document:dev_graph/tests/test_ops_audit.md",
+      "type": "document",
+      "name": "test_ops_audit.md",
+      "filePath": "dev_graph/tests/test_ops_audit.md",
+      "summary": "Dev-graph test node (TEST-030) documenting the unit tests for the append-only ops audit log (audit.py), pinning append/read round-trip, append-only immutability, ASCII enforcement, and malformed-line resilience.",
+      "tags": ["documentation", "test", "dev-graph", "audit-log", "operations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_ops_core.md",
+      "type": "document",
+      "name": "test_ops_core.md",
+      "filePath": "dev_graph/tests/test_ops_core.md",
+      "summary": "Dev-graph test node (TEST-029) documenting the headless unit tests for the ops read-model (core.py), locking view shapes, read-only purity, fail-closed behavior on malformed artefacts, and the no-credential-leak property.",
+      "tags": ["documentation", "test", "dev-graph", "read-model", "operations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_ops_gated.md",
+      "type": "document",
+      "name": "test_ops_gated.md",
+      "filePath": "dev_graph/tests/test_ops_gated.md",
+      "summary": "Dev-graph test node (TEST-032) documenting the unit tests for Tier-3 gated-live ops actions (gated.py), proving fail-closed REFUSE when dormant, no-network live-paper threading, defer-only calibration, and audit invariants.",
+      "tags": ["documentation", "test", "dev-graph", "security", "operations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_bench.md",
+      "type": "document",
+      "name": "test_paper_runtime_bench.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_bench.md",
+      "summary": "Dev-graph test node (TEST-017) documenting the benchmark tests for the paper-trading runtime (BENCH-003), guaranteeing report determinism, byte-identical sequences, full verdict coverage, and golden-artifact sync.",
+      "tags": ["documentation", "test", "dev-graph", "benchmark", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_determinism.md",
+      "type": "document",
+      "name": "test_paper_runtime_determinism.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_determinism.md",
+      "summary": "Dev-graph test node (TEST-015) documenting determinism and fingerprint-coherence tests for the paper runtime, proving byte-identical replay of RuntimeDecisionRecords and that an un-versioned policy edit fails CI via the runtime policy fingerprint.",
+      "tags": ["documentation", "test", "dev-graph", "determinism", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_engine.md",
+      "type": "document",
+      "name": "test_paper_runtime_engine.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_engine.md",
+      "summary": "Dev-graph test node (TEST-014) documenting behavioral tests for the paper runtime evaluate() verdict logic (ADMIT/REJECT/HOLD), guard ordering, and the fail-closed RuntimeDecisionRecord post-init invariant enforcing the Runtime Admission Gate.",
+      "tags": ["documentation", "test", "dev-graph", "decision-engine", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_guards.md",
+      "type": "document",
+      "name": "test_paper_runtime_guards.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_guards.md",
+      "summary": "Dev-graph test node (TEST-013) documenting isolated unit tests for the paper runtime guard predicates (once-ever dedup, operational preconditions, snapshot echoes), pinning each guard's pure (passed, reason) behavior independent of the engine.",
+      "tags": ["documentation", "test", "dev-graph", "validation", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "type": "document",
+      "name": "test_paper_runtime_ledger.md",
+      "filePath": "dev_graph/tests/test_paper_runtime_ledger.md",
+      "summary": "Dev-graph test node (TEST-016) documenting ledger idempotency and sequence-replay tests for the paper runtime, proving the self-describing ledger is sufficient replay state with stable state_hash, append-only immutability, and default-closed loaders.",
+      "tags": ["documentation", "test", "dev-graph", "ledger", "paper-runtime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_predicates.md",
+      "type": "document",
+      "name": "test_predicates.md",
+      "filePath": "dev_graph/tests/test_predicates.md",
+      "summary": "Dev-graph test node (TEST-001) documenting the unit suite for the hard-limit guardrail predicates (predicates.py), covering pass/fail boundaries for position size, daily-loss cap, max-trades, max-positions, and withdrawals-disabled.",
+      "tags": ["documentation", "test", "dev-graph", "validation", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_regime_bench.md",
+      "type": "document",
+      "name": "test_regime_bench.md",
+      "filePath": "dev_graph/tests/test_regime_bench.md",
+      "summary": "Dev-graph test node (TEST-009) documenting tests for the regime benchmark and replay harness (BENCH-001), asserting harness determinism, byte-identical real-snapshot replay, full synthetic-sweep coverage, and golden-artifact sync.",
+      "tags": ["documentation", "test", "dev-graph", "benchmark", "regime"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/tests/test_regime_classifier.md",
+      "type": "document",
+      "name": "test_regime_classifier.md",
+      "filePath": "dev_graph/tests/test_regime_classifier.md",
+      "summary": "Dev-graph test node (TEST-008) documenting the ~60-case suite plus exhaustive parametrized grid sweep for the Market Regime Classifier, proving it is correct, deterministic, fail-closed, config-driven, explainable, and taxonomy-complete.",
+      "tags": ["documentation", "test", "dev-graph", "regime", "classifier"],
+      "complexity": "moderate",
+      "languageNotes": "Uses exhaustive pytest parametrize sweeps instead of property-based testing (no hypothesis dependency) to keep tests deterministic."
+    },
+    {
+      "id": "document:dev_graph/tests/test_scoring.md",
+      "type": "document",
+      "name": "test_scoring.md",
+      "filePath": "dev_graph/tests/test_scoring.md",
+      "summary": "Dev-graph test node (TEST-003) documenting the unit suite for the Decision Engine scoring primitives (scoring.py), covering per-dimension weakness severity, unknown-dimension handling, cost-efficiency scoring, and the cost > 0 guard.",
+      "tags": ["documentation", "test", "dev-graph", "scoring", "decision-engine"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/tests/test_ops_app.md",
+      "target": "file:dev_graph/files/app.py (ops).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_app.md",
+      "target": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_audit.md",
+      "target": "file:dev_graph/files/audit.py (ops).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_audit.md",
+      "target": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_core.md",
+      "target": "file:dev_graph/files/core.py (ops).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_core.md",
+      "target": "document:dev_graph/modules/Operations Control Plane.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_core.md",
+      "target": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_gated.md",
+      "target": "file:dev_graph/files/gated.py (ops).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_ops_gated.md",
+      "target": "document:dev_graph/decisions/ADR - Operations Control Plane.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_bench.md",
+      "target": "document:dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_bench.md",
+      "target": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_bench.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_determinism.md",
+      "target": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_determinism.md",
+      "target": "file:dev_graph/files/config.py (paper_runtime).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_determinism.md",
+      "target": "schema:dev_graph/schemas/Runtime Decision Record Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_determinism.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_engine.md",
+      "target": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_engine.md",
+      "target": "file:dev_graph/files/engine.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_engine.md",
+      "target": "document:dev_graph/interfaces/Paper Runtime API.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_engine.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_guards.md",
+      "target": "file:dev_graph/files/predicates.py (paper_runtime).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_guards.md",
+      "target": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_guards.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "target": "file:dev_graph/files/runtime.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "target": "document:dev_graph/modules/Paper-Trading Runtime.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "target": "schema:dev_graph/schemas/Runtime Ledger Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_paper_runtime_ledger.md",
+      "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_predicates.md",
+      "target": "file:dev_graph/files/predicates.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_predicates.md",
+      "target": "file:dev_graph/files/models.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_predicates.md",
+      "target": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_bench.md",
+      "target": "document:dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_bench.md",
+      "target": "document:dev_graph/modules/Market Regime Classifier.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_bench.md",
+      "target": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_classifier.md",
+      "target": "file:dev_graph/files/regime_classifier.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_classifier.md",
+      "target": "file:dev_graph/files/taxonomy.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_classifier.md",
+      "target": "file:dev_graph/files/config.py (regime).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_classifier.md",
+      "target": "file:dev_graph/files/models.py (regime).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_classifier.md",
+      "target": "schema:dev_graph/schemas/Regime Classification Schema.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_regime_classifier.md",
+      "target": "document:dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_scoring.md",
+      "target": "file:dev_graph/files/scoring.py.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_scoring.md",
+      "target": "file:dev_graph/files/models.py (supervisor).md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/tests/test_scoring.md",
+      "target": "document:dev_graph/decisions/ADR - Implementation Substrate.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

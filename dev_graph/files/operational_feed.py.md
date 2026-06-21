@@ -11,7 +11,8 @@ evidence:
   - code
 source_paths:
   - "src/orchestration/operational_feed.py"
-related_files: []
+related_files:
+  - "[[alpaca_clock_feed.py]]"
 related_tests:
   - "[[test_operational_feed]]"
 related_constraints:
@@ -54,15 +55,17 @@ Governed by [[ADR - Paper-Trading Runtime Planning]] (the guard + model) + [[ADR
   replay reconstructs the operational decision from the captured artifact, never the feed.
 - **Fail-closed** — unavailable / ambiguous / unparseable ⇒ `OperationalInput.closed()` (not tradeable).
 - **No contract / `*_version` change** — additive IO only; the `OperationalInput` model is untouched.
-- **Credential isolation (KA-008)** — the v0 calendar feed needs no credentials; the deferred live Alpaca
-  feed's keys live in env / git-ignored `.secrets` only, never in the repo / a memory / a node.
+- **Credential isolation (KA-008)** — the v0 calendar feed needs no credentials; the live Alpaca feed (now
+  built in the sibling [[alpaca_clock_feed.py]] FILE-037, **default-OFF**) keeps its keys in env /
+  git-ignored `.secrets` only, never in the repo / a memory / a node.
 
 ## Implementation Notes
 
 `MarketCalendarFeed.read(as_of)` parses the ISO `as_of` (deterministic, never wall-clock): a trading day is
 a non-holiday weekday ⇒ tradeable/venue_open; weekend / listed holiday / unparseable ⇒ closed. The holiday
 set is a deterministic v0 approximation (fixed-date New Year / Juneteenth / Independence / Christmas), **not**
-a full NYSE calendar (the live Alpaca-calendar feed's job, deferred). `read_and_capture(feed, as_of, path)`
+a full NYSE calendar — that gap is now closed by the live [[alpaca_clock_feed.py]] (FILE-037,
+`AlpacaClockFeed`, default-OFF) behind this same `OperationalFeed` port. `read_and_capture(feed, as_of, path)`
 reads once and persists the produced `OperationalInput` (temp + `os.replace`) — the replay source.
 
 ## Relationships

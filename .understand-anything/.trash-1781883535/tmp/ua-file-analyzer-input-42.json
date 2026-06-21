@@ -1,0 +1,13 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "wiki/governance/Metadata Migration Plan.md", "language": "markdown", "sizeLines": 820, "fileCategory": "docs"},
+    {"path": "wiki/governance/Trade Logging.md", "language": "markdown", "sizeLines": 94, "fileCategory": "docs"},
+    {"path": "wiki/governance/Treasury Policy System.md", "language": "markdown", "sizeLines": 82, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "wiki/governance/Metadata Migration Plan.md": [],
+    "wiki/governance/Trade Logging.md": [],
+    "wiki/governance/Treasury Policy System.md": []
+  }
+}

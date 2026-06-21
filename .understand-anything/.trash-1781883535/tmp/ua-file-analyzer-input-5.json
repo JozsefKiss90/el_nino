@@ -1,0 +1,31 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path":"ops/__init__.py","language":"python","sizeLines":17,"fileCategory":"code"},
+    {"path":"ops/actions.py","language":"python","sizeLines":158,"fileCategory":"code"},
+    {"path":"ops/app.py","language":"python","sizeLines":488,"fileCategory":"code"},
+    {"path":"ops/audit.py","language":"python","sizeLines":114,"fileCategory":"code"},
+    {"path":"ops/core.py","language":"python","sizeLines":773,"fileCategory":"code"},
+    {"path":"ops/gated.py","language":"python","sizeLines":240,"fileCategory":"code"},
+    {"path":"ops/proc.py","language":"python","sizeLines":63,"fileCategory":"code"},
+    {"path":"tests/ops/test_actions.py","language":"python","sizeLines":170,"fileCategory":"code"},
+    {"path":"tests/ops/test_app.py","language":"python","sizeLines":126,"fileCategory":"code"},
+    {"path":"tests/ops/test_audit.py","language":"python","sizeLines":66,"fileCategory":"code"},
+    {"path":"tests/ops/test_core.py","language":"python","sizeLines":362,"fileCategory":"code"},
+    {"path":"tests/ops/test_gated.py","language":"python","sizeLines":204,"fileCategory":"code"}
+  ],
+  "batchImportData": {
+    "ops/__init__.py":[],
+    "ops/actions.py":["ops/__init__.py","ops/audit.py","ops/core.py","ops/proc.py"],
+    "ops/app.py":["ops/__init__.py","ops/actions.py","ops/core.py","ops/gated.py"],
+    "ops/audit.py":[],
+    "ops/core.py":["ops/audit.py"],
+    "ops/gated.py":["ops/__init__.py","ops/audit.py","ops/core.py","ops/proc.py"],
+    "ops/proc.py":[],
+    "tests/ops/test_actions.py":["ops/__init__.py","ops/actions.py","ops/audit.py","ops/core.py"],
+    "tests/ops/test_app.py":["ops/__init__.py","ops/actions.py","ops/app.py","ops/core.py"],
+    "tests/ops/test_audit.py":["ops/__init__.py","ops/audit.py"],
+    "tests/ops/test_core.py":["ops/__init__.py","ops/core.py"],
+    "tests/ops/test_gated.py":["ops/__init__.py","ops/audit.py","ops/core.py","ops/gated.py","ops/proc.py"]
+  }
+}

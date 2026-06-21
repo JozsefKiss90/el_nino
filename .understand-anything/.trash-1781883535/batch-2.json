@@ -1,0 +1,412 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/hud/src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "jarvis/hud/src/App.tsx",
+      "summary": "Root React component of the JARVIS HUD that wires up graph data, clock, corpus counter and theme hooks, and switches between the MainHud, OpsDeck and SystemFlow tabs.",
+      "tags": ["entry-point", "component", "hook", "ui", "tab-navigation"],
+      "complexity": "moderate",
+      "languageNotes": "Uses useCallback-memoized handlers and clock.slice string formatting for the HUD header."
+    },
+    {
+      "id": "function:jarvis/hud/src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "jarvis/hud/src/App.tsx",
+      "lineRange": [19, 102],
+      "summary": "Top-level HUD component that composes the data hooks and renders the active tab (main HUD, ops deck, or system flow) with a shared query handler.",
+      "tags": ["component", "entry-point", "tab-navigation", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/MatrixRain.tsx",
+      "type": "file",
+      "name": "MatrixRain.tsx",
+      "filePath": "jarvis/hud/src/components/MatrixRain.tsx",
+      "summary": "Canvas-based animated 'Matrix rain' background effect that respects the prefers-reduced-motion media query and tears down its interval on unmount.",
+      "tags": ["component", "canvas", "animation", "visual-effect", "ui"],
+      "complexity": "moderate",
+      "languageNotes": "Drives a requestInterval-style render loop via window.setInterval and a 2D canvas context."
+    },
+    {
+      "id": "function:jarvis/hud/src/components/MatrixRain.tsx:MatrixRain",
+      "type": "function",
+      "name": "MatrixRain",
+      "filePath": "jarvis/hud/src/components/MatrixRain.tsx",
+      "lineRange": [7, 65],
+      "summary": "React component rendering an animated falling-glyph canvas background, with resize handling and reduced-motion fallback.",
+      "tags": ["component", "canvas", "animation", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/flow/FlowInvariants.tsx",
+      "type": "file",
+      "name": "FlowInvariants.tsx",
+      "filePath": "jarvis/hud/src/components/flow/FlowInvariants.tsx",
+      "summary": "Presentational component listing the system-flow invariants displayed in the SystemFlow page.",
+      "tags": ["component", "presentational", "ui", "flow"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/flow/GovernanceSpine.tsx",
+      "type": "file",
+      "name": "GovernanceSpine.tsx",
+      "filePath": "jarvis/hud/src/components/flow/GovernanceSpine.tsx",
+      "summary": "Presentational component rendering the governance-spine visualization in the system flow view.",
+      "tags": ["component", "presentational", "ui", "flow", "governance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/flow/LaNinaBranch.tsx",
+      "type": "file",
+      "name": "LaNinaBranch.tsx",
+      "filePath": "jarvis/hud/src/components/flow/LaNinaBranch.tsx",
+      "summary": "Presentational component rendering the La Nina branch segment of the system flow diagram.",
+      "tags": ["component", "presentational", "ui", "flow"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/flow/ProgressiveReveal.tsx",
+      "type": "file",
+      "name": "ProgressiveReveal.tsx",
+      "filePath": "jarvis/hud/src/components/flow/ProgressiveReveal.tsx",
+      "summary": "Multi-step progressive disclosure component that reveals system-flow stages one at a time with next/reveal-all controls and a hint line.",
+      "tags": ["component", "ui", "flow", "progressive-disclosure"],
+      "complexity": "moderate",
+      "languageNotes": "Uses a stepCls helper to derive per-step CSS classes from the current revealed index."
+    },
+    {
+      "id": "function:jarvis/hud/src/components/flow/ProgressiveReveal.tsx:ProgressiveReveal",
+      "type": "function",
+      "name": "ProgressiveReveal",
+      "filePath": "jarvis/hud/src/components/flow/ProgressiveReveal.tsx",
+      "lineRange": [12, 115],
+      "summary": "Renders a sequence of flow steps gated by a revealed counter, exposing onNext and onAll callbacks and a contextual hint.",
+      "tags": ["component", "ui", "flow", "progressive-disclosure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/Architecture.tsx",
+      "type": "file",
+      "name": "Architecture.tsx",
+      "filePath": "jarvis/hud/src/components/ops/Architecture.tsx",
+      "summary": "Ops-deck panel that displays architecture statistics derived from the knowledge graph (node/edge/ADR counts).",
+      "tags": ["component", "ui", "ops", "metrics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/AuditDriftStatus.tsx",
+      "type": "file",
+      "name": "AuditDriftStatus.tsx",
+      "filePath": "jarvis/hud/src/components/ops/AuditDriftStatus.tsx",
+      "summary": "Ops-deck panel summarizing audit and drift status indicators for the operations console.",
+      "tags": ["component", "ui", "ops", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/EpochRoadmap.tsx",
+      "type": "file",
+      "name": "EpochRoadmap.tsx",
+      "filePath": "jarvis/hud/src/components/ops/EpochRoadmap.tsx",
+      "summary": "Ops-deck panel rendering the epoch roadmap that tracks calibration and rollout phases.",
+      "tags": ["component", "ui", "ops", "roadmap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/LivePipelineResult.tsx",
+      "type": "file",
+      "name": "LivePipelineResult.tsx",
+      "filePath": "jarvis/hud/src/components/ops/LivePipelineResult.tsx",
+      "summary": "Ops-deck panel showing the latest live pipeline run result for the chain orchestrator.",
+      "tags": ["component", "ui", "ops", "pipeline"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/MetricCards.tsx",
+      "type": "file",
+      "name": "MetricCards.tsx",
+      "filePath": "jarvis/hud/src/components/ops/MetricCards.tsx",
+      "summary": "Ops-deck component rendering corpus metric cards from the live corpus counter value.",
+      "tags": ["component", "ui", "ops", "metrics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/NextActions.tsx",
+      "type": "file",
+      "name": "NextActions.tsx",
+      "filePath": "jarvis/hud/src/components/ops/NextActions.tsx",
+      "summary": "Ops-deck panel listing the recommended next operational actions for the engineering team.",
+      "tags": ["component", "ui", "ops", "presentational"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/PipelineStatus.tsx",
+      "type": "file",
+      "name": "PipelineStatus.tsx",
+      "filePath": "jarvis/hud/src/components/ops/PipelineStatus.tsx",
+      "summary": "Ops-deck panel showing pipeline stage status with query buttons that forward graph queries through the onQuery callback.",
+      "tags": ["component", "ui", "ops", "pipeline", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/components/ops/The12PivotalPoints.tsx",
+      "type": "file",
+      "name": "The12PivotalPoints.tsx",
+      "filePath": "jarvis/hud/src/components/ops/The12PivotalPoints.tsx",
+      "summary": "Ops-deck panel rendering the twelve pivotal points narrative that frames the trading engine's key decisions.",
+      "tags": ["component", "ui", "ops", "presentational"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/data/graph.ts",
+      "type": "file",
+      "name": "graph.ts",
+      "filePath": "jarvis/hud/src/data/graph.ts",
+      "summary": "Data-access layer for the HUD that probes backend health, loads the static graph JSON, fetches live neighborhoods, maps bridge nodes, and computes graph statistics with a runtime source detector.",
+      "tags": ["service", "data-model", "api-handler", "serialization", "graph"],
+      "complexity": "moderate",
+      "languageNotes": "Uses fetch with a static-vs-live source fallback selected by Promise.all over probeHealth and loadGraphJson."
+    },
+    {
+      "id": "function:jarvis/hud/src/data/graph.ts:probeHealth",
+      "type": "function",
+      "name": "probeHealth",
+      "filePath": "jarvis/hud/src/data/graph.ts",
+      "lineRange": [10, 18],
+      "summary": "Probes the backend health endpoint and returns whether a live graph API is reachable.",
+      "tags": ["service", "api-handler", "health-check"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/graph.ts:loadGraphJson",
+      "type": "function",
+      "name": "loadGraphJson",
+      "filePath": "jarvis/hud/src/data/graph.ts",
+      "lineRange": [21, 30],
+      "summary": "Fetches and parses the static graph JSON artifact used when no live backend is available.",
+      "tags": ["service", "serialization", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/graph.ts:liveNeighborhood",
+      "type": "function",
+      "name": "liveNeighborhood",
+      "filePath": "jarvis/hud/src/data/graph.ts",
+      "lineRange": [33, 46],
+      "summary": "Fetches a node's live neighborhood from the backend at a given depth and maps the returned bridge nodes into the HUD graph format.",
+      "tags": ["service", "api-handler", "graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/graph.ts:graphStats",
+      "type": "function",
+      "name": "graphStats",
+      "filePath": "jarvis/hud/src/data/graph.ts",
+      "lineRange": [79, 90],
+      "summary": "Computes summary statistics from a graph, including the min/max ADR identifiers parsed from node IDs.",
+      "tags": ["utility", "metrics", "graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/data/graph.ts:detectSource",
+      "type": "function",
+      "name": "detectSource",
+      "filePath": "jarvis/hud/src/data/graph.ts",
+      "lineRange": [93, 98],
+      "summary": "Detects whether the HUD should use the live backend or the static graph JSON by racing a health probe against a JSON load.",
+      "tags": ["service", "data-model", "graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useClock.ts",
+      "type": "file",
+      "name": "useClock.ts",
+      "filePath": "jarvis/hud/src/hooks/useClock.ts",
+      "summary": "React hook that ticks every second and returns the current UTC time formatted as a fixed-width timestamp string.",
+      "tags": ["hook", "utility", "ui", "time"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useClock.ts:useClock",
+      "type": "function",
+      "name": "useClock",
+      "filePath": "jarvis/hud/src/hooks/useClock.ts",
+      "lineRange": [4, 11],
+      "summary": "Hook that maintains a one-second interval and exposes the current formatted UTC clock string.",
+      "tags": ["hook", "ui", "time"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/hooks/useCorpusCounter.ts",
+      "type": "file",
+      "name": "useCorpusCounter.ts",
+      "filePath": "jarvis/hud/src/hooks/useCorpusCounter.ts",
+      "summary": "React hook that derives a continuously growing corpus count from elapsed time and refreshes it on an interval.",
+      "tags": ["hook", "utility", "ui", "metrics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/hooks/useCorpusCounter.ts:useCorpusCounter",
+      "type": "function",
+      "name": "useCorpusCounter",
+      "filePath": "jarvis/hud/src/hooks/useCorpusCounter.ts",
+      "lineRange": [9, 16],
+      "summary": "Hook returning a time-derived corpus counter that increments on a fixed interval.",
+      "tags": ["hook", "ui", "metrics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "jarvis/hud/src/main.tsx",
+      "summary": "Vite/React entry point that mounts the App inside the ThemeProvider and loads the global theme stylesheet.",
+      "tags": ["entry-point", "bootstrap", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/pages/OpsDeck.tsx",
+      "type": "file",
+      "name": "OpsDeck.tsx",
+      "filePath": "jarvis/hud/src/pages/OpsDeck.tsx",
+      "summary": "Operations console page that composes the ops panels (architecture, audit drift, epoch roadmap, pipeline status, metrics, next actions) into a single dashboard view.",
+      "tags": ["component", "page", "ops", "dashboard", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/pages/OpsDeck.tsx:OpsDeck",
+      "type": "function",
+      "name": "OpsDeck",
+      "filePath": "jarvis/hud/src/pages/OpsDeck.tsx",
+      "lineRange": [16, 31],
+      "summary": "Renders the operations deck dashboard, passing corpus, stats, and the query handler down to the ops panels.",
+      "tags": ["component", "page", "ops", "dashboard"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:jarvis/hud/src/pages/SystemFlow.tsx",
+      "type": "file",
+      "name": "SystemFlow.tsx",
+      "filePath": "jarvis/hud/src/pages/SystemFlow.tsx",
+      "summary": "System-flow page that drives a progressive reveal of flow stages (governance spine, La Nina branch, invariants) over a graph view with query forwarding.",
+      "tags": ["component", "page", "flow", "graph", "progressive-disclosure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:jarvis/hud/src/pages/SystemFlow.tsx:SystemFlow",
+      "type": "function",
+      "name": "SystemFlow",
+      "filePath": "jarvis/hud/src/pages/SystemFlow.tsx",
+      "lineRange": [25, 70],
+      "summary": "Renders the system flow page, managing the revealed-step state and composing the flow sub-components over the graph view.",
+      "tags": ["component", "page", "flow", "progressive-disclosure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:jarvis/hud/src/theme/ThemeContext.tsx",
+      "type": "file",
+      "name": "ThemeContext.tsx",
+      "filePath": "jarvis/hud/src/theme/ThemeContext.tsx",
+      "summary": "Theme context provider and useTheme hook that persist the active theme to the document root element and expose a toggle to consumers.",
+      "tags": ["component", "hook", "context", "theme", "ui"],
+      "complexity": "simple",
+      "languageNotes": "Provides a React context with a useMemo-stabilized value and a useTheme consumer hook."
+    },
+    {
+      "id": "function:jarvis/hud/src/theme/ThemeContext.tsx:ThemeProvider",
+      "type": "function",
+      "name": "ThemeProvider",
+      "filePath": "jarvis/hud/src/theme/ThemeContext.tsx",
+      "lineRange": [16, 29],
+      "summary": "Context provider that tracks the active theme, reflects it onto the document root, and exposes a toggle through context.",
+      "tags": ["component", "context", "theme", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:jarvis/hud/src/theme/ThemeContext.tsx:useTheme",
+      "type": "function",
+      "name": "useTheme",
+      "filePath": "jarvis/hud/src/theme/ThemeContext.tsx",
+      "lineRange": [31, 35],
+      "summary": "Consumer hook returning the current theme and toggle from the theme context.",
+      "tags": ["hook", "context", "theme", "ui"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "function:jarvis/hud/src/App.tsx:App", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "function:jarvis/hud/src/App.tsx:App", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/components/MatrixRain.tsx", "target": "function:jarvis/hud/src/components/MatrixRain.tsx:MatrixRain", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/components/MatrixRain.tsx", "target": "function:jarvis/hud/src/components/MatrixRain.tsx:MatrixRain", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/components/flow/ProgressiveReveal.tsx", "target": "function:jarvis/hud/src/components/flow/ProgressiveReveal.tsx:ProgressiveReveal", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/components/flow/ProgressiveReveal.tsx", "target": "function:jarvis/hud/src/components/flow/ProgressiveReveal.tsx:ProgressiveReveal", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:probeHealth", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:probeHealth", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:loadGraphJson", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:loadGraphJson", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:liveNeighborhood", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:liveNeighborhood", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:graphStats", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:graphStats", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:detectSource", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "function:jarvis/hud/src/data/graph.ts:detectSource", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/hooks/useClock.ts", "target": "function:jarvis/hud/src/hooks/useClock.ts:useClock", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/hooks/useClock.ts", "target": "function:jarvis/hud/src/hooks/useClock.ts:useClock", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/hooks/useCorpusCounter.ts", "target": "function:jarvis/hud/src/hooks/useCorpusCounter.ts:useCorpusCounter", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/hooks/useCorpusCounter.ts", "target": "function:jarvis/hud/src/hooks/useCorpusCounter.ts:useCorpusCounter", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "function:jarvis/hud/src/pages/OpsDeck.tsx:OpsDeck", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "function:jarvis/hud/src/pages/OpsDeck.tsx:OpsDeck", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "function:jarvis/hud/src/pages/SystemFlow.tsx:SystemFlow", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "function:jarvis/hud/src/pages/SystemFlow.tsx:SystemFlow", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/theme/ThemeContext.tsx", "target": "function:jarvis/hud/src/theme/ThemeContext.tsx:ThemeProvider", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/theme/ThemeContext.tsx", "target": "function:jarvis/hud/src/theme/ThemeContext.tsx:ThemeProvider", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:jarvis/hud/src/theme/ThemeContext.tsx", "target": "function:jarvis/hud/src/theme/ThemeContext.tsx:useTheme", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:jarvis/hud/src/theme/ThemeContext.tsx", "target": "function:jarvis/hud/src/theme/ThemeContext.tsx:useTheme", "type": "exports", "direction": "forward", "weight": 0.8 },
+
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/components/MatrixRain.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/data/graph.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/hooks/useClock.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/hooks/useCorpusCounter.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/hooks/useGraph.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/pages/MainHud.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/pages/OpsDeck.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/pages/SystemFlow.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/App.tsx", "target": "file:jarvis/hud/src/theme/ThemeContext.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:jarvis/hud/src/components/ops/Architecture.tsx", "target": "file:jarvis/hud/src/data/graph.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "file:jarvis/hud/src/data/api.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/data/graph.ts", "target": "file:jarvis/hud/src/data/types.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:jarvis/hud/src/main.tsx", "target": "file:jarvis/hud/src/App.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/main.tsx", "target": "file:jarvis/hud/src/theme.css", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/main.tsx", "target": "file:jarvis/hud/src/theme/ThemeContext.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/Architecture.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/AuditDriftStatus.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/EpochRoadmap.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/LivePipelineResult.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/MetricCards.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/NextActions.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/PipelineStatus.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/components/ops/The12PivotalPoints.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/OpsDeck.tsx", "target": "file:jarvis/hud/src/data/graph.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "file:jarvis/hud/src/components/flow/FlowInvariants.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "file:jarvis/hud/src/components/flow/GovernanceSpine.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "file:jarvis/hud/src/components/flow/LaNinaBranch.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "file:jarvis/hud/src/components/flow/ProgressiveReveal.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "file:jarvis/hud/src/components/GraphView.tsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:jarvis/hud/src/pages/SystemFlow.tsx", "target": "file:jarvis/hud/src/hooks/useGraph.ts", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "function:jarvis/hud/src/App.tsx:App", "target": "function:jarvis/hud/src/hooks/useGraph.ts:useGraph", "type": "calls", "direction": "forward", "weight": 0.8 },
+    { "source": "function:jarvis/hud/src/App.tsx:App", "target": "function:jarvis/hud/src/hooks/useClock.ts:useClock", "type": "calls", "direction": "forward", "weight": 0.8 },
+    { "source": "function:jarvis/hud/src/App.tsx:App", "target": "function:jarvis/hud/src/hooks/useCorpusCounter.ts:useCorpusCounter", "type": "calls", "direction": "forward", "weight": 0.8 },
+    { "source": "function:jarvis/hud/src/App.tsx:App", "target": "function:jarvis/hud/src/theme/ThemeContext.tsx:useTheme", "type": "calls", "direction": "forward", "weight": 0.8 },
+    { "source": "function:jarvis/hud/src/App.tsx:App", "target": "function:jarvis/hud/src/data/graph.ts:graphStats", "type": "calls", "direction": "forward", "weight": 0.8 },
+    { "source": "function:jarvis/hud/src/data/graph.ts:detectSource", "target": "function:jarvis/hud/src/data/graph.ts:probeHealth", "type": "calls", "direction": "forward", "weight": 0.8 },
+    { "source": "function:jarvis/hud/src/data/graph.ts:detectSource", "target": "function:jarvis/hud/src/data/graph.ts:loadGraphJson", "type": "calls", "direction": "forward", "weight": 0.8 }
+  ]
+}

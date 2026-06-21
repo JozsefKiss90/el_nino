@@ -1,0 +1,77 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/agents/Agent Self-Verification.md",
+      "type": "document",
+      "name": "Agent Self-Verification.md",
+      "filePath": "wiki/agents/Agent Self-Verification.md",
+      "summary": "Wiki knowledge page describing the AI agent's ability to verify its own outputs and decisions before execution, covering signal, memory, and execution verification patterns for autonomous trading.",
+      "tags": ["documentation", "agent", "validation", "quality-assurance", "trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "type": "document",
+      "name": "Multi-Agent Orchestration.md",
+      "filePath": "wiki/agents/Multi-Agent Orchestration.md",
+      "summary": "Wiki knowledge page defining coordination patterns for multiple specialized AI agents (supervisor-worker, sequential routines, delegated subagents) including agent roles and coordination mechanisms used across the trading system.",
+      "tags": ["documentation", "agent", "orchestration", "coordination", "architecture"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:wiki/agents/Stateless Agent Recovery.md",
+      "type": "document",
+      "name": "Stateless Agent Recovery.md",
+      "filePath": "wiki/agents/Stateless Agent Recovery.md",
+      "summary": "Wiki knowledge page describing how a stateless agent invocation reconstructs operational context from persistent files at the start of each routine, enabling disciplined autonomous behavior from ephemeral LLM sessions.",
+      "tags": ["documentation", "agent", "memory", "recovery", "stateless"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/agents/Supervisor Decision Engine.md",
+      "type": "document",
+      "name": "Supervisor Decision Engine.md",
+      "filePath": "wiki/agents/Supervisor Decision Engine.md",
+      "summary": "Wiki knowledge page specifying the Syndicate Squad's algorithmic decision core that scores upgrade options against office weaknesses under treasury constraints, covering the scoring function, early-exit logic, and multi-round evolution.",
+      "tags": ["documentation", "agent", "decision-engine", "scoring", "orchestration"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/agents/Agent Self-Verification.md",
+      "target": "document:wiki/agents/Supervisor Decision Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "target": "document:wiki/agents/Supervisor Decision Engine.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "target": "document:wiki/agents/Stateless Agent Recovery.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Supervisor Decision Engine.md",
+      "target": "document:wiki/agents/Multi-Agent Orchestration.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/agents/Supervisor Decision Engine.md",
+      "target": "document:wiki/agents/Agent Self-Verification.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

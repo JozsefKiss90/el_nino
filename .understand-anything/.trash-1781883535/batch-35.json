@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "file:jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "type": "file",
+      "name": "EL NINO JARVIS Cyberpunk.html",
+      "filePath": "jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "summary": "Standalone single-file HTML mockup of the El Nino JARVIS dashboard in a synthwave/cyberpunk/matrix theme, with embedded CSS design tokens, a Matrix theme toggle, and inline JavaScript driving the interface.",
+      "tags": ["component", "dashboard", "ui-mockup", "design-source", "frontend"],
+      "complexity": "complex",
+      "languageNotes": "Self-contained HTML: a large :root CSS-variable design system plus a body.pixel Matrix mode and ~27 inline script/function blocks; visual layer only, every class/id preserved for the JS and markup."
+    },
+    {
+      "id": "file:jarvis/sources/el_nino_jarvis_interface (6).html",
+      "type": "file",
+      "name": "el_nino_jarvis_interface (6).html",
+      "filePath": "jarvis/sources/el_nino_jarvis_interface (6).html",
+      "summary": "Earlier iteration of the El Nino JARVIS 'Gold Ops' dashboard as a standalone HTML file, with its own embedded theme-token CSS system and inline interface scripting.",
+      "tags": ["component", "dashboard", "ui-mockup", "design-source", "frontend"],
+      "complexity": "complex",
+      "languageNotes": "Single-file HTML with a :root theme-token CSS block and inline JS; a precursor design reference to the Cyberpunk variant rather than a production-wired component."
+    },
+    {
+      "id": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "type": "document",
+      "name": "OPUS_CONTEXT_DUMP.md",
+      "filePath": "jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "summary": "Full project-context briefing (Hungarian) assembled to drive JARVIS dashboard generation, covering the Mr. Ripley/El Nino layer model, current status, epoch roadmap, repo structure, the 12 pivotal points, La Nina architecture, scorecard schema, and the dashboard build brief.",
+      "tags": ["documentation", "context-pack", "design-source", "architecture", "roadmap"],
+      "complexity": "complex",
+      "languageNotes": "32 sections spanning system overview, layer architecture, epoch roadmap, governance, and an explicit dashboard specification with mandatory panels and style guidelines."
+    },
+    {
+      "id": "document:jarvis/sources/el_nino_project_plan_v1.md",
+      "type": "document",
+      "name": "el_nino_project_plan_v1.md",
+      "filePath": "jarvis/sources/el_nino_project_plan_v1.md",
+      "summary": "Master planning document for the Mr. Ripley Layer 3 Decision Engine, detailing current state, Slice 2 fit assessment, R1-R8 recommendations, a six-epoch roadmap, the La Nina architecture with its 19-point problem inventory, and backtesting/paper-trading/learning-data methodology.",
+      "tags": ["documentation", "roadmap", "architecture", "planning", "design-source"],
+      "complexity": "complex",
+      "languageNotes": "56 sections across six parts plus a terminology appendix; the authoritative planning narrative that the OPUS context dump and pivotal-points notes summarize for dashboard generation."
+    },
+    {
+      "id": "document:jarvis/sources/sarkallatos_pontok.md",
+      "type": "document",
+      "name": "sarkallatos_pontok.md",
+      "filePath": "jarvis/sources/sarkallatos_pontok.md",
+      "summary": "Concise record (Hungarian) of the 12 agreed-upon pivotal points from a prior session, grouped into La Nina/Monitor, backtest & paper trading, data collection & learning, and look-ahead bias, capturing decisions to revisit later.",
+      "tags": ["documentation", "decision-notes", "design-source", "governance", "open-questions"],
+      "complexity": "simple",
+      "languageNotes": "Short structured agreement note; the same 12 points appear expanded in OPUS_CONTEXT_DUMP.md section 6."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "target": "document:jarvis/sources/el_nino_project_plan_v1.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/sarkallatos_pontok.md",
+      "target": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/sarkallatos_pontok.md",
+      "target": "document:jarvis/sources/el_nino_project_plan_v1.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:jarvis/sources/OPUS_CONTEXT_DUMP.md",
+      "target": "file:jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:jarvis/sources/EL NINO JARVIS Cyberpunk.html",
+      "target": "file:jarvis/sources/el_nino_jarvis_interface (6).html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

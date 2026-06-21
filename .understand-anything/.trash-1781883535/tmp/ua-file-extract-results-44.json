@@ -1,0 +1,639 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/integrations/Alpaca API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 135,
+      "nonEmptyLines": 98,
+      "sections": [
+        {
+          "heading": "Alpaca API",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Capabilities",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Authentication",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Credential File Persistence",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "API Endpoints Used",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Integration with Trading System",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Paper vs. Live Trading",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 131
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "wiki/integrations/Capital Trades Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 129,
+      "nonEmptyLines": 88,
+      "sections": [
+        {
+          "heading": "Capital Trades Integration",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Connection Method",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Smart Money Concept",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Data Provided",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Latency Considerations",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 113
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "wiki/integrations/Exchange API Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 118,
+      "nonEmptyLines": 82,
+      "sections": [
+        {
+          "heading": "Exchange API Integration",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Supported Exchanges",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Authentication Pattern",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "API Operations",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Example Trade Command",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Spot vs. Futures",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "wiki/integrations/MCP Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 94,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "MCP Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "MCP in Trading Context",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Alpaca MCP Server",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "TradingView MCP",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "Institutional Data MCP Connectors",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Future Extensions",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "wiki/integrations/Perplexity API.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "Perplexity API",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Usage",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "wiki/integrations/TradingView Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 108,
+      "nonEmptyLines": 75,
+      "sections": [
+        {
+          "heading": "TradingView Integration",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Integration Patterns",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Pattern 1: MCP Connection (Direct)",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Pattern 2: Webhook Bridge (Claude in the Middle)",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "Pattern 3: Co-work Computer Use",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "Webhook Configuration",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Strategy Development",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "wiki/integrations/Webhook Architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 99,
+      "nonEmptyLines": 74,
+      "sections": [
+        {
+          "heading": "Webhook Architecture",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Flow",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/capabilities/Context Assembly.md",
+      "type": "document",
+      "name": "Context Assembly.md",
+      "filePath": "dev_graph/capabilities/Context Assembly.md",
+      "summary": "Dev_graph capability node defining how pre-trade context (market, portfolio, regime) is assembled and provided to downstream decision-making in the trading engine.",
+      "tags": ["documentation", "capability", "trading-engine", "context-assembly"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Decision Making.md",
+      "type": "document",
+      "name": "Decision Making.md",
+      "filePath": "dev_graph/capabilities/Decision Making.md",
+      "summary": "Dev_graph capability node describing how assembled context and signals are turned into trade decisions within the trading engine pipeline.",
+      "tags": ["documentation", "capability", "trading-engine", "decision-making"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Exposure Tracking.md",
+      "type": "document",
+      "name": "Exposure Tracking.md",
+      "filePath": "dev_graph/capabilities/Exposure Tracking.md",
+      "summary": "Dev_graph capability node defining how portfolio exposure across positions is tracked to support risk and guardrail enforcement.",
+      "tags": ["documentation", "capability", "trading-engine", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Feature Engineering.md",
+      "type": "document",
+      "name": "Feature Engineering.md",
+      "filePath": "dev_graph/capabilities/Feature Engineering.md",
+      "summary": "Dev_graph capability node describing computation of derived market features that feed signal generation and regime classification.",
+      "tags": ["documentation", "capability", "trading-engine", "feature-engineering"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Gold Decision Generation.md",
+      "type": "document",
+      "name": "Gold Decision Generation.md",
+      "filePath": "dev_graph/capabilities/Gold Decision Generation.md",
+      "summary": "Dev_graph capability node defining generation of gold-lineage decision packets that drive paper-trade admission and execution downstream.",
+      "tags": ["documentation", "capability", "trading-engine", "gold-lineage"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Guardrail Enforcement.md",
+      "type": "document",
+      "name": "Guardrail Enforcement.md",
+      "filePath": "dev_graph/capabilities/Guardrail Enforcement.md",
+      "summary": "Dev_graph capability node describing enforcement of trade guardrails and hard-limit predicates before order execution.",
+      "tags": ["documentation", "capability", "trading-engine", "guardrail", "risk"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Market Regime Classification.md",
+      "type": "document",
+      "name": "Market Regime Classification.md",
+      "filePath": "dev_graph/capabilities/Market Regime Classification.md",
+      "summary": "Dev_graph capability node defining classification of market regimes from engineered features to condition signal and decision logic.",
+      "tags": ["documentation", "capability", "trading-engine", "regime-classification"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Market Scanning.md",
+      "type": "document",
+      "name": "Market Scanning.md",
+      "filePath": "dev_graph/capabilities/Market Scanning.md",
+      "summary": "Dev_graph capability node describing scanning of the market universe to surface tradeable instruments for the pipeline.",
+      "tags": ["documentation", "capability", "trading-engine", "market-scanning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Order Management.md",
+      "type": "document",
+      "name": "Order Management.md",
+      "filePath": "dev_graph/capabilities/Order Management.md",
+      "summary": "Dev_graph capability node defining the execution layer that turns an ADMITted paper decision into a deterministic paper fill at a fixed configured size, re-grounded under ADR-011.",
+      "tags": ["documentation", "capability", "trading-engine", "execution", "order-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Paper-Trade Admission.md",
+      "type": "document",
+      "name": "Paper-Trade Admission.md",
+      "filePath": "dev_graph/capabilities/Paper-Trade Admission.md",
+      "summary": "Dev_graph capability node describing the ADMIT/REJECT verdict over gold decisions that gates paper-trade execution downstream.",
+      "tags": ["documentation", "capability", "trading-engine", "admission", "paper-trading"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Performance Scoring.md",
+      "type": "document",
+      "name": "Performance Scoring.md",
+      "filePath": "dev_graph/capabilities/Performance Scoring.md",
+      "summary": "Dev_graph capability node defining computation of performance and risk metrics used to score strategies and inform promotion validation.",
+      "tags": ["documentation", "capability", "trading-engine", "performance-scoring"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Position Tracking.md",
+      "type": "document",
+      "name": "Position Tracking.md",
+      "filePath": "dev_graph/capabilities/Position Tracking.md",
+      "summary": "Dev_graph capability node defining maintenance of portfolio state (open positions, P&L) updated from executed fills.",
+      "tags": ["documentation", "capability", "trading-engine", "position-tracking", "portfolio-state"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Promotion Validation.md",
+      "type": "document",
+      "name": "Promotion Validation.md",
+      "filePath": "dev_graph/capabilities/Promotion Validation.md",
+      "summary": "Dev_graph capability node describing validation criteria for promoting a strategy from paper to a higher stage based on performance scoring.",
+      "tags": ["documentation", "capability", "trading-engine", "promotion-validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Signal Generation.md",
+      "type": "document",
+      "name": "Signal Generation.md",
+      "filePath": "dev_graph/capabilities/Signal Generation.md",
+      "summary": "Dev_graph capability node defining generation of trade signals from engineered features and regime context within the pipeline.",
+      "tags": ["documentation", "capability", "trading-engine", "signal-generation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Snapshot Assembly.md",
+      "type": "document",
+      "name": "Snapshot Assembly.md",
+      "filePath": "dev_graph/capabilities/Snapshot Assembly.md",
+      "summary": "Dev_graph capability node describing assembly of immutable market/portfolio snapshots consumed by decision and execution layers.",
+      "tags": ["documentation", "capability", "trading-engine", "snapshot-assembly"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/State Persistence.md",
+      "type": "document",
+      "name": "State Persistence.md",
+      "filePath": "dev_graph/capabilities/State Persistence.md",
+      "summary": "Dev_graph capability node defining durable persistence of engine state so runs are replay-safe and recoverable across sessions.",
+      "tags": ["documentation", "capability", "trading-engine", "state-persistence"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Stop-Loss Management.md",
+      "type": "document",
+      "name": "Stop-Loss Management.md",
+      "filePath": "dev_graph/capabilities/Stop-Loss Management.md",
+      "summary": "Dev_graph capability node describing stop-loss tracking and triggering on open positions to bound downside risk.",
+      "tags": ["documentation", "capability", "trading-engine", "stop-loss", "risk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Team Orchestration.md",
+      "type": "document",
+      "name": "Team Orchestration.md",
+      "filePath": "dev_graph/capabilities/Team Orchestration.md",
+      "summary": "Dev_graph capability node defining orchestration of agent teams/squads that coordinate the multi-stage trading pipeline.",
+      "tags": ["documentation", "capability", "trading-engine", "orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Trade Logging.md",
+      "type": "document",
+      "name": "Trade Logging.md",
+      "filePath": "dev_graph/capabilities/Trade Logging.md",
+      "summary": "Dev_graph capability node describing structured logging of trades and fills for audit, replay, and performance analysis.",
+      "tags": ["documentation", "capability", "trading-engine", "trade-logging", "audit"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/capabilities/Treasury Management.md",
+      "type": "document",
+      "name": "Treasury Management.md",
+      "filePath": "dev_graph/capabilities/Treasury Management.md",
+      "summary": "Dev_graph capability node defining the treasury model and policy gates governing capital allocation and withdrawal constraints for paper trading.",
+      "tags": ["documentation", "capability", "trading-engine", "treasury", "policy"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/capabilities/Order Management.md",
+      "target": "document:dev_graph/capabilities/Paper-Trade Admission.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Order Management.md",
+      "target": "document:dev_graph/capabilities/Position Tracking.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Order Management.md",
+      "target": "document:dev_graph/capabilities/Trade Logging.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Paper-Trade Admission.md",
+      "target": "document:dev_graph/capabilities/Gold Decision Generation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Gold Decision Generation.md",
+      "target": "document:dev_graph/capabilities/Decision Making.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Decision Making.md",
+      "target": "document:dev_graph/capabilities/Context Assembly.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Decision Making.md",
+      "target": "document:dev_graph/capabilities/Signal Generation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Signal Generation.md",
+      "target": "document:dev_graph/capabilities/Feature Engineering.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Signal Generation.md",
+      "target": "document:dev_graph/capabilities/Market Regime Classification.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Market Regime Classification.md",
+      "target": "document:dev_graph/capabilities/Feature Engineering.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Feature Engineering.md",
+      "target": "document:dev_graph/capabilities/Market Scanning.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Context Assembly.md",
+      "target": "document:dev_graph/capabilities/Snapshot Assembly.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Guardrail Enforcement.md",
+      "target": "document:dev_graph/capabilities/Exposure Tracking.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Guardrail Enforcement.md",
+      "target": "document:dev_graph/capabilities/Treasury Management.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Position Tracking.md",
+      "target": "document:dev_graph/capabilities/Stop-Loss Management.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Position Tracking.md",
+      "target": "document:dev_graph/capabilities/Exposure Tracking.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Position Tracking.md",
+      "target": "document:dev_graph/capabilities/State Persistence.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Promotion Validation.md",
+      "target": "document:dev_graph/capabilities/Performance Scoring.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Performance Scoring.md",
+      "target": "document:dev_graph/capabilities/Trade Logging.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Team Orchestration.md",
+      "target": "document:dev_graph/capabilities/Decision Making.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/capabilities/Team Orchestration.md",
+      "target": "document:dev_graph/capabilities/Order Management.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

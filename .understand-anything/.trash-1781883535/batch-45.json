@@ -1,0 +1,87 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/sources/SRC - Build Spec.md",
+      "type": "document",
+      "name": "SRC - Build Spec.md",
+      "filePath": "wiki/sources/SRC - Build Spec.md",
+      "summary": "Source summary of the Syndicate Squad hackathon build specification, capturing the wallet-native supervisor product, MVP screens, an 8-step demo flow, and the core domain model types.",
+      "tags": ["documentation", "source", "product-spec", "requirements", "domain-model"],
+      "complexity": "simple",
+      "languageNotes": "Wiki source node following the SRC- ingestion template: Metadata, Summary, Key Concepts Extracted, and Caveats sections with [[wikilink]] cross-references to canonical concept pages."
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Alpaca Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Alpaca Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Alpaca Trader.md",
+      "summary": "Source summary documenting a Claude-driven Alpaca trading demo, including strategies demonstrated, performance claims, and noted contradictions with existing wiki content.",
+      "tags": ["documentation", "source", "trading", "alpaca", "strategy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Cowork Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Cowork Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Cowork Trader.md",
+      "summary": "Source summary contrasting Claude Co-work with regular Claude for trading use cases, highlighting a key security insight and operational caveats.",
+      "tags": ["documentation", "source", "trading", "claude-cowork", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Opus Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Opus Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Opus Trader.md",
+      "summary": "Source summary of a Claude Opus autonomous trader, documenting its routine schedule, key insights, and operational caveats.",
+      "tags": ["documentation", "source", "trading", "opus", "scheduling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude Stock Trader.md",
+      "type": "document",
+      "name": "SRC - Claude Stock Trader.md",
+      "filePath": "wiki/sources/SRC - Claude Stock Trader.md",
+      "summary": "Source summary of a Claude-driven stock trading demo, capturing reported performance data, a headline claim, and caveats around its reliability.",
+      "tags": ["documentation", "source", "trading", "stocks", "performance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude TradingView Integration.md",
+      "type": "document",
+      "name": "SRC - Claude TradingView Integration.md",
+      "filePath": "wiki/sources/SRC - Claude TradingView Integration.md",
+      "summary": "Source summary documenting a Claude-plus-TradingView integration, describing its architecture pattern, one-shot prompt pattern, and strategy-scraping pattern.",
+      "tags": ["documentation", "source", "integration", "tradingview", "architecture-pattern"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - Claude for Financial Services.md",
+      "type": "document",
+      "name": "SRC - Claude for Financial Services.md",
+      "filePath": "wiki/sources/SRC - Claude for Financial Services.md",
+      "summary": "Source summary of the Claude for Financial Services announcement, covering data provider integrations, consulting partners, benchmark claims, and institutional testimonials.",
+      "tags": ["documentation", "source", "financial-services", "integration", "benchmark"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - LLM Wiki Methodology.md",
+      "type": "document",
+      "name": "SRC - LLM Wiki Methodology.md",
+      "filePath": "wiki/sources/SRC - LLM Wiki Methodology.md",
+      "summary": "Source summary describing the LLM wiki methodology that underpins this knowledge base, outlining its core architecture, operations, and referenced concepts.",
+      "tags": ["documentation", "source", "methodology", "knowledge-graph", "wiki"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/sources/SRC - OWS Dev Squad.md",
+      "type": "document",
+      "name": "SRC - OWS Dev Squad.md",
+      "filePath": "wiki/sources/SRC - OWS Dev Squad.md",
+      "summary": "Source summary of the OWS Dev Squad architecture, capturing core domain types, the architecture thesis, key design decisions, and currently documented gaps.",
+      "tags": ["documentation", "source", "architecture", "domain-model", "design-decisions"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

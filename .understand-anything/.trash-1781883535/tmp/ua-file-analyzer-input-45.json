@@ -1,0 +1,25 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "wiki/sources/SRC - Build Spec.md", "language": "markdown", "sizeLines": 64, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - Claude Alpaca Trader.md", "language": "markdown", "sizeLines": 77, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - Claude Cowork Trader.md", "language": "markdown", "sizeLines": 66, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - Claude Opus Trader.md", "language": "markdown", "sizeLines": 70, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - Claude Stock Trader.md", "language": "markdown", "sizeLines": 65, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - Claude TradingView Integration.md", "language": "markdown", "sizeLines": 72, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - Claude for Financial Services.md", "language": "markdown", "sizeLines": 73, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - LLM Wiki Methodology.md", "language": "markdown", "sizeLines": 57, "fileCategory": "docs"},
+    {"path": "wiki/sources/SRC - OWS Dev Squad.md", "language": "markdown", "sizeLines": 66, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "wiki/sources/SRC - Build Spec.md": [],
+    "wiki/sources/SRC - Claude Alpaca Trader.md": [],
+    "wiki/sources/SRC - Claude Cowork Trader.md": [],
+    "wiki/sources/SRC - Claude Opus Trader.md": [],
+    "wiki/sources/SRC - Claude Stock Trader.md": [],
+    "wiki/sources/SRC - Claude TradingView Integration.md": [],
+    "wiki/sources/SRC - Claude for Financial Services.md": [],
+    "wiki/sources/SRC - LLM Wiki Methodology.md": [],
+    "wiki/sources/SRC - OWS Dev Squad.md": []
+  }
+}

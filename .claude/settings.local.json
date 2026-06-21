@@ -192,7 +192,14 @@
       "Bash(PYTHONPATH=src ./.venv/Scripts/python.exe *)",
       "Bash(git stash *)",
       "Bash(echo \"exit:$?\")",
-      "Bash(PYTHONPATH=src .venv/Scripts/python.exe *)"
+      "Bash(PYTHONPATH=src .venv/Scripts/python.exe *)",
+      "Bash(py -3.10 -c \"import sys; print\\(sys.version\\)\")",
+      "Bash(py -3.10 -c \"import neo4j_mcp_server, importlib.metadata as m; print\\('version', m.version\\('neo4j-mcp-server'\\) if True else '?'\\)\")",
+      "Read(//c/Users/jozse/.claude/plugins/cache/understand-anything/understand-anything/2.8.0/**)",
+      "Read(//c/Users/jozse/.claude/plugins/cache/understand-anything/understand-anything/2.8.0/packages/core/dist/**)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(GRAPH_DIR=\"C:/Code/el_nino\" UNDERSTAND_ACCESS_TOKEN=\"elnino-dash\" node node_modules/vite/bin/vite.js --host 127.0.0.1)"
     ]
   }
 }

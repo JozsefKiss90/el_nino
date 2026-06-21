@@ -1,0 +1,521 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/sources/SRC - Build Spec.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 64,
+      "nonEmptyLines": 50,
+      "sections": [
+        {
+          "heading": "SRC - Build Spec",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "MVP Requirements",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Visible Elements",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Demo Flow",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Domain Model Types",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Key Quote",
+          "level": 2,
+          "line": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Alpaca Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 77,
+      "nonEmptyLines": 60,
+      "sections": [
+        {
+          "heading": "SRC - Claude Alpaca Trader",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Strategies Demonstrated",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Key Insights",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Performance Claims",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Contradictions with Existing Wiki",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Caveats",
+          "level": 2,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Cowork Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 51,
+      "sections": [
+        {
+          "heading": "SRC - Claude Cowork Trader",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Claude Co-work vs. Regular Claude",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Trading Use Cases",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Key Security Insight",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Caveats",
+          "level": 2,
+          "line": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Opus Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 57,
+      "sections": [
+        {
+          "heading": "SRC - Claude Opus Trader",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Routine Schedule",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Key Insights",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Caveats",
+          "level": 2,
+          "line": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - Claude Stock Trader.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 65,
+      "nonEmptyLines": 52,
+      "sections": [
+        {
+          "heading": "SRC - Claude Stock Trader",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Performance Data",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Key Claim",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Caveats",
+          "level": 2,
+          "line": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - Claude TradingView Integration.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 72,
+      "nonEmptyLines": 57,
+      "sections": [
+        {
+          "heading": "SRC - Claude TradingView Integration",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Architecture Pattern",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "One-Shot Prompt Pattern",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Strategy Scraping Pattern",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Caveats",
+          "level": 2,
+          "line": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - Claude for Financial Services.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 73,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "SRC - Claude for Financial Services",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Data Provider Integrations",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Consulting Partners",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Benchmark Claims",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Institutional Testimonials",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "Key Differentiator",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Caveats",
+          "level": 2,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - LLM Wiki Methodology.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 57,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "SRC - LLM Wiki Methodology",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Core Architecture",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Operations",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Key Insight",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Concepts Referenced",
+          "level": 2,
+          "line": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "wiki/sources/SRC - OWS Dev Squad.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 51,
+      "sections": [
+        {
+          "heading": "SRC - OWS Dev Squad",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "Metadata",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Summary",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Concepts Extracted",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Core Domain Types",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Architecture Thesis",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Key Design Decisions",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Current Gaps (as documented)",
+          "level": 2,
+          "line": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    }
+  ]
+}

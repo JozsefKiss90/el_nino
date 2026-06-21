@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/strategies/Copy Trading Strategy.md",
+      "type": "document",
+      "name": "Copy Trading Strategy.md",
+      "filePath": "wiki/strategies/Copy Trading Strategy.md",
+      "summary": "Wiki strategy specification for replicating trades from smart-money sources (notably US Congress politicians), covering target selection, replication logic, latency analysis, and strategy isolation. Defines inputs, outputs, dependencies, and failure modes for the copy-trading approach.",
+      "tags": ["documentation", "trading-strategy", "copy-trading", "signal-source", "knowledge-base"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/strategies/Paper Trading.md",
+      "type": "document",
+      "name": "Paper Trading.md",
+      "filePath": "wiki/strategies/Paper Trading.md",
+      "summary": "Wiki documentation of paper (simulated) trading variants used as a validation stage before live deployment, including Alpaca paper accounts, custom-balance accounts, TradingView paper mode, and the Syndicate Squad engine. Specifies promotion criteria from paper to live trading.",
+      "tags": ["documentation", "paper-trading", "validation", "simulation", "knowledge-base"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/strategies/Signal Confirmation.md",
+      "type": "document",
+      "name": "Signal Confirmation.md",
+      "filePath": "wiki/strategies/Signal Confirmation.md",
+      "summary": "Wiki specification of the multi-indicator signal-confirmation pattern that requires agreement across an indicator stack before generating a trade, covering the three-layer equities system, TradingView crypto scalping stack, and safety-filter extension.",
+      "tags": ["documentation", "trading-strategy", "signal-confirmation", "technical-indicators", "knowledge-base"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/strategies/VWAP Crossover Strategy.md",
+      "type": "document",
+      "name": "VWAP Crossover Strategy.md",
+      "filePath": "wiki/strategies/VWAP Crossover Strategy.md",
+      "summary": "Wiki documentation of the VWAP crossover strategy with concrete long entry and exit rules, validated performance evidence, strategy origin, and failure modes. A focused indicator-based intraday strategy spec.",
+      "tags": ["documentation", "trading-strategy", "vwap", "crossover", "knowledge-base"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:wiki/strategies/Wheel Strategy.md",
+      "type": "document",
+      "name": "Wheel Strategy.md",
+      "filePath": "wiki/strategies/Wheel Strategy.md",
+      "summary": "Wiki specification of the options Wheel Strategy (cash-secured puts then covered calls), detailing the two-stage cycle, hard rules, strike/expiration selection, monitoring schedule, and Claude automation. The most detailed strategy doc in this batch.",
+      "tags": ["documentation", "trading-strategy", "wheel-strategy", "options", "knowledge-base"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/strategies/Copy Trading Strategy.md",
+      "target": "document:wiki/strategies/Signal Confirmation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/strategies/Copy Trading Strategy.md",
+      "target": "document:wiki/strategies/Paper Trading.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/strategies/VWAP Crossover Strategy.md",
+      "target": "document:wiki/strategies/Signal Confirmation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/strategies/Wheel Strategy.md",
+      "target": "document:wiki/strategies/Signal Confirmation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

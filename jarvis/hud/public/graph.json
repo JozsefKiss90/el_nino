@@ -1,7 +1,7 @@
 {
   "meta": {
-    "node_count": 193,
-    "edge_count": 1477,
+    "node_count": 210,
+    "edge_count": 1675,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -141,7 +141,8 @@
       "confidence": "confirmed",
       "evidence": [
         "design",
-        "ADR"
+        "ADR",
+        "code"
       ],
       "status": "active"
     },
@@ -158,6 +159,19 @@
         "layer2"
       ],
       "status": "draft"
+    },
+    {
+      "id": "ADR-013",
+      "label": "DecisionRecord",
+      "name": "ADR - Operations Control Plane",
+      "summary": "ADR - Operations Control Plane",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
     },
     {
       "id": "API-001",
@@ -898,7 +912,7 @@
       "id": "FILE-026",
       "label": "File",
       "name": "adapters.py",
-      "summary": "The `ExecutionPort` Protocol (the broker boundary — the one `fill()` method that differs between brokers) and `SimulatedBrokerAdapter` (the deterministic, replay-safe core path).",
+      "summary": "The `ExecutionPort` Protocol (the broker boundary — the one `fill()` method that differs between brokers) and `SimulatedBrokerAdapter` (the deterministic, replay-safe core path — the hard-wired default port).",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -1009,6 +1023,83 @@
       "label": "File",
       "name": "operational_feed.py",
       "summary": "The live operational-status feed adapter (MOD-010 seam): the `OperationalFeed` Protocol port, the deterministic `MarketCalendarFeed` (the v0 source), and the capture mechanism (`persist_operational` + `read_and_capture`).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-037",
+      "label": "File",
+      "name": "alpaca_clock_feed.py",
+      "summary": "The live **Alpaca clock/calendar** `OperationalFeed` plug (MOD-010 seam): `AlpacaClockFeed` (implements the `OperationalFeed` port from operational_feed.py), a thin `AlpacaCalendarClient` Protocol + a stdlib-only REST client, and the `clock_feed_from_env` factory.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-038",
+      "label": "File",
+      "name": "alpaca_adapter.py",
+      "summary": "The live Alpaca **paper** `ExecutionPort` plug (ADR-011 gate f / STEP 5): `AlpacaPaperAdapter` (implements the `ExecutionPort` port from adapters.py, `mode = ALPACA_PAPER`, `replayable = False`), a thin `AlpacaPaperBroker` Protocol + `PaperOrderResult`, a stdlib-only REST broker, the `AlpacaExecutionError` fail-closed error, and the `paper_adapter_from_env` factory.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-039",
+      "label": "File",
+      "name": "core.py (ops)",
+      "summary": "The **headless governed read-model** for the Operations Control Plane (no Textual import).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-040",
+      "label": "File",
+      "name": "app.py (ops)",
+      "summary": "The **Textual TUI** over `ops/core.py` — the `OpsConsole` app + the `ConfirmModal`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-041",
+      "label": "File",
+      "name": "actions.py (ops)",
+      "summary": "The **Tier-2 safe (non-destructive) actions** (ADR-013 §3): `run_chain_now`, `rerun_calibration_readiness`, `resync_neo4j`, plus the `SAFE_ACTIONS` registry.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-042",
+      "label": "File",
+      "name": "gated.py (ops)",
+      "summary": "The **Tier-3 gated-live actions** (ADR-013 §3) — the most privileged surface: `run_chain_now_alpaca_paper`, `register_daily_schedule`, `unregister_daily_schedule`, `commit_calibration_bump`, plus the `GATED_ACTIONS` registry and `precondition_line`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-043",
+      "label": "File",
+      "name": "audit.py (ops)",
+      "summary": "The **append-only audit log** for the Operations Control Plane (ADR-013 §7): `make_entry` / `write_entry` / `append_audit` / `read_audit` over `runtime/ops/audit_log.jsonl`.",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -1482,6 +1573,19 @@
       "status": "active"
     },
     {
+      "id": "MOD-011",
+      "label": "Module",
+      "name": "Operations Control Plane",
+      "summary": "The `ops/` package — a **local terminal operator console** (a Textual TUI over a headless governed read-model) that observes the El Niño Layer-3 runtime and triggers operator actions in three safety tiers.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
+      ],
+      "status": "active"
+    },
+    {
       "id": "OBS-001",
       "label": "Observability",
       "name": "Dev Graph Dashboard",
@@ -1489,6 +1593,19 @@
       "confidence": "confirmed",
       "evidence": [
         "design"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "OBS-002",
+      "label": "Observability",
+      "name": "Operations Control Plane Console",
+      "summary": "The operator-facing observability + control surface provided by the Operations Control Plane (MOD-011) module — a **local terminal** Textual TUI over the El Niño Layer-3 runtime.",
+      "confidence": "confirmed",
+      "evidence": [
+        "design",
+        "ADR",
+        "code"
       ],
       "status": "active"
     },
@@ -2293,6 +2410,83 @@
       "status": "implemented"
     },
     {
+      "id": "TEST-027",
+      "label": "Test",
+      "name": "test_alpaca_clock_feed",
+      "summary": "The live Alpaca clock/calendar `OperationalFeed` plug test (MOD-010 seam, FILE-037): the calendar-driven open/closed decision; the **holiday-gap closure** (Good Friday 2026 — a weekday the fixed-date `MarketCalendarFeed` wrongly reports open, `AlpacaClockFeed` correctly reports closed); fail-closed on a client error / missing client / unparseable `as_of`; the `clock_feed_from_env` factory fail-closing on missing creds and **refusing a non-paper base URL** — including spoofed sub-/super-domain, query- and fragment-borne, and non-https URLs (parsed-hostname equality, not a substring match), while accepting a mixed-case paper host; and the **replay-path quarantine** (the captured Alpaca-produced `OperationalInput` reloads via `load_operational` and `run_sequence` threads it without re-reading the feed).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-028",
+      "label": "Test",
+      "name": "test_alpaca_adapter",
+      "summary": "The live Alpaca **paper** `ExecutionPort` plug test (MOD-008 / INT-011, FILE-038): the fill echo (a stub paper order maps to a `Fill` with realized slippage); the determinism-boundary flags (`mode == ALPACA_PAPER`, `replayable is False`); fail-closed on a missing client / non-LONG direction / non-filled order; the `paper_adapter_from_env` factory fail-closing on missing creds and **refusing a non-paper base URL**; and the **quarantine** — through the pure `execute()` engine the adapter stamps `replayable=False` onto the record, a no-fill path never touches the broker, and the default port stays the deterministic `SimulatedBrokerAdapter`.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-029",
+      "label": "Test",
+      "name": "test_ops_core",
+      "summary": "Headless unit tests for the read-model core.py (ops) (FILE-039) — 31 tests, no Textual, no network.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-030",
+      "label": "Test",
+      "name": "test_ops_audit",
+      "summary": "Headless unit tests for the append-only audit log audit.py (ops) (FILE-043) — 7 tests.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-031",
+      "label": "Test",
+      "name": "test_ops_actions",
+      "summary": "Headless unit tests for the Tier-2 safe actions actions.py (ops) (FILE-041) — 14 tests, mocked subprocess (no real process), real in-process `run_once` for the chain action.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-032",
+      "label": "Test",
+      "name": "test_ops_gated",
+      "summary": "Headless unit tests for the Tier-3 gated-live actions gated.py (ops) (FILE-042) — 13 tests, mocked adapter + runner (no network, no PowerShell).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-033",
+      "label": "Test",
+      "name": "test_ops_app",
+      "summary": "App-level tests for the Textual TUI app.py (ops) (FILE-040) — 4 tests, driven via Textual's headless `run_test` driver (wrapped in `asyncio.run`; no pytest-asyncio).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
       "id": "WF-001",
       "label": "Workflow",
       "name": "System Lifecycle",
@@ -2722,6 +2916,16 @@
       "target": "KA-009"
     },
     {
+      "source": "ADR-009",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-037"
+    },
+    {
+      "source": "ADR-009",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-027"
+    },
+    {
       "source": "ADR-010",
       "type": "CONSTRAINED_BY",
       "target": "CON-001"
@@ -2832,6 +3036,26 @@
       "target": "KA-010"
     },
     {
+      "source": "ADR-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-037"
+    },
+    {
+      "source": "ADR-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "ADR-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-027"
+    },
+    {
+      "source": "ADR-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-028"
+    },
+    {
       "source": "ADR-012",
       "type": "CONSTRAINED_BY",
       "target": "CON-001"
@@ -2905,6 +3129,151 @@
       "source": "ADR-012",
       "type": "ORIGINATES_FROM",
       "target": "KA-011"
+    },
+    {
+      "source": "ADR-013",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "ADR-013",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-010"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DECIDED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DEPENDS_ON",
+      "target": "MOD-009"
+    },
+    {
+      "source": "ADR-013",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "ADR-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-003"
+    },
+    {
+      "source": "ADR-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "ADR-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-010"
+    },
+    {
+      "source": "ADR-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "ADR-013",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-012"
+    },
+    {
+      "source": "ADR-013",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-005"
+    },
+    {
+      "source": "ADR-013",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-008"
+    },
+    {
+      "source": "ADR-013",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-040"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-041"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-042"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-043"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-029"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-030"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-031"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-032"
+    },
+    {
+      "source": "ADR-013",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-033"
     },
     {
       "source": "API-001",
@@ -5058,6 +5427,11 @@
     },
     {
       "source": "FILE-026",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "FILE-026",
       "type": "RELATES_TO_TEST",
       "target": "TEST-018"
     },
@@ -5373,6 +5747,11 @@
     },
     {
       "source": "FILE-036",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-037"
+    },
+    {
+      "source": "FILE-036",
       "type": "RELATES_TO_TEST",
       "target": "TEST-026"
     },
@@ -5380,6 +5759,361 @@
       "source": "FILE-036",
       "type": "VALIDATED_BY",
       "target": "TEST-026"
+    },
+    {
+      "source": "FILE-037",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-037",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "FILE-037",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-037",
+      "type": "DEPENDS_ON",
+      "target": "FILE-036"
+    },
+    {
+      "source": "FILE-037",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-037",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-036"
+    },
+    {
+      "source": "FILE-037",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-027"
+    },
+    {
+      "source": "FILE-037",
+      "type": "VALIDATED_BY",
+      "target": "TEST-027"
+    },
+    {
+      "source": "FILE-038",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-038",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "FILE-038",
+      "type": "DEPENDS_ON",
+      "target": "FILE-026"
+    },
+    {
+      "source": "FILE-038",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "FILE-038",
+      "type": "IMPLEMENTS",
+      "target": "INT-011"
+    },
+    {
+      "source": "FILE-038",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-026"
+    },
+    {
+      "source": "FILE-038",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-028"
+    },
+    {
+      "source": "FILE-038",
+      "type": "VALIDATED_BY",
+      "target": "TEST-028"
+    },
+    {
+      "source": "FILE-039",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "FILE-039",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-039",
+      "type": "DEPENDS_ON",
+      "target": "MOD-011"
+    },
+    {
+      "source": "FILE-039",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-039",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-029"
+    },
+    {
+      "source": "FILE-039",
+      "type": "USED_BY",
+      "target": "FILE-040"
+    },
+    {
+      "source": "FILE-039",
+      "type": "USED_BY",
+      "target": "FILE-041"
+    },
+    {
+      "source": "FILE-039",
+      "type": "USED_BY",
+      "target": "FILE-042"
+    },
+    {
+      "source": "FILE-039",
+      "type": "VALIDATED_BY",
+      "target": "TEST-029"
+    },
+    {
+      "source": "FILE-040",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "FILE-040",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-040",
+      "type": "DEPENDS_ON",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-040",
+      "type": "DEPENDS_ON",
+      "target": "FILE-041"
+    },
+    {
+      "source": "FILE-040",
+      "type": "DEPENDS_ON",
+      "target": "FILE-042"
+    },
+    {
+      "source": "FILE-040",
+      "type": "DEPENDS_ON",
+      "target": "MOD-011"
+    },
+    {
+      "source": "FILE-040",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-040",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-040",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-041"
+    },
+    {
+      "source": "FILE-040",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-042"
+    },
+    {
+      "source": "FILE-040",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-033"
+    },
+    {
+      "source": "FILE-040",
+      "type": "VALIDATED_BY",
+      "target": "TEST-033"
+    },
+    {
+      "source": "FILE-041",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "FILE-041",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-041",
+      "type": "DEPENDS_ON",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-041",
+      "type": "DEPENDS_ON",
+      "target": "FILE-043"
+    },
+    {
+      "source": "FILE-041",
+      "type": "DEPENDS_ON",
+      "target": "MOD-011"
+    },
+    {
+      "source": "FILE-041",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-041",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-041",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-043"
+    },
+    {
+      "source": "FILE-041",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-031"
+    },
+    {
+      "source": "FILE-041",
+      "type": "USED_BY",
+      "target": "FILE-040"
+    },
+    {
+      "source": "FILE-041",
+      "type": "VALIDATED_BY",
+      "target": "TEST-031"
+    },
+    {
+      "source": "FILE-042",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "FILE-042",
+      "type": "CONSTRAINED_BY",
+      "target": "PRED-005"
+    },
+    {
+      "source": "FILE-042",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-042",
+      "type": "DEPENDS_ON",
+      "target": "FILE-038"
+    },
+    {
+      "source": "FILE-042",
+      "type": "DEPENDS_ON",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-042",
+      "type": "DEPENDS_ON",
+      "target": "FILE-043"
+    },
+    {
+      "source": "FILE-042",
+      "type": "DEPENDS_ON",
+      "target": "MOD-011"
+    },
+    {
+      "source": "FILE-042",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-042",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "FILE-042",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-042",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-043"
+    },
+    {
+      "source": "FILE-042",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-032"
+    },
+    {
+      "source": "FILE-042",
+      "type": "USED_BY",
+      "target": "FILE-040"
+    },
+    {
+      "source": "FILE-042",
+      "type": "VALIDATED_BY",
+      "target": "TEST-032"
+    },
+    {
+      "source": "FILE-043",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "FILE-043",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-043",
+      "type": "DEPENDS_ON",
+      "target": "MOD-011"
+    },
+    {
+      "source": "FILE-043",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-043",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-030"
+    },
+    {
+      "source": "FILE-043",
+      "type": "USED_BY",
+      "target": "FILE-039"
+    },
+    {
+      "source": "FILE-043",
+      "type": "USED_BY",
+      "target": "FILE-041"
+    },
+    {
+      "source": "FILE-043",
+      "type": "USED_BY",
+      "target": "FILE-042"
+    },
+    {
+      "source": "FILE-043",
+      "type": "VALIDATED_BY",
+      "target": "TEST-030"
     },
     {
       "source": "GATE-001",
@@ -6015,6 +6749,11 @@
       "source": "INT-011",
       "type": "RELATES_TO_FILE",
       "target": "FILE-028"
+    },
+    {
+      "source": "INT-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
     },
     {
       "source": "INT-011",
@@ -6973,6 +7712,11 @@
     },
     {
       "source": "MOD-008",
+      "type": "CONTAINS",
+      "target": "FILE-038"
+    },
+    {
+      "source": "MOD-008",
       "type": "DECIDED_BY",
       "target": "ADR-004"
     },
@@ -7058,6 +7802,11 @@
     },
     {
       "source": "MOD-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "MOD-008",
       "type": "RELATES_TO_TEST",
       "target": "TEST-018"
     },
@@ -7075,6 +7824,11 @@
       "source": "MOD-008",
       "type": "RELATES_TO_TEST",
       "target": "TEST-021"
+    },
+    {
+      "source": "MOD-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-028"
     },
     {
       "source": "MOD-008",
@@ -7105,6 +7859,11 @@
       "source": "MOD-008",
       "type": "VALIDATED_BY",
       "target": "TEST-021"
+    },
+    {
+      "source": "MOD-008",
+      "type": "VALIDATED_BY",
+      "target": "TEST-028"
     },
     {
       "source": "MOD-009",
@@ -7200,6 +7959,11 @@
       "source": "MOD-010",
       "type": "CONTAINS",
       "target": "FILE-036"
+    },
+    {
+      "source": "MOD-010",
+      "type": "CONTAINS",
+      "target": "FILE-037"
     },
     {
       "source": "MOD-010",
@@ -7298,6 +8062,11 @@
     },
     {
       "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-037"
+    },
+    {
+      "source": "MOD-010",
       "type": "RELATES_TO_TEST",
       "target": "TEST-023"
     },
@@ -7315,6 +8084,11 @@
       "source": "MOD-010",
       "type": "RELATES_TO_TEST",
       "target": "TEST-026"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-027"
     },
     {
       "source": "MOD-010",
@@ -7342,6 +8116,146 @@
       "target": "TEST-026"
     },
     {
+      "source": "MOD-010",
+      "type": "VALIDATED_BY",
+      "target": "TEST-027"
+    },
+    {
+      "source": "MOD-011",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "MOD-011",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "MOD-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "MOD-011",
+      "type": "DEPENDS_ON",
+      "target": "MOD-007"
+    },
+    {
+      "source": "MOD-011",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "MOD-011",
+      "type": "DEPENDS_ON",
+      "target": "MOD-009"
+    },
+    {
+      "source": "MOD-011",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "MOD-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "MOD-011",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-008"
+    },
+    {
+      "source": "MOD-011",
+      "type": "ORIGINATES_FROM",
+      "target": "KA-010"
+    },
+    {
+      "source": "MOD-011",
+      "type": "PROVIDES",
+      "target": "OBS-002"
+    },
+    {
+      "source": "MOD-011",
+      "type": "REALIZES",
+      "target": "PAT-002"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-040"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-041"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-042"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-043"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-029"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-030"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-031"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-032"
+    },
+    {
+      "source": "MOD-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-033"
+    },
+    {
+      "source": "MOD-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-029"
+    },
+    {
+      "source": "MOD-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-030"
+    },
+    {
+      "source": "MOD-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-031"
+    },
+    {
+      "source": "MOD-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-032"
+    },
+    {
+      "source": "MOD-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-033"
+    },
+    {
       "source": "OBS-001",
       "type": "CONSTRAINED_BY",
       "target": "CON-002"
@@ -7360,6 +8274,56 @@
       "source": "OBS-001",
       "type": "DEPENDS_ON",
       "target": "REF-003"
+    },
+    {
+      "source": "OBS-002",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "OBS-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "OBS-002",
+      "type": "DEPENDS_ON",
+      "target": "MOD-011"
+    },
+    {
+      "source": "OBS-002",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "OBS-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "OBS-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-040"
+    },
+    {
+      "source": "OBS-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-029"
+    },
+    {
+      "source": "OBS-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-033"
+    },
+    {
+      "source": "OBS-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-029"
+    },
+    {
+      "source": "OBS-002",
+      "type": "VALIDATED_BY",
+      "target": "TEST-033"
     },
     {
       "source": "PAT-001",
@@ -9655,6 +10619,226 @@
       "source": "TEST-026",
       "type": "USED_BY",
       "target": "MOD-010"
+    },
+    {
+      "source": "TEST-027",
+      "type": "COVERS",
+      "target": "FILE-037"
+    },
+    {
+      "source": "TEST-027",
+      "type": "COVERS",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-027",
+      "type": "DECIDED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-027",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-027",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-009"
+    },
+    {
+      "source": "TEST-027",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-027",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-037"
+    },
+    {
+      "source": "TEST-027",
+      "type": "USED_BY",
+      "target": "FILE-037"
+    },
+    {
+      "source": "TEST-027",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
+      "source": "TEST-028",
+      "type": "COVERS",
+      "target": "FILE-038"
+    },
+    {
+      "source": "TEST-028",
+      "type": "COVERS",
+      "target": "MOD-008"
+    },
+    {
+      "source": "TEST-028",
+      "type": "DECIDED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-028",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-011"
+    },
+    {
+      "source": "TEST-028",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "TEST-028",
+      "type": "USED_BY",
+      "target": "FILE-038"
+    },
+    {
+      "source": "TEST-028",
+      "type": "USED_BY",
+      "target": "MOD-008"
+    },
+    {
+      "source": "TEST-029",
+      "type": "COVERS",
+      "target": "FILE-039"
+    },
+    {
+      "source": "TEST-029",
+      "type": "COVERS",
+      "target": "MOD-011"
+    },
+    {
+      "source": "TEST-029",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-029",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-029",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "TEST-029",
+      "type": "USED_BY",
+      "target": "FILE-039"
+    },
+    {
+      "source": "TEST-029",
+      "type": "USED_BY",
+      "target": "MOD-011"
+    },
+    {
+      "source": "TEST-030",
+      "type": "COVERS",
+      "target": "FILE-043"
+    },
+    {
+      "source": "TEST-030",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-030",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-030",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-043"
+    },
+    {
+      "source": "TEST-030",
+      "type": "USED_BY",
+      "target": "FILE-043"
+    },
+    {
+      "source": "TEST-031",
+      "type": "COVERS",
+      "target": "FILE-041"
+    },
+    {
+      "source": "TEST-031",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-031",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-031",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-041"
+    },
+    {
+      "source": "TEST-031",
+      "type": "USED_BY",
+      "target": "FILE-041"
+    },
+    {
+      "source": "TEST-032",
+      "type": "CONSTRAINED_BY",
+      "target": "PRED-005"
+    },
+    {
+      "source": "TEST-032",
+      "type": "COVERS",
+      "target": "FILE-042"
+    },
+    {
+      "source": "TEST-032",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-032",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-032",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-042"
+    },
+    {
+      "source": "TEST-032",
+      "type": "USED_BY",
+      "target": "FILE-042"
+    },
+    {
+      "source": "TEST-033",
+      "type": "COVERS",
+      "target": "FILE-040"
+    },
+    {
+      "source": "TEST-033",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-033",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-033",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-040"
+    },
+    {
+      "source": "TEST-033",
+      "type": "USED_BY",
+      "target": "FILE-040"
     },
     {
       "source": "WF-001",

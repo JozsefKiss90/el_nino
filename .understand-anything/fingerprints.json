@@ -1,16 +1,26 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "f9b1a22ce1edc974bcfe5c3dec4ec6319ffe5019",
-  "generatedAt": "2026-06-16T20:06:29.533Z",
+  "gitCommitHash": "7124a3ae23c920321a6331f6808b3c0abb958c4a",
+  "generatedAt": "2026-06-19T15:38:17.915Z",
   "files": {
     ".mcp.json": {
       "filePath": ".mcp.json",
-      "contentHash": "600104adaaaa146cba4d461981d52a94dfcf1f85d4eabb907a796a767dc1c441",
+      "contentHash": "6fdecfe5501e983a7aa364bf88dd6a1c8e8b800b76c46d48f569640f3e4f2516",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
       "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "ADMISSION_INPUT_HARDENING_prompt.md": {
+      "filePath": "ADMISSION_INPUT_HARDENING_prompt.md",
+      "contentHash": "f98a7acbd4c0ea050c9a28345e4205cd828a96c1c980ed2c0d2574510ea4186e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
       "hasStructuralAnalysis": true
     },
     "ADR-011_drafting_prompt.md": {
@@ -33,6 +43,16 @@
       "totalLines": 62,
       "hasStructuralAnalysis": true
     },
+    "anything.txt": {
+      "filePath": "anything.txt",
+      "contentHash": "0e1eebc4e2c5a7763b4817847faf616f592f2cd42ddfbdcdab8b336086a48955",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": false
+    },
     "audit_plan_addendum.md": {
       "filePath": "audit_plan_addendum.md",
       "contentHash": "9bb2bf002cc55cde2340a2914d9a2c14abacd0bf3d8d55cba301df548a2d5d51",
@@ -53,9 +73,351 @@
       "totalLines": 744,
       "hasStructuralAnalysis": true
     },
+    "benchmarks/calibration/artifacts/forward_return_labels.json": {
+      "filePath": "benchmarks/calibration/artifacts/forward_return_labels.json",
+      "contentHash": "eebd168eb3b54b1257b1120d4bb0130dcf72bc36459f17de2150dd6f9a452b85",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1160,
+      "hasStructuralAnalysis": true
+    },
+    "benchmarks/calibration/run_forward_return_labels.py": {
+      "filePath": "benchmarks/calibration/run_forward_return_labels.py",
+      "contentHash": "30795400fb63b6c08c50e8db3b4f5555128c9dd2c51e68aa99b06e8c43bfe2b5",
+      "functions": [
+        {
+          "name": "forward_return",
+          "params": [
+            "entry_price",
+            "exit_price"
+          ],
+          "returnType": "float",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "move_sign",
+          "params": [
+            "r",
+            "flat_band"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "direction_correct",
+          "params": [
+            "direction",
+            "r",
+            "flat_band"
+          ],
+          "returnType": "bool | None",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "directional_pnl",
+          "params": [
+            "direction",
+            "r"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "target_offset_days",
+          "params": [
+            "horizon_td"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "max_gap_days",
+          "params": [
+            "horizon_td"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "select_exit",
+          "params": [
+            "entry",
+            "points",
+            "horizon_td"
+          ],
+          "returnType": "tuple[str, DecisionPoint | None]",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "label_point",
+          "params": [
+            "entry",
+            "points",
+            "horizon_td"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 49
+        },
+        {
+          "name": "label_all",
+          "params": [
+            "points",
+            "horizons"
+          ],
+          "returnType": "list[dict[str, Any]]",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_mean",
+          "params": [
+            "xs"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_median",
+          "params": [
+            "xs"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_aggregate_cell",
+          "params": [
+            "rows"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 39
+        },
+        {
+          "name": "aggregate_by_regime_horizon",
+          "params": [
+            "labels"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "coverage",
+          "params": [
+            "labels"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "decision_points_from_corpus",
+          "params": [
+            "paths"
+          ],
+          "returnType": "list[DecisionPoint]",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "external_corpus_paths",
+          "params": [],
+          "returnType": "tuple[Path, ...]",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_syn",
+          "params": [
+            "date",
+            "price",
+            "regime",
+            "direction"
+          ],
+          "returnType": "DecisionPoint",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_build_section",
+          "params": [
+            "points",
+            "corpus_source"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "build_report",
+          "params": [
+            "include_external"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 44
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [
+        {
+          "name": "DecisionPoint",
+          "methods": [
+            "dt"
+          ],
+          "properties": [
+            "source_snapshot_id",
+            "clock_ts",
+            "entry_price",
+            "regime",
+            "direction"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timedelta"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "features.feature_builder",
+          "specifiers": [
+            "build_features"
+          ]
+        },
+        {
+          "source": "features.feature_builder.models",
+          "specifiers": [
+            "FEATURE_SCHEMA_VERSION"
+          ]
+        },
+        {
+          "source": "gold.decision_builder",
+          "specifiers": [
+            "DECISION_POLICY_VERSION",
+            "build_decision"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier",
+          "specifiers": [
+            "classify"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier.config",
+          "specifiers": [
+            "DEFAULT_REGIME_CONFIG"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer.models",
+          "specifiers": [
+            "SnapshotContractError"
+          ]
+        }
+      ],
+      "exports": [
+        "DecisionPoint",
+        "forward_return",
+        "move_sign",
+        "direction_correct",
+        "directional_pnl",
+        "target_offset_days",
+        "max_gap_days",
+        "select_exit",
+        "label_point",
+        "label_all",
+        "_mean",
+        "_median",
+        "_aggregate_cell",
+        "aggregate_by_regime_horizon",
+        "coverage",
+        "decision_points_from_corpus",
+        "external_corpus_paths",
+        "_syn",
+        "_build_section",
+        "build_report",
+        "main"
+      ],
+      "totalLines": 483,
+      "hasStructuralAnalysis": true
+    },
     "benchmarks/execution/artifacts/execution_bench.json": {
       "filePath": "benchmarks/execution/artifacts/execution_bench.json",
-      "contentHash": "a6e226a8d87b93fe39cb6b068a3702f4ce3998fa5df5272386b0f50fba237bc1",
+      "contentHash": "30da1be97c8b470b5b89da2848db792ac34cc622dfe225b81418a01da6d0b712",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -293,7 +655,7 @@
     },
     "benchmarks/gold/artifacts/paper_runtime_bench.json": {
       "filePath": "benchmarks/gold/artifacts/paper_runtime_bench.json",
-      "contentHash": "0d304f91ae129d872f22f283d5c9cc5a49947e5492029ef6918aeac27d607587",
+      "contentHash": "03528a45df4d9e8f26376b34810d7ab87a644b81803df175a7445cf2513f2b81",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -593,6 +955,205 @@
       "totalLines": 229,
       "hasStructuralAnalysis": true
     },
+    "benchmarks/orchestration/artifacts/chain_bench.json": {
+      "filePath": "benchmarks/orchestration/artifacts/chain_bench.json",
+      "contentHash": "83a1e48192fe76a35112a9988792f66956d02a8916bac8bea40216eaf5359a56",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 135,
+      "hasStructuralAnalysis": true
+    },
+    "benchmarks/orchestration/run_chain_bench.py": {
+      "filePath": "benchmarks/orchestration/run_chain_bench.py",
+      "contentHash": "e56bf6a68c6976d972b28d06af70a1daaf1187e374c2123e10010ac0e6c7b5ef",
+      "functions": [
+        {
+          "name": "_guard_config_fingerprint",
+          "params": [],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_replay_key",
+          "params": [],
+          "returnType": "dict[str, str]",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "_result",
+          "params": [
+            "label",
+            "r"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_load_real",
+          "params": [],
+          "returnType": "tuple[list[str], list[Snapshot]]",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "run_real",
+          "params": [],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 46
+        },
+        {
+          "name": "build_report",
+          "params": [],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "asdict"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "execution.config",
+          "specifiers": [
+            "DEFAULT_EXECUTION_POLICY_CONFIG",
+            "DEFAULT_FILL_MODEL"
+          ]
+        },
+        {
+          "source": "execution.models",
+          "specifiers": [
+            "EXECUTION_SCHEMA_VERSION",
+            "PORTFOLIO_SCHEMA_VERSION"
+          ]
+        },
+        {
+          "source": "features.feature_builder.models",
+          "specifiers": [
+            "FEATURE_SCHEMA_VERSION"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.config",
+          "specifiers": [
+            "DEFAULT_DECISION_POLICY_CONFIG"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.models",
+          "specifiers": [
+            "PACKET_SCHEMA_VERSION"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.config",
+          "specifiers": [
+            "DEFAULT_RUNTIME_POLICY_CONFIG"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "LEDGER_SCHEMA_VERSION",
+            "RECORD_SCHEMA_VERSION",
+            "Verdict"
+          ]
+        },
+        {
+          "source": "orchestration",
+          "specifiers": [
+            "DEFAULT_GUARD_CONFIG",
+            "DEFAULT_OPERATIONAL_INPUT",
+            "run_sequence"
+          ]
+        },
+        {
+          "source": "orchestration.models",
+          "specifiers": [
+            "ChainResult"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier.models",
+          "specifiers": [
+            "CLASSIFICATION_TRACE_VERSION",
+            "CLASSIFIER_VERSION",
+            "TAXONOMY_VERSION"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer.models",
+          "specifiers": [
+            "Snapshot",
+            "SnapshotContractError"
+          ]
+        }
+      ],
+      "exports": [
+        "_guard_config_fingerprint",
+        "_replay_key",
+        "_result",
+        "_load_real",
+        "run_real",
+        "build_report",
+        "main"
+      ],
+      "totalLines": 230,
+      "hasStructuralAnalysis": true
+    },
     "benchmarks/regime/artifacts/regime_bench.json": {
       "filePath": "benchmarks/regime/artifacts/regime_bench.json",
       "contentHash": "5070159e28d1d5ef19015b409ca4d995aed6dab4f613d4bf3e50967f5c1d85a6",
@@ -731,6 +1292,26 @@
       "totalLines": 229,
       "hasStructuralAnalysis": true
     },
+    "CHAIN_ORCHESTRATOR_prompt.md": {
+      "filePath": "CHAIN_ORCHESTRATOR_prompt.md",
+      "contentHash": "5f1b6cc50db6c8a1a02df212c4951a673504675b59d6f2234bdecc8e190e947f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "CHAIN_ORCHESTRATOR_RUNBOOK.md": {
+      "filePath": "CHAIN_ORCHESTRATOR_RUNBOOK.md",
+      "contentHash": "5f4911be3c5371e7313c894d0d244d4dd936c7bb08409c5f75bb74ddaf7023b8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 230,
+      "hasStructuralAnalysis": true
+    },
     "CLAUDE.md": {
       "filePath": "CLAUDE.md",
       "contentHash": "446d85de83cbd34b2aa0ecd13a854a3d1865702b7e84f953fb161ebc4ed7cc8e",
@@ -821,14 +1402,24 @@
       "totalLines": 118,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/benchmarks/Execution Layer Benchmark.md": {
-      "filePath": "dev_graph/benchmarks/Execution Layer Benchmark.md",
-      "contentHash": "0b19c2299112e03bcf4d6ae2bce6e6120a0c4e2b4032369dd2b6ad7810a50b8e",
+    "dev_graph/benchmarks/Chain Orchestrator Benchmark.md": {
+      "filePath": "dev_graph/benchmarks/Chain Orchestrator Benchmark.md",
+      "contentHash": "b236413c40dc252cb04bf14f4e7202fe63f2b97dfb25890fa0cccde79732b8ee",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 85,
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/benchmarks/Execution Layer Benchmark.md": {
+      "filePath": "dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "contentHash": "a2aa333e31f8d6b63044c6a888cf7ad28a79dd1cd221903e07827c6bf1ff5eae",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 89,
       "hasStructuralAnalysis": true
     },
     "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md": {
@@ -841,14 +1432,24 @@
       "totalLines": 57,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md": {
-      "filePath": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
-      "contentHash": "7e77acc0e0e2da4c9538bce0aad652feb5d105c897ca745b1d5d3235355f4335",
+    "dev_graph/benchmarks/Gold Forward-Return Label Set.md": {
+      "filePath": "dev_graph/benchmarks/Gold Forward-Return Label Set.md",
+      "contentHash": "b150e92611d719dc8df1429a05557f8a1d235c8e12ca0049d69cd7201f47396d",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 67,
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md": {
+      "filePath": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "contentHash": "f635ad6efecd97a7707342f07dd082515f1a2d7bf1a065b88bce58c734c7171f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
       "hasStructuralAnalysis": true
     },
     "dev_graph/benchmarks/Regime Distribution Benchmark.md": {
@@ -1143,12 +1744,12 @@
     },
     "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md": {
       "filePath": "dev_graph/decisions/ADR - Deterministic Regime Taxonomy.md",
-      "contentHash": "d78421c81821f1a4cbf0d8afbf6dff06f70a7326c0c59c3e7d9224678cfa2470",
+      "contentHash": "8650fdc65e2d377556738bba811db1072c33e00cf3df4f25eb07cd4d91889ff8",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 146,
+      "totalLines": 147,
       "hasStructuralAnalysis": true
     },
     "dev_graph/decisions/ADR - Dev Graph Bootstrap.md": {
@@ -1161,14 +1762,24 @@
       "totalLines": 117,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/decisions/ADR - Execution Layer Planning.md": {
-      "filePath": "dev_graph/decisions/ADR - Execution Layer Planning.md",
-      "contentHash": "925579e943a0b58032494b4ff55fa4f1dca161b43f53406c398883d0774998a3",
+    "dev_graph/decisions/ADR - Empirical Calibration Methodology.md": {
+      "filePath": "dev_graph/decisions/ADR - Empirical Calibration Methodology.md",
+      "contentHash": "b9ab7056272fe78def98ebbc3cb9144373e403b58860af35b1ac52f8da2fcefb",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 361,
+      "totalLines": 335,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/decisions/ADR - Execution Layer Planning.md": {
+      "filePath": "dev_graph/decisions/ADR - Execution Layer Planning.md",
+      "contentHash": "43c33c3e7613c86c2955ec4e05afd08d06ef9a444480765e650e909108e464f4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 377,
       "hasStructuralAnalysis": true
     },
     "dev_graph/decisions/ADR - Feature Layer Contract.md": {
@@ -1183,12 +1794,12 @@
     },
     "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md": {
       "filePath": "dev_graph/decisions/ADR - Gold Decision Confidence Semantics.md",
-      "contentHash": "211ea4bbebf30f80fca5f9bbcbb33021119317aec4e0c7d63c8bafd4917e9475",
+      "contentHash": "f2f0ad10e9635b6e2b3886272edfc3a9a484977f4e5e30e2f0f987d31ac3a00c",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 139,
+      "totalLines": 140,
       "hasStructuralAnalysis": true
     },
     "dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md": {
@@ -1231,24 +1842,84 @@
       "totalLines": 131,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md": {
-      "filePath": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
-      "contentHash": "bc91a152cd2ac5bf9c3a926e525b2924f0cfc64bd9e342d774df0a5dc0ba4ced",
+    "dev_graph/decisions/ADR - Operations Control Plane.md": {
+      "filePath": "dev_graph/decisions/ADR - Operations Control Plane.md",
+      "contentHash": "604c524bc11e22a142c273cae26fc4c7990ee3ce6835a65e42f73ca411f4b86f",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 271,
+      "totalLines": 384,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md": {
+      "filePath": "dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md",
+      "contentHash": "3d1da2b31a632900adc68be8d6abcd65eeb0ec3093db9b0ddf6f4aa5e87aeff0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 357,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/actions.py (ops).md": {
+      "filePath": "dev_graph/files/actions.py (ops).md",
+      "contentHash": "b3e1d13d9985b850d0cc9a2682f34ee007a881da35bf5e715ac5703fe106284e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/adapters.py.md": {
       "filePath": "dev_graph/files/adapters.py.md",
-      "contentHash": "e7f80b702de7613bcdb16adcc026156d699e7cad31a0666984e65d0b1a6c9dbb",
+      "contentHash": "5c35e73683d14c18e4da476d776152487b951029fe6165dbcbfdc35c7d7f9db9",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 58,
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/alpaca_adapter.py.md": {
+      "filePath": "dev_graph/files/alpaca_adapter.py.md",
+      "contentHash": "a6617da68bfba936162c37fc63c000aa4306330dd79c81092ed73fb4b000e10f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/alpaca_clock_feed.py.md": {
+      "filePath": "dev_graph/files/alpaca_clock_feed.py.md",
+      "contentHash": "959f20a1dec789fe475c02e1d568d0aa56900e7e8f1df391187858db8ce51396",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 97,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/app.py (ops).md": {
+      "filePath": "dev_graph/files/app.py (ops).md",
+      "contentHash": "4ae8c65d834402bba8c528ccabb6993d7af3f528706ba07fe03e0768104abe46",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/audit.py (ops).md": {
+      "filePath": "dev_graph/files/audit.py (ops).md",
+      "contentHash": "84b6ea32604155520332cab7dfb365a51a6b8515ed303dc3fcc78c7620a781e9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 74,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/builder.py.md": {
@@ -1281,14 +1952,24 @@
       "totalLines": 48,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/files/config.py (paper_runtime).md": {
-      "filePath": "dev_graph/files/config.py (paper_runtime).md",
-      "contentHash": "adbd07002c69d505eaa56b60dbee1971d8a43cca0f1f7d4613092c3eaa89f9fe",
+    "dev_graph/files/config.py (orchestration).md": {
+      "filePath": "dev_graph/files/config.py (orchestration).md",
+      "contentHash": "1a191ce87bfd094cfd36f40e2063c5ade24801643766af775a10ceeca7443a52",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 53,
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/config.py (paper_runtime).md": {
+      "filePath": "dev_graph/files/config.py (paper_runtime).md",
+      "contentHash": "4339a47bbaef0ada9caf148a0c920ca8af43df32c0c6f947f5039f833f782d21",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/config.py (regime).md": {
@@ -1311,6 +1992,16 @@
       "totalLines": 66,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/files/core.py (ops).md": {
+      "filePath": "dev_graph/files/core.py (ops).md",
+      "contentHash": "44824e7af7e3cbde49a7ed832b92169e67705266dfa44a31c12b5cfe250e1de4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/files/decision_engine.py.md": {
       "filePath": "dev_graph/files/decision_engine.py.md",
       "contentHash": "37bf295717a2bdf05fcd829116b84ee668d5dec578f7f5cfb39fd8f6069bbd4e",
@@ -1331,14 +2022,24 @@
       "totalLines": 60,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/files/engine.py.md": {
-      "filePath": "dev_graph/files/engine.py.md",
-      "contentHash": "13b9492563a239367268824358d18c53804b6bf006fe3c57d21b5b4ee1a4fb93",
+    "dev_graph/files/engine.py (orchestration).md": {
+      "filePath": "dev_graph/files/engine.py (orchestration).md",
+      "contentHash": "080e41b6558d94acd72d38a656784da425432ce007929925b8da884fb5436d5e",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 57,
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/engine.py.md": {
+      "filePath": "dev_graph/files/engine.py.md",
+      "contentHash": "a128dbd5bb020c32988146d37887bb3e5d25c74ab38f984955825756ca3abf0e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/feature_builder.py.md": {
@@ -1349,6 +2050,16 @@
       "imports": [],
       "exports": [],
       "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/gated.py (ops).md": {
+      "filePath": "dev_graph/files/gated.py (ops).md",
+      "contentHash": "f5cd757b572bb82c6f6f065e0d7dfb230d7c1803b1f605c48e1354db06eb2331",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 84,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/guardrail_engine.py.md": {
@@ -1391,14 +2102,24 @@
       "totalLines": 51,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/files/models.py (paper_runtime).md": {
-      "filePath": "dev_graph/files/models.py (paper_runtime).md",
-      "contentHash": "5d0f769c861366b3c9e909fdce6d03f74553f7c67519ea80476632f7b4e7660b",
+    "dev_graph/files/models.py (orchestration).md": {
+      "filePath": "dev_graph/files/models.py (orchestration).md",
+      "contentHash": "e8de9c6e1bfe1aa2b172915e6460ce2a37b04eaca5997f69bc51f46ae4064582",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 58,
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/models.py (paper_runtime).md": {
+      "filePath": "dev_graph/files/models.py (paper_runtime).md",
+      "contentHash": "f69839efe7cae748afc40f2d401be9d57b4dcb491d9660226f392d4e687b0bba",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/models.py (regime).md": {
@@ -1441,6 +2162,16 @@
       "totalLines": 66,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/files/operational_feed.py.md": {
+      "filePath": "dev_graph/files/operational_feed.py.md",
+      "contentHash": "79c0ca50300bfda1f39a3259add11660cf0ad95a7c44ab461111a6bf42528c51",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/files/policy.py.md": {
       "filePath": "dev_graph/files/policy.py.md",
       "contentHash": "7504aa6d874bf9192bf8210cda6f75982c1ded6a359f16cb27e46cd69476bee0",
@@ -1453,12 +2184,12 @@
     },
     "dev_graph/files/predicates.py (paper_runtime).md": {
       "filePath": "dev_graph/files/predicates.py (paper_runtime).md",
-      "contentHash": "5b422bbea4b4652787ec7d1d7e5767983eb4b4253fb1135bff3a90cf660a7fab",
+      "contentHash": "50afde195de3d633a11f6f212edfd9d9771bed35fd6ef35038e53adda8017b40",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 54,
+      "totalLines": 58,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/predicates.py.md": {
@@ -1481,6 +2212,16 @@
       "totalLines": 76,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/files/run_chain_bench.py.md": {
+      "filePath": "dev_graph/files/run_chain_bench.py.md",
+      "contentHash": "de5cea44055ad70d3dc7fe75339ba757ea84fc5ebdbabecacb9aa488933ccd8a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/files/run_execution_bench.py.md": {
       "filePath": "dev_graph/files/run_execution_bench.py.md",
       "contentHash": "81badc18dac16fc2f328e8f263153c8a63550bc4064a63d888f8c5f5b593d26f",
@@ -1491,6 +2232,16 @@
       "totalLines": 70,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/files/run_forward_return_labels.py.md": {
+      "filePath": "dev_graph/files/run_forward_return_labels.py.md",
+      "contentHash": "9938f1d1cd766e716bc299e67e6980b18a66f543c63752cf717835f064049dff",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/files/runtime.py (execution).md": {
       "filePath": "dev_graph/files/runtime.py (execution).md",
       "contentHash": "5c68bee8b081851392bf7658f4af920d8149447603e80d153cba3115751a97c5",
@@ -1499,6 +2250,16 @@
       "imports": [],
       "exports": [],
       "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/files/runtime.py (orchestration).md": {
+      "filePath": "dev_graph/files/runtime.py (orchestration).md",
+      "contentHash": "1aca586ecbea7b65a558a957d2328ecb172a32c4d52eb63e87e32821257bed47",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
       "hasStructuralAnalysis": true
     },
     "dev_graph/files/runtime.py.md": {
@@ -1533,22 +2294,22 @@
     },
     "dev_graph/gates/Gold Decision Gate.md": {
       "filePath": "dev_graph/gates/Gold Decision Gate.md",
-      "contentHash": "1c3f83aaf9a6c6a1a368e790e06c40474cacfbfb648132e10d4fb0e13c7d869e",
+      "contentHash": "a507e227536f2f15e778e4f1882f3d28b7a22b6d7f7b4f4d33c8307247bde0c3",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 75,
+      "totalLines": 76,
       "hasStructuralAnalysis": true
     },
     "dev_graph/gates/Runtime Admission Gate.md": {
       "filePath": "dev_graph/gates/Runtime Admission Gate.md",
-      "contentHash": "45592c2559048d5a4a8e8da5daaf73c495f4457c76b974422bb13ea5c5015e85",
+      "contentHash": "1a02b5b0efa7b7f24441b537dbb25cd7d989311ff61e2715d51137754c45a2c4",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 89,
+      "totalLines": 93,
       "hasStructuralAnalysis": true
     },
     "dev_graph/gates/Trade Validation Gate.md": {
@@ -1663,12 +2424,12 @@
     },
     "dev_graph/index.md": {
       "filePath": "dev_graph/index.md",
-      "contentHash": "59360752f752ce6cc855a97747912907f5f182d1c4ab4beaba72f20fface6ec1",
+      "contentHash": "972813ce9ab3a1bd73a49dbcc7d0f10d5598f048a8af969a50e7e3446e69c85b",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 339,
+      "totalLines": 378,
       "hasStructuralAnalysis": true
     },
     "dev_graph/Infrastructure Diagram.md": {
@@ -1693,12 +2454,12 @@
     },
     "dev_graph/interfaces/Execution API.md": {
       "filePath": "dev_graph/interfaces/Execution API.md",
-      "contentHash": "e3ee6b9aaa057c9b9ea956e2d0aa6e18b6ca587047769c0be9ca81c1b4451934",
+      "contentHash": "3d7096bf01809fd8359d9d092fcb2d3c886ebcb0f26f847313c79a2be945c7fc",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 154,
+      "totalLines": 158,
       "hasStructuralAnalysis": true
     },
     "dev_graph/interfaces/Gold Decision API.md": {
@@ -1863,12 +2624,22 @@
     },
     "dev_graph/log.md": {
       "filePath": "dev_graph/log.md",
-      "contentHash": "30a20034f7f3440a58f571c89e4020cb15de620fdd641cbc75b5ad77b2896407",
+      "contentHash": "74b028fc863bd8bc7291e26385442df8a296b25a44ab60f03ef6591b494ee5c6",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 1284,
+      "totalLines": 2000,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/modules/Chain Orchestrator.md": {
+      "filePath": "dev_graph/modules/Chain Orchestrator.md",
+      "contentHash": "6220d92a668bf5899c7313c10564e105c3d50ccad950baf684d16e592760c0c7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 203,
       "hasStructuralAnalysis": true
     },
     "dev_graph/modules/Decision Engine.md": {
@@ -1883,12 +2654,12 @@
     },
     "dev_graph/modules/Execution.md": {
       "filePath": "dev_graph/modules/Execution.md",
-      "contentHash": "f0063a88cfd18f398143f6fae45e0375f17b695da3633bdfa4c44b7932da9329",
+      "contentHash": "e86932844495e02b2ea1c1e8afc00fb70f93f5cbda9027ffad7a712a955bb285",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 155,
+      "totalLines": 173,
       "hasStructuralAnalysis": true
     },
     "dev_graph/modules/Feature Builder.md": {
@@ -1911,6 +2682,16 @@
       "totalLines": 125,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/modules/Gold Forward-Return Labeler.md": {
+      "filePath": "dev_graph/modules/Gold Forward-Return Labeler.md",
+      "contentHash": "7dfc2c99046031a2dd03d8d6d13289f3c59d062403721e1a9cfe8a09cfadafe2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/modules/Guardrail Engine.md": {
       "filePath": "dev_graph/modules/Guardrail Engine.md",
       "contentHash": "9224f348f79ffa81be1c370bbec0ed0240ed47cad16f6946f211bb466a9c7c83",
@@ -1931,14 +2712,24 @@
       "totalLines": 114,
       "hasStructuralAnalysis": true
     },
-    "dev_graph/modules/Paper-Trading Runtime.md": {
-      "filePath": "dev_graph/modules/Paper-Trading Runtime.md",
-      "contentHash": "dc9222662bab70d9d41cd25946f6e7fb09b6c2ab34f5536e8dcf9c40c109f37e",
+    "dev_graph/modules/Operations Control Plane.md": {
+      "filePath": "dev_graph/modules/Operations Control Plane.md",
+      "contentHash": "7c4aaabf7d8865fcaaf817f9896803588363588d795d28f2eb775d074f0a7c96",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 156,
+      "totalLines": 152,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/modules/Paper-Trading Runtime.md": {
+      "filePath": "dev_graph/modules/Paper-Trading Runtime.md",
+      "contentHash": "224ac5e22b233f924b000df2218b208a1e7613ca9215f0cd72662d226e73abe7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 164,
       "hasStructuralAnalysis": true
     },
     "dev_graph/modules/Snapshot Consumer.md": {
@@ -1959,6 +2750,16 @@
       "imports": [],
       "exports": [],
       "totalLines": 274,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/observability/Operations Control Plane Console.md": {
+      "filePath": "dev_graph/observability/Operations Control Plane Console.md",
+      "contentHash": "70c025248bacb982c1f3f3090bcecb3decb117c1c2dae2099d8bda52871a0e23",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 97,
       "hasStructuralAnalysis": true
     },
     "dev_graph/patterns/Context Assembly Pattern.md": {
@@ -2023,12 +2824,12 @@
     },
     "dev_graph/patterns/Pipeline Pattern.md": {
       "filePath": "dev_graph/patterns/Pipeline Pattern.md",
-      "contentHash": "ba5efa3cd681a3ccf914ffc8c7b5cb2ecddcf773f250cae9e257efd07f6fabe2",
+      "contentHash": "1f0401b5a506c25b2f6ebb694c58616ccaff162c87100068066d4f447e0a5baf",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 67,
+      "totalLines": 69,
       "hasStructuralAnalysis": true
     },
     "dev_graph/patterns/Promotion Pattern.md": {
@@ -2069,6 +2870,16 @@
       "imports": [],
       "exports": [],
       "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/predicates/Cooldown OK.md": {
+      "filePath": "dev_graph/predicates/Cooldown OK.md",
+      "contentHash": "b18021f8493f26b137be2ffac20c9e95f7261eddd2b33845c696883e06487e4d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 75,
       "hasStructuralAnalysis": true
     },
     "dev_graph/predicates/Daily Loss Cap OK.md": {
@@ -2331,6 +3142,56 @@
       "totalLines": 114,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/tests/test_alpaca_adapter.md": {
+      "filePath": "dev_graph/tests/test_alpaca_adapter.md",
+      "contentHash": "2f13f51c89cabee0b8245d068c564150d6c064b1d1fae72bc18349e179d14d4c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_alpaca_clock_feed.md": {
+      "filePath": "dev_graph/tests/test_alpaca_clock_feed.md",
+      "contentHash": "94229280e1b6aba3e4231320630e5f5f0ce6967939c189155043b256199bebad",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_chain_bench.md": {
+      "filePath": "dev_graph/tests/test_chain_bench.md",
+      "contentHash": "ecd6bc8cd8b439d24facb80977dc5b4859909184907de7231500725a3de4073d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_chain_determinism.md": {
+      "filePath": "dev_graph/tests/test_chain_determinism.md",
+      "contentHash": "434ba1dd38b8124eb2c331a6c3f0c83737ac1e4619b51249da322c921e4c70af",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_chain_engine.md": {
+      "filePath": "dev_graph/tests/test_chain_engine.md",
+      "contentHash": "c04ce0c6347bb725f34dadd9267703085a9ecfbc5337e44d8a8b389de06c8eab",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/tests/test_consumer.md": {
       "filePath": "dev_graph/tests/test_consumer.md",
       "contentHash": "a4be71c7e62d740bdc1ee58b0f203fdbd8f9397f4b152ef233961cf77ce4d54e",
@@ -2421,6 +3282,16 @@
       "totalLines": 58,
       "hasStructuralAnalysis": true
     },
+    "dev_graph/tests/test_forward_return_labels.md": {
+      "filePath": "dev_graph/tests/test_forward_return_labels.md",
+      "contentHash": "771a0a11a4be164ed5f9a982e261ca8daec60f53d719512d967b469e470b8d65",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
     "dev_graph/tests/test_gold_bench.md": {
       "filePath": "dev_graph/tests/test_gold_bench.md",
       "contentHash": "f9cd3d918400e18dc8db6689ef335a3f95a4cd706697fa961cd8f6e0a7d03bad",
@@ -2449,6 +3320,66 @@
       "imports": [],
       "exports": [],
       "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_operational_feed.md": {
+      "filePath": "dev_graph/tests/test_operational_feed.md",
+      "contentHash": "db20efc8327ba861e07c5115e40c407a97663925cda928f63210c5bd393c4379",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_ops_actions.md": {
+      "filePath": "dev_graph/tests/test_ops_actions.md",
+      "contentHash": "8155c9d8b6e2aff21fd91d6c0b9090707352afc6df3bebf3e8ceaafb97096b7e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_ops_app.md": {
+      "filePath": "dev_graph/tests/test_ops_app.md",
+      "contentHash": "92a11e3e023b77f9e77cb4e15c72190156d42bdc77ea6660a5cfccbb8db43d3c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_ops_audit.md": {
+      "filePath": "dev_graph/tests/test_ops_audit.md",
+      "contentHash": "401eca0bdb62b25c4a796ecf045250ef9496f3334f205c28315415d5454865c6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_ops_core.md": {
+      "filePath": "dev_graph/tests/test_ops_core.md",
+      "contentHash": "7d50d8fd67c4eb235c72b9f1eb5d6a5bb1faf4fe8a8815441fe9408216926926",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "dev_graph/tests/test_ops_gated.md": {
+      "filePath": "dev_graph/tests/test_ops_gated.md",
+      "contentHash": "2531407625b21a1412df85b3d72db333db099c6e449cc88410f17fd91bfc0b2d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 62,
       "hasStructuralAnalysis": true
     },
     "dev_graph/tests/test_paper_runtime_bench.md": {
@@ -2543,12 +3474,32 @@
     },
     "dev_graph/workflows/System Lifecycle.md": {
       "filePath": "dev_graph/workflows/System Lifecycle.md",
-      "contentHash": "dde694b1a1e9576773cf8d48d6d36b7a507a5b7448d746d59135ae762e1f4f5b",
+      "contentHash": "ebe6609c3b0c912fbe48e84c1853c5644b9c3ff6bde7791c311055560df03465",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 110,
+      "totalLines": 117,
+      "hasStructuralAnalysis": true
+    },
+    "EPOCH_B_CALIBRATION_prompt.md": {
+      "filePath": "EPOCH_B_CALIBRATION_prompt.md",
+      "contentHash": "c58871c72fa811bacd481d6d7adf1778e7cf730c54a19019913401f4b2a7defe",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "EPOCH_B_CALIBRATION_RUNBOOK.md": {
+      "filePath": "EPOCH_B_CALIBRATION_RUNBOOK.md",
+      "contentHash": "e0d8f709fcfea8ef46afbab38398267568ece30c81851f3f96d0b7d80479b0d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 239,
       "hasStructuralAnalysis": true
     },
     "EPOCH_B_CORPUS_RUNBOOK.md": {
@@ -2579,6 +3530,26 @@
       "imports": [],
       "exports": [],
       "totalLines": 1099,
+      "hasStructuralAnalysis": true
+    },
+    "FOLLOWUPS_cooldown_and_operational_feed_prompts.md": {
+      "filePath": "FOLLOWUPS_cooldown_and_operational_feed_prompts.md",
+      "contentHash": "0f6170ca85e3c722d3f6043373c2492637b2ac4b508c5b80f3922c7f2acecc85",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 95,
+      "hasStructuralAnalysis": true
+    },
+    "FORWARD_RETURN_HARNESS_prompt.md": {
+      "filePath": "FORWARD_RETURN_HARNESS_prompt.md",
+      "contentHash": "4bd00591928304fd3fd536cd14cbc3953260dbef65891a6d7c9bce3e5b0d8b70",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 48,
       "hasStructuralAnalysis": true
     },
     "GOLD_CONFIDENCE_IMPLEMENTATION_BRIEF.md": {
@@ -3188,12 +4159,12 @@
     },
     "jarvis/frontend/graph.json": {
       "filePath": "jarvis/frontend/graph.json",
-      "contentHash": "49dca7565d3bcddd7f86da74181603e12ddd9e582a8e8ed21f1d4ca5dacc95cb",
+      "contentHash": "59180eaaffe766a7beb0372cae95be6910ee276b65e7934b778f3780716f3299",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 8572,
+      "totalLines": 9696,
       "hasStructuralAnalysis": true
     },
     "jarvis/frontend/index.html": {
@@ -3248,12 +4219,12 @@
     },
     "jarvis/hud/public/graph.json": {
       "filePath": "jarvis/hud/public/graph.json",
-      "contentHash": "49dca7565d3bcddd7f86da74181603e12ddd9e582a8e8ed21f1d4ca5dacc95cb",
+      "contentHash": "59180eaaffe766a7beb0372cae95be6910ee276b65e7934b778f3780716f3299",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 8572,
+      "totalLines": 9696,
       "hasStructuralAnalysis": true
     },
     "jarvis/hud/README.md": {
@@ -5076,6 +6047,1331 @@
       "totalLines": 75,
       "hasStructuralAnalysis": true
     },
+    "OPS_DASHBOARD_prompt.md": {
+      "filePath": "OPS_DASHBOARD_prompt.md",
+      "contentHash": "e39b35d279162723de5156b5aa5314f6b3754484e15e14bd6af7e9a85d0da444",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "OPS_TUI_prompt.md": {
+      "filePath": "OPS_TUI_prompt.md",
+      "contentHash": "d799c5d61130d833bc8be1550627a2f864f965bbfafd6040da0f925bd4aff8b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "ops/__init__.py": {
+      "filePath": "ops/__init__.py",
+      "contentHash": "47276b47650a159cc750f8422fb5ca7e37c4631c6842009497100f2e009c8285",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "ops/actions.py": {
+      "filePath": "ops/actions.py",
+      "contentHash": "96d904f80f4dd5e9e1230db86d1fb39651340e4c93ff7902ca4033b8250f9a1c",
+      "functions": [
+        {
+          "name": "_finish",
+          "params": [
+            "paths",
+            "action",
+            "args_summary",
+            "ok",
+            "summary",
+            "detail",
+            "clock"
+          ],
+          "returnType": "ActionResult",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "run_chain_now",
+          "params": [
+            "paths",
+            "clock"
+          ],
+          "returnType": "ActionResult",
+          "exported": true,
+          "lineCount": 40
+        },
+        {
+          "name": "rerun_calibration_readiness",
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ],
+          "returnType": "ActionResult",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "resync_neo4j",
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ],
+          "returnType": "ActionResult",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [
+        {
+          "name": "ActionResult",
+          "methods": [],
+          "properties": [
+            "action",
+            "ok",
+            "summary",
+            "detail",
+            "audit"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "orchestration.operational_feed",
+          "specifiers": [
+            "MarketCalendarFeed"
+          ]
+        },
+        {
+          "source": "orchestration.runtime",
+          "specifiers": [
+            "run_once"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "audit",
+            "core"
+          ]
+        },
+        {
+          "source": "ops.audit",
+          "specifiers": [
+            "AuditEntry",
+            "Clock"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "OpsPaths"
+          ]
+        },
+        {
+          "source": "ops.proc",
+          "specifiers": [
+            "ProcResult",
+            "Runner",
+            "default_runner",
+            "redact",
+            "tail"
+          ]
+        }
+      ],
+      "exports": [
+        "ActionResult",
+        "_finish",
+        "run_chain_now",
+        "rerun_calibration_readiness",
+        "resync_neo4j"
+      ],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "ops/app.py": {
+      "filePath": "ops/app.py",
+      "contentHash": "f1865407d351cc356708c4a5a7639798a93db6fef631a6601a5dd5d1bc914a69",
+      "functions": [
+        {
+          "name": "_exists",
+          "params": [
+            "exists",
+            "error"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_short",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_print_once",
+          "params": [
+            "paths"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "main",
+          "params": [
+            "argv"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [
+        {
+          "name": "ConfirmModal",
+          "methods": [
+            "__init__",
+            "compose",
+            "on_button_pressed",
+            "action_confirm",
+            "action_cancel"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "OpsConsole",
+          "methods": [
+            "__init__",
+            "compose",
+            "on_mount",
+            "action_refresh",
+            "action_run_chain",
+            "action_calibration",
+            "action_resync_neo4j",
+            "_begin_action",
+            "_run_action",
+            "_on_action_failed",
+            "_on_action_done",
+            "action_alpaca_run",
+            "action_reg_sched",
+            "action_unreg_sched",
+            "action_calib_bump",
+            "_confirm_gated",
+            "_begin_gated",
+            "_run_gated",
+            "_on_gated_failed",
+            "_on_gated_done",
+            "refresh_dashboard",
+            "_render_statusbar",
+            "_render_overview",
+            "_render_gates",
+            "_render_calibration",
+            "_render_artefacts",
+            "_render_processes",
+            "_render_plugs",
+            "_render_log",
+            "_verdict_style"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 340
+        }
+      ],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "rich.text",
+          "specifiers": [
+            "Text"
+          ]
+        },
+        {
+          "source": "textual",
+          "specifiers": [
+            "work"
+          ]
+        },
+        {
+          "source": "textual.app",
+          "specifiers": [
+            "App",
+            "ComposeResult"
+          ]
+        },
+        {
+          "source": "textual.containers",
+          "specifiers": [
+            "Container",
+            "Horizontal",
+            "VerticalScroll"
+          ]
+        },
+        {
+          "source": "textual.screen",
+          "specifiers": [
+            "ModalScreen"
+          ]
+        },
+        {
+          "source": "textual.widgets",
+          "specifiers": [
+            "Button",
+            "DataTable",
+            "Footer",
+            "Header",
+            "Label",
+            "RichLog",
+            "Static",
+            "TabbedContent",
+            "TabPane"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "actions",
+            "gated"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "Dashboard",
+            "OpsPaths",
+            "assemble_dashboard",
+            "query_scheduled_task",
+            "render_text_dashboard"
+          ]
+        }
+      ],
+      "exports": [
+        "ConfirmModal",
+        "OpsConsole",
+        "_exists",
+        "_short",
+        "_print_once",
+        "main"
+      ],
+      "totalLines": 489,
+      "hasStructuralAnalysis": true
+    },
+    "ops/audit.py": {
+      "filePath": "ops/audit.py",
+      "contentHash": "b95abd4c1927cca0c91f7a68114ee3abeee8298607a934cd693d649852f42580",
+      "functions": [
+        {
+          "name": "_utc_now",
+          "params": [],
+          "returnType": "datetime",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "make_entry",
+          "params": [
+            "action",
+            "args_summary",
+            "result",
+            "ok",
+            "clock"
+          ],
+          "returnType": "AuditEntry",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "write_entry",
+          "params": [
+            "audit_path",
+            "entry"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "append_audit",
+          "params": [
+            "audit_path",
+            "action",
+            "args_summary",
+            "result",
+            "ok",
+            "clock"
+          ],
+          "returnType": "AuditEntry",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "read_audit",
+          "params": [
+            "audit_path",
+            "limit"
+          ],
+          "returnType": "tuple[AuditEntry, ...]",
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [
+        {
+          "name": "AuditEntry",
+          "methods": [
+            "to_dict",
+            "line"
+          ],
+          "properties": [
+            "timestamp",
+            "action",
+            "args_summary",
+            "result",
+            "ok"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timezone"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "_utc_now",
+        "AuditEntry",
+        "make_entry",
+        "write_entry",
+        "append_audit",
+        "read_audit"
+      ],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "ops/core.py": {
+      "filePath": "ops/core.py",
+      "contentHash": "8c868e41cc3f5eefecd08e25c597f52cc4af4ba181121f5c993b6aca24b45c54",
+      "functions": [
+        {
+          "name": "ledger_view",
+          "params": [
+            "paths"
+          ],
+          "returnType": "LedgerView",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "portfolio_view",
+          "params": [
+            "paths"
+          ],
+          "returnType": "PortfolioView",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "operational_view",
+          "params": [
+            "paths"
+          ],
+          "returnType": "OperationalView",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "resolve_run_snapshot",
+          "params": [
+            "paths"
+          ],
+          "returnType": "tuple[Path | None, str | None]",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "_empty_preview",
+          "params": [
+            "available",
+            "source",
+            "note",
+            "error"
+          ],
+          "returnType": "DecisionPreview",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "decision_preview",
+          "params": [
+            "paths"
+          ],
+          "returnType": "DecisionPreview",
+          "exported": true,
+          "lineCount": 39
+        },
+        {
+          "name": "_fill_label",
+          "params": [
+            "result"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "gate_board",
+          "params": [
+            "calibration"
+          ],
+          "returnType": "GateBoard",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "calibration_readiness",
+          "params": [
+            "paths"
+          ],
+          "returnType": "CalibrationReadiness",
+          "exported": true,
+          "lineCount": 55
+        },
+        {
+          "name": "_pf",
+          "params": [
+            "passed"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "plug_statuses",
+          "params": [],
+          "returnType": "tuple[PlugStatus, ...]",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "query_scheduled_task",
+          "params": [
+            "task_name"
+          ],
+          "returnType": "Mapping[str, Any] | None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "process_infos",
+          "params": [
+            "paths",
+            "task_fetcher"
+          ],
+          "returnType": "tuple[ProcessInfo, ...]",
+          "exported": true,
+          "lineCount": 59
+        },
+        {
+          "name": "_safe_mtime",
+          "params": [
+            "path"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_iso_utc",
+          "params": [
+            "epoch"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "policy_versions",
+          "params": [],
+          "returnType": "PolicyVersions",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "recent_events",
+          "params": [
+            "paths",
+            "limit"
+          ],
+          "returnType": "tuple[str, ...]",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "pipeline_status",
+          "params": [
+            "ledger",
+            "portfolio",
+            "operational"
+          ],
+          "returnType": "PipelineStatus",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "assemble_dashboard",
+          "params": [
+            "paths",
+            "task_fetcher",
+            "event_limit"
+          ],
+          "returnType": "Dashboard",
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "render_text_dashboard",
+          "params": [
+            "dash"
+          ],
+          "returnType": "Sequence[str]",
+          "exported": true,
+          "lineCount": 29
+        }
+      ],
+      "classes": [
+        {
+          "name": "OpsPaths",
+          "methods": [
+            "default"
+          ],
+          "properties": [
+            "repo_root",
+            "ledger_path",
+            "portfolio_path",
+            "operational_capture_path",
+            "el_nino_snapshot",
+            "producer_snapshot_dir",
+            "calibration_artifact",
+            "daily_log_dir",
+            "audit_log_path"
+          ],
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "LedgerView",
+          "methods": [],
+          "properties": [
+            "exists",
+            "entry_count",
+            "latest_verdict",
+            "latest_triggered_guard",
+            "latest_snapshot_id",
+            "latest_as_of",
+            "verdict_counts",
+            "state_hash",
+            "error"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "PositionView",
+          "methods": [],
+          "properties": [
+            "instrument",
+            "quantity",
+            "avg_cost",
+            "realized_pnl",
+            "unrealized_pnl"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "PortfolioView",
+          "methods": [],
+          "properties": [
+            "exists",
+            "position_count",
+            "open_position_count",
+            "realized_pnl",
+            "execution_count",
+            "state_hash",
+            "positions",
+            "error"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "OperationalView",
+          "methods": [],
+          "properties": [
+            "source",
+            "instrument",
+            "tradeable",
+            "venue_open",
+            "halt",
+            "degraded",
+            "as_of",
+            "error"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "GuardOutcomeView",
+          "methods": [],
+          "properties": [
+            "name",
+            "passed",
+            "reason"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "DecisionPreview",
+          "methods": [],
+          "properties": [
+            "available",
+            "snapshot_source",
+            "snapshot_id",
+            "consumable",
+            "regime",
+            "direction",
+            "verdict",
+            "triggered_guard",
+            "guards",
+            "fill",
+            "note",
+            "error"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "GateRow",
+          "methods": [],
+          "properties": [
+            "gate_id",
+            "title",
+            "status",
+            "detail"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "GateBoard",
+          "methods": [],
+          "properties": [
+            "adr011",
+            "adr012",
+            "source"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "CalibrationReadiness",
+          "methods": [],
+          "properties": [
+            "available",
+            "n_committed",
+            "g0_floor",
+            "regimes",
+            "directions",
+            "label_count",
+            "realized_count",
+            "decision_versions",
+            "per_gate",
+            "eligible",
+            "overall",
+            "note",
+            "error"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "PlugStatus",
+          "methods": [],
+          "properties": [
+            "name",
+            "status",
+            "detail"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "ProcessInfo",
+          "methods": [],
+          "properties": [
+            "name",
+            "status",
+            "detail"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "PolicyVersions",
+          "methods": [],
+          "properties": [
+            "runtime_policy_version",
+            "runtime_policy_fingerprint",
+            "execution_policy_version",
+            "execution_policy_fingerprint",
+            "fill_model_version",
+            "fill_model_fingerprint"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "PipelineStatus",
+          "methods": [],
+          "properties": [
+            "paper_only",
+            "health",
+            "headline",
+            "ledger_entries",
+            "open_positions",
+            "latest_verdict",
+            "errors"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "Dashboard",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "pipeline",
+            "ledger",
+            "portfolio",
+            "operational",
+            "preview",
+            "gates",
+            "calibration",
+            "plugs",
+            "processes",
+            "policy",
+            "events",
+            "audit_tail"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclasses"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable",
+            "Mapping",
+            "Sequence"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "execution.alpaca_adapter",
+          "specifiers": [
+            "paper_adapter_from_env"
+          ]
+        },
+        {
+          "source": "execution.config",
+          "specifiers": [
+            "DEFAULT_EXECUTION_POLICY_CONFIG",
+            "DEFAULT_FILL_MODEL"
+          ]
+        },
+        {
+          "source": "execution.runtime",
+          "specifiers": [
+            "load_portfolio"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.config",
+          "specifiers": [
+            "DEFAULT_RUNTIME_POLICY_CONFIG"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "Verdict"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.runtime",
+          "specifiers": [
+            "load_ledger",
+            "load_operational"
+          ]
+        },
+        {
+          "source": "orchestration.alpaca_clock_feed",
+          "specifiers": [
+            "clock_feed_from_env"
+          ]
+        },
+        {
+          "source": "orchestration.models",
+          "specifiers": [
+            "ChainResult"
+          ]
+        },
+        {
+          "source": "orchestration.runtime",
+          "specifiers": [
+            "find_latest_snapshot",
+            "run_sequence"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "ops.audit",
+          "specifiers": [
+            "read_audit"
+          ]
+        }
+      ],
+      "exports": [
+        "OpsPaths",
+        "LedgerView",
+        "PositionView",
+        "PortfolioView",
+        "OperationalView",
+        "GuardOutcomeView",
+        "DecisionPreview",
+        "GateRow",
+        "GateBoard",
+        "CalibrationReadiness",
+        "PlugStatus",
+        "ProcessInfo",
+        "PolicyVersions",
+        "PipelineStatus",
+        "Dashboard",
+        "ledger_view",
+        "portfolio_view",
+        "operational_view",
+        "resolve_run_snapshot",
+        "_empty_preview",
+        "decision_preview",
+        "_fill_label",
+        "gate_board",
+        "calibration_readiness",
+        "_pf",
+        "plug_statuses",
+        "query_scheduled_task",
+        "process_infos",
+        "_safe_mtime",
+        "_iso_utc",
+        "policy_versions",
+        "recent_events",
+        "pipeline_status",
+        "assemble_dashboard",
+        "render_text_dashboard"
+      ],
+      "totalLines": 774,
+      "hasStructuralAnalysis": true
+    },
+    "ops/gated.py": {
+      "filePath": "ops/gated.py",
+      "contentHash": "08a8f9e714506e0f5c6eced80e5ab8858c6f7f3a5388b9dab98b942843368dd3",
+      "functions": [
+        {
+          "name": "_finish",
+          "params": [
+            "paths",
+            "action",
+            "args_summary",
+            "ok",
+            "executed",
+            "summary",
+            "detail",
+            "clock"
+          ],
+          "returnType": "GatedResult",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "run_chain_now_alpaca_paper",
+          "params": [
+            "paths",
+            "adapter_factory",
+            "clock"
+          ],
+          "returnType": "GatedResult",
+          "exported": true,
+          "lineCount": 59
+        },
+        {
+          "name": "register_daily_schedule",
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ],
+          "returnType": "GatedResult",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "unregister_daily_schedule",
+          "params": [
+            "paths",
+            "runner",
+            "clock"
+          ],
+          "returnType": "GatedResult",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "commit_calibration_bump",
+          "params": [
+            "paths",
+            "clock"
+          ],
+          "returnType": "GatedResult",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "precondition_line",
+          "params": [
+            "paths",
+            "name"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [
+        {
+          "name": "GatedResult",
+          "methods": [],
+          "properties": [
+            "action",
+            "ok",
+            "executed",
+            "summary",
+            "detail",
+            "audit"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "execution.alpaca_adapter",
+          "specifiers": [
+            "AlpacaPaperAdapter",
+            "paper_adapter_from_env"
+          ]
+        },
+        {
+          "source": "orchestration.operational_feed",
+          "specifiers": [
+            "MarketCalendarFeed"
+          ]
+        },
+        {
+          "source": "orchestration.runtime",
+          "specifiers": [
+            "run_once"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "audit",
+            "core"
+          ]
+        },
+        {
+          "source": "ops.audit",
+          "specifiers": [
+            "AuditEntry",
+            "Clock"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "OpsPaths"
+          ]
+        },
+        {
+          "source": "ops.proc",
+          "specifiers": [
+            "Runner",
+            "default_runner",
+            "redact",
+            "tail"
+          ]
+        }
+      ],
+      "exports": [
+        "GatedResult",
+        "_finish",
+        "run_chain_now_alpaca_paper",
+        "register_daily_schedule",
+        "unregister_daily_schedule",
+        "commit_calibration_bump",
+        "precondition_line"
+      ],
+      "totalLines": 241,
+      "hasStructuralAnalysis": true
+    },
+    "ops/proc.py": {
+      "filePath": "ops/proc.py",
+      "contentHash": "d01fca96a1d239dab6623b957265afe5f047382e7ae74a6082aeae112a4fe426",
+      "functions": [
+        {
+          "name": "default_runner",
+          "params": [
+            "cmd",
+            "paths"
+          ],
+          "returnType": "ProcResult",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "tail",
+          "params": [
+            "text",
+            "limit"
+          ],
+          "returnType": "tuple[str, ...]",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "redact",
+          "params": [
+            "lines"
+          ],
+          "returnType": "tuple[str, ...]",
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [
+        {
+          "name": "ProcResult",
+          "methods": [],
+          "properties": [
+            "returncode",
+            "stdout",
+            "stderr"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable",
+            "Sequence"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "TYPE_CHECKING"
+          ]
+        }
+      ],
+      "exports": [
+        "ProcResult",
+        "default_runner",
+        "tail",
+        "redact"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "ops/README.md": {
+      "filePath": "ops/README.md",
+      "contentHash": "cb363a0f6ac7bb72d31ce27ad55e54d6f47a48b382f596d3b334c3a3fb380cac",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 289,
+      "hasStructuralAnalysis": true
+    },
     "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md": {
       "filePath": "PAPER_TRADING_RUNTIME_FINAL_AUDIT.md",
       "contentHash": "64e6416d8ace172d58522ced366203e84f8663e521974691fff5062b93adf06e",
@@ -5108,12 +7404,12 @@
     },
     "pyproject.toml": {
       "filePath": "pyproject.toml",
-      "contentHash": "adcf66472650c32bb9653a0c30d73779c5197e97ee6ec8b1a439976f53a78308",
+      "contentHash": "a0d0749cee9e78086eaf5633b08beceb4d333f759ba17506476f1982369088ba",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 30,
+      "totalLines": 36,
       "hasStructuralAnalysis": true
     },
     "raw/build-spec.md": {
@@ -5215,6 +7511,36 @@
       "exports": [],
       "totalLines": 272,
       "hasStructuralAnalysis": true
+    },
+    "REMAINING_ITEMS_prompt.md": {
+      "filePath": "REMAINING_ITEMS_prompt.md",
+      "contentHash": "bd4662d3d8a3d8dac1ba3eda61a468677bf8d96aa48597a909b1fed0802b7818",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/daily_chain_run.ps1": {
+      "filePath": "scripts/daily_chain_run.ps1",
+      "contentHash": "585f3f9fd8373cc4ad83c354e38553ee11cd1f4acffc9a493c5b82f19f44dbc8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 84,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/register_daily_chain_task.ps1": {
+      "filePath": "scripts/register_daily_chain_task.ps1",
+      "contentHash": "a9ed48abb49d5d4fa38bc3d31ce091b1c02735bc700ea3fac972b6b666a5864f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 54,
+      "hasStructuralAnalysis": false
     },
     "slice2 fit assessment and roadmap.md": {
       "filePath": "slice2 fit assessment and roadmap.md",
@@ -6182,6 +8508,149 @@
         "SimulatedBrokerAdapter"
       ],
       "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
+    "src/execution/alpaca_adapter.py": {
+      "filePath": "src/execution/alpaca_adapter.py",
+      "contentHash": "ee0426bf79da1b5ac362ef3bf14c79347f80c238877dbd616bccc8e33c7fe387",
+      "functions": [
+        {
+          "name": "_is_paper_base_url",
+          "params": [
+            "base_url"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "paper_adapter_from_env",
+          "params": [],
+          "returnType": "AlpacaPaperAdapter",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [
+        {
+          "name": "AlpacaExecutionError",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "PaperOrderResult",
+          "methods": [],
+          "properties": [
+            "filled_avg_price",
+            "filled_qty",
+            "status"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "AlpacaPaperBroker",
+          "methods": [
+            "submit_market_buy"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "AlpacaPaperAdapter",
+          "methods": [
+            "fill"
+          ],
+          "properties": [
+            "client",
+            "mode",
+            "replayable"
+          ],
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "_AlpacaRestPaperBroker",
+          "methods": [
+            "__init__",
+            "_headers",
+            "submit_market_buy"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "urllib.request",
+          "specifiers": [
+            "urllib.request"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Protocol"
+          ]
+        },
+        {
+          "source": "urllib.parse",
+          "specifiers": [
+            "urlparse"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.models",
+          "specifiers": [
+            "Direction"
+          ]
+        },
+        {
+          "source": ".config",
+          "specifiers": [
+            "FillModelConfig"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "ExecutionMode",
+            "Fill"
+          ]
+        }
+      ],
+      "exports": [
+        "_is_paper_base_url",
+        "AlpacaExecutionError",
+        "PaperOrderResult",
+        "AlpacaPaperBroker",
+        "AlpacaPaperAdapter",
+        "_AlpacaRestPaperBroker",
+        "paper_adapter_from_env"
+      ],
+      "totalLines": 171,
       "hasStructuralAnalysis": true
     },
     "src/execution/config.py": {
@@ -7474,7 +9943,7 @@
     },
     "src/gold/paper_runtime/config.py": {
       "filePath": "src/gold/paper_runtime/config.py",
-      "contentHash": "d6d08fff77645261fa232d4506a77fc307b11574bb1b7cb5909be86d4cb5a65c",
+      "contentHash": "dfc76ba54eb3727f132ac0db3a3e49b82ffc86c78d5a1dfff4e12906bec449fa",
       "functions": [
         {
           "name": "load_config",
@@ -7504,10 +9973,12 @@
           "properties": [
             "require_operational",
             "require_snapshot_guards",
+            "require_cooldown",
+            "cooldown_window_hours",
             "runtime_policy_version"
           ],
           "exported": true,
-          "lineCount": 33
+          "lineCount": 37
         }
       ],
       "imports": [
@@ -7549,12 +10020,12 @@
         "RuntimePolicyConfig",
         "load_config"
       ],
-      "totalLines": 88,
+      "totalLines": 100,
       "hasStructuralAnalysis": true
     },
     "src/gold/paper_runtime/engine.py": {
       "filePath": "src/gold/paper_runtime/engine.py",
-      "contentHash": "e3a2edc3dd58e990fad6cfaa43a739aecc5d8130e83cf42c1ec95275f259b64d",
+      "contentHash": "0cbaf37073a08d601e47da588dde06a60f169736a93c2af1a8eef65135ff0eed",
       "functions": [
         {
           "name": "_required_guards",
@@ -7563,7 +10034,7 @@
           ],
           "returnType": "tuple[str, ...]",
           "exported": true,
-          "lineCount": 8
+          "lineCount": 13
         },
         {
           "name": "evaluate",
@@ -7626,12 +10097,12 @@
         "_required_guards",
         "evaluate"
       ],
-      "totalLines": 146,
+      "totalLines": 151,
       "hasStructuralAnalysis": true
     },
     "src/gold/paper_runtime/models.py": {
       "filePath": "src/gold/paper_runtime/models.py",
-      "contentHash": "5fe329a91475d1cc820753392c783fab80d090b2ebc6406d28e258dd22fc09a1",
+      "contentHash": "dd45a5501e657100e5a8b7747c85517d186078c9b79ce890e05dc1be3136de83",
       "functions": [
         {
           "name": "digest_snapshot_guards",
@@ -7729,6 +10200,7 @@
           "methods": [
             "empty",
             "has_admit",
+            "last_admit_as_of",
             "next_seq",
             "append",
             "to_dict",
@@ -7740,7 +10212,7 @@
             "entries"
           ],
           "exported": true,
-          "lineCount": 52
+          "lineCount": 65
         },
         {
           "name": "RuntimeDecisionRecord",
@@ -7822,12 +10294,12 @@
         "compute_record_id",
         "RuntimeDecisionRecord"
       ],
-      "totalLines": 342,
+      "totalLines": 355,
       "hasStructuralAnalysis": true
     },
     "src/gold/paper_runtime/predicates.py": {
       "filePath": "src/gold/paper_runtime/predicates.py",
-      "contentHash": "da310fea8dbc5ecd4d047451e907c79a106842a38ce36fec559c3203c154621f",
+      "contentHash": "48f6d72f84fa0cea87e119de6ec8c0223c1ecd199d87929e0a8f8f91311d5507",
       "functions": [
         {
           "name": "duplicate_ok",
@@ -7879,21 +10351,44 @@
           "lineCount": 3
         },
         {
+          "name": "_parse_as_of",
+          "params": [
+            "value"
+          ],
+          "returnType": "datetime | None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
           "name": "cooldown_ok",
           "params": [
-            "packet"
+            "packet",
+            "prior_ledger",
+            "config"
           ],
           "returnType": "GuardResult",
           "exported": true,
-          "lineCount": 3
+          "lineCount": 27
         }
       ],
       "classes": [],
       "imports": [
         {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
           "source": "gold.decision_builder.models",
           "specifiers": [
             "GoldDecisionPacket"
+          ]
+        },
+        {
+          "source": ".config",
+          "specifiers": [
+            "RuntimePolicyConfig"
           ]
         },
         {
@@ -7910,9 +10405,10 @@
         "_echo",
         "data_ok",
         "freshness_ok",
+        "_parse_as_of",
         "cooldown_ok"
       ],
-      "totalLines": 67,
+      "totalLines": 106,
       "hasStructuralAnalysis": true
     },
     "src/gold/paper_runtime/runtime.py": {
@@ -8041,6 +10537,758 @@
         "run_sequence"
       ],
       "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/__init__.py": {
+      "filePath": "src/orchestration/__init__.py",
+      "contentHash": "551c1654194d596e986a69d9d1a62e867b1f5d8eb11b2c005b271303b6c9863b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": ".config",
+          "specifiers": [
+            "DEFAULT_GUARD_CONFIG",
+            "DEFAULT_OPERATIONAL_INPUT"
+          ]
+        },
+        {
+          "source": ".engine",
+          "specifiers": [
+            "run_chain"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "ChainContractError",
+            "ChainResult"
+          ]
+        },
+        {
+          "source": ".operational_feed",
+          "specifiers": [
+            "MarketCalendarFeed",
+            "OperationalFeed",
+            "persist_operational",
+            "read_and_capture"
+          ]
+        },
+        {
+          "source": ".runtime",
+          "specifiers": [
+            "find_latest_snapshot",
+            "run_once",
+            "run_sequence"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/alpaca_clock_feed.py": {
+      "filePath": "src/orchestration/alpaca_clock_feed.py",
+      "contentHash": "326b6e949b512268517f6ab35c70a7b81cc5c4bacf5f69297c99aa3e4662642e",
+      "functions": [
+        {
+          "name": "_is_paper_base_url",
+          "params": [
+            "base_url"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "_calendar_date",
+          "params": [
+            "as_of"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "clock_feed_from_env",
+          "params": [
+            "instrument"
+          ],
+          "returnType": "AlpacaClockFeed",
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [
+        {
+          "name": "AlpacaCalendarClient",
+          "methods": [
+            "trading_days"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "AlpacaClockFeed",
+          "methods": [
+            "read"
+          ],
+          "properties": [
+            "client",
+            "instrument"
+          ],
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "_AlpacaRestCalendarClient",
+          "methods": [
+            "__init__",
+            "trading_days"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "urllib.request",
+          "specifiers": [
+            "urllib.request"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Protocol"
+          ]
+        },
+        {
+          "source": "urllib.parse",
+          "specifiers": [
+            "urlparse"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "OperationalInput"
+          ]
+        }
+      ],
+      "exports": [
+        "_is_paper_base_url",
+        "_calendar_date",
+        "AlpacaCalendarClient",
+        "AlpacaClockFeed",
+        "_AlpacaRestCalendarClient",
+        "clock_feed_from_env"
+      ],
+      "totalLines": 154,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/config.py": {
+      "filePath": "src/orchestration/config.py",
+      "contentHash": "6d76a4c34dc30b8db52b21ece098f5d2ab25d4d212cbd8150d60eb0642b6c328",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "OperationalInput"
+          ]
+        },
+        {
+          "source": "risk.guardrail_engine.models",
+          "specifiers": [
+            "GuardrailConfig"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/engine.py": {
+      "filePath": "src/orchestration/engine.py",
+      "contentHash": "6434c74634c37ec37f0cb559c136718dca00278889af8d5e9b090134c3f693fa",
+      "functions": [
+        {
+          "name": "run_chain",
+          "params": [
+            "snapshot",
+            "prior_ledger",
+            "prior_portfolio",
+            "operational_input",
+            "guard_config",
+            "runtime_config",
+            "regime_config",
+            "decision_config",
+            "exec_config",
+            "fill_model",
+            "port"
+          ],
+          "returnType": "ChainResult",
+          "exported": true,
+          "lineCount": 71
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "execution",
+          "specifiers": [
+            "execute",
+            "run_guard"
+          ]
+        },
+        {
+          "source": "execution.adapters",
+          "specifiers": [
+            "ExecutionPort",
+            "SimulatedBrokerAdapter"
+          ]
+        },
+        {
+          "source": "execution.config",
+          "specifiers": [
+            "DEFAULT_EXECUTION_POLICY_CONFIG",
+            "DEFAULT_FILL_MODEL",
+            "ExecutionPolicyConfig",
+            "FillModelConfig"
+          ]
+        },
+        {
+          "source": "execution.models",
+          "specifiers": [
+            "ExecutionRecord",
+            "PortfolioState"
+          ]
+        },
+        {
+          "source": "features.feature_builder",
+          "specifiers": [
+            "build_features"
+          ]
+        },
+        {
+          "source": "gold.decision_builder",
+          "specifiers": [
+            "SnapshotGuards",
+            "build_decision"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.config",
+          "specifiers": [
+            "DecisionPolicyConfig"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime",
+          "specifiers": [
+            "evaluate"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.config",
+          "specifiers": [
+            "DEFAULT_RUNTIME_POLICY_CONFIG",
+            "RuntimePolicyConfig"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "OperationalInput",
+            "RuntimeLedger",
+            "Verdict"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier",
+          "specifiers": [
+            "classify"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier.config",
+          "specifiers": [
+            "RegimeConfig"
+          ]
+        },
+        {
+          "source": "risk.guardrail_engine.models",
+          "specifiers": [
+            "GuardrailConfig"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer.models",
+          "specifiers": [
+            "Snapshot"
+          ]
+        },
+        {
+          "source": ".config",
+          "specifiers": [
+            "DEFAULT_GUARD_CONFIG",
+            "DEFAULT_OPERATIONAL_INPUT"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "ChainContractError",
+            "ChainResult"
+          ]
+        }
+      ],
+      "exports": [
+        "run_chain"
+      ],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/models.py": {
+      "filePath": "src/orchestration/models.py",
+      "contentHash": "e75cb33716bb611a589809140f0f9608098d4e7f799f2a3d457fb32c73d94aa5",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ChainContractError",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "ChainResult",
+          "methods": [
+            "_feature_vector_dict",
+            "to_dict"
+          ],
+          "properties": [
+            "feature_vector",
+            "regime",
+            "packet",
+            "runtime_record",
+            "execution_record",
+            "ledger",
+            "portfolio"
+          ],
+          "exported": true,
+          "lineCount": 53
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "execution.models",
+          "specifiers": [
+            "ExecutionRecord",
+            "PortfolioState"
+          ]
+        },
+        {
+          "source": "features.feature_builder.models",
+          "specifiers": [
+            "FeatureVector"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.models",
+          "specifiers": [
+            "GoldDecisionPacket"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "RuntimeDecisionRecord",
+            "RuntimeLedger"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier.models",
+          "specifiers": [
+            "RegimeClassification"
+          ]
+        }
+      ],
+      "exports": [
+        "ChainContractError",
+        "ChainResult"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/operational_feed.py": {
+      "filePath": "src/orchestration/operational_feed.py",
+      "contentHash": "f9981892b5578ed5e44aeb932f378fd687feeaab4988268e0fa4ce74540d5669",
+      "functions": [
+        {
+          "name": "_parse",
+          "params": [
+            "value"
+          ],
+          "returnType": "datetime | None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "persist_operational",
+          "params": [
+            "path",
+            "op"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "read_and_capture",
+          "params": [
+            "feed",
+            "as_of",
+            "capture_path"
+          ],
+          "returnType": "OperationalInput",
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [
+        {
+          "name": "OperationalFeed",
+          "methods": [
+            "read"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "MarketCalendarFeed",
+          "methods": [
+            "read"
+          ],
+          "properties": [
+            "instrument",
+            "holidays"
+          ],
+          "exported": true,
+          "lineCount": 29
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Protocol",
+            "Union"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "OperationalInput"
+          ]
+        }
+      ],
+      "exports": [
+        "_parse",
+        "OperationalFeed",
+        "MarketCalendarFeed",
+        "persist_operational",
+        "read_and_capture"
+      ],
+      "totalLines": 124,
+      "hasStructuralAnalysis": true
+    },
+    "src/orchestration/runtime.py": {
+      "filePath": "src/orchestration/runtime.py",
+      "contentHash": "902b8cd96231427af06be98d0b91a6dd18142cb1d7b955b48a2817349fff9ca9",
+      "functions": [
+        {
+          "name": "find_latest_snapshot",
+          "params": [
+            "directory"
+          ],
+          "returnType": "Path | None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "run_once",
+          "params": [
+            "snapshot_path",
+            "ledger_path",
+            "portfolio_path",
+            "operational_input",
+            "operational_feed",
+            "operational_capture_path",
+            "guard_config",
+            "runtime_config",
+            "regime_config",
+            "decision_config",
+            "exec_config",
+            "fill_model",
+            "port"
+          ],
+          "returnType": "ChainResult | None",
+          "exported": true,
+          "lineCount": 54
+        },
+        {
+          "name": "run_sequence",
+          "params": [
+            "snapshots",
+            "operational_input",
+            "guard_config",
+            "runtime_config",
+            "regime_config",
+            "decision_config",
+            "exec_config",
+            "fill_model",
+            "port",
+            "ledger",
+            "portfolio"
+          ],
+          "returnType": "tuple[tuple[ChainResult, ...], RuntimeLedger, PortfolioState]",
+          "exported": true,
+          "lineCount": 41
+        },
+        {
+          "name": "_summarize",
+          "params": [
+            "result"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "main",
+          "params": [
+            "argv"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 55
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Sequence"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Union"
+          ]
+        },
+        {
+          "source": "execution.config",
+          "specifiers": [
+            "DEFAULT_EXECUTION_POLICY_CONFIG",
+            "DEFAULT_FILL_MODEL",
+            "ExecutionPolicyConfig",
+            "FillModelConfig"
+          ]
+        },
+        {
+          "source": "execution.adapters",
+          "specifiers": [
+            "ExecutionPort",
+            "SimulatedBrokerAdapter"
+          ]
+        },
+        {
+          "source": "execution.models",
+          "specifiers": [
+            "PortfolioState"
+          ]
+        },
+        {
+          "source": "execution.runtime",
+          "specifiers": [
+            "load_portfolio",
+            "persist_portfolio"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.config",
+          "specifiers": [
+            "DecisionPolicyConfig"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.config",
+          "specifiers": [
+            "DEFAULT_RUNTIME_POLICY_CONFIG",
+            "RuntimePolicyConfig"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "OperationalInput",
+            "RuntimeLedger"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.runtime",
+          "specifiers": [
+            "load_ledger",
+            "persist_ledger"
+          ]
+        },
+        {
+          "source": "regime.regime_classifier.config",
+          "specifiers": [
+            "RegimeConfig"
+          ]
+        },
+        {
+          "source": "risk.guardrail_engine.guardrail_engine",
+          "specifiers": [
+            "load_config_from_env"
+          ]
+        },
+        {
+          "source": "risk.guardrail_engine.models",
+          "specifiers": [
+            "GuardrailConfig"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": ".config",
+          "specifiers": [
+            "DEFAULT_GUARD_CONFIG",
+            "DEFAULT_OPERATIONAL_INPUT"
+          ]
+        },
+        {
+          "source": ".engine",
+          "specifiers": [
+            "run_chain"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "ChainResult"
+          ]
+        },
+        {
+          "source": ".operational_feed",
+          "specifiers": [
+            "MarketCalendarFeed",
+            "OperationalFeed",
+            "read_and_capture"
+          ]
+        }
+      ],
+      "exports": [
+        "find_latest_snapshot",
+        "run_once",
+        "run_sequence",
+        "_summarize",
+        "main"
+      ],
+      "totalLines": 238,
       "hasStructuralAnalysis": true
     },
     "src/regime/__init__.py": {
@@ -9578,6 +12826,437 @@
       "totalLines": 449,
       "hasStructuralAnalysis": true
     },
+    "tests/calibration/test_forward_return_labels.py": {
+      "filePath": "tests/calibration/test_forward_return_labels.py",
+      "contentHash": "3aaedcdc068ee80c325f51cc8b0f0fe768d25f4e4a6edc78a48c13134362c393",
+      "functions": [
+        {
+          "name": "test_report_is_deterministic",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_committed_artifact_in_sync",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_forward_return",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_move_sign",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_direction_correct_all_directions",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_directional_pnl",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_horizon_offsets_and_gap_tolerance",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_pt",
+          "params": [
+            "date",
+            "price",
+            "direction",
+            "regime"
+          ],
+          "returnType": "\"flh.DecisionPoint\"",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_single_point_all_pending",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_realized_exit_at_horizon",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_gap_beyond_tolerance_is_no_exit",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_nearest_at_or_after_is_chosen",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_no_price_entry_is_marked",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_non_positive_exit_price_is_not_a_candidate",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_syn_index",
+          "params": [],
+          "returnType": "dict[tuple[str, int], dict]",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_synthetic_exercises_all_directions_and_statuses",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_synthetic_pinned_labels",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "test_synthetic_aggregate_hit_rates",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_committed_real_dedups_to_one_pending_point",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_decision_chain_does_not_import_the_labeler",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "test_decision_point_carries_no_forward_data",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "run_forward_return_labels",
+          "specifiers": [
+            "flh"
+          ]
+        }
+      ],
+      "exports": [
+        "test_report_is_deterministic",
+        "test_committed_artifact_in_sync",
+        "test_forward_return",
+        "test_move_sign",
+        "test_direction_correct_all_directions",
+        "test_directional_pnl",
+        "test_horizon_offsets_and_gap_tolerance",
+        "_pt",
+        "test_single_point_all_pending",
+        "test_realized_exit_at_horizon",
+        "test_gap_beyond_tolerance_is_no_exit",
+        "test_nearest_at_or_after_is_chosen",
+        "test_no_price_entry_is_marked",
+        "test_non_positive_exit_price_is_not_a_candidate",
+        "_syn_index",
+        "test_synthetic_exercises_all_directions_and_statuses",
+        "test_synthetic_pinned_labels",
+        "test_synthetic_aggregate_hit_rates",
+        "test_committed_real_dedups_to_one_pending_point",
+        "test_decision_chain_does_not_import_the_labeler",
+        "test_decision_point_carries_no_forward_data"
+      ],
+      "totalLines": 247,
+      "hasStructuralAnalysis": true
+    },
+    "tests/execution/test_alpaca_adapter.py": {
+      "filePath": "tests/execution/test_alpaca_adapter.py",
+      "contentHash": "19111b2c29fae77f70ad754148a881a3836a77b6840f463eca83498c0e17f102",
+      "functions": [
+        {
+          "name": "_admit",
+          "params": [
+            "snapshot_id",
+            "record_id"
+          ],
+          "returnType": "RuntimeDecisionRecord",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "_approved",
+          "params": [],
+          "returnType": "GuardResult",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_blocked",
+          "params": [
+            "predicate"
+          ],
+          "returnType": "GuardResult",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_filled",
+          "params": [
+            "price",
+            "qty"
+          ],
+          "returnType": "_StubBroker",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_fill_echoes_paper_order",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_mode_and_replayable_flags",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_fill_without_client_raises",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_fill_rejects_non_long",
+          "params": [
+            "direction"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_fill_raises_on_unfilled_order",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_without_creds_is_fail_closed",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_from_env_refuses_non_paper_base_url",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_from_env_refuses_spoofed_base_urls",
+          "params": [
+            "monkeypatch",
+            "spoof"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_accepts_mixed_case_paper_host",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_with_paper_creds_builds_a_client_no_network",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_execute_with_alpaca_port_stamps_non_replayable",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_no_fill_path_never_touches_the_broker",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_default_port_is_the_deterministic_simulator",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [
+        {
+          "name": "_StubBroker",
+          "methods": [
+            "__init__",
+            "submit_market_buy"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.models",
+          "specifiers": [
+            "DecisionMode",
+            "Direction"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "RuntimeDecisionRecord",
+            "Verdict"
+          ]
+        },
+        {
+          "source": "execution",
+          "specifiers": [
+            "ExecutionMode",
+            "GuardResult",
+            "PortfolioState",
+            "SimulatedBrokerAdapter",
+            "execute"
+          ]
+        },
+        {
+          "source": "execution.alpaca_adapter",
+          "specifiers": [
+            "AlpacaExecutionError",
+            "AlpacaPaperAdapter",
+            "PaperOrderResult",
+            "paper_adapter_from_env"
+          ]
+        }
+      ],
+      "exports": [
+        "_StubBroker",
+        "_admit",
+        "_approved",
+        "_blocked",
+        "_filled",
+        "test_fill_echoes_paper_order",
+        "test_mode_and_replayable_flags",
+        "test_fill_without_client_raises",
+        "test_fill_rejects_non_long",
+        "test_fill_raises_on_unfilled_order",
+        "test_from_env_without_creds_is_fail_closed",
+        "test_from_env_refuses_non_paper_base_url",
+        "test_from_env_refuses_spoofed_base_urls",
+        "test_from_env_accepts_mixed_case_paper_host",
+        "test_from_env_with_paper_creds_builds_a_client_no_network",
+        "test_execute_with_alpaca_port_stamps_non_replayable",
+        "test_no_fill_path_never_touches_the_broker",
+        "test_default_port_is_the_deterministic_simulator"
+      ],
+      "totalLines": 199,
+      "hasStructuralAnalysis": true
+    },
     "tests/execution/test_execution_bench.py": {
       "filePath": "tests/execution/test_execution_bench.py",
       "contentHash": "5691f6383fbba75035f39ee9ecbfb8c55bec7f62773fad92ca0c0be4b90c33f9",
@@ -10810,7 +14489,7 @@
     },
     "tests/gold/test_paper_runtime_determinism.py": {
       "filePath": "tests/gold/test_paper_runtime_determinism.py",
-      "contentHash": "67f95144ff2df2348f064c46b72d12a1fed1dbe974974183856650296d06f7b6",
+      "contentHash": "3b48bac82b1d4aad2330aabbf466303b9c9dc86a4b02633ef5fa68d1c569dacc",
       "functions": [
         {
           "name": "_packet",
@@ -10904,7 +14583,7 @@
         "test_fingerprint_excludes_version",
         "test_fingerprint_threads_into_record_id"
       ],
-      "totalLines": 100,
+      "totalLines": 101,
       "hasStructuralAnalysis": true
     },
     "tests/gold/test_paper_runtime_engine.py": {
@@ -11095,7 +14774,7 @@
     },
     "tests/gold/test_paper_runtime_guards.py": {
       "filePath": "tests/gold/test_paper_runtime_guards.py",
-      "contentHash": "efa6383940db28799842f11a11fcf3d8f516ae4e09bd4690c3aee151f3185049",
+      "contentHash": "5b2ca33e2ceceb4a7366dd2ffd12d0cac7a0d5699966b1dc325ecba3031f0151",
       "functions": [
         {
           "name": "_packet",
@@ -11104,11 +14783,12 @@
             "direction",
             "sg",
             "regime",
-            "instrument"
+            "instrument",
+            "as_of"
           ],
           "returnType": "GoldDecisionPacket",
           "exported": true,
-          "lineCount": 32
+          "lineCount": 33
         },
         {
           "name": "_entry",
@@ -11121,6 +14801,17 @@
           "returnType": "LedgerEntry",
           "exported": true,
           "lineCount": 2
+        },
+        {
+          "name": "_admit_entry",
+          "params": [
+            "snapshot_id",
+            "as_of",
+            "seq"
+          ],
+          "returnType": "LedgerEntry",
+          "exported": true,
+          "lineCount": 3
         },
         {
           "name": "_ledger",
@@ -11211,14 +14902,14 @@
           "params": [],
           "returnType": "None",
           "exported": true,
-          "lineCount": 5
+          "lineCount": 4
         },
         {
           "name": "test_echoes_false_from_snapshot_provenance",
           "params": [],
           "returnType": "None",
           "exported": true,
-          "lineCount": 5
+          "lineCount": 4
         },
         {
           "name": "test_echoes_default_closed_when_provenance_absent",
@@ -11226,6 +14917,55 @@
           "returnType": "None",
           "exported": true,
           "lineCount": 6
+        },
+        {
+          "name": "test_cooldown_ok_pass_when_no_prior_admit",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_cooldown_ok_fail_within_window",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_cooldown_ok_pass_when_window_elapsed",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_cooldown_ok_excludes_self_re_presentation",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_cooldown_ok_only_counts_admits",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_cooldown_ok_fail_closed_on_missing_as_of",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_cooldown_ok_fail_closed_on_out_of_order",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
         }
       ],
       "classes": [],
@@ -11247,6 +14987,7 @@
             "LedgerEntry",
             "OperationalInput",
             "RuntimeLedger",
+            "RuntimePolicyConfig",
             "Verdict",
             "cooldown_ok",
             "data_ok",
@@ -11259,6 +15000,7 @@
       "exports": [
         "_packet",
         "_entry",
+        "_admit_entry",
         "_ledger",
         "test_duplicate_ok_pass_on_unseen",
         "test_duplicate_ok_fail_after_prior_admit",
@@ -11273,9 +15015,16 @@
         "test_operational_ok_default_closed_state_fails",
         "test_echoes_true_from_snapshot_provenance",
         "test_echoes_false_from_snapshot_provenance",
-        "test_echoes_default_closed_when_provenance_absent"
+        "test_echoes_default_closed_when_provenance_absent",
+        "test_cooldown_ok_pass_when_no_prior_admit",
+        "test_cooldown_ok_fail_within_window",
+        "test_cooldown_ok_pass_when_window_elapsed",
+        "test_cooldown_ok_excludes_self_re_presentation",
+        "test_cooldown_ok_only_counts_admits",
+        "test_cooldown_ok_fail_closed_on_missing_as_of",
+        "test_cooldown_ok_fail_closed_on_out_of_order"
       ],
-      "totalLines": 159,
+      "totalLines": 214,
       "hasStructuralAnalysis": true
     },
     "tests/gold/test_paper_runtime_ledger.py": {
@@ -11407,6 +15156,1809 @@
         "test_load_defaults_absent_ledger_empty_and_operational_closed"
       ],
       "totalLines": 149,
+      "hasStructuralAnalysis": true
+    },
+    "tests/ops/test_actions.py": {
+      "filePath": "tests/ops/test_actions.py",
+      "contentHash": "c7fd25b07edf9575b1c4a1d2b7a6c3231b00ab94f2bf8a36d6912bb2652e643a",
+      "functions": [
+        {
+          "name": "_fixed_clock",
+          "params": [],
+          "returnType": "datetime",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "make_paths",
+          "params": [
+            "tmp"
+          ],
+          "returnType": "OpsPaths",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "runner_ok",
+          "params": [
+            "_cmd",
+            "_paths"
+          ],
+          "returnType": "actions.ProcResult",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "runner_fail",
+          "params": [
+            "_cmd",
+            "_paths"
+          ],
+          "returnType": "actions.ProcResult",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_run_chain_now_persists_and_audits",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_run_chain_now_no_snapshot_is_nothing_to_do",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_run_chain_now_idempotent_audits_each_call",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_rerun_calibration_ok",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_rerun_calibration_failure_is_caught_and_audited",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_resync_neo4j_ok",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_resync_neo4j_failure_is_caught_and_audited",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_no_credential_value_in_audit",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_action_never_raises_when_audit_write_fails",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_subprocess_output_secret_is_redacted",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_safe_actions_registry",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Sequence"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timezone"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "actions",
+            "audit"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "OpsPaths"
+          ]
+        }
+      ],
+      "exports": [
+        "_fixed_clock",
+        "make_paths",
+        "runner_ok",
+        "runner_fail",
+        "test_run_chain_now_persists_and_audits",
+        "test_run_chain_now_no_snapshot_is_nothing_to_do",
+        "test_run_chain_now_idempotent_audits_each_call",
+        "test_rerun_calibration_ok",
+        "test_rerun_calibration_failure_is_caught_and_audited",
+        "test_resync_neo4j_ok",
+        "test_resync_neo4j_failure_is_caught_and_audited",
+        "test_no_credential_value_in_audit",
+        "test_action_never_raises_when_audit_write_fails",
+        "test_subprocess_output_secret_is_redacted",
+        "test_safe_actions_registry"
+      ],
+      "totalLines": 171,
+      "hasStructuralAnalysis": true
+    },
+    "tests/ops/test_app.py": {
+      "filePath": "tests/ops/test_app.py",
+      "contentHash": "fd5608a8ef26ad837a3cb58990820573e19db2d3746167e3854c0819104c3c73",
+      "functions": [
+        {
+          "name": "_paths",
+          "params": [
+            "tmp"
+          ],
+          "returnType": "OpsPaths",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_app_survives_a_raising_action",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "test_app_runs_a_safe_action_and_audits",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "_clear_alpaca_env",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_gated_action_confirm_runs_and_audits",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "test_gated_action_cancel_does_nothing",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "actions"
+          ]
+        },
+        {
+          "source": "ops.app",
+          "specifiers": [
+            "OpsConsole"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "OpsPaths"
+          ]
+        }
+      ],
+      "exports": [
+        "_paths",
+        "test_app_survives_a_raising_action",
+        "test_app_runs_a_safe_action_and_audits",
+        "_clear_alpaca_env",
+        "test_gated_action_confirm_runs_and_audits",
+        "test_gated_action_cancel_does_nothing"
+      ],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "tests/ops/test_audit.py": {
+      "filePath": "tests/ops/test_audit.py",
+      "contentHash": "1a58803f35e79b106d7f568ec331c9d82f51aa6862ee5ae9518d911d1ecacc6f",
+      "functions": [
+        {
+          "name": "_fixed_clock",
+          "params": [],
+          "returnType": "datetime",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_append_then_read_roundtrip",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_append_only_never_truncates",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_read_limit_tails",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_file_is_ascii_even_with_unicode_result",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_read_absent_returns_empty",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_read_skips_malformed_lines",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_line_format",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timezone"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "audit"
+          ]
+        }
+      ],
+      "exports": [
+        "_fixed_clock",
+        "test_append_then_read_roundtrip",
+        "test_append_only_never_truncates",
+        "test_read_limit_tails",
+        "test_file_is_ascii_even_with_unicode_result",
+        "test_read_absent_returns_empty",
+        "test_read_skips_malformed_lines",
+        "test_line_format"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "tests/ops/test_core.py": {
+      "filePath": "tests/ops/test_core.py",
+      "contentHash": "d0007e353e14b57f5269d21c72270ba64405defb50f4446c918da300960bf891",
+      "functions": [
+        {
+          "name": "_write",
+          "params": [
+            "path",
+            "payload"
+          ],
+          "returnType": "Path",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "make_paths",
+          "params": [
+            "tmp"
+          ],
+          "returnType": "OpsPaths",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_ledger_view_absent",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_ledger_view_populated",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_ledger_view_malformed_surfaces_error",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_portfolio_view_absent",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_portfolio_view_populated",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_portfolio_view_malformed_surfaces_error",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_operational_view_absent_is_default_closed",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_operational_view_captured_file",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_decision_preview_is_pure_no_persistence",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_decision_preview_non_consumable",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_decision_preview_no_snapshot",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_raise_oserror",
+          "params": [],
+          "returnType": "Path",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_decision_preview_survives_producer_oserror",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_process_infos_survives_producer_oserror",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_calibration_readiness_defer",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_calibration_readiness_eligible_branch",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_calibration_eligible_flag_matches_overall",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_calibration_readiness_absent_defers",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_gate_board_adr011_all_closed",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_plugs_dormant_without_creds",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_plugs_creds_present_with_paper_host",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_plugs_dormant_on_non_paper_host",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_no_credential_value_in_any_output",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "test_process_infos_not_queried_without_fetcher",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_process_infos_registered_with_fetcher",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_process_infos_not_registered_when_fetcher_returns_none",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_process_infos_producer_freshness",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_policy_versions",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_assemble_dashboard_paper_only_and_serializable",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_assemble_dashboard_never_persists",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "core"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "OpsPaths"
+          ]
+        }
+      ],
+      "exports": [
+        "_write",
+        "make_paths",
+        "test_ledger_view_absent",
+        "test_ledger_view_populated",
+        "test_ledger_view_malformed_surfaces_error",
+        "test_portfolio_view_absent",
+        "test_portfolio_view_populated",
+        "test_portfolio_view_malformed_surfaces_error",
+        "test_operational_view_absent_is_default_closed",
+        "test_operational_view_captured_file",
+        "test_decision_preview_is_pure_no_persistence",
+        "test_decision_preview_non_consumable",
+        "test_decision_preview_no_snapshot",
+        "_raise_oserror",
+        "test_decision_preview_survives_producer_oserror",
+        "test_process_infos_survives_producer_oserror",
+        "test_calibration_readiness_defer",
+        "test_calibration_readiness_eligible_branch",
+        "test_calibration_eligible_flag_matches_overall",
+        "test_calibration_readiness_absent_defers",
+        "test_gate_board_adr011_all_closed",
+        "test_plugs_dormant_without_creds",
+        "test_plugs_creds_present_with_paper_host",
+        "test_plugs_dormant_on_non_paper_host",
+        "test_no_credential_value_in_any_output",
+        "test_process_infos_not_queried_without_fetcher",
+        "test_process_infos_registered_with_fetcher",
+        "test_process_infos_not_registered_when_fetcher_returns_none",
+        "test_process_infos_producer_freshness",
+        "test_policy_versions",
+        "test_assemble_dashboard_paper_only_and_serializable",
+        "test_assemble_dashboard_never_persists"
+      ],
+      "totalLines": 363,
+      "hasStructuralAnalysis": true
+    },
+    "tests/ops/test_gated.py": {
+      "filePath": "tests/ops/test_gated.py",
+      "contentHash": "e145b0832beb8b70a6ee4f5bd4e9a40af6714f74a3dd342491903411a63bfe98",
+      "functions": [
+        {
+          "name": "_clock",
+          "params": [],
+          "returnType": "datetime",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "make_paths",
+          "params": [
+            "tmp"
+          ],
+          "returnType": "OpsPaths",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "_dormant_factory",
+          "params": [],
+          "returnType": "AlpacaPaperAdapter",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_alpaca_run_refuses_when_dormant",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_alpaca_run_threads_live_port_without_network",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "runner_ok",
+          "params": [
+            "_cmd",
+            "_paths"
+          ],
+          "returnType": "ProcResult",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "runner_fail",
+          "params": [
+            "_cmd",
+            "_paths"
+          ],
+          "returnType": "ProcResult",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_register_schedule_ok",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_register_schedule_refuses_when_script_missing",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_unregister_schedule_ok",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_unregister_schedule_failure_audited",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_calibration_bump_defers_and_never_mutates",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_calibration_bump_eligible_still_does_not_bump",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_no_credential_value_in_gated_audit",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_alpaca_run_never_raises_on_factory_error",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_gated_action_never_raises_on_audit_write_failure",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_gated_registry",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_precondition_line_alpaca_dormant",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "_StubBroker",
+          "methods": [
+            "__init__",
+            "submit_market_buy"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Sequence"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timezone"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "execution.alpaca_adapter",
+          "specifiers": [
+            "AlpacaPaperAdapter"
+          ]
+        },
+        {
+          "source": "ops",
+          "specifiers": [
+            "audit",
+            "gated"
+          ]
+        },
+        {
+          "source": "ops.core",
+          "specifiers": [
+            "OpsPaths"
+          ]
+        },
+        {
+          "source": "ops.proc",
+          "specifiers": [
+            "ProcResult"
+          ]
+        }
+      ],
+      "exports": [
+        "_clock",
+        "make_paths",
+        "_StubBroker",
+        "_dormant_factory",
+        "test_alpaca_run_refuses_when_dormant",
+        "test_alpaca_run_threads_live_port_without_network",
+        "runner_ok",
+        "runner_fail",
+        "test_register_schedule_ok",
+        "test_register_schedule_refuses_when_script_missing",
+        "test_unregister_schedule_ok",
+        "test_unregister_schedule_failure_audited",
+        "test_calibration_bump_defers_and_never_mutates",
+        "test_calibration_bump_eligible_still_does_not_bump",
+        "test_no_credential_value_in_gated_audit",
+        "test_alpaca_run_never_raises_on_factory_error",
+        "test_gated_action_never_raises_on_audit_write_failure",
+        "test_gated_registry",
+        "test_precondition_line_alpaca_dormant"
+      ],
+      "totalLines": 205,
+      "hasStructuralAnalysis": true
+    },
+    "tests/orchestration/test_alpaca_clock_feed.py": {
+      "filePath": "tests/orchestration/test_alpaca_clock_feed.py",
+      "contentHash": "75449e8ebcf28033542038167d13e77bddcba41af287c273675bf486dd1bdffc",
+      "functions": [
+        {
+          "name": "test_open_on_scheduled_trading_day",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_closed_on_weekend_not_in_calendar",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_closes_holiday_gap_the_fixed_date_feed_misses",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_fail_closed_on_client_error",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_fail_closed_without_client",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_fail_closed_on_unparseable_or_absent_as_of",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_from_env_without_creds_is_fail_closed",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_refuses_non_paper_base_url",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_refuses_spoofed_base_urls",
+          "params": [
+            "monkeypatch",
+            "spoof"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_accepts_mixed_case_paper_host",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_from_env_with_paper_creds_builds_a_client_no_network",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_capture_round_trips_and_replay_never_reads_the_feed",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_alpaca_produced_input_matches_calendar_feed_shape",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "_StubCalendar",
+          "methods": [
+            "__init__",
+            "trading_days"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "_RaisingCalendar",
+          "methods": [
+            "trading_days"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime",
+          "specifiers": [
+            "load_operational"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "orchestration",
+          "specifiers": [
+            "MarketCalendarFeed",
+            "read_and_capture",
+            "run_sequence"
+          ]
+        },
+        {
+          "source": "orchestration.alpaca_clock_feed",
+          "specifiers": [
+            "AlpacaClockFeed",
+            "clock_feed_from_env"
+          ]
+        }
+      ],
+      "exports": [
+        "_StubCalendar",
+        "_RaisingCalendar",
+        "test_open_on_scheduled_trading_day",
+        "test_closed_on_weekend_not_in_calendar",
+        "test_closes_holiday_gap_the_fixed_date_feed_misses",
+        "test_fail_closed_on_client_error",
+        "test_fail_closed_without_client",
+        "test_fail_closed_on_unparseable_or_absent_as_of",
+        "test_from_env_without_creds_is_fail_closed",
+        "test_from_env_refuses_non_paper_base_url",
+        "test_from_env_refuses_spoofed_base_urls",
+        "test_from_env_accepts_mixed_case_paper_host",
+        "test_from_env_with_paper_creds_builds_a_client_no_network",
+        "test_capture_round_trips_and_replay_never_reads_the_feed",
+        "test_alpaca_produced_input_matches_calendar_feed_shape"
+      ],
+      "totalLines": 165,
+      "hasStructuralAnalysis": true
+    },
+    "tests/orchestration/test_chain_bench.py": {
+      "filePath": "tests/orchestration/test_chain_bench.py",
+      "contentHash": "d425c02bb9fa3197746028430f1d73c1e1fd9d90ca60dcdfb2f8057663d1087f",
+      "functions": [
+        {
+          "name": "test_report_is_deterministic",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_all_replays_byte_identical",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_real_sequence_byte_identical",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_real_admit_grounded_in_corpus",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_real_corpus_is_admit_then_idempotent_reject_no_fill",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_full_replay_key_complete",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_measures_declared",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_pinned_hashes",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_committed_artifact_in_sync",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "run_chain_bench",
+          "specifiers": [
+            "bench"
+          ]
+        }
+      ],
+      "exports": [
+        "test_report_is_deterministic",
+        "test_all_replays_byte_identical",
+        "test_real_sequence_byte_identical",
+        "test_real_admit_grounded_in_corpus",
+        "test_real_corpus_is_admit_then_idempotent_reject_no_fill",
+        "test_full_replay_key_complete",
+        "test_measures_declared",
+        "test_pinned_hashes",
+        "test_committed_artifact_in_sync"
+      ],
+      "totalLines": 105,
+      "hasStructuralAnalysis": true
+    },
+    "tests/orchestration/test_chain_determinism.py": {
+      "filePath": "tests/orchestration/test_chain_determinism.py",
+      "contentHash": "d46b2ca0b659bedd1380d94677a11b23784f3ea66a8a0f28712a4c2a75f279ba",
+      "functions": [
+        {
+          "name": "_snap",
+          "params": [],
+          "returnType": "Snapshot",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_sequence_byte_identical_replay",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_end_to_end_idempotency_through_sequence",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_replay_path_ignores_os_environ",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_run_once_persists_and_reloads",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_run_once_is_idempotent_on_disk",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_run_once_non_consumable_returns_none",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "execution.runtime",
+          "specifiers": [
+            "load_portfolio"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "Verdict"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.runtime",
+          "specifiers": [
+            "load_ledger"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer.models",
+          "specifiers": [
+            "Snapshot"
+          ]
+        },
+        {
+          "source": "orchestration",
+          "specifiers": [
+            "run_once",
+            "run_sequence"
+          ]
+        }
+      ],
+      "exports": [
+        "_snap",
+        "test_sequence_byte_identical_replay",
+        "test_end_to_end_idempotency_through_sequence",
+        "test_replay_path_ignores_os_environ",
+        "test_run_once_persists_and_reloads",
+        "test_run_once_is_idempotent_on_disk",
+        "test_run_once_non_consumable_returns_none"
+      ],
+      "totalLines": 98,
+      "hasStructuralAnalysis": true
+    },
+    "tests/orchestration/test_chain_engine.py": {
+      "filePath": "tests/orchestration/test_chain_engine.py",
+      "contentHash": "d11a0611bb5b157a28f51dd9dc887b6cf956e760854510ab071d5df4fa565118",
+      "functions": [
+        {
+          "name": "_snap",
+          "params": [],
+          "returnType": "Snapshot",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_real_chain_admits_no_fill_avoid",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_in_hand_price_and_direction_forwarded",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_wrap_not_enrich_packet_stays_pure",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_snapshot_guards_and_as_of_forwarded",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_packet_id_matches_established_chain",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_ledger_always_advances_by_one",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_non_admit_leaves_portfolio_unchanged_and_no_exec",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_end_to_end_idempotency_no_double_admit",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_guard_block_attributed_no_fill",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_admit_without_in_hand_price_fails_closed",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_to_dict_is_deterministic",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_bounded_context_hygiene_only_orchestrator_imports_risk",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "replace"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "execution.models",
+          "specifiers": [
+            "PortfolioState"
+          ]
+        },
+        {
+          "source": "gold.decision_builder.models",
+          "specifiers": [
+            "Direction"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime.models",
+          "specifiers": [
+            "OperationalInput",
+            "RuntimeLedger",
+            "Verdict"
+          ]
+        },
+        {
+          "source": "risk.guardrail_engine.models",
+          "specifiers": [
+            "GuardrailConfig"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer.models",
+          "specifiers": [
+            "Snapshot"
+          ]
+        },
+        {
+          "source": "orchestration",
+          "specifiers": [
+            "run_chain"
+          ]
+        },
+        {
+          "source": "orchestration.models",
+          "specifiers": [
+            "ChainContractError"
+          ]
+        }
+      ],
+      "exports": [
+        "_snap",
+        "test_real_chain_admits_no_fill_avoid",
+        "test_in_hand_price_and_direction_forwarded",
+        "test_wrap_not_enrich_packet_stays_pure",
+        "test_snapshot_guards_and_as_of_forwarded",
+        "test_packet_id_matches_established_chain",
+        "test_ledger_always_advances_by_one",
+        "test_non_admit_leaves_portfolio_unchanged_and_no_exec",
+        "test_end_to_end_idempotency_no_double_admit",
+        "test_guard_block_attributed_no_fill",
+        "test_admit_without_in_hand_price_fails_closed",
+        "test_to_dict_is_deterministic",
+        "test_bounded_context_hygiene_only_orchestrator_imports_risk"
+      ],
+      "totalLines": 169,
+      "hasStructuralAnalysis": true
+    },
+    "tests/orchestration/test_operational_feed.py": {
+      "filePath": "tests/orchestration/test_operational_feed.py",
+      "contentHash": "746d62c2dfa3899dbfa9594c3314e765a4d5969c2900a897dc26f3f981ce8645",
+      "functions": [
+        {
+          "name": "test_feed_open_on_trading_day",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_feed_closed_on_weekend",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_feed_closed_on_weekday_holiday",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_feed_fail_closed_on_unparseable_or_absent",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_feed_is_deterministic",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_capture_round_trips_through_load_operational",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_read_and_capture_without_path_does_not_persist",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_capture_freezes_value_independent_of_later_feed",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_run_sequence_replay_never_reads_the_feed",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "test_run_once_with_feed_captures_and_uses_it",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [
+        {
+          "name": "_StubFeed",
+          "methods": [
+            "__init__",
+            "read"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "gold.paper_runtime",
+          "specifiers": [
+            "OperationalInput",
+            "load_operational"
+          ]
+        },
+        {
+          "source": "snapshot.snapshot_consumer",
+          "specifiers": [
+            "consume"
+          ]
+        },
+        {
+          "source": "orchestration",
+          "specifiers": [
+            "MarketCalendarFeed",
+            "read_and_capture",
+            "run_once",
+            "run_sequence"
+          ]
+        }
+      ],
+      "exports": [
+        "_StubFeed",
+        "test_feed_open_on_trading_day",
+        "test_feed_closed_on_weekend",
+        "test_feed_closed_on_weekday_holiday",
+        "test_feed_fail_closed_on_unparseable_or_absent",
+        "test_feed_is_deterministic",
+        "test_capture_round_trips_through_load_operational",
+        "test_read_and_capture_without_path_does_not_persist",
+        "test_capture_freezes_value_independent_of_later_feed",
+        "test_run_sequence_replay_never_reads_the_feed",
+        "test_run_once_with_feed_captures_and_uses_it"
+      ],
+      "totalLines": 140,
       "hasStructuralAnalysis": true
     },
     "tests/regime/test_regime_bench.py": {
@@ -12737,6 +18289,16 @@
       "exports": [],
       "totalLines": 476,
       "hasStructuralAnalysis": true
+    },
+    "understand-dashboard.ps1": {
+      "filePath": "understand-dashboard.ps1",
+      "contentHash": "397b94bd29a56d28f41fd205544a34f008affa470c5d10afdf2f97411368a415",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": false
     },
     "wiki/agents/Agent Self-Verification.md": {
       "filePath": "wiki/agents/Agent Self-Verification.md",

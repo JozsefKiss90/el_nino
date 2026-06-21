@@ -1,0 +1,255 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "dev_graph/gates/Gold Decision Gate.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 56,
+      "sections": [
+        {
+          "heading": "Gold Decision Gate",
+          "level": 1,
+          "line": 30
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/gates/Runtime Admission Gate.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 92,
+      "nonEmptyLines": 74,
+      "sections": [
+        {
+          "heading": "Runtime Admission Gate",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/gates/Trade Validation Gate.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 81,
+      "nonEmptyLines": 61,
+      "sections": [
+        {
+          "heading": "Trade Validation Gate",
+          "level": 1,
+          "line": 32
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    }
+  ]
+}

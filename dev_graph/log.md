@@ -4,6 +4,111 @@ Chronological record of dev_graph operations. Each entry uses format: `## [DATE]
 
 ---
 
+## [2026-06-18] ADR | ADR-013 Operations Control Plane — ACCEPTED (status: draft → active)
+
+Operator accepted ADR-013. `status: draft → active`, `implementation_status: not-started → tested`
+(`decision_status` stays `active`); Status section promoted Draft → Accepted. The terminal-TUI
+implementation is complete and green (MOD-011 + OBS-002 + FILE-039..043 + TEST-029..033; full suite 1050).
+Both HARD-PAUSE gates were observed. No code change in this acceptance edit (governance only).
+
+---
+
+## [2026-06-18] writeback | Operations Control Plane console (ADR-013) — MOD-011 + OBS-002 + ops/ file/test nodes
+
+### Nodes Created (12)
+- **[[Operations Control Plane]]** (MOD-011, module, status active / implementation_status tested) — the
+  `ops/` package: a local terminal operator console (headless read-model + Textual TUI) over the Layer-3
+  runtime; reuses MOD-007/008/009/010; provides OBS-002.
+- **[[Operations Control Plane Console]]** (OBS-002, observability) — the operator-facing monitor/control
+  surface (header/status bar + Overview/Gates/Calibration/Artefacts/Processes/Plugs/Log panes).
+- **File nodes** (FILE-039..043): [[core.py (ops)]] (read-model), [[app.py (ops)]] (Textual TUI),
+  [[actions.py (ops)]] (Tier-2 safe), [[gated.py (ops)]] (Tier-3 gated-live), [[audit.py (ops)]]
+  (append-only audit log). `ops/proc.py` (subprocess + secret-redact helper) is below the §7.5 threshold
+  (interface-less utility) — noted in MOD-011 Implementation Notes, no node.
+- **Test nodes** (TEST-029..033): [[test_ops_core]], [[test_ops_audit]], [[test_ops_actions]],
+  [[test_ops_gated]], [[test_ops_app]].
+
+### Code shipped (ops/ package — Steps 1-3 of ADR-013)
+- **Step 1 (read-only):** `ops/core.py` headless read-model + `ops/app.py` Textual TUI (7 panes,
+  auto-refresh, `--once`). Read-only; reuses governed loaders + the pure `run_sequence` preview.
+- **Step 2 (safe tier):** `ops/actions.py` + `ops/audit.py` — run-chain-now (simulator), re-run
+  calibration readiness, re-sync Neo4j; key-bound, audit-logged, never raise.
+- **Step 3 (gated-live, post-HARD-PAUSE, operator chose the one-shot model):** `ops/gated.py` — one-shot
+  Alpaca-paper run (fail-closed REFUSE without paper creds/host), register/unregister daily schedule,
+  commit-or-DEFER calibration bump (never bumps a `*_version`); each behind a `ConfirmModal` + audit +
+  server-side precondition; crash-proof thread workers.
+- `pyproject.toml`: new `[project.optional-dependencies] ops` group (Textual/Rich); mypy/ruff/pytest
+  extended to cover `ops/`. `src/` stays `dependencies = []` (ADR-003 preserved).
+
+### Safety properties (verified)
+Local-only/no listener; paper-only/no live-money; secrets never displayed (derived dormant/creds-present
+only, KA-008); confirm+audit+server-side precondition on every mutation; reuse-governed-functions;
+gate-respecting (bump branches on a discrete `eligible` flag, `executed=False` on every branch); engine
+zero-dep. Three adversarial-review workflows (Steps 1/2/3) — critical invariants verified to HOLD; all
+actionable (low) findings fixed + regression-tested (audit-write-never-raises, worker crash-proof,
+full-audit-surface secret redaction, OSError-safe globs, eligible-flag coupling).
+
+### Metrics
+- Tests: 64 new ops tests (`tests/ops/`); full suite **1050 green** (was 986). `mypy --strict` + `ruff`
+  clean on `ops/` (configured scope src/tests/ops clean).
+- Pre-existing, out-of-scope (NOT touched): 2 mypy-2.1.0 lambda errors in `src/features/feature_builder.py`;
+  13 ruff errors in `snapshot_sources/query_db.py` + a plugin trash file (outside the lint scope).
+
+### Changes
+- `index.md`: added MOD-011, OBS-002, FILE-039..043, TEST-029..033 rows; statistics (content nodes
+  198→210; module 10→11, file 38→43, test 28→33, observability 1→2; total files 202→214).
+- ADR-013 frontmatter: `related_files`/`related_tests` now point to the realized ops file/test nodes.
+- 11 lint checks run on the touched nodes (clean: frontmatter/enums, ≥1 inbound, no broken wikilinks, no
+  duplicate canonical_ids, constraint/test coverage, type-content, evidence-confidence).
+- Neo4j: `python sync_to_neo4j.py --dry-run` validates the projection offline — **210 nodes**, all 12 new
+  nodes + their edges resolve (the 5 skipped edges are pre-existing dangling refs, not ops). The live
+  `--clear` re-projection is **deferred** (the DB is not up this session: no bolt on 127.0.0.1:7687,
+  `NEO4J_PASSWORD` unset) — run `python sync_to_neo4j.py --clear` when the DB is up; the markdown is
+  canonical and `--clear` is idempotent.
+
+---
+
+## [2026-06-18] ADR | ADR-013 Operations Control Plane (draft) — governance boundary, HARD-PAUSE for operator review
+
+### Nodes Created
+- [[ADR - Operations Control Plane]] (ADR-013, decision_record, **status: draft**, decision_status: active) —
+  `dev_graph/decisions/ADR - Operations Control Plane.md`.
+
+### What it records
+Governance & architectural-boundary record (authors no code) for a **local terminal operator console**
+(Textual TUI) over the Layer-3 runtime — a sibling of, and **not coupled to**, the JARVIS graph console
+(ADR-010). Eleven bound invariants: (1) sibling boundary / own `ops/` package, may share a headless
+ops-core only; (2) local-only, no network listener; (3) three action tiers (read-only / safe
+non-destructive / gated-live) with a fixed action→tier→reused-function→precondition table; (4)
+reuse governed functions, never reimplement safety/paper-only/gate logic (run_once, run_guard, load_*,
+paper_adapter_from_env / clock_feed_from_env, build_report, register_daily_chain_task.ps1,
+sync_to_neo4j.py); (5) paper-only / no live-money path ever; (6) secrets never displayed (derived
+dormant/creds-present/enabled only, KA-008); (7) confirm + audit + server-side precondition on every
+mutation; (8) gate-respecting (calibration bump returns DEFER unless ADR-012 gate passes; Alpaca
+fail-closes); (9) engine stays zero-dep (ADR-003) — Textual/Rich in `[project.optional-dependencies] ops`,
+`ops/` never imported by `src/`; (10) read-only before actions + **HARD PAUSE before gated-live**; (11) no
+second source of truth. Non-binding candidate ids named (OBS-002 + ops/ file/test nodes); none reserved or
+created.
+
+### Grounding
+8-agent parallel read of orchestration/paper_runtime/execution runtime + feed/adapter plugs +
+MOD-009/ADR-012 calibration gate + scheduling scripts + governance-precedent ADRs (009/010/011/012) +
+ADR-003/pyproject; exact governed-function signatures and fail-closed/paper-only properties cited in the
+ADR. Confirmed: ADR-013 / OBS-002 are the next free ids; no readiness/bump callable exists (a bump is a
+human-review-required manual config-version amendment), so the console's bump action can only DEFER.
+
+### Changes
+- `index.md`: added the ADR-013 Decisions row; bumped statistics (content nodes 197→198, files 201→202,
+  decision_record 12→13, coverage 198/198).
+- This log entry.
+
+### Deferred to Step 4 (writeback slice)
+OBS-002 observability node + `ops/` file/test nodes (§7.5), full 11-check lint sweep, and Neo4j re-sync —
+authored when the console code lands. **HARD PAUSE: awaiting operator review of ADR-013 before any console
+code is written.**
+
+---
+
 ## [2026-05-25] init | Dev graph bootstrap
 
 ### Created
@@ -1782,3 +1887,113 @@ contract change (purely additive IO). Re-sync Neo4j (`sync_to_neo4j.py --clear`)
 **Built; nothing committed.** The live feed read is IO-path-only and captured for replay; the deterministic
 calendar feed needs no credentials (the Alpaca live plug + its env/`.secrets` credential isolation is the
 named deferred follow-up).
+
+## 2026-06-18 writeback | Alpaca live plugs (ADR-011 gate f) + chain scheduling + ADR-012 readiness re-check
+
+### Part 1 — Alpaca live plugs (behind existing ports; non-replayable; default-OFF)
+
+- `src/orchestration/alpaca_clock_feed.py` (NEW, FILE-037) — `AlpacaClockFeed` implements the
+  `OperationalFeed` port; reads Alpaca `/v2/calendar` (paper base URL only) to **close the v0
+  holiday-calendar gap** (movable feasts / observed dates the fixed-date `MarketCalendarFeed` cannot
+  model). Injected `AlpacaCalendarClient` Protocol + stdlib-only REST client + `clock_feed_from_env`
+  factory. **Fail-closed** (missing/non-paper creds, API error, unparseable `as_of` ⇒ `closed()`); read
+  on the live path only and captured/quarantined exactly like the deterministic feed (never re-read on
+  replay). **Default-OFF**, not re-exported.
+- `src/execution/alpaca_adapter.py` (NEW, FILE-038) — `AlpacaPaperAdapter` implements the INT-011
+  `ExecutionPort` (`mode=alpaca_paper`, `replayable=False`); `fill()` submits a paper market BUY and
+  echoes the paper fill. Injected `AlpacaPaperBroker` Protocol + `PaperOrderResult` + stdlib REST broker
+  + `AlpacaExecutionError` + `paper_adapter_from_env` factory (refuses any non-paper base URL; fail-closed
+  on missing creds). **Non-replayable quarantine** (never on `run_sequence`/benchmarks; simulator stays
+  the hard-wired default port); **built-but-dormant** (engine calls `fill()` only for an approved LONG,
+  none until calibration — ADR-011 §5). **Default-OFF**, not re-exported.
+- `src/orchestration/runtime.py` — **additive** CLI flag `--operational-feed-source {calendar,alpaca}`
+  (default `calendar`; prior behaviour unchanged); lazily wires the live clock feed on opt-in.
+  `run_once`/`run_sequence` contracts **untouched**.
+- `.gitignore` — added `.secrets` / `.secrets/` / `*.secrets` (KA-008 credential isolation).
+- Tests: `tests/orchestration/test_alpaca_clock_feed.py` (TEST-027, 17) + `tests/execution/test_alpaca_adapter.py`
+  (TEST-028, 20) — mocked clients, **no real network**; cover the holiday-gap closure, fail-closed paths,
+  paper-only URL refusal (incl. spoofed URLs, below), and the replay/engine quarantine. **Full suite 986
+  green** (was 950); `mypy --strict` + `ruff` clean on the new files (the 2 pre-existing MOD-004 lambda
+  mypy warnings remain, unrelated).
+
+### Adversarial review (5-dimension workflow) + hardening
+
+A multi-agent adversarial review (paper-only/credentials, fail-closed, quarantine/determinism, holiday-gap
+correctness, governance/writeback — each finding independently verified) returned **clean on four
+dimensions** (fail-closed, quarantine/determinism, holiday-gap, governance) and found **one real defect**:
+the paper-only credential boundary used a **substring** URL check (`_PAPER_HOST not in base_url`), which a
+sub-/super-domain (`evil.paper-api.alpaca.markets`, `paper-api.alpaca.markets.evil.com`), a query/fragment
+carrying the host, or a non-https URL could defeat (credential-exfil bypass of ADR-011 §3 / KA-008 /
+PRED-005), and which also wrongly rejected a legitimate mixed-case host. **Hardened** both
+`clock_feed_from_env` and `paper_adapter_from_env` to a parsed-hostname equality check
+(`urlparse(base_url).hostname == "paper-api.alpaca.markets"` **and** `scheme == "https"`), added regression
+tests (+6 each: 5 spoofed-URL params + 1 mixed-case accepted), and fixed a low test-stub nit
+(`_StubCalendar` returned a duplicate date when `start == end`). Re-ran: `mypy --strict` + `ruff` clean,
+**986 green**.
+
+### Part 2 — chain scheduling (simulator path; ops tooling, no file nodes — mirrors Mr-Ripley)
+
+- `scripts/daily_chain_run.ps1` (NEW) — runs the latest banked Mr-Ripley snapshot through MOD-010
+  `run_once` on the **deterministic simulator** + operational calendar feed (captured), persisting the
+  el_nino ledger + portfolio (idempotent). **Manually validated once** against scratch state: latest
+  snapshot `c1fe5a02` (2026-06-15) → RESTRICTIVE_RATES/AVOID → ADMIT + no-fill, exit 0.
+- `scripts/register_daily_chain_task.ps1` (NEW) — registers the recurring 23:45 task after the Mr-Ripley
+  23:00 EOD job. **Parse-checked but NOT run — operator HARD-PAUSE.** Both scripts ASCII-only (PS 5.1
+  reads UTF-8-no-BOM as CP1252).
+
+### Part 3 — ADR-012 G1/G2/G3 readiness re-check (DEFER; no bump)
+
+- Re-ran MOD-009 `run_forward_return_labels.py --include-external`. Corpus unchanged since 2026-06-17:
+  N=5 (1 committed fixture + 4 Mr-Ripley archives, latest 2026-06-15), **monochromatic RESTRICTIVE_RATES
+  / AVOID** (1/12 regimes, 1/4 directions), **0 realized labels**. ⇒ **G0 FAIL (N≪60); G1/G2/G3 DEFER.**
+  **No `*_version` bump, no value/direction-table change, no benchmark re-pin** — the committed golden
+  `forward_return_labels.json` is byte-identical (git diff empty). AVOID-objective + FLAT_BAND remain
+  undefined in ADR-012 (a further precondition on any future G3 direction-table bump).
+
+### dev_graph changes
+
+- **NEW**: FILE-037 [[alpaca_clock_feed.py]] (→ MOD-010), FILE-038 [[alpaca_adapter.py]] (→ MOD-008),
+  TEST-027 [[test_alpaca_clock_feed]], TEST-028 [[test_alpaca_adapter]].
+- **ADR-011** — §7 gate **(f) CLOSED** (all six now closed); state + reconciliation lines updated to
+  2026-06-18; `related_files`/`related_tests` + `evidence: code`.
+- **ADR-009** — live-feed amendment extended (the Alpaca clock plug is now built, default-OFF; closes the
+  holiday gap); `related_files`/`related_tests`; normative-nodes line.
+- **MOD-008** — `related_files += alpaca_adapter.py`, `related_tests += test_alpaca_adapter`, Definition /
+  Implementation Notes / Open Questions / Contains / Validated By updated (adapter now built default-OFF).
+- **MOD-010** — `related_files += alpaca_clock_feed.py`, `related_tests += test_alpaca_clock_feed`,
+  Implementation Notes (the clock plug + `--operational-feed-source` flag + scheduling scripts) / Open
+  Questions (feed plug built; scheduling registration = HARD-PAUSE) / Contains / Validated By updated;
+  suite 933→974.
+- **INT-011** — second (default-OFF) implementor `AlpacaPaperAdapter` recorded; `related_files`; Open
+  Questions updated; `updated` 2026-06-18.
+- **FILE-026** (adapters.py) / **FILE-036** (operational_feed.py) — body + `related_files` cross-link the
+  new sibling plugs; "deferred" → "built default-OFF".
+- **index.md** — Files (+FILE-037/038) + Tests (+TEST-027/028) tables + header + Statistics (file 36→38,
+  test 26→28, content nodes 193→197, total files 197→201, coverage 197/197) + dated entry.
+
+### Lint (11 checks, touched: FILE-037/038, TEST-027/028, ADR-011, ADR-009, MOD-008, MOD-010, INT-011, FILE-026, FILE-036, index)
+
+1 frontmatter complete (file/test domain fields present) ✓ · 2 enums valid (file implemented/implemented;
+test unit&integration/tested; ADRs decision_record) ✓ · 3 no orphans — FILE-037 ← MOD-010 + ADR-009/011 +
+FILE-036 + TEST-027; FILE-038 ← MOD-008 + ADR-011 + FILE-026 + TEST-028; tests ← their modules+files; each
+≥1 outbound ✓ · 4 fresh (2026-06-18) ✓ · 5 wikilinks resolve ([[alpaca_clock_feed.py]],
+[[alpaca_adapter.py]], [[test_alpaca_clock_feed]], [[test_alpaca_adapter]], [[Execution]],
+[[Chain Orchestrator]], [[Execution API]], [[adapters.py]], [[operational_feed.py]], ADRs all exist) ✓ ·
+6/7 MOD-008/010 constraint+test coverage populated ✓ · 8 type-content aligned (files have Implementation
+Notes + Constraints; tests have covers + Used By; ADR-011 gate board updated) ✓ · 9 no deprecated refs ✓ ·
+10 canonical_id uniqueness — FILE-037/038, TEST-027/028 next-free, used once ✓ · 11 evidence-confidence
+coherence (all `confirmed` carry `evidence`) ✓.
+
+### Metrics
+
+dev_graph content nodes 193 → **197** (+FILE-037/038, +TEST-027/028); file 36→38, test 26→28; total files
+197→201; coverage 197/197. **No** schema/enum/ontology change; **no** `*_version` bump; **no** contract
+change (Part 1 additive plugs behind existing ports; Part 2 ops tooling; Part 3 DEFER). Re-sync Neo4j
+(`sync_to_neo4j.py --clear`).
+
+### Stopped for operator review (HARD PAUSE)
+
+**Built + validated; nothing committed; nothing enabled.** Two HARD-PAUSE gates remain for the operator:
+(a) **enabling the live Alpaca execution path** (the adapter ships dormant/default-OFF), and (b)
+**registering the recurring scheduled task** (`register_daily_chain_task.ps1` is built + parse-checked but
+not run). Part 3 is DEFER, so no calibration bump and no commit pause was reached.

@@ -1,0 +1,19 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 6,
+  "edgesRestored": 28,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Step 1 sanity-check: Fixed section is clean. Independent verification of assembled-graph.json found 0 nodes missing id, 0 'func:' leftovers, no double-prefix/malformed ids, and complexity values all valid (moderate 366 / simple 287 / complex 114). No upstream-quality flags.",
+    "GROUP A: recovered 6 real code sub-nodes the owning batch never emitted but edges referenced. All confirmed in source: EpochTrack/LiveMarketIntel/SystemVitals (exported React function components in jarvis/hud/src/components/main/*.tsx), Fill (@dataclass in src/execution/models.py:77), resolve_run_snapshot (ops/core.py:350), write_entry (ops/audit.py:65). Built correct <type>:<path>:<name> ids with real summaries, 4-5 tags, line ranges, and complexity grounded in the code.",
+    "GROUP A edges restored (9): EpochTrack contains+exports, LiveMarketIntel contains, SystemVitals contains, Fill <- calls from SimulatedBrokerAdapter & AlpacaPaperAdapter, resolve_run_snapshot <- calls from run_chain_now & run_chain_now_alpaca_paper, write_entry <- calls from run_chain_now.",
+    "GROUP A decision: SnapshotContractError (src/snapshot/snapshot_consumer/models.py:24) left dropped, agreeing with the batch-8 analyzer. It is a field/method-less ValueError subclass (docstring only); batch-8 modeled the data-carrying dataclasses (SeriesValue/Guards/QualitySummary/Snapshot) but deliberately omitted this exception below the significance bar. Its sole anchor was one weak (0.6) depends_on edge from SeriesValue, also dropped.",
+    "GROUP B: all 19 dropped dev_graph markdown cross-reference edges remapped. Every target resolved to an existing node under the document: prefix (same filePath) - the dev_graph/*.md files were classified document: not file:/schema:. Swapped the edge target prefix to the existing document: id and restored. Source test nodes all confirmed present.",
+    "Step 3 cross-batch imports: verified, not re-derived. Of importMap's 510 entries, 66 carry internal imports yielding 229 file->file pairs where both endpoints are file nodes; all 229 already have imports edges in the assembled graph (0 missing). Confirms the merge script's 'Recovered 0 imports edges'. No speculative edges added.",
+    "Edge accounting: 26 net edges were dropped by the merge (1202 -> 1176). Restored 28 distinct edges (9 GROUP A + 19 GROUP B); the GROUP A set included EpochTrack's exports edge and the SystemVitals/LiveMarketIntel duplicates that collapsed during merge dedup, so distinct restorations exceed the net-drop figure. Final graph: 773 nodes / 1204 edges.",
+    "Post-fix integrity validated: 0 duplicate node ids, 0 dangling edges, 0 duplicate (source,target,type) edge keys, valid JSON.",
+    "Remaining concern (minor): the recovered React component nodes use estimated lineRange from current source; the dev_graph document: nodes are markdown-corpus artifacts, so 'documents'/'related' edges now correctly point into the document layer rather than non-existent file:/schema: code nodes."
+  ]
+}

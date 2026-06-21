@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/predicates/Cooldown OK.md",
+      "type": "document",
+      "name": "Cooldown OK.md",
+      "filePath": "dev_graph/predicates/Cooldown OK.md",
+      "summary": "Dev_graph predicate node (PRED-008) defining the L3 cooldown guard, which passes when at least the configured number of hours has elapsed (by snapshot as_of) since the last ADMIT of a different snapshot, computed at runtime as of v0.2.0.",
+      "tags": ["documentation", "predicate", "guardrail", "paper-trading", "dev-graph"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed dev_graph node with typed frontmatter (canonical_id, predicate_scope) and a Relationships section of wikilinks for Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/predicates/Daily Loss Cap OK.md",
+      "type": "document",
+      "name": "Daily Loss Cap OK.md",
+      "filePath": "dev_graph/predicates/Daily Loss Cap OK.md",
+      "summary": "Dev_graph predicate node (PRED-002) defining the daily-loss-cap guard, which blocks new trades once realized daily P&L reaches the configured loss cap (daily_pnl > -daily_loss_cap).",
+      "tags": ["documentation", "predicate", "guardrail", "risk-management", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Duplicate OK.md",
+      "type": "document",
+      "name": "Duplicate OK.md",
+      "filePath": "dev_graph/predicates/Duplicate OK.md",
+      "summary": "Dev_graph predicate node (PRED-006) defining the L3 idempotency guard, which passes when a source snapshot_id has not already produced a Gold DecisionPacket via a prior ADMIT in the runtime ledger.",
+      "tags": ["documentation", "predicate", "guardrail", "idempotency", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/predicates/Max Positions OK.md",
+      "type": "document",
+      "name": "Max Positions OK.md",
+      "filePath": "dev_graph/predicates/Max Positions OK.md",
+      "summary": "Dev_graph predicate node (PRED-004) defining the max-concurrent-positions guard, which passes while the open position count is below the configured limit (open_positions < max_positions).",
+      "tags": ["documentation", "predicate", "guardrail", "risk-management", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Max Trades OK.md",
+      "type": "document",
+      "name": "Max Trades OK.md",
+      "filePath": "dev_graph/predicates/Max Trades OK.md",
+      "summary": "Dev_graph predicate node (PRED-003) defining the max-trades-per-day guard, which passes while the day's trade count stays below the configured daily maximum (trades_today < max_trades_per_day).",
+      "tags": ["documentation", "predicate", "guardrail", "risk-management", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Operational OK.md",
+      "type": "document",
+      "name": "Operational OK.md",
+      "filePath": "dev_graph/predicates/Operational OK.md",
+      "summary": "Dev_graph predicate node (PRED-007) defining the L3 operational guard, which passes when operational preconditions hold (instrument/venue tradeable, open, not halted, not degraded) from an explicit versioned OperationalInput.",
+      "tags": ["documentation", "predicate", "guardrail", "operational-readiness", "dev-graph"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph/predicates/Position Size OK.md",
+      "type": "document",
+      "name": "Position Size OK.md",
+      "filePath": "dev_graph/predicates/Position Size OK.md",
+      "summary": "Dev_graph predicate node (PRED-001) defining the position-size guard, which passes when a proposed size is within both the percentage-of-equity and absolute-dollar caps (size <= min(equity*pct, max_trade_size)).",
+      "tags": ["documentation", "predicate", "guardrail", "risk-management", "dev-graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:dev_graph/predicates/Withdrawal Disabled.md",
+      "type": "document",
+      "name": "Withdrawal Disabled.md",
+      "filePath": "dev_graph/predicates/Withdrawal Disabled.md",
+      "summary": "Dev_graph predicate node (PRED-005) defining the withdrawal-disabled invariant, which passes only when withdrawals are disabled (fail-closed) so the agent can never enable fund movement.",
+      "tags": ["documentation", "predicate", "guardrail", "security", "dev-graph"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/files/predicates.py (paper_runtime).md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/gates/Gold Decision Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/gates/Runtime Admission Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/tests/test_paper_runtime_guards.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/constraints/Canonical Ownership.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Cooldown OK.md", "target": "document:dev_graph/predicates/Duplicate OK.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Daily Loss Cap OK.md", "target": "document:dev_graph/files/predicates.py.md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Daily Loss Cap OK.md", "target": "document:dev_graph/gates/Trade Validation Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Daily Loss Cap OK.md", "target": "document:dev_graph/tests/test_predicates.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Daily Loss Cap OK.md", "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/files/predicates.py (paper_runtime).md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/gates/Gold Decision Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/gates/Runtime Admission Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/tests/test_paper_runtime_guards.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/constraints/Canonical Ownership.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Duplicate OK.md", "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Max Positions OK.md", "target": "document:dev_graph/files/predicates.py.md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Max Positions OK.md", "target": "document:dev_graph/gates/Trade Validation Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Max Positions OK.md", "target": "document:dev_graph/tests/test_predicates.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Max Positions OK.md", "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Max Trades OK.md", "target": "document:dev_graph/files/predicates.py.md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Max Trades OK.md", "target": "document:dev_graph/gates/Trade Validation Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Max Trades OK.md", "target": "document:dev_graph/tests/test_predicates.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Max Trades OK.md", "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/files/predicates.py (paper_runtime).md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/gates/Gold Decision Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/gates/Runtime Admission Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/tests/test_paper_runtime_guards.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/constraints/Canonical Ownership.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/decisions/ADR - Decision Layer Re-grounding.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/decisions/ADR - Gold DecisionPacket v0 Planning.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Operational OK.md", "target": "document:dev_graph/decisions/ADR - Paper-Trading Runtime Planning.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Position Size OK.md", "target": "document:dev_graph/files/predicates.py.md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Position Size OK.md", "target": "document:dev_graph/gates/Trade Validation Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Position Size OK.md", "target": "document:dev_graph/tests/test_predicates.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Position Size OK.md", "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "document:dev_graph/predicates/Withdrawal Disabled.md", "target": "document:dev_graph/files/predicates.py.md", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Withdrawal Disabled.md", "target": "document:dev_graph/gates/Trade Validation Gate.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Withdrawal Disabled.md", "target": "document:dev_graph/tests/test_predicates.md", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "document:dev_graph/predicates/Withdrawal Disabled.md", "target": "document:dev_graph/decisions/ADR - Ontology Redesign.md", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

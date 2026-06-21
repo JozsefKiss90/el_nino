@@ -1,0 +1,5773 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "benchmarks/calibration/artifacts/forward_return_labels.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1159,
+      "nonEmptyLines": 1159,
+      "sections": [
+        {
+          "heading": "artifact_schema",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "committed_real",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "decision_versions",
+          "level": 1,
+          "line": 161
+        },
+        {
+          "heading": "horizons_td",
+          "level": 1,
+          "line": 167
+        },
+        {
+          "heading": "params",
+          "level": 1,
+          "line": 172
+        },
+        {
+          "heading": "purpose",
+          "level": 1,
+          "line": 180
+        },
+        {
+          "heading": "synthetic",
+          "level": 1,
+          "line": 181
+        },
+        {
+          "heading": "tool",
+          "level": 1,
+          "line": 1158
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "benchmarks/calibration/run_forward_return_labels.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 482,
+      "nonEmptyLines": 412,
+      "functions": [
+        {
+          "name": "forward_return",
+          "startLine": 98,
+          "endLine": 100,
+          "params": [
+            "entry_price",
+            "exit_price"
+          ]
+        },
+        {
+          "name": "move_sign",
+          "startLine": 103,
+          "endLine": 108,
+          "params": [
+            "r",
+            "flat_band"
+          ]
+        },
+        {
+          "name": "direction_correct",
+          "startLine": 111,
+          "endLine": 125,
+          "params": [
+            "direction",
+            "r",
+            "flat_band"
+          ]
+        },
+        {
+          "name": "directional_pnl",
+          "startLine": 128,
+          "endLine": 139,
+          "params": [
+            "direction",
+            "r"
+          ]
+        },
+        {
+          "name": "target_offset_days",
+          "startLine": 142,
+          "endLine": 144,
+          "params": [
+            "horizon_td"
+          ]
+        },
+        {
+          "name": "max_gap_days",
+          "startLine": 147,
+          "endLine": 149,
+          "params": [
+            "horizon_td"
+          ]
+        },
+        {
+          "name": "select_exit",
+          "startLine": 152,
+          "endLine": 174,
+          "params": [
+            "entry",
+            "points",
+            "horizon_td"
+          ]
+        },
+        {
+          "name": "label_point",
+          "startLine": 177,
+          "endLine": 225,
+          "params": [
+            "entry",
+            "points",
+            "horizon_td"
+          ]
+        },
+        {
+          "name": "label_all",
+          "startLine": 228,
+          "endLine": 235,
+          "params": [
+            "points",
+            "horizons"
+          ]
+        },
+        {
+          "name": "_mean",
+          "startLine": 238,
+          "endLine": 239,
+          "params": [
+            "xs"
+          ]
+        },
+        {
+          "name": "_median",
+          "startLine": 242,
+          "endLine": 249,
+          "params": [
+            "xs"
+          ]
+        },
+        {
+          "name": "_aggregate_cell",
+          "startLine": 252,
+          "endLine": 290,
+          "params": [
+            "rows"
+          ]
+        },
+        {
+          "name": "aggregate_by_regime_horizon",
+          "startLine": 293,
+          "endLine": 303,
+          "params": [
+            "labels"
+          ]
+        },
+        {
+          "name": "coverage",
+          "startLine": 306,
+          "endLine": 314,
+          "params": [
+            "labels"
+          ]
+        },
+        {
+          "name": "decision_points_from_corpus",
+          "startLine": 320,
+          "endLine": 349,
+          "params": [
+            "paths"
+          ]
+        },
+        {
+          "name": "external_corpus_paths",
+          "startLine": 352,
+          "endLine": 359,
+          "params": []
+        },
+        {
+          "name": "_syn",
+          "startLine": 367,
+          "endLine": 368,
+          "params": [
+            "date",
+            "price",
+            "regime",
+            "direction"
+          ]
+        },
+        {
+          "name": "_build_section",
+          "startLine": 386,
+          "endLine": 404,
+          "params": [
+            "points",
+            "corpus_source"
+          ]
+        },
+        {
+          "name": "build_report",
+          "startLine": 407,
+          "endLine": 450,
+          "params": [
+            "include_external"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 453,
+          "endLine": 478,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "DecisionPoint",
+          "startLine": 78,
+          "endLine": 92,
+          "methods": [
+            "dt"
+          ],
+          "properties": [
+            "source_snapshot_id",
+            "clock_ts",
+            "entry_price",
+            "regime",
+            "direction"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DecisionPoint",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "forward_return",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "move_sign",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "direction_correct",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "directional_pnl",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "target_offset_days",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "max_gap_days",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "select_exit",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "label_point",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "label_all",
+          "line": 228,
+          "isDefault": false
+        },
+        {
+          "name": "_mean",
+          "line": 238,
+          "isDefault": false
+        },
+        {
+          "name": "_median",
+          "line": 242,
+          "isDefault": false
+        },
+        {
+          "name": "_aggregate_cell",
+          "line": 252,
+          "isDefault": false
+        },
+        {
+          "name": "aggregate_by_regime_horizon",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "coverage",
+          "line": 306,
+          "isDefault": false
+        },
+        {
+          "name": "decision_points_from_corpus",
+          "line": 320,
+          "isDefault": false
+        },
+        {
+          "name": "external_corpus_paths",
+          "line": 352,
+          "isDefault": false
+        },
+        {
+          "name": "_syn",
+          "line": 367,
+          "isDefault": false
+        },
+        {
+          "name": "_build_section",
+          "line": 386,
+          "isDefault": false
+        },
+        {
+          "name": "build_report",
+          "line": 407,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 453,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dt",
+          "callee": "datetime.fromisoformat",
+          "lineNumber": 92
+        },
+        {
+          "caller": "direction_correct",
+          "callee": "abs",
+          "lineNumber": 124
+        },
+        {
+          "caller": "target_offset_days",
+          "callee": "round",
+          "lineNumber": 144
+        },
+        {
+          "caller": "max_gap_days",
+          "callee": "math.ceil",
+          "lineNumber": 149
+        },
+        {
+          "caller": "max_gap_days",
+          "callee": "target_offset_days",
+          "lineNumber": 149
+        },
+        {
+          "caller": "select_exit",
+          "callee": "timedelta",
+          "lineNumber": 164
+        },
+        {
+          "caller": "select_exit",
+          "callee": "target_offset_days",
+          "lineNumber": 164
+        },
+        {
+          "caller": "select_exit",
+          "callee": "min",
+          "lineNumber": 170
+        },
+        {
+          "caller": "select_exit",
+          "callee": "max_gap_days",
+          "lineNumber": 172
+        },
+        {
+          "caller": "label_point",
+          "callee": "timedelta",
+          "lineNumber": 179
+        },
+        {
+          "caller": "label_point",
+          "callee": "target_offset_days",
+          "lineNumber": 179
+        },
+        {
+          "caller": "label_point",
+          "callee": "target_offset_days",
+          "lineNumber": 186
+        },
+        {
+          "caller": "label_point",
+          "callee": "target.isoformat",
+          "lineNumber": 187
+        },
+        {
+          "caller": "label_point",
+          "callee": "max_gap_days",
+          "lineNumber": 188
+        },
+        {
+          "caller": "label_point",
+          "callee": "select_exit",
+          "lineNumber": 205
+        },
+        {
+          "caller": "label_point",
+          "callee": "forward_return",
+          "lineNumber": 211
+        },
+        {
+          "caller": "label_point",
+          "callee": "directional_pnl",
+          "lineNumber": 212
+        },
+        {
+          "caller": "label_point",
+          "callee": "label.update",
+          "lineNumber": 213
+        },
+        {
+          "caller": "label_point",
+          "callee": "round",
+          "lineNumber": 219
+        },
+        {
+          "caller": "label_point",
+          "callee": "move_sign",
+          "lineNumber": 220
+        },
+        {
+          "caller": "label_point",
+          "callee": "direction_correct",
+          "lineNumber": 221
+        },
+        {
+          "caller": "label_point",
+          "callee": "round",
+          "lineNumber": 222
+        },
+        {
+          "caller": "label_all",
+          "callee": "sorted",
+          "lineNumber": 230
+        },
+        {
+          "caller": "label_all",
+          "callee": "out.append",
+          "lineNumber": 234
+        },
+        {
+          "caller": "label_all",
+          "callee": "label_point",
+          "lineNumber": 234
+        },
+        {
+          "caller": "_mean",
+          "callee": "round",
+          "lineNumber": 239
+        },
+        {
+          "caller": "_mean",
+          "callee": "sum",
+          "lineNumber": 239
+        },
+        {
+          "caller": "_mean",
+          "callee": "len",
+          "lineNumber": 239
+        },
+        {
+          "caller": "_median",
+          "callee": "sorted",
+          "lineNumber": 245
+        },
+        {
+          "caller": "_median",
+          "callee": "len",
+          "lineNumber": 246
+        },
+        {
+          "caller": "_median",
+          "callee": "round",
+          "lineNumber": 249
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "by_direction.setdefault",
+          "lineNumber": 262
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "cell[\"returns\"].append",
+          "lineNumber": 268
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "by_direction.items",
+          "lineNumber": 273
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "cell.pop",
+          "lineNumber": 274
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "_mean",
+          "lineNumber": 275
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "len",
+          "lineNumber": 278
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "len",
+          "lineNumber": 279
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "sum",
+          "lineNumber": 280
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "sum",
+          "lineNumber": 281
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "sum",
+          "lineNumber": 282
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "_mean",
+          "lineNumber": 283
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "_median",
+          "lineNumber": 284
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "_mean",
+          "lineNumber": 285
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "len",
+          "lineNumber": 286
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "len",
+          "lineNumber": 287
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "round",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "len",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "len",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_aggregate_cell",
+          "callee": "sorted",
+          "lineNumber": 289
+        },
+        {
+          "caller": "aggregate_by_regime_horizon",
+          "callee": "sorted",
+          "lineNumber": 296
+        },
+        {
+          "caller": "aggregate_by_regime_horizon",
+          "callee": "sorted",
+          "lineNumber": 299
+        },
+        {
+          "caller": "aggregate_by_regime_horizon",
+          "callee": "str",
+          "lineNumber": 302
+        },
+        {
+          "caller": "aggregate_by_regime_horizon",
+          "callee": "_aggregate_cell",
+          "lineNumber": 302
+        },
+        {
+          "caller": "coverage",
+          "callee": "sorted",
+          "lineNumber": 309
+        },
+        {
+          "caller": "coverage",
+          "callee": "sorted",
+          "lineNumber": 310
+        },
+        {
+          "caller": "coverage",
+          "callee": "sorted",
+          "lineNumber": 311
+        },
+        {
+          "caller": "coverage",
+          "callee": "len",
+          "lineNumber": 312
+        },
+        {
+          "caller": "coverage",
+          "callee": "sum",
+          "lineNumber": 313
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "path.exists",
+          "lineNumber": 329
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "consume",
+          "lineNumber": 332
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "build_features",
+          "lineNumber": 337
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "classify",
+          "lineNumber": 338
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "build_decision",
+          "lineNumber": 339
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "fv.value",
+          "lineNumber": 340
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "DecisionPoint",
+          "lineNumber": 341
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "seen.setdefault",
+          "lineNumber": 348
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "sorted",
+          "lineNumber": 349
+        },
+        {
+          "caller": "decision_points_from_corpus",
+          "callee": "seen.values",
+          "lineNumber": 349
+        },
+        {
+          "caller": "external_corpus_paths",
+          "callee": "tuple",
+          "lineNumber": 355
+        },
+        {
+          "caller": "external_corpus_paths",
+          "callee": "sorted",
+          "lineNumber": 355
+        },
+        {
+          "caller": "external_corpus_paths",
+          "callee": "_EXTERNAL_ARCHIVE_DIR.glob",
+          "lineNumber": 355
+        },
+        {
+          "caller": "external_corpus_paths",
+          "callee": "_EXTERNAL_ARCHIVE_DIR.exists",
+          "lineNumber": 356
+        },
+        {
+          "caller": "_syn",
+          "callee": "DecisionPoint",
+          "lineNumber": 368
+        },
+        {
+          "caller": "_build_section",
+          "callee": "label_all",
+          "lineNumber": 387
+        },
+        {
+          "caller": "_build_section",
+          "callee": "len",
+          "lineNumber": 390
+        },
+        {
+          "caller": "_build_section",
+          "callee": "aggregate_by_regime_horizon",
+          "lineNumber": 402
+        },
+        {
+          "caller": "_build_section",
+          "callee": "coverage",
+          "lineNumber": 403
+        },
+        {
+          "caller": "build_report",
+          "callee": "list",
+          "lineNumber": 421
+        },
+        {
+          "caller": "build_report",
+          "callee": "_build_section",
+          "lineNumber": 436
+        },
+        {
+          "caller": "build_report",
+          "callee": "decision_points_from_corpus",
+          "lineNumber": 437
+        },
+        {
+          "caller": "build_report",
+          "callee": "_build_section",
+          "lineNumber": 440
+        },
+        {
+          "caller": "build_report",
+          "callee": "list",
+          "lineNumber": 441
+        },
+        {
+          "caller": "build_report",
+          "callee": "_build_section",
+          "lineNumber": 446
+        },
+        {
+          "caller": "build_report",
+          "callee": "decision_points_from_corpus",
+          "lineNumber": 447
+        },
+        {
+          "caller": "build_report",
+          "callee": "external_corpus_paths",
+          "lineNumber": 447
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 454
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 455
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 460
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 462
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.parent.mkdir",
+          "lineNumber": 463
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.write_text",
+          "lineNumber": 464
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 464
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 465
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.relative_to",
+          "lineNumber": 465
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 468
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 469
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 472
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 473
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 474
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 475
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 476
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 477
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 478
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 478
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 21,
+        "functionCount": 20,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "benchmarks/execution/artifacts/execution_bench.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 175,
+      "nonEmptyLines": 175,
+      "sections": [
+        {
+          "heading": "all_replays_byte_identical",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "benchmark_id",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "execution_policy_fingerprint",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "execution_policy_version",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "execution_schema_version",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "fill_model_fingerprint",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "fill_model_version",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "guard_block_attribution",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "measures",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "pinned_portfolio_state_hash",
+          "level": 1,
+          "line": 19
+        },
+        {
+          "heading": "portfolio_schema_version",
+          "level": 1,
+          "line": 20
+        },
+        {
+          "heading": "real_sequence",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "synthetic_sequence",
+          "level": 1,
+          "line": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "benchmarks/execution/run_execution_bench.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 341,
+      "nonEmptyLines": 298,
+      "functions": [
+        {
+          "name": "_guard_config_fingerprint",
+          "startLine": 111,
+          "endLine": 114,
+          "params": [
+            "config"
+          ]
+        },
+        {
+          "name": "_result",
+          "startLine": 117,
+          "endLine": 130,
+          "params": [
+            "label",
+            "rec"
+          ]
+        },
+        {
+          "name": "_replay_block",
+          "startLine": 133,
+          "endLine": 151,
+          "params": [
+            "labels",
+            "items",
+            "guard_config"
+          ]
+        },
+        {
+          "name": "_build_chain",
+          "startLine": 157,
+          "endLine": 177,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "run_real",
+          "startLine": 180,
+          "endLine": 221,
+          "params": []
+        },
+        {
+          "name": "_admit",
+          "startLine": 227,
+          "endLine": 245,
+          "params": [
+            "snapshot_id",
+            "record_id"
+          ]
+        },
+        {
+          "name": "run_synthetic",
+          "startLine": 248,
+          "endLine": 274,
+          "params": []
+        },
+        {
+          "name": "_guard_block_attribution",
+          "startLine": 277,
+          "endLine": 283,
+          "params": [
+            "synthetic"
+          ]
+        },
+        {
+          "name": "build_report",
+          "startLine": 286,
+          "endLine": 315,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 318,
+          "endLine": 337,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_guard_config_fingerprint",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "_result",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "_replay_block",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "_build_chain",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "run_real",
+          "line": 180,
+          "isDefault": false
+        },
+        {
+          "name": "_admit",
+          "line": 227,
+          "isDefault": false
+        },
+        {
+          "name": "run_synthetic",
+          "line": 248,
+          "isDefault": false
+        },
+        {
+          "name": "_guard_block_attribution",
+          "line": 277,
+          "isDefault": false
+        },
+        {
+          "name": "build_report",
+          "line": 286,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 318,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "asdict",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_result",
+          "callee": "round",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "run_sequence",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "run_sequence",
+          "lineNumber": 138
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "json.dumps",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "r.to_dict",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "json.dumps",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "r.to_dict",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "pf_a.state_hash",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "pf_b.state_hash",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "_result",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "zip",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "sum",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "pf_a.state_hash",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "len",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "_guard_config_fingerprint",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "len",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_build_chain",
+          "callee": "consume",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_build_chain",
+          "callee": "build_features",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_build_chain",
+          "callee": "classify",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_build_chain",
+          "callee": "SnapshotGuards",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_build_chain",
+          "callee": "build_decision",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_build_chain",
+          "callee": "OperationalInput",
+          "lineNumber": 173
+        },
+        {
+          "caller": "run_real",
+          "callee": "RuntimeLedger.empty",
+          "lineNumber": 182
+        },
+        {
+          "caller": "run_real",
+          "callee": "_build_chain",
+          "lineNumber": 186
+        },
+        {
+          "caller": "run_real",
+          "callee": "evaluate",
+          "lineNumber": 190
+        },
+        {
+          "caller": "run_real",
+          "callee": "consumable.append",
+          "lineNumber": 191
+        },
+        {
+          "caller": "run_real",
+          "callee": "admits.append",
+          "lineNumber": 198
+        },
+        {
+          "caller": "run_real",
+          "callee": "fv.value",
+          "lineNumber": 198
+        },
+        {
+          "caller": "run_real",
+          "callee": "labels.append",
+          "lineNumber": 203
+        },
+        {
+          "caller": "run_real",
+          "callee": "items.append",
+          "lineNumber": 204
+        },
+        {
+          "caller": "run_real",
+          "callee": "_replay_block",
+          "lineNumber": 206
+        },
+        {
+          "caller": "run_real",
+          "callee": "len",
+          "lineNumber": 208
+        },
+        {
+          "caller": "run_real",
+          "callee": "next",
+          "lineNumber": 209
+        },
+        {
+          "caller": "run_real",
+          "callee": "r[\"label\"].endswith",
+          "lineNumber": 209
+        },
+        {
+          "caller": "_admit",
+          "callee": "RuntimeDecisionRecord",
+          "lineNumber": 229
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_admit",
+          "lineNumber": 255
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_admit",
+          "lineNumber": 256
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_admit",
+          "lineNumber": 257
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_admit",
+          "lineNumber": 258
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_replay_block",
+          "lineNumber": 260
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_admit",
+          "lineNumber": 264
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_replay_block",
+          "lineNumber": 265
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_real",
+          "lineNumber": 288
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_synthetic",
+          "lineNumber": 289
+        },
+        {
+          "caller": "build_report",
+          "callee": "DEFAULT_EXECUTION_POLICY_CONFIG.fingerprint",
+          "lineNumber": 298
+        },
+        {
+          "caller": "build_report",
+          "callee": "DEFAULT_FILL_MODEL.fingerprint",
+          "lineNumber": 301
+        },
+        {
+          "caller": "build_report",
+          "callee": "_guard_block_attribution",
+          "lineNumber": 303
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 319
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.parent.mkdir",
+          "lineNumber": 320
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.write_text",
+          "lineNumber": 321
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 321
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 324
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.relative_to",
+          "lineNumber": 324
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 325
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 330
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 336
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 337
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "benchmarks/gold/artifacts/gold_bench.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 125,
+      "nonEmptyLines": 125,
+      "sections": [
+        {
+          "heading": "benchmark_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "decision_policy_fingerprint",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "decision_policy_version",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "determinism",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "packet_schema_version",
+          "level": 1,
+          "line": 54
+        },
+        {
+          "heading": "synthetic_sweep",
+          "level": 1,
+          "line": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "benchmarks/gold/artifacts/paper_runtime_bench.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 115,
+      "nonEmptyLines": 115,
+      "sections": [
+        {
+          "heading": "benchmark_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "ledger_schema_version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "real_sequence",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "record_schema_version",
+          "level": 1,
+          "line": 49
+        },
+        {
+          "heading": "runtime_policy_fingerprint",
+          "level": 1,
+          "line": 50
+        },
+        {
+          "heading": "runtime_policy_version",
+          "level": 1,
+          "line": 51
+        },
+        {
+          "heading": "synthetic_sequence",
+          "level": 1,
+          "line": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "benchmarks/gold/run_gold_bench.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 210,
+      "nonEmptyLines": 181,
+      "functions": [
+        {
+          "name": "_make_fv",
+          "startLine": 82,
+          "endLine": 90,
+          "params": [
+            "overrides",
+            "drop"
+          ]
+        },
+        {
+          "name": "run_determinism",
+          "startLine": 93,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "_stats",
+          "startLine": 131,
+          "endLine": 136,
+          "params": [
+            "values"
+          ]
+        },
+        {
+          "name": "run_synthetic_sweep",
+          "startLine": 139,
+          "endLine": 179,
+          "params": []
+        },
+        {
+          "name": "build_report",
+          "startLine": 182,
+          "endLine": 191,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 194,
+          "endLine": 206,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_make_fv",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "run_determinism",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "_stats",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "run_synthetic_sweep",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "build_report",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 194,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_make_fv",
+          "callee": "dict",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "values.update",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "values.pop",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "Feature",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "float",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "values.items",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "FeatureVector",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "tuple",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "sorted",
+          "lineNumber": 90
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "consume",
+          "lineNumber": 98
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "inputs.append",
+          "lineNumber": 100
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "inputs.append",
+          "lineNumber": 103
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_features",
+          "lineNumber": 105
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "classify",
+          "lineNumber": 106
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "json.dumps",
+          "lineNumber": 107
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_decision(fv, rc).to_dict",
+          "lineNumber": 107
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_decision",
+          "lineNumber": 107
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "json.dumps",
+          "lineNumber": 108
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_decision(fv, rc).to_dict",
+          "lineNumber": 108
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_decision",
+          "lineNumber": 108
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_decision",
+          "lineNumber": 109
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "inputs.append",
+          "lineNumber": 110
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "round",
+          "lineNumber": 117
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "round",
+          "lineNumber": 118
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "i.get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "all",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_stats",
+          "callee": "round",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_stats",
+          "callee": "min",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_stats",
+          "callee": "round",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_stats",
+          "callee": "max",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_stats",
+          "callee": "round",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_stats",
+          "callee": "sum",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_stats",
+          "callee": "len",
+          "lineNumber": 135
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "tuple",
+          "lineNumber": 147
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_GRID_AXES.keys",
+          "lineNumber": 147
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "itertools.product",
+          "lineNumber": 148
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_make_fv",
+          "lineNumber": 149
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "dict",
+          "lineNumber": 149
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "zip",
+          "lineNumber": 149
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "build_decision",
+          "lineNumber": 150
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "classify",
+          "lineNumber": 150
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "confidences.append",
+          "lineNumber": 153
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "uncertainties.append",
+          "lineNumber": 154
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_make_fv",
+          "lineNumber": 158
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_make_fv",
+          "lineNumber": 159
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "build_decision",
+          "lineNumber": 161
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "classify",
+          "lineNumber": 161
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "confidences.append",
+          "lineNumber": 164
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "uncertainties.append",
+          "lineNumber": 165
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "list",
+          "lineNumber": 170
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_GRID_AXES.items",
+          "lineNumber": 170
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sorted",
+          "lineNumber": 172
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "round",
+          "lineNumber": 174
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sorted",
+          "lineNumber": 174
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sorted",
+          "lineNumber": 176
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_stats",
+          "lineNumber": 177
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_stats",
+          "lineNumber": 178
+        },
+        {
+          "caller": "build_report",
+          "callee": "DEFAULT_DECISION_POLICY_CONFIG.decision_policy_fingerprint",
+          "lineNumber": 187
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_determinism",
+          "lineNumber": 189
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_synthetic_sweep",
+          "lineNumber": 190
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 195
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.parent.mkdir",
+          "lineNumber": 196
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.write_text",
+          "lineNumber": 197
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 197
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 200
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.relative_to",
+          "lineNumber": 200
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 205
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 206
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "benchmarks/gold/run_paper_runtime_bench.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 228,
+      "nonEmptyLines": 196,
+      "functions": [
+        {
+          "name": "_replay_block",
+          "startLine": 66,
+          "endLine": 91,
+          "params": [
+            "labels",
+            "items"
+          ]
+        },
+        {
+          "name": "_build_real_item",
+          "startLine": 97,
+          "endLine": 117,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "run_real",
+          "startLine": 120,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "_synthetic_packet",
+          "startLine": 144,
+          "endLine": 174,
+          "params": [
+            "snapshot_id",
+            "direction",
+            "sg",
+            "regime"
+          ]
+        },
+        {
+          "name": "run_synthetic",
+          "startLine": 177,
+          "endLine": 194,
+          "params": []
+        },
+        {
+          "name": "build_report",
+          "startLine": 197,
+          "endLine": 207,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 210,
+          "endLine": 224,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_replay_block",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "_build_real_item",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "run_real",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "_synthetic_packet",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "run_synthetic",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "build_report",
+          "line": 197,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 210,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_replay_block",
+          "callee": "run_sequence",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "run_sequence",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "json.dumps",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "r.to_dict",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "json.dumps",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "r.to_dict",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "ledger_a.state_hash",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "ledger_b.state_hash",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "zip",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "sum",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "len",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "all",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "GuardRefs",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_replay_block",
+          "callee": "ledger_a.state_hash",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_build_real_item",
+          "callee": "consume",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_build_real_item",
+          "callee": "build_features",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_build_real_item",
+          "callee": "classify",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_build_real_item",
+          "callee": "SnapshotGuards",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_build_real_item",
+          "callee": "build_decision",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_build_real_item",
+          "callee": "OperationalInput",
+          "lineNumber": 113
+        },
+        {
+          "caller": "run_real",
+          "callee": "_build_real_item",
+          "lineNumber": 124
+        },
+        {
+          "caller": "run_real",
+          "callee": "labels.append",
+          "lineNumber": 127
+        },
+        {
+          "caller": "run_real",
+          "callee": "items.append",
+          "lineNumber": 128
+        },
+        {
+          "caller": "run_real",
+          "callee": "labels.append",
+          "lineNumber": 130
+        },
+        {
+          "caller": "run_real",
+          "callee": "items.append",
+          "lineNumber": 131
+        },
+        {
+          "caller": "run_real",
+          "callee": "_replay_block",
+          "lineNumber": 132
+        },
+        {
+          "caller": "run_real",
+          "callee": "next",
+          "lineNumber": 133
+        },
+        {
+          "caller": "run_real",
+          "callee": "r[\"label\"].endswith",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_synthetic_packet",
+          "callee": "GoldDecisionPacket",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_synthetic_packet",
+          "callee": "ConfidenceInputs",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_synthetic_packet",
+          "callee": "GuardRefs",
+          "lineNumber": 169
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "SnapshotGuards",
+          "lineNumber": 178
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "SnapshotGuards",
+          "lineNumber": 179
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 181
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 182
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 183
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 185
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 186
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 187
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_synthetic_packet",
+          "lineNumber": 188
+        },
+        {
+          "caller": "run_synthetic",
+          "callee": "_replay_block",
+          "lineNumber": 192
+        },
+        {
+          "caller": "build_report",
+          "callee": "DEFAULT_RUNTIME_POLICY_CONFIG.runtime_policy_fingerprint",
+          "lineNumber": 202
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_real",
+          "lineNumber": 205
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_synthetic",
+          "lineNumber": 206
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 211
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.parent.mkdir",
+          "lineNumber": 212
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.write_text",
+          "lineNumber": 213
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 213
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 216
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.relative_to",
+          "lineNumber": 216
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 217
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 221
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "benchmarks/orchestration/artifacts/chain_bench.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 134,
+      "nonEmptyLines": 134,
+      "sections": [
+        {
+          "heading": "all_replays_byte_identical",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "benchmark_id",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "measures",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "pinned_ledger_state_hash",
+          "level": 1,
+          "line": 13
+        },
+        {
+          "heading": "pinned_portfolio_state_hash",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "real_sequence",
+          "level": 1,
+          "line": 15
+        },
+        {
+          "heading": "replay_key",
+          "level": 1,
+          "line": 113
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "benchmarks/orchestration/run_chain_bench.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 229,
+      "nonEmptyLines": 200,
+      "functions": [
+        {
+          "name": "_guard_config_fingerprint",
+          "startLine": 76,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "_replay_key",
+          "startLine": 82,
+          "endLine": 104,
+          "params": []
+        },
+        {
+          "name": "_result",
+          "startLine": 107,
+          "endLine": 122,
+          "params": [
+            "label",
+            "r"
+          ]
+        },
+        {
+          "name": "_load_real",
+          "startLine": 125,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "run_real",
+          "startLine": 141,
+          "endLine": 186,
+          "params": []
+        },
+        {
+          "name": "build_report",
+          "startLine": 189,
+          "endLine": 208,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 211,
+          "endLine": 225,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_guard_config_fingerprint",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "_replay_key",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "_result",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "_load_real",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "run_real",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "build_report",
+          "line": 189,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 211,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "asdict",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_guard_config_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_replay_key",
+          "callee": "DEFAULT_DECISION_POLICY_CONFIG.decision_policy_fingerprint",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_replay_key",
+          "callee": "DEFAULT_EXECUTION_POLICY_CONFIG.fingerprint",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_replay_key",
+          "callee": "DEFAULT_FILL_MODEL.fingerprint",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_replay_key",
+          "callee": "_guard_config_fingerprint",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_replay_key",
+          "callee": "DEFAULT_OPERATIONAL_INPUT.fingerprint",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_replay_key",
+          "callee": "DEFAULT_RUNTIME_POLICY_CONFIG.runtime_policy_fingerprint",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_result",
+          "callee": "r.ledger.state_hash",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_result",
+          "callee": "r.portfolio.state_hash",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_load_real",
+          "callee": "consume",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_load_real",
+          "callee": "labels.append",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_load_real",
+          "callee": "snaps.append",
+          "lineNumber": 137
+        },
+        {
+          "caller": "run_real",
+          "callee": "_load_real",
+          "lineNumber": 143
+        },
+        {
+          "caller": "run_real",
+          "callee": "run_sequence",
+          "lineNumber": 148
+        },
+        {
+          "caller": "run_real",
+          "callee": "run_sequence",
+          "lineNumber": 149
+        },
+        {
+          "caller": "run_real",
+          "callee": "json.dumps",
+          "lineNumber": 150
+        },
+        {
+          "caller": "run_real",
+          "callee": "r.to_dict",
+          "lineNumber": 150
+        },
+        {
+          "caller": "run_real",
+          "callee": "json.dumps",
+          "lineNumber": 151
+        },
+        {
+          "caller": "run_real",
+          "callee": "r.to_dict",
+          "lineNumber": 151
+        },
+        {
+          "caller": "run_real",
+          "callee": "ledger_a.state_hash",
+          "lineNumber": 154
+        },
+        {
+          "caller": "run_real",
+          "callee": "ledger_b.state_hash",
+          "lineNumber": 154
+        },
+        {
+          "caller": "run_real",
+          "callee": "pf_a.state_hash",
+          "lineNumber": 155
+        },
+        {
+          "caller": "run_real",
+          "callee": "pf_b.state_hash",
+          "lineNumber": 155
+        },
+        {
+          "caller": "run_real",
+          "callee": "_result",
+          "lineNumber": 158
+        },
+        {
+          "caller": "run_real",
+          "callee": "zip",
+          "lineNumber": 158
+        },
+        {
+          "caller": "run_real",
+          "callee": "sum",
+          "lineNumber": 159
+        },
+        {
+          "caller": "run_real",
+          "callee": "sum",
+          "lineNumber": 160
+        },
+        {
+          "caller": "run_real",
+          "callee": "next",
+          "lineNumber": 161
+        },
+        {
+          "caller": "run_real",
+          "callee": "r[\"label\"].endswith",
+          "lineNumber": 161
+        },
+        {
+          "caller": "run_real",
+          "callee": "zip",
+          "lineNumber": 166
+        },
+        {
+          "caller": "run_real",
+          "callee": "ledger_a.state_hash",
+          "lineNumber": 168
+        },
+        {
+          "caller": "run_real",
+          "callee": "pf_a.state_hash",
+          "lineNumber": 169
+        },
+        {
+          "caller": "run_real",
+          "callee": "len",
+          "lineNumber": 170
+        },
+        {
+          "caller": "run_real",
+          "callee": "sum",
+          "lineNumber": 176
+        },
+        {
+          "caller": "run_real",
+          "callee": "len",
+          "lineNumber": 184
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_real",
+          "lineNumber": 191
+        },
+        {
+          "caller": "build_report",
+          "callee": "_replay_key",
+          "lineNumber": 207
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 212
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.parent.mkdir",
+          "lineNumber": 213
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.write_text",
+          "lineNumber": 214
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 214
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 216
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.relative_to",
+          "lineNumber": 216
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 217
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 222
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 223
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 224
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 225
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "benchmarks/regime/artifacts/regime_bench.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 136,
+      "nonEmptyLines": 136,
+      "sections": [
+        {
+          "heading": "benchmark_id",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "classification_trace_version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "classifier_version",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "decision_fingerprint",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "determinism",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "feature_schema_version",
+          "level": 1,
+          "line": 49
+        },
+        {
+          "heading": "synthetic_sweep",
+          "level": 1,
+          "line": 50
+        },
+        {
+          "heading": "taxonomy_version",
+          "level": 1,
+          "line": 135
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "benchmarks/regime/run_regime_bench.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 228,
+      "nonEmptyLines": 199,
+      "functions": [
+        {
+          "name": "_make_fv",
+          "startLine": 89,
+          "endLine": 97,
+          "params": [
+            "overrides",
+            "drop"
+          ]
+        },
+        {
+          "name": "run_determinism",
+          "startLine": 100,
+          "endLine": 132,
+          "params": []
+        },
+        {
+          "name": "run_synthetic_sweep",
+          "startLine": 135,
+          "endLine": 195,
+          "params": []
+        },
+        {
+          "name": "build_report",
+          "startLine": 198,
+          "endLine": 209,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 212,
+          "endLine": 224,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_make_fv",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "run_determinism",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "run_synthetic_sweep",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "build_report",
+          "line": 198,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 212,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_make_fv",
+          "callee": "dict",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "values.update",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "values.pop",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "Feature",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "float",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "values.items",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "FeatureVector",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "tuple",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_make_fv",
+          "callee": "sorted",
+          "lineNumber": 97
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "consume",
+          "lineNumber": 105
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "inputs.append",
+          "lineNumber": 107
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "inputs.append",
+          "lineNumber": 110
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "build_features",
+          "lineNumber": 112
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "json.dumps",
+          "lineNumber": 113
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "classify(fv).to_dict",
+          "lineNumber": 113
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "classify",
+          "lineNumber": 113
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "json.dumps",
+          "lineNumber": 114
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "classify(fv).to_dict",
+          "lineNumber": 114
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "classify",
+          "lineNumber": 114
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "classify",
+          "lineNumber": 115
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "inputs.append",
+          "lineNumber": 116
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "round",
+          "lineNumber": 123
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "i.get",
+          "lineNumber": 127
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "len",
+          "lineNumber": 130
+        },
+        {
+          "caller": "run_determinism",
+          "callee": "all",
+          "lineNumber": 131
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "tuple",
+          "lineNumber": 142
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_GRID_AXES.keys",
+          "lineNumber": 142
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "itertools.product",
+          "lineNumber": 143
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "dict",
+          "lineNumber": 144
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "zip",
+          "lineNumber": 144
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "classify",
+          "lineNumber": 145
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_make_fv",
+          "lineNumber": 145
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "rule_util.get",
+          "lineNumber": 147
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_make_fv",
+          "lineNumber": 155
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_make_fv",
+          "lineNumber": 156
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "classify",
+          "lineNumber": 158
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "rule_util.get",
+          "lineNumber": 160
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "round",
+          "lineNumber": 167
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sorted",
+          "lineNumber": 167
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "math.log2",
+          "lineNumber": 175
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sum",
+          "lineNumber": 176
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "math.log2",
+          "lineNumber": 177
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "list",
+          "lineNumber": 181
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "_GRID_AXES.items",
+          "lineNumber": 181
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sorted",
+          "lineNumber": 183
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "sorted",
+          "lineNumber": 184
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "len",
+          "lineNumber": 188
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "len",
+          "lineNumber": 189
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "round",
+          "lineNumber": 191
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "round",
+          "lineNumber": 192
+        },
+        {
+          "caller": "run_synthetic_sweep",
+          "callee": "round",
+          "lineNumber": 193
+        },
+        {
+          "caller": "build_report",
+          "callee": "DEFAULT_REGIME_CONFIG.decision_fingerprint",
+          "lineNumber": 206
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_determinism",
+          "lineNumber": 207
+        },
+        {
+          "caller": "build_report",
+          "callee": "run_synthetic_sweep",
+          "lineNumber": 208
+        },
+        {
+          "caller": "main",
+          "callee": "build_report",
+          "lineNumber": 213
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.parent.mkdir",
+          "lineNumber": 214
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.write_text",
+          "lineNumber": 215
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 215
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 218
+        },
+        {
+          "caller": "main",
+          "callee": "ARTIFACT_PATH.relative_to",
+          "lineNumber": 218
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 219
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 221
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 223
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "dev_graph/api_docs/Alpaca API Docs.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 97,
+      "nonEmptyLines": 70,
+      "sections": [
+        {
+          "heading": "Alpaca API Docs",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "API Scope",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Retrieval Method",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Authentication",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Wiki Reference",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Version Notes",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 84
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 97
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "dev_graph/api_docs/Anthropic API Docs.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 98,
+      "nonEmptyLines": 71,
+      "sections": [
+        {
+          "heading": "Anthropic API Docs",
+          "level": 1,
+          "line": 31
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "API Scope",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Retrieval Method",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Authentication",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Wiki Reference",
+          "level": 2,
+          "line": 67
+        },
+        {
+          "heading": "Version Notes",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 90
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "dev_graph/capabilities/Upgrade Evaluation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 73,
+      "nonEmptyLines": 54,
+      "sections": [
+        {
+          "heading": "Upgrade Evaluation",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 66
+        },
+        {
+          "heading": "Realizes",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/context_packs/Context Pack Template.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 143,
+      "nonEmptyLines": 101,
+      "sections": [
+        {
+          "heading": "Context Pack Template",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Task",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Retrieved Nodes",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Canonical Nodes",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Required Files",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Required Tests",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Required Constraints",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Required API Docs",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Relevant Decisions",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Deprecated / Excluded Notes",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Admissibility Check",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Implementation Plan",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "Validation Plan",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Writeback Plan",
+          "level": 2,
+          "line": 111
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 122
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 129
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 132
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 135
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 137
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "dev_graph/context_packs/Phase 5 Bootstrap Context.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 167,
+      "nonEmptyLines": 128,
+      "sections": [
+        {
+          "heading": "Phase 5 Bootstrap Context",
+          "level": 1,
+          "line": 46
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Task",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Substrate Decision Agenda (produce ADR-003)",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Retrieved Nodes",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Canonical Nodes",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Required Files",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Required Tests",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Required Constraints",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Required API Docs",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Relevant Decisions",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Deprecated / Excluded Notes",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Admissibility Check",
+          "level": 2,
+          "line": 121
+        },
+        {
+          "heading": "Implementation Plan",
+          "level": 2,
+          "line": 129
+        },
+        {
+          "heading": "Validation Plan",
+          "level": 2,
+          "line": 136
+        },
+        {
+          "heading": "Writeback Plan",
+          "level": 2,
+          "line": 142
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 153
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 161
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 164
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": "dev_graph/observability/Dev Graph Dashboard.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 273,
+      "nonEmptyLines": 213,
+      "sections": [
+        {
+          "heading": "Dev Graph Dashboard",
+          "level": 1,
+          "line": 22
+        },
+        {
+          "heading": "1. Node Inventory",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "2. Nodes Missing Frontmatter",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "3. Type Distribution",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "4. Implementation Status Distribution",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "5. Confidence Distribution",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "6. Stale Nodes (>30 days without update)",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "7. Orphan Nodes (0 inbound links)",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "8. Constraint Coverage (nodes without related_constraints)",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "9. Test Coverage (modules/files without related_tests)",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "10. API Doc Freshness",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "11. Blocked Nodes",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "12. Deprecated Decisions",
+          "level": 2,
+          "line": 137
+        },
+        {
+          "heading": "13. Canonical ID Coverage",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "14. Evidence Coverage",
+          "level": 2,
+          "line": 155
+        },
+        {
+          "heading": "15. Pattern Realization Coverage",
+          "level": 2,
+          "line": 164
+        },
+        {
+          "heading": "16. Traceability Gaps (Capabilities without Justified By)",
+          "level": 2,
+          "line": 173
+        },
+        {
+          "heading": "17. Population Progress",
+          "level": 2,
+          "line": 182
+        },
+        {
+          "heading": "18. Population Debt: Systems Without Capabilities",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "19. Population Debt: Capabilities Without Modules",
+          "level": 2,
+          "line": 201
+        },
+        {
+          "heading": "20. Population Debt: Modules Without Files",
+          "level": 2,
+          "line": 211
+        },
+        {
+          "heading": "21. Population Debt: Modules Without Tests",
+          "level": 2,
+          "line": 221
+        },
+        {
+          "heading": "22. Benchmark Inventory",
+          "level": 2,
+          "line": 232
+        },
+        {
+          "heading": "Known Distinct Pairs",
+          "level": 2,
+          "line": 243
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 249
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 251
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 255
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 258
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 260
+        },
+        {
+          "heading": "Supersedes",
+          "level": 3,
+          "line": 262
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 264
+        },
+        {
+          "heading": "Produces",
+          "level": 3,
+          "line": 269
+        },
+        {
+          "heading": "Consumes",
+          "level": 3,
+          "line": 272
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 33
+      }
+    },
+    {
+      "path": "dev_graph/observability/Operations Control Plane Console.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 96,
+      "nonEmptyLines": 74,
+      "sections": [
+        {
+          "heading": "Operations Control Plane Console",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Inputs (Dependencies)",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Outputs (Provides)",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Constraints",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Implementation Notes",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Validated By",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Justified By",
+          "level": 3,
+          "line": 95
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "dev_graph/workflows/System Lifecycle.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 116,
+      "nonEmptyLines": 94,
+      "sections": [
+        {
+          "heading": "System Lifecycle",
+          "level": 1,
+          "line": 24
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "State Machine",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "State Definitions",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Transition Guards",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Relationships",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Depends On",
+          "level": 3,
+          "line": 95
+        },
+        {
+          "heading": "Provides",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Contains",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Guards",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Constrained By",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Used By",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Originates From",
+          "level": 3,
+          "line": 113
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "jarvis/backend/app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 638,
+      "nonEmptyLines": 533,
+      "functions": [
+        {
+          "name": "_guard",
+          "startLine": 55,
+          "endLine": 61,
+          "params": [
+            "cypher"
+          ]
+        },
+        {
+          "name": "run_read",
+          "startLine": 64,
+          "endLine": 77,
+          "params": [
+            "cypher"
+          ]
+        },
+        {
+          "name": "lifespan",
+          "startLine": 81,
+          "endLine": 86,
+          "params": [
+            "_app"
+          ]
+        },
+        {
+          "name": "_node",
+          "startLine": 115,
+          "endLine": 125,
+          "params": [
+            "n"
+          ]
+        },
+        {
+          "name": "_graph",
+          "startLine": 128,
+          "endLine": 166,
+          "params": [
+            "records",
+            "node_keys",
+            "path_key"
+          ]
+        },
+        {
+          "name": "health",
+          "startLine": 182,
+          "endLine": 195,
+          "params": []
+        },
+        {
+          "name": "meta",
+          "startLine": 199,
+          "endLine": 210,
+          "params": []
+        },
+        {
+          "name": "node",
+          "startLine": 214,
+          "endLine": 219,
+          "params": [
+            "cid"
+          ]
+        },
+        {
+          "name": "neighbors",
+          "startLine": 223,
+          "endLine": 242,
+          "params": [
+            "cid",
+            "depth",
+            "direction",
+            "limit"
+          ]
+        },
+        {
+          "name": "search",
+          "startLine": 246,
+          "endLine": 260,
+          "params": [
+            "q",
+            "label",
+            "limit"
+          ]
+        },
+        {
+          "name": "shortest_path",
+          "startLine": 264,
+          "endLine": 278,
+          "params": [
+            "source",
+            "target",
+            "max_hops"
+          ]
+        },
+        {
+          "name": "subgraph",
+          "startLine": 282,
+          "endLine": 302,
+          "params": [
+            "label",
+            "limit"
+          ]
+        },
+        {
+          "name": "_norm",
+          "startLine": 318,
+          "endLine": 319,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "_tokens",
+          "startLine": 322,
+          "endLine": 323,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "_graph_doc",
+          "startLine": 327,
+          "endLine": 333,
+          "params": []
+        },
+        {
+          "name": "_score",
+          "startLine": 336,
+          "endLine": 357,
+          "params": [
+            "nq",
+            "toks",
+            "n"
+          ]
+        },
+        {
+          "name": "_match_seed",
+          "startLine": 360,
+          "endLine": 372,
+          "params": [
+            "question"
+          ]
+        },
+        {
+          "name": "_neighborhood",
+          "startLine": 375,
+          "endLine": 397,
+          "params": [
+            "cid"
+          ]
+        },
+        {
+          "name": "_graph_doc_edges",
+          "startLine": 401,
+          "endLine": 406,
+          "params": []
+        },
+        {
+          "name": "_context_block",
+          "startLine": 409,
+          "endLine": 422,
+          "params": [
+            "subgraph"
+          ]
+        },
+        {
+          "name": "_claude_answer",
+          "startLine": 438,
+          "endLine": 458,
+          "params": [
+            "question",
+            "context"
+          ]
+        },
+        {
+          "name": "ask",
+          "startLine": 466,
+          "endLine": 498,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "_whisper_available",
+          "startLine": 512,
+          "endLine": 514,
+          "params": []
+        },
+        {
+          "name": "_piper_available",
+          "startLine": 517,
+          "endLine": 519,
+          "params": []
+        },
+        {
+          "name": "_whisper_model",
+          "startLine": 523,
+          "endLine": 532,
+          "params": []
+        },
+        {
+          "name": "voice_health",
+          "startLine": 536,
+          "endLine": 544,
+          "params": []
+        },
+        {
+          "name": "voice_stt",
+          "startLine": 548,
+          "endLine": 570,
+          "params": [
+            "audio"
+          ]
+        },
+        {
+          "name": "voice_tts",
+          "startLine": 578,
+          "endLine": 604,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "_info",
+          "startLine": 607,
+          "endLine": 614,
+          "params": []
+        },
+        {
+          "name": "info",
+          "startLine": 618,
+          "endLine": 619,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Health",
+          "startLine": 171,
+          "endLine": 176,
+          "methods": [],
+          "properties": [
+            "ok",
+            "neo4j",
+            "node_count",
+            "edge_count",
+            "detail"
+          ]
+        },
+        {
+          "name": "AskRequest",
+          "startLine": 461,
+          "endLine": 462,
+          "methods": [],
+          "properties": [
+            "question"
+          ]
+        },
+        {
+          "name": "TtsRequest",
+          "startLine": 573,
+          "endLine": 574,
+          "methods": [],
+          "properties": [
+            "text"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_guard",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "run_read",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "lifespan",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "_node",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "_graph",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "Health",
+          "line": 171,
+          "isDefault": false
+        },
+        {
+          "name": "health",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "meta",
+          "line": 198,
+          "isDefault": false
+        },
+        {
+          "name": "node",
+          "line": 213,
+          "isDefault": false
+        },
+        {
+          "name": "neighbors",
+          "line": 222,
+          "isDefault": false
+        },
+        {
+          "name": "search",
+          "line": 245,
+          "isDefault": false
+        },
+        {
+          "name": "shortest_path",
+          "line": 263,
+          "isDefault": false
+        },
+        {
+          "name": "subgraph",
+          "line": 281,
+          "isDefault": false
+        },
+        {
+          "name": "_norm",
+          "line": 318,
+          "isDefault": false
+        },
+        {
+          "name": "_tokens",
+          "line": 322,
+          "isDefault": false
+        },
+        {
+          "name": "_graph_doc",
+          "line": 326,
+          "isDefault": false
+        },
+        {
+          "name": "_score",
+          "line": 336,
+          "isDefault": false
+        },
+        {
+          "name": "_match_seed",
+          "line": 360,
+          "isDefault": false
+        },
+        {
+          "name": "_neighborhood",
+          "line": 375,
+          "isDefault": false
+        },
+        {
+          "name": "_graph_doc_edges",
+          "line": 400,
+          "isDefault": false
+        },
+        {
+          "name": "_context_block",
+          "line": 409,
+          "isDefault": false
+        },
+        {
+          "name": "_claude_answer",
+          "line": 438,
+          "isDefault": false
+        },
+        {
+          "name": "AskRequest",
+          "line": 461,
+          "isDefault": false
+        },
+        {
+          "name": "ask",
+          "line": 465,
+          "isDefault": false
+        },
+        {
+          "name": "_whisper_available",
+          "line": 512,
+          "isDefault": false
+        },
+        {
+          "name": "_piper_available",
+          "line": 517,
+          "isDefault": false
+        },
+        {
+          "name": "_whisper_model",
+          "line": 522,
+          "isDefault": false
+        },
+        {
+          "name": "voice_health",
+          "line": 535,
+          "isDefault": false
+        },
+        {
+          "name": "voice_stt",
+          "line": 547,
+          "isDefault": false
+        },
+        {
+          "name": "TtsRequest",
+          "line": 573,
+          "isDefault": false
+        },
+        {
+          "name": "voice_tts",
+          "line": 577,
+          "isDefault": false
+        },
+        {
+          "name": "_info",
+          "line": 607,
+          "isDefault": false
+        },
+        {
+          "name": "info",
+          "line": 617,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_guard",
+          "callee": "re.sub",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_guard",
+          "callee": "cypher.lower",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_guard",
+          "callee": "any",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_guard",
+          "callee": "HTTPException",
+          "lineNumber": 61
+        },
+        {
+          "caller": "run_read",
+          "callee": "_guard",
+          "lineNumber": 66
+        },
+        {
+          "caller": "run_read",
+          "callee": "HTTPException",
+          "lineNumber": 68
+        },
+        {
+          "caller": "run_read",
+          "callee": "_driver.session",
+          "lineNumber": 70
+        },
+        {
+          "caller": "run_read",
+          "callee": "dict",
+          "lineNumber": 73
+        },
+        {
+          "caller": "run_read",
+          "callee": "session.run",
+          "lineNumber": 73
+        },
+        {
+          "caller": "run_read",
+          "callee": "HTTPException",
+          "lineNumber": 75
+        },
+        {
+          "caller": "run_read",
+          "callee": "HTTPException",
+          "lineNumber": 77
+        },
+        {
+          "caller": "lifespan",
+          "callee": "GraphDatabase.driver",
+          "lineNumber": 83
+        },
+        {
+          "caller": "lifespan",
+          "callee": "_driver.close",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_node",
+          "callee": "dict",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_node",
+          "callee": "props.get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_node",
+          "callee": "props.get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "add_node",
+          "callee": "_node",
+          "lineNumber": 136
+        },
+        {
+          "caller": "add_rel",
+          "callee": "r.start_node.get",
+          "lineNumber": 143
+        },
+        {
+          "caller": "add_rel",
+          "callee": "r.end_node.get",
+          "lineNumber": 144
+        },
+        {
+          "caller": "add_rel",
+          "callee": "add_node",
+          "lineNumber": 146
+        },
+        {
+          "caller": "add_rel",
+          "callee": "add_node",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_graph",
+          "callee": "add_node",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_graph",
+          "callee": "add_node",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_graph",
+          "callee": "add_rel",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_graph",
+          "callee": "add_rel",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_graph",
+          "callee": "add_rel",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_graph",
+          "callee": "list",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_graph",
+          "callee": "nodes.values",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_graph",
+          "callee": "list",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_graph",
+          "callee": "edges.values",
+          "lineNumber": 166
+        },
+        {
+          "caller": "health",
+          "callee": "run_read",
+          "lineNumber": 186
+        },
+        {
+          "caller": "health",
+          "callee": "Health",
+          "lineNumber": 193
+        },
+        {
+          "caller": "health",
+          "callee": "Health",
+          "lineNumber": 195
+        },
+        {
+          "caller": "health",
+          "callee": "str",
+          "lineNumber": 195
+        },
+        {
+          "caller": "meta",
+          "callee": "run_read",
+          "lineNumber": 201
+        },
+        {
+          "caller": "meta",
+          "callee": "run_read",
+          "lineNumber": 206
+        },
+        {
+          "caller": "node",
+          "callee": "run_read",
+          "lineNumber": 216
+        },
+        {
+          "caller": "node",
+          "callee": "HTTPException",
+          "lineNumber": 218
+        },
+        {
+          "caller": "node",
+          "callee": "_node",
+          "lineNumber": 219
+        },
+        {
+          "caller": "neighbors",
+          "callee": "Query",
+          "lineNumber": 225
+        },
+        {
+          "caller": "neighbors",
+          "callee": "Query",
+          "lineNumber": 226
+        },
+        {
+          "caller": "neighbors",
+          "callee": "Query",
+          "lineNumber": 227
+        },
+        {
+          "caller": "neighbors",
+          "callee": "arrow.replace",
+          "lineNumber": 234
+        },
+        {
+          "caller": "neighbors",
+          "callee": "run_read",
+          "lineNumber": 237
+        },
+        {
+          "caller": "neighbors",
+          "callee": "_graph",
+          "lineNumber": 238
+        },
+        {
+          "caller": "neighbors",
+          "callee": "node",
+          "lineNumber": 241
+        },
+        {
+          "caller": "search",
+          "callee": "Query",
+          "lineNumber": 247
+        },
+        {
+          "caller": "search",
+          "callee": "Query",
+          "lineNumber": 248
+        },
+        {
+          "caller": "search",
+          "callee": "Query",
+          "lineNumber": 249
+        },
+        {
+          "caller": "search",
+          "callee": "label.isalnum",
+          "lineNumber": 252
+        },
+        {
+          "caller": "search",
+          "callee": "run_read",
+          "lineNumber": 259
+        },
+        {
+          "caller": "search",
+          "callee": "_node",
+          "lineNumber": 260
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "Query",
+          "lineNumber": 265
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "Query",
+          "lineNumber": 266
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "Query",
+          "lineNumber": 267
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "run_read",
+          "lineNumber": 275
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "records[0].get",
+          "lineNumber": 276
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "HTTPException",
+          "lineNumber": 277
+        },
+        {
+          "caller": "shortest_path",
+          "callee": "_graph",
+          "lineNumber": 278
+        },
+        {
+          "caller": "subgraph",
+          "callee": "Query",
+          "lineNumber": 283
+        },
+        {
+          "caller": "subgraph",
+          "callee": "Query",
+          "lineNumber": 284
+        },
+        {
+          "caller": "subgraph",
+          "callee": "label.isalnum",
+          "lineNumber": 288
+        },
+        {
+          "caller": "subgraph",
+          "callee": "run_read",
+          "lineNumber": 295
+        },
+        {
+          "caller": "subgraph",
+          "callee": "rec.get",
+          "lineNumber": 299
+        },
+        {
+          "caller": "subgraph",
+          "callee": "rec.get",
+          "lineNumber": 300
+        },
+        {
+          "caller": "subgraph",
+          "callee": "flat.append",
+          "lineNumber": 301
+        },
+        {
+          "caller": "subgraph",
+          "callee": "rec.get",
+          "lineNumber": 301
+        },
+        {
+          "caller": "subgraph",
+          "callee": "_graph",
+          "lineNumber": 302
+        },
+        {
+          "caller": "_norm",
+          "callee": "re.sub(r\"\\s+\", \" \", re.sub(r\"[^a-z0-9 ]\", \" \", (s or \"\").lower())).strip",
+          "lineNumber": 319
+        },
+        {
+          "caller": "_norm",
+          "callee": "re.sub",
+          "lineNumber": 319
+        },
+        {
+          "caller": "_norm",
+          "callee": "re.sub",
+          "lineNumber": 319
+        },
+        {
+          "caller": "_norm",
+          "callee": "(s or \"\").lower",
+          "lineNumber": 319
+        },
+        {
+          "caller": "_tokens",
+          "callee": "_norm(s).split",
+          "lineNumber": 323
+        },
+        {
+          "caller": "_tokens",
+          "callee": "_norm",
+          "lineNumber": 323
+        },
+        {
+          "caller": "_tokens",
+          "callee": "len",
+          "lineNumber": 323
+        },
+        {
+          "caller": "_graph_doc",
+          "callee": "json.loads",
+          "lineNumber": 330
+        },
+        {
+          "caller": "_graph_doc",
+          "callee": "GRAPH_JSON_PATH.read_text",
+          "lineNumber": 330
+        },
+        {
+          "caller": "_graph_doc",
+          "callee": "data.get",
+          "lineNumber": 333
+        },
+        {
+          "caller": "_graph_doc",
+          "callee": "n.get",
+          "lineNumber": 333
+        },
+        {
+          "caller": "_score",
+          "callee": "_norm",
+          "lineNumber": 338
+        },
+        {
+          "caller": "_score",
+          "callee": "n.get",
+          "lineNumber": 338
+        },
+        {
+          "caller": "_score",
+          "callee": "_norm",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_score",
+          "callee": "n.get",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_score",
+          "callee": "idn.replace",
+          "lineNumber": 340
+        },
+        {
+          "caller": "_score",
+          "callee": "_norm",
+          "lineNumber": 341
+        },
+        {
+          "caller": "_score",
+          "callee": "n.get",
+          "lineNumber": 341
+        },
+        {
+          "caller": "_score",
+          "callee": "nm.split",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_score",
+          "callee": "nq.replace",
+          "lineNumber": 346
+        },
+        {
+          "caller": "_score",
+          "callee": "len",
+          "lineNumber": 348
+        },
+        {
+          "caller": "_match_seed",
+          "callee": "_graph_doc",
+          "lineNumber": 361
+        },
+        {
+          "caller": "_match_seed",
+          "callee": "_norm",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_match_seed",
+          "callee": "_tokens",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_match_seed",
+          "callee": "docs.values",
+          "lineNumber": 368
+        },
+        {
+          "caller": "_match_seed",
+          "callee": "_score",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "_graph_doc",
+          "lineNumber": 378
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "neighbors",
+          "lineNumber": 383
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "g.get",
+          "lineNumber": 384
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "_graph_doc_edges",
+          "lineNumber": 388
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "e.get",
+          "lineNumber": 388
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "e.get",
+          "lineNumber": 388
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "ids.add",
+          "lineNumber": 392
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "ids.add",
+          "lineNumber": 393
+        },
+        {
+          "caller": "_neighborhood",
+          "callee": "nodes.append",
+          "lineNumber": 396
+        },
+        {
+          "caller": "_graph_doc_edges",
+          "callee": "json.loads",
+          "lineNumber": 403
+        },
+        {
+          "caller": "_graph_doc_edges",
+          "callee": "GRAPH_JSON_PATH.read_text",
+          "lineNumber": 403
+        },
+        {
+          "caller": "_graph_doc_edges",
+          "callee": "data.get",
+          "lineNumber": 406
+        },
+        {
+          "caller": "_context_block",
+          "callee": "\", \".join",
+          "lineNumber": 412
+        },
+        {
+          "caller": "_context_block",
+          "callee": "n.get",
+          "lineNumber": 412
+        },
+        {
+          "caller": "_context_block",
+          "callee": "lines.append",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_context_block",
+          "callee": "n.get",
+          "lineNumber": 414
+        },
+        {
+          "caller": "_context_block",
+          "callee": "n.get",
+          "lineNumber": 414
+        },
+        {
+          "caller": "_context_block",
+          "callee": "n.get",
+          "lineNumber": 415
+        },
+        {
+          "caller": "_context_block",
+          "callee": "n.get",
+          "lineNumber": 417
+        },
+        {
+          "caller": "_context_block",
+          "callee": "lines.append",
+          "lineNumber": 418
+        },
+        {
+          "caller": "_context_block",
+          "callee": "lines.append",
+          "lineNumber": 419
+        },
+        {
+          "caller": "_context_block",
+          "callee": "lines.append",
+          "lineNumber": 421
+        },
+        {
+          "caller": "_context_block",
+          "callee": "\"\\n\".join",
+          "lineNumber": 422
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "os.environ.get",
+          "lineNumber": 439
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "HTTPException",
+          "lineNumber": 441
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "HTTPException",
+          "lineNumber": 445
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "Anthropic",
+          "lineNumber": 446
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "client.messages.create",
+          "lineNumber": 449
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "logger.warning",
+          "lineNumber": 456
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "HTTPException",
+          "lineNumber": 457
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "\"\".join(getattr(b, \"text\", \"\") for b in msg.content if getattr(b, \"type\", None) == \"text\").strip",
+          "lineNumber": 458
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "\"\".join",
+          "lineNumber": 458
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "getattr",
+          "lineNumber": 458
+        },
+        {
+          "caller": "_claude_answer",
+          "callee": "getattr",
+          "lineNumber": 458
+        },
+        {
+          "caller": "ask",
+          "callee": "(req.question or \"\").strip",
+          "lineNumber": 470
+        },
+        {
+          "caller": "ask",
+          "callee": "HTTPException",
+          "lineNumber": 472
+        },
+        {
+          "caller": "ask",
+          "callee": "len",
+          "lineNumber": 473
+        },
+        {
+          "caller": "ask",
+          "callee": "HTTPException",
+          "lineNumber": 474
+        },
+        {
+          "caller": "ask",
+          "callee": "_match_seed",
+          "lineNumber": 476
+        },
+        {
+          "caller": "ask",
+          "callee": "_neighborhood",
+          "lineNumber": 487
+        },
+        {
+          "caller": "ask",
+          "callee": "_context_block",
+          "lineNumber": 488
+        },
+        {
+          "caller": "ask",
+          "callee": "_claude_answer",
+          "lineNumber": 489
+        },
+        {
+          "caller": "ask",
+          "callee": "_CID_RE.findall",
+          "lineNumber": 494
+        },
+        {
+          "caller": "ask",
+          "callee": "cited.append",
+          "lineNumber": 496
+        },
+        {
+          "caller": "_whisper_available",
+          "callee": "importlib.util.find_spec",
+          "lineNumber": 514
+        },
+        {
+          "caller": "_piper_available",
+          "callee": "bool",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_piper_available",
+          "callee": "shutil.which",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_piper_available",
+          "callee": "Path(PIPER_BIN).exists",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_piper_available",
+          "callee": "Path",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_whisper_model",
+          "callee": "WhisperModel",
+          "lineNumber": 530
+        },
+        {
+          "caller": "voice_health",
+          "callee": "_whisper_available",
+          "lineNumber": 537
+        },
+        {
+          "caller": "voice_health",
+          "callee": "_piper_available",
+          "lineNumber": 537
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "File",
+          "lineNumber": 548
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "_whisper_model",
+          "lineNumber": 550
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "HTTPException",
+          "lineNumber": 552
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "audio.read",
+          "lineNumber": 554
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "Path",
+          "lineNumber": 555
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "tempfile.NamedTemporaryFile",
+          "lineNumber": 556
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "tmp.write",
+          "lineNumber": 558
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "tmp.close",
+          "lineNumber": 559
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "model.transcribe",
+          "lineNumber": 560
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "\" \".join(seg.text for seg in segments).strip",
+          "lineNumber": 561
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "\" \".join",
+          "lineNumber": 561
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "logger.warning",
+          "lineNumber": 563
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "HTTPException",
+          "lineNumber": 564
+        },
+        {
+          "caller": "voice_stt",
+          "callee": "os.unlink",
+          "lineNumber": 567
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "_piper_available",
+          "lineNumber": 580
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "HTTPException",
+          "lineNumber": 581
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "len",
+          "lineNumber": 582
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "HTTPException",
+          "lineNumber": 583
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "tempfile.NamedTemporaryFile",
+          "lineNumber": 586
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "out.close",
+          "lineNumber": 587
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "subprocess.run",
+          "lineNumber": 589
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "(req.text or \"\").encode",
+          "lineNumber": 591
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "logger.warning",
+          "lineNumber": 596
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "proc.stderr.decode",
+          "lineNumber": 596
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "HTTPException",
+          "lineNumber": 597
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "Path(out.name).read_bytes",
+          "lineNumber": 598
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "Path",
+          "lineNumber": 598
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "os.unlink",
+          "lineNumber": 601
+        },
+        {
+          "caller": "voice_tts",
+          "callee": "Response",
+          "lineNumber": 604
+        },
+        {
+          "caller": "info",
+          "callee": "_info",
+          "lineNumber": 619
+        },
+        {
+          "caller": "root",
+          "callee": "_info",
+          "lineNumber": 638
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 33,
+        "functionCount": 30,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "jarvis/backend/requirements.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 8,
+      "nonEmptyLines": 8,
+      "metrics": {}
+    },
+    {
+      "path": "jarvis/export_graph_json.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 177,
+      "nonEmptyLines": 149,
+      "functions": [
+        {
+          "name": "first_sentence_of_definition",
+          "startLine": 64,
+          "endLine": 83,
+          "params": [
+            "content",
+            "fallback"
+          ]
+        },
+        {
+          "name": "build_graph",
+          "startLine": 86,
+          "endLine": 139,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 142,
+          "endLine": 173,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "first_sentence_of_definition",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "build_graph",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 142,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "_DEFINITION_RE.search",
+          "lineNumber": 70
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "m.end",
+          "lineNumber": 73
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "_NEXT_H2_RE.search",
+          "lineNumber": 74
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "nxt.start",
+          "lineNumber": 76
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "_WIKILINK_RE.sub",
+          "lineNumber": 78
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "mt.group",
+          "lineNumber": 78
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "mt.group",
+          "lineNumber": 78
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "\" \".join",
+          "lineNumber": 79
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "text.split",
+          "lineNumber": 79
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "_SENTENCE_SPLIT_RE.split(text, maxsplit=1)[0].strip",
+          "lineNumber": 82
+        },
+        {
+          "caller": "first_sentence_of_definition",
+          "callee": "_SENTENCE_SPLIT_RE.split",
+          "lineNumber": 82
+        },
+        {
+          "caller": "build_graph",
+          "callee": "sync.scan_dev_graph",
+          "lineNumber": 88
+        },
+        {
+          "caller": "build_graph",
+          "callee": "sync.build_name_index",
+          "lineNumber": 89
+        },
+        {
+          "caller": "build_graph",
+          "callee": "filepath.read_text",
+          "lineNumber": 94
+        },
+        {
+          "caller": "build_graph",
+          "callee": "sync.parse_frontmatter",
+          "lineNumber": 95
+        },
+        {
+          "caller": "build_graph",
+          "callee": "fm.get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "build_graph",
+          "callee": "str",
+          "lineNumber": 97
+        },
+        {
+          "caller": "build_graph",
+          "callee": "isinstance",
+          "lineNumber": 97
+        },
+        {
+          "caller": "build_graph",
+          "callee": "out_nodes.append",
+          "lineNumber": 99
+        },
+        {
+          "caller": "build_graph",
+          "callee": "first_sentence_of_definition",
+          "lineNumber": 103
+        },
+        {
+          "caller": "build_graph",
+          "callee": "props.get",
+          "lineNumber": 104
+        },
+        {
+          "caller": "build_graph",
+          "callee": "props.get",
+          "lineNumber": 106
+        },
+        {
+          "caller": "build_graph",
+          "callee": "n.get",
+          "lineNumber": 106
+        },
+        {
+          "caller": "build_graph",
+          "callee": "set",
+          "lineNumber": 110
+        },
+        {
+          "caller": "build_graph",
+          "callee": "n[\"relationships\"].items",
+          "lineNumber": 114
+        },
+        {
+          "caller": "build_graph",
+          "callee": "sync.resolve_target",
+          "lineNumber": 116
+        },
+        {
+          "caller": "build_graph",
+          "callee": "skipped.append",
+          "lineNumber": 118
+        },
+        {
+          "caller": "build_graph",
+          "callee": "seen.add",
+          "lineNumber": 123
+        },
+        {
+          "caller": "build_graph",
+          "callee": "out_edges.append",
+          "lineNumber": 124
+        },
+        {
+          "caller": "build_graph",
+          "callee": "out_nodes.sort",
+          "lineNumber": 126
+        },
+        {
+          "caller": "build_graph",
+          "callee": "out_edges.sort",
+          "lineNumber": 127
+        },
+        {
+          "caller": "build_graph",
+          "callee": "len",
+          "lineNumber": 131
+        },
+        {
+          "caller": "build_graph",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "build_graph",
+          "callee": "len",
+          "lineNumber": 133
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 143
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 144
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 145
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 147
+        },
+        {
+          "caller": "main",
+          "callee": "build_graph",
+          "lineNumber": 149
+        },
+        {
+          "caller": "main",
+          "callee": "graph.pop",
+          "lineNumber": 150
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 151
+        },
+        {
+          "caller": "main",
+          "callee": "sys.stdout.buffer.write",
+          "lineNumber": 158
+        },
+        {
+          "caller": "main",
+          "callee": "(payload + \"\\n\").encode",
+          "lineNumber": 158
+        },
+        {
+          "caller": "main",
+          "callee": "out.parent.mkdir",
+          "lineNumber": 162
+        },
+        {
+          "caller": "main",
+          "callee": "out.write_text",
+          "lineNumber": 163
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 164
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 170
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 170
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 172
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hooks/install.sh",
+      "language": "shell",
+      "fileCategory": "script",
+      "totalLines": 10,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "jarvis/hooks/pre-commit",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 40,
+      "metrics": {}
+    }
+  ]
+}

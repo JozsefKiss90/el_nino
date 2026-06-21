@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/benchmarks/Chain Orchestrator Benchmark.md",
+      "type": "document",
+      "name": "Chain Orchestrator Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Chain Orchestrator Benchmark.md",
+      "summary": "Dev-graph benchmark node (BENCH-006) documenting the end-to-end deterministic replay harness for the Chain Orchestrator, asserting byte-identical replay across all five record types plus admission idempotency via a pinned golden artifact (chain_bench.json).",
+      "tags": ["documentation", "benchmark", "determinism", "orchestration", "idempotency"],
+      "complexity": "moderate",
+      "languageNotes": "dev_graph benchmark_result ontology node; relationship subsections (Depends On / Validated By / Justified By) use wikilinks to Chain Orchestrator, runtime/portfolio schemas, and execution/paper-trading ADRs."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "type": "document",
+      "name": "Execution Layer Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Execution Layer Benchmark.md",
+      "summary": "Dev-graph benchmark node (BENCH-004) documenting the execution-layer replay harness that proves the ADR-011 execution-determinism invariant, combining a real ADMIT sequence with a synthetic sweep covering fill, no-fill, idempotency, and guard-BLOCK attribution.",
+      "tags": ["documentation", "benchmark", "execution", "determinism", "fill-model"],
+      "complexity": "moderate",
+      "languageNotes": "dev_graph benchmark_result node; closing artifact for ADR-011 §7 gate (d); v0.2.0 runtime re-pin notes captured in Results."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Gold Decision Distribution Benchmark.md",
+      "type": "document",
+      "name": "Gold Decision Distribution Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Gold Decision Distribution Benchmark.md",
+      "summary": "Dev-graph benchmark node (BENCH-002) documenting the Gold Decision Builder replay harness, providing determinism evidence over real snapshots plus a synthetic regime-grid sweep emitting the paper-decision direction distribution and confidence/uncertainty stats.",
+      "tags": ["documentation", "benchmark", "gold-decision", "determinism", "distribution"],
+      "complexity": "simple",
+      "languageNotes": "dev_graph benchmark_result node; pins a golden gold_bench.json artifact validated by test_gold_bench."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Gold Forward-Return Label Set.md",
+      "type": "document",
+      "name": "Gold Forward-Return Label Set.md",
+      "filePath": "dev_graph/benchmarks/Gold Forward-Return Label Set.md",
+      "summary": "Dev-graph benchmark node (BENCH-005) documenting the committed forward-return label artifact produced by the Gold Forward-Return Labeler, the deferred-G3 calibration input that records per decision-by-horizon realized gold returns plus regime-by-horizon aggregates.",
+      "tags": ["documentation", "benchmark", "calibration", "forward-return", "labeling"],
+      "complexity": "moderate",
+      "languageNotes": "dev_graph benchmark_result node; measurement-only artifact constrained by Canonical Ownership, strictly downstream of the decision chain (labels must never reach a decision)."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "type": "document",
+      "name": "Paper-Trading Runtime Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Paper-Trading Runtime Benchmark.md",
+      "summary": "Dev-graph benchmark node (BENCH-003) documenting the paper-trading runtime replay harness that proves runtime determinism, idempotency, and no-enrich-back over a real sequence plus a synthetic verdict-space sweep (ADMIT/HOLD/REJECT attribution).",
+      "tags": ["documentation", "benchmark", "paper-trading", "runtime", "verdict-distribution"],
+      "complexity": "moderate",
+      "languageNotes": "dev_graph benchmark_result node; documents the v0.2.0 computed-cooldown re-pin and pins a paper_runtime_bench.json golden artifact."
+    },
+    {
+      "id": "document:dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "type": "document",
+      "name": "Regime Distribution Benchmark.md",
+      "filePath": "dev_graph/benchmarks/Regime Distribution Benchmark.md",
+      "summary": "Dev-graph benchmark node (BENCH-001) documenting the first benchmark harness for the Market Regime Classifier, measuring real-snapshot replay determinism and synthetic feature-grid sweep coverage (all 11 regimes reachable, entropy, classification balance).",
+      "tags": ["documentation", "benchmark", "regime-classification", "determinism", "coverage"],
+      "complexity": "simple",
+      "languageNotes": "dev_graph benchmark_result node; originates from the Regime Taxonomy and pins a regime_bench.json golden artifact validated by test_regime_bench."
+    }
+  ],
+  "edges": []
+}

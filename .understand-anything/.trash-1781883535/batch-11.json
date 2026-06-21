@@ -1,0 +1,255 @@
+{
+  "nodes": [
+    {
+      "id": "document:REGIME_IMPLEMENTATION_BRIEF.md",
+      "type": "document",
+      "name": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "filePath": "REGIME_IMPLEMENTATION_BRIEF.md",
+      "summary": "Implementation brief for the regime taxonomy feature, enumerating affected modules, schemas, ontology, replay, benchmark, migration, and governance impacts ahead of coding.",
+      "tags": ["documentation", "implementation-brief", "regime", "planning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "type": "document",
+      "name": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "filePath": "REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "summary": "Final adversarial audit of the regime taxonomy across architecture, replay determinism, ontology, schema correctness, graph integrity, and gold-layer readiness with a final verdict.",
+      "tags": ["documentation", "audit", "regime", "verification"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:REMAINING_ITEMS_prompt.md",
+      "type": "document",
+      "name": "REMAINING_ITEMS_prompt.md",
+      "filePath": "REMAINING_ITEMS_prompt.md",
+      "summary": "Claude Code task prompt covering remaining work: Alpaca live plugs behind existing ports, scheduling the daily simulator run, and G1/G2/G3 calibration readiness re-check.",
+      "tags": ["documentation", "task-prompt", "alpaca", "planning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:STEP4_BENCH004_prompt.md",
+      "type": "document",
+      "name": "STEP4_BENCH004_prompt.md",
+      "filePath": "STEP4_BENCH004_prompt.md",
+      "summary": "Claude Code task prompt for authoring BENCH-004, an execution-layer byte-identical replay benchmark plus its in-sync test, with dev_graph writeback steps.",
+      "tags": ["documentation", "task-prompt", "benchmark", "replay"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:anything.txt",
+      "type": "document",
+      "name": "anything.txt",
+      "filePath": "anything.txt",
+      "summary": "Operator note explaining that the Understand-Anything knowledge graph persists on disk and how to relaunch the local dashboard viewer via the PowerShell launcher.",
+      "tags": ["documentation", "dashboard", "operations", "notes"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:audit_plan.md",
+      "type": "document",
+      "name": "audit_plan.md",
+      "filePath": "audit_plan.md",
+      "summary": "Foundational dev_graph ontology redesign that critiques the prior flat model and introduces the Architecture to System to Capability to Module to File hierarchy with a 22-type ontology.",
+      "tags": ["documentation", "architecture", "ontology", "design"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:audit_plan_addendum.md",
+      "type": "document",
+      "name": "audit_plan_addendum.md",
+      "filePath": "audit_plan_addendum.md",
+      "summary": "Additive extension to the ontology redesign that introduces knowledge_asset and pattern types, a why-layer, evidence fields, and intent-aware Graph-RAG routing.",
+      "tags": ["documentation", "architecture", "ontology", "knowledge-graph"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:dev_graph_next_step_recommendation_2026-06-08.md",
+      "type": "document",
+      "name": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "filePath": "dev_graph_next_step_recommendation_2026-06-08.md",
+      "summary": "Next-step recommendation that gate (e) is still open and proposes building the Gold DecisionPacket v0 as a three-slice contract-first arc.",
+      "tags": ["documentation", "recommendation", "planning", "gold-layer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:dev_graph_stabilization_audit_2026-06-07.md",
+      "type": "document",
+      "name": "dev_graph_stabilization_audit_2026-06-07.md",
+      "filePath": "dev_graph_stabilization_audit_2026-06-07.md",
+      "summary": "Fifteen-part stabilization audit of the dev_graph scoring ontology integrity, ADR consistency, layering, traceability, replay determinism, and Engineering Digital Twin maturity.",
+      "tags": ["documentation", "audit", "stability", "ontology"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:final_strategic_review.md",
+      "type": "document",
+      "name": "final_strategic_review.md",
+      "filePath": "final_strategic_review.md",
+      "summary": "Final strategic review layered over the redesign and addendum, defining how the 24-type ontology can evolve into a long-term Engineering Digital Twin for autonomous engineering.",
+      "tags": ["documentation", "architecture", "strategy", "digital-twin"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:llm-wiki.md",
+      "type": "document",
+      "name": "llm-wiki.md",
+      "filePath": "llm-wiki.md",
+      "summary": "Explainer of the LLM Wiki concept describing its core idea, architecture, operations, indexing/logging, optional CLI tooling, and why the approach works.",
+      "tags": ["documentation", "llm", "knowledge-base", "overview"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:population_strategy.md",
+      "type": "document",
+      "name": "population_strategy.md",
+      "filePath": "population_strategy.md",
+      "summary": "Authoritative roadmap for populating the dev_graph ontology, defining population principles, node-authoring strategy, and execution sequencing against the finalized 24-type target state.",
+      "tags": ["documentation", "roadmap", "ontology", "governance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:project_structure.md",
+      "type": "document",
+      "name": "project_structure.md",
+      "filePath": "project_structure.md",
+      "summary": "Captured directory listing of the layer_3_wiki source tree documenting the folder and file layout of the wiki repository.",
+      "tags": ["documentation", "project-structure", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Python project configuration for the layer3-trading-engine declaring a zero-runtime-dependency core, optional dev and ops extras, hatchling build targets, and pytest/mypy/ruff settings.",
+      "tags": ["configuration", "build-system", "python", "tooling"],
+      "complexity": "simple",
+      "languageNotes": "Enforces ADR-003 zero-runtime-deps: core dependencies=[] while ops console deps live in an optional extra; mypy strict and ruff configured over src/tests/ops."
+    },
+    {
+      "id": "document:slice2 fit assessment and roadmap.md",
+      "type": "document",
+      "name": "slice2 fit assessment and roadmap.md",
+      "filePath": "slice2 fit assessment and roadmap.md",
+      "summary": "Slice 2 fit assessment evaluating how the audited runtime matches the plan and laying out a forward roadmap covering future epochs, La Nina intraday gold decisions, and evidence collection.",
+      "tags": ["documentation", "assessment", "roadmap", "planning"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "type": "document",
+      "name": "the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "filePath": "the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "summary": "Paper-Trading Runtime (Epoch a) plan proposing a two-slice approach: ADR-009 governance planning then contract-first implementation, with a reuse map, risks, and verification.",
+      "tags": ["documentation", "plan", "paper-trading", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:ultimateplan.md",
+      "type": "document",
+      "name": "ultimateplan.md",
+      "filePath": "ultimateplan.md",
+      "summary": "Alpaca integration plan (in Hungarian) positioning Alpaca strictly as the Layer 4 execution infrastructure with deterministic adapter mediation and gold-to-GLD instrument mapping.",
+      "tags": ["documentation", "plan", "alpaca", "execution"],
+      "complexity": "complex",
+      "languageNotes": "Authored in Hungarian; describes the authority chain Layer 2 Truth to Layer 3 Decision to Execution Adapter to Alpaca Paper API."
+    },
+    {
+      "id": "file:understand-dashboard.ps1",
+      "type": "file",
+      "name": "understand-dashboard.ps1",
+      "filePath": "understand-dashboard.ps1",
+      "summary": "PowerShell launcher that resolves the newest installed Understand-Anything plugin, points the viewer at this project's graph data, and starts the local Vite dashboard server on 127.0.0.1.",
+      "tags": ["script", "powershell", "dashboard", "tooling"],
+      "complexity": "simple",
+      "languageNotes": "Linear script with no top-level function definitions; uses ErrorActionPreference Stop and version-sorts plugin directories to auto-find the newest build."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:audit_plan_addendum.md",
+      "target": "document:audit_plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:final_strategic_review.md",
+      "target": "document:audit_plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:final_strategic_review.md",
+      "target": "document:audit_plan_addendum.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:population_strategy.md",
+      "target": "document:audit_plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:population_strategy.md",
+      "target": "document:audit_plan_addendum.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:population_strategy.md",
+      "target": "document:final_strategic_review.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph_next_step_recommendation_2026-06-08.md",
+      "target": "document:dev_graph_stabilization_audit_2026-06-07.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:the-gold-decisionpacket-v0-glowing-meerkat.md",
+      "target": "document:dev_graph_next_step_recommendation_2026-06-08.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:REGIME_TAXONOMY_FINAL_AUDIT.md",
+      "target": "document:REGIME_IMPLEMENTATION_BRIEF.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:slice2 fit assessment and roadmap.md",
+      "target": "document:dev_graph_stabilization_audit_2026-06-07.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:anything.txt",
+      "target": "file:understand-dashboard.ps1",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph_stabilization_audit_2026-06-07.md",
+      "target": "document:population_strategy.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

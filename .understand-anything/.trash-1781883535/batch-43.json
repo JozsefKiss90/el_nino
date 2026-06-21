@@ -1,0 +1,84 @@
+{
+  "nodes": [
+    {
+      "id": "document:wiki/infrastructure/Claude Co-work.md",
+      "type": "document",
+      "name": "Claude Co-work.md",
+      "filePath": "wiki/infrastructure/Claude Co-work.md",
+      "summary": "Wiki page documenting Anthropic's Claude Co-work agentic system as an alternative trading runtime, covering its computer-use capabilities, exchange UI interaction, and TradingView webhook integration.",
+      "tags": ["documentation", "infrastructure", "agent", "integration", "trading-runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/infrastructure/Claude Code.md",
+      "type": "document",
+      "name": "Claude Code.md",
+      "filePath": "wiki/infrastructure/Claude Code.md",
+      "summary": "Wiki page describing Claude Code as the primary CLI/IDE coding-agent runtime for building and executing autonomous trading systems, including operational modes, context management, and subscription tiers.",
+      "tags": ["documentation", "infrastructure", "agent", "development-runtime", "claude-code"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/infrastructure/Claude Routines.md",
+      "type": "document",
+      "name": "Claude Routines.md",
+      "filePath": "wiki/infrastructure/Claude Routines.md",
+      "summary": "Wiki page detailing scheduled cron-driven Claude Code invocations that enable 24/7 autonomous agent operation, covering routine architecture, local vs. remote execution, configuration, and trading cron schedules.",
+      "tags": ["documentation", "infrastructure", "scheduling", "automation", "ci-cd"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:wiki/infrastructure/Railway Deployment.md",
+      "type": "document",
+      "name": "Railway Deployment.md",
+      "filePath": "wiki/infrastructure/Railway Deployment.md",
+      "summary": "Wiki page documenting Railway as a cloud hosting platform for deploying Claude-based trading bots for continuous 24/7 operation with cron scheduling and environment variable management.",
+      "tags": ["documentation", "infrastructure", "deployment", "cloud-hosting", "configuration"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:wiki/infrastructure/Claude Co-work.md",
+      "target": "document:wiki/infrastructure/Claude Code.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/infrastructure/Claude Co-work.md",
+      "target": "document:wiki/infrastructure/Claude Routines.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/infrastructure/Claude Code.md",
+      "target": "document:wiki/infrastructure/Claude Routines.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/infrastructure/Claude Code.md",
+      "target": "document:wiki/infrastructure/Claude Co-work.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/infrastructure/Claude Routines.md",
+      "target": "document:wiki/infrastructure/Claude Code.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:wiki/infrastructure/Railway Deployment.md",
+      "target": "document:wiki/infrastructure/Claude Routines.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

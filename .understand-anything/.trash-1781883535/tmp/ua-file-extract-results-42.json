@@ -1,0 +1,610 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/governance/Metadata Migration Plan.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 820,
+      "nonEmptyLines": 622,
+      "sections": [
+        {
+          "heading": "Metadata Migration Plan",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Part 1 — Architecture Analysis",
+          "level": 1,
+          "line": 28
+        },
+        {
+          "heading": "1.1 Current Vault Maturity Assessment",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "1.2 Metadata Readiness",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "1.3 Migration Risk Matrix",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "1.4 Scaling Bottlenecks",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Part 2 — Frontmatter Governance Design",
+          "level": 1,
+          "line": 84
+        },
+        {
+          "heading": "2.1 Metadata Classification",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "2.2 Universal Schema (All Pages)",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Field Definitions",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "`type`",
+          "level": 4,
+          "line": 111
+        },
+        {
+          "heading": "`domain`",
+          "level": 4,
+          "line": 135
+        },
+        {
+          "heading": "`status`",
+          "level": 4,
+          "line": 164
+        },
+        {
+          "heading": "`created` / `updated`",
+          "level": 4,
+          "line": 175
+        },
+        {
+          "heading": "2.3 Optional Fields (All Pages)",
+          "level": 2,
+          "line": 179
+        },
+        {
+          "heading": "`aliases`",
+          "level": 4,
+          "line": 187
+        },
+        {
+          "heading": "`confidence`",
+          "level": 4,
+          "line": 193
+        },
+        {
+          "heading": "`tags`",
+          "level": 4,
+          "line": 204
+        },
+        {
+          "heading": "2.4 Source Page Schema (Domain-Specific)",
+          "level": 2,
+          "line": 210
+        },
+        {
+          "heading": "`source_type`",
+          "level": 4,
+          "line": 227
+        },
+        {
+          "heading": "2.5 Prohibited Practices",
+          "level": 2,
+          "line": 237
+        },
+        {
+          "heading": "2.6 Metadata Lifecycle Rules",
+          "level": 2,
+          "line": 246
+        },
+        {
+          "heading": "Creation",
+          "level": 3,
+          "line": 248
+        },
+        {
+          "heading": "Update",
+          "level": 3,
+          "line": 253
+        },
+        {
+          "heading": "Deprecation",
+          "level": 3,
+          "line": 258
+        },
+        {
+          "heading": "Derived Metadata",
+          "level": 3,
+          "line": 263
+        },
+        {
+          "heading": "Part 3 — Phased Rollout Plan",
+          "level": 1,
+          "line": 269
+        },
+        {
+          "heading": "Phase 1 — Hub Page Metadata Foundation",
+          "level": 2,
+          "line": 271
+        },
+        {
+          "heading": "Target Pages",
+          "level": 3,
+          "line": 277
+        },
+        {
+          "heading": "Goals",
+          "level": 3,
+          "line": 287
+        },
+        {
+          "heading": "Implementation Checklist",
+          "level": 3,
+          "line": 295
+        },
+        {
+          "heading": "Example: Architecture Overview Frontmatter",
+          "level": 3,
+          "line": 309
+        },
+        {
+          "heading": "Pilot Dataview Queries",
+          "level": 3,
+          "line": 324
+        },
+        {
+          "heading": "Rollback Strategy",
+          "level": 3,
+          "line": 342
+        },
+        {
+          "heading": "Success Criteria",
+          "level": 3,
+          "line": 350
+        },
+        {
+          "heading": "Phase 2 — Canonical Page Expansion",
+          "level": 2,
+          "line": 360
+        },
+        {
+          "heading": "Target Pages by Domain",
+          "level": 3,
+          "line": 367
+        },
+        {
+          "heading": "Implementation Checklist",
+          "level": 3,
+          "line": 388
+        },
+        {
+          "heading": "Type/Domain Assignment Rules",
+          "level": 3,
+          "line": 402
+        },
+        {
+          "heading": "Metadata Inheritance Rules",
+          "level": 3,
+          "line": 410
+        },
+        {
+          "heading": "Graph Validation Workflow (Post-Phase-2)",
+          "level": 3,
+          "line": 417
+        },
+        {
+          "heading": "Rollback Strategy",
+          "level": 3,
+          "line": 440
+        },
+        {
+          "heading": "Phase 3 — Source + Observability Layer",
+          "level": 2,
+          "line": 448
+        },
+        {
+          "heading": "3A: Source Page Metadata Migration",
+          "level": 3,
+          "line": 455
+        },
+        {
+          "heading": "Source Page Frontmatter Examples",
+          "level": 4,
+          "line": 471
+        },
+        {
+          "heading": "3B: Provenance Schema",
+          "level": 3,
+          "line": 503
+        },
+        {
+          "heading": "3C: Observability Dashboards",
+          "level": 3,
+          "line": 522
+        },
+        {
+          "heading": "Dashboard 1: Ontology Overview",
+          "level": 4,
+          "line": 526
+        },
+        {
+          "heading": "Dashboard 2: Stale Page Detection",
+          "level": 4,
+          "line": 536
+        },
+        {
+          "heading": "Dashboard 3: Stub Tracking",
+          "level": 4,
+          "line": 547
+        },
+        {
+          "heading": "Dashboard 4: Confidence Distribution",
+          "level": 4,
+          "line": 556
+        },
+        {
+          "heading": "Dashboard 5: Source Coverage",
+          "level": 4,
+          "line": 565
+        },
+        {
+          "heading": "Dashboard 6: Orphan Page Detection",
+          "level": 4,
+          "line": 574
+        },
+        {
+          "heading": "Dashboard 7: Weakly Connected Pages",
+          "level": 4,
+          "line": 583
+        },
+        {
+          "heading": "Dashboard 8: Contradiction Registry",
+          "level": 4,
+          "line": 592
+        },
+        {
+          "heading": "Dashboard 9: Recently Modified Pages",
+          "level": 4,
+          "line": 600
+        },
+        {
+          "heading": "Dashboard 10: Ingestion Monitor",
+          "level": 4,
+          "line": 610
+        },
+        {
+          "heading": "3D: Graph Health Metrics",
+          "level": 3,
+          "line": 619
+        },
+        {
+          "heading": "3E: Contradiction Registry Architecture",
+          "level": 3,
+          "line": 633
+        },
+        {
+          "heading": "Implementation Checklist",
+          "level": 3,
+          "line": 643
+        },
+        {
+          "heading": "Part 4 — Dataview Integration Design",
+          "level": 1,
+          "line": 655
+        },
+        {
+          "heading": "4.1 Query Architecture",
+          "level": 2,
+          "line": 657
+        },
+        {
+          "heading": "4.2 Canonical Dashboard Architecture",
+          "level": 2,
+          "line": 666
+        },
+        {
+          "heading": "4.3 Dashboard Ownership",
+          "level": 2,
+          "line": 676
+        },
+        {
+          "heading": "Part 5 — MCP Readiness Design",
+          "level": 1,
+          "line": 682
+        },
+        {
+          "heading": "5.1 Compatibility Requirements",
+          "level": 2,
+          "line": 684
+        },
+        {
+          "heading": "mcpvault (Current)",
+          "level": 3,
+          "line": 688
+        },
+        {
+          "heading": "Smart Connections MCP (Planned)",
+          "level": 3,
+          "line": 698
+        },
+        {
+          "heading": "Future Semantic MCPs",
+          "level": 3,
+          "line": 705
+        },
+        {
+          "heading": "5.2 Graph Traversal Assumptions",
+          "level": 2,
+          "line": 711
+        },
+        {
+          "heading": "5.3 Ontology Stability Guarantees",
+          "level": 2,
+          "line": 722
+        },
+        {
+          "heading": "5.4 Graph Lint Automation (MCP-Assisted)",
+          "level": 2,
+          "line": 731
+        },
+        {
+          "heading": "Part 6 — Metadata Anti-Entropy Architecture",
+          "level": 1,
+          "line": 743
+        },
+        {
+          "heading": "6.1 Entropy Sources",
+          "level": 2,
+          "line": 745
+        },
+        {
+          "heading": "6.2 Anti-Entropy Rules",
+          "level": 2,
+          "line": 757
+        },
+        {
+          "heading": "6.3 Metadata Lint Workflow",
+          "level": 2,
+          "line": 766
+        },
+        {
+          "heading": "Step 1: Missing Frontmatter Detection",
+          "level": 3,
+          "line": 770
+        },
+        {
+          "heading": "Step 2: Invalid Enum Detection",
+          "level": 3,
+          "line": 776
+        },
+        {
+          "heading": "Step 3: Domain-Directory Consistency",
+          "level": 3,
+          "line": 786
+        },
+        {
+          "heading": "Step 4: Stale Metadata Detection",
+          "level": 3,
+          "line": 791
+        },
+        {
+          "heading": "Step 5: Orphan Frontmatter Fields",
+          "level": 3,
+          "line": 797
+        },
+        {
+          "heading": "Dependencies",
+          "level": 1,
+          "line": 804
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 810
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 818
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 87
+      }
+    },
+    {
+      "path": "wiki/governance/Trade Logging.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 94,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Trade Logging",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Log Structure",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Accounting Optimization",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Block Logging",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "wiki/governance/Treasury Policy System.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 82,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "Treasury Policy System",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Treasury Model",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Key Mechanics",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Policy-Gated Decisions",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    }
+  ]
+}

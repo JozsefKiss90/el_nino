@@ -1,0 +1,2170 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 13,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/features/feature_builder/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/features/feature_builder/feature_builder.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 81,
+      "functions": [
+        {
+          "name": "_level",
+          "startLine": 39,
+          "endLine": 41,
+          "params": [
+            "name",
+            "series_id"
+          ]
+        },
+        {
+          "name": "_spread",
+          "startLine": 44,
+          "endLine": 50,
+          "params": [
+            "name",
+            "minuend",
+            "subtrahend"
+          ]
+        },
+        {
+          "name": "build_features",
+          "startLine": 73,
+          "endLine": 104,
+          "params": [
+            "snapshot"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FeatureSpec",
+          "startLine": 27,
+          "endLine": 36,
+          "methods": [],
+          "properties": [
+            "name",
+            "inputs",
+            "fn"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FeatureSpec",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "_level",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "_spread",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "build_features",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_level",
+          "callee": "FeatureSpec",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_spread",
+          "callee": "FeatureSpec",
+          "lineNumber": 46
+        },
+        {
+          "caller": "build_features",
+          "callee": "sorted",
+          "lineNumber": 87
+        },
+        {
+          "caller": "build_features",
+          "callee": "any",
+          "lineNumber": 88
+        },
+        {
+          "caller": "build_features",
+          "callee": "unavailable.append",
+          "lineNumber": 89
+        },
+        {
+          "caller": "build_features",
+          "callee": "Feature",
+          "lineNumber": 91
+        },
+        {
+          "caller": "build_features",
+          "callee": "spec.fn",
+          "lineNumber": 93
+        },
+        {
+          "caller": "build_features",
+          "callee": "max",
+          "lineNumber": 95
+        },
+        {
+          "caller": "build_features",
+          "callee": "any",
+          "lineNumber": 96
+        },
+        {
+          "caller": "build_features",
+          "callee": "FeatureVector",
+          "lineNumber": 99
+        },
+        {
+          "caller": "build_features",
+          "callee": "tuple",
+          "lineNumber": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/features/feature_builder/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 38,
+      "classes": [
+        {
+          "name": "Feature",
+          "startLine": 20,
+          "endLine": 27,
+          "methods": [],
+          "properties": [
+            "name",
+            "value",
+            "inputs",
+            "max_staleness_days",
+            "revision_risk"
+          ]
+        },
+        {
+          "name": "FeatureVector",
+          "startLine": 31,
+          "endLine": 51,
+          "methods": [
+            "names",
+            "value"
+          ],
+          "properties": [
+            "snapshot_id",
+            "schema_version",
+            "features",
+            "unavailable_features"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Feature",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureVector",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "names",
+          "callee": "tuple",
+          "lineNumber": 47
+        },
+        {
+          "caller": "names",
+          "callee": "self.features.keys",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/gold/decision_builder/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 46,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/gold/decision_builder/builder.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 123,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "_rationale",
+          "startLine": 41,
+          "endLine": 55,
+          "params": [
+            "rc",
+            "direction",
+            "confidence",
+            "uncertainty",
+            "cited"
+          ]
+        },
+        {
+          "name": "build_decision",
+          "startLine": 58,
+          "endLine": 123,
+          "params": [
+            "fv",
+            "rc",
+            "guards",
+            "snapshot_guards",
+            "config",
+            "as_of"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_rationale",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "build_decision",
+          "line": 58,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_rationale",
+          "callee": "\", \".join",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_rationale",
+          "callee": "len",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_rationale",
+          "callee": "len",
+          "lineNumber": 54
+        },
+        {
+          "caller": "build_decision",
+          "callee": "ValueError",
+          "lineNumber": 77
+        },
+        {
+          "caller": "build_decision",
+          "callee": "ValueError",
+          "lineNumber": 79
+        },
+        {
+          "caller": "build_decision",
+          "callee": "trust_score",
+          "lineNumber": 81
+        },
+        {
+          "caller": "build_decision",
+          "callee": "direction_for",
+          "lineNumber": 82
+        },
+        {
+          "caller": "build_decision",
+          "callee": "tuple",
+          "lineNumber": 83
+        },
+        {
+          "caller": "build_decision",
+          "callee": "FeatureCitation",
+          "lineNumber": 84
+        },
+        {
+          "caller": "build_decision",
+          "callee": "_rationale",
+          "lineNumber": 87
+        },
+        {
+          "caller": "build_decision",
+          "callee": "GuardRefs",
+          "lineNumber": 88
+        },
+        {
+          "caller": "build_decision",
+          "callee": "compute_packet_id",
+          "lineNumber": 90
+        },
+        {
+          "caller": "build_decision",
+          "callee": "cfg.decision_policy_fingerprint",
+          "lineNumber": 96
+        },
+        {
+          "caller": "build_decision",
+          "callee": "GoldDecisionPacket",
+          "lineNumber": 99
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/gold/decision_builder/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 202,
+      "nonEmptyLines": 178,
+      "functions": [
+        {
+          "name": "load_config",
+          "startLine": 187,
+          "endLine": 198,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "DecisionPolicyConfigError",
+          "startLine": 31,
+          "endLine": 32,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "DecisionPolicyConfig",
+          "startLine": 73,
+          "endLine": 184,
+          "methods": [
+            "__post_init__",
+            "direction_for",
+            "decision_policy_fingerprint",
+            "from_mapping"
+          ],
+          "properties": [
+            "ambiguity_weight",
+            "fragility_weight",
+            "staleness_weight",
+            "staleness_cap",
+            "revision_penalty",
+            "coverage_weight",
+            "coverage_cap",
+            "neutral_confidence_floor",
+            "indeterminate_confidence",
+            "indeterminate_uncertainty",
+            "direction_table",
+            "instrument",
+            "decision_policy_version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DecisionPolicyConfigError",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "DecisionPolicyConfig",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "load_config",
+          "line": 187,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "getattr",
+          "lineNumber": 101
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 102
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "getattr",
+          "lineNumber": 110
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 111
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "dict",
+          "lineNumber": 113
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "len",
+          "lineNumber": 114
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "len",
+          "lineNumber": 114
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 115
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "set",
+          "lineNumber": 117
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "sorted",
+          "lineNumber": 118
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "set",
+          "lineNumber": 118
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "sorted",
+          "lineNumber": 119
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "set",
+          "lineNumber": 119
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 120
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 126
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 130
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 132
+        },
+        {
+          "caller": "direction_for",
+          "callee": "Direction",
+          "lineNumber": 138
+        },
+        {
+          "caller": "direction_for",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 139
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "sorted",
+          "lineNumber": 149
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "getattr",
+          "lineNumber": 150
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "list",
+          "lineNumber": 152
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "items.append",
+          "lineNumber": 153
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 154
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 155
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 155
+        },
+        {
+          "caller": "decision_policy_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 155
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 160
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 161
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 162
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 163
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 165
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 165
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 167
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 169
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "tuple",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 177
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 182
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 184
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 184
+        },
+        {
+          "caller": "load_config",
+          "callee": "Path",
+          "lineNumber": 189
+        },
+        {
+          "caller": "load_config",
+          "callee": "p.read_text",
+          "lineNumber": 191
+        },
+        {
+          "caller": "load_config",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 193
+        },
+        {
+          "caller": "load_config",
+          "callee": "json.loads",
+          "lineNumber": 195
+        },
+        {
+          "caller": "load_config",
+          "callee": "DecisionPolicyConfigError",
+          "lineNumber": 197
+        },
+        {
+          "caller": "load_config",
+          "callee": "DecisionPolicyConfig.from_mapping",
+          "lineNumber": 198
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/gold/decision_builder/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 253,
+      "nonEmptyLines": 212,
+      "functions": [
+        {
+          "name": "compute_packet_id",
+          "startLine": 228,
+          "endLine": 253,
+          "params": [
+            "source_snapshot_id",
+            "source_feature_schema_version",
+            "regime_taxonomy_version",
+            "regime_classifier_version",
+            "decision_policy_version",
+            "decision_policy_fingerprint"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Direction",
+          "startLine": 30,
+          "endLine": 36,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "DecisionMode",
+          "startLine": 39,
+          "endLine": 42,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "FeatureCitation",
+          "startLine": 46,
+          "endLine": 62,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "name",
+            "value",
+            "inputs",
+            "max_staleness_days",
+            "revision_risk"
+          ]
+        },
+        {
+          "name": "ConfidenceInputs",
+          "startLine": 66,
+          "endLine": 84,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "anchor",
+            "secondary_count",
+            "near_count",
+            "max_staleness_days",
+            "revision_risk",
+            "unavailable_count"
+          ]
+        },
+        {
+          "name": "GuardRefs",
+          "startLine": 101,
+          "endLine": 116,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "data_ok",
+            "freshness_ok",
+            "supervisor_ok",
+            "cooldown_ok",
+            "duplicate_ok",
+            "operational_ok"
+          ]
+        },
+        {
+          "name": "SnapshotGuards",
+          "startLine": 120,
+          "endLine": 140,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "data_ok",
+            "freshness_ok",
+            "cooldown_ok"
+          ]
+        },
+        {
+          "name": "GoldDecisionPacket",
+          "startLine": 144,
+          "endLine": 225,
+          "methods": [
+            "__post_init__",
+            "to_dict"
+          ],
+          "properties": [
+            "packet_id",
+            "packet_schema_version",
+            "instrument",
+            "decision_mode",
+            "regime",
+            "direction",
+            "confidence",
+            "uncertainty",
+            "rationale",
+            "source_snapshot_id",
+            "source_feature_schema_version",
+            "regime_taxonomy_version",
+            "regime_classifier_version",
+            "regime_classification_trace_version",
+            "matched_rule_id",
+            "cited_features",
+            "decision_policy_version",
+            "confidence_inputs",
+            "guard_refs",
+            "non_execution_notice",
+            "constraints",
+            "as_of",
+            "snapshot_guards"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Direction",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "DecisionMode",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureCitation",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "ConfidenceInputs",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "GuardRefs",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "SnapshotGuards",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "GoldDecisionPacket",
+          "line": 143,
+          "isDefault": false
+        },
+        {
+          "name": "compute_packet_id",
+          "line": 228,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 57
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 78
+        },
+        {
+          "caller": "to_dict",
+          "callee": "getattr",
+          "lineNumber": 116
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 181
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 183
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 185
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 187
+        },
+        {
+          "caller": "to_dict",
+          "callee": "c.to_dict",
+          "lineNumber": 197
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 198
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.confidence_inputs.to_dict",
+          "lineNumber": 199
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 200
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.guard_refs.to_dict",
+          "lineNumber": 208
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.snapshot_guards.to_dict",
+          "lineNumber": 222
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 224
+        },
+        {
+          "caller": "compute_packet_id",
+          "callee": "\"\\n\".join",
+          "lineNumber": 251
+        },
+        {
+          "caller": "compute_packet_id",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 252
+        },
+        {
+          "caller": "compute_packet_id",
+          "callee": "hashlib.sha256",
+          "lineNumber": 252
+        },
+        {
+          "caller": "compute_packet_id",
+          "callee": "payload.encode",
+          "lineNumber": 252
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 1,
+        "classCount": 7
+      }
+    },
+    {
+      "path": "src/gold/decision_builder/policy.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 72,
+      "functions": [
+        {
+          "name": "_clamp01",
+          "startLine": 16,
+          "endLine": 17,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "trust_score",
+          "startLine": 20,
+          "endLine": 84,
+          "params": [
+            "rc",
+            "fv",
+            "config"
+          ]
+        },
+        {
+          "name": "direction_for",
+          "startLine": 87,
+          "endLine": 89,
+          "params": [
+            "rc",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_clamp01",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "trust_score",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "direction_for",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_clamp01",
+          "callee": "max",
+          "lineNumber": 17
+        },
+        {
+          "caller": "_clamp01",
+          "callee": "min",
+          "lineNumber": 17
+        },
+        {
+          "caller": "trust_score",
+          "callee": "len",
+          "lineNumber": 36
+        },
+        {
+          "caller": "trust_score",
+          "callee": "len",
+          "lineNumber": 37
+        },
+        {
+          "caller": "trust_score",
+          "callee": "max",
+          "lineNumber": 38
+        },
+        {
+          "caller": "trust_score",
+          "callee": "any",
+          "lineNumber": 39
+        },
+        {
+          "caller": "trust_score",
+          "callee": "len",
+          "lineNumber": 40
+        },
+        {
+          "caller": "trust_score",
+          "callee": "ConfidenceInputs",
+          "lineNumber": 43
+        },
+        {
+          "caller": "trust_score",
+          "callee": "min",
+          "lineNumber": 54
+        },
+        {
+          "caller": "trust_score",
+          "callee": "min",
+          "lineNumber": 55
+        },
+        {
+          "caller": "trust_score",
+          "callee": "min",
+          "lineNumber": 56
+        },
+        {
+          "caller": "trust_score",
+          "callee": "set",
+          "lineNumber": 63
+        },
+        {
+          "caller": "trust_score",
+          "callee": "set",
+          "lineNumber": 63
+        },
+        {
+          "caller": "trust_score",
+          "callee": "min",
+          "lineNumber": 64
+        },
+        {
+          "caller": "trust_score",
+          "callee": "len",
+          "lineNumber": 64
+        },
+        {
+          "caller": "trust_score",
+          "callee": "_clamp01",
+          "lineNumber": 73
+        },
+        {
+          "caller": "trust_score",
+          "callee": "_clamp01",
+          "lineNumber": 74
+        },
+        {
+          "caller": "trust_score",
+          "callee": "ConfidenceInputs",
+          "lineNumber": 76
+        },
+        {
+          "caller": "direction_for",
+          "callee": "config.direction_for",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 179,
+      "functions": [
+        {
+          "name": "load_config",
+          "startLine": 185,
+          "endLine": 196,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RegimeConfigError",
+          "startLine": 30,
+          "endLine": 31,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "RegimeConfig",
+          "startLine": 65,
+          "endLine": 182,
+          "methods": [
+            "__post_init__",
+            "decision_fingerprint",
+            "from_mapping"
+          ],
+          "properties": [
+            "vix_calm",
+            "vix_elevated",
+            "vix_crisis",
+            "vix_liquidity_gate",
+            "move_stress",
+            "real_yield_restrictive",
+            "real_yield_easy",
+            "be5y5y_reflation",
+            "be5y5y_disinflation",
+            "curve_inversion",
+            "usd_strong",
+            "scale_liquidity_stress",
+            "scale_risk_off",
+            "scale_volatile",
+            "scale_restrictive_rates",
+            "scale_reflation",
+            "scale_disinflation",
+            "scale_curve_inversion",
+            "scale_strong_usd",
+            "scale_risk_on",
+            "scale_low_vol",
+            "near_band",
+            "required_features",
+            "taxonomy_version",
+            "classifier_version",
+            "classification_trace_version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RegimeConfigError",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "RegimeConfig",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "load_config",
+          "line": 185,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "any",
+          "lineNumber": 128
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 131
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 133
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 135
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 137
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "getattr",
+          "lineNumber": 139
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RegimeConfigError",
+          "lineNumber": 140
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "sorted",
+          "lineNumber": 150
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "getattr",
+          "lineNumber": 151
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "isinstance",
+          "lineNumber": 152
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "list",
+          "lineNumber": 153
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "items.append",
+          "lineNumber": 154
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 155
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 156
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 156
+        },
+        {
+          "caller": "decision_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 156
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 161
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 162
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 163
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 164
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 166
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 166
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 168
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 170
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "all",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 175
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 176
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "tuple",
+          "lineNumber": 177
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 180
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RegimeConfigError",
+          "lineNumber": 182
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 182
+        },
+        {
+          "caller": "load_config",
+          "callee": "Path",
+          "lineNumber": 187
+        },
+        {
+          "caller": "load_config",
+          "callee": "p.read_text",
+          "lineNumber": 189
+        },
+        {
+          "caller": "load_config",
+          "callee": "RegimeConfigError",
+          "lineNumber": 191
+        },
+        {
+          "caller": "load_config",
+          "callee": "json.loads",
+          "lineNumber": 193
+        },
+        {
+          "caller": "load_config",
+          "callee": "RegimeConfigError",
+          "lineNumber": 195
+        },
+        {
+          "caller": "load_config",
+          "callee": "RegimeConfig.from_mapping",
+          "lineNumber": 196
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 177,
+      "nonEmptyLines": 152,
+      "classes": [
+        {
+          "name": "Regime",
+          "startLine": 40,
+          "endLine": 59,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "FeatureProvenance",
+          "startLine": 70,
+          "endLine": 86,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "name",
+            "value",
+            "inputs",
+            "max_staleness_days",
+            "revision_risk"
+          ]
+        },
+        {
+          "name": "RegimeClassification",
+          "startLine": 90,
+          "endLine": 177,
+          "methods": [
+            "__post_init__",
+            "to_dict"
+          ],
+          "properties": [
+            "matched_rule_id",
+            "regime",
+            "rule_priority",
+            "rule_margin",
+            "rule_threshold",
+            "rule_scale",
+            "trigger_features",
+            "snapshot_id",
+            "feature_schema_version",
+            "provenance",
+            "taxonomy_version",
+            "classifier_version",
+            "classification_trace_version",
+            "evaluated_rule_ids",
+            "skipped_rule_ids",
+            "failed_required_features",
+            "secondary_matching_rules",
+            "near_matching_rules",
+            "as_of",
+            "indeterminate_reason"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Regime",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureProvenance",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "RegimeClassification",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 81
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 126
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 131
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 136
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 139
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 141
+        },
+        {
+          "caller": "to_dict",
+          "callee": "p.to_dict",
+          "lineNumber": 153
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 157
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 166
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 167
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 168
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 169
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 170
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 172
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/regime_classifier.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "_provenance",
+          "startLine": 30,
+          "endLine": 35,
+          "params": [
+            "fv",
+            "feature_names"
+          ]
+        },
+        {
+          "name": "classify",
+          "startLine": 38,
+          "endLine": 136,
+          "params": [
+            "fv",
+            "config",
+            "as_of"
+          ]
+        },
+        {
+          "name": "_secondary_margin",
+          "startLine": 139,
+          "endLine": 142,
+          "params": [
+            "fv",
+            "c",
+            "rule"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_provenance",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "classify",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "_secondary_margin",
+          "line": 139,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_provenance",
+          "callee": "tuple",
+          "lineNumber": 32
+        },
+        {
+          "caller": "_provenance",
+          "callee": "FeatureProvenance",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_provenance",
+          "callee": "sorted",
+          "lineNumber": 34
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 47
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 49
+        },
+        {
+          "caller": "classify",
+          "callee": "sorted",
+          "lineNumber": 49
+        },
+        {
+          "caller": "classify",
+          "callee": "RegimeClassification",
+          "lineNumber": 50
+        },
+        {
+          "caller": "classify",
+          "callee": "\", \".join",
+          "lineNumber": 66
+        },
+        {
+          "caller": "classify",
+          "callee": "set",
+          "lineNumber": 72
+        },
+        {
+          "caller": "classify",
+          "callee": "skipped.append",
+          "lineNumber": 79
+        },
+        {
+          "caller": "classify",
+          "callee": "failed_feats.update",
+          "lineNumber": 80
+        },
+        {
+          "caller": "classify",
+          "callee": "evaluated.append",
+          "lineNumber": 82
+        },
+        {
+          "caller": "classify",
+          "callee": "rule.predicate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "classify",
+          "callee": "matched.append",
+          "lineNumber": 84
+        },
+        {
+          "caller": "classify",
+          "callee": "near_proximity",
+          "lineNumber": 86
+        },
+        {
+          "caller": "classify",
+          "callee": "near.append",
+          "lineNumber": 88
+        },
+        {
+          "caller": "classify",
+          "callee": "AssertionError",
+          "lineNumber": 92
+        },
+        {
+          "caller": "classify",
+          "callee": "winner.margin.threshold",
+          "lineNumber": 96
+        },
+        {
+          "caller": "classify",
+          "callee": "winner.margin.scale",
+          "lineNumber": 97
+        },
+        {
+          "caller": "classify",
+          "callee": "margin_value",
+          "lineNumber": 98
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 99
+        },
+        {
+          "caller": "classify",
+          "callee": "sorted",
+          "lineNumber": 99
+        },
+        {
+          "caller": "classify",
+          "callee": "secondaries.sort",
+          "lineNumber": 109
+        },
+        {
+          "caller": "classify",
+          "callee": "_secondary_margin",
+          "lineNumber": 109
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 110
+        },
+        {
+          "caller": "classify",
+          "callee": "near.sort",
+          "lineNumber": 113
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 114
+        },
+        {
+          "caller": "classify",
+          "callee": "RegimeClassification",
+          "lineNumber": 116
+        },
+        {
+          "caller": "classify",
+          "callee": "_provenance",
+          "lineNumber": 126
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 130
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 131
+        },
+        {
+          "caller": "classify",
+          "callee": "tuple",
+          "lineNumber": 132
+        },
+        {
+          "caller": "classify",
+          "callee": "sorted",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_secondary_margin",
+          "callee": "margin_value",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/regime/regime_classifier/taxonomy.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "clamp01",
+          "startLine": 54,
+          "endLine": 56,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "margin_value",
+          "startLine": 59,
+          "endLine": 66,
+          "params": [
+            "fv",
+            "c",
+            "spec"
+          ]
+        },
+        {
+          "name": "near_proximity",
+          "startLine": 69,
+          "endLine": 80,
+          "params": [
+            "fv",
+            "c",
+            "spec"
+          ]
+        },
+        {
+          "name": "_p_liquidity_stress",
+          "startLine": 94,
+          "endLine": 95,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_risk_off",
+          "startLine": 98,
+          "endLine": 99,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_volatile",
+          "startLine": 102,
+          "endLine": 103,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_restrictive_rates",
+          "startLine": 106,
+          "endLine": 107,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_reflation",
+          "startLine": 110,
+          "endLine": 114,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_disinflation",
+          "startLine": 117,
+          "endLine": 118,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_curve_inversion",
+          "startLine": 121,
+          "endLine": 122,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_strong_usd",
+          "startLine": 125,
+          "endLine": 126,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_risk_on",
+          "startLine": 129,
+          "endLine": 130,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_low_vol",
+          "startLine": 133,
+          "endLine": 134,
+          "params": [
+            "fv",
+            "c"
+          ]
+        },
+        {
+          "name": "_p_neutral",
+          "startLine": 137,
+          "endLine": 138,
+          "params": [
+            "fv",
+            "c"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MarginSpec",
+          "startLine": 27,
+          "endLine": 38,
+          "methods": [],
+          "properties": [
+            "feature",
+            "threshold",
+            "scale",
+            "direction"
+          ]
+        },
+        {
+          "name": "RegimeRule",
+          "startLine": 42,
+          "endLine": 51,
+          "methods": [],
+          "properties": [
+            "rule_id",
+            "regime",
+            "priority",
+            "required_features",
+            "trigger_features",
+            "predicate",
+            "margin"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MarginSpec",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "RegimeRule",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "clamp01",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "margin_value",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "near_proximity",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "_p_liquidity_stress",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "_p_risk_off",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "_p_volatile",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "_p_restrictive_rates",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "_p_reflation",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "_p_disinflation",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "_p_curve_inversion",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "_p_strong_usd",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "_p_risk_on",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "_p_low_vol",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "_p_neutral",
+          "line": 137,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "clamp01",
+          "callee": "max",
+          "lineNumber": 56
+        },
+        {
+          "caller": "clamp01",
+          "callee": "min",
+          "lineNumber": 56
+        },
+        {
+          "caller": "margin_value",
+          "callee": "fv.value",
+          "lineNumber": 65
+        },
+        {
+          "caller": "margin_value",
+          "callee": "clamp01",
+          "lineNumber": 66
+        },
+        {
+          "caller": "margin_value",
+          "callee": "spec.threshold",
+          "lineNumber": 66
+        },
+        {
+          "caller": "margin_value",
+          "callee": "spec.scale",
+          "lineNumber": 66
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "fv.value",
+          "lineNumber": 76
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "spec.threshold",
+          "lineNumber": 77
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "spec.scale",
+          "lineNumber": 77
+        },
+        {
+          "caller": "near_proximity",
+          "callee": "clamp01",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_p_liquidity_stress",
+          "callee": "fv.value",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_p_liquidity_stress",
+          "callee": "fv.value",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_p_risk_off",
+          "callee": "fv.value",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_p_volatile",
+          "callee": "fv.value",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_p_restrictive_rates",
+          "callee": "fv.value",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_p_reflation",
+          "callee": "fv.value",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_p_reflation",
+          "callee": "fv.value",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_p_disinflation",
+          "callee": "fv.value",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_p_curve_inversion",
+          "callee": "fv.value",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_p_strong_usd",
+          "callee": "fv.value",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_p_risk_on",
+          "callee": "fv.value",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_p_risk_on",
+          "callee": "fv.value",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_p_low_vol",
+          "callee": "fv.value",
+          "lineNumber": 134
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 16,
+        "functionCount": 14,
+        "classCount": 2
+      }
+    }
+  ]
+}

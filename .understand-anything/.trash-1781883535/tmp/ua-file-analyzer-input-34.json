@@ -1,0 +1,15 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "jarvis/hud/README.md", "language": "markdown", "sizeLines": 48, "fileCategory": "docs"},
+    {"path": "jarvis/hud/index.html", "language": "html", "sizeLines": 17, "fileCategory": "markup"},
+    {"path": "jarvis/hud/package.json", "language": "json", "sizeLines": 29, "fileCategory": "config"},
+    {"path": "jarvis/hud/tsconfig.json", "language": "json", "sizeLines": 21, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    "jarvis/hud/README.md": [],
+    "jarvis/hud/index.html": [],
+    "jarvis/hud/package.json": [],
+    "jarvis/hud/tsconfig.json": []
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "wiki/infrastructure/Claude Co-work.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 121,
+      "nonEmptyLines": 87,
+      "sections": [
+        {
+          "heading": "Claude Co-work",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Key Capabilities",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Trading Use Cases",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Exchange Connection",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "TradingView Webhook Integration",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "wiki/infrastructure/Claude Code.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 112,
+      "nonEmptyLines": 83,
+      "sections": [
+        {
+          "heading": "Claude Code",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Key Capabilities",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Operational Modes",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Claude Code vs. Claude Co-work vs. Claude Chat",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Context Management",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Subscription Tiers",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 108
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "wiki/infrastructure/Claude Routines.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 170,
+      "nonEmptyLines": 124,
+      "sections": [
+        {
+          "heading": "Claude Routines",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Routine Architecture",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Standard Trading Cron Schedule",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Local vs. Remote Routines",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Cloud Environment Setup",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Routine Setup",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Permissions",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Ad-Hoc Schedule Creation via `/schedule`",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Routine Prompt Structure",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "Failure Modes",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 142
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Open Questions",
+          "level": 2,
+          "line": 160
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 167
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": "wiki/infrastructure/Railway Deployment.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 76,
+      "nonEmptyLines": 52,
+      "sections": [
+        {
+          "heading": "Railway Deployment",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "Definition",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Architecture Role",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Configuration",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Environment Variables",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Inputs",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Outputs",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Dependencies",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Tradeoffs",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Related Concepts",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Source References",
+          "level": 2,
+          "line": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    }
+  ]
+}

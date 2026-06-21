@@ -1,0 +1,1567 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/gold/paper_runtime/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/gold/paper_runtime/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "load_config",
+          "startLine": 84,
+          "endLine": 95,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RuntimePolicyConfigError",
+          "startLine": 29,
+          "endLine": 30,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "RuntimePolicyConfig",
+          "startLine": 45,
+          "endLine": 81,
+          "methods": [
+            "__post_init__",
+            "runtime_policy_fingerprint",
+            "from_mapping"
+          ],
+          "properties": [
+            "require_operational",
+            "require_snapshot_guards",
+            "require_cooldown",
+            "cooldown_window_hours",
+            "runtime_policy_version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RuntimePolicyConfigError",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "RuntimePolicyConfig",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "load_config",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 58
+        },
+        {
+          "caller": "runtime_policy_fingerprint",
+          "callee": "getattr",
+          "lineNumber": 62
+        },
+        {
+          "caller": "runtime_policy_fingerprint",
+          "callee": "sorted",
+          "lineNumber": 62
+        },
+        {
+          "caller": "runtime_policy_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 63
+        },
+        {
+          "caller": "runtime_policy_fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 64
+        },
+        {
+          "caller": "runtime_policy_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 64
+        },
+        {
+          "caller": "runtime_policy_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 64
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 69
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 70
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 71
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 72
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 74
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 74
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 77
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 79
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 81
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 81
+        },
+        {
+          "caller": "load_config",
+          "callee": "Path",
+          "lineNumber": 86
+        },
+        {
+          "caller": "load_config",
+          "callee": "p.read_text",
+          "lineNumber": 88
+        },
+        {
+          "caller": "load_config",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 90
+        },
+        {
+          "caller": "load_config",
+          "callee": "json.loads",
+          "lineNumber": 92
+        },
+        {
+          "caller": "load_config",
+          "callee": "RuntimePolicyConfigError",
+          "lineNumber": 94
+        },
+        {
+          "caller": "load_config",
+          "callee": "RuntimePolicyConfig.from_mapping",
+          "lineNumber": 95
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/gold/paper_runtime/engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 150,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "_required_guards",
+          "startLine": 55,
+          "endLine": 67,
+          "params": [
+            "config"
+          ]
+        },
+        {
+          "name": "evaluate",
+          "startLine": 70,
+          "endLine": 150,
+          "params": [
+            "packet",
+            "prior_ledger",
+            "operational_input",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_required_guards",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "evaluate",
+          "line": 70,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_required_guards",
+          "callee": "required.add",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_required_guards",
+          "callee": "required.update",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_required_guards",
+          "callee": "required.add",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_required_guards",
+          "callee": "tuple",
+          "lineNumber": 66
+        },
+        {
+          "caller": "evaluate",
+          "callee": "duplicate_ok",
+          "lineNumber": 79
+        },
+        {
+          "caller": "evaluate",
+          "callee": "operational_ok",
+          "lineNumber": 80
+        },
+        {
+          "caller": "evaluate",
+          "callee": "data_ok",
+          "lineNumber": 81
+        },
+        {
+          "caller": "evaluate",
+          "callee": "freshness_ok",
+          "lineNumber": 82
+        },
+        {
+          "caller": "evaluate",
+          "callee": "cooldown_ok",
+          "lineNumber": 83
+        },
+        {
+          "caller": "evaluate",
+          "callee": "tuple",
+          "lineNumber": 86
+        },
+        {
+          "caller": "evaluate",
+          "callee": "GuardOutcome",
+          "lineNumber": 87
+        },
+        {
+          "caller": "evaluate",
+          "callee": "next",
+          "lineNumber": 100
+        },
+        {
+          "caller": "evaluate",
+          "callee": "_required_guards",
+          "lineNumber": 101
+        },
+        {
+          "caller": "evaluate",
+          "callee": "operational_input.fingerprint",
+          "lineNumber": 109
+        },
+        {
+          "caller": "evaluate",
+          "callee": "digest_snapshot_guards",
+          "lineNumber": 110
+        },
+        {
+          "caller": "evaluate",
+          "callee": "prior_ledger.state_hash",
+          "lineNumber": 111
+        },
+        {
+          "caller": "evaluate",
+          "callee": "LedgerEntry",
+          "lineNumber": 112
+        },
+        {
+          "caller": "evaluate",
+          "callee": "prior_ledger.next_seq",
+          "lineNumber": 120
+        },
+        {
+          "caller": "evaluate",
+          "callee": "prior_ledger.append",
+          "lineNumber": 122
+        },
+        {
+          "caller": "evaluate",
+          "callee": "RuntimeDecisionRecord",
+          "lineNumber": 126
+        },
+        {
+          "caller": "evaluate",
+          "callee": "compute_record_id",
+          "lineNumber": 127
+        },
+        {
+          "caller": "evaluate",
+          "callee": "config.runtime_policy_fingerprint",
+          "lineNumber": 129
+        },
+        {
+          "caller": "evaluate",
+          "callee": "new_ledger.state_hash",
+          "lineNumber": 146
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/gold/paper_runtime/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 354,
+      "nonEmptyLines": 290,
+      "functions": [
+        {
+          "name": "digest_snapshot_guards",
+          "startLine": 263,
+          "endLine": 269,
+          "params": [
+            "packet"
+          ]
+        },
+        {
+          "name": "compute_record_id",
+          "startLine": 272,
+          "endLine": 296,
+          "params": [
+            "source_packet_id",
+            "runtime_policy_fingerprint",
+            "as_of",
+            "operational_fingerprint",
+            "snapshot_guards_digest",
+            "prior_ledger_state_hash"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RuntimeContractError",
+          "startLine": 35,
+          "endLine": 36,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Verdict",
+          "startLine": 42,
+          "endLine": 47,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "GuardOutcome",
+          "startLine": 51,
+          "endLine": 63,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "name",
+            "passed",
+            "reason"
+          ]
+        },
+        {
+          "name": "OperationalInput",
+          "startLine": 70,
+          "endLine": 135,
+          "methods": [
+            "to_dict",
+            "fingerprint",
+            "closed",
+            "from_mapping"
+          ],
+          "properties": [
+            "instrument",
+            "tradeable",
+            "venue_open",
+            "halt",
+            "degraded",
+            "as_of",
+            "source_version"
+          ]
+        },
+        {
+          "name": "LedgerEntry",
+          "startLine": 142,
+          "endLine": 189,
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "source_snapshot_id",
+            "source_packet_id",
+            "as_of",
+            "verdict",
+            "triggered_guard",
+            "snapshot_guards_digest",
+            "operational_fingerprint",
+            "seq"
+          ]
+        },
+        {
+          "name": "RuntimeLedger",
+          "startLine": 193,
+          "endLine": 257,
+          "methods": [
+            "empty",
+            "has_admit",
+            "last_admit_as_of",
+            "next_seq",
+            "append",
+            "to_dict",
+            "state_hash",
+            "from_dict"
+          ],
+          "properties": [
+            "ledger_schema_version",
+            "entries"
+          ]
+        },
+        {
+          "name": "RuntimeDecisionRecord",
+          "startLine": 300,
+          "endLine": 350,
+          "methods": [
+            "__post_init__",
+            "to_dict"
+          ],
+          "properties": [
+            "record_id",
+            "record_schema_version",
+            "source_packet_id",
+            "source_snapshot_id",
+            "decision_mode",
+            "verdict",
+            "triggered_guard",
+            "reason",
+            "guard_outcomes",
+            "runtime_policy_version",
+            "as_of",
+            "prior_ledger_state_hash",
+            "new_ledger_state_hash",
+            "non_execution_notice",
+            "constraints"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RuntimeContractError",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "Verdict",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "GuardOutcome",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "OperationalInput",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "LedgerEntry",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "RuntimeLedger",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "digest_snapshot_guards",
+          "line": 263,
+          "isDefault": false
+        },
+        {
+          "name": "compute_record_id",
+          "line": 272,
+          "isDefault": false
+        },
+        {
+          "name": "RuntimeDecisionRecord",
+          "line": 299,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 99
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "self.to_dict",
+          "lineNumber": 99
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 100
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 100
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 100
+        },
+        {
+          "caller": "closed",
+          "callee": "cls",
+          "lineNumber": 105
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 117
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimeContractError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 121
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimeContractError",
+          "lineNumber": 123
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 123
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "RuntimeContractError",
+          "lineNumber": 126
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 127
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 128
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "bool",
+          "lineNumber": 129
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "bool",
+          "lineNumber": 130
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "bool",
+          "lineNumber": 131
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "bool",
+          "lineNumber": 132
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 133
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "mapping.get",
+          "lineNumber": 133
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 134
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "mapping.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 173
+        },
+        {
+          "caller": "from_dict",
+          "callee": "RuntimeContractError",
+          "lineNumber": 174
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 176
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 177
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 178
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 179
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 179
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 180
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 182
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 182
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 184
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 185
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 186
+        },
+        {
+          "caller": "from_dict",
+          "callee": "RuntimeContractError",
+          "lineNumber": 189
+        },
+        {
+          "caller": "empty",
+          "callee": "cls",
+          "lineNumber": 201
+        },
+        {
+          "caller": "has_admit",
+          "callee": "any",
+          "lineNumber": 209
+        },
+        {
+          "caller": "last_admit_as_of",
+          "callee": "reversed",
+          "lineNumber": 222
+        },
+        {
+          "caller": "next_seq",
+          "callee": "len",
+          "lineNumber": 229
+        },
+        {
+          "caller": "append",
+          "callee": "RuntimeLedger",
+          "lineNumber": 233
+        },
+        {
+          "caller": "to_dict",
+          "callee": "e.to_dict",
+          "lineNumber": 237
+        },
+        {
+          "caller": "state_hash",
+          "callee": "json.dumps",
+          "lineNumber": 243
+        },
+        {
+          "caller": "state_hash",
+          "callee": "self.to_dict",
+          "lineNumber": 243
+        },
+        {
+          "caller": "state_hash",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 244
+        },
+        {
+          "caller": "state_hash",
+          "callee": "hashlib.sha256",
+          "lineNumber": 244
+        },
+        {
+          "caller": "state_hash",
+          "callee": "payload.encode",
+          "lineNumber": 244
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 248
+        },
+        {
+          "caller": "from_dict",
+          "callee": "RuntimeContractError",
+          "lineNumber": 249
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 250
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 251
+        },
+        {
+          "caller": "from_dict",
+          "callee": "RuntimeContractError",
+          "lineNumber": 252
+        },
+        {
+          "caller": "from_dict",
+          "callee": "tuple",
+          "lineNumber": 253
+        },
+        {
+          "caller": "from_dict",
+          "callee": "LedgerEntry.from_dict",
+          "lineNumber": 253
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 254
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 255
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 255
+        },
+        {
+          "caller": "digest_snapshot_guards",
+          "callee": "json.dumps",
+          "lineNumber": 266
+        },
+        {
+          "caller": "digest_snapshot_guards",
+          "callee": "sg.to_dict",
+          "lineNumber": 267
+        },
+        {
+          "caller": "digest_snapshot_guards",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 269
+        },
+        {
+          "caller": "digest_snapshot_guards",
+          "callee": "hashlib.sha256",
+          "lineNumber": 269
+        },
+        {
+          "caller": "digest_snapshot_guards",
+          "callee": "payload.encode",
+          "lineNumber": 269
+        },
+        {
+          "caller": "compute_record_id",
+          "callee": "\"\\n\".join",
+          "lineNumber": 294
+        },
+        {
+          "caller": "compute_record_id",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 295
+        },
+        {
+          "caller": "compute_record_id",
+          "callee": "hashlib.sha256",
+          "lineNumber": 295
+        },
+        {
+          "caller": "compute_record_id",
+          "callee": "payload.encode",
+          "lineNumber": 295
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RuntimeContractError",
+          "lineNumber": 326
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RuntimeContractError",
+          "lineNumber": 328
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "RuntimeContractError",
+          "lineNumber": 330
+        },
+        {
+          "caller": "to_dict",
+          "callee": "list",
+          "lineNumber": 336
+        },
+        {
+          "caller": "to_dict",
+          "callee": "g.to_dict",
+          "lineNumber": 338
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 2,
+        "classCount": 7
+      }
+    },
+    {
+      "path": "src/gold/paper_runtime/predicates.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "duplicate_ok",
+          "startLine": 31,
+          "endLine": 35,
+          "params": [
+            "packet",
+            "prior_ledger"
+          ]
+        },
+        {
+          "name": "operational_ok",
+          "startLine": 38,
+          "endLine": 48,
+          "params": [
+            "packet",
+            "op"
+          ]
+        },
+        {
+          "name": "_echo",
+          "startLine": 51,
+          "endLine": 56,
+          "params": [
+            "packet",
+            "attr",
+            "label"
+          ]
+        },
+        {
+          "name": "data_ok",
+          "startLine": 59,
+          "endLine": 61,
+          "params": [
+            "packet"
+          ]
+        },
+        {
+          "name": "freshness_ok",
+          "startLine": 64,
+          "endLine": 66,
+          "params": [
+            "packet"
+          ]
+        },
+        {
+          "name": "_parse_as_of",
+          "startLine": 69,
+          "endLine": 76,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "cooldown_ok",
+          "startLine": 79,
+          "endLine": 105,
+          "params": [
+            "packet",
+            "prior_ledger",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "duplicate_ok",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "operational_ok",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "_echo",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "data_ok",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "freshness_ok",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "_parse_as_of",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "cooldown_ok",
+          "line": 79,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "duplicate_ok",
+          "callee": "prior_ledger.has_admit",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_echo",
+          "callee": "bool",
+          "lineNumber": 55
+        },
+        {
+          "caller": "_echo",
+          "callee": "getattr",
+          "lineNumber": 55
+        },
+        {
+          "caller": "data_ok",
+          "callee": "_echo",
+          "lineNumber": 61
+        },
+        {
+          "caller": "freshness_ok",
+          "callee": "_echo",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_parse_as_of",
+          "callee": "datetime.fromisoformat",
+          "lineNumber": 74
+        },
+        {
+          "caller": "cooldown_ok",
+          "callee": "prior_ledger.last_admit_as_of",
+          "lineNumber": 92
+        },
+        {
+          "caller": "cooldown_ok",
+          "callee": "_parse_as_of",
+          "lineNumber": 95
+        },
+        {
+          "caller": "cooldown_ok",
+          "callee": "_parse_as_of",
+          "lineNumber": 96
+        },
+        {
+          "caller": "cooldown_ok",
+          "callee": "(now - prev).total_seconds",
+          "lineNumber": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/gold/paper_runtime/runtime.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "load_ledger",
+          "startLine": 32,
+          "endLine": 46,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "persist_ledger",
+          "startLine": 49,
+          "endLine": 56,
+          "params": [
+            "path",
+            "ledger"
+          ]
+        },
+        {
+          "name": "load_operational",
+          "startLine": 59,
+          "endLine": 72,
+          "params": [
+            "path",
+            "instrument"
+          ]
+        },
+        {
+          "name": "run_once",
+          "startLine": 75,
+          "endLine": 86,
+          "params": [
+            "packet",
+            "ledger_path",
+            "operational_path",
+            "config"
+          ]
+        },
+        {
+          "name": "run_sequence",
+          "startLine": 89,
+          "endLine": 105,
+          "params": [
+            "items",
+            "config",
+            "ledger"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_ledger",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "persist_ledger",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "load_operational",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "run_once",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "run_sequence",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_ledger",
+          "callee": "Path",
+          "lineNumber": 39
+        },
+        {
+          "caller": "load_ledger",
+          "callee": "p.exists",
+          "lineNumber": 40
+        },
+        {
+          "caller": "load_ledger",
+          "callee": "RuntimeLedger.empty",
+          "lineNumber": 41
+        },
+        {
+          "caller": "load_ledger",
+          "callee": "json.loads",
+          "lineNumber": 43
+        },
+        {
+          "caller": "load_ledger",
+          "callee": "p.read_text",
+          "lineNumber": 43
+        },
+        {
+          "caller": "load_ledger",
+          "callee": "RuntimeContractError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_ledger",
+          "callee": "RuntimeLedger.from_dict",
+          "lineNumber": 46
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "Path",
+          "lineNumber": 51
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "p.parent.mkdir",
+          "lineNumber": 52
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "json.dumps",
+          "lineNumber": 53
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "ledger.to_dict",
+          "lineNumber": 53
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "p.with_name",
+          "lineNumber": 54
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "tmp.write_text",
+          "lineNumber": 55
+        },
+        {
+          "caller": "persist_ledger",
+          "callee": "os.replace",
+          "lineNumber": 56
+        },
+        {
+          "caller": "load_operational",
+          "callee": "Path",
+          "lineNumber": 65
+        },
+        {
+          "caller": "load_operational",
+          "callee": "p.exists",
+          "lineNumber": 66
+        },
+        {
+          "caller": "load_operational",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 67
+        },
+        {
+          "caller": "load_operational",
+          "callee": "json.loads",
+          "lineNumber": 69
+        },
+        {
+          "caller": "load_operational",
+          "callee": "p.read_text",
+          "lineNumber": 69
+        },
+        {
+          "caller": "load_operational",
+          "callee": "OperationalInput.from_mapping",
+          "lineNumber": 70
+        },
+        {
+          "caller": "load_operational",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 72
+        },
+        {
+          "caller": "run_once",
+          "callee": "load_ledger",
+          "lineNumber": 82
+        },
+        {
+          "caller": "run_once",
+          "callee": "load_operational",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run_once",
+          "callee": "evaluate",
+          "lineNumber": 84
+        },
+        {
+          "caller": "run_once",
+          "callee": "persist_ledger",
+          "lineNumber": 85
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "RuntimeLedger.empty",
+          "lineNumber": 100
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "evaluate",
+          "lineNumber": 103
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "records.append",
+          "lineNumber": 104
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "tuple",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/orchestration/alpaca_clock_feed.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "_is_paper_base_url",
+          "startLine": 43,
+          "endLine": 54,
+          "params": [
+            "base_url"
+          ]
+        },
+        {
+          "name": "_calendar_date",
+          "startLine": 57,
+          "endLine": 64,
+          "params": [
+            "as_of"
+          ]
+        },
+        {
+          "name": "clock_feed_from_env",
+          "startLine": 135,
+          "endLine": 153,
+          "params": [
+            "instrument"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "AlpacaCalendarClient",
+          "startLine": 67,
+          "endLine": 72,
+          "methods": [
+            "trading_days"
+          ],
+          "properties": []
+        },
+        {
+          "name": "AlpacaClockFeed",
+          "startLine": 76,
+          "endLine": 109,
+          "methods": [
+            "read"
+          ],
+          "properties": [
+            "client",
+            "instrument"
+          ]
+        },
+        {
+          "name": "_AlpacaRestCalendarClient",
+          "startLine": 112,
+          "endLine": 132,
+          "methods": [
+            "__init__",
+            "trading_days"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_is_paper_base_url",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "_calendar_date",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "AlpacaCalendarClient",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "AlpacaClockFeed",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "_AlpacaRestCalendarClient",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "clock_feed_from_env",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_is_paper_base_url",
+          "callee": "urlparse",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_calendar_date",
+          "callee": "datetime.fromisoformat(as_of).strftime",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_calendar_date",
+          "callee": "datetime.fromisoformat",
+          "lineNumber": 62
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 90
+        },
+        {
+          "caller": "read",
+          "callee": "_calendar_date",
+          "lineNumber": 91
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 93
+        },
+        {
+          "caller": "read",
+          "callee": "self.client.trading_days",
+          "lineNumber": 95
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 98
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 101
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput",
+          "lineNumber": 102
+        },
+        {
+          "caller": "__init__",
+          "callee": "base_url.rstrip",
+          "lineNumber": 118
+        },
+        {
+          "caller": "trading_days",
+          "callee": "urllib.request.Request",
+          "lineNumber": 122
+        },
+        {
+          "caller": "trading_days",
+          "callee": "urllib.request.urlopen",
+          "lineNumber": 130
+        },
+        {
+          "caller": "trading_days",
+          "callee": "json.loads",
+          "lineNumber": 131
+        },
+        {
+          "caller": "trading_days",
+          "callee": "response.read().decode",
+          "lineNumber": 131
+        },
+        {
+          "caller": "trading_days",
+          "callee": "response.read",
+          "lineNumber": 131
+        },
+        {
+          "caller": "trading_days",
+          "callee": "tuple",
+          "lineNumber": 132
+        },
+        {
+          "caller": "trading_days",
+          "callee": "str",
+          "lineNumber": 132
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "os.environ.get",
+          "lineNumber": 143
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "os.environ.get",
+          "lineNumber": 144
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "os.environ.get",
+          "lineNumber": 145
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "AlpacaClockFeed",
+          "lineNumber": 147
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "_is_paper_base_url",
+          "lineNumber": 148
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "AlpacaClockFeed",
+          "lineNumber": 149
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "AlpacaClockFeed",
+          "lineNumber": 150
+        },
+        {
+          "caller": "clock_feed_from_env",
+          "callee": "_AlpacaRestCalendarClient",
+          "lineNumber": 151
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 3
+      }
+    }
+  ]
+}

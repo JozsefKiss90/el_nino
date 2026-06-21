@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/gates/Gold Decision Gate.md",
+      "type": "document",
+      "name": "Gold Decision Gate.md",
+      "filePath": "dev_graph/gates/Gold Decision Gate.md",
+      "summary": "Dev_graph gate node (GATE-002) defining the advisory Layer-3 checkpoint that composes the six-guard taxonomy outcomes a Gold DecisionPacket cites in its guard_refs; stays advisory in v0 while the blocking surface moves to the Runtime Admission Gate.",
+      "tags": ["documentation", "dev-graph", "quality-gate", "decision-layer", "schema-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Ontology-governed dev_graph gate node with typed frontmatter (canonical_id GATE-002, blocking:false) and a Relationships section of wikilinks for Neo4j export."
+    },
+    {
+      "id": "document:dev_graph/gates/Runtime Admission Gate.md",
+      "type": "document",
+      "name": "Runtime Admission Gate.md",
+      "filePath": "dev_graph/gates/Runtime Admission Gate.md",
+      "summary": "Dev_graph gate node (GATE-003) documenting the blocking Layer-3 admission checkpoint that composes evaluated guards into a fail-closed ADMIT/HOLD/REJECT verdict over the runtime record (SCHEMA-012), enforced in engine.py evaluate() and the RuntimeDecisionRecord invariant.",
+      "tags": ["documentation", "dev-graph", "quality-gate", "runtime", "admission-control"],
+      "complexity": "moderate",
+      "languageNotes": "Typed dev_graph gate node (blocking:true) grounded in code at src/gold/paper_runtime/engine.py with required-guard ordering and fail-closed invariant semantics."
+    },
+    {
+      "id": "document:dev_graph/gates/Trade Validation Gate.md",
+      "type": "document",
+      "name": "Trade Validation Gate.md",
+      "filePath": "dev_graph/gates/Trade Validation Gate.md",
+      "summary": "Dev_graph gate node (GATE-001) describing the blocking Risk Control checkpoint that validates every proposed trade before broker submission via GuardrailEngine.validate() as a short-circuit conjunction of hard-limit predicates.",
+      "tags": ["documentation", "dev-graph", "quality-gate", "risk-control", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "Typed dev_graph gate node (blocking:true) realized by guardrail_engine.py (FILE-001); aggregates five predicates into an approve/block decision at the trade boundary."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/gates/Gold Decision Gate.md",
+      "target": "document:dev_graph/gates/Runtime Admission Gate.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:dev_graph/gates/Runtime Admission Gate.md",
+      "target": "document:dev_graph/gates/Gold Decision Gate.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

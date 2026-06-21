@@ -1,0 +1,123 @@
+{
+  "nodes": [
+    {
+      "id": "document:dev_graph/knowledge_assets/Agent Safety Principles.md",
+      "type": "document",
+      "name": "Agent Safety Principles.md",
+      "filePath": "dev_graph/knowledge_assets/Agent Safety Principles.md",
+      "summary": "Knowledge-asset node (KA-008) defining the multi-layer safety guidance for autonomous trading agents: credential isolation, self-verification, phased autonomy, an AI-specific risk taxonomy, human oversight, and fail-safe defaults. Cross-cuts all systems and motivates constraint nodes and the paper-trading gate.",
+      "tags": ["documentation", "knowledge-asset", "security", "agent-safety", "risk"],
+      "complexity": "moderate",
+      "languageNotes": "dev_graph knowledge_asset with ontology frontmatter; informs ADR - Implementation Substrate and the Context Map architecture node."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/CQRS.md",
+      "type": "document",
+      "name": "CQRS.md",
+      "filePath": "dev_graph/knowledge_assets/CQRS.md",
+      "summary": "Knowledge-asset node (KA-002) defining Command Query Responsibility Segregation as the principle separating the read model (Layer 2 snapshots) from the write model (Layer 3 order execution). Justifies the analysis/execution split and eventual consistency of snapshots.",
+      "tags": ["documentation", "knowledge-asset", "architecture-principle", "cqrs", "data-model"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; informs ADR - Ontology Redesign and both the Layer Model and Context Map architecture nodes."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Context Engineering.md",
+      "type": "document",
+      "name": "Context Engineering.md",
+      "filePath": "dev_graph/knowledge_assets/Context Engineering.md",
+      "summary": "Knowledge-asset node (KA-007) defining context engineering — treating finite LLM context windows as a budgeted resource managed via typed retrieval, admissibility gates, and intent-aware routing. Motivates the Context Assembly capability and the dev_graph as a structured retrieval substrate.",
+      "tags": ["documentation", "knowledge-asset", "context-engineering", "llm", "agent-design"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; informs ADR - Ontology Redesign and the Context Map architecture node."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Event Sourcing.md",
+      "type": "document",
+      "name": "Event Sourcing.md",
+      "filePath": "dev_graph/knowledge_assets/Event Sourcing.md",
+      "summary": "Knowledge-asset node (KA-001) defining event sourcing — capturing state changes as an immutable sequence of domain events with state derived by replay. Justifies the event-driven runtime topology, trade-log audit trail, and versioned domain events.",
+      "tags": ["documentation", "knowledge-asset", "event-sourcing", "architecture-principle", "audit"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; informs ADR - Ontology Redesign and the Runtime Topology architecture node."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Guardrail Philosophy.md",
+      "type": "document",
+      "name": "Guardrail Philosophy.md",
+      "filePath": "dev_graph/knowledge_assets/Guardrail Philosophy.md",
+      "summary": "Knowledge-asset node (KA-005) defining the guardrail philosophy — hard, externally enforced constraints the agent cannot reason around, separating non-negotiable hard limits from configurable soft limits. Motivates the Guardrail Pattern, the Risk Control boundary, and the Trade Validation Gate.",
+      "tags": ["documentation", "knowledge-asset", "guardrail", "risk", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; informs ADR - Implementation Substrate and the Context Map architecture node; constrained by No Wiki Mutation."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "type": "document",
+      "name": "Layer 2 Design Principles.md",
+      "filePath": "dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "summary": "Knowledge-asset node (KA-006) defining the principles governing the Layer 2 snapshot system — the deterministic, self-contained, point-in-time analytical truth layer between L1 ingestion and L3 execution. Motivates the Snapshot Assembly capability and the Layer 2 Snapshot Schema.",
+      "tags": ["documentation", "knowledge-asset", "layer2", "snapshot", "architecture-principle"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; informs ADR - Decision Layer Re-grounding and both the Layer Model and Context Map architecture nodes; source of the Regime Taxonomy asset."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Office Action Methodology.md",
+      "type": "document",
+      "name": "Office Action Methodology.md",
+      "filePath": "dev_graph/knowledge_assets/Office Action Methodology.md",
+      "summary": "Knowledge-asset node (KA-004) defining the office-action methodology — governing autonomous agent interventions through a deterministic state machine (baseline -> diagnosis -> approval -> evaluation) with integration checkpoints, audit-by-design, and graceful degradation. Motivates the Office Action Loop workflow.",
+      "tags": ["documentation", "knowledge-asset", "methodology", "state-machine", "governance"],
+      "complexity": "moderate",
+      "languageNotes": "Methodology-type knowledge_asset; informs ADR - Decision Layer Re-grounding and the Context Map architecture node."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Paper Trading Validation.md",
+      "type": "document",
+      "name": "Paper Trading Validation.md",
+      "filePath": "dev_graph/knowledge_assets/Paper Trading Validation.md",
+      "summary": "Knowledge-asset node (KA-010) defining paper-trading validation — the mandatory simulated-execution stage with real market data and virtual capital that generates quantitative evidence justifying promotion to live trading. Motivates the Evaluation Loop Pattern and Paper Trading Promotion Gate.",
+      "tags": ["documentation", "knowledge-asset", "paper-trading", "validation", "methodology"],
+      "complexity": "moderate",
+      "languageNotes": "Methodology-type knowledge_asset; informs ADR - Gold DecisionPacket v0 Planning and the Context Map architecture node."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "type": "document",
+      "name": "Regime Taxonomy.md",
+      "filePath": "dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "summary": "Knowledge-asset node (KA-011) defining the regime taxonomy — a small, deterministic, enumerated set of snapshot-local market-regime labels sitting between raw features and trade-decision logic. Motivates the Market Regime Classification capability and the Regime Classification Pattern.",
+      "tags": ["documentation", "knowledge-asset", "market-regime", "taxonomy", "determinism"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; justified by ADR - Deterministic Regime Taxonomy and originates from Layer 2 Design Principles; informs the Market Regime Classification architecture node."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Stateless Agent Architecture.md",
+      "type": "document",
+      "name": "Stateless Agent Architecture.md",
+      "filePath": "dev_graph/knowledge_assets/Stateless Agent Architecture.md",
+      "summary": "Knowledge-asset node (KA-009) defining stateless-agent architecture — each invocation starts with zero state and reconstructs continuity from persistent files via a Wake-Execute-Sleep cycle with git as the persistence layer. Motivates the Agent Runtime system and file-based memory architecture.",
+      "tags": ["documentation", "knowledge-asset", "stateless-agent", "memory", "architecture-principle"],
+      "complexity": "moderate",
+      "languageNotes": "Principle-type knowledge_asset; informs ADR - Ontology Redesign and ADR - Paper-Trading Runtime Planning; used by the Context Map, Paper-Trading Runtime, and Paper-Trade Admission nodes."
+    },
+    {
+      "id": "document:dev_graph/knowledge_assets/Supervisor Pattern Methodology.md",
+      "type": "document",
+      "name": "Supervisor Pattern Methodology.md",
+      "filePath": "dev_graph/knowledge_assets/Supervisor Pattern Methodology.md",
+      "summary": "Knowledge-asset node (KA-003) defining the supervisor-pattern methodology — a resource-constrained meta-agent that assembles, evaluates, and upgrades a team of specialized worker agents under treasury limits, where the supervisor itself is the product. Motivates the Supervisor Office system and Office Action Loop workflow.",
+      "tags": ["documentation", "knowledge-asset", "methodology", "multi-agent", "supervisor"],
+      "complexity": "moderate",
+      "languageNotes": "Methodology-type knowledge_asset; informs ADR - Decision Layer Re-grounding and the Context Map architecture node."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:dev_graph/knowledge_assets/Regime Taxonomy.md",
+      "target": "document:dev_graph/knowledge_assets/Layer 2 Design Principles.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

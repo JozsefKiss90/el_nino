@@ -1,0 +1,13 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "dev_graph/files/runtime.py.md", "language": "markdown", "sizeLines": 55, "fileCategory": "docs"},
+    {"path": "dev_graph/files/scoring.py.md", "language": "markdown", "sizeLines": 62, "fileCategory": "docs"},
+    {"path": "dev_graph/files/taxonomy.py.md", "language": "markdown", "sizeLines": 68, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "dev_graph/files/runtime.py.md": [],
+    "dev_graph/files/scoring.py.md": [],
+    "dev_graph/files/taxonomy.py.md": []
+  }
+}

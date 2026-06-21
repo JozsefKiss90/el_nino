@@ -20,3 +20,10 @@ env/
 
 # Chain orchestrator runtime state (MOD-010 CLI — operator-written ledger/portfolio)
 runtime/
+
+# Secrets — Alpaca PAPER API keys (KA-008 credential isolation; NEVER commit).
+# Keys live in env or this git-ignored file ONLY — never in the repo, a memory file, or a node.
+.secrets
+.secrets/
+*.secrets
+

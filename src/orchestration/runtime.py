@@ -191,7 +191,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--guard-from-env", action="store_true",
                         help="load GATE-001 hard limits from env (fail-closed) instead of the captured default")
     parser.add_argument("--operational-feed", action="store_true",
-                        help="read operational status from the deterministic market-calendar feed (captured for replay)")
+                        help="read operational status from a live operational feed (captured for replay)")
+    parser.add_argument("--operational-feed-source", choices=("calendar", "alpaca"), default="calendar",
+                        help="feed source when --operational-feed is set: 'calendar' (deterministic, "
+                             "default) or 'alpaca' (live paper clock/calendar; default-OFF; env creds; "
+                             "fail-closed). Closes the holiday-calendar gap; never reaches replay.")
     parser.add_argument("--operational-capture", default=str(_DEFAULT_OP_CAPTURE),
                         help="where to capture the produced OperationalInput (the replay source)")
     args = parser.parse_args(argv)
@@ -206,8 +210,17 @@ def main(argv: Sequence[str] | None = None) -> int:
         snapshot_path = args.snapshot
 
     guard_config = load_config_from_env() if args.guard_from_env else DEFAULT_GUARD_CONFIG
-    feed: OperationalFeed | None = MarketCalendarFeed() if args.operational_feed else None
-    capture = args.operational_capture if args.operational_feed else None
+    feed: OperationalFeed | None = None
+    capture: PathLike | None = None
+    if args.operational_feed:
+        if args.operational_feed_source == "alpaca":
+            # Live, non-replayable plug — imported only on explicit opt-in (keeps the default graph
+            # network-free). Fail-closed: no/non-paper creds ⇒ a feed that yields closed().
+            from .alpaca_clock_feed import clock_feed_from_env
+            feed = clock_feed_from_env()
+        else:
+            feed = MarketCalendarFeed()
+        capture = args.operational_capture
 
     result = run_once(
         snapshot_path, args.ledger, args.portfolio, guard_config=guard_config,

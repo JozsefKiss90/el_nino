@@ -1,0 +1,21 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "wiki/integrations/Alpaca API.md", "language": "markdown", "sizeLines": 135, "fileCategory": "docs"},
+    {"path": "wiki/integrations/Capital Trades Integration.md", "language": "markdown", "sizeLines": 129, "fileCategory": "docs"},
+    {"path": "wiki/integrations/Exchange API Integration.md", "language": "markdown", "sizeLines": 118, "fileCategory": "docs"},
+    {"path": "wiki/integrations/MCP Architecture.md", "language": "markdown", "sizeLines": 94, "fileCategory": "docs"},
+    {"path": "wiki/integrations/Perplexity API.md", "language": "markdown", "sizeLines": 75, "fileCategory": "docs"},
+    {"path": "wiki/integrations/TradingView Integration.md", "language": "markdown", "sizeLines": 108, "fileCategory": "docs"},
+    {"path": "wiki/integrations/Webhook Architecture.md", "language": "markdown", "sizeLines": 99, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "wiki/integrations/Alpaca API.md": [],
+    "wiki/integrations/Capital Trades Integration.md": [],
+    "wiki/integrations/Exchange API Integration.md": [],
+    "wiki/integrations/MCP Architecture.md": [],
+    "wiki/integrations/Perplexity API.md": [],
+    "wiki/integrations/TradingView Integration.md": [],
+    "wiki/integrations/Webhook Architecture.md": []
+  }
+}

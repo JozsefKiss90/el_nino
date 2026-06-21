@@ -1,0 +1,23 @@
+{
+  "projectRoot": "C:/Code/el_nino",
+  "batchFiles": [
+    {"path": "raw/Claude for Financial Services.md", "language": "markdown", "sizeLines": 85, "fileCategory": "docs"},
+    {"path": "raw/build-spec.md", "language": "markdown", "sizeLines": 77, "fileCategory": "docs"},
+    {"path": "raw/calude_alpaca_trader.md", "language": "markdown", "sizeLines": 1, "fileCategory": "docs"},
+    {"path": "raw/claude_cowork_trader.md", "language": "markdown", "sizeLines": 107, "fileCategory": "docs"},
+    {"path": "raw/claude_opus_trader.md", "language": "markdown", "sizeLines": 0, "fileCategory": "docs"},
+    {"path": "raw/claude_stock_trader.md", "language": "markdown", "sizeLines": 0, "fileCategory": "docs"},
+    {"path": "raw/claude_tradingview.md", "language": "markdown", "sizeLines": 0, "fileCategory": "docs"},
+    {"path": "raw/ows-dev-squad.md", "language": "markdown", "sizeLines": 557, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "raw/Claude for Financial Services.md": [],
+    "raw/build-spec.md": [],
+    "raw/calude_alpaca_trader.md": [],
+    "raw/claude_cowork_trader.md": [],
+    "raw/claude_opus_trader.md": [],
+    "raw/claude_stock_trader.md": [],
+    "raw/claude_tradingview.md": [],
+    "raw/ows-dev-squad.md": []
+  }
+}

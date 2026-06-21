@@ -1,0 +1,274 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/snapshot/snapshot_consumer/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/snapshot/snapshot_consumer/__init__.py",
+      "summary": "Package barrel for the Snapshot Consumer (MOD-003), the Layer-3 ingestion boundary; re-exports the consume gate functions and the read-only snapshot contract models.",
+      "tags": ["entry-point", "barrel", "data-model", "service"],
+      "complexity": "simple",
+      "languageNotes": "Python package barrel using __all__ to declare the public surface of the snapshot_consumer module."
+    },
+    {
+      "id": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "type": "file",
+      "name": "consumer.py",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "summary": "Implements the Layer-3 side of the Snapshot API (INT-001) as a fail-closed gate: loads, validates, and yields a Layer-2 snapshot only when its quality gate passed and it is not forced or dry-run, returning None otherwise.",
+      "tags": ["service", "validation", "api-handler", "serialization"],
+      "complexity": "simple",
+      "languageNotes": "Uses PEP 604 union return types (Snapshot | None) and a fail-closed pattern where absence and rejection both surface as None while structural faults raise."
+    },
+    {
+      "id": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "summary": "Read-only frozen dataclass models mirroring the Layer-2 Snapshot contract (SCHEMA-001), including per-series values, quality guards, summaries, and the top-level Snapshot with deterministic id recomputation.",
+      "tags": ["data-model", "type-definition", "serialization", "validation"],
+      "complexity": "complex",
+      "languageNotes": "Stdlib-only frozen dataclasses with from_dict factory classmethods that fail-closed via a shared _require helper; snapshot id is recomputed deterministically with hashlib.sha256 over sorted series lines."
+    },
+    {
+      "id": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "function",
+      "name": "load_snapshot",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [26, 39],
+      "summary": "Loads and parses a snapshot JSON file, returning None for legitimate absence but raising on contract violations so upstream truth-layer faults are surfaced loudly.",
+      "tags": ["serialization", "validation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/snapshot/snapshot_consumer/consumer.py:is_consumable",
+      "type": "function",
+      "name": "is_consumable",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [42, 56],
+      "summary": "Fail-closed predicate deciding whether Layer-3 may act on a snapshot: requires a passing verdict and snapshot_ok guard and rejects forced bypasses and dry-run previews.",
+      "tags": ["validation", "predicate", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "type": "function",
+      "name": "consume",
+      "filePath": "src/snapshot/snapshot_consumer/consumer.py",
+      "lineRange": [59, 72],
+      "summary": "Single Layer-3 entry point that returns a consumable snapshot or None, composing load_snapshot and is_consumable while letting structural faults propagate as errors.",
+      "tags": ["entry-point", "service", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "class",
+      "name": "SeriesValue",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [41, 90],
+      "summary": "Frozen dataclass for a single point-in-time series observation within a snapshot, with a from_grouped_entry factory and a deterministic _id_line used in snapshot id recomputation.",
+      "tags": ["data-model", "serialization", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "class",
+      "name": "Guards",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [94, 131],
+      "summary": "Frozen dataclass capturing the snapshot quality-gate guard flags (snapshot_ok, freshness, revision risk, supervisor veto, etc.) with a from_dict factory that the consumer checks before acting.",
+      "tags": ["data-model", "validation", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:QualitySummary",
+      "type": "class",
+      "name": "QualitySummary",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [135, 158],
+      "summary": "Frozen dataclass summarising tier-1/tier-2 quality counts and revision-risk series for a snapshot, built from the payload via a from_dict factory.",
+      "tags": ["data-model", "serialization", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "class",
+      "name": "Snapshot",
+      "filePath": "src/snapshot/snapshot_consumer/models.py",
+      "lineRange": [162, 242],
+      "summary": "Top-level frozen dataclass modelling the Layer-2 Snapshot contract; parses the full payload via from_dict and deterministically recomputes and verifies its snapshot_id with a sha256 hash over sorted series lines.",
+      "tags": ["data-model", "serialization", "validation", "factory"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/snapshot/snapshot_consumer/__init__.py",
+      "target": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/__init__.py",
+      "target": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "file:src/snapshot/snapshot_consumer/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:is_consumable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:is_consumable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/consumer.py",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:QualitySummary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:QualitySummary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/snapshot/snapshot_consumer/models.py",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/snapshot/snapshot_consumer/consumer.py:consume",
+      "target": "function:src/snapshot/snapshot_consumer/consumer.py:is_consumable",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/snapshot/snapshot_consumer/consumer.py:load_snapshot",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:SnapshotContractError",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:SeriesValue",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:Guards",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "class:src/snapshot/snapshot_consumer/models.py:Snapshot",
+      "target": "class:src/snapshot/snapshot_consumer/models.py:QualitySummary",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

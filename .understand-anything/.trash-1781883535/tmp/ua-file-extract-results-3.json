@@ -1,0 +1,2706 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 17,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/execution/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 73,
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/execution/adapters.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 55,
+      "classes": [
+        {
+          "name": "ExecutionPort",
+          "startLine": 23,
+          "endLine": 45,
+          "methods": [
+            "mode",
+            "replayable",
+            "fill"
+          ],
+          "properties": []
+        },
+        {
+          "name": "SimulatedBrokerAdapter",
+          "startLine": 49,
+          "endLine": 71,
+          "methods": [
+            "fill"
+          ],
+          "properties": [
+            "mode",
+            "replayable"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExecutionPort",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "SimulatedBrokerAdapter",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "fill",
+          "callee": "Fill",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/execution/alpaca_adapter.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 170,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "_is_paper_base_url",
+          "startLine": 45,
+          "endLine": 56,
+          "params": [
+            "base_url"
+          ]
+        },
+        {
+          "name": "paper_adapter_from_env",
+          "startLine": 157,
+          "endLine": 170,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "AlpacaExecutionError",
+          "startLine": 59,
+          "endLine": 60,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "PaperOrderResult",
+          "startLine": 64,
+          "endLine": 69,
+          "methods": [],
+          "properties": [
+            "filled_avg_price",
+            "filled_qty",
+            "status"
+          ]
+        },
+        {
+          "name": "AlpacaPaperBroker",
+          "startLine": 72,
+          "endLine": 77,
+          "methods": [
+            "submit_market_buy"
+          ],
+          "properties": []
+        },
+        {
+          "name": "AlpacaPaperAdapter",
+          "startLine": 81,
+          "endLine": 122,
+          "methods": [
+            "fill"
+          ],
+          "properties": [
+            "client",
+            "mode",
+            "replayable"
+          ]
+        },
+        {
+          "name": "_AlpacaRestPaperBroker",
+          "startLine": 125,
+          "endLine": 154,
+          "methods": [
+            "__init__",
+            "_headers",
+            "submit_market_buy"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_is_paper_base_url",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "AlpacaExecutionError",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "PaperOrderResult",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "AlpacaPaperBroker",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "AlpacaPaperAdapter",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "_AlpacaRestPaperBroker",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "paper_adapter_from_env",
+          "line": 157,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_is_paper_base_url",
+          "callee": "urlparse",
+          "lineNumber": 55
+        },
+        {
+          "caller": "fill",
+          "callee": "AlpacaExecutionError",
+          "lineNumber": 103
+        },
+        {
+          "caller": "fill",
+          "callee": "AlpacaExecutionError",
+          "lineNumber": 108
+        },
+        {
+          "caller": "fill",
+          "callee": "self.client.submit_market_buy",
+          "lineNumber": 111
+        },
+        {
+          "caller": "fill",
+          "callee": "AlpacaExecutionError",
+          "lineNumber": 113
+        },
+        {
+          "caller": "fill",
+          "callee": "float",
+          "lineNumber": 114
+        },
+        {
+          "caller": "fill",
+          "callee": "float",
+          "lineNumber": 115
+        },
+        {
+          "caller": "fill",
+          "callee": "Fill",
+          "lineNumber": 122
+        },
+        {
+          "caller": "__init__",
+          "callee": "base_url.rstrip",
+          "lineNumber": 131
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "json.dumps(\n            {\"symbol\": symbol, \"qty\": qty, \"side\": \"buy\", \"type\": \"market\", \"time_in_force\": \"day\"}\n        ).encode",
+          "lineNumber": 142
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "json.dumps",
+          "lineNumber": 142
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "urllib.request.Request",
+          "lineNumber": 145
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "self._headers",
+          "lineNumber": 146
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "urllib.request.urlopen",
+          "lineNumber": 148
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "json.loads",
+          "lineNumber": 149
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "response.read().decode",
+          "lineNumber": 149
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "response.read",
+          "lineNumber": 149
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "PaperOrderResult",
+          "lineNumber": 150
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "float",
+          "lineNumber": 151
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "order.get",
+          "lineNumber": 151
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "float",
+          "lineNumber": 152
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "order.get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "str",
+          "lineNumber": 153
+        },
+        {
+          "caller": "submit_market_buy",
+          "callee": "order.get",
+          "lineNumber": 153
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "os.environ.get",
+          "lineNumber": 165
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "os.environ.get",
+          "lineNumber": 166
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "os.environ.get",
+          "lineNumber": 167
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "_is_paper_base_url",
+          "lineNumber": 168
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "AlpacaPaperAdapter",
+          "lineNumber": 169
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "AlpacaPaperAdapter",
+          "lineNumber": 170
+        },
+        {
+          "caller": "paper_adapter_from_env",
+          "callee": "_AlpacaRestPaperBroker",
+          "lineNumber": 170
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 2,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "src/execution/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 128,
+      "nonEmptyLines": 103,
+      "functions": [
+        {
+          "name": "load_config",
+          "startLine": 112,
+          "endLine": 123,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ExecutionPolicyConfigError",
+          "startLine": 24,
+          "endLine": 25,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "FillModelConfig",
+          "startLine": 35,
+          "endLine": 70,
+          "methods": [
+            "__post_init__",
+            "fingerprint",
+            "from_mapping"
+          ],
+          "properties": [
+            "slippage_bps",
+            "fill_model_version"
+          ]
+        },
+        {
+          "name": "ExecutionPolicyConfig",
+          "startLine": 74,
+          "endLine": 109,
+          "methods": [
+            "__post_init__",
+            "fingerprint",
+            "from_mapping"
+          ],
+          "properties": [
+            "default_size",
+            "instrument",
+            "paper_equity",
+            "execution_policy_version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExecutionPolicyConfigError",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "FillModelConfig",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "ExecutionPolicyConfig",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "load_config",
+          "line": 112,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 49
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "getattr",
+          "lineNumber": 52
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "sorted",
+          "lineNumber": 52
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 53
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 54
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 54
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 54
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 58
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 59
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 60
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 61
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 63
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 63
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 65
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 66
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 68
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 70
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 84
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 86
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 88
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "getattr",
+          "lineNumber": 91
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "sorted",
+          "lineNumber": 91
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 92
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 93
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 93
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 93
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "isinstance",
+          "lineNumber": 97
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 98
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 99
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "set",
+          "lineNumber": 100
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 102
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "sorted",
+          "lineNumber": 102
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 104
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "fields",
+          "lineNumber": 105
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "cls",
+          "lineNumber": 107
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 109
+        },
+        {
+          "caller": "from_mapping",
+          "callee": "str",
+          "lineNumber": 109
+        },
+        {
+          "caller": "load_config",
+          "callee": "Path",
+          "lineNumber": 114
+        },
+        {
+          "caller": "load_config",
+          "callee": "p.read_text",
+          "lineNumber": 116
+        },
+        {
+          "caller": "load_config",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "load_config",
+          "callee": "json.loads",
+          "lineNumber": 120
+        },
+        {
+          "caller": "load_config",
+          "callee": "ExecutionPolicyConfigError",
+          "lineNumber": 122
+        },
+        {
+          "caller": "load_config",
+          "callee": "ExecutionPolicyConfig.from_mapping",
+          "lineNumber": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 1,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "src/execution/engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "_apply_buy",
+          "startLine": 43,
+          "endLine": 63,
+          "params": [
+            "prior",
+            "instrument",
+            "size",
+            "fill_price",
+            "mark_price"
+          ]
+        },
+        {
+          "name": "execute",
+          "startLine": 66,
+          "endLine": 138,
+          "params": [
+            "admit",
+            "direction",
+            "instrument_price",
+            "prior_portfolio",
+            "guard_result",
+            "port",
+            "fill_model",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_apply_buy",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "execute",
+          "line": 66,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_apply_buy",
+          "callee": "Position",
+          "lineNumber": 57
+        },
+        {
+          "caller": "execute",
+          "callee": "ExecutionContractError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "execute",
+          "callee": "prior_portfolio.state_hash",
+          "lineNumber": 82
+        },
+        {
+          "caller": "execute",
+          "callee": "prior_portfolio.has_execution",
+          "lineNumber": 91
+        },
+        {
+          "caller": "execute",
+          "callee": "port.fill",
+          "lineNumber": 100
+        },
+        {
+          "caller": "execute",
+          "callee": "_apply_buy",
+          "lineNumber": 101
+        },
+        {
+          "caller": "execute",
+          "callee": "prior_portfolio.position",
+          "lineNumber": 101
+        },
+        {
+          "caller": "execute",
+          "callee": "ExecutionEntry",
+          "lineNumber": 102
+        },
+        {
+          "caller": "execute",
+          "callee": "prior_portfolio.next_seq",
+          "lineNumber": 110
+        },
+        {
+          "caller": "execute",
+          "callee": "prior_portfolio.append",
+          "lineNumber": 112
+        },
+        {
+          "caller": "execute",
+          "callee": "ExecutionRecord",
+          "lineNumber": 114
+        },
+        {
+          "caller": "execute",
+          "callee": "compute_execution_id",
+          "lineNumber": 115
+        },
+        {
+          "caller": "execute",
+          "callee": "config.fingerprint",
+          "lineNumber": 118
+        },
+        {
+          "caller": "execute",
+          "callee": "new_portfolio.state_hash",
+          "lineNumber": 135
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/execution/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 328,
+      "nonEmptyLines": 265,
+      "functions": [
+        {
+          "name": "_replace_position",
+          "startLine": 175,
+          "endLine": 178,
+          "params": [
+            "positions",
+            "new"
+          ]
+        },
+        {
+          "name": "compute_execution_id",
+          "startLine": 249,
+          "endLine": 270,
+          "params": [
+            "source_record_id",
+            "fill_model_version",
+            "execution_policy_fingerprint",
+            "instrument_price",
+            "prior_portfolio_state_hash"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ExecutionContractError",
+          "startLine": 37,
+          "endLine": 38,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ExecutionMode",
+          "startLine": 41,
+          "endLine": 45,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "GuardResult",
+          "startLine": 52,
+          "endLine": 71,
+          "methods": [
+            "__post_init__",
+            "to_dict"
+          ],
+          "properties": [
+            "approved",
+            "blocked_by",
+            "reason"
+          ]
+        },
+        {
+          "name": "Fill",
+          "startLine": 78,
+          "endLine": 90,
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "fill_price",
+            "quantity",
+            "slippage_bps"
+          ]
+        },
+        {
+          "name": "Position",
+          "startLine": 97,
+          "endLine": 128,
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "instrument",
+            "quantity",
+            "avg_cost",
+            "realized_pnl",
+            "unrealized_pnl"
+          ]
+        },
+        {
+          "name": "ExecutionEntry",
+          "startLine": 132,
+          "endLine": 172,
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "source_snapshot_id",
+            "source_record_id",
+            "instrument",
+            "fill_price",
+            "quantity",
+            "fill_model_version",
+            "prior_portfolio_state_hash",
+            "seq"
+          ]
+        },
+        {
+          "name": "PortfolioState",
+          "startLine": 182,
+          "endLine": 243,
+          "methods": [
+            "empty",
+            "position",
+            "has_execution",
+            "next_seq",
+            "append",
+            "to_dict",
+            "state_hash",
+            "from_dict"
+          ],
+          "properties": [
+            "portfolio_schema_version",
+            "positions",
+            "executions"
+          ]
+        },
+        {
+          "name": "ExecutionRecord",
+          "startLine": 274,
+          "endLine": 328,
+          "methods": [
+            "__post_init__",
+            "to_dict"
+          ],
+          "properties": [
+            "execution_id",
+            "execution_schema_version",
+            "source_record_id",
+            "source_snapshot_id",
+            "instrument",
+            "direction",
+            "size",
+            "instrument_price",
+            "fill",
+            "guard_result",
+            "execution_mode",
+            "replayable",
+            "fill_model_version",
+            "prior_portfolio_state_hash",
+            "new_portfolio_state_hash",
+            "reason",
+            "paper_only",
+            "non_execution_notice"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExecutionContractError",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "ExecutionMode",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "GuardResult",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Fill",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "Position",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "ExecutionEntry",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "_replace_position",
+          "line": 175,
+          "isDefault": false
+        },
+        {
+          "name": "PortfolioState",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "compute_execution_id",
+          "line": 249,
+          "isDefault": false
+        },
+        {
+          "name": "ExecutionRecord",
+          "line": 273,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionContractError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionContractError",
+          "lineNumber": 68
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 87
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 88
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 89
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 108
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 110
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 111
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 112
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 117
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionContractError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 120
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 121
+        },
+        {
+          "caller": "from_dict",
+          "callee": "float",
+          "lineNumber": 122
+        },
+        {
+          "caller": "from_dict",
+          "callee": "float",
+          "lineNumber": 123
+        },
+        {
+          "caller": "from_dict",
+          "callee": "float",
+          "lineNumber": 124
+        },
+        {
+          "caller": "from_dict",
+          "callee": "float",
+          "lineNumber": 125
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionContractError",
+          "lineNumber": 128
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 147
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 150
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 158
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionContractError",
+          "lineNumber": 159
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 161
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 162
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 163
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 164
+        },
+        {
+          "caller": "from_dict",
+          "callee": "float",
+          "lineNumber": 165
+        },
+        {
+          "caller": "from_dict",
+          "callee": "float",
+          "lineNumber": 166
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 167
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 168
+        },
+        {
+          "caller": "from_dict",
+          "callee": "int",
+          "lineNumber": 169
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionContractError",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_replace_position",
+          "callee": "tuple",
+          "lineNumber": 177
+        },
+        {
+          "caller": "_replace_position",
+          "callee": "tuple",
+          "lineNumber": 178
+        },
+        {
+          "caller": "_replace_position",
+          "callee": "sorted",
+          "lineNumber": 178
+        },
+        {
+          "caller": "empty",
+          "callee": "cls",
+          "lineNumber": 196
+        },
+        {
+          "caller": "position",
+          "callee": "next",
+          "lineNumber": 199
+        },
+        {
+          "caller": "has_execution",
+          "callee": "any",
+          "lineNumber": 203
+        },
+        {
+          "caller": "next_seq",
+          "callee": "len",
+          "lineNumber": 207
+        },
+        {
+          "caller": "append",
+          "callee": "PortfolioState",
+          "lineNumber": 211
+        },
+        {
+          "caller": "append",
+          "callee": "_replace_position",
+          "lineNumber": 213
+        },
+        {
+          "caller": "to_dict",
+          "callee": "e.to_dict",
+          "lineNumber": 219
+        },
+        {
+          "caller": "to_dict",
+          "callee": "p.to_dict",
+          "lineNumber": 222
+        },
+        {
+          "caller": "to_dict",
+          "callee": "sorted",
+          "lineNumber": 222
+        },
+        {
+          "caller": "state_hash",
+          "callee": "json.dumps",
+          "lineNumber": 228
+        },
+        {
+          "caller": "state_hash",
+          "callee": "self.to_dict",
+          "lineNumber": 228
+        },
+        {
+          "caller": "state_hash",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 229
+        },
+        {
+          "caller": "state_hash",
+          "callee": "hashlib.sha256",
+          "lineNumber": 229
+        },
+        {
+          "caller": "state_hash",
+          "callee": "payload.encode",
+          "lineNumber": 229
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 233
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionContractError",
+          "lineNumber": 234
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 235
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 236
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 237
+        },
+        {
+          "caller": "from_dict",
+          "callee": "isinstance",
+          "lineNumber": 237
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionContractError",
+          "lineNumber": 238
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 239
+        },
+        {
+          "caller": "from_dict",
+          "callee": "str",
+          "lineNumber": 240
+        },
+        {
+          "caller": "from_dict",
+          "callee": "d.get",
+          "lineNumber": 240
+        },
+        {
+          "caller": "from_dict",
+          "callee": "tuple",
+          "lineNumber": 241
+        },
+        {
+          "caller": "from_dict",
+          "callee": "Position.from_dict",
+          "lineNumber": 241
+        },
+        {
+          "caller": "from_dict",
+          "callee": "tuple",
+          "lineNumber": 242
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ExecutionEntry.from_dict",
+          "lineNumber": 242
+        },
+        {
+          "caller": "compute_execution_id",
+          "callee": "\"\\n\".join",
+          "lineNumber": 268
+        },
+        {
+          "caller": "compute_execution_id",
+          "callee": "hashlib.sha256(payload.encode(\"utf-8\")).hexdigest",
+          "lineNumber": 269
+        },
+        {
+          "caller": "compute_execution_id",
+          "callee": "hashlib.sha256",
+          "lineNumber": 269
+        },
+        {
+          "caller": "compute_execution_id",
+          "callee": "payload.encode",
+          "lineNumber": 269
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionContractError",
+          "lineNumber": 302
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ExecutionContractError",
+          "lineNumber": 305
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.fill.to_dict",
+          "lineNumber": 314
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.guard_result.to_dict",
+          "lineNumber": 316
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 318
+        },
+        {
+          "caller": "to_dict",
+          "callee": "round",
+          "lineNumber": 325
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 2,
+        "classCount": 8
+      }
+    },
+    {
+      "path": "src/execution/runtime.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 166,
+      "nonEmptyLines": 142,
+      "functions": [
+        {
+          "name": "load_portfolio",
+          "startLine": 52,
+          "endLine": 65,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "persist_portfolio",
+          "startLine": 68,
+          "endLine": 75,
+          "params": [
+            "path",
+            "portfolio"
+          ]
+        },
+        {
+          "name": "build_guard_request",
+          "startLine": 78,
+          "endLine": 101,
+          "params": [
+            "direction",
+            "portfolio",
+            "config"
+          ]
+        },
+        {
+          "name": "run_guard",
+          "startLine": 104,
+          "endLine": 121,
+          "params": [
+            "direction",
+            "portfolio",
+            "guard_config",
+            "config"
+          ]
+        },
+        {
+          "name": "run_once",
+          "startLine": 124,
+          "endLine": 141,
+          "params": [
+            "admit",
+            "direction",
+            "instrument_price",
+            "portfolio_path",
+            "guard_config",
+            "port",
+            "fill_model",
+            "config"
+          ]
+        },
+        {
+          "name": "run_sequence",
+          "startLine": 144,
+          "endLine": 166,
+          "params": [
+            "items",
+            "guard_config",
+            "port",
+            "fill_model",
+            "config",
+            "portfolio"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_portfolio",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "persist_portfolio",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "build_guard_request",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "run_guard",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "run_once",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "run_sequence",
+          "line": 144,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_portfolio",
+          "callee": "Path",
+          "lineNumber": 58
+        },
+        {
+          "caller": "load_portfolio",
+          "callee": "p.exists",
+          "lineNumber": 59
+        },
+        {
+          "caller": "load_portfolio",
+          "callee": "PortfolioState.empty",
+          "lineNumber": 60
+        },
+        {
+          "caller": "load_portfolio",
+          "callee": "json.loads",
+          "lineNumber": 62
+        },
+        {
+          "caller": "load_portfolio",
+          "callee": "p.read_text",
+          "lineNumber": 62
+        },
+        {
+          "caller": "load_portfolio",
+          "callee": "ExecutionContractError",
+          "lineNumber": 64
+        },
+        {
+          "caller": "load_portfolio",
+          "callee": "PortfolioState.from_dict",
+          "lineNumber": 65
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "Path",
+          "lineNumber": 70
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "p.parent.mkdir",
+          "lineNumber": 71
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "json.dumps",
+          "lineNumber": 72
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "portfolio.to_dict",
+          "lineNumber": 72
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "p.with_name",
+          "lineNumber": 73
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "tmp.write_text",
+          "lineNumber": 74
+        },
+        {
+          "caller": "persist_portfolio",
+          "callee": "os.replace",
+          "lineNumber": 75
+        },
+        {
+          "caller": "build_guard_request",
+          "callee": "sum",
+          "lineNumber": 90
+        },
+        {
+          "caller": "build_guard_request",
+          "callee": "sum",
+          "lineNumber": 91
+        },
+        {
+          "caller": "build_guard_request",
+          "callee": "TradeValidationRequest",
+          "lineNumber": 92
+        },
+        {
+          "caller": "build_guard_request",
+          "callee": "portfolio.next_seq",
+          "lineNumber": 99
+        },
+        {
+          "caller": "run_guard",
+          "callee": "build_guard_request",
+          "lineNumber": 115
+        },
+        {
+          "caller": "run_guard",
+          "callee": "GuardrailEngine(guard_config).validate",
+          "lineNumber": 116
+        },
+        {
+          "caller": "run_guard",
+          "callee": "GuardrailEngine",
+          "lineNumber": 116
+        },
+        {
+          "caller": "run_guard",
+          "callee": "GuardResult",
+          "lineNumber": 117
+        },
+        {
+          "caller": "run_once",
+          "callee": "load_portfolio",
+          "lineNumber": 135
+        },
+        {
+          "caller": "run_once",
+          "callee": "run_guard",
+          "lineNumber": 136
+        },
+        {
+          "caller": "run_once",
+          "callee": "execute",
+          "lineNumber": 137
+        },
+        {
+          "caller": "run_once",
+          "callee": "persist_portfolio",
+          "lineNumber": 140
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "PortfolioState.empty",
+          "lineNumber": 158
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "run_guard",
+          "lineNumber": 161
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "execute",
+          "lineNumber": 162
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "records.append",
+          "lineNumber": 165
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "tuple",
+          "lineNumber": 166
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/orchestration/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/orchestration/config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/orchestration/engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "run_chain",
+          "startLine": 48,
+          "endLine": 118,
+          "params": [
+            "snapshot",
+            "prior_ledger",
+            "prior_portfolio",
+            "operational_input",
+            "guard_config",
+            "runtime_config",
+            "regime_config",
+            "decision_config",
+            "exec_config",
+            "fill_model",
+            "port"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "run_chain",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run_chain",
+          "callee": "build_features",
+          "lineNumber": 65
+        },
+        {
+          "caller": "run_chain",
+          "callee": "classify",
+          "lineNumber": 66
+        },
+        {
+          "caller": "run_chain",
+          "callee": "SnapshotGuards",
+          "lineNumber": 67
+        },
+        {
+          "caller": "run_chain",
+          "callee": "build_decision",
+          "lineNumber": 73
+        },
+        {
+          "caller": "run_chain",
+          "callee": "evaluate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run_chain",
+          "callee": "ChainContractError",
+          "lineNumber": 91
+        },
+        {
+          "caller": "run_chain",
+          "callee": "fv.value",
+          "lineNumber": 95
+        },
+        {
+          "caller": "run_chain",
+          "callee": "run_guard",
+          "lineNumber": 96
+        },
+        {
+          "caller": "run_chain",
+          "callee": "execute",
+          "lineNumber": 97
+        },
+        {
+          "caller": "run_chain",
+          "callee": "ChainResult",
+          "lineNumber": 110
+        }
+      ],
+      "metrics": {
+        "importCount": 16,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/orchestration/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 71,
+      "classes": [
+        {
+          "name": "ChainContractError",
+          "startLine": 29,
+          "endLine": 30,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ChainResult",
+          "startLine": 34,
+          "endLine": 86,
+          "methods": [
+            "_feature_vector_dict",
+            "to_dict"
+          ],
+          "properties": [
+            "feature_vector",
+            "regime",
+            "packet",
+            "runtime_record",
+            "execution_record",
+            "ledger",
+            "portfolio"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ChainContractError",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "ChainResult",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_feature_vector_dict",
+          "callee": "list",
+          "lineNumber": 56
+        },
+        {
+          "caller": "_feature_vector_dict",
+          "callee": "round",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_feature_vector_dict",
+          "callee": "sorted",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_feature_vector_dict",
+          "callee": "fv.features.values",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_feature_vector_dict",
+          "callee": "list",
+          "lineNumber": 66
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.execution_record.to_dict",
+          "lineNumber": 78
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self._feature_vector_dict",
+          "lineNumber": 80
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.ledger.state_hash",
+          "lineNumber": 81
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.packet.to_dict",
+          "lineNumber": 82
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.portfolio.state_hash",
+          "lineNumber": 83
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.regime.to_dict",
+          "lineNumber": 84
+        },
+        {
+          "caller": "to_dict",
+          "callee": "self.runtime_record.to_dict",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/orchestration/operational_feed.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 123,
+      "nonEmptyLines": 98,
+      "functions": [
+        {
+          "name": "_parse",
+          "startLine": 40,
+          "endLine": 47,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "persist_operational",
+          "startLine": 94,
+          "endLine": 105,
+          "params": [
+            "path",
+            "op"
+          ]
+        },
+        {
+          "name": "read_and_capture",
+          "startLine": 108,
+          "endLine": 123,
+          "params": [
+            "feed",
+            "as_of",
+            "capture_path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "OperationalFeed",
+          "startLine": 50,
+          "endLine": 59,
+          "methods": [
+            "read"
+          ],
+          "properties": []
+        },
+        {
+          "name": "MarketCalendarFeed",
+          "startLine": 63,
+          "endLine": 91,
+          "methods": [
+            "read"
+          ],
+          "properties": [
+            "instrument",
+            "holidays"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_parse",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "OperationalFeed",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "MarketCalendarFeed",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "persist_operational",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "read_and_capture",
+          "line": 108,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_parse",
+          "callee": "datetime.fromisoformat",
+          "lineNumber": 45
+        },
+        {
+          "caller": "read",
+          "callee": "_parse",
+          "lineNumber": 77
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 79
+        },
+        {
+          "caller": "read",
+          "callee": "when.weekday",
+          "lineNumber": 80
+        },
+        {
+          "caller": "read",
+          "callee": "when.strftime",
+          "lineNumber": 81
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput.closed",
+          "lineNumber": 83
+        },
+        {
+          "caller": "read",
+          "callee": "OperationalInput",
+          "lineNumber": 84
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "Path",
+          "lineNumber": 100
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "p.parent.mkdir",
+          "lineNumber": 101
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "json.dumps",
+          "lineNumber": 102
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "op.to_dict",
+          "lineNumber": 102
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "p.with_name",
+          "lineNumber": 103
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "tmp.write_text",
+          "lineNumber": 104
+        },
+        {
+          "caller": "persist_operational",
+          "callee": "os.replace",
+          "lineNumber": 105
+        },
+        {
+          "caller": "read_and_capture",
+          "callee": "feed.read",
+          "lineNumber": 120
+        },
+        {
+          "caller": "read_and_capture",
+          "callee": "persist_operational",
+          "lineNumber": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 3,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/orchestration/runtime.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 237,
+      "nonEmptyLines": 210,
+      "functions": [
+        {
+          "name": "find_latest_snapshot",
+          "startLine": 55,
+          "endLine": 63,
+          "params": [
+            "directory"
+          ]
+        },
+        {
+          "name": "run_once",
+          "startLine": 66,
+          "endLine": 119,
+          "params": [
+            "snapshot_path",
+            "ledger_path",
+            "portfolio_path",
+            "operational_input",
+            "operational_feed",
+            "operational_capture_path",
+            "guard_config",
+            "runtime_config",
+            "regime_config",
+            "decision_config",
+            "exec_config",
+            "fill_model",
+            "port"
+          ]
+        },
+        {
+          "name": "run_sequence",
+          "startLine": 122,
+          "endLine": 162,
+          "params": [
+            "snapshots",
+            "operational_input",
+            "guard_config",
+            "runtime_config",
+            "regime_config",
+            "decision_config",
+            "exec_config",
+            "fill_model",
+            "port",
+            "ledger",
+            "portfolio"
+          ]
+        },
+        {
+          "name": "_summarize",
+          "startLine": 165,
+          "endLine": 176,
+          "params": [
+            "result"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 179,
+          "endLine": 233,
+          "params": [
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "find_latest_snapshot",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "run_once",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "run_sequence",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "_summarize",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 179,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "find_latest_snapshot",
+          "callee": "sorted",
+          "lineNumber": 62
+        },
+        {
+          "caller": "find_latest_snapshot",
+          "callee": "Path(directory).glob",
+          "lineNumber": 62
+        },
+        {
+          "caller": "find_latest_snapshot",
+          "callee": "Path",
+          "lineNumber": 62
+        },
+        {
+          "caller": "run_once",
+          "callee": "consume",
+          "lineNumber": 94
+        },
+        {
+          "caller": "run_once",
+          "callee": "read_and_capture",
+          "lineNumber": 98
+        },
+        {
+          "caller": "run_once",
+          "callee": "load_ledger",
+          "lineNumber": 101
+        },
+        {
+          "caller": "run_once",
+          "callee": "load_portfolio",
+          "lineNumber": 102
+        },
+        {
+          "caller": "run_once",
+          "callee": "run_chain",
+          "lineNumber": 103
+        },
+        {
+          "caller": "run_once",
+          "callee": "persist_portfolio",
+          "lineNumber": 117
+        },
+        {
+          "caller": "run_once",
+          "callee": "persist_ledger",
+          "lineNumber": 118
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "RuntimeLedger.empty",
+          "lineNumber": 143
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "PortfolioState.empty",
+          "lineNumber": 144
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "run_chain",
+          "lineNumber": 147
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "results.append",
+          "lineNumber": 161
+        },
+        {
+          "caller": "run_sequence",
+          "callee": "tuple",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_summarize",
+          "callee": "result.ledger.state_hash",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_summarize",
+          "callee": "result.portfolio.state_hash",
+          "lineNumber": 175
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 181
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 187
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 189
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 189
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 190
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 190
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 191
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 193
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 195
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 199
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 199
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "find_latest_snapshot",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 206
+        },
+        {
+          "caller": "main",
+          "callee": "load_config_from_env",
+          "lineNumber": 212
+        },
+        {
+          "caller": "main",
+          "callee": "clock_feed_from_env",
+          "lineNumber": 220
+        },
+        {
+          "caller": "main",
+          "callee": "MarketCalendarFeed",
+          "lineNumber": 222
+        },
+        {
+          "caller": "main",
+          "callee": "run_once",
+          "lineNumber": 225
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 230
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 232
+        },
+        {
+          "caller": "main",
+          "callee": "_summarize",
+          "lineNumber": 232
+        }
+      ],
+      "metrics": {
+        "importCount": 16,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/risk/guardrail_engine/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/risk/guardrail_engine/guardrail_engine.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "load_config_from_env",
+          "startLine": 35,
+          "endLine": 58,
+          "params": [
+            "env"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "GuardrailConfigError",
+          "startLine": 31,
+          "endLine": 32,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "GuardrailEngine",
+          "startLine": 61,
+          "endLine": 92,
+          "methods": [
+            "__init__",
+            "validate"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GuardrailConfigError",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "load_config_from_env",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "GuardrailEngine",
+          "line": 61,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_config_from_env",
+          "callee": "GuardrailConfigError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "', '.join",
+          "lineNumber": 46
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "sorted",
+          "lineNumber": 46
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "GuardrailConfig",
+          "lineNumber": 49
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "float",
+          "lineNumber": 50
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "int",
+          "lineNumber": 51
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "float",
+          "lineNumber": 52
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "int",
+          "lineNumber": 53
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "float",
+          "lineNumber": 54
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "source.get(\"ALLOW_WITHDRAWALS\", \"false\").lower",
+          "lineNumber": 55
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "source.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "load_config_from_env",
+          "callee": "GuardrailConfigError",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "tuple",
+          "lineNumber": 70
+        },
+        {
+          "caller": "validate",
+          "callee": "TradeValidationDecision",
+          "lineNumber": 75
+        },
+        {
+          "caller": "validate",
+          "callee": "predicate",
+          "lineNumber": 81
+        },
+        {
+          "caller": "validate",
+          "callee": "TradeValidationDecision",
+          "lineNumber": 83
+        },
+        {
+          "caller": "validate",
+          "callee": "TradeValidationDecision",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "src/risk/guardrail_engine/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 54,
+      "classes": [
+        {
+          "name": "TradeDirection",
+          "startLine": 15,
+          "endLine": 19,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "TradeValidationRequest",
+          "startLine": 23,
+          "endLine": 37,
+          "methods": [],
+          "properties": [
+            "symbol",
+            "direction",
+            "size",
+            "strategy_id",
+            "current_equity",
+            "daily_pnl",
+            "trades_today",
+            "open_positions"
+          ]
+        },
+        {
+          "name": "TradeValidationDecision",
+          "startLine": 41,
+          "endLine": 56,
+          "methods": [
+            "__post_init__"
+          ],
+          "properties": [
+            "approved",
+            "triggered_predicate",
+            "reason"
+          ]
+        },
+        {
+          "name": "GuardrailConfig",
+          "startLine": 60,
+          "endLine": 73,
+          "methods": [],
+          "properties": [
+            "max_trade_size",
+            "max_trades_per_day",
+            "max_position_pct",
+            "max_positions",
+            "daily_loss_cap",
+            "allow_withdrawals"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TradeDirection",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "TradeValidationRequest",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "TradeValidationDecision",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "GuardrailConfig",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "src/risk/guardrail_engine/predicates.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "position_size_ok",
+          "startLine": 14,
+          "endLine": 21,
+          "params": [
+            "request",
+            "config"
+          ]
+        },
+        {
+          "name": "daily_loss_cap_ok",
+          "startLine": 24,
+          "endLine": 32,
+          "params": [
+            "request",
+            "config"
+          ]
+        },
+        {
+          "name": "max_trades_ok",
+          "startLine": 35,
+          "endLine": 43,
+          "params": [
+            "request",
+            "config"
+          ]
+        },
+        {
+          "name": "max_positions_ok",
+          "startLine": 46,
+          "endLine": 54,
+          "params": [
+            "request",
+            "config"
+          ]
+        },
+        {
+          "name": "withdrawal_disabled",
+          "startLine": 57,
+          "endLine": 63,
+          "params": [
+            "request",
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "position_size_ok",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "daily_loss_cap_ok",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "max_trades_ok",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "max_positions_ok",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "withdrawal_disabled",
+          "line": 57,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "position_size_ok",
+          "callee": "min",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    }
+  ]
+}

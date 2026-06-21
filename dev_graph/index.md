@@ -145,6 +145,7 @@ Last updated: 2026-06-18 (Two ADR-009 amendments + the Chain Orchestrator. **(A)
 | [[ADR - Execution Layer Planning]] | ADR-011 | decision_record | Governance boundary for the execution/portfolio epoch — port/adapter determinism split (deterministic offline fill-simulator core vs non-replayable Alpaca paper adapter); paper_only / virtual-money; re-grounds the live path CAP-020 → MOD-007 ADMIT → execution + wires GATE-001 / PRED-001..005; decoupled from DEBT-01 & epoch (b); **accepted 2026-06-16**, Creation Gates remain open; non-normative |
 | [[ADR - Empirical Calibration Methodology]] | ADR-012 | decision_record | Epoch (b) calibration governance — version-axis mapping (regime thresholds → taxonomy_version; confidence weights + regime→direction table → decision_policy_version; never crossed); empirical-readiness gate (G0 N≥60 + per-target G1/G2/G3 coverage + walk-forward holdout); replay/PIT preservation; rule-based only. Corpus N=5 monochromatic → all 3 targets DEFER, no bump; **draft** |
 | [[ADR - Operations Control Plane]] | ADR-013 | decision_record | Governance boundary for a **local terminal operator console** (Textual TUI) over the Layer-3 runtime — distinct from the JARVIS graph console (ADR-010), not coupled to its web stack. Three action tiers (read-only / safe non-destructive / gated-live); safety boundary (local-only/no listener, paper-only/no live-money, secrets-never-shown, confirm+audit+server-side precondition per mutation, reuse-governed-functions, gate-respecting DEFER, engine stays zero-dep ADR-003); read-only before actions + HARD-PAUSE before gated-live. **Accepted 2026-06-18**; realized by MOD-011 + OBS-002 + ops/ file/test nodes (Steps 1-4, 1050 tests green) |
+| [[ADR - Operable Alpaca Paper Execution Adapter v1]] | ADR-014 | decision_record | Governance boundary for upgrading the dormant v0 Alpaca paper adapter to an *operable* one — additive over post-ADR-11 code, simulator/benchmarks unchanged, broker-realism quarantined behind a **separate non-replayable `operate_live` entrypoint** (NOT the LONG-only `fill()` port). v2 folds a six-round design grilling (Q1–Q6 locks) + the app audit: **source-pluggable `exec_ref_gld_price`** (sim derived proxy `gold_price_proxy×oz_per_share` / live GLD mark) fixes the GLD-vs-gold-spot defect **el_niño-side** (A8 no longer Mr-Ripley-blocked); broker=position-authority / local SCHEMA-015=lineage+idempotency with a reconcile-heal + **terminal-refuse-on-discrepancy** (no auto-flatten); **settled-cash** cap; accumulate-only sim (sell-fold live-only); side-based adapter. Clean **(i) contained shared changes (versioned) / (ii) live-plug-only** split. **Draft** — operator acceptance pending; no `src/`/`tests/` change |
 
 ## Constraints
 
@@ -332,14 +333,14 @@ Last updated: 2026-06-18 (Two ADR-009 amendments + the Chain Orchestrator. **(A)
 
 ## Statistics
 
-- **Total content nodes**: 210 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 11, file: 43, test: 33, gate: 3, predicate: 8, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 2, context_pack: 2, decision_record: 13, constraint: 3, api_doc_source: 2, benchmark_result: 6)
+- **Total content nodes**: 211 (architecture: 4, system: 6, capability: 21 (incl. 1 deprecated), interface: 7, artifact_schema: 12, module: 11, file: 43, test: 33, gate: 3, predicate: 8, pattern: 11, workflow: 1, knowledge_asset: 11, governance: 7, reference: 3+1 deprecated, observability: 2, context_pack: 2, decision_record: 14, constraint: 3, api_doc_source: 2, benchmark_result: 6)
 - **Structural files**: 4 (CLAUDE.md, index.md, log.md, README.md)
-- **Total files**: 214
+- **Total files**: 215
 - **Active directories**: 23
 - **Populated directories**: 22 (architecture, systems, capabilities, interfaces, schemas, modules, files, tests, gates, predicates, patterns, workflows, knowledge_assets, governance, constraints, decisions, api_docs, observability, context_packs, benchmarks + root)
 - **Empty directories**: 3 (events, agents, skills)
-- **Frontmatter coverage**: 210/210 content nodes (100%)
-- **Canonical ID coverage**: 210/210 content nodes (100%)
+- **Frontmatter coverage**: 211/211 content nodes (100%)
+- **Canonical ID coverage**: 211/211 content nodes (100%)
 - **Schema version**: 2.2.0
 - **Type enum**: 24 values
 - **Relationship types**: 17

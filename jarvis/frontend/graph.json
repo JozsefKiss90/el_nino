@@ -1,7 +1,7 @@
 {
   "meta": {
     "node_count": 211,
-    "edge_count": 1698,
+    "edge_count": 1699,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -176,15 +176,15 @@
     {
       "id": "ADR-014",
       "label": "DecisionRecord",
-      "name": "ADR-014 - Operable Alpaca Paper Execution Adapter v1",
-      "summary": "ADR-014 - Operable Alpaca Paper Execution Adapter v1",
+      "name": "ADR - Operable Alpaca Paper Execution Adapter v1",
+      "summary": "ADR - Operable Alpaca Paper Execution Adapter v1",
       "confidence": "confirmed",
       "evidence": [
         "design",
         "ADR",
         "code"
       ],
-      "status": "draft"
+      "status": "active"
     },
     {
       "id": "API-001",
@@ -3392,6 +3392,11 @@
       "source": "ADR-014",
       "type": "RELATES_TO_FILE",
       "target": "FILE-038"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "SCHEMA-013"
     },
     {
       "source": "ADR-014",

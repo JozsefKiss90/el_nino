@@ -1997,3 +1997,77 @@ change (Part 1 additive plugs behind existing ports; Part 2 ops tooling; Part 3 
 (a) **enabling the live Alpaca execution path** (the adapter ships dormant/default-OFF), and (b)
 **registering the recurring scheduled task** (`register_daily_chain_task.ps1` is built + parse-checked but
 not run). Part 3 is DEFER, so no calibration bump and no commit pause was reached.
+
+## [2026-06-21] writeback | ADR-014 v2 — Operable Alpaca Paper Execution Adapter (design locks + audit folded, A8 resolved)
+
+**Governance-only** revision of the **unaccepted** ADR-014 draft. `status` stays `draft`; `canonical_id`
+ADR-014 unchanged; `supersedes`/`superseded_by` stay empty — an **in-place revision of an unaccepted
+draft, not a supersession**. **No `src/` or `tests/` change** (the refactor is downstream:
+`/prd-to-issues` → slices, after operator acceptance). No `wiki/**` / `raw/**` mutation (CON-001).
+
+### Nodes Changed
+- **ADR-014 renamed** `decisions/ADR-014 - Operable Alpaca Paper Execution Adapter v1.md` →
+  `decisions/ADR - Operable Alpaca Paper Execution Adapter v1.md` (the conventional `ADR - <Title>`
+  basename; nothing referenced the old prefixed name — grep-confirmed). `canonical_id` ADR-014 preserved;
+  "v1" denotes the **adapter** version, not the document version.
+- **ADR-014 Decision rewritten** to encode a six-round design grilling (Q1–Q6 locks) + the
+  `app_audit.md` findings, split into **(i) contained shared changes (versioned)** — §5.1 source-pluggable
+  `exec_ref_gld_price` (sim derived proxy `gold_price_proxy×oz_per_share` / live GLD mark; GLD-vs-GLD
+  slippage; new `exec_price_source_version`; BENCH-004/006 re-pin), §5.2 daily-guard `as_of` threading
+  (mislabeled-daily fix; `ExecutionEntry.as_of` SCHEMA-015 change; mirrors PRED-008), §5.3
+  `assert port.replayable` + a separate live `(ledger_path, portfolio_path)` pair, §5.4 additive
+  SCHEMA-014/015 fields — and **(ii) live-plug-only additions** — §6 the `operate_live` non-replayable
+  entrypoint (fork-(b); `fill()` untouched), reconcile-then-act + broker=position-authority /
+  local=lineage-authority + reconcile-heal entry-kind + **terminal-refuse-on-discrepancy** (no
+  auto-flatten; refuse scopes to execution only), open-orders-aware in-flight ownership, settled-cash cap
+  + fractionable, accumulate-only sim + live sell-fold, side-based adapter, and the
+  QUEUED/PARTIAL/EXECUTION_UNCERTAIN/NO_ACTION state machine + typed errors + 429.
+- **A8 resolved** (overrules `app_audit.md` blocker #1): the GLD-price fix is **el_niño-side, no hard
+  Mr-Ripley predecessor**; the real-GLD-in-snapshot ingest is demoted to an optional, separately-tracked
+  simulator-fidelity upgrade behind the same `exec_ref_gld_price` seam. Every "A8/B6 blocks on Mr-Ripley"
+  statement corrected.
+- **Enumerated-defects table** added — the audit's 12 ungoverned findings each owned with a scope +
+  one-line rationale: **v1** (sync-fill raise, mislabeled daily guard, uncaught `HTTPError`,
+  429/`Retry-After`, `GET /v2/account` status gate, audited Tier-2 kill switch, broker-traceability
+  fields) / **deferred** (early-close, clock-feed TZ, audit actor field, GDPR/CCPA N-A note, rate limiter).
+- **Frontmatter**: `updated` 2026-06-21; `evidence` keeps `[design, ADR, code]`; `source_paths +=
+  app_audit.md`; `related_files += [[Runtime Ledger Schema]]`. status `draft`, decision_status `active`.
+- **index.md** — added the ADR-014 Decisions row; Statistics `decision_record 13→14`, content nodes
+  `210→211`, total files `214→215`, coverage `211/211`; header dated 2026-06-21 + revision note.
+
+### Verification (two adversarial workflows, 8 agents)
+- **Grounding** (5 agents) — verified every code/graph fact the locks reference against the real source
+  (file:line + quotes): `_FILLED_STATUSES` sync-fill raise, unguarded order `urlopen`, parsed-hostname
+  guard, `engine.py:95` `gold_price` forward, `gold_price` reserved/non-predicate in `taxonomy.py`,
+  `oz_per_share`/`_apply_sell`/live `operate_live` all net-new, `build_guard_request` mislabeled inputs,
+  PRED-008 `as_of` discipline, `replayable` pre-existing (assert net-new), SCHEMA-013/014/015 +
+  BENCH-004/006 mapping, all wikilink targets resolve.
+- **Review** (3 agents) — lock fidelity, audit-coverage+A8, code-accuracy+lint: all six locks **fully
+  encoded**, all 12 findings **owned with scope+rationale**, A8 **fully resolved** (zero residual
+  "Mr-Ripley first"), code citations accurate, frontmatter compliant. Six **nits** (no blockers) all
+  applied: dropped a mis-encoded "Q2-class" tag, added `exec_ref_gld_price_ts`/`_basis` to the §5.4 schema
+  delta, widened the `build_guard_request` line cite to `:78-101`, corrected "suite only stubs filled" →
+  "stubs only `filled`/`rejected`, no async/4xx", clarified the kill-switch "pick one", and tightened the
+  `source_record_id`/`guard_result` attribution.
+
+### Lint (11 checks, touched: ADR-014, index.md)
+1 frontmatter complete (decision_record domain fields present) ✓ · 2 enums valid (status draft;
+implementation_status not-started; confidence confirmed; evidence ⊆ allowed) ✓ · 3 no orphans — ADR-014
+links Execution/Chain Orchestrator/Paper-Trading Runtime/Gold Forward-Return Labeler + four justifying
+ADRs + three constraints/KAs (≥1 outbound) ✓ · 4 fresh (updated 2026-06-21) ✓ · 5 wikilinks resolve (all
+relationship + related_files/related_decisions targets exist — verified) ✓ · 6/7 a decision_record needs no
+related_constraints/tests beyond those linked ✓ · 8 type-content aligned (Status/Context/Decision/
+Alternatives/Consequences/Out-of-scope present) ✓ · 9 no deprecated refs ✓ · 10 canonical_id ADR-014 unique
+✓ · 11 evidence-confidence coherent (`confirmed` carries `[design, ADR, code]`) ✓.
+
+### Metrics
+dev_graph content nodes 210 → **211** (ADR-014 now indexed; the node file pre-existed from the prior
+session but was uncounted in index.md). **No** schema/enum/ontology change; **no** `*_version` bump (the
+`exec_price_source_version` etc. are *proposed* in the draft, not applied to code); **no** contract change.
+Re-sync Neo4j (`python sync_to_neo4j.py --clear`).
+
+### Stopped for operator review (HARD PAUSE)
+ADR-014 stays `status: draft` / `decision_status: active` — **operator acceptance is the checkpoint; it is
+not auto-accepted.** On acceptance: `status: draft → active` (and the downstream `/prd-to-issues` slices
+proceed under §5/§6). Pre-existing index-header drift (the 2026-06-18 "986 green" prose vs the later
+ops-epoch Statistics) is noted but left untouched — out of scope for this governance revision.

@@ -201,7 +201,14 @@
       "Bash(echo \"EXIT:$?\")",
       "Bash(GRAPH_DIR=\"C:/Code/el_nino\" UNDERSTAND_ACCESS_TOKEN=\"elnino-dash\" node node_modules/vite/bin/vite.js --host 127.0.0.1)",
       "PowerShell(Write-Output \"=== neo4j containers ===\"; docker ps -a --filter \"name=neo4j\" --format \"{{.Names}} | {{.Status}} | {{.Ports}}\"; Write-Output \"=== port 7688 listen test ===\"; \\(Test-NetConnection -ComputerName 127.0.0.1 -Port 7688 -WarningAction SilentlyContinue\\).TcpTestSucceeded)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Read(//c/Users/jozse/.claude/skills/**)",
+      "Read(//c/Code/el_nino/.claude/**)",
+      "Read(//c/Users/jozse/.claude/plugins/marketplaces/**)",
+      "Read(//c/Code/el_nino/.claude/skills/**)",
+      "Bash(gh label *)",
+      "Bash(gh issue *)",
+      "PowerShell($gh = Get-Command gh -ErrorAction SilentlyContinue; if \\($gh\\) { \"gh found: $\\($gh.Source\\)\"; gh --version } else { \"gh NOT installed\" })"
     ]
   }
 }

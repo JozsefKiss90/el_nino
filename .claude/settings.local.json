@@ -208,7 +208,22 @@
       "Read(//c/Code/el_nino/.claude/skills/**)",
       "Bash(gh label *)",
       "Bash(gh issue *)",
-      "PowerShell($gh = Get-Command gh -ErrorAction SilentlyContinue; if \\($gh\\) { \"gh found: $\\($gh.Source\\)\"; gh --version } else { \"gh NOT installed\" })"
+      "PowerShell($gh = Get-Command gh -ErrorAction SilentlyContinue; if \\($gh\\) { \"gh found: $\\($gh.Source\\)\"; gh --version } else { \"gh NOT installed\" })",
+      "Read(//c/Users/jozse/**)",
+      "Read(//c/Users/jozse/.claude\" 2>/dev/**)",
+      "Bash(config)",
+      "Bash(settings\")",
+      "Bash(py -3.10 -c \"import neo4j_mcp_server; print\\('module OK', getattr\\(neo4j_mcp_server,'__file__','?'\\)\\)\")",
+      "Bash(powershell -NoProfile -Command \"Test-NetConnection -ComputerName 127.0.0.1 -Port 7688 -InformationLevel Quiet\")",
+      "Bash(uvx --version)",
+      "Bash(uv --version)",
+      "Bash(NEO4J_URI=\"bolt://127.0.0.1:7688\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" NEO4J_DATABASE=\"neo4j\" NEO4J_READ_ONLY=\"true\" NEO4J_TRANSPORT_MODE=\"stdio\" timeout 12 py -3.10 -m neo4j_mcp_server)",
+      "Bash(echo \"\\(exit: $?\\)\")",
+      "Bash(command -v serena)",
+      "Bash(timeout 12 serena --version)",
+      "Bash(NEO4J_URI=\"bolt://127.0.0.1:7688\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" NEO4J_DATABASE=\"neo4j\" NEO4J_READ_ONLY=\"true\" NEO4J_TELEMETRY=\"false\" NEO4J_TRANSPORT_MODE=\"stdio\" NEO4J_GDS_ENABLED=\"false\" NEO4J_LOG_LEVEL=\"info\" NEO4J_LOG_FORMAT=\"text\" timeout 8 py -3.10 -m neo4j_mcp_server)",
+      "Bash(gh --version)",
+      "Bash(gh auth *)"
     ]
   }
 }

@@ -7,7 +7,7 @@
     "mcpvault": {
       "command": "npx",
       "args": [
-        "@bitbonsai/mcpvault@latest",
+        "@bitbonsai/mcpvault@0.12.0",
         "C:\\Code\\layer_3_wiki"
       ],
       "env": {}

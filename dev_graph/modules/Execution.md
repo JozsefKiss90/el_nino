@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-16
-updated: 2026-06-18
+updated: 2026-06-23
 confidence: confirmed
 evidence:
   - design
@@ -18,6 +18,8 @@ related_files:
   - "[[config.py (execution)]]"
   - "[[adapters.py]]"
   - "[[alpaca_adapter.py]]"
+  - "[[live_adapter.py]]"
+  - "[[price_reference.py]]"
   - "[[engine.py (execution)]]"
   - "[[runtime.py (execution)]]"
   - "[[run_execution_bench.py]]"
@@ -27,11 +29,16 @@ related_tests:
   - "[[test_execution_guards]]"
   - "[[test_execution_bench]]"
   - "[[test_alpaca_adapter]]"
+  - "[[test_live_adapter]]"
+  - "[[test_price_reference]]"
+  - "[[test_guard_day_scope]]"
+  - "[[test_reconcile_entry]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Execution Layer Planning]]"
   - "[[ADR - Decision Layer Re-grounding]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 module_name: "execution"
 module_path: "src/execution"
 responsibility: "Execute an ADMITted paper decision into a (paper) fill + portfolio state; wire GATE-001"

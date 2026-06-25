@@ -18,6 +18,7 @@ from __future__ import annotations
 import json
 import os
 from collections.abc import Sequence
+from datetime import datetime
 from pathlib import Path
 from typing import Union
 
@@ -75,20 +76,42 @@ def persist_portfolio(path: PathLike, portfolio: PortfolioState) -> None:
     os.replace(tmp, p)
 
 
+def _as_of_date(value: str | None) -> str | None:
+    """The calendar date (``YYYY-MM-DD``) of an ISO-8601 ``as_of``, or ``None`` if absent/unparseable.
+
+    Deterministic — parses the snapshot clock, never the wall-clock — mirroring the runtime cooldown
+    discipline's ``_parse_as_of``. Day-scoping keys off this date so a daily cap resets per trading day.
+    """
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value).date().isoformat()
+    except ValueError:
+        return None
+
+
 def build_guard_request(
     direction: Direction,
     portfolio: PortfolioState,
     config: ExecutionPolicyConfig = DEFAULT_EXECUTION_POLICY_CONFIG,
+    *,
+    as_of: str | None = None,
 ) -> TradeValidationRequest:
     """Build the SCHEMA-007 guard request from the (fixed) trade params + deterministic portfolio context.
 
-    v0 derivations (deterministic from explicit state — no clock/day boundary): ``daily_pnl`` =
-    summed realized P&L; ``trades_today`` = prior fill count (a monotonic proxy capped by
-    ``max_trades_per_day``); ``open_positions`` = count of non-zero positions. Size is the fixed
-    ``default_size`` (ADR-011 D2 — the guard *validates* it; it does not compute it).
+    Day-scoping (ADR-014 §5.2 — mirrors the runtime cooldown discipline that keys off the snapshot
+    ``as_of``, never wall-clock): ``trades_today`` counts only executions whose entry ``as_of`` falls on
+    the SAME trading day as the request ``as_of``, so ``max_trades_per_day`` is a genuine daily cap, not
+    a lifetime cap that blocks forever. ``daily_pnl`` is realized P&L; on the accumulate-only sim/replay
+    path it is 0.0 (no sells), so its day-scoped value equals its lifetime value — genuine per-day
+    realized-P&L scoping arrives with the live SELL-fold (ADR-014 bucket ii). ``open_positions`` = count
+    of non-zero positions; size is the fixed ``default_size`` (ADR-011 D2). NO live broker read enters
+    this shared deterministic request (it would contaminate the replay key).
     """
     open_positions = sum(1 for pos in portfolio.positions if pos.quantity != 0.0)
     daily_pnl = sum((pos.realized_pnl for pos in portfolio.positions), 0.0)
+    today = _as_of_date(as_of)
+    trades_today = sum(1 for e in portfolio.executions if _as_of_date(e.as_of) == today)
     return TradeValidationRequest(
         symbol=config.instrument,
         direction=TradeDirection.BUY,
@@ -96,7 +119,7 @@ def build_guard_request(
         strategy_id=_STRATEGY_ID,
         current_equity=config.paper_equity,
         daily_pnl=daily_pnl,
-        trades_today=portfolio.next_seq(),
+        trades_today=trades_today,
         open_positions=open_positions,
     )
 
@@ -106,13 +129,16 @@ def run_guard(
     portfolio: PortfolioState,
     guard_config: GuardrailConfig,
     config: ExecutionPolicyConfig = DEFAULT_EXECUTION_POLICY_CONFIG,
+    *,
+    as_of: str | None = None,
 ) -> GuardResult:
     """Run GATE-001 (``GuardrailEngine``) and map its decision to a forwarded ``GuardResult``.
 
     The only place ``src/risk`` is touched. ``guard_config`` is an explicit captured value
-    (deterministic replay, gate c.4) — not read from the environment here.
+    (deterministic replay, gate c.4) — not read from the environment here. ``as_of`` (the snapshot
+    clock) day-scopes the request's daily inputs (ADR-014 §5.2).
     """
-    request = build_guard_request(direction, portfolio, config)
+    request = build_guard_request(direction, portfolio, config, as_of=as_of)
     decision = GuardrailEngine(guard_config).validate(request)
     return GuardResult(
         approved=decision.approved,
@@ -132,8 +158,13 @@ def run_once(
     config: ExecutionPolicyConfig = DEFAULT_EXECUTION_POLICY_CONFIG,
 ) -> ExecutionRecord:
     """Single-step operational entrypoint: load state → guard → ``execute`` → persist atomically."""
+    # ADR-014 §5.3 fence: the canonical execution entrypoint refuses a non-replayable port (the live
+    # plug is reachable only via the orchestration live entrypoint, never this replay shell).
+    assert port.replayable, (
+        "execution.run_once is a replayable entrypoint; a non-replayable port is barred (ADR-014 §5.3)"
+    )
     prior = load_portfolio(portfolio_path)
-    guard_result = run_guard(direction, prior, guard_config, config)
+    guard_result = run_guard(direction, prior, guard_config, config, as_of=admit.as_of)
     record, new_portfolio = execute(
         admit, direction, instrument_price, prior, guard_result, port, fill_model, config
     )
@@ -155,10 +186,15 @@ def run_sequence(
     same sequence from the same starting portfolio (and the same captured ``guard_config``) yields
     identical records and an identical ending portfolio ``state_hash``.
     """
+    # ADR-014 §5.3 fence: the BENCH-004 / determinism replay vehicle refuses a non-replayable port.
+    assert port.replayable, (
+        "execution.run_sequence is the deterministic replay vehicle; a non-replayable port is barred "
+        "(ADR-014 §5.3)"
+    )
     pf = portfolio if portfolio is not None else PortfolioState.empty()
     records: list[ExecutionRecord] = []
     for admit, direction, instrument_price in items:
-        guard_result = run_guard(direction, pf, guard_config, config)
+        guard_result = run_guard(direction, pf, guard_config, config, as_of=admit.as_of)
         record, pf = execute(
             admit, direction, instrument_price, pf, guard_result, port, fill_model, config
         )

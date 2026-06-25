@@ -36,6 +36,7 @@ from .models import (
     Position,
     compute_execution_id,
 )
+from .price_reference import BASIS_DERIVED_PROXY
 
 _DEFAULT_PORT: ExecutionPort = SimulatedBrokerAdapter()
 
@@ -72,8 +73,17 @@ def execute(
     port: ExecutionPort = _DEFAULT_PORT,
     fill_model: FillModelConfig = DEFAULT_FILL_MODEL,
     config: ExecutionPolicyConfig = DEFAULT_EXECUTION_POLICY_CONFIG,
+    *,
+    exec_ref_gld_price_ts: str | None = None,
+    exec_ref_gld_price_basis: str = BASIS_DERIVED_PROXY,
 ) -> tuple[ExecutionRecord, PortfolioState]:
-    """Execute an ADMITted paper decision against explicit portfolio state. Pure; no IO."""
+    """Execute an ADMITted paper decision against explicit portfolio state. Pure; no IO.
+
+    ``instrument_price`` is the resolved GLD-share execution reference (ADR-014 bucket i): it marks
+    the position and is the slippage base, and is recorded additively as ``exec_ref_gld_price`` with
+    its ``ts`` / ``basis`` provenance. The default basis is the sim/replay derived proxy; the live
+    plug passes a live-mark basis + a pinned timestamp.
+    """
     if admit.verdict is not Verdict.ADMIT:
         raise ExecutionContractError(
             f"execute() requires an ADMIT record, got {admit.verdict.value}"
@@ -108,6 +118,7 @@ def execute(
             fill_model_version=fill_model.fill_model_version,
             prior_portfolio_state_hash=prior_hash,
             seq=prior_portfolio.next_seq(),
+            as_of=admit.as_of,
         )
         fill, new_portfolio, reason = f, prior_portfolio.append(position, entry), "filled"
 
@@ -134,5 +145,8 @@ def execute(
         prior_portfolio_state_hash=prior_hash,
         new_portfolio_state_hash=new_portfolio.state_hash(),
         reason=reason,
+        exec_ref_gld_price=instrument_price,
+        exec_ref_gld_price_ts=exec_ref_gld_price_ts,
+        exec_ref_gld_price_basis=exec_ref_gld_price_basis,
     )
     return record, new_portfolio

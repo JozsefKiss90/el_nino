@@ -8,9 +8,11 @@ only cross-context importer (incl. ``src/risk`` via ``run_guard``); the per-laye
 
 Forwarded provenance (the orchestrator holds the snapshot + FeatureVector, so it forwards rather than
 re-derives): ``SnapshotGuards`` + ``as_of`` ← the snapshot (ADR-009 §3); ``direction`` ←
-``packet.direction`` and ``instrument_price`` ← ``fv.value("gold_price")`` — the **in-hand** values
-handed to ``execute`` (ADR-011 D1; the ADMIT record carries neither). ``guards=None`` into
-``build_decision`` (wrap-not-enrich; the packet stays pure, ADR-009 §2).
+``packet.direction`` and the **execution price** ← ``resolve_sim_exec_ref(fv.value("gold_price"), …)``
+— the GLD *share* reference (ADR-014 bucket i), **not** gold spot. ``gold_price`` ($/oz) is the
+versioned derived-proxy INPUT, severed from execution and kept as a pure decision feature. These are
+the **in-hand** values handed to ``execute`` (ADR-011 D1; the ADMIT record carries neither).
+``guards=None`` into ``build_decision`` (wrap-not-enrich; the packet stays pure, ADR-009 §2).
 
 Execution is gated on ADMIT (``execute`` requires an ADMIT record): on HOLD/REJECT there is no
 ``ExecutionRecord`` and the portfolio is returned unchanged. The ledger always advances by one entry.
@@ -18,7 +20,7 @@ Execution is gated on ADMIT (``execute`` requires an ADMIT record): on HOLD/REJE
 
 from __future__ import annotations
 
-from execution import execute, run_guard
+from execution import execute, resolve_sim_exec_ref, run_guard
 from execution.adapters import ExecutionPort, SimulatedBrokerAdapter
 from execution.config import (
     DEFAULT_EXECUTION_POLICY_CONFIG,
@@ -92,17 +94,26 @@ def run_chain(
                 f"ADMIT packet has no in-hand {_PRICE_FEATURE} to forward (ADR-011 D1): "
                 f"snapshot {snapshot.snapshot_id} lacks the {_PRICE_FEATURE} feature"
             )
-        instrument_price = fv.value(_PRICE_FEATURE)
-        guard_result = run_guard(packet.direction, prior_portfolio, guard_config, exec_config)
+        # ADR-014 bucket (i): execution marks/slips against the GLD *share* price, not gold spot.
+        # gold_price (spot, $/oz) is the versioned derived-proxy INPUT here, never the execution price
+        # itself — it stays a pure decision-context feature. The sim/replay path uses the deterministic
+        # derived proxy (no live read); the live path resolves the real GLD mark (bucket ii).
+        gold_price_proxy = fv.value(_PRICE_FEATURE)
+        exec_ref = resolve_sim_exec_ref(gold_price_proxy, snapshot.clock_ts)
+        guard_result = run_guard(
+            packet.direction, prior_portfolio, guard_config, exec_config, as_of=packet.as_of
+        )
         execution_record, new_portfolio = execute(
             runtime_record,
             packet.direction,
-            instrument_price,
+            exec_ref.price,
             prior_portfolio,
             guard_result,
             port,
             fill_model,
             exec_config,
+            exec_ref_gld_price_ts=exec_ref.ts,
+            exec_ref_gld_price_basis=exec_ref.basis,
         )
     else:
         execution_record, new_portfolio = None, prior_portfolio

@@ -14,6 +14,7 @@ from pathlib import Path
 
 import pytest
 
+from execution import resolve_sim_exec_ref
 from execution.models import PortfolioState
 from gold.decision_builder.models import Direction
 from gold.paper_runtime.models import OperationalInput, RuntimeLedger, Verdict
@@ -56,13 +57,20 @@ def test_real_chain_admits_no_fill_avoid() -> None:
     assert "non-LONG" in r.execution_record.reason
 
 
-def test_in_hand_price_and_direction_forwarded() -> None:
-    # ADR-011 D1: the orchestrator forwards packet.direction + fv.value("gold_price") into execute —
-    # never re-derived by reloading the snapshot.
+def test_exec_ref_gld_price_forwarded_and_gold_price_severed() -> None:
+    # ADR-014 bucket (i): the orchestrator forwards packet.direction + the resolved GLD *share*
+    # reference (derived proxy on the replay path) into execute — never gold spot, never re-derived by
+    # reloading the snapshot. gold_price ($/oz) is severed from execution and stays a decision feature.
     r = run_chain(_snap(), RuntimeLedger.empty(), PortfolioState.empty())
     assert r.execution_record is not None
-    assert r.execution_record.instrument_price == _GOLD_PRICE
-    assert r.execution_record.instrument_price == r.feature_vector.value("gold_price")
+    gold_spot = r.feature_vector.value("gold_price")
+    assert gold_spot == _GOLD_PRICE  # the spot feature is unchanged (still a decision-context input)
+    expected_ref = resolve_sim_exec_ref(gold_spot, _snap().clock_ts)
+    assert r.execution_record.instrument_price == expected_ref.price
+    assert r.execution_record.exec_ref_gld_price == expected_ref.price
+    assert r.execution_record.exec_ref_gld_price == r.execution_record.instrument_price
+    assert r.execution_record.exec_ref_gld_price_basis == expected_ref.basis
+    assert r.execution_record.exec_ref_gld_price != gold_spot  # severed: a GLD share price, not $/oz
     assert r.execution_record.direction is r.packet.direction is Direction.AVOID
 
 

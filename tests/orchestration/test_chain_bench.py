@@ -22,6 +22,7 @@ _PACKET_ID = "gold-v0:5653d07a0b3949d5"
 _EXPECTED_REPLAY_KEY = {
     "classification_trace_version", "classifier_version",
     "decision_policy_fingerprint", "decision_policy_version",
+    "exec_price_source_version",
     "execution_policy_fingerprint", "execution_policy_version", "execution_schema_version",
     "feature_schema_version",
     "fill_model_fingerprint", "fill_model_version",

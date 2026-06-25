@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-23
 confidence: confirmed
 evidence:
   - design
@@ -17,10 +17,13 @@ related_files:
   - "[[models.py (execution)]]"
 related_tests:
   - "[[test_execution_engine]]"
+  - "[[test_price_reference]]"
+  - "[[test_live_adapter]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Execution Layer Planning]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 schema_id: "execution-record"
 schema_version: "0.1.0"
 schema_path: "src/execution/models.py"
@@ -79,6 +82,18 @@ ADR-003: a frozen stdlib dataclass with a byte-stable `to_dict()`.
 | new_portfolio_state_hash | string | the portfolio `state_hash` after |
 | paper_only | bool | fixed `true` (ADR-011 §3) |
 | non_execution_notice | string | carried-forward paper assertion |
+
+**Additive ADR-014 fields** (`execution_schema_version` stays `0.1.0` — additive, output-only, no `from_dict`; sim/replay records leave the live fields `None`/defaults so their `to_dict` + goldens are byte-identical):
+
+| Field | Type | Notes |
+|-------|------|-------|
+| exec_ref_gld_price | number | the GLD **share** execution reference (§5.1); `== instrument_price`. Sim/replay: derived proxy `gold_price_proxy × OZ_PER_SHARE`; live: the submit-time GLD mark (basis `live_submit_mark`) with the broker fill recorded GLD-vs-GLD |
+| exec_ref_gld_price_ts | string \| null | the reference timestamp (snapshot clock on the sim path; pinned submit/open mark on the live path) |
+| exec_ref_gld_price_basis | string | provenance label: `sim_derived_proxy` \| `live_submit_mark` \| `live_open_mark` |
+| status | enum \| null | live state machine `{QUEUED, PARTIAL, FILLED, EXECUTION_UNCERTAIN, NO_ACTION}` (§6); `None` on the sim/replay path |
+| client_order_id | string \| null | deterministic broker idempotency id (`eln-<side>-…`, 422 dedup); live-only |
+| alpaca_order_id | string \| null | broker order id (audit lineage); live-only |
+| raw_payload | string \| null | the raw broker response / reject body (never silently dropped); live-only |
 
 ## Validation Rules
 

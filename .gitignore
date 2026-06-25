@@ -26,4 +26,6 @@ runtime/
 .secrets
 .secrets/
 *.secrets
+.env
+*.env
 

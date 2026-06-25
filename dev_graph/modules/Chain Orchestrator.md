@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-23
 confidence: confirmed
 evidence:
   - design
@@ -18,6 +18,7 @@ related_files:
   - "[[config.py (orchestration)]]"
   - "[[engine.py (orchestration)]]"
   - "[[runtime.py (orchestration)]]"
+  - "[[live_runtime.py]]"
   - "[[operational_feed.py]]"
   - "[[alpaca_clock_feed.py]]"
   - "[[run_chain_bench.py]]"
@@ -27,11 +28,15 @@ related_tests:
   - "[[test_chain_bench]]"
   - "[[test_operational_feed]]"
   - "[[test_alpaca_clock_feed]]"
+  - "[[test_live_runtime]]"
+  - "[[test_operator_halt]]"
+  - "[[test_replayable_fence]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Paper-Trading Runtime Planning]]"
   - "[[ADR - Execution Layer Planning]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 module_name: "orchestration"
 module_path: "src/orchestration"
 responsibility: "Thread a banked snapshot through the full Layer-3 chain (consume→…→execute→persist); paper-only composition root"

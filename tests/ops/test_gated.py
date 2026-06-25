@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pytest
 
-from execution.alpaca_adapter import AlpacaPaperAdapter
+from execution.live_adapter import LiveExecutionAdapter
 from ops import audit, gated
 from ops.core import OpsPaths
 from ops.proc import ProcResult
@@ -59,18 +59,21 @@ def make_paths(tmp: Path, **over: Path) -> OpsPaths:
 
 
 class _StubBroker:
-    """A broker stub that FAILS if ever called — proving no network is hit on a non-LONG run."""
+    """A full LiveBrokerPort stub that FAILS if ever called — proving no network is hit on a non-LONG run."""
 
     def __init__(self) -> None:
         self.calls = 0
 
-    def submit_market_buy(self, symbol: str, qty: float) -> object:
+    def _boom(self, *args: object, **kwargs: object) -> object:
         self.calls += 1
         raise AssertionError("the broker must never be called in tests")
 
+    submit_market_buy = submit_market_sell = _boom
+    get_positions = get_open_orders = get_orders = get_account = get_asset = _boom
 
-def _dormant_factory() -> AlpacaPaperAdapter:
-    return AlpacaPaperAdapter(client=None)
+
+def _dormant_factory() -> LiveExecutionAdapter:
+    return LiveExecutionAdapter(client=None)
 
 
 # ----------------------------------------------------------------------------- alpaca paper run
@@ -79,7 +82,8 @@ def test_alpaca_run_refuses_when_dormant(tmp_path: Path) -> None:
     result = gated.run_chain_now_alpaca_paper(paths, adapter_factory=_dormant_factory, clock=_clock)
     assert result.ok is False and result.executed is False
     assert "REFUSED" in result.summary
-    assert not paths.ledger_path.exists()  # run_once was never called
+    assert not paths.live_ledger_path.exists()  # operate_live was never called
+    assert not paths.ledger_path.exists()       # and the canonical ledger is untouched
     entries = audit.read_audit(paths.audit_log_path)
     assert len(entries) == 1 and entries[0].action == "run-chain-now-ALPACA-PAPER" and entries[0].ok is False
 
@@ -87,8 +91,8 @@ def test_alpaca_run_refuses_when_dormant(tmp_path: Path) -> None:
 def test_alpaca_run_threads_live_port_without_network(tmp_path: Path) -> None:
     stub = _StubBroker()
 
-    def factory() -> AlpacaPaperAdapter:
-        return AlpacaPaperAdapter(client=stub)
+    def factory() -> LiveExecutionAdapter:
+        return LiveExecutionAdapter(client=stub)
 
     paths = make_paths(tmp_path, el_nino_snapshot=PASS_SNAPSHOT)
     result = gated.run_chain_now_alpaca_paper(paths, adapter_factory=factory, clock=_clock)
@@ -96,7 +100,10 @@ def test_alpaca_run_threads_live_port_without_network(tmp_path: Path) -> None:
     assert "mode=alpaca_paper" in result.summary  # the LIVE port was threaded
     assert "no-fill" in result.summary  # AVOID stance -> no order
     assert stub.calls == 0  # the broker was NEVER called (no network)
-    assert paths.ledger_path.exists()
+    # The live run writes the SEPARATE live files and leaves the canonical replay files untouched
+    # (ADR-014 §5.3 — live state never contaminates the deterministic ledger/portfolio).
+    assert paths.live_ledger_path.exists() and paths.live_portfolio_path.exists()
+    assert not paths.ledger_path.exists() and not paths.portfolio_path.exists()
     assert audit.read_audit(paths.audit_log_path)[0].ok is True
 
 
@@ -158,6 +165,48 @@ def test_calibration_bump_eligible_still_does_not_bump(tmp_path: Path) -> None:
     assert cal_path.read_bytes() == before
 
 
+# ----------------------------------------------------------------------------- operator kill switch
+def test_operator_halt_engages_audits_and_blocks_live_run(tmp_path: Path) -> None:
+    from orchestration.operational_feed import operator_halt_active
+
+    stub = _StubBroker()
+    paths = make_paths(tmp_path, el_nino_snapshot=PASS_SNAPSHOT)
+
+    # 1. The audited Tier-2 action sets halt=True and writes a marker + an audit record.
+    engaged = gated.set_operator_halt(paths, clock=_clock)
+    assert engaged.ok is True and engaged.executed is True and "ENGAGED" in engaged.summary
+    assert operator_halt_active(paths.operator_halt_path) is True
+    assert audit.read_audit(paths.audit_log_path)[-1].action == "operator-halt"
+
+    # 2. With the kill switch engaged the live run REJECTs (operational_ok) before any order.
+    result = gated.run_chain_now_alpaca_paper(
+        paths, adapter_factory=lambda: LiveExecutionAdapter(client=stub), clock=_clock,
+    )
+    assert result.executed is True            # the run round-tripped...
+    assert "verdict=REJECT" in result.summary  # ...but was rejected by the halt
+    assert stub.calls == 0                     # no order was placed
+
+
+def test_operator_resume_clears_the_kill_switch(tmp_path: Path) -> None:
+    from orchestration.operational_feed import operator_halt_active
+
+    paths = make_paths(tmp_path)
+    gated.set_operator_halt(paths, clock=_clock)
+    assert operator_halt_active(paths.operator_halt_path) is True
+    resumed = gated.resume_operator_halt(paths, clock=_clock)
+    assert resumed.ok is True and "CLEARED" in resumed.summary
+    assert operator_halt_active(paths.operator_halt_path) is False
+    assert audit.read_audit(paths.audit_log_path)[-1].action == "operator-resume"
+
+
+def test_operator_halt_precondition_lines(tmp_path: Path) -> None:
+    paths = make_paths(tmp_path)
+    assert "engages" in gated.precondition_line(paths, "operator-halt")
+    gated.set_operator_halt(paths, clock=_clock)
+    assert "ALREADY engaged" in gated.precondition_line(paths, "operator-halt")
+    assert "resumes" in gated.precondition_line(paths, "operator-resume")
+
+
 # ----------------------------------------------------------------------------- secrets + never-raise
 def test_no_credential_value_in_gated_audit(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     secret = "GATED_SECRET_VALUE_777"
@@ -170,7 +219,7 @@ def test_no_credential_value_in_gated_audit(tmp_path: Path, monkeypatch: pytest.
 
 
 def test_alpaca_run_never_raises_on_factory_error(tmp_path: Path) -> None:
-    def boom_factory() -> AlpacaPaperAdapter:
+    def boom_factory() -> LiveExecutionAdapter:
         raise RuntimeError("factory blew up")
 
     paths = make_paths(tmp_path, el_nino_snapshot=PASS_SNAPSHOT)
@@ -194,6 +243,7 @@ def test_gated_registry() -> None:
     assert set(gated.GATED_ACTIONS) == {
         "run-chain-now-ALPACA-PAPER", "register-daily-schedule",
         "unregister-daily-schedule", "commit-calibration-bump",
+        "operator-halt", "operator-resume",
     }
 
 

@@ -2071,3 +2071,120 @@ ADR-014 stays `status: draft` / `decision_status: active` — **operator accepta
 not auto-accepted.** On acceptance: `status: draft → active` (and the downstream `/prd-to-issues` slices
 proceed under §5/§6). Pre-existing index-header drift (the 2026-06-18 "986 green" prose vs the later
 ops-epoch Statistics) is noted but left untouched — out of scope for this governance revision.
+
+## [2026-06-23] writeback | ADR-014 Operable Alpaca Paper Execution Adapter v1 — slices 1-6 (live reconcile-then-act + kill switch)
+
+Implemented the full ADR-014 operable-adapter epoch (this session delivered slices 5-6; slices 1-4 had
+landed in the working tree the prior session but were never written back — this entry consolidates the
+whole epoch). The dormant Alpaca **paper** adapter is now operable: reconcile-then-act, FLAT->exit with
+realized P&L, deterministic idempotency, cash-cap, a queued/partial/uncertain state machine, the GLD price
+reference fixed, and an audited operator kill switch — all quarantined in the default-OFF, non-replayable
+live plug behind the `assert port.replayable` fence.
+
+### Nodes Created (10)
+- **Files (3):** FILE-044 `[[live_runtime.py]]` (operate_live reconcile-then-act, the integration centerpiece),
+  FILE-045 `[[live_adapter.py]]` (side/order-based adapter + state machine), FILE-046 `[[price_reference.py]]`
+  (source-pluggable GLD-share `exec_ref` resolver).
+- **Tests (7):** TEST-034 `[[test_live_runtime]]`, TEST-035 `[[test_live_adapter]]`, TEST-036
+  `[[test_price_reference]]`, TEST-037 `[[test_reconcile_entry]]`, TEST-038 `[[test_operator_halt]]`,
+  TEST-039 `[[test_guard_day_scope]]`, TEST-040 `[[test_replayable_fence]]`.
+
+### Nodes Changed (6)
+- **SCHEMA-014** `[[Execution Record Schema]]` — additive `exec_ref_gld_price`(+`_ts`/`_basis`), the live
+  `status` enum {QUEUED,PARTIAL,FILLED,EXECUTION_UNCERTAIN,NO_ACTION}, and `client_order_id`/`alpaca_order_id`/
+  `raw_payload` (output-only, sim records leave them None → byte-identical; `execution_schema_version` stays 0.1.0).
+- **SCHEMA-015** `[[Portfolio State Schema]]` — `ExecutionEntry.as_of` (§5.2 day-scoping, `schema_version` 0.1.0→0.2.0)
+  + the new **ReconcileEntry** kind (§6.2, live-path-only, omitted-when-empty so the sim/replay portfolio stays
+  byte-identical → no further bump).
+- **FILE-036** `[[operational_feed.py]]` — `OperatorHaltFeed` + `operator_halt_active` (the §6.6 kill-switch honor
+  through the existing `operational_ok` predicate).
+- **MOD-008** `[[Execution]]` + **MOD-010** `[[Chain Orchestrator]]` — new files/tests linked; ADR-014 cross-linked.
+- **ADR-014** `[[ADR - Operable Alpaca Paper Execution Adapter v1]]` — implementation_status not-started → tested;
+  realizing files/tests linked.
+
+### Determinism (the whole game — verified empirically)
+The deterministic sim/replay spine + BENCH-004/006 goldens stayed **byte-identical except** the two documented
+versioned re-pins from slices 1-2 (the `exec_price_source_version` GLD-share price source and the `ExecutionEntry.as_of`
+field). Slices 3-6 added **zero** golden movement: regenerated both goldens and confirmed `git hash-object` unchanged.
+The critical trick: `PortfolioState.to_dict` **omits an empty `reconciles`**, so the sim portfolio (which never produces
+a reconcile entry) hashes identically. No live broker read ever enters the shared guard request / `run_chain` / the
+simulator; `run_chain`, `execute`, and `SimulatedBrokerAdapter` are structurally unchanged.
+
+### Verification
+Full suite **1091 → 1128 green** (+37 net tests), 0 failures/skips. Adversarial review (4-dimension workflow:
+determinism non-contamination, live reconcile-then-act correctness, fail-closed/governance boundary, ADR-014/ISSUE
+conformance) returned **0 confirmed findings** — all dimensions reviewed with file:line citations.
+
+### Lint (11 checks, touched nodes)
+Frontmatter complete + enums valid on all new/changed nodes; no orphans (every new file node has inbound module +
+test + schema links; every new test links its covered node); fresh (2026-06-23); wikilinks resolved (fixed the bare
+`[[runtime.py]]` → context-suffixed `[[runtime.py (execution)]]` / `[[runtime.py (orchestration)]]`, and dropped a
+broken `[[gated.py]]` link — ops tooling has no file node per convention); canonical_ids FILE-044..046 / TEST-034..040
+unique; evidence-confidence coherent.
+
+### Metrics
+dev_graph content nodes 211 → **221** (+10: 3 files + 7 tests). No schema/enum/ontology change. Two **code** version
+bumps were already applied by slices 1-2 (`PORTFOLIO_SCHEMA_VERSION` 0.1.0→0.2.0, new `EXEC_PRICE_SOURCE_VERSION` 1.0.0);
+slices 3-6 bumped no version. Re-sync Neo4j (`python sync_to_neo4j.py --clear`).
+
+### Operator HARD-PAUSE (unchanged)
+Enabling live paper execution stays behind the ADR-013 gated-live action; the new operator kill switch
+(`set_operator_halt`) is the governed stop. Calibration target bumps stay DEFER until the ADR-012 gate passes.
+Empirical flags B1/B2/B3 (`client_order_id` charset/length, GLD `fractionable`, settled-cash field) remain documented
+constants to confirm against Alpaca docs before any live run.
+
+---
+
+## [2026-06-25] writeback | ADR-014 pre-live-run readiness pass — Blockers 1 + 2 closed (live-plug-only)
+
+Pre-live-run readiness pass that *arms* (does not start) the ADR-014 adapter: cleared the two remaining
+live-path blockers, doc-verified the B-flags, and readied the operator probe. **No node created** (the changes
+are additive to existing nodes; the probe is operator tooling — no file node, per the ops-tooling convention).
+
+### Changes (all live-plug-only — the deterministic spine is untouched)
+- **Blocker 1 — live slippage submit-mark (ADR-014 §5.1, Q2 gate).** `[[live_runtime.py]]` (FILE-044) +
+  `[[live_adapter.py]]` (FILE-045): the live path now reads the **real broker GLD mark**
+  (`LiveExecutionAdapter.live_submit_mark` → new `LiveBrokerPort.get_latest_trade`, the read-only
+  `data.alpaca.markets/v2/stocks/GLD/trades/latest` host, `trade.p`/`trade.t`) inside the startup reconcile,
+  **fail-closed, never the sim derived proxy** — recorded slippage is fill-vs-real-mark. `operate_live` drops
+  the proxy `exec_ref` construction (`reconcile_and_act(exec_ref=None)` triggers the live read).
+- **Blocker 2 — cross-run async-fill fold (ADR-014 §6.3).** `[[Portfolio State Schema]]` (SCHEMA-015): new
+  **PendingOrder** kind (live-path-only, omitted-when-empty — same determinism trick as ReconcileEntry, so
+  **no `schema_version` bump, no benchmark re-pin**). A QUEUED order is recorded as a PendingOrder (durable
+  order↔snapshot lineage); the next `operate_live` startup reconcile `_fold_pending_fills` books a now-filled
+  ours-lineage order **exactly once** (buy/sell-fold + ExecutionEntry, drop pending) before planning — closing
+  the FLAT-misclassification-as-discrepancy bug. `client_order_id` 422 dedup + open-orders netting keep it
+  double-order-safe.
+- **Blocker 3 — B-flags doc-verified (6-agent workflow vs Alpaca docs/OpenAPI).** Folded into `[[live_adapter.py]]`
+  comments: B1 REST max is **128** (the 48 cap is the *FIX* limit — self-imposed-conservative, no change
+  needed); B3 `cash` = "Cash Balance" + `multiplier` (1 cash / 2,4 margin) **confirmed**; lifecycle facts +
+  the `trade.p`/`trade.t` mark fields **confirmed** (no empirical needed). Readied `scripts/alpaca_paper_e2e_probe.py`
+  (operator probe) for the empirical-pending items (GLD `fractionable` value, the duplicate→422 body, cash
+  settlement semantics).
+
+### Determinism (verified — zero golden movement)
+The live-only fixes moved **zero** sim goldens: regenerated BENCH-004/006 and confirmed `git hash-object` is
+byte-identical to baseline (`execution_bench.json 7c325406…`, `chain_bench.json 7503278875…`). PendingOrder +
+the live mark read never touch `run_chain`/`execute`/`SimulatedBrokerAdapter`; `to_dict` omits empty `pending`.
+
+### Verification
+Full suite **1128 → 1137 green** (+9 tests: Blocker-1 real-mark slippage + mark-read-failure refuse; Blocker-2
+cross-run fold-exactly-once + fold-then-FLAT-sells; `live_submit_mark` seam; PendingOrder serialization/omit-when
+-empty). `mypy --strict` + `ruff` clean on all touched files (the 2 remaining mypy errors are pre-existing in the
+untouched `feature_builder.py`). The `assert port.replayable` fence holds (`operate_live` unreachable from
+`run_once`/`run_sequence`).
+
+### Lint (touched nodes only)
+SCHEMA-015, FILE-044, FILE-045 frontmatter complete + enums valid; `updated` bumped to 2026-06-25; wikilinks
+resolve; canonical_ids unchanged (no new node); evidence-confidence coherent (`code`/`ADR`, confirmed).
+
+### Metrics
+dev_graph content nodes **221 → 221** (no new node; additive edits to SCHEMA-015 + FILE-044/045). No schema/enum/
+ontology change. No code `*_version` bump (both blockers are live-plug-only). Re-sync Neo4j (`python sync_to_neo4j.py --clear`).
+
+### Operator HARD-PAUSE (unchanged) + the probe pause
+Clearing these blockers **arms** the adapter; it does not start trading. The decision layer still emits only AVOID
+(monochromatic corpus, ADR-012 DEFER) → a full live run today yields AVOID → NO_ACTION → **no order**. Enabling live
+execution stays the operator's ADR-013 gated-live action; `set_operator_halt` is the governed stop. **Next:** the
+operator runs `scripts/alpaca_paper_e2e_probe.py` (paper creds in env) and pastes the output; then the empirical
+B-flag values get marked verified on the stub + the ADR/ISSUE notes.

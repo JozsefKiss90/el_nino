@@ -2,10 +2,10 @@
 type: decision_record
 canonical_id: ADR-014
 status: active
-implementation_status: not-started
+implementation_status: tested
 canonical: true
 created: 2026-06-21
-updated: 2026-06-21
+updated: 2026-06-23
 confidence: confirmed
 evidence:
   - design
@@ -19,10 +19,21 @@ related_files:
   - "[[alpaca_adapter.py]]"
   - "[[alpaca_clock_feed.py]]"
   - "[[adapters.py]]"
+  - "[[live_adapter.py]]"
+  - "[[live_runtime.py]]"
+  - "[[price_reference.py]]"
+  - "[[operational_feed.py]]"
   - "[[Execution Record Schema]]"
   - "[[Portfolio State Schema]]"
   - "[[Runtime Ledger Schema]]"
-related_tests: []
+related_tests:
+  - "[[test_live_runtime]]"
+  - "[[test_live_adapter]]"
+  - "[[test_price_reference]]"
+  - "[[test_guard_day_scope]]"
+  - "[[test_reconcile_entry]]"
+  - "[[test_operator_halt]]"
+  - "[[test_replayable_fence]]"
 related_constraints:
   - "[[No Wiki Mutation]]"
   - "[[Canonical Ownership]]"

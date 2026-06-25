@@ -5,7 +5,7 @@ status: implemented
 implementation_status: implemented
 canonical: true
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-23
 confidence: confirmed
 evidence:
   - code
@@ -13,13 +13,16 @@ source_paths:
   - "src/orchestration/operational_feed.py"
 related_files:
   - "[[alpaca_clock_feed.py]]"
+  - "[[live_runtime.py]]"
 related_tests:
   - "[[test_operational_feed]]"
+  - "[[test_operator_halt]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Paper-Trading Runtime Planning]]"
   - "[[ADR - Execution Layer Planning]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 file_path: "src/orchestration/operational_feed.py"
 language: "python"
 module: "[[Chain Orchestrator]]"
@@ -68,10 +71,25 @@ a full NYSE calendar — that gap is now closed by the live [[alpaca_clock_feed.
 `AlpacaClockFeed`, default-OFF) behind this same `OperationalFeed` port. `read_and_capture(feed, as_of, path)`
 reads once and persists the produced `OperationalInput` (temp + `os.replace`) — the replay source.
 
+**Operator kill switch (ADR-014 §6.6).** `OperatorHaltFeed` decorates any `OperationalFeed` and, when
+`operator_halt_active(path)` reports the kill switch engaged (a persisted halt marker; absent ⇒ run,
+present-halt ⇒ honored, unreadable ⇒ fail-closed-halt), **forces `halt=True`** on the produced
+`OperationalInput` — so the **existing** `operational_ok` predicate REJECTs the next live cycle. No new
+honor path / no new predicate; the forced value is captured like any other, so the honored halt is
+replay-safe. The write/governance side is the ADR-013 gated Tier-2 halt action (`ops/gated.py`,
+`set_operator_halt`).
+
 ## Relationships
 
 ### Depends On
 - [[Chain Orchestrator]]
 
+### Used By
+- [[live_runtime.py]]
+
 ### Validated By
 - [[test_operational_feed]]
+- [[test_operator_halt]]
+
+### Justified By
+- [[ADR - Operable Alpaca Paper Execution Adapter v1]]

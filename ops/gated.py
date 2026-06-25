@@ -6,8 +6,10 @@ Like the safe tier, gated actions **never raise** — failures/refusals are caug
 
 The four gated actions:
 - ``run_chain_now_alpaca_paper`` — runs the chain ONCE routing execution through the LIVE Alpaca **paper**
-  adapter (``paper_adapter_from_env``). Server-side precondition: the factory must return a non-dormant
-  client (paper creds present AND the parsed paper host) — else the action REFUSES (executed=False), never
+  adapter (``paper_adapter_from_env``) via the non-replayable ``live_runtime.operate_live`` entrypoint,
+  threading the **separate** live ledger/portfolio files (ADR-014 §5.3) so live state never contaminates
+  the canonical replay files. Server-side precondition: the factory must return a non-dormant client
+  (paper creds present AND the parsed paper host) — else the action REFUSES (executed=False), never
   placing an order. Paper-only / virtual-money always; built-but-dormant (no LONG emitted pre-calibration,
   so today this is a safe no-fill live round-trip). No persisted 'always-live' state (the one-shot model).
 - ``register_daily_schedule`` / ``unregister_daily_schedule`` — reuse ``register_daily_chain_task.ps1`` /
@@ -25,9 +27,15 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from execution.alpaca_adapter import AlpacaPaperAdapter, paper_adapter_from_env
-from orchestration.operational_feed import MarketCalendarFeed
-from orchestration.runtime import run_once
+from execution.live_adapter import LiveExecutionAdapter, live_adapter_from_env
+from gold.paper_runtime.models import OperationalInput
+from orchestration.live_runtime import operate_live
+from orchestration.operational_feed import (
+    MarketCalendarFeed,
+    OperatorHaltFeed,
+    operator_halt_active,
+    persist_operational,
+)
 
 from ops import audit, core
 from ops.audit import AuditEntry, Clock
@@ -35,7 +43,7 @@ from ops.core import OpsPaths
 from ops.proc import Runner, default_runner, redact, tail
 
 _TASK_NAME = "ElNino-Chain-DailyRun"
-AdapterFactory = Callable[[], AlpacaPaperAdapter]
+AdapterFactory = Callable[[], LiveExecutionAdapter]
 
 
 @dataclass(frozen=True)
@@ -67,14 +75,21 @@ def _finish(
 
 # ====================================================================================== alpaca paper
 def run_chain_now_alpaca_paper(
-    paths: OpsPaths, *, adapter_factory: AdapterFactory = paper_adapter_from_env,
+    paths: OpsPaths, *, adapter_factory: AdapterFactory = live_adapter_from_env,
     clock: Clock | None = None,
 ) -> GatedResult:
-    """Run the chain once routing execution through the LIVE Alpaca paper adapter (gated)."""
+    """Run the chain once routing execution through the LIVE Alpaca paper adapter (gated).
+
+    Routes through the reconcile-then-act ``live_runtime.operate_live`` (ADR-014 §6) with the
+    side/order-based :class:`~execution.live_adapter.LiveExecutionAdapter`, threading the **separate**
+    live ledger/portfolio files (§5.3). Server-side precondition: the factory must return a non-dormant
+    client (paper creds + parsed paper host) — else REFUSE, no order. Operator-halt aware: a set kill
+    switch forces the operational feed to ``halt`` so the run REJECTs before any order (ADR-014 §6.6).
+    """
     action = "run-chain-now-ALPACA-PAPER"
     args_summary = (
-        f"port=alpaca_paper(LIVE) feed=calendar ledger={paths.ledger_path.name} "
-        f"portfolio={paths.portfolio_path.name}"
+        f"port=alpaca_paper(LIVE) feed=calendar ledger={paths.live_ledger_path.name} "
+        f"portfolio={paths.live_portfolio_path.name}"
     )
     # Outer guard: ANY unexpected error in the pre/post-order work still audits (executed=False),
     # so the action structurally never raises — it does not rely on each sub-call being perfect.
@@ -95,11 +110,12 @@ def run_chain_now_alpaca_paper(
                 paths, action, args_summary, True, False, "nothing to do (no banked snapshot)", (), clock,
             )
         try:
-            result = run_once(
-                snap_path, paths.ledger_path, paths.portfolio_path,
-                operational_feed=MarketCalendarFeed(),
-                operational_capture_path=paths.operational_capture_path,
-                port=adapter,
+            result = operate_live(
+                snap_path, paths.live_ledger_path, paths.live_portfolio_path, adapter,
+                # Operator-halt-aware: a set kill switch forces the feed to halt → operational_ok REJECTs
+                # before any order is reconciled (ADR-014 §6.6 — one governed kill mechanism).
+                operational_feed=OperatorHaltFeed(MarketCalendarFeed(), paths.operator_halt_path),
+                operational_capture_path=paths.live_operational_capture_path,
             )
         except Exception as exc:  # the live order attempt failed (e.g. AlpacaExecutionError) -> executed
             return _finish(paths, action, args_summary, False, True, f"error: {exc}", (str(exc),), clock)
@@ -180,6 +196,44 @@ def unregister_daily_schedule(
     return _finish(paths, action, args_summary, ok, True, summary, detail, clock)
 
 
+# ====================================================================================== operator halt
+def set_operator_halt(
+    paths: OpsPaths, *, halt: bool = True, clock: Clock | None = None,
+) -> GatedResult:
+    """Audited Tier-2 kill switch (ADR-014 §6.6): write (engage) or clear (resume) the operator halt.
+
+    Persists an ``OperationalInput`` with ``halt=True`` (engage) / ``halt=False`` (resume) to the
+    operator-halt marker. The live operational feed (:class:`OperatorHaltFeed`) honors it through the
+    **existing** ``operational_ok`` predicate, so the next live cycle REJECTs before any order is placed —
+    the single chosen governed kill mechanism (no second mechanism, no standalone rate limiter, no new
+    read path). Writing the marker is the governed mutation (``executed=True``); a failed write is
+    audited, never raised.
+    """
+    action = "operator-halt" if halt else "operator-resume"
+    args_summary = f"halt={halt} marker={paths.operator_halt_path.name}"
+    try:
+        marker = OperationalInput(
+            instrument="GLD", tradeable=not halt, venue_open=True, halt=halt, degraded=False,
+        )
+        persist_operational(paths.operator_halt_path, marker)
+    except Exception as exc:  # structural never-raise: any unexpected error still audits
+        return _finish(
+            paths, action, args_summary, False, False, f"unexpected error: {exc}", (str(exc),), clock,
+        )
+    state = "ENGAGED — execution halted" if halt else "CLEARED — execution resumes"
+    summary = f"operator halt {state}"
+    detail = (
+        f"marker: {paths.operator_halt_path}",
+        "honored via operational_ok (REJECT) on the next live cycle — the single governed kill mechanism",
+    )
+    return _finish(paths, action, args_summary, True, True, summary, detail, clock)
+
+
+def resume_operator_halt(paths: OpsPaths, *, clock: Clock | None = None) -> GatedResult:
+    """Clear the operator kill switch (the reversal of :func:`set_operator_halt`)."""
+    return set_operator_halt(paths, halt=False, clock=clock)
+
+
 # ====================================================================================== calibration bump
 def commit_calibration_bump(paths: OpsPaths, *, clock: Clock | None = None) -> GatedResult:
     """Gate-respecting calibration bump: DEFER unless the ADR-012 gate passes. NEVER mutates a *_version.
@@ -219,6 +273,8 @@ GATED_ACTIONS: dict[str, Callable[[OpsPaths], GatedResult]] = {
     "register-daily-schedule": register_daily_schedule,
     "unregister-daily-schedule": unregister_daily_schedule,
     "commit-calibration-bump": commit_calibration_bump,
+    "operator-halt": set_operator_halt,          # engage the kill switch (halt=True default)
+    "operator-resume": resume_operator_halt,      # clear it (the reversal)
 }
 
 
@@ -237,4 +293,18 @@ def precondition_line(paths: OpsPaths, name: str) -> str:
     if name == "commit-calibration-bump":
         cal = core.calibration_readiness(paths)
         return f"ADR-012 gate = {cal.overall} -> {'no bump (DEFER)' if cal.overall.startswith('DEFER') else 'manual review only'}"
+    if name == "operator-halt":
+        engaged = operator_halt_active(paths.operator_halt_path)
+        return (
+            "kill switch ALREADY engaged -> live execution already halts (operational_ok REJECT)"
+            if engaged
+            else "engages the kill switch -> live execution halts on the next cycle (operational_ok REJECT)"
+        )
+    if name == "operator-resume":
+        engaged = operator_halt_active(paths.operator_halt_path)
+        return (
+            "clears the kill switch -> live execution resumes on the next cycle"
+            if engaged
+            else "kill switch not engaged -> resume is a no-op"
+        )
     return "unknown action"

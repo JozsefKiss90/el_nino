@@ -1,6 +1,7 @@
 {
   "all_replays_byte_identical": true,
   "benchmark_id": "BENCH-004",
+  "exec_price_source_version": "1.0.0",
   "execution_policy_fingerprint": "2c11b5b1c7460f0bd93af6b83b85662ffbfd6bd9045aec63f2ed5e3381ed1a37",
   "execution_policy_version": "0.1.0",
   "execution_schema_version": "0.1.0",
@@ -16,8 +17,8 @@
     "portfolio_state_hash",
     "guard_block_attribution"
   ],
-  "pinned_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
-  "portfolio_schema_version": "0.1.0",
+  "pinned_portfolio_state_hash": "cb7b8e20fe355fad06c6e97bceedd37fbb465dd945df720752596876564a917f",
+  "portfolio_schema_version": "0.2.0",
   "real_sequence": {
     "all_replays_byte_identical": true,
     "consumable_inputs": [
@@ -40,7 +41,7 @@
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
       }
     ],
-    "ending_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+    "ending_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
     "fill_distribution": {
       "filled": 0,
       "no_fill": 2
@@ -57,24 +58,24 @@
       {
         "blocked_by": null,
         "direction": "AVOID",
-        "execution_id": "exec-v0:c7ea0733463ed11c",
+        "execution_id": "exec-v0:7583129f226d0739",
         "fill_price": null,
         "filled": false,
         "guard_approved": true,
         "label": "latest_snapshot_pass__admit",
-        "new_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "new_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
         "reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
       },
       {
         "blocked_by": null,
         "direction": "AVOID",
-        "execution_id": "exec-v0:c7ea0733463ed11c",
+        "execution_id": "exec-v0:7583129f226d0739",
         "fill_price": null,
         "filled": false,
         "guard_approved": true,
         "label": "latest_snapshot_pass__re_presented",
-        "new_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "new_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
         "reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef"
       }
@@ -84,7 +85,7 @@
   "synthetic_sequence": {
     "approve": {
       "all_replays_byte_identical": true,
-      "ending_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+      "ending_portfolio_state_hash": "cb7b8e20fe355fad06c6e97bceedd37fbb465dd945df720752596876564a917f",
       "fill_distribution": {
         "filled": 1,
         "no_fill": 3
@@ -94,48 +95,48 @@
         {
           "blocked_by": null,
           "direction": "LONG",
-          "execution_id": "exec-v0:9eb25ab1a96452e6",
+          "execution_id": "exec-v0:0dda4a885d896c85",
           "fill_price": 100.05,
           "filled": true,
           "guard_approved": true,
           "label": "SYN1_long_fill",
-          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "new_portfolio_state_hash": "cb7b8e20fe355fad06c6e97bceedd37fbb465dd945df720752596876564a917f",
           "reason": "filled",
           "source_snapshot_id": "SYN1"
         },
         {
           "blocked_by": null,
           "direction": "AVOID",
-          "execution_id": "exec-v0:1bb06f64b5502796",
+          "execution_id": "exec-v0:7c4df308b97cf43b",
           "fill_price": null,
           "filled": false,
           "guard_approved": true,
           "label": "SYN2_avoid_nofill",
-          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "new_portfolio_state_hash": "cb7b8e20fe355fad06c6e97bceedd37fbb465dd945df720752596876564a917f",
           "reason": "non-LONG stance AVOID \u2014 no paper fill in v0",
           "source_snapshot_id": "SYN2"
         },
         {
           "blocked_by": null,
           "direction": "FLAT",
-          "execution_id": "exec-v0:82b4681ff9ac99f5",
+          "execution_id": "exec-v0:b6c8723be2a0e48e",
           "fill_price": null,
           "filled": false,
           "guard_approved": true,
           "label": "SYN3_flat_nofill",
-          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "new_portfolio_state_hash": "cb7b8e20fe355fad06c6e97bceedd37fbb465dd945df720752596876564a917f",
           "reason": "non-LONG stance FLAT \u2014 no paper fill in v0",
           "source_snapshot_id": "SYN3"
         },
         {
           "blocked_by": null,
           "direction": "LONG",
-          "execution_id": "exec-v0:4aba1bed3a98c070",
+          "execution_id": "exec-v0:68fb67959b852662",
           "fill_price": null,
           "filled": false,
           "guard_approved": true,
           "label": "SYN1_long_duplicate",
-          "new_portfolio_state_hash": "847f714a98ae7dcf4539b0c5ca9c1e9bdc0dce810381f2d406361600a005e72f",
+          "new_portfolio_state_hash": "cb7b8e20fe355fad06c6e97bceedd37fbb465dd945df720752596876564a917f",
           "reason": "already executed (idempotent \u2014 once-ever)",
           "source_snapshot_id": "SYN1"
         }
@@ -148,7 +149,7 @@
     },
     "guard_block": {
       "all_replays_byte_identical": true,
-      "ending_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+      "ending_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
       "fill_distribution": {
         "filled": 0,
         "no_fill": 1
@@ -158,12 +159,12 @@
         {
           "blocked_by": "position_size_ok",
           "direction": "LONG",
-          "execution_id": "exec-v0:0c14f232990eabae",
+          "execution_id": "exec-v0:2139c2b9384982e5",
           "fill_price": null,
           "filled": false,
           "guard_approved": false,
           "label": "SYN4_long_block",
-          "new_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+          "new_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
           "reason": "blocked by position_size_ok",
           "source_snapshot_id": "SYN4"
         }

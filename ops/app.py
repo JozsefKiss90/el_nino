@@ -125,6 +125,8 @@ class OpsConsole(App[None]):
         ("g", "reg_sched", "Reg sched"),
         ("u", "unreg_sched", "Unreg sched"),
         ("b", "calib_bump", "Calib bump"),
+        ("h", "operator_halt", "HALT"),
+        ("j", "operator_resume", "Resume"),
         ("q", "quit", "Quit"),
     ]
 
@@ -244,6 +246,17 @@ class OpsConsole(App[None]):
         self._confirm_gated(
             "commit-calibration-bump",
             "Commit a calibration bump (gate-checked: DEFER unless ADR-012 passes; never bumps a *_version).",
+        )
+
+    def action_operator_halt(self) -> None:
+        self._confirm_gated(
+            "operator-halt",
+            "ENGAGE the operator kill switch: the next live cycle REJECTs (operational_ok) before any order.",
+        )
+
+    def action_operator_resume(self) -> None:
+        self._confirm_gated(
+            "operator-resume", "CLEAR the operator kill switch: live execution resumes on the next cycle.",
         )
 
     def _confirm_gated(self, name: str, description: str) -> None:

@@ -5,7 +5,7 @@ status: active
 implementation_status: implemented
 canonical: true
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-23
 confidence: confirmed
 evidence:
   - design
@@ -17,12 +17,15 @@ related_files:
   - "[[models.py (execution)]]"
 related_tests:
   - "[[test_execution_determinism]]"
+  - "[[test_guard_day_scope]]"
+  - "[[test_reconcile_entry]]"
 related_constraints:
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Execution Layer Planning]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 schema_id: "portfolio-state"
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 schema_path: "src/execution/models.py"
 validated_by:
   - "[[test_execution_determinism]]"
@@ -75,7 +78,32 @@ threads into `execution_id`).
 | unrealized_pnl | number | mark-to-snapshot at the re-derived price (ADR-011 D1) |
 
 **ExecutionEntry** (self-describing): `source_snapshot_id` (the idempotency key / replay anchor),
-`source_record_id`, `fill_price`, `quantity`, `fill_model_version`, `prior_portfolio_state_hash`, `seq`.
+`source_record_id`, `fill_price`, `quantity`, `fill_model_version`, `prior_portfolio_state_hash`, `seq`,
+`as_of` (additive, `schema_version 0.2.0`, ADR-014 §5.2 — the admitting snapshot clock; day-scopes the
+guard's `trades_today` so `max_trades_per_day` is a genuine daily cap, mirroring the PRED-008 cooldown
+discipline; folds into the replay key → BENCH-004/006 re-pinned).
+
+**ReconcileEntry** (additive new kind, ADR-014 §6.2 — **live-path-only**): `source_snapshot_id`,
+`instrument`, `observed_qty`, `observed_avg_price`, `marker`, `seq`, `as_of`. A reconcile *observation* of
+broker truth (the authority for position truth) — **not** a fill the system placed, so it carries **no**
+`source_record_id` and **no** `guard_result` (distinct from `ExecutionEntry`). It heals a broker↔local
+divergence into the append-only history without faking an execution; adopting the observed position into
+the local position is a separate ops-console **governed adopt**, never automatic. **Determinism trick:**
+`PortfolioState` carries `reconciles: tuple[ReconcileEntry, ...] = ()` and `to_dict()` **omits an empty
+`reconciles`** — the sim/replay portfolio (which never produces one) stays byte-identical, so **no further
+`schema_version` bump and no benchmark re-pin** for this kind.
+
+**PendingOrder** (additive new kind, ADR-014 §6.3 — **live-path-only**): `source_snapshot_id`,
+`source_record_id`, `instrument`, `side` (buy/sell), `requested_qty` (0.0 for a notional order),
+`client_order_id`, `seq`, `as_of`. The **durable order↔snapshot lineage** for an order that was accepted
+(QUEUED) but had not filled within its run: a market+day order can fill *after* the run ends
+(queue-to-next-open), and the per-run `ExecutionRecord` is not itself persisted, so this entry is what lets
+the **next startup reconcile fold the cross-run fill exactly once** (book the buy/sell-fold + an
+`ExecutionEntry`, then drop the pending order). `client_order_id` 422 dedup + open-orders netting keep the
+queue window double-order-safe. **Same determinism trick:** `PortfolioState` carries
+`pending: tuple[PendingOrder, ...] = ()` and `to_dict()` **omits an empty `pending`** — the sim/replay
+portfolio (which never queues an async order) stays byte-identical, so **no `schema_version` bump and no
+benchmark re-pin** for this kind (verified: BENCH-004/006 byte-identical after the change).
 
 ## Validation Rules
 

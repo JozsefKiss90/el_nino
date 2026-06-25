@@ -82,6 +82,31 @@ class OpsPaths:
     daily_log_dir: Path
     audit_log_path: Path
 
+    def _live_sibling(self, path: Path) -> Path:
+        """A ``.live`` sibling of a canonical artefact path (e.g. ``portfolio_state.live.json``)."""
+        return path.with_name(f"{path.stem}.live{path.suffix}")
+
+    @property
+    def live_ledger_path(self) -> Path:
+        """Physically-separate LIVE ledger (ADR-014 §5.3) — the live path never writes the canonical ledger."""
+        return self._live_sibling(self.ledger_path)
+
+    @property
+    def live_portfolio_path(self) -> Path:
+        """Physically-separate LIVE portfolio (ADR-014 §5.3) — distinct from the deterministic replay file."""
+        return self._live_sibling(self.portfolio_path)
+
+    @property
+    def live_operational_capture_path(self) -> Path:
+        """Physically-separate LIVE operational capture (keeps the canonical capture replay-clean)."""
+        return self._live_sibling(self.operational_capture_path)
+
+    @property
+    def operator_halt_path(self) -> Path:
+        """Operator kill-switch marker (ADR-014 §6.6). A set halt forces the operational feed to ``halt``
+        (the existing ``operational_ok`` honor path) so the next live cycle REJECTs before any order."""
+        return self.operational_capture_path.with_name("operator_halt.json")
+
     @classmethod
     def default(cls, repo_root: Path | None = None) -> "OpsPaths":
         root = repo_root if repo_root is not None else Path(__file__).resolve().parents[1]

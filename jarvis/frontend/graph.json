@@ -1,7 +1,7 @@
 {
   "meta": {
-    "node_count": 211,
-    "edge_count": 1699,
+    "node_count": 221,
+    "edge_count": 1820,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -1116,6 +1116,42 @@
       "confidence": "confirmed",
       "evidence": [
         "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-044",
+      "label": "File",
+      "name": "live_runtime.py",
+      "summary": "The non-replayable **LIVE** execution entrypoint (ADR-014 bucket ii).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "ADR"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-045",
+      "label": "File",
+      "name": "live_adapter.py",
+      "summary": "The broker-realistic, **side/order-based** LIVE Alpaca paper adapter + order state machine (ADR-014 §6).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "ADR"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "FILE-046",
+      "label": "File",
+      "name": "price_reference.py",
+      "summary": "The execution **price-reference seam** (SCHEMA-014 / ADR-014 bucket i): a source-pluggable **GLD share price** (`exec_ref_gld_price`, $/share), replacing the latent defect of forwarding gold spot ($/oz) into a GLD share order.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code",
+        "ADR"
       ],
       "status": "implemented"
     },
@@ -2500,6 +2536,83 @@
       "status": "implemented"
     },
     {
+      "id": "TEST-034",
+      "label": "Test",
+      "name": "test_live_runtime",
+      "summary": "Behavioural tests of the live reconcile-then-act core (ADR-014 §6) across three seams, all stub-driven (no network): `plan_reconcile` (pure delta/discrepancy), `reconcile_and_act` (account gate, cash-capped buy, FLAT SELL-fold realized P&L, discrepancy → terminal-refuse + reconcile-heal, idempotency bifurcation), and `operate_live` end-to-end over the real AVOID fixture (NO_ACTION before the adapter, separate live paths, the chain advancing, idempotency, guard-block refusal).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-035",
+      "label": "Test",
+      "name": "test_live_adapter",
+      "summary": "Stub-only tests of the side/order-based live adapter + order state machine (ADR-014 §6): the account-status gate, cash-capped + fractionable sizing, the deterministic `client_order_id`, the submit state machine (QUEUED on accept; EXECUTION_UNCERTAIN on reject/timeout/429/auth; NO_ACTION on a 422 duplicate), the typed-error path (4xx reject body parsed + persisted, never dropped), and fill resolution from the broker ORDER read (never the synchronous POST echo).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-036",
+      "label": "Test",
+      "name": "test_price_reference",
+      "summary": "Tests the `resolve_sim_exec_ref` derived-proxy resolver (ADR-014 §5.1): `exec_ref_gld_price = gold_price_proxy × OZ_PER_SHARE`, the recorded `ts`/`basis` provenance, determinism (no live read), and that the GLD-share reference is severed from gold spot.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-037",
+      "label": "Test",
+      "name": "test_reconcile_entry",
+      "summary": "Tests the SCHEMA-015 `ReconcileEntry` kind + `PortfolioState.reconciles` (ADR-014 §6.2): the **determinism trick** (an empty `reconciles` is omitted from `to_dict` so the sim/replay portfolio + `state_hash` stay byte-identical → no benchmark re-pin), the round-trip through `from_dict`, and `append_reconcile` leaving positions + executions untouched (no auto-adopt).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-038",
+      "label": "Test",
+      "name": "test_operator_halt",
+      "summary": "Tests the operator kill switch honor side (ADR-014 §6.6): `operator_halt_active` (absent ⇒ run, present-halt ⇒ honored, unreadable ⇒ fail-closed-halt), the `OperatorHaltFeed` decorator forcing `halt=True` so the **existing** `operational_ok` predicate REJECTs, and `operate_live` refusing execution (no order, chain still advances) when the switch is engaged — and resuming when cleared.",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-039",
+      "label": "Test",
+      "name": "test_guard_day_scope",
+      "summary": "Tests that the GATE-001 guard's daily inputs are day-scoped by the snapshot `as_of` (ADR-014 §5.2): `build_guard_request.trades_today` counts only executions on the same trading day as the request `as_of`, so `max_trades_per_day` is a genuine daily cap that resets per day (not the lifetime fill count that silently became a forever-block).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-040",
+      "label": "Test",
+      "name": "test_replayable_fence",
+      "summary": "Tests the ADR-014 §5.3 fence: `run_once`/`run_sequence` structurally refuse a non-replayable broker port (`assert port.replayable`), so a live port is reachable only via `operate_live`; and that `operate_live` accepts the `LiveExecutionAdapter`, stamps records non-replayable, and threads a **separate** `(ledger, portfolio)` pair — never touching the canonical replay files (on the AVOID corpus the broker is never contacted).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
       "id": "WF-001",
       "label": "Workflow",
       "name": "System Lifecycle",
@@ -3386,12 +3499,32 @@
     {
       "source": "ADR-014",
       "type": "RELATES_TO_FILE",
+      "target": "FILE-036"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
       "target": "FILE-037"
     },
     {
       "source": "ADR-014",
       "type": "RELATES_TO_FILE",
       "target": "FILE-038"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-045"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-046"
     },
     {
       "source": "ADR-014",
@@ -3407,6 +3540,41 @@
       "source": "ADR-014",
       "type": "RELATES_TO_FILE",
       "target": "SCHEMA-015"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-034"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-035"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-036"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-037"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-038"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-039"
+    },
+    {
+      "source": "ADR-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-040"
     },
     {
       "source": "API-001",
@@ -5875,8 +6043,18 @@
     },
     {
       "source": "FILE-036",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-036",
       "type": "DEPENDS_ON",
       "target": "MOD-010"
+    },
+    {
+      "source": "FILE-036",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
     },
     {
       "source": "FILE-036",
@@ -5885,13 +6063,33 @@
     },
     {
       "source": "FILE-036",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "FILE-036",
       "type": "RELATES_TO_TEST",
       "target": "TEST-026"
     },
     {
       "source": "FILE-036",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-038"
+    },
+    {
+      "source": "FILE-036",
+      "type": "USED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "FILE-036",
       "type": "VALIDATED_BY",
       "target": "TEST-026"
+    },
+    {
+      "source": "FILE-036",
+      "type": "VALIDATED_BY",
+      "target": "TEST-038"
     },
     {
       "source": "FILE-037",
@@ -6247,6 +6445,181 @@
       "source": "FILE-043",
       "type": "VALIDATED_BY",
       "target": "TEST-030"
+    },
+    {
+      "source": "FILE-044",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-044",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-044",
+      "type": "DEPENDS_ON",
+      "target": "FILE-036"
+    },
+    {
+      "source": "FILE-044",
+      "type": "DEPENDS_ON",
+      "target": "FILE-045"
+    },
+    {
+      "source": "FILE-044",
+      "type": "DEPENDS_ON",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-044",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-044",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-036"
+    },
+    {
+      "source": "FILE-044",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-045"
+    },
+    {
+      "source": "FILE-044",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-034"
+    },
+    {
+      "source": "FILE-044",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-038"
+    },
+    {
+      "source": "FILE-044",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-040"
+    },
+    {
+      "source": "FILE-044",
+      "type": "USED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "FILE-044",
+      "type": "VALIDATED_BY",
+      "target": "TEST-034"
+    },
+    {
+      "source": "FILE-044",
+      "type": "VALIDATED_BY",
+      "target": "TEST-038"
+    },
+    {
+      "source": "FILE-044",
+      "type": "VALIDATED_BY",
+      "target": "TEST-040"
+    },
+    {
+      "source": "FILE-045",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-045",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-045",
+      "type": "DEPENDS_ON",
+      "target": "FILE-038"
+    },
+    {
+      "source": "FILE-045",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "FILE-045",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-045",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-038"
+    },
+    {
+      "source": "FILE-045",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "FILE-045",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-035"
+    },
+    {
+      "source": "FILE-045",
+      "type": "SUPERSEDES",
+      "target": "FILE-038"
+    },
+    {
+      "source": "FILE-045",
+      "type": "USED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "FILE-045",
+      "type": "VALIDATED_BY",
+      "target": "TEST-035"
+    },
+    {
+      "source": "FILE-046",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-003"
+    },
+    {
+      "source": "FILE-046",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-046",
+      "type": "DEPENDS_ON",
+      "target": "MOD-008"
+    },
+    {
+      "source": "FILE-046",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-046",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-024"
+    },
+    {
+      "source": "FILE-046",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-036"
+    },
+    {
+      "source": "FILE-046",
+      "type": "USED_BY",
+      "target": "MOD-008"
+    },
+    {
+      "source": "FILE-046",
+      "type": "USED_BY",
+      "target": "MOD-010"
+    },
+    {
+      "source": "FILE-046",
+      "type": "VALIDATED_BY",
+      "target": "TEST-036"
     },
     {
       "source": "GATE-001",
@@ -7860,6 +8233,11 @@
     },
     {
       "source": "MOD-008",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "MOD-008",
       "type": "DEPENDS_ON",
       "target": "MOD-007"
     },
@@ -7940,6 +8318,16 @@
     },
     {
       "source": "MOD-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-045"
+    },
+    {
+      "source": "MOD-008",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-046"
+    },
+    {
+      "source": "MOD-008",
       "type": "RELATES_TO_TEST",
       "target": "TEST-018"
     },
@@ -7962,6 +8350,26 @@
       "source": "MOD-008",
       "type": "RELATES_TO_TEST",
       "target": "TEST-028"
+    },
+    {
+      "source": "MOD-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-035"
+    },
+    {
+      "source": "MOD-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-036"
+    },
+    {
+      "source": "MOD-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-037"
+    },
+    {
+      "source": "MOD-008",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-039"
     },
     {
       "source": "MOD-008",
@@ -8110,6 +8518,11 @@
     },
     {
       "source": "MOD-010",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "MOD-010",
       "type": "DEPENDS_ON",
       "target": "MOD-001"
     },
@@ -8200,6 +8613,11 @@
     },
     {
       "source": "MOD-010",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "MOD-010",
       "type": "RELATES_TO_TEST",
       "target": "TEST-023"
     },
@@ -8222,6 +8640,21 @@
       "source": "MOD-010",
       "type": "RELATES_TO_TEST",
       "target": "TEST-027"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-034"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-038"
+    },
+    {
+      "source": "MOD-010",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-040"
     },
     {
       "source": "MOD-010",
@@ -9500,6 +9933,11 @@
     },
     {
       "source": "SCHEMA-014",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "SCHEMA-014",
       "type": "JUSTIFIED_BY",
       "target": "ADR-011"
     },
@@ -9522,6 +9960,16 @@
       "source": "SCHEMA-014",
       "type": "RELATES_TO_TEST",
       "target": "TEST-018"
+    },
+    {
+      "source": "SCHEMA-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-035"
+    },
+    {
+      "source": "SCHEMA-014",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-036"
     },
     {
       "source": "SCHEMA-014",
@@ -9555,6 +10003,11 @@
     },
     {
       "source": "SCHEMA-015",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "SCHEMA-015",
       "type": "JUSTIFIED_BY",
       "target": "ADR-011"
     },
@@ -9577,6 +10030,16 @@
       "source": "SCHEMA-015",
       "type": "RELATES_TO_TEST",
       "target": "TEST-019"
+    },
+    {
+      "source": "SCHEMA-015",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-037"
+    },
+    {
+      "source": "SCHEMA-015",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-039"
     },
     {
       "source": "SCHEMA-015",
@@ -10972,6 +11435,261 @@
       "source": "TEST-033",
       "type": "USED_BY",
       "target": "FILE-040"
+    },
+    {
+      "source": "TEST-034",
+      "type": "COVERS",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-034",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-034",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-034",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-034",
+      "type": "USED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-034",
+      "type": "VALIDATED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-035",
+      "type": "COVERS",
+      "target": "FILE-045"
+    },
+    {
+      "source": "TEST-035",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-035",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-035",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-045"
+    },
+    {
+      "source": "TEST-035",
+      "type": "USED_BY",
+      "target": "FILE-045"
+    },
+    {
+      "source": "TEST-035",
+      "type": "VALIDATED_BY",
+      "target": "FILE-045"
+    },
+    {
+      "source": "TEST-036",
+      "type": "COVERS",
+      "target": "FILE-046"
+    },
+    {
+      "source": "TEST-036",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-036",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-036",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-046"
+    },
+    {
+      "source": "TEST-036",
+      "type": "USED_BY",
+      "target": "FILE-046"
+    },
+    {
+      "source": "TEST-036",
+      "type": "VALIDATED_BY",
+      "target": "FILE-046"
+    },
+    {
+      "source": "TEST-037",
+      "type": "COVERS",
+      "target": "FILE-024"
+    },
+    {
+      "source": "TEST-037",
+      "type": "COVERS",
+      "target": "SCHEMA-015"
+    },
+    {
+      "source": "TEST-037",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-037",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-037",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-024"
+    },
+    {
+      "source": "TEST-037",
+      "type": "USED_BY",
+      "target": "FILE-024"
+    },
+    {
+      "source": "TEST-037",
+      "type": "USED_BY",
+      "target": "SCHEMA-015"
+    },
+    {
+      "source": "TEST-037",
+      "type": "VALIDATED_BY",
+      "target": "SCHEMA-015"
+    },
+    {
+      "source": "TEST-038",
+      "type": "COVERS",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-038",
+      "type": "COVERS",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-038",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-038",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-038",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-038",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-038",
+      "type": "USED_BY",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-038",
+      "type": "USED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-038",
+      "type": "VALIDATED_BY",
+      "target": "FILE-036"
+    },
+    {
+      "source": "TEST-038",
+      "type": "VALIDATED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-039",
+      "type": "COVERS",
+      "target": "FILE-028"
+    },
+    {
+      "source": "TEST-039",
+      "type": "COVERS",
+      "target": "SCHEMA-015"
+    },
+    {
+      "source": "TEST-039",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-039",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-039",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-028"
+    },
+    {
+      "source": "TEST-039",
+      "type": "USED_BY",
+      "target": "FILE-028"
+    },
+    {
+      "source": "TEST-039",
+      "type": "USED_BY",
+      "target": "SCHEMA-015"
+    },
+    {
+      "source": "TEST-039",
+      "type": "VALIDATED_BY",
+      "target": "FILE-028"
+    },
+    {
+      "source": "TEST-040",
+      "type": "COVERS",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-040",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-040",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-040",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-034"
+    },
+    {
+      "source": "TEST-040",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-040",
+      "type": "USED_BY",
+      "target": "FILE-044"
+    },
+    {
+      "source": "TEST-040",
+      "type": "VALIDATED_BY",
+      "target": "FILE-044"
     },
     {
       "source": "WF-001",

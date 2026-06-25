@@ -23,7 +23,10 @@ from typing import Any, Mapping
 from gold.decision_builder.models import Direction
 
 EXECUTION_SCHEMA_VERSION = "0.1.0"
-PORTFOLIO_SCHEMA_VERSION = "0.1.0"
+# 0.2.0 (ADR-014 §5.2): additive ``as_of`` on ExecutionEntry (day-scopes the guard's daily inputs).
+# Additive + versioned — older portfolios load via from_dict (as_of defaults None); the version string
+# folds into state_hash + the replay key, so the execution + chain benchmarks re-pin for this change.
+PORTFOLIO_SCHEMA_VERSION = "0.2.0"
 # Prices / sizes / P&L are rounded at serialization to neutralize float-format drift (the gold
 # layer's 6-dp convention) so state_hash() and to_dict() are byte-stable across replays.
 _PRECISION = 6
@@ -43,6 +46,21 @@ class ExecutionMode(str, Enum):
 
     SIMULATED = "simulated"        # deterministic, replay-safe (the canonical core path)
     ALPACA_PAPER = "alpaca_paper"  # live virtual-money adapter — non-replayable (deferred, gate f)
+
+
+class ExecutionStatus(str, Enum):
+    """Live execution state-machine status (SCHEMA-014 additive, ADR-014 §6).
+
+    The live (non-replayable) Alpaca path's async order lifecycle, representable on the record. The
+    deterministic sim/replay path leaves ``status`` None (it expresses outcome via ``fill`` / ``reason``)
+    so its records + benchmark goldens stay byte-identical.
+    """
+
+    QUEUED = "queued"                            # accepted/pending_new/new — async; fill resolved on reconcile
+    PARTIAL = "partial"                          # filled_qty < requested — corrected on the next reconcile
+    FILLED = "filled"                            # fully filled — resolved from positions/orders, not the POST echo
+    EXECUTION_UNCERTAIN = "execution_uncertain"  # timeout/reject/429/auth — halt the instrument, no blind retry
+    NO_ACTION = "no_action"                      # nothing to do (delta nets to zero / idempotent duplicate)
 
 
 # --- guard provenance (forwarded from GATE-001) ---------------------------------------------
@@ -140,9 +158,14 @@ class ExecutionEntry:
     fill_model_version: str
     prior_portfolio_state_hash: str
     seq: int
+    # Snapshot clock of the admitting decision (SCHEMA-015 additive, ADR-014 §5.2). Day-scopes the
+    # guard's ``trades_today`` so ``max_trades_per_day`` resets per trading day. Defaults None so older
+    # persisted entries load unchanged.
+    as_of: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "as_of": self.as_of,
             "fill_model_version": self.fill_model_version,
             "fill_price": round(self.fill_price, _PRECISION),
             "instrument": self.instrument,
@@ -167,9 +190,127 @@ class ExecutionEntry:
                 fill_model_version=str(d["fill_model_version"]),
                 prior_portfolio_state_hash=str(d["prior_portfolio_state_hash"]),
                 seq=int(d["seq"]),
+                as_of=(str(d["as_of"]) if d.get("as_of") is not None else None),
             )
         except (KeyError, TypeError, ValueError) as exc:
             raise ExecutionContractError(f"malformed execution entry: {exc}") from exc
+
+
+@dataclass(frozen=True)
+class ReconcileEntry:
+    """A LIVE-path append-only reconcile observation (SCHEMA-015 new kind, ADR-014 §6.2).
+
+    Distinct from :class:`ExecutionEntry`: a reconcile observation records what the *broker* shows
+    (the authority for position truth) — the observed quantity + average entry price + a ``marker``
+    saying why it was recorded — and is **not** a fill the system placed, so it carries **no**
+    ``source_record_id`` and **no** ``guard_result``. It heals a broker↔local divergence into the
+    append-only history *without faking an execution record*; adopting the observed position into the
+    local position is a separate ops-console **governed adopt**, never automatic (ADR-014 §6.2).
+
+    **Live-path-only / determinism trick.** The deterministic sim/replay portfolio never produces a
+    reconcile entry, and :meth:`PortfolioState.to_dict` **omits an empty** ``reconciles`` list, so the
+    sim/replay portfolio's ``to_dict`` / ``state_hash`` stay byte-identical — no
+    ``PORTFOLIO_SCHEMA_VERSION`` bump, no BENCH-004/006 re-pin.
+    """
+
+    source_snapshot_id: str    # the snapshot during whose reconcile this was observed (run lineage)
+    instrument: str
+    observed_qty: float        # the broker position quantity (authority for position truth)
+    observed_avg_price: float  # the broker position average entry price
+    marker: str                # why this was recorded (e.g. "discrepancy:unexpected_open_order")
+    seq: int
+    # Snapshot clock of the reconcile (mirrors ``ExecutionEntry.as_of``). Defaults None so a hand-built
+    # or older entry loads unchanged.
+    as_of: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "as_of": self.as_of,
+            "instrument": self.instrument,
+            "marker": self.marker,
+            "observed_avg_price": round(self.observed_avg_price, _PRECISION),
+            "observed_qty": round(self.observed_qty, _PRECISION),
+            "seq": self.seq,
+            "source_snapshot_id": self.source_snapshot_id,
+        }
+
+    @classmethod
+    def from_dict(cls, d: Mapping[str, Any]) -> "ReconcileEntry":
+        if not isinstance(d, Mapping):
+            raise ExecutionContractError("reconcile entry must be a mapping")
+        try:
+            return cls(
+                source_snapshot_id=str(d["source_snapshot_id"]),
+                instrument=str(d["instrument"]),
+                observed_qty=float(d["observed_qty"]),
+                observed_avg_price=float(d["observed_avg_price"]),
+                marker=str(d["marker"]),
+                seq=int(d["seq"]),
+                as_of=(str(d["as_of"]) if d.get("as_of") is not None else None),
+            )
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ExecutionContractError(f"malformed reconcile entry: {exc}") from exc
+
+
+@dataclass(frozen=True)
+class PendingOrder:
+    """A LIVE-path in-flight order awaiting a cross-run async fill (SCHEMA-015 new kind, ADR-014 §6.3).
+
+    A market+day order submitted in run *N* can be ``accepted``/``new`` (QUEUED) at submit and fill
+    **after** the run ends (queue-to-next-open, or a slow paper fill). The synchronous QUEUED record
+    carries the order↔snapshot lineage, but the per-run :class:`ExecutionRecord` is not itself persisted,
+    so this entry is the **durable order↔snapshot lineage** the next startup reconcile needs to fold the
+    fill back into the local position **exactly once** (the docstring follow-up the v1 entrypoint deferred
+    is closed by this kind). It carries the deterministic ``client_order_id`` (so ``resolve_fill`` can
+    find the broker order), the submitting ``side``, the ``requested_qty`` (0.0 for a notional order), and
+    the originating snapshot/record ids + ``as_of`` (so the folded :class:`ExecutionEntry` keeps full
+    lineage). Removed when the fill is folded (or the order is found terminally gone).
+
+    **Live-path-only / determinism trick** (identical to :class:`ReconcileEntry`): the deterministic
+    sim/replay portfolio never queues an async order, and :meth:`PortfolioState.to_dict` **omits an empty**
+    ``pending`` list, so the sim/replay portfolio's ``to_dict`` / ``state_hash`` stay byte-identical — no
+    ``PORTFOLIO_SCHEMA_VERSION`` bump, no BENCH-004/006 re-pin.
+    """
+
+    source_snapshot_id: str
+    source_record_id: str
+    instrument: str
+    side: str            # "buy" | "sell" — which fold the fill resolves to
+    requested_qty: float  # the submitted share qty (0.0 for a fractionable notional order)
+    client_order_id: str  # the deterministic id the broker order carries (the reconcile lookup key)
+    seq: int
+    # Snapshot clock of the submitting decision (mirrors ``ExecutionEntry.as_of``). Defaults None.
+    as_of: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "as_of": self.as_of,
+            "client_order_id": self.client_order_id,
+            "instrument": self.instrument,
+            "requested_qty": round(self.requested_qty, _PRECISION),
+            "seq": self.seq,
+            "side": self.side,
+            "source_record_id": self.source_record_id,
+            "source_snapshot_id": self.source_snapshot_id,
+        }
+
+    @classmethod
+    def from_dict(cls, d: Mapping[str, Any]) -> "PendingOrder":
+        if not isinstance(d, Mapping):
+            raise ExecutionContractError("pending order must be a mapping")
+        try:
+            return cls(
+                source_snapshot_id=str(d["source_snapshot_id"]),
+                source_record_id=str(d["source_record_id"]),
+                instrument=str(d["instrument"]),
+                side=str(d["side"]),
+                requested_qty=float(d["requested_qty"]),
+                client_order_id=str(d["client_order_id"]),
+                seq=int(d["seq"]),
+                as_of=(str(d["as_of"]) if d.get("as_of") is not None else None),
+            )
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ExecutionContractError(f"malformed pending order: {exc}") from exc
 
 
 def _replace_position(positions: tuple[Position, ...], new: Position) -> tuple[Position, ...]:
@@ -190,6 +331,14 @@ class PortfolioState:
     portfolio_schema_version: str
     positions: tuple[Position, ...]
     executions: tuple[ExecutionEntry, ...]
+    # LIVE-path-only reconcile observations (ADR-014 §6.2). Defaults empty so every existing positional
+    # construction stays valid, and ``to_dict`` omits it while empty — the sim/replay portfolio stays
+    # byte-identical (no schema bump / no benchmark re-pin). See :class:`ReconcileEntry`.
+    reconciles: tuple[ReconcileEntry, ...] = ()
+    # LIVE-path-only in-flight orders awaiting a cross-run async fill (ADR-014 §6.3). Same determinism
+    # trick as ``reconciles``: defaults empty (every positional construction stays valid) and ``to_dict``
+    # omits it while empty, so the sim/replay portfolio stays byte-identical. See :class:`PendingOrder`.
+    pending: tuple[PendingOrder, ...] = ()
 
     @classmethod
     def empty(cls) -> "PortfolioState":
@@ -206,22 +355,83 @@ class PortfolioState:
         """Length-derived insertion index — stable across load/persist/reload cycles."""
         return len(self.executions)
 
+    def next_reconcile_seq(self) -> int:
+        """Length-derived insertion index for reconcile entries (the live-path append-only history)."""
+        return len(self.reconciles)
+
+    def next_pending_seq(self) -> int:
+        """Length-derived insertion index for pending (in-flight) orders (the live-path queue lineage)."""
+        return len(self.pending)
+
     def append(self, position: Position, entry: ExecutionEntry) -> "PortfolioState":
         """Return a NEW portfolio with ``position`` updated and ``entry`` appended (immutable)."""
         return PortfolioState(
             self.portfolio_schema_version,
             _replace_position(self.positions, position),
             (*self.executions, entry),
+            self.reconciles,
+            self.pending,
+        )
+
+    def append_reconcile(self, entry: ReconcileEntry) -> "PortfolioState":
+        """Return a NEW portfolio with a reconcile observation appended (LIVE-path-only, ADR-014 §6.2).
+
+        Positions and executions are left **unchanged** — a reconcile records the broker's observed
+        state but never auto-adopts it into the local position (adoption is a separate governed action).
+        """
+        return PortfolioState(
+            self.portfolio_schema_version,
+            self.positions,
+            self.executions,
+            (*self.reconciles, entry),
+            self.pending,
+        )
+
+    def append_pending(self, order: PendingOrder) -> "PortfolioState":
+        """Return a NEW portfolio with an in-flight (QUEUED) order recorded (LIVE-path-only, ADR-014 §6.3).
+
+        Positions and executions are unchanged — the order has not filled yet; the next startup reconcile
+        folds the fill (and removes the pending order) via :meth:`with_pending`. See :class:`PendingOrder`.
+        """
+        return PortfolioState(
+            self.portfolio_schema_version,
+            self.positions,
+            self.executions,
+            self.reconciles,
+            (*self.pending, order),
+        )
+
+    def with_pending(self, pending: tuple[PendingOrder, ...]) -> "PortfolioState":
+        """Return a NEW portfolio with the in-flight-order list replaced (LIVE-path-only, ADR-014 §6.3).
+
+        Used by the cross-run fold to drop a now-resolved order (compose with :meth:`append` to book the
+        folded fill in one immutable step). Positions/executions/reconciles are otherwise unchanged.
+        """
+        return PortfolioState(
+            self.portfolio_schema_version,
+            self.positions,
+            self.executions,
+            self.reconciles,
+            pending,
         )
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        d: dict[str, Any] = {
             "executions": [e.to_dict() for e in self.executions],
             "portfolio_schema_version": self.portfolio_schema_version,
             "positions": [
                 p.to_dict() for p in sorted(self.positions, key=lambda p: p.instrument)
             ],
         }
+        # Omit the live-path reconcile history when empty so the sim/replay portfolio's serialization +
+        # ``state_hash`` stay byte-identical to the pre-ADR-014 form (the determinism trick, §6.2).
+        if self.reconciles:
+            d["reconciles"] = [r.to_dict() for r in self.reconciles]
+        # Same trick for the live-path in-flight orders (§6.3): omitted while empty (always on the sim
+        # path), so a portfolio that never queues an async order serializes byte-identically.
+        if self.pending:
+            d["pending"] = [p.to_dict() for p in self.pending]
+        return d
 
     def state_hash(self) -> str:
         """SHA-256 over canonical JSON — the portfolio identity (threads into execution_id)."""
@@ -234,12 +444,23 @@ class PortfolioState:
             raise ExecutionContractError("portfolio must be a mapping")
         raw_positions = d.get("positions", [])
         raw_executions = d.get("executions", [])
-        if not isinstance(raw_positions, list) or not isinstance(raw_executions, list):
-            raise ExecutionContractError("portfolio 'positions'/'executions' must be lists")
+        raw_reconciles = d.get("reconciles", [])  # absent on every sim/replay portfolio (live-path-only)
+        raw_pending = d.get("pending", [])        # absent on every sim/replay portfolio (live-path-only)
+        if (
+            not isinstance(raw_positions, list)
+            or not isinstance(raw_executions, list)
+            or not isinstance(raw_reconciles, list)
+            or not isinstance(raw_pending, list)
+        ):
+            raise ExecutionContractError(
+                "portfolio 'positions'/'executions'/'reconciles'/'pending' must be lists"
+            )
         return cls(
             portfolio_schema_version=str(d.get("portfolio_schema_version", PORTFOLIO_SCHEMA_VERSION)),
             positions=tuple(Position.from_dict(p) for p in raw_positions),
             executions=tuple(ExecutionEntry.from_dict(e) for e in raw_executions),
+            reconciles=tuple(ReconcileEntry.from_dict(r) for r in raw_reconciles),
+            pending=tuple(PendingOrder.from_dict(p) for p in raw_pending),
         )
 
 
@@ -294,6 +515,20 @@ class ExecutionRecord:
     prior_portfolio_state_hash: str
     new_portfolio_state_hash: str
     reason: str
+    # exec_ref_gld_price triple (SCHEMA-014 additive, ADR-014 bucket i): the GLD *share* price the
+    # record marks/slips against + its provenance. ``price`` == ``instrument_price``; ts/basis label
+    # the mark (sim: snapshot clock + derived proxy; live: pinned submit/open mark). Defaults keep
+    # older direct constructions valid (this is an output-only record — there is no from_dict).
+    exec_ref_gld_price: float = 0.0
+    exec_ref_gld_price_ts: str | None = None
+    exec_ref_gld_price_basis: str = ""
+    # Live state-machine status + broker traceability (SCHEMA-014 additive, ADR-014 §6). Set ONLY on
+    # the live (non-replayable) path; the sim/replay path leaves them None so its records + goldens are
+    # unchanged. ``raw_payload`` is the raw broker response/reject body (never silently dropped).
+    status: ExecutionStatus | None = None
+    client_order_id: str | None = None
+    alpaca_order_id: str | None = None
+    raw_payload: str | None = None
     paper_only: bool = True
     non_execution_notice: str = NON_EXECUTION_NOTICE
 
@@ -307,7 +542,12 @@ class ExecutionRecord:
     def to_dict(self) -> dict[str, Any]:
         """Deterministic, JSON-stable dict (alphabetical keys)."""
         return {
+            "alpaca_order_id": self.alpaca_order_id,
+            "client_order_id": self.client_order_id,
             "direction": self.direction.value,
+            "exec_ref_gld_price": round(self.exec_ref_gld_price, _PRECISION),
+            "exec_ref_gld_price_basis": self.exec_ref_gld_price_basis,
+            "exec_ref_gld_price_ts": self.exec_ref_gld_price_ts,
             "execution_id": self.execution_id,
             "execution_mode": self.execution_mode.value,
             "execution_schema_version": self.execution_schema_version,
@@ -320,9 +560,11 @@ class ExecutionRecord:
             "non_execution_notice": self.non_execution_notice,
             "paper_only": self.paper_only,
             "prior_portfolio_state_hash": self.prior_portfolio_state_hash,
+            "raw_payload": self.raw_payload,
             "reason": self.reason,
             "replayable": self.replayable,
             "size": round(self.size, _PRECISION),
             "source_record_id": self.source_record_id,
             "source_snapshot_id": self.source_snapshot_id,
+            "status": (self.status.value if self.status is not None else None),
         }

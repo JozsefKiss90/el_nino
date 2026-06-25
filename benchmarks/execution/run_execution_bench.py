@@ -49,10 +49,12 @@ if str(_REPO_ROOT / "src") not in sys.path:
 from execution import (  # noqa: E402
     DEFAULT_EXECUTION_POLICY_CONFIG,
     DEFAULT_FILL_MODEL,
+    EXEC_PRICE_SOURCE_VERSION,
     EXECUTION_SCHEMA_VERSION,
     PORTFOLIO_SCHEMA_VERSION,
     ExecutionItem,
     ExecutionRecord,
+    resolve_sim_exec_ref,
     run_sequence,
 )
 from features.feature_builder import build_features  # noqa: E402
@@ -195,7 +197,10 @@ def run_real() -> dict[str, Any]:
             "source_snapshot_id": record.source_snapshot_id,
         })
         if record.verdict is Verdict.ADMIT and "gold_price" in fv.features:
-            admits.append((label, record, packet.direction, fv.value("gold_price")))
+            # ADR-014 bucket (i): the execution reference is the GLD *share* price (derived proxy on
+            # the replay path), not gold spot — mirrors run_chain's resolver, never a live read.
+            exec_ref = resolve_sim_exec_ref(fv.value("gold_price"), op.as_of)
+            admits.append((label, record, packet.direction, exec_ref.price))
 
     labels = [f"{lbl}__admit" for (lbl, _, _, _) in admits]
     items: list[ExecutionItem] = [(rec, direction, price) for (_, rec, direction, price) in admits]
@@ -295,6 +300,7 @@ def build_report() -> dict[str, Any]:
     return {
         "all_replays_byte_identical": all_byte_identical,
         "benchmark_id": "BENCH-004",
+        "exec_price_source_version": EXEC_PRICE_SOURCE_VERSION,
         "execution_policy_fingerprint": DEFAULT_EXECUTION_POLICY_CONFIG.fingerprint(),
         "execution_policy_version": DEFAULT_EXECUTION_POLICY_CONFIG.execution_policy_version,
         "execution_schema_version": EXECUTION_SCHEMA_VERSION,

@@ -91,6 +91,12 @@ def run_once(
     ``operational_capture_path`` (the replay source), overriding the passed ``operational_input``. The
     feed read happens **only here** (never in ``run_sequence`` / replay) — the §2 / gate-f quarantine.
     """
+    # ADR-014 §5.3 fence: the canonical operational/replay entrypoint structurally refuses a
+    # non-replayable broker port — a live port is reachable only via ``live_runtime.operate_live``.
+    assert port.replayable, (
+        "run_once is the canonical replayable entrypoint; a non-replayable port (e.g. the live "
+        "Alpaca plug) must go through live_runtime.operate_live (ADR-014 §5.3)"
+    )
     snapshot = consume(snapshot_path)
     if snapshot is None:
         return None
@@ -140,6 +146,11 @@ def run_sequence(
     identical ending ledger + portfolio ``state_hash``es. ``snapshots`` are ``Snapshot`` objects (typed
     ``object`` to avoid importing the snapshot model here; ``run_chain`` enforces the real type).
     """
+    # ADR-014 §5.3 fence: the deterministic replay vehicle structurally refuses a non-replayable port.
+    assert port.replayable, (
+        "run_sequence is the deterministic replay vehicle; a non-replayable port is barred here "
+        "(use live_runtime.operate_live for the live path — ADR-014 §5.3)"
+    )
     led = ledger if ledger is not None else RuntimeLedger.empty()
     pf = portfolio if portfolio is not None else PortfolioState.empty()
     results: list[ChainResult] = []

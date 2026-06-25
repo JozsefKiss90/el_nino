@@ -20,6 +20,15 @@ from .config import (
     load_config,
 )
 from .engine import execute
+from .price_reference import (
+    BASIS_DERIVED_PROXY,
+    BASIS_LIVE_OPEN,
+    BASIS_LIVE_SUBMIT,
+    EXEC_PRICE_SOURCE_VERSION,
+    OZ_PER_SHARE,
+    ExecPriceRef,
+    resolve_sim_exec_ref,
+)
 from .models import (
     EXECUTION_SCHEMA_VERSION,
     PORTFOLIO_SCHEMA_VERSION,
@@ -27,10 +36,13 @@ from .models import (
     ExecutionEntry,
     ExecutionMode,
     ExecutionRecord,
+    ExecutionStatus,
     Fill,
     GuardResult,
+    PendingOrder,
     PortfolioState,
     Position,
+    ReconcileEntry,
     compute_execution_id,
 )
 from .runtime import (
@@ -57,9 +69,12 @@ __all__ = [
     "PortfolioState",
     "Position",
     "ExecutionEntry",
+    "ReconcileEntry",
+    "PendingOrder",
     "Fill",
     "GuardResult",
     "ExecutionMode",
+    "ExecutionStatus",
     "ExecutionContractError",
     "ExecutionItem",
     "ExecutionPolicyConfig",
@@ -73,4 +88,11 @@ __all__ = [
     "PORTFOLIO_SCHEMA_VERSION",
     "compute_execution_id",
     "load_config",
+    "resolve_sim_exec_ref",
+    "ExecPriceRef",
+    "EXEC_PRICE_SOURCE_VERSION",
+    "OZ_PER_SHARE",
+    "BASIS_DERIVED_PROXY",
+    "BASIS_LIVE_SUBMIT",
+    "BASIS_LIVE_OPEN",
 ]

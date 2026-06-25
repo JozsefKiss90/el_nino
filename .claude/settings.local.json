@@ -223,7 +223,13 @@
       "Bash(timeout 12 serena --version)",
       "Bash(NEO4J_URI=\"bolt://127.0.0.1:7688\" NEO4J_USERNAME=\"neo4j\" NEO4J_PASSWORD=\"elnino_dev\" NEO4J_DATABASE=\"neo4j\" NEO4J_READ_ONLY=\"true\" NEO4J_TELEMETRY=\"false\" NEO4J_TRANSPORT_MODE=\"stdio\" NEO4J_GDS_ENABLED=\"false\" NEO4J_LOG_LEVEL=\"info\" NEO4J_LOG_FORMAT=\"text\" timeout 8 py -3.10 -m neo4j_mcp_server)",
       "Bash(gh --version)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(git --no-pager diff --stat benchmarks/)",
+      "Bash(git --no-pager diff benchmarks/orchestration/artifacts/chain_bench.json)",
+      "Bash(git *)",
+      "Bash(python3 *)",
+      "WebFetch(domain:docs.alpaca.markets)",
+      "mcp__context7__resolve-library-id"
     ]
   }
 }

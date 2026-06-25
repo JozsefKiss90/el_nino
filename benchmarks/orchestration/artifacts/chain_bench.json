@@ -11,7 +11,7 @@
     "full_replay_key"
   ],
   "pinned_ledger_state_hash": "fff4dcc3c9ad0abee80bac8035d604de7425975714586ee0232e89abc67b0506",
-  "pinned_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+  "pinned_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
   "real_sequence": {
     "all_replays_byte_identical": true,
     "consumable_inputs": [
@@ -37,7 +37,7 @@
       }
     ],
     "ending_ledger_state_hash": "fff4dcc3c9ad0abee80bac8035d604de7425975714586ee0232e89abc67b0506",
-    "ending_portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+    "ending_portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
     "fill_distribution": {
       "filled": 0,
       "no_fill": 4
@@ -57,7 +57,7 @@
         "label": "latest_snapshot_pass",
         "ledger_state_hash": "fe7e8609650e7d8d23850b684f0b72d4433ece3b31c8867503039e6c7462418d",
         "packet_id": "gold-v0:5653d07a0b3949d5",
-        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
         "regime": "RESTRICTIVE_RATES",
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "triggered_guard": null,
@@ -70,7 +70,7 @@
         "label": "src_latest_snapshot",
         "ledger_state_hash": "03a80bf1e7bd5be3b37c7d44810aa3b6bb8f9929ca2065388c76f8a961856794",
         "packet_id": "gold-v0:5653d07a0b3949d5",
-        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
         "regime": "RESTRICTIVE_RATES",
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "triggered_guard": "duplicate_ok",
@@ -83,7 +83,7 @@
         "label": "src_snapshot",
         "ledger_state_hash": "cd5930b53456b8648c1992f08ef3878a2eecb841704f287ab02917f5fd9dc8fd",
         "packet_id": "gold-v0:5653d07a0b3949d5",
-        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
         "regime": "RESTRICTIVE_RATES",
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "triggered_guard": "duplicate_ok",
@@ -96,7 +96,7 @@
         "label": "latest_snapshot_pass__re_presented",
         "ledger_state_hash": "fff4dcc3c9ad0abee80bac8035d604de7425975714586ee0232e89abc67b0506",
         "packet_id": "gold-v0:5653d07a0b3949d5",
-        "portfolio_state_hash": "2d19b9b5889826ab69c9d451079a8666dd7961ab342853fc19a410cc4eea53df",
+        "portfolio_state_hash": "b344538a63a0e93acc7b3893f04928ed3ee8277f15a70aeeb44a22d66e345b26",
         "regime": "RESTRICTIVE_RATES",
         "source_snapshot_id": "952cc83a8f930e27a7c3636cb03cf1c5d9b93a5363fa8d9b1a4891f6af7afaef",
         "triggered_guard": "duplicate_ok",
@@ -115,6 +115,7 @@
     "classifier_version": "0.1.0",
     "decision_policy_fingerprint": "be7e3192889ebe5deb100a9510fe2adc0fb676eb2eca199de3ffa1df9369a8a5",
     "decision_policy_version": "0.1.0",
+    "exec_price_source_version": "1.0.0",
     "execution_policy_fingerprint": "2c11b5b1c7460f0bd93af6b83b85662ffbfd6bd9045aec63f2ed5e3381ed1a37",
     "execution_policy_version": "0.1.0",
     "execution_schema_version": "0.1.0",
@@ -125,7 +126,7 @@
     "ledger_schema_version": "0.1.0",
     "operational_input_fingerprint": "c70b42019298dcf6506c1ccc15cd168a32b2f2e0f31ffe608e9c99d37c649bc1",
     "packet_schema_version": "0.2.0",
-    "portfolio_schema_version": "0.1.0",
+    "portfolio_schema_version": "0.2.0",
     "record_schema_version": "0.1.0",
     "runtime_policy_fingerprint": "47ca2649dd70a2d4ffae81561cc76c538e75b3558b06daa4dbc33a11d5a98cc8",
     "runtime_policy_version": "0.2.0",

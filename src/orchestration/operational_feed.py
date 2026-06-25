@@ -91,6 +91,54 @@ class MarketCalendarFeed:
         )
 
 
+def operator_halt_active(path: PathLike) -> bool:
+    """True iff the operator kill switch is engaged (ADR-014 §6.6). Absent marker ⇒ NOT halted (run).
+
+    The marker is a persisted ``OperationalInput`` (written by the ADR-013 gated Tier-2 halt action). A
+    **present** marker with ``halt: true`` is engaged; an **absent** marker means "no kill switch set" →
+    run (the default is to run, never to halt-by-default); a present-but-unreadable marker fails
+    **closed** (halted) — the safe direction. This is a pure read; it never writes.
+    """
+    p = Path(path)
+    if not p.exists():
+        return False  # no kill switch set → run (do NOT default-halt on absence)
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return True  # a present-but-unreadable kill switch is honored as HALTED (fail-closed)
+    return bool(data.get("halt", False)) if isinstance(data, dict) else True
+
+
+@dataclass(frozen=True)
+class OperatorHaltFeed:
+    """An ``OperationalFeed`` decorator that honors the operator kill switch (ADR-014 §6.6).
+
+    It delegates to ``inner`` and, when :func:`operator_halt_active` reports the kill switch engaged,
+    **forces ``halt=True``** (and not-tradeable) on the produced ``OperationalInput`` — so the **existing**
+    ``operational_ok`` predicate (PRED-007) REJECTs the next cycle. No new honor path / no new predicate:
+    the feed simply *produces* a halted input, which the runtime already refuses. The forced value is
+    captured by ``read_and_capture`` like any other, so the honored halt stays replay-safe.
+    """
+
+    inner: OperationalFeed
+    halt_path: PathLike
+
+    def read(self, as_of: str | None) -> OperationalInput:
+        op = self.inner.read(as_of)
+        if not operator_halt_active(self.halt_path):
+            return op
+        # Force the kill: keep the venue/instrument provenance, flip halt + tradeable. operational_ok
+        # blocks on halt regardless of the other flags (a single governed kill mechanism).
+        return OperationalInput(
+            instrument=op.instrument,
+            tradeable=False,
+            venue_open=op.venue_open,
+            halt=True,
+            degraded=op.degraded,
+            as_of=op.as_of,
+        )
+
+
 def persist_operational(path: PathLike, op: OperationalInput) -> None:
     """Atomically capture an ``OperationalInput`` as canonical JSON (temp + ``os.replace``).
 

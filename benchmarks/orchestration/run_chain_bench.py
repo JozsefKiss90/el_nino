@@ -43,6 +43,7 @@ from execution.config import (  # noqa: E402
     DEFAULT_FILL_MODEL,
 )
 from execution.models import EXECUTION_SCHEMA_VERSION, PORTFOLIO_SCHEMA_VERSION  # noqa: E402
+from execution.price_reference import EXEC_PRICE_SOURCE_VERSION  # noqa: E402
 from features.feature_builder.models import FEATURE_SCHEMA_VERSION  # noqa: E402
 from gold.decision_builder.config import DEFAULT_DECISION_POLICY_CONFIG  # noqa: E402
 from gold.decision_builder.models import PACKET_SCHEMA_VERSION  # noqa: E402
@@ -86,6 +87,7 @@ def _replay_key() -> dict[str, str]:
         "classifier_version": CLASSIFIER_VERSION,
         "decision_policy_fingerprint": DEFAULT_DECISION_POLICY_CONFIG.decision_policy_fingerprint(),
         "decision_policy_version": DEFAULT_DECISION_POLICY_CONFIG.decision_policy_version,
+        "exec_price_source_version": EXEC_PRICE_SOURCE_VERSION,
         "execution_policy_fingerprint": DEFAULT_EXECUTION_POLICY_CONFIG.fingerprint(),
         "execution_policy_version": DEFAULT_EXECUTION_POLICY_CONFIG.execution_policy_version,
         "execution_schema_version": EXECUTION_SCHEMA_VERSION,

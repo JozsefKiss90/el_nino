@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-21
-updated: 2026-06-23
+updated: 2026-06-25
 confidence: confirmed
 evidence:
   - design
@@ -381,6 +381,22 @@ behavior honored (PASS). **El_niño-side, no cross-repo predecessor:** the §5.1
 A8/B6 "Mr-Ripley first" is overruled — Step 3). **Empirical preconditions (no live code until confirmed):**
 B1 (`client_order_id` length/charset), B2 (GLD `fractionable`), B3 (the **settled-cash field name** /
 `multiplier`), and the **live order-lifecycle facts** (`GET /v2/positions ∪ /v2/orders` shapes).
+
+**Empirical verification (2026-06-25, operator paper-account probe `scripts/alpaca_paper_e2e_probe.py`):**
+- **B2 — VERIFIED:** GLD `fractionable = true` → the live path uses notional market+day orders.
+- **B3 — VERIFIED:** `cash` is present (=100000) on `GET /v2/account`. The account is **`multiplier` = 4**
+  (a **margin-default / PDT** account, `buying_power` = 400000 = 4x) — *exactly* the §6.4 case: capping on
+  the literal `cash` keeps "no margin" structural and ignores the 4x buying_power. `cash_withdrawable` is
+  absent (Broker-API only), confirming `cash` is the field to bind.
+- **Live GLD mark (§5.1 / Blocker 1) — VERIFIED:** `data.alpaca.markets/v2/stocks/GLD/trades/latest`
+  returned `trade.p` = 370.65 / `trade.t` (RFC-3339). The real mark (370.65) sat ~14% below the sim derived
+  proxy (`gold_spot × OZ_PER_SHARE` ≈ 431.5) — empirical proof that slipping against the proxy would be
+  wrong; the live path correctly reads the real mark.
+- **Doc-verified, no empirical needed:** the order-lifecycle facts (positions exclude un-filled; `status`
+  filtering; async fill) and the REST `client_order_id` max (128 — the 48 cap is the FIX limit, self-imposed-safe).
+- **B1 — STILL PENDING:** the duplicate-`client_order_id` → 422 dedup contract was not exercised (the probe
+  ran read-only). Run `--submit-order` to lock the exact 422 status/body before paper accumulation goes live.
+
 **Sequencing:** adapter v1 only after this ADR is Accepted; gated-live enable stays behind the ADR-013
 HARD PAUSE; calibration bumps stay DEFER until the ADR-012 gate passes.
 

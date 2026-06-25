@@ -58,26 +58,29 @@ from .price_reference import BASIS_LIVE_SUBMIT, ExecPriceRef
 # FIX-protocol ClOrdID limit, a different interface), well within the REST max, so it needs no change. The
 # charset is undocumented; the ASCII ``eln-<side>-<hex>`` alphabet is a safe subset. The duplicate ⇒ HTTP
 # 422 ("client_order_id must be unique") dedup is the commonly-observed behaviour but is NOT in the docs —
-# the operator probe (scripts/alpaca_paper_e2e_probe.py) confirms the exact 422 status/body before it is relied on.
+# STILL PENDING empirical confirmation: the 2026-06-25 probe was read-only; run
+# ``scripts/alpaca_paper_e2e_probe.py --submit-order`` to lock the exact 422 status/body before relying on it.
 _COID_PREFIX = "eln"
 _COID_MAXLEN = 48
 
 # B3: the literal cash-balance field on the account read. NEVER any ``*_buying_power`` (every one is a
-# derived/margin-inflated figure — even ``buying_power == cash`` only when ``multiplier == 1``), so "no
-# margin" is structural on any account type. Doc-verified 2026-06-25 (Alpaca GET /v2/account): ``cash`` is
-# the "Cash Balance" field and ``multiplier`` distinguishes cash (1) vs margin (2/4) — both confirmed. The
-# docs label it "Cash Balance" (not literally "settled"); the operator probe confirms cash-vs-settlement
-# behaviour + ``multiplier == "1"`` on the paper account.
+# derived/margin-inflated figure), so "no margin" is structural on any account type. VERIFIED on the paper
+# account (operator probe, 2026-06-25): ``cash``=100000 is present, and the account is ``multiplier``=4 — a
+# **margin-default / PDT** account with ``buying_power``=400000 (4x). This is exactly the case §6.4
+# anticipated: capping on the literal ``cash`` keeps el_niño no-margin while the 4x buying_power is ignored.
+# (``cash_withdrawable`` is absent on the v2 account — Broker-API only — confirming ``cash`` is the field to
+# bind. The "cash vs *settled* cash" nuance only bites after unsettled sell proceeds, immaterial at v1.)
 _SETTLED_CASH_FIELD = "cash"
 
 # Live market-data read for the REAL GLD share mark (ADR-014 §5.1 — the live execution reference). The
 # market-data host is a SEPARATE, READ-ONLY host (no order path) — orders still go ONLY to the paper
 # trading host behind ``_is_paper_base_url``; this is a price *read*, never a credential-exfil order
 # surface, so it is not subject to (and must never be confused with) the paper-host order guard. Field
-# names CONFIRMED against the Alpaca Market Data OpenAPI spec (doc-verified 2026-06-25): the latest-trade
-# payload at ``data.alpaca.markets/v2/stocks/{sym}/trades/latest`` carries the price under ``trade.p`` and
-# an RFC-3339 timestamp under ``trade.t`` (free IEX feed; paper keys valid). The operator probe is an
-# optional liveness sanity check on the real account.
+# names CONFIRMED against the Alpaca Market Data OpenAPI spec AND VERIFIED on the paper account (operator
+# probe, 2026-06-25): the latest-trade payload at ``data.alpaca.markets/v2/stocks/{sym}/trades/latest``
+# carries the price under ``trade.p`` (returned 370.65 for GLD) and an RFC-3339 timestamp under ``trade.t``
+# (free IEX feed; paper keys valid). The real GLD mark (370.65) was ~14% below the sim derived proxy
+# (gold_spot x OZ_PER_SHARE ~= 431.5) — empirical proof that slipping against the proxy would be wrong (§5.1).
 _DEFAULT_DATA_BASE_URL = "https://data.alpaca.markets"
 _MARK_PRICE_FIELD = "p"
 _MARK_TS_FIELD = "t"

@@ -227,6 +227,16 @@ def test_submit_422_duplicate_client_order_id_is_no_action() -> None:
     assert out.raw_payload == body
 
 
+def test_real_alpaca_422_duplicate_body_is_dedup() -> None:
+    # The VERBATIM duplicate-client_order_id 422 body observed on the paper account (operator probe,
+    # 2026-06-25). Pinned so the dedup detector can never drift away from the real broker response
+    # (note the spaces — the detector must stay whitespace-insensitive).
+    body = '{"code": 42210000, "message": "client_order_id must be unique"}'
+    out = LiveExecutionAdapter(client=_StubBroker(error=_http_error(422, body))).submit_buy(GLD, "c1", qty=1.0)
+    assert out.status is ExecutionStatus.NO_ACTION  # idempotent: the prior order stands, none created
+    assert out.halt is False
+
+
 def test_submit_422_wash_trade_is_uncertain_not_dedup() -> None:
     # A non-duplicate 422 (e.g. wash trade) must NOT be mistaken for an idempotent duplicate.
     body = '{"code":42210000,"message":"potential wash trade detected"}'

@@ -392,10 +392,16 @@ B1 (`client_order_id` length/charset), B2 (GLD `fractionable`), B3 (the **settle
   returned `trade.p` = 370.65 / `trade.t` (RFC-3339). The real mark (370.65) sat ~14% below the sim derived
   proxy (`gold_spot × OZ_PER_SHARE` ≈ 431.5) — empirical proof that slipping against the proxy would be
   wrong; the live path correctly reads the real mark.
-- **Doc-verified, no empirical needed:** the order-lifecycle facts (positions exclude un-filled; `status`
-  filtering; async fill) and the REST `client_order_id` max (128 — the 48 cap is the FIX limit, self-imposed-safe).
-- **B1 — STILL PENDING:** the duplicate-`client_order_id` → 422 dedup contract was not exercised (the probe
-  ran read-only). Run `--submit-order` to lock the exact 422 status/body before paper accumulation goes live.
+- **B1 — VERIFIED** (`--submit-order`, 2026-06-25): a 48-char `eln-buy-<hex>` id was accepted (HTTP 200,
+  status `pending_new`); a re-submit of the SAME id returned **HTTP 422** with body
+  `{"code": 42210000, "message": "client_order_id must be unique"}`, which `_is_duplicate_client_order_id`
+  matches → the duplicate → NO_ACTION idempotent-dedup path works against the real broker (pinned by a test).
+- **Live order-lifecycle — VERIFIED:** the submit returned async `pending_new` (NOT `filled`); the fill
+  resolved from the order read (`filled_qty=1`, `filled_avg_price=370.22`); `GET /v2/positions` reflected only
+  the filled order. Real slippage was fill-vs-mark ≈ −0.5 bps (370.22 vs the 370.24 submit mark) — sensible,
+  versus ≈ −1420 bps had the sim proxy (~431.5) been used: a live demonstration of the §5.1 / Blocker-1 fix.
+- **All empirical preconditions are now CLOSED** — paper accumulation is no longer gated on a B-flag probe
+  (it remains gated on the ADR-013 gated-live enable + the ADR-012 calibration DEFER).
 
 **Sequencing:** adapter v1 only after this ADR is Accepted; gated-live enable stays behind the ADR-013
 HARD PAUSE; calibration bumps stay DEFER until the ADR-012 gate passes.

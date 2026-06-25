@@ -56,10 +56,12 @@ from .price_reference import BASIS_LIVE_SUBMIT, ExecPriceRef
 # and a retry never double-orders. NOTE (doc-verified 2026-06-25, Alpaca POST /v2/orders reference): the
 # REST limit is **128 chars** — the 48 here is a *self-imposed conservative cap* (the 48 figure is the
 # FIX-protocol ClOrdID limit, a different interface), well within the REST max, so it needs no change. The
-# charset is undocumented; the ASCII ``eln-<side>-<hex>`` alphabet is a safe subset. The duplicate ⇒ HTTP
-# 422 ("client_order_id must be unique") dedup is the commonly-observed behaviour but is NOT in the docs —
-# STILL PENDING empirical confirmation: the 2026-06-25 probe was read-only; run
-# ``scripts/alpaca_paper_e2e_probe.py --submit-order`` to lock the exact 422 status/body before relying on it.
+# charset is undocumented; the ASCII ``eln-<side>-<hex>`` alphabet is a safe subset. VERIFIED on the paper
+# account (operator probe --submit-order, 2026-06-25): a 48-char ``eln-buy-<hex>`` id was accepted (HTTP
+# 200, status ``pending_new``), and a re-submit of the SAME id returned **HTTP 422** with body
+# ``{"code": 42210000, "message": "client_order_id must be unique"}`` — which :func:`_is_duplicate_client_order_id`
+# matches ("client_order_id" + "unique"), so the duplicate → NO_ACTION idempotent-dedup path works against
+# the real broker response (pinned by test_live_adapter::test_real_alpaca_422_duplicate_body_is_dedup).
 _COID_PREFIX = "eln"
 _COID_MAXLEN = 48
 

@@ -5,7 +5,7 @@ status: implemented
 implementation_status: tested
 canonical: true
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-25
 confidence: confirmed
 evidence:
   - code
@@ -28,8 +28,9 @@ required_for: []
 
 ## Definition
 
-App-level tests for the Textual TUI [[app.py (ops)]] (FILE-040) — 4 tests, driven via Textual's headless
-`run_test` driver (wrapped in `asyncio.run`; no pytest-asyncio).
+App-level tests for the Textual TUI [[app.py (ops)]] (FILE-040) — 5 tests, driven via Textual's headless
+`run_test` driver (wrapped in `asyncio.run`; no pytest-asyncio). The ISSUE-07 `p` adopt confirm-modal flow
+(which also exercises the Live-tab render) was added 2026-06-25.
 
 ## Purpose
 

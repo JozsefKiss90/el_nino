@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-25
 confidence: confirmed
 evidence:
   - design
@@ -17,13 +17,16 @@ source_paths:
 related_files:
   - "[[app.py (ops)]]"
   - "[[core.py (ops)]]"
+  - "[[gated.py (ops)]]"
 related_tests:
   - "[[test_ops_core]]"
   - "[[test_ops_app]]"
+  - "[[test_live_monitoring]]"
 related_constraints:
   - "[[No Wiki Mutation]]"
 related_decisions:
   - "[[ADR - Operations Control Plane]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 ---
 
 # Operations Control Plane Console
@@ -65,6 +68,17 @@ calibration verdict, last verdict), and panes/tabs:
 - **Processes** — daily scheduled task, producer corpus freshness, Neo4j sync.
 - **Plugs** — Alpaca paper-execution + clock-feed status (`dormant` / `creds-present`, never a key).
 - **Log** — a RichLog tailing the append-only **audit log** + the daily-run logs.
+
+**LIVE monitoring (ISSUE-07, ADR-014).** A top-of-dashboard **live-state strip** (live-plug status,
+operator kill-switch ENGAGED/clear, and a loud banner when an unhealed discrepancy → execution is refused)
+and a **Live tab** rendering the REAL paper P&L surfaces from the physically-separate `*.live` files: the
+live ledger, the live portfolio (per-instrument qty / avg_cost / **realized_pnl** / unrealized_pnl), the
+reconcile/discrepancy panel (DISCREPANCY markers surfaced prominently), and the pending-orders panel (the
+cross-run async-fold queue). The SIM and LIVE panels are **badged distinct and never interleaved** — the
+accumulate-only SIM portfolio (a Q6 determinism artifact, a *model number, not performance*) is never
+shown as a track record. One governed Tier-3 control is added: **adopt-broker-position** (confirm + audit
++ server-side precondition) adopts an observed broker position into the live portfolio (append-only
+reconcile-adopt, never automatic, ADR-014 §6.2), clearing the terminal-refuse so live execution can resume.
 
 Auto-refresh on an interval + manual refresh; key bindings shown in the footer.
 

@@ -2188,3 +2188,86 @@ Clearing these blockers **arms** the adapter; it does not start trading. The dec
 execution stays the operator's ADR-013 gated-live action; `set_operator_halt` is the governed stop. **Next:** the
 operator runs `scripts/alpaca_paper_e2e_probe.py` (paper creds in env) and pastes the output; then the empirical
 B-flag values get marked verified on the stub + the ADR/ISSUE notes.
+
+---
+
+## [2026-06-25] writeback | ISSUE-07 ops console LIVE read-model (sim-vs-live monitoring + governed adopt)
+
+Closed ISSUE-07 (`.scratch/operable-alpaca-adapter-v1/ISSUE-07-live-monitoring.md`). The operator console
+now renders the **live** ledger/portfolio/reconcile state written by ADR-014's `operate_live` to the
+**separate** `*.live` files -- previously `ops/core.py` read only the canonical (SIM) artefacts, so an
+operator running live was flying blind. Additive Tier-1 read-only extension under ADR-013 + one governed
+Tier-3 action. Touches `ops/` + tests ONLY -- no `src/` decision logic, no contract/`*_version` change, no
+determinism/replay path.
+
+### Nodes Created
+- **TEST-041** [[test_live_monitoring]] (`tests/ops/test_live_monitoring.py`, 25 tests) -- covers the LIVE
+  read-model (FILE-039) + the adopt action (FILE-042).
+
+### Changes
+- **FILE-039 [[core.py (ops)]]** -- SIM views refactored into path-parameterized helpers
+  (`_ledger_view_at`/`_portfolio_view_at`/`_operational_view_at`, behavior-preserving) reused by
+  `live_ledger_view`/`live_portfolio_view`/`live_operational_view`; new `reconcile_view` (append-only
+  reconcile history + a DERIVED `execution_refused`/`adoptable`/`refuse_reason` -- advisory; the
+  authoritative refuse is recomputed live by `reconcile_and_act`), `pending_orders_view`, `live_state_view`
+  (plug status + `operator_halt_active` kill switch + loud refuse/halt banner), `adoptable_discrepancy`
+  (the shared adopt precondition source), `SIM_BADGE`/`LIVE_BADGE` + badged `render_text_dashboard`;
+  `Dashboard` extended with the 6 live sub-views. All pure / fail-closed / no-secrets.
+- **FILE-042 [[gated.py (ops)]]** -- new Tier-3 `adopt_broker_position` + registry entry +
+  `precondition_line` branch. It heals an unhealed `discrepancy:unexplained_position` by adopting the
+  observed broker qty/avg into the live position -- **append-only** (`append_reconcile` an
+  `adopt:reconcile-adopt` entry) + `dataclasses.replace` on the **existing** immutable `PortfolioState`,
+  persisted via the existing `persist_portfolio` onto the SEPARATE `*.live` file. **Never automatic**
+  (ADR-014 sec.6.2); the server-side precondition REFUSES (`executed=False`, nothing written) when there
+  is no adoptable discrepancy; never raises.
+- **FILE-040 [[app.py (ops)]]** -- a top-of-dashboard live-state strip, a **Live** tab (live ledger / live
+  portfolio (REAL paper P&L) / reconcile-discrepancy DataTable / pending-orders DataTable), SIM badges on
+  the canonical Artefacts panels, and the `p` adopt-position binding behind `ConfirmModal`.
+- **OBS-002 [[Operations Control Plane Console]]** + **MOD-011 [[Operations Control Plane]]** updated with
+  the LIVE surfaces + the adopt control; `tests/ops/test_gated.py` (registry) + `tests/ops/test_app.py`
+  (adopt confirm-modal flow) extended.
+
+### Adversarial review (15 agents, 5 dimensions, per-finding verification)
+A multi-agent review of the diff confirmed **5 findings (10 raised, 5 dismissed as nits)** -- all FIXED:
+- **MAJOR (confirmed twice, high confidence, empirically reproduced):** `adopt_broker_position` hard-coded
+  `realized_pnl=0.0` and dropped the prior same-instrument position, so adopting over a flat-but-realized
+  position (the residue a live SELL-fold leaves) silently **wiped the accumulated LIVE realized P&L** --
+  corrupting the exact "real paper P&L" number ISSUE-07 exists to keep honest. Fixed: carry the realized
+  accumulator forward (`prior.realized_pnl`), mirroring `_apply_live_buy`'s `r0` carry; +regression test.
+- **MINOR x3 (ops-only honesty/badging):** (a) SIM-scoped the always-on pipeline headline + statusbar
+  figures (they are canonical, not the live book) so they are not confusable with the LIVE strip below;
+  (b) the refuse banner no longer claims adopt "clears the refuse" in a multi-instrument mixed-discrepancy
+  state (added `ReconcileView.refusing_count`); (c) labelled the derived refuse banner **advisory
+  (re-checked live each cycle)** so a broker-resolved foreign-order discrepancy is not read as a hard,
+  permanently-stuck REFUSED. The 5 dismissed nits (success-path summary outside try, perf triple-load,
+  to_dict discriminator, banner kill-switch precedence) were verified non-issues; the success-summary one
+  was tightened anyway (moved inside the try).
+
+### Verification
+Full suite **1168 green** (+24 ISSUE-07 tests incl. 2 review regressions, +1 adopt app test; the
+gated-registry test updated for the new action). `mypy --strict` + `ruff` clean on all touched files (the
+2 remaining mypy errors are pre-existing in the untouched `feature_builder.py`, confirmed identical with
+the diff stashed). **Determinism untouched + proven (twice, pre- and post-review-fix):** regenerated
+BENCH-004 (`execution_bench.json`) + BENCH-006 (`chain_bench.json`) and `git hash-object` is byte-identical
+to baseline (`7c325406...` / `7503278875...`, working tree clean). The adopt action's `dataclasses.replace`
+is `*.live`-only; the sim/replay portfolio + its `state_hash`/serialization are never touched.
+
+### Lint (touched nodes only)
+FILE-039/040/042, OBS-002, MOD-011, TEST-041 frontmatter complete + enums valid; `updated` bumped to
+2026-06-25 (`created` unchanged); new wikilinks resolve (`[[test_live_monitoring]]` created;
+`[[ADR - Operable Alpaca Paper Execution Adapter v1]]` exists); module `related_constraints`/`related_tests`
+populated; canonical_id TEST-041 unique; evidence-confidence coherent (`code`, confirmed); no orphan
+(TEST-041 inbound from FILE-039/042 + MOD-011 + OBS-002). SIM/LIVE confusability check: the accumulate-only
+SIM portfolio is badged "model number, never a P&L track record" and the LIVE panels carry the REAL-P&L
+badge -- asserted by `test_badging_metadata_in_render`.
+
+### Metrics
+dev_graph content nodes **221 -> 222** (+1 test node; no schema/enum/ontology change). No code `*_version`
+bump (the live read-model + adopt are entirely off the deterministic key). Re-sync Neo4j
+(`python sync_to_neo4j.py --clear`).
+
+### Operator note
+The monitoring surface ships WITH a console way out: a surfaced position discrepancy can be cleared by the
+governed `adopt-broker-position` action (foreign/wrong-side ORDER discrepancies are resolved broker-side).
+Enabling live execution + registering the schedule remain operator HARD-PAUSE; `set_operator_halt` is the
+governed stop. Adopt is gated (confirm + audit + server-side precondition) and never automatic.

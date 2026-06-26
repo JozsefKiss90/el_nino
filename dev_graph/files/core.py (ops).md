@@ -5,7 +5,7 @@ status: implemented
 implementation_status: tested
 canonical: true
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-25
 confidence: confirmed
 evidence:
   - code
@@ -14,10 +14,12 @@ source_paths:
 related_files: []
 related_tests:
   - "[[test_ops_core]]"
+  - "[[test_live_monitoring]]"
 related_constraints:
   - "[[No Wiki Mutation]]"
 related_decisions:
   - "[[ADR - Operations Control Plane]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 file_path: "ops/core.py"
 language: "python"
 module: "[[Operations Control Plane]]"
@@ -60,6 +62,19 @@ exists), `gate_board` (ADR-011 a–f static + ADR-012 G0–G3 advisory), `calibr
 (injectable scheduled-task fetcher), `policy_versions`, `recent_events`, and the `audit_tail`.
 `resolve_run_snapshot` is shared with the Step-2 run action. `Dashboard.to_dict()` is a deterministic,
 secret-free projection.
+
+**LIVE read-model (ISSUE-07, ADR-014).** Additive, read-only: the SIM views are refactored into
+path-parameterized helpers (`_ledger_view_at` / `_portfolio_view_at` / `_operational_view_at`) reused by
+`live_ledger_view` / `live_portfolio_view` / `live_operational_view` reading the physically-separate
+`*.live` files (`OpsPaths.live_*_path`). New views: `reconcile_view` (the append-only `ReconcileEntry`
+history + a DERIVED `execution_refused` / `adoptable` / `refuse_reason` — advisory; the authoritative
+refuse is recomputed live by `reconcile_and_act`), `pending_orders_view` (the cross-run async-fold queue),
+and `live_state_view` (plug status + `operator_halt_active` kill switch + a loud refuse/halt banner).
+`adoptable_discrepancy` is the shared precondition source for the gated adopt action. `SIM_BADGE` /
+`LIVE_BADGE` constants + `render_text_dashboard` keep the accumulate-only SIM portfolio (a model number,
+NOT performance) and the LIVE real-paper-P&L panels **badged distinct and never interleaved**. All live
+reads are pure / fail-closed / no-secrets — and no `src/` decision logic or determinism path is touched
+(BENCH-004/006 byte-identical).
 
 ## Relationships
 

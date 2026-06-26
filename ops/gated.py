@@ -24,9 +24,11 @@ the network / spawn PowerShell), and the clock is injectable. Imports no Textual
 
 from __future__ import annotations
 
+import dataclasses
 from collections.abc import Callable
 from dataclasses import dataclass
 
+from execution import Position, ReconcileEntry, load_portfolio, persist_portfolio
 from execution.live_adapter import LiveExecutionAdapter, live_adapter_from_env
 from gold.paper_runtime.models import OperationalInput
 from orchestration.live_runtime import operate_live
@@ -266,6 +268,84 @@ def commit_calibration_bump(paths: OpsPaths, *, clock: Clock | None = None) -> G
         )
 
 
+# ====================================================================================== adopt broker position
+def adopt_broker_position(paths: OpsPaths, *, clock: Clock | None = None) -> GatedResult:
+    """Adopt the observed broker position into the LIVE portfolio, clearing a terminal-refuse (ADR-014 §6.2).
+
+    A live FLAT-time reconcile that finds a broker position with **no local lineage** records a
+    ``discrepancy:unexplained_position`` reconcile observation and **terminal-refuses live execution**
+    (no auto-flatten — selling blind would import a real-money instinct and destroy evidence). The only
+    governed way out is THIS action: it adopts the observed broker position (quantity + average entry
+    price) into the local position so the next FLAT cycle can sell to close instead of refusing — **never
+    automatic** (ADR-014 §6.2 / ADR-013 Tier-3).
+
+    **Append-only / reuse-only.** It records an append-only ``adopt:reconcile-adopt`` :class:`ReconcileEntry`
+    in the live portfolio's existing reconcile history and sets the local position from the OBSERVED broker
+    quantity/avg-cost using the **existing** immutable :class:`PortfolioState` value type
+    (``append_reconcile`` + ``dataclasses.replace``), then persists via the existing ``persist_portfolio``
+    onto the **separate** live file (§5.3). No ``src/`` method, schema, or ``*_version`` is added/changed,
+    and the canonical (sim/replay) portfolio is never touched.
+
+    **Server-side precondition** (enforced HERE, not by the UI): an unhealed
+    ``discrepancy:unexplained_position`` with a positive observed quantity and no current local open
+    position must exist — else REFUSE (``executed=False``), nothing written. Re-running after an adopt is a
+    no-op refusal (the discrepancy is healed). Like every gated action it NEVER raises.
+    """
+    action = "adopt-broker-position"
+    args_summary = f"live_portfolio={paths.live_portfolio_path.name} (append-only reconcile-adopt; never auto)"
+    try:
+        disc = core.adoptable_discrepancy(paths)
+        # SERVER-SIDE PRECONDITION: no unhealed unexplained-position discrepancy ⇒ nothing to adopt → REFUSE.
+        if disc is None:
+            return _finish(
+                paths, action, args_summary, ok=True, executed=False,
+                summary="no-op: no unhealed broker-position discrepancy to adopt (nothing refused)",
+                detail=("adopt is only valid against a discrepancy:unexplained_position observation",),
+                clock=clock,
+            )
+        args_summary = (
+            f"{args_summary} instrument={disc.instrument} observed_qty={disc.observed_qty:g} "
+            f"observed_avg={disc.observed_avg_price:g}"
+        )
+        pf = load_portfolio(paths.live_portfolio_path)
+        # Append-only adopt observation into the live reconcile history (records WHY the position appeared).
+        healed = pf.append_reconcile(ReconcileEntry(
+            source_snapshot_id=disc.source_snapshot_id,
+            instrument=disc.instrument,
+            observed_qty=disc.observed_qty,
+            observed_avg_price=disc.observed_avg_price,
+            marker="adopt:reconcile-adopt",
+            seq=pf.next_reconcile_seq(),
+            as_of=disc.as_of,
+        ))
+        # Set the local position from the OBSERVED broker truth. Only the per-lot cost basis resets to the
+        # observed broker avg (the newly adopted shares); the portfolio-level realized-P&L ACCUMULATOR of any
+        # prior (flat) position for this instrument MUST carry forward — a live SELL-fold leaves the residue
+        # Position(instr, qty=0, avg=0, realized=X, 0), and dropping it would silently wipe the LIVE real
+        # paper-P&L track record (mirrors _apply_live_buy's r0 carry). Uses only the existing immutable type.
+        prior = healed.position(disc.instrument)
+        realized = prior.realized_pnl if prior is not None else 0.0
+        adopted = Position(disc.instrument, disc.observed_qty, disc.observed_avg_price, realized, 0.0)
+        others = tuple(p for p in healed.positions if p.instrument != disc.instrument)
+        new_positions = tuple(sorted((*others, adopted), key=lambda p: p.instrument))
+        new_portfolio = dataclasses.replace(healed, positions=new_positions)
+        persist_portfolio(paths.live_portfolio_path, new_portfolio)
+        summary = (
+            f"ADOPTED {disc.instrument} qty={disc.observed_qty:g} @ {disc.observed_avg_price:g} "
+            "- refuse cleared; next cycle can act"
+        )
+        detail = (
+            f"appended adopt:reconcile-adopt seq={pf.next_reconcile_seq()} (append-only); "
+            f"realized_pnl carried fwd={realized:g}",
+            f"live_portfolio_hash={new_portfolio.state_hash()[:12]}",
+        )
+    except Exception as exc:  # structural never-raise: any unexpected error still audits (not-executed)
+        return _finish(
+            paths, action, args_summary, False, False, f"unexpected error: {exc}", (str(exc),), clock,
+        )
+    return _finish(paths, action, args_summary, True, True, summary, detail, clock)
+
+
 # The Step-3 gated-live action registry (name -> callable). The TUI dispatches through this AFTER a
 # confirm modal; each callable enforces its own server-side precondition.
 GATED_ACTIONS: dict[str, Callable[[OpsPaths], GatedResult]] = {
@@ -275,6 +355,7 @@ GATED_ACTIONS: dict[str, Callable[[OpsPaths], GatedResult]] = {
     "commit-calibration-bump": commit_calibration_bump,
     "operator-halt": set_operator_halt,          # engage the kill switch (halt=True default)
     "operator-resume": resume_operator_halt,      # clear it (the reversal)
+    "adopt-broker-position": adopt_broker_position,  # heal an unexplained-position discrepancy (append-only)
 }
 
 
@@ -306,5 +387,13 @@ def precondition_line(paths: OpsPaths, name: str) -> str:
             "clears the kill switch -> live execution resumes on the next cycle"
             if engaged
             else "kill switch not engaged -> resume is a no-op"
+        )
+    if name == "adopt-broker-position":
+        disc = core.adoptable_discrepancy(paths)
+        if disc is None:
+            return "precondition FAILS: no unhealed broker-position discrepancy -> will REFUSE (nothing to adopt)"
+        return (
+            f"precondition OK: adopt {disc.instrument} qty={disc.observed_qty:g} @ {disc.observed_avg_price:g} "
+            "(append-only) -> clears the terminal-refuse"
         )
     return "unknown action"

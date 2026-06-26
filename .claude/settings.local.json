@@ -229,7 +229,9 @@
       "Bash(git *)",
       "Bash(python3 *)",
       "WebFetch(domain:docs.alpaca.markets)",
-      "mcp__context7__resolve-library-id"
+      "mcp__context7__resolve-library-id",
+      "Bash(findstr /I neo4j)",
+      "Bash(py *)"
     ]
   }
 }

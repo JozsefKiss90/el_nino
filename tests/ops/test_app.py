@@ -124,3 +124,25 @@ def test_gated_action_cancel_does_nothing(tmp_path: Path, monkeypatch: pytest.Mo
     asyncio.run(go())
     from ops.audit import read_audit
     assert read_audit(paths.audit_log_path) == ()  # nothing executed, nothing audited
+
+
+def test_adopt_gated_action_confirm_and_audits(tmp_path: Path) -> None:
+    """Pressing the adopt key opens the confirm modal; confirming runs the governed action (here a no-op
+    refusal — no live portfolio — which still audits exactly once). Also exercises the Live-tab render."""
+    paths = _paths(tmp_path)
+
+    async def go() -> None:
+        app = OpsConsole(paths)
+        async with app.run_test(size=(120, 40)) as pilot:
+            await pilot.pause()
+            await pilot.press("p")  # open the adopt confirm modal
+            await pilot.pause()
+            await pilot.press("y")  # confirm
+            await app.workers.wait_for_complete()
+            await pilot.pause()
+            assert app.is_running
+
+    asyncio.run(go())
+    from ops.audit import read_audit
+    entries = read_audit(paths.audit_log_path)
+    assert len(entries) == 1 and entries[0].action == "adopt-broker-position"

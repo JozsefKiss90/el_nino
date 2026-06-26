@@ -46,6 +46,8 @@ from textual.widgets import (  # noqa: E402
 
 from ops import actions, gated  # noqa: E402
 from ops.core import (  # noqa: E402
+    LIVE_BADGE,
+    SIM_BADGE,
     Dashboard,
     OpsPaths,
     assemble_dashboard,
@@ -106,7 +108,9 @@ class OpsConsole(App[None]):
 
     CSS = """
     #statusbar { height: 1; padding: 0 1; background: $panel; }
+    #live-strip { height: auto; padding: 0 1; background: $panel; }
     #overview-body { padding: 1; }
+    #live-body { padding: 1; }
     DataTable { height: auto; }
     ConfirmModal { align: center middle; }
     #confirm-box { width: 78; height: auto; border: thick $error; background: $surface; padding: 1 2; }
@@ -127,6 +131,7 @@ class OpsConsole(App[None]):
         ("b", "calib_bump", "Calib bump"),
         ("h", "operator_halt", "HALT"),
         ("j", "operator_resume", "Resume"),
+        ("p", "adopt_position", "Adopt pos"),
         ("q", "quit", "Quit"),
     ]
 
@@ -137,10 +142,18 @@ class OpsConsole(App[None]):
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
         yield Static(id="statusbar")
+        yield Static(id="live-strip")
         with TabbedContent(initial="overview-tab"):
             with TabPane("Overview", id="overview-tab"):
                 with VerticalScroll():
                     yield Static(id="overview-body")
+            with TabPane("Live", id="live-tab"):
+                with VerticalScroll():
+                    yield Static(id="live-body")
+                    yield Static("Reconcile / discrepancies (LIVE — broker-vs-local)", classes="hdr")
+                    yield DataTable(id="reconcile-table")
+                    yield Static("Pending orders (LIVE — in-flight, cross-run async fold)", classes="hdr")
+                    yield DataTable(id="pending-table")
             with TabPane("Gates", id="gates-tab"):
                 with VerticalScroll():
                     yield Static("ADR-011 Execution Creation Gates (a-f)", classes="hdr")
@@ -152,6 +165,7 @@ class OpsConsole(App[None]):
                     yield Static(id="calibration-body")
             with TabPane("Artefacts", id="artefacts-tab"):
                 with VerticalScroll():
+                    yield Static(id="artefacts-badge")
                     yield DataTable(id="artefacts-table")
             with TabPane("Processes", id="processes-tab"):
                 with VerticalScroll():
@@ -170,6 +184,8 @@ class OpsConsole(App[None]):
             ("#artefacts-table", ("artefact", "status", "detail")),
             ("#processes-table", ("process", "status", "detail")),
             ("#plugs-table", ("plug", "status", "detail")),
+            ("#reconcile-table", ("seq", "instrument", "marker", "observed_qty", "observed_avg")),
+            ("#pending-table", ("seq", "side", "instrument", "req_qty", "client_order_id")),
         ):
             self.query_one(table_id, DataTable).add_columns(*cols)
         # First paint queries the scheduled task; the interval refresh does not (it spawns PowerShell).
@@ -259,6 +275,13 @@ class OpsConsole(App[None]):
             "operator-resume", "CLEAR the operator kill switch: live execution resumes on the next cycle.",
         )
 
+    def action_adopt_position(self) -> None:
+        self._confirm_gated(
+            "adopt-broker-position",
+            "ADOPT the observed broker position into the LIVE portfolio (append-only) - clears a "
+            "discrepancy terminal-refuse so live execution can resume. Never automatic (ADR-014 sec.6.2).",
+        )
+
     def _confirm_gated(self, name: str, description: str) -> None:
         precondition = gated.precondition_line(self._paths, name)
 
@@ -306,7 +329,9 @@ class OpsConsole(App[None]):
             self.query_one("#statusbar", Static).update(Text(f"read-model error: {exc}", style="bold red"))
             return
         self._render_statusbar(dash)
+        self._render_live_strip(dash)
         self._render_overview(dash)
+        self._render_live(dash)
         self._render_gates(dash)
         self._render_calibration(dash)
         self._render_artefacts(dash)
@@ -321,13 +346,85 @@ class OpsConsole(App[None]):
         bar.append(" PAPER-ONLY ", style="bold white on dark_green")
         bar.append("  health=", style="dim")
         bar.append(p.health, style=_HEALTH_STYLE.get(p.health, "white"))
-        bar.append(f"  ledger={p.ledger_entries}", style="dim")
-        bar.append(f"  verdict={p.latest_verdict or '-'}", style="dim")
-        bar.append(f"  positions={p.open_positions}", style="dim")
+        # 'SIM' scopes the canonical figures below — they are NOT the live book (the live state is in the
+        # LIVE strip / Live tab). The SIM portfolio is accumulate-only; ISSUE-07 anti-confusion.
+        bar.append("  SIM", style="bold yellow")
+        bar.append(f" ledger={p.ledger_entries}", style="dim")
+        bar.append(f" verdict={p.latest_verdict or '-'}", style="dim")
+        bar.append(f" positions={p.open_positions}", style="dim")
         bar.append(f"  calib={dash.calibration.overall}", style="dim")
         if p.errors:
             bar.append(f"  errors={len(p.errors)}", style="bold red")
         self.query_one("#statusbar", Static).update(bar)
+
+    def _render_live_strip(self, dash: Dashboard) -> None:
+        """The top-of-dashboard LIVE strip: plug readiness, kill switch, and the loud refuse/halt banner."""
+        ls = dash.live_state
+        bar = Text()
+        bar.append(" LIVE PAPER ", style="bold white on dark_blue")
+        bar.append(f"  plug={ls.plug_status}", style="dim")
+        bar.append("  kill-switch=", style="dim")
+        bar.append(
+            "ENGAGED" if ls.kill_switch_engaged else "clear",
+            style="bold red" if ls.kill_switch_engaged else "green",
+        )
+        bar.append("  exec=", style="dim")
+        bar.append(
+            "REFUSED" if ls.execution_refused else "ok",
+            style="bold red" if ls.execution_refused else "green",
+        )
+        if ls.banner:
+            bar.append(f"  !! {ls.banner}", style="bold white on red")
+        self.query_one("#live-strip", Static).update(bar)
+
+    def _render_live(self, dash: Dashboard) -> None:
+        """The LIVE tab — the REAL paper P&L surfaces, rendered distinct from the SIM panels (ISSUE-07)."""
+        ll, lp, op = dash.live_ledger, dash.live_portfolio, dash.live_operational
+        body = Text()
+        body.append(f"{LIVE_BADGE}\n", style="bold white on dark_blue")
+        if not ll.exists and not lp.exists:
+            body.append("  (no live run yet - the separate live ledger/portfolio files are absent)\n",
+                        style="dim italic")
+        body.append("\nLive ledger\n", style="bold underline")
+        body.append(
+            f"  entries={ll.entry_count}  latest_verdict={ll.latest_verdict or '-'}  "
+            f"hash={_short(ll.state_hash)}{_err_suffix(ll.error)}\n", style="dim",
+        )
+        body.append("Live portfolio ", style="bold underline")
+        body.append("(REAL paper P&L - realized on exits)\n", style="dim italic")
+        body.append(
+            f"  positions={lp.position_count}  open={lp.open_position_count}  "
+            f"realized_pnl={lp.realized_pnl}  fills={lp.execution_count}  "
+            f"hash={_short(lp.state_hash)}{_err_suffix(lp.error)}\n", style="dim",
+        )
+        for pos in lp.positions:
+            body.append(
+                f"    {pos.instrument}: qty={pos.quantity} avg_cost={pos.avg_cost} "
+                f"realized_pnl={pos.realized_pnl} unrealized_pnl={pos.unrealized_pnl}\n"
+            )
+        body.append("Live operational capture\n", style="bold underline")
+        body.append(
+            f"  source={op.source}  tradeable={op.tradeable}  halt={op.halt}  as_of={op.as_of}\n",
+            style="dim",
+        )
+        self.query_one("#live-body", Static).update(body)
+
+        rec = dash.reconcile
+        rt = self.query_one("#reconcile-table", DataTable)
+        rt.clear()
+        for obs in rec.observations:
+            marker_cell = Text(obs.marker, style="bold red" if obs.is_discrepancy else "dim")
+            rt.add_row(
+                str(obs.seq), obs.instrument, marker_cell,
+                f"{obs.observed_qty:g}", f"{obs.observed_avg_price:g}",
+            )
+        pend = dash.pending_orders
+        pt = self.query_one("#pending-table", DataTable)
+        pt.clear()
+        for o in pend.orders:
+            pt.add_row(
+                str(o.seq), o.side, o.instrument, f"{o.requested_qty:g}", o.client_order_id,
+            )
 
     def _render_overview(self, dash: Dashboard) -> None:
         pv = dash.preview
@@ -392,16 +489,22 @@ class OpsConsole(App[None]):
         self.query_one("#calibration-body", Static).update(body)
 
     def _render_artefacts(self, dash: Dashboard) -> None:
+        # Badge the canonical artefacts as SIM: the accumulate-only portfolio value is a MODEL number,
+        # never a P&L track record (the live REAL paper P&L lives in the Live tab). ISSUE-07 anti-confusion.
+        self.query_one("#artefacts-badge", Static).update(
+            Text(f"[{SIM_BADGE}] - the SIM portfolio value is a model number, never a P&L track record",
+                 style="bold yellow")
+        )
         table = self.query_one("#artefacts-table", DataTable)
         table.clear()
         led = dash.ledger
         table.add_row(
-            "runtime_ledger", _exists(led.exists, led.error),
+            "runtime_ledger (SIM)", _exists(led.exists, led.error),
             f"entries={led.entry_count} verdicts={led.verdict_counts} hash={_short(led.state_hash)}",
         )
         pf = dash.portfolio
         table.add_row(
-            "portfolio_state", _exists(pf.exists, pf.error),
+            "portfolio_state (SIM, accumulate-only)", _exists(pf.exists, pf.error),
             f"positions={pf.position_count} open={pf.open_position_count} "
             f"realized_pnl={pf.realized_pnl} fills={pf.execution_count} hash={_short(pf.state_hash)}",
         )
@@ -461,6 +564,10 @@ def _exists(exists: bool, error: str | None) -> str:
 
 def _short(value: str | None) -> str:
     return value[:12] if value else "-"
+
+
+def _err_suffix(error: str | None) -> str:
+    return f"  ERROR={error}" if error else ""
 
 
 def _print_once(paths: OpsPaths) -> None:

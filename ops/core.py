@@ -41,8 +41,10 @@ from execution.runtime import load_portfolio
 from gold.paper_runtime.config import DEFAULT_RUNTIME_POLICY_CONFIG
 from gold.paper_runtime.models import Verdict
 from gold.paper_runtime.runtime import load_ledger, load_operational
+from execution.models import PortfolioState
 from orchestration.alpaca_clock_feed import clock_feed_from_env
 from orchestration.models import ChainResult
+from orchestration.operational_feed import operator_halt_active
 from orchestration.runtime import find_latest_snapshot, run_sequence
 from snapshot.snapshot_consumer import consume
 
@@ -59,6 +61,14 @@ DAILY_TASK_NAME = "ElNino-Chain-DailyRun"
 # NOT the authoritative gate and never bumps a *_version (a bump is human-review-required, ADR-012 sec.6).
 # G1/G2/G3 below are advisory diversity/realized proxies, NOT ADR-012's exact per-target coverage criteria.
 G0_CORPUS_FLOOR = 60
+
+# SIM-vs-LIVE badges (ISSUE-07). The console must NEVER let the accumulate-only SIM portfolio value be read
+# as a track record — the Q6 determinism artifact is a *model number, not performance* (buy-only, never
+# realizes) — and must badge the LIVE panels as the REAL paper P&L (real fills / realized P&L on exits /
+# reconcile observations). These are the canonical badge strings the read-model + renderers emit so the two
+# surfaces are never interleaved or confusable (the JARVIS-HUD static-panel hazard, ADR-013 §6 discipline).
+SIM_BADGE = "SIM | replay/determinism | NOT performance"
+LIVE_BADGE = "LIVE PAPER | real paper P&L (real fills / realized P&L on exits / reconcile)"
 
 
 # ======================================================================================
@@ -272,6 +282,88 @@ class PipelineStatus:
     errors: tuple[str, ...]
 
 
+# ======================================================================================
+# LIVE (ADR-014) read-model views (ISSUE-07) — the REAL paper P&L surfaces, badged distinct
+# from the SIM panels. The live ledger / portfolio reuse the SIM view shapes (LedgerView /
+# PortfolioView) read from the *physically-separate* ``*.live`` files; the reconcile + pending
+# + live-state views are new (no SIM analogue). All pure / fail-closed / no-secrets.
+# ======================================================================================
+@dataclass(frozen=True)
+class ReconcileObservation:
+    """One LIVE-path reconcile observation — what the *broker* showed (authority for position truth).
+
+    Mirrors :class:`execution.models.ReconcileEntry`; a ``marker`` of ``discrepancy:*`` is a
+    broker↔local divergence that **terminal-refuses live execution** until healed (ADR-014 §6.2).
+    """
+
+    seq: int
+    instrument: str
+    observed_qty: float
+    observed_avg_price: float
+    marker: str
+    is_discrepancy: bool
+    as_of: str | None
+    source_snapshot_id: str
+
+
+@dataclass(frozen=True)
+class ReconcileView:
+    """The live reconcile history + the DERIVED refuse/adopt state (advisory — recomputed live each cycle).
+
+    ``execution_refused`` is **derived** from the reconcile history (the latest observation per instrument
+    is an unhealed ``discrepancy:*``); the AUTHORITATIVE refuse is recomputed live by
+    ``live_runtime.reconcile_and_act`` on each cycle — this read never touches the broker, so it is an
+    advisory monitoring signal, not the gate. ``adoptable`` is the subset a governed
+    ``adopt-broker-position`` action can clear (an unexplained standing position with no local lineage);
+    other discrepancy kinds (foreign / wrong-side open orders) are resolved broker-side, not by adopt.
+    """
+
+    exists: bool
+    entry_count: int
+    discrepancy_count: int
+    observations: tuple[ReconcileObservation, ...]
+    execution_refused: bool
+    refuse_reason: str | None
+    refusing_count: int  # how many instruments currently refuse (a governed adopt clears at most one)
+    adoptable: bool
+    error: str | None
+
+
+@dataclass(frozen=True)
+class PendingOrderView:
+    """One LIVE-path in-flight (QUEUED) order awaiting a cross-run async fill (ADR-014 §6.3)."""
+
+    seq: int
+    instrument: str
+    side: str
+    requested_qty: float
+    client_order_id: str
+    source_snapshot_id: str
+    as_of: str | None
+
+
+@dataclass(frozen=True)
+class PendingOrdersView:
+    exists: bool
+    order_count: int
+    orders: tuple[PendingOrderView, ...]
+    error: str | None
+
+
+@dataclass(frozen=True)
+class LiveStateView:
+    """Top-of-dashboard LIVE strip: plug readiness, kill switch, and the loud refuse/halt banner."""
+
+    plug_status: str            # "dormant" | "creds-present" (the exec plug; never a key — ADR-013 §6)
+    kill_switch_engaged: bool
+    execution_refused: bool
+    refuse_reason: str | None
+    adoptable: bool
+    live_ledger_exists: bool
+    live_portfolio_exists: bool
+    banner: str | None          # a loud one-line banner when refused / halted (else None)
+
+
 @dataclass(frozen=True)
 class Dashboard:
     pipeline: PipelineStatus
@@ -286,6 +378,14 @@ class Dashboard:
     policy: PolicyVersions
     events: tuple[str, ...]
     audit_tail: tuple[str, ...]
+    # LIVE (ADR-014) read-model — the REAL paper P&L surfaces, distinct + badged from the SIM panels
+    # above (ISSUE-07). Empty/absent whenever no live run has executed (the default operator state).
+    live_ledger: LedgerView
+    live_portfolio: PortfolioView
+    live_operational: OperationalView
+    reconcile: ReconcileView
+    pending_orders: PendingOrdersView
+    live_state: LiveStateView
 
     def to_dict(self) -> dict[str, Any]:
         """Deterministic, fully-serializable projection (used by the no-secret-leak test + the TUI)."""
@@ -301,11 +401,21 @@ TaskInfoFetcher = Callable[[str], Mapping[str, Any] | None]
 # Read-model assemblers (each pure; each catches loud loader errors into an ``error`` field)
 # ======================================================================================
 def ledger_view(paths: OpsPaths) -> LedgerView:
-    """Read the runtime ledger (SCHEMA-013) purely via ``load_ledger`` (missing ⇒ empty; malformed ⇒ error)."""
-    if not paths.ledger_path.exists():
+    """Read the canonical (SIM/replay) runtime ledger (SCHEMA-013) — missing ⇒ empty; malformed ⇒ error."""
+    return _ledger_view_at(paths.ledger_path)
+
+
+def live_ledger_view(paths: OpsPaths) -> LedgerView:
+    """Read the physically-separate LIVE runtime ledger (ADR-014 §5.3) — the live-path verdict history."""
+    return _ledger_view_at(paths.live_ledger_path)
+
+
+def _ledger_view_at(path: Path) -> LedgerView:
+    """Read a runtime ledger (SCHEMA-013) purely via ``load_ledger`` (missing ⇒ empty; malformed ⇒ error)."""
+    if not path.exists():
         return LedgerView(False, 0, None, None, None, None, {}, None, None)
     try:
-        ledger = load_ledger(paths.ledger_path)
+        ledger = load_ledger(path)
     except Exception as exc:  # RuntimeContractError on a corrupt ledger — surface, don't crash
         return LedgerView(True, 0, None, None, None, None, {}, None, str(exc))
     counts = {v.value: 0 for v in Verdict}
@@ -326,11 +436,21 @@ def ledger_view(paths: OpsPaths) -> LedgerView:
 
 
 def portfolio_view(paths: OpsPaths) -> PortfolioView:
-    """Read the portfolio state (SCHEMA-015) purely via ``load_portfolio`` (missing ⇒ empty; malformed ⇒ error)."""
-    if not paths.portfolio_path.exists():
+    """Read the canonical (SIM) accumulate-only portfolio (SCHEMA-015) — a MODEL number, NOT performance."""
+    return _portfolio_view_at(paths.portfolio_path)
+
+
+def live_portfolio_view(paths: OpsPaths) -> PortfolioView:
+    """Read the physically-separate LIVE portfolio (ADR-014 §5.3) — the REAL paper P&L (realized on exits)."""
+    return _portfolio_view_at(paths.live_portfolio_path)
+
+
+def _portfolio_view_at(path: Path) -> PortfolioView:
+    """Read a portfolio state (SCHEMA-015) purely via ``load_portfolio`` (missing ⇒ empty; malformed ⇒ error)."""
+    if not path.exists():
         return PortfolioView(False, 0, 0, 0.0, 0, None, (), None)
     try:
-        pf = load_portfolio(paths.portfolio_path)
+        pf = load_portfolio(path)
     except Exception as exc:  # ExecutionContractError on a corrupt portfolio — surface, don't crash
         return PortfolioView(True, 0, 0, 0.0, 0, None, (), str(exc))
     positions = tuple(
@@ -350,10 +470,20 @@ def portfolio_view(paths: OpsPaths) -> PortfolioView:
 
 
 def operational_view(paths: OpsPaths) -> OperationalView:
-    """Read the captured operational input (default-closed) via the governed ``load_operational``."""
-    exists = paths.operational_capture_path.exists()
+    """Read the canonical (SIM) captured operational input (default-closed) via ``load_operational``."""
+    return _operational_view_at(paths.operational_capture_path)
+
+
+def live_operational_view(paths: OpsPaths) -> OperationalView:
+    """Read the physically-separate LIVE operational capture (ADR-014 §5.3) via ``load_operational``."""
+    return _operational_view_at(paths.live_operational_capture_path)
+
+
+def _operational_view_at(path: Path) -> OperationalView:
+    """Read a captured operational input (default-closed) via the governed ``load_operational``."""
+    exists = path.exists()
     try:
-        op = load_operational(paths.operational_capture_path)
+        op = load_operational(path)
     except Exception as exc:  # load_operational is itself fail-closed, but stay defensive
         return OperationalView(
             source="error", instrument="GLD", tradeable=False, venue_open=False,
@@ -369,6 +499,165 @@ def operational_view(paths: OpsPaths) -> OperationalView:
         degraded=op.degraded,
         as_of=op.as_of,
         error=None,
+    )
+
+
+# ----- live reconcile / pending / live-state (ADR-014) -------------------------------------------
+_ADOPTABLE_MARKER = "discrepancy:unexplained_position"  # the one kind a governed position-adopt clears
+
+
+def _reconcile_observations(pf: PortfolioState) -> tuple[ReconcileObservation, ...]:
+    """Project the live portfolio's append-only reconcile history into view observations (insertion order)."""
+    return tuple(
+        ReconcileObservation(
+            seq=r.seq,
+            instrument=r.instrument,
+            observed_qty=r.observed_qty,
+            observed_avg_price=r.observed_avg_price,
+            marker=r.marker,
+            is_discrepancy=r.marker.startswith("discrepancy:"),
+            as_of=r.as_of,
+            source_snapshot_id=r.source_snapshot_id,
+        )
+        for r in pf.reconciles
+    )
+
+
+def _latest_by_instrument(
+    observations: tuple[ReconcileObservation, ...],
+) -> dict[str, ReconcileObservation]:
+    """The most-recent reconcile observation per instrument (entries are in append/seq order; last wins)."""
+    latest: dict[str, ReconcileObservation] = {}
+    for obs in observations:
+        latest[obs.instrument] = obs
+    return latest
+
+
+def _adoptable_observation(
+    pf: PortfolioState, latest: dict[str, ReconcileObservation]
+) -> ReconcileObservation | None:
+    """The unhealed unexplained-position discrepancy a governed adopt can clear, if any.
+
+    Adoptable ⇔ an instrument's LATEST reconcile observation is ``discrepancy:unexplained_position`` with a
+    positive observed quantity AND there is no current local open position for it (so it has not already
+    been adopted/closed). After an adopt appends its ``adopt:*`` observation, that instrument's latest is no
+    longer a discrepancy, so this returns None — the action is not re-triggerable on an already-healed state.
+    """
+    for obs in latest.values():
+        if obs.marker == _ADOPTABLE_MARKER and obs.observed_qty > 0.0:
+            pos = pf.position(obs.instrument)
+            if pos is None or pos.quantity == 0.0:
+                return obs
+    return None
+
+
+def reconcile_view(paths: OpsPaths) -> ReconcileView:
+    """Surface the LIVE reconcile history + the DERIVED refuse/adopt state (advisory; never touches broker)."""
+    path = paths.live_portfolio_path
+    if not path.exists():
+        return ReconcileView(False, 0, 0, (), False, None, 0, False, None)
+    try:
+        pf = load_portfolio(path)
+    except Exception as exc:  # ExecutionContractError on a corrupt live portfolio — surface, don't crash
+        return ReconcileView(True, 0, 0, (), False, None, 0, False, str(exc))
+    observations = _reconcile_observations(pf)
+    latest = _latest_by_instrument(observations)
+    refusing = sorted(obs.marker for obs in latest.values() if obs.is_discrepancy)
+    adopt = _adoptable_observation(pf, latest)
+    return ReconcileView(
+        exists=True,
+        entry_count=len(observations),
+        discrepancy_count=sum(1 for obs in observations if obs.is_discrepancy),
+        observations=observations,
+        execution_refused=bool(refusing),
+        refuse_reason="; ".join(refusing) if refusing else None,
+        refusing_count=len(refusing),
+        adoptable=adopt is not None,
+        error=None,
+    )
+
+
+def adoptable_discrepancy(paths: OpsPaths) -> ReconcileObservation | None:
+    """The single unhealed unexplained-position discrepancy a governed adopt would clear (or None).
+
+    The server-side precondition source for the ``adopt-broker-position`` gated action AND its confirm-modal
+    precondition line — both read THIS so the UI and the enforcement agree. A pure, fail-closed read.
+    """
+    path = paths.live_portfolio_path
+    if not path.exists():
+        return None
+    try:
+        pf = load_portfolio(path)
+    except Exception:  # malformed live portfolio ⇒ nothing safely adoptable (fail-closed)
+        return None
+    return _adoptable_observation(pf, _latest_by_instrument(_reconcile_observations(pf)))
+
+
+def pending_orders_view(paths: OpsPaths) -> PendingOrdersView:
+    """Surface the LIVE in-flight (QUEUED) order queue — the cross-run async-fold lineage (ADR-014 §6.3)."""
+    path = paths.live_portfolio_path
+    if not path.exists():
+        return PendingOrdersView(False, 0, (), None)
+    try:
+        pf = load_portfolio(path)
+    except Exception as exc:  # surface a corrupt live portfolio, never crash the console
+        return PendingOrdersView(True, 0, (), str(exc))
+    orders = tuple(
+        PendingOrderView(
+            seq=o.seq,
+            instrument=o.instrument,
+            side=o.side,
+            requested_qty=o.requested_qty,
+            client_order_id=o.client_order_id,
+            source_snapshot_id=o.source_snapshot_id,
+            as_of=o.as_of,
+        )
+        for o in sorted(pf.pending, key=lambda o: o.seq)
+    )
+    return PendingOrdersView(exists=True, order_count=len(orders), orders=orders, error=None)
+
+
+def live_state_view(
+    paths: OpsPaths,
+    plugs: tuple[PlugStatus, ...],
+    reconcile: ReconcileView,
+    live_ledger: LedgerView,
+    live_portfolio: PortfolioView,
+) -> LiveStateView:
+    """Assemble the top-of-dashboard LIVE strip: plug readiness, kill switch, and the loud refuse/halt banner."""
+    exec_plug = next((p for p in plugs if p.name == "alpaca_paper_execution"), None)
+    plug_status = exec_plug.status if exec_plug is not None else "unknown"
+    halted = operator_halt_active(paths.operator_halt_path)
+    refused = reconcile.execution_refused
+    banner: str | None = None
+    if refused:
+        if reconcile.adoptable and reconcile.refusing_count == 1:
+            tail = "governed adopt-broker-position available -> clears the refuse"
+        elif reconcile.adoptable:
+            tail = (
+                "governed adopt-broker-position clears the position discrepancy, but other markers must be "
+                "resolved broker-side before execution resumes"
+            )
+        else:
+            tail = "resolve broker-side (cancel the foreign/wrong-side order); adopt clears position discrepancies only"
+        # 'advisory; re-checked live each cycle': this is DERIVED from the append-only reconcile history, not
+        # a live broker read — the authoritative refuse is recomputed by reconcile_and_act each cycle, and a
+        # broker-side-resolved foreign/wrong-side discrepancy leaves no clearing entry, so verify before acting.
+        banner = (
+            f"UNHEALED DISCREPANCY -> LIVE EXECUTION REFUSED (advisory; re-checked live each cycle) "
+            f"({reconcile.refuse_reason}) - {tail}"
+        )
+    elif halted:
+        banner = "OPERATOR KILL SWITCH ENGAGED -> live execution halts before any order on the next cycle"
+    return LiveStateView(
+        plug_status=plug_status,
+        kill_switch_engaged=halted,
+        execution_refused=refused,
+        refuse_reason=reconcile.refuse_reason,
+        adoptable=reconcile.adoptable,
+        live_ledger_exists=live_ledger.exists,
+        live_portfolio_exists=live_portfolio.exists,
+        banner=banner,
     )
 
 
@@ -719,8 +1008,10 @@ def pipeline_status(
         health = "degraded"
     else:
         health = "ok"
+    # The ledger/verdict/positions here are the CANONICAL (SIM) state — scoped 'SIM' so the always-on
+    # headline is never read as the live book (the SIM portfolio is accumulate-only; ISSUE-07 anti-confusion).
     headline = (
-        f"paper-only | {health} | ledger={ledger.entry_count} "
+        f"paper-only | {health} | SIM ledger={ledger.entry_count} "
         f"verdict={ledger.latest_verdict or '-'} positions={portfolio.open_position_count}"
     )
     return PipelineStatus(
@@ -751,6 +1042,11 @@ def assemble_dashboard(
     portfolio = portfolio_view(p)
     operational = operational_view(p)
     calibration = calibration_readiness(p)
+    plugs = plug_statuses()
+    # LIVE (ADR-014) read-model — the REAL paper P&L surfaces, badged distinct from the SIM panels above.
+    live_ledger = live_ledger_view(p)
+    live_portfolio = live_portfolio_view(p)
+    reconcile = reconcile_view(p)
     return Dashboard(
         pipeline=pipeline_status(ledger, portfolio, operational),
         ledger=ledger,
@@ -759,11 +1055,17 @@ def assemble_dashboard(
         preview=decision_preview(p),
         gates=gate_board(calibration),
         calibration=calibration,
-        plugs=plug_statuses(),
+        plugs=plugs,
         processes=process_infos(p, task_fetcher),
         policy=policy_versions(),
         events=recent_events(p, event_limit),
         audit_tail=tuple(e.line() for e in read_audit(p.audit_log_path, event_limit)),
+        live_ledger=live_ledger,
+        live_portfolio=live_portfolio,
+        live_operational=live_operational_view(p),
+        reconcile=reconcile,
+        pending_orders=pending_orders_view(p),
+        live_state=live_state_view(p, plugs, reconcile, live_ledger, live_portfolio),
     )
 
 
@@ -795,4 +1097,74 @@ def render_text_dashboard(dash: Dashboard) -> Sequence[str]:
     lines.append("PROCESSES:")
     for proc in dash.processes:
         lines.append(f"  {proc.name}: {proc.status} - {proc.detail}")
+    lines.append("")
+    _render_sim_live_text(dash, lines)
     return tuple(lines)
+
+
+def _render_sim_live_text(dash: Dashboard, lines: list[str]) -> None:
+    """Append the badged SIM-vs-LIVE sections — the two are NEVER interleaved or confusable (ISSUE-07)."""
+    ls = dash.live_state
+    lines.append("== LIVE-STATE STRIP ==")
+    lines.append(
+        f"  plug={ls.plug_status}  kill_switch={'ENGAGED' if ls.kill_switch_engaged else 'clear'}  "
+        f"execution_refused={ls.execution_refused}"
+    )
+    if ls.banner:
+        lines.append(f"  !! {ls.banner}")
+    lines.append("")
+
+    # SIM section — the accumulate-only determinism artifact; its value is a MODEL number, NOT a track record.
+    lines.append(f"== [{SIM_BADGE}] ==")
+    lines.append(
+        f"  SIM ledger: entries={dash.ledger.entry_count} verdict={dash.ledger.latest_verdict or '-'} "
+        f"hash={(dash.ledger.state_hash or '-')[:12]}"
+    )
+    lines.append(
+        f"  SIM portfolio (accumulate-only, NOT performance): positions={dash.portfolio.position_count} "
+        f"open={dash.portfolio.open_position_count} realized_pnl={dash.portfolio.realized_pnl} "
+        f"(model value, never a P&L track record)"
+    )
+    lines.append("")
+
+    # LIVE section — the REAL paper P&L: real fills, realized P&L on exits, reconcile observations.
+    lines.append(f"== [{LIVE_BADGE}] ==")
+    ll, lp = dash.live_ledger, dash.live_portfolio
+    if not ll.exists and not lp.exists:
+        lines.append("  (no live run yet — live ledger/portfolio absent)")
+    lines.append(
+        f"  LIVE ledger: entries={ll.entry_count} verdict={ll.latest_verdict or '-'} "
+        f"hash={(ll.state_hash or '-')[:12]}{_err(ll.error)}"
+    )
+    lines.append(
+        f"  LIVE portfolio (REAL paper P&L): positions={lp.position_count} open={lp.open_position_count} "
+        f"realized_pnl={lp.realized_pnl} fills={lp.execution_count} "
+        f"hash={(lp.state_hash or '-')[:12]}{_err(lp.error)}"
+    )
+    for pos in lp.positions:
+        lines.append(
+            f"    {pos.instrument}: qty={pos.quantity} avg_cost={pos.avg_cost} "
+            f"realized_pnl={pos.realized_pnl} unrealized_pnl={pos.unrealized_pnl}"
+        )
+    rec = dash.reconcile
+    lines.append(
+        f"  RECONCILE: entries={rec.entry_count} discrepancies={rec.discrepancy_count} "
+        f"refused={rec.execution_refused} adoptable={rec.adoptable}{_err(rec.error)}"
+    )
+    for obs in rec.observations:
+        flag = "DISCREPANCY " if obs.is_discrepancy else ""
+        lines.append(
+            f"    [{obs.seq}] {flag}{obs.instrument} marker={obs.marker} "
+            f"observed_qty={obs.observed_qty} observed_avg={obs.observed_avg_price}"
+        )
+    pend = dash.pending_orders
+    lines.append(f"  PENDING ORDERS: count={pend.order_count}{_err(pend.error)}")
+    for o in pend.orders:
+        lines.append(
+            f"    [{o.seq}] {o.side} {o.instrument} qty={o.requested_qty} "
+            f"coid={o.client_order_id} snapshot={o.source_snapshot_id}"
+        )
+
+
+def _err(error: str | None) -> str:
+    return f" ERROR={error}" if error else ""

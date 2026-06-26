@@ -5,7 +5,7 @@ status: active
 implementation_status: tested
 canonical: true
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-25
 confidence: confirmed
 evidence:
   - design
@@ -30,11 +30,13 @@ related_tests:
   - "[[test_ops_actions]]"
   - "[[test_ops_gated]]"
   - "[[test_ops_app]]"
+  - "[[test_live_monitoring]]"
 related_constraints:
   - "[[No Wiki Mutation]]"
   - "[[Canonical Ownership]]"
 related_decisions:
   - "[[ADR - Operations Control Plane]]"
+  - "[[ADR - Operable Alpaca Paper Execution Adapter v1]]"
 module_name: "ops"
 module_path: "ops/"
 responsibility: "Local terminal operator console (governed read-model + Textual TUI) over the Layer-3 runtime; three action tiers behind confirm/audit/precondition"
@@ -97,14 +99,18 @@ gate passes, never bumps a `*_version`); engine stays zero-dep per ADR-003
   ledger/portfolio/operational views, a **pure** latest-decision preview (`run_sequence`, no persistence),
   the ADR-011 (a–f) + ADR-012 (G0–G3, advisory) gate boards, calibration readiness (discrete `eligible`
   flag + display string), plug status, processes, policy versions, audit tail. Every loader error is
-  caught into an `error` field (never raises).
+  caught into an `error` field (never raises). **ISSUE-07 LIVE read-model (ADR-014):** path-parameterized
+  `live_ledger_view` / `live_portfolio_view` / `live_operational_view` (the separate `*.live` files),
+  `reconcile_view` (discrepancy history + derived refuse/adopt state), `pending_orders_view`,
+  `live_state_view`, and the `SIM_BADGE`/`LIVE_BADGE` anti-confusion badging — all pure/fail-closed.
 - **`ops/app.py`** ([[app.py (ops)]]) — the Textual TUI + `ConfirmModal`; tiers wired as key bindings;
   actions run in crash-proof thread workers; `--once` headless dump.
 - **`ops/actions.py`** ([[actions.py (ops)]]) — Tier-2 safe actions (run-chain-now on the simulator,
   re-run calibration readiness, re-sync Neo4j); audit-logged, never raise.
 - **`ops/gated.py`** ([[gated.py (ops)]]) — Tier-3 gated-live actions (one-shot Alpaca-paper run,
-  register/unregister schedule, commit-or-DEFER calibration bump); each enforces a server-side
-  precondition and never raises/always audits.
+  register/unregister schedule, commit-or-DEFER calibration bump, operator kill switch, and the ISSUE-07
+  **adopt-broker-position** — append-only reconcile-adopt of an unhealed unexplained-position discrepancy,
+  never automatic, ADR-014 §6.2); each enforces a server-side precondition and never raises/always audits.
 - **`ops/audit.py`** ([[audit.py (ops)]]) — append-only ASCII audit log (`make_entry`/`write_entry`/
   `read_audit`).
 - **`ops/proc.py`** — small shared helper (subprocess `default_runner` + secret-`redact` + `tail`) used
@@ -135,6 +141,7 @@ gate passes, never bumps a `*_version`); engine stays zero-dep per ADR-003
 - [[test_ops_actions]]
 - [[test_ops_gated]]
 - [[test_ops_app]]
+- [[test_live_monitoring]]
 
 ### Constrained By
 - [[No Wiki Mutation]]
@@ -142,6 +149,7 @@ gate passes, never bumps a `*_version`); engine stays zero-dep per ADR-003
 
 ### Justified By
 - [[ADR - Operations Control Plane]]
+- [[ADR - Operable Alpaca Paper Execution Adapter v1]]
 
 ### Realizes
 - [[patterns/Guardrail Pattern]]

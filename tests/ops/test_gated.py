@@ -243,7 +243,7 @@ def test_gated_registry() -> None:
     assert set(gated.GATED_ACTIONS) == {
         "run-chain-now-ALPACA-PAPER", "register-daily-schedule",
         "unregister-daily-schedule", "commit-calibration-bump",
-        "operator-halt", "operator-resume",
+        "operator-halt", "operator-resume", "adopt-broker-position",
     }
 
 

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "node_count": 221,
-    "edge_count": 1820,
+    "node_count": 222,
+    "edge_count": 1844,
     "skipped_edges": 5,
     "source": "dev_graph markdown (sync_to_neo4j parser)"
   },
@@ -1101,7 +1101,7 @@
       "id": "FILE-042",
       "label": "File",
       "name": "gated.py (ops)",
-      "summary": "The **Tier-3 gated-live actions** (ADR-013 §3) — the most privileged surface: `run_chain_now_alpaca_paper`, `register_daily_schedule`, `unregister_daily_schedule`, `commit_calibration_bump`, plus the `GATED_ACTIONS` registry and `precondition_line`.",
+      "summary": "The **Tier-3 gated-live actions** (ADR-013 §3) — the most privileged surface: `run_chain_now_alpaca_paper`, `register_daily_schedule`, `unregister_daily_schedule`, `commit_calibration_bump`, the operator kill switch (`set_operator_halt` / `resume_operator_halt`), and the ISSUE-07 `adopt_broker_position`, plus the `GATED_ACTIONS` registry and `precondition_line`.",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -2528,7 +2528,7 @@
       "id": "TEST-033",
       "label": "Test",
       "name": "test_ops_app",
-      "summary": "App-level tests for the Textual TUI app.py (ops) (FILE-040) — 4 tests, driven via Textual's headless `run_test` driver (wrapped in `asyncio.run`; no pytest-asyncio).",
+      "summary": "App-level tests for the Textual TUI app.py (ops) (FILE-040) — 5 tests, driven via Textual's headless `run_test` driver (wrapped in `asyncio.run`; no pytest-asyncio).",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -2606,6 +2606,17 @@
       "label": "Test",
       "name": "test_replayable_fence",
       "summary": "Tests the ADR-014 §5.3 fence: `run_once`/`run_sequence` structurally refuse a non-replayable broker port (`assert port.replayable`), so a live port is reachable only via `operate_live`; and that `operate_live` accepts the `LiveExecutionAdapter`, stamps records non-replayable, and threads a **separate** `(ledger, portfolio)` pair — never touching the canonical replay files (on the AVOID corpus the broker is never contacted).",
+      "confidence": "confirmed",
+      "evidence": [
+        "code"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "TEST-041",
+      "label": "Test",
+      "name": "test_live_monitoring",
+      "summary": "Headless unit tests (ISSUE-07, 24 tests) for the **LIVE read-model** in core.py (ops) (FILE-039) + the governed Tier-3 **adopt** action in gated.py (ops) (FILE-042) — no Textual, no network.",
       "confidence": "confirmed",
       "evidence": [
         "code"
@@ -6183,6 +6194,11 @@
     },
     {
       "source": "FILE-039",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "FILE-039",
       "type": "DEPENDS_ON",
       "target": "MOD-011"
     },
@@ -6195,6 +6211,11 @@
       "source": "FILE-039",
       "type": "RELATES_TO_TEST",
       "target": "TEST-029"
+    },
+    {
+      "source": "FILE-039",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-041"
     },
     {
       "source": "FILE-039",
@@ -6225,6 +6246,11 @@
       "source": "FILE-040",
       "type": "DECIDED_BY",
       "target": "ADR-013"
+    },
+    {
+      "source": "FILE-040",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
     },
     {
       "source": "FILE-040",
@@ -6390,6 +6416,11 @@
       "source": "FILE-042",
       "type": "RELATES_TO_TEST",
       "target": "TEST-032"
+    },
+    {
+      "source": "FILE-042",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-041"
     },
     {
       "source": "FILE-042",
@@ -8703,6 +8734,11 @@
     },
     {
       "source": "MOD-011",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "MOD-011",
       "type": "DEPENDS_ON",
       "target": "MOD-007"
     },
@@ -8725,6 +8761,11 @@
       "source": "MOD-011",
       "type": "JUSTIFIED_BY",
       "target": "ADR-013"
+    },
+    {
+      "source": "MOD-011",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-014"
     },
     {
       "source": "MOD-011",
@@ -8798,6 +8839,11 @@
     },
     {
       "source": "MOD-011",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-041"
+    },
+    {
+      "source": "MOD-011",
       "type": "VALIDATED_BY",
       "target": "TEST-029"
     },
@@ -8820,6 +8866,11 @@
       "source": "MOD-011",
       "type": "VALIDATED_BY",
       "target": "TEST-033"
+    },
+    {
+      "source": "MOD-011",
+      "type": "VALIDATED_BY",
+      "target": "TEST-041"
     },
     {
       "source": "OBS-001",
@@ -8853,6 +8904,11 @@
     },
     {
       "source": "OBS-002",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "OBS-002",
       "type": "DEPENDS_ON",
       "target": "MOD-011"
     },
@@ -8873,6 +8929,11 @@
     },
     {
       "source": "OBS-002",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-042"
+    },
+    {
+      "source": "OBS-002",
       "type": "RELATES_TO_TEST",
       "target": "TEST-029"
     },
@@ -8880,6 +8941,11 @@
       "source": "OBS-002",
       "type": "RELATES_TO_TEST",
       "target": "TEST-033"
+    },
+    {
+      "source": "OBS-002",
+      "type": "RELATES_TO_TEST",
+      "target": "TEST-041"
     },
     {
       "source": "OBS-002",
@@ -11690,6 +11756,71 @@
       "source": "TEST-040",
       "type": "VALIDATED_BY",
       "target": "FILE-044"
+    },
+    {
+      "source": "TEST-041",
+      "type": "CONSTRAINED_BY",
+      "target": "CON-001"
+    },
+    {
+      "source": "TEST-041",
+      "type": "COVERS",
+      "target": "FILE-039"
+    },
+    {
+      "source": "TEST-041",
+      "type": "COVERS",
+      "target": "FILE-042"
+    },
+    {
+      "source": "TEST-041",
+      "type": "COVERS",
+      "target": "MOD-011"
+    },
+    {
+      "source": "TEST-041",
+      "type": "DECIDED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-041",
+      "type": "DECIDED_BY",
+      "target": "ADR-014"
+    },
+    {
+      "source": "TEST-041",
+      "type": "JUSTIFIED_BY",
+      "target": "ADR-013"
+    },
+    {
+      "source": "TEST-041",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-039"
+    },
+    {
+      "source": "TEST-041",
+      "type": "RELATES_TO_FILE",
+      "target": "FILE-042"
+    },
+    {
+      "source": "TEST-041",
+      "type": "USED_BY",
+      "target": "FILE-039"
+    },
+    {
+      "source": "TEST-041",
+      "type": "USED_BY",
+      "target": "FILE-042"
+    },
+    {
+      "source": "TEST-041",
+      "type": "USED_BY",
+      "target": "MOD-011"
+    },
+    {
+      "source": "TEST-041",
+      "type": "VALIDATED_BY",
+      "target": "ADR-013"
     },
     {
       "source": "WF-001",
